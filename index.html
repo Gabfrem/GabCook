@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#F7F5F1">
 <title>GabCook — cuisine avec ce que tu as</title>
+<meta name="description" content="147 recettes détaillées, adaptables à l'air fryer, avec le suivi de ton frigo et ta liste de courses.">
+<!-- aperçu affiché par les messageries quand on reçoit un lien.
+     Le contenu est forcément générique : la page est statique, elle ne peut pas
+     savoir quelle recette est demandée avant que le navigateur exécute le script. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="GabCook">
+<meta property="og:title" content="GabCook — une recette pour toi">
+<meta property="og:description" content="Ouvre ce lien pour voir la recette : ingrédients, quantités et préparation pas à pas.">
+<meta name="twitter:card" content="summary">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="GabCook">
@@ -240,8 +249,8 @@
   .confirm .cf-t{font-family:var(--disp);font-weight:700;font-size:15px;color:var(--tomato);margin-bottom:5px}
   .confirm .cf-s{font-size:13.5px;color:#8E3A28;line-height:1.5}
   .confirm .cf-s b{font-weight:700}
-  .confirm .cf-row{display:flex;gap:8px;margin-top:13px}
-  .confirm .cf-row .act{flex:1;padding:13px;font-size:14px}
+  .cf-row{display:flex;gap:8px;margin-top:13px}
+  .cf-row .act{flex:1;padding:13px;font-size:14px}
   .cf-no{background:var(--card);color:var(--ink);border-color:var(--line)}
   .cf-yes{background:var(--tomato);color:#fff}
 
@@ -308,6 +317,17 @@
     <p>Ton navigateur ne permet pas le partage direct. Sélectionne tout le texte, copie-le, puis colle-le dans un message.</p>
     <textarea id="shareText" readonly></textarea>
     <button class="act act-cook" id="shareClose">Fermer</button>
+  </div>
+</div>
+
+<div class="sharebox" id="importBox" hidden>
+  <div class="sharecard">
+    <h4>Récupérer ce frigo ?</h4>
+    <p id="importInfo"></p>
+    <div class="cf-row">
+      <button class="act cf-no" id="importNo">Annuler</button>
+      <button class="act cf-yes" id="importYes">Récupérer</button>
+    </div>
   </div>
 </div>
 
@@ -1215,12 +1235,28 @@ function ingStatus(ing, factor){
 }
 function missingFor(recipe, factor){ return recipe.ing.filter(i => ingStatus(i, factor).s !== "have"); }
 
-/* --- affichage des quantités recette --- */
+/* --- affichage des quantités recette ---
+   Une recette mise à l'échelle donne des nombres impossibles en cuisine (66,67 g de beurre).
+   On arrondit donc l'affichage à des valeurs qu'une balance ou une cuillère peuvent suivre.
+   Seul l'affichage est arrondi : le débit du frigo continue de travailler sur les valeurs exactes. */
+const LOOSE = new Set(["pincée","poignée","c. à soupe","c. à café"]);   // mesures approximatives par nature
+// renvoie {q,u} : l'unité peut changer, « 350 g » se lit mieux que « 0,35 kg »
+function niceQty(q, u){
+  if(u==="kg" && q<1){ q*=1000; u="g"; }
+  if(u==="l"  && q<1){ q*=100;  u="cl"; }
+  if(u==="" || LOOSE.has(u)){                    // pièces et cuillères : par demi-unité
+    q = Math.round(q*2)/2;
+    return {q: q<0.5 ? 0.5 : q, u};
+  }
+  // masses et volumes : palier proportionnel à l'ordre de grandeur
+  const step = q>=200 ? 10 : q>=50 ? 5 : q>=10 ? 1 : q>=2 ? 0.5 : q>=0.5 ? 0.1 : 0.05;
+  const r = Math.round(q/step)*step;
+  return {q: r>0 ? Math.round(r*1000)/1000 : step, u};   // jamais zéro
+}
 function qtyOnly(ing,factor){
   if(ing.q==null) return ing.u||"";
-  let q=ing.q*factor;
-  if(ing.u===""){ q=Math.round(q*2)/2; if(q<0.5)q=0.5; } else { q=Math.round(q*100)/100; }
-  return ing.u? fmtNum(q)+" "+ing.u : fmtNum(q);
+  const n=niceQty(ing.q*factor, ing.u);
+  return n.u? fmtNum(n.q)+" "+n.u : fmtNum(n.q);
 }
 
 /* ---------- persistance ---------- */
@@ -1381,6 +1417,7 @@ function renderFridge(){
   const have=new Set(state.fridge.map(f=>norm(f.n)));
   html+=`<div class="suggest-label">Ajouter rapidement</div><div class="suggest">`+
     COMMON.map((c,i)=>`<button class="sg ${have.has(norm(c.n))?"added":""}" data-quick="${i}">+ ${c.n}</button>`).join("")+`</div>`;
+  html+=`<div class="course-actions" style="margin-top:24px"><button class="ca" id="syncOut">📤 Transférer vers un autre appareil</button></div>`;
   setPage(html);
 }
 
@@ -1412,7 +1449,28 @@ const detailEl=document.getElementById("detail");
 const detailScroll=document.getElementById("detailScroll");
 let currentRecipe=null;
 
-function openRecipe(id){
+/* Lien profond : l'adresse porte la recette ouverte, ses portions et le mode air fryer,
+   pour qu'un lien partagé ouvre exactement ce que l'expéditeur avait sous les yeux.
+   Hors serveur (fichier ouvert en local), l'historique refuse ces adresses : on s'abstient. */
+const DEEPLINK = location.protocol==="http:" || location.protocol==="https:";
+function recipeUrl(id, portions, af){
+  if(!DEEPLINK) return "";
+  const r = RECIPES.find(x=>x.id===id);
+  let u = location.origin + location.pathname + "?r=" + encodeURIComponent(id);
+  if(r && portions && portions!==r.portions) u += "&p=" + portions;
+  if(af) u += "&af=1";
+  return u;
+}
+function pushUrl(id){
+  if(!DEEPLINK) return;
+  try{ history.pushState({r:id}, "", recipeUrl(id, state.currentPortions, state.airfryer)); }catch(e){}
+}
+function stripUrl(){
+  if(!DEEPLINK || !location.search) return;
+  try{ history.replaceState({}, "", location.pathname); }catch(e){}
+}
+
+function openRecipe(id, fromUrl){
   const r=RECIPES.find(x=>x.id===id);
   if(!r) return;
   currentRecipe=r;
@@ -1423,14 +1481,27 @@ function openRecipe(id){
   detailEl.classList.add("open");
   detailEl.setAttribute("aria-hidden","false");
   document.body.style.overflow="hidden";
+  if(!fromUrl) pushUrl(id);
 }
-function closeRecipe(){
+// ferme réellement le panneau, sans toucher à l'historique
+function doClose(){
   detailEl.classList.remove("open");
   detailEl.setAttribute("aria-hidden","true");
   document.body.style.overflow="";
   currentRecipe=null;
   render();
 }
+function closeRecipe(){
+  // repasser par l'historique garde le bouton retour du téléphone cohérent avec le panneau
+  if(DEEPLINK && history.state && history.state.r){ history.back(); return; }
+  stripUrl();
+  doClose();
+}
+addEventListener("popstate", e=>{
+  const id = e.state && e.state.r;
+  if(id){ if(!currentRecipe || currentRecipe.id!==id) openRecipe(id, true); }
+  else if(currentRecipe) doClose();
+});
 function renderDetail(){
   const r=currentRecipe;
   if(!r) return;
@@ -1576,13 +1647,13 @@ function addMissingToShopping(){
     if(state.shopping.some(s=>ingKey(s.base)===ingKey(p.n))) return;
     let q,u,label;
     if(st.s==="low" && st.f){
-      q=roundNice(fromBase(st.short, st.f.u)); u=st.f.u;
-      label=(u? fmtNum(q)+" "+u+" "+nom(q) : fmtNum(q)+" "+nom(q));
+      const n=niceQty(fromBase(st.short, st.f.u), st.f.u);
+      q=n.q; u=n.u; label=(u? fmtNum(q)+" "+u+" "+nom(q) : fmtNum(q)+" "+nom(q));
     } else if(i.q==null){
       q=null; u=i.u||""; label=(i.u? i.u+" "+nom(1) : nom(1));
     } else {
-      const qq = i.u===""? (Math.round(i.q*factor*2)/2) : roundNice(i.q*factor);
-      q=qq; u=i.u; label=(u? fmtNum(qq)+" "+u+" "+nom(qq) : fmtNum(qq)+" "+nom(qq));
+      const n=niceQty(i.q*factor, i.u);
+      q=n.q; u=n.u; label=(u? fmtNum(q)+" "+u+" "+nom(q) : fmtNum(q)+" "+nom(q));
     }
     state.shopping.push({id:uid++, label, base:p.n, q, u, from:r.nom, checked:false});
     added++;
@@ -1603,6 +1674,9 @@ function recipeText(){
   L.push(r.emoji+" "+r.nom.toUpperCase());
   L.push(r.cat+" · "+r.diff+" · pour "+p+" personne"+(p>1?"s":""));
   L.push("⏱ "+r.prep+" min de préparation"+(v.cuisson?" + "+v.cuisson+" min de cuisson":""));
+  // placé en tête : si la messagerie tronque le message, le lien reste visible
+  const lien = recipeUrl(r.id, p, !!v.af);
+  if(lien) L.push("👉 Voir la recette : "+lien);
   if(v.af){
     L.push("", "🍟 VERSION AIR FRYER — "+v.af.t+"°C · "+v.af.min+" min");
     L.push(v.af.tip);
@@ -1651,6 +1725,75 @@ async function shareRecipe(){
   ta.focus(); ta.setSelectionRange(0, texte.length); ta.scrollTop=0;
 }
 
+/* ---------- transfert d'un appareil à l'autre ----------
+   Le frigo et les courses tiennent entiers dans le lien : ni serveur, ni compte,
+   donc rien qui puisse fermer, expirer ou devenir payant. */
+function b64url(s){
+  const bytes=new TextEncoder().encode(s);
+  let bin=""; for(let i=0;i<bytes.length;i++) bin+=String.fromCharCode(bytes[i]);
+  return btoa(bin).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
+}
+function unb64url(s){
+  const bin=atob(s.replace(/-/g,"+").replace(/_/g,"/"));
+  const bytes=new Uint8Array(bin.length);
+  for(let i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i);
+  return new TextDecoder().decode(bytes);
+}
+// forme compacte en tableaux : un lien collable dans un message doit rester court
+function syncUrl(){
+  const data={v:1,
+    f: state.fridge.map(x=>[x.n, x.q, x.u]),
+    s: state.shopping.map(x=>[x.label, x.base, x.q, x.u, x.from, x.checked?1:0])};
+  return location.origin + location.pathname + "?sync=" + b64url(JSON.stringify(data));
+}
+function readSyncLink(){
+  const raw = new URLSearchParams(location.search).get("sync");
+  if(!raw) return null;
+  try{
+    const d = JSON.parse(unb64url(raw));
+    if(!d || d.v!==1 || !Array.isArray(d.f) || !Array.isArray(d.s)) return null;
+    d.f = d.f.filter(a=>Array.isArray(a) && typeof a[0]==="string" && a[0]).slice(0,300);
+    d.s = d.s.filter(a=>Array.isArray(a) && typeof a[0]==="string" && a[0]).slice(0,300);
+    return d;
+  }catch(e){ return null; }
+}
+
+let pendingSync=null;
+function askImport(d){
+  pendingSync=d;
+  const nf=d.f.length, ns=d.s.length;
+  document.getElementById("importInfo").textContent =
+    "Ce lien contient "+nf+" ingrédient"+(nf>1?"s":"")+" et "+ns+" article"+(ns>1?"s":"")+
+    " de courses. Les récupérer remplacera ce qui est enregistré sur cet appareil.";
+  document.getElementById("importBox").hidden=false;
+}
+function applyImport(){
+  const d=pendingSync; if(!d) return;
+  state.fridge  = d.f.map(a=>({n:a[0], q:(a[1]==null?null:a[1]), u:a[2]||""}));
+  state.shopping= d.s.map(a=>({id:uid++, label:a[0], base:a[1]||a[0], q:(a[2]==null?null:a[2]), u:a[3]||"", from:a[4]||"", checked:!!a[5]}));
+  saveFridge(); saveShopping();
+  pendingSync=null;
+  document.getElementById("importBox").hidden=true;
+  stripUrl();
+  setView("fridge");
+  toast("🧊 Frigo et courses récupérés sur cet appareil");
+}
+
+async function shareSync(){
+  if(!DEEPLINK){ toast("Disponible depuis le site en ligne, pas en fichier local"); return; }
+  if(!state.fridge.length && !state.shopping.length){ toast("Rien à transférer pour le moment"); return; }
+  const url=syncUrl();
+  if(url.length>7000){ toast("Liste trop longue pour tenir dans un lien"); return; }
+  const texte="🧊 Mon frigo GabCook\nOuvre ce lien sur l'autre appareil pour y récupérer le frigo et la liste de courses :\n"+url;
+  if(navigator.share){
+    try{ await navigator.share({title:"Mon frigo GabCook", text:texte}); return; }
+    catch(e){ if(e && e.name==="AbortError") return; }
+  }
+  if(await copyText(url)){ toast("📋 Lien copié — ouvre-le sur l'autre appareil"); return; }
+  const box=document.getElementById("shareBox"), ta=document.getElementById("shareText");
+  ta.value=url; box.hidden=false; ta.focus(); ta.setSelectionRange(0,url.length); ta.scrollTop=0;
+}
+
 function toast(msg){
   const t=document.getElementById("toast");
   t.textContent=msg; t.classList.add("show");
@@ -1661,9 +1804,16 @@ function toast(msg){
 document.getElementById("nav").addEventListener("click",e=>{
   const b=e.target.closest("button[data-view]");
   if(!b) return;
-  // la pastille reste au-dessus d'une recette ouverte : on la referme avant de changer d'onglet
-  if(detailEl.classList.contains("open")) closeRecipe();
+  // la pastille reste au-dessus d'une recette ouverte : on la referme avant de changer d'onglet.
+  // Fermeture directe et non via l'historique, dont le retour asynchrone effacerait l'animation de page.
+  if(detailEl.classList.contains("open")){ stripUrl(); doClose(); }
   setView(b.dataset.view);
+});
+document.getElementById("importBox").addEventListener("click",e=>{
+  if(e.target.closest("#importYes")){ applyImport(); return; }
+  if(e.target.closest("#importNo") || e.target.id==="importBox"){
+    pendingSync=null; document.getElementById("importBox").hidden=true; stripUrl();
+  }
 });
 document.getElementById("shareBox").addEventListener("click",e=>{
   // fermeture par le bouton ou en touchant le fond, mais pas en sélectionnant le texte
@@ -1728,6 +1878,7 @@ scrollEl.addEventListener("click",e=>{
     toast(bought.length+" article"+(bought.length>1?"s":"")+" rangé"+(bought.length>1?"s":"")+" au frigo"); return;
   }
   if(e.target.closest("#clearBtn")){ state.shopping=[]; saveShopping(); renderShopping(); updateBadges(); return; }
+  if(e.target.closest("#syncOut")){ shareSync(); return; }
 });
 
 scrollEl.addEventListener("change",e=>{
@@ -1769,9 +1920,18 @@ detailScroll.addEventListener("click",e=>{
   if(e.target.closest("#pPlus")){ state.currentPortions++; state.confirmCook=false; renderDetail(); return; }
 });
 
-/* ---------- manifeste (icône écran d'accueil) ---------- */
+/* ---------- manifeste (icône écran d'accueil) ----------
+   Le manifeste est fabriqué à la volée, donc servi depuis une adresse blob:.
+   Les chemins relatifs s'y résoudraient contre le blob et ne mèneraient nulle part :
+   start_url et scope doivent donc être absolus. Le scope indique aussi à Android
+   quelles adresses appartiennent à l'application une fois installée. */
 try{
-  const manifest={name:"GabCook",short_name:"GabCook",start_url:".",display:"standalone",background_color:"#F7F5F1",theme_color:"#2B2A28",icons:[{src:LOGO,sizes:"512x512",type:"image/png",purpose:"any maskable"}]};
+  const base = location.origin + location.pathname;
+  const manifest={name:"GabCook",short_name:"GabCook",
+    start_url: base,
+    scope: base.replace(/[^/]*$/,""),
+    display:"standalone",background_color:"#F7F5F1",theme_color:"#2B2A28",
+    icons:[{src:LOGO,sizes:"512x512",type:"image/png",purpose:"any maskable"}]};
   const blob=new Blob([JSON.stringify(manifest)],{type:"application/manifest+json"});
   const l=document.createElement("link"); l.rel="manifest"; l.href=URL.createObjectURL(blob); document.head.appendChild(l);
 }catch(e){}
@@ -1790,6 +1950,21 @@ try{
   }
   render();
   moveThumb();
+
+  // lien de transfert reçu depuis un autre appareil : ?sync=...
+  const recu = readSyncLink();
+  if(recu){ askImport(recu); return; }
+
+  // ouverture depuis un lien partagé : ?r=recette&p=portions&af=1
+  const q = new URLSearchParams(location.search);
+  const rid = q.get("r");
+  if(rid && RECIPES.some(x=>x.id===rid)){
+    // le mode air fryer du lien vaut pour cette visite seulement, il n'écrase pas le réglage enregistré
+    if(q.get("af")==="1") state.airfryer=true;
+    openRecipe(rid, true);
+    const p = parseInt(q.get("p"),10);
+    if(p>0 && p<=50){ state.currentPortions=p; renderDetail(); }
+  }
 })();
 </script>
 </body>
