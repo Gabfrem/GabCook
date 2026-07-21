@@ -183,22 +183,98 @@
   .ca:active{transform:scale(.98)}
   .ca:disabled{opacity:.4}
 
-  /* ---- navigation en pastille segmentée (toujours au-dessus, même sur une recette) ---- */
+  /* ---- navigation en pastille segmentée, matière « liquid glass » ----
+     Le verre doit surtout être TRANSPARENT : le fond traverse, il est seulement
+     dévié. On teinte donc très peu (10 % de blanc) et on compte sur trois choses :
+     la saturation poussée, qui ravive les couleurs vues au travers ;
+     un gain de luminosité, qui éclaircit ce qui passe derrière pour garder les
+     libellés lisibles ; et surtout des ombres internes décalées en diagonale,
+     qui imitent la compression de l'image contre la paroi épaisse du verre. */
   .nav{position:fixed;bottom:calc(16px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:70;
-       display:flex;padding:5px;border-radius:999px;background:rgba(38,36,34,.88);
-       backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);
-       box-shadow:0 10px 30px rgba(0,0,0,.28), inset 0 0 0 1px rgba(255,255,255,.09)}
-  .nav .thumb{position:absolute;top:5px;bottom:5px;left:0;width:0;border-radius:999px;background:rgba(255,255,255,.15);
-       box-shadow:inset 0 0 0 1px rgba(255,255,255,.13);
-       transition:transform .38s cubic-bezier(.32,.72,0,1), width .38s cubic-bezier(.32,.72,0,1)}
+       display:flex;padding:7px;border-radius:999px;isolation:isolate;
+       background:rgba(255,255,255,.07);
+       backdrop-filter:blur(9px) saturate(210%) brightness(1.09);
+       -webkit-backdrop-filter:blur(9px) saturate(210%) brightness(1.09);
+       box-shadow:
+         inset 2px 3px 4px -2.5px rgba(255,255,255,1),      /* paroi haut-gauche : l'image s'y comprime */
+         inset -2px -3px 4px -2.5px rgba(255,255,255,.85),  /* paroi bas-droite */
+         inset 0 0 18px -5px rgba(255,255,255,.5),          /* halo interne, épaisseur du verre */
+         0 0 0 .5px rgba(255,255,255,.5),                   /* liseré extérieur */
+         0 12px 30px rgba(43,42,40,.18),                    /* ombre portée */
+         0 3px 10px rgba(43,42,40,.10)}
+  /* Anneau réfractif : un second flou, plus faible et plus saturé, limité au pourtour
+     par un masque en anneau. C'est lui qui décale l'image juste au bord et donne
+     l'impression que le fond se courbe en traversant l'épaisseur du verre. */
+  .nav::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;
+       border:7px solid transparent;
+       backdrop-filter:blur(2px) saturate(230%) brightness(1.16);
+       -webkit-backdrop-filter:blur(2px) saturate(230%) brightness(1.16);
+       -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+       -webkit-mask-composite:xor;
+       mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+       mask-composite:exclude}
+  /* reflet spéculaire en diagonale, par-dessus tout, sans gêner les clics */
+  .nav::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:3;
+       background:linear-gradient(128deg, rgba(255,255,255,.5) 0%, rgba(255,255,255,.05) 28%,
+                  rgba(255,255,255,0) 55%, rgba(255,255,255,.08) 76%, rgba(255,255,255,.38) 100%)}
+  /* Capsule de l'onglet actif : une lentille TEINTÉE à la couleur d'accent, avec son
+     halo, plutôt qu'un simple verre plus clair. C'est elle qui dit où l'on se trouve,
+     donc elle doit se voir sans ambiguïté même posée sur un fond crème. */
+  /* La capsule est posée par ses deux bords plutôt que par une largeur : c'est ce qui
+     permet de les animer séparément et de l'étirer en chemin (voir moveThumb). */
+  .nav .thumb{position:absolute;top:7px;bottom:7px;left:0;right:100%;border-radius:999px;z-index:0;
+       background:linear-gradient(180deg, rgba(214,186,158,.72), rgba(190,160,136,.52));
+       box-shadow:
+         inset 0 1px 0 rgba(255,255,255,.9),        /* arête éclairée du dessus */
+         inset 0 0 0 .5px rgba(255,255,255,.5),     /* liseré de la lentille */
+         0 0 11px 1px rgba(176,140,108,.5),         /* halo coloré autour de la capsule */
+         0 1px 4px rgba(43,42,40,.12)}
+  /* Aplatissement à l'élan puis retour : la matière se comporte comme une goutte
+     qui s'écrase en accélérant et retrouve son volume en se posant. */
+  @keyframes thumbSquash{
+    0%{transform:scaleY(1)}
+    30%{transform:scaleY(.90)}
+    64%{transform:scaleY(1.035)}
+    100%{transform:scaleY(1)}
+  }
+  .nav .thumb.moving{animation:thumbSquash .5s cubic-bezier(.34,.9,.3,1)}
   .nav button{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:11px;
-       padding:9px 15px;border-radius:999px;color:rgba(255,255,255,.52);
+       padding:9px 15px;border-radius:999px;color:rgba(43,42,40,.70);
        font-size:12px;font-weight:700;letter-spacing:.045em;text-transform:uppercase;white-space:nowrap;
        transition:color .3s}
-  .nav button.active{color:var(--camel-light)}
+  /* brun profond plutôt que le camel clair : sur sa propre capsule teintée,
+     le camel n'aurait pas assez de contraste pour du texte de 12 px */
+  .nav button.active{color:#6E5133}
+
+  /* ---- verre adaptatif ----
+     Un verre clair posé sur un aplat sombre devient illisible : les libellés
+     disparaissent. iOS résout ça en changeant la matière selon le fond ; le CSS
+     ne sait pas lire ce qu'il y a derrière, alors c'est le script qui pose
+     .on-dark quand un élément sombre connu passe sous la pastille.
+     Le verre reste translucide : ce sont les encres qui s'inversent. */
+  .nav,.nav button,.nav .thumb{transition:background .28s, box-shadow .28s, color .28s}
+  .nav.on-dark{background:rgba(255,255,255,.13);
+       box-shadow:
+         inset 2px 3px 4px -2.5px rgba(255,255,255,.65),
+         inset -2px -3px 4px -2.5px rgba(255,255,255,.45),
+         inset 0 0 18px -5px rgba(255,255,255,.3),
+         0 0 0 .5px rgba(255,255,255,.3),
+         0 12px 30px rgba(0,0,0,.35),
+         0 3px 10px rgba(0,0,0,.22)}
+  .nav.on-dark button{color:rgba(255,255,255,.78)}
+  /* la capsule reste claire : c'est son encre qui redevient sombre, comme sur iOS */
+  .nav.on-dark .thumb{background:linear-gradient(180deg, rgba(230,207,183,.88), rgba(206,178,150,.72));
+       box-shadow:inset 0 1px 0 rgba(255,255,255,.85), inset 0 0 0 .5px rgba(255,255,255,.5),
+                  0 0 12px 1px rgba(190,160,136,.35), 0 1px 4px rgba(0,0,0,.25)}
+  .nav.on-dark button.active{color:#3F2E19}
+  .nav.on-dark .navbadge{box-shadow:0 0 0 2px rgba(32,30,28,.9)}
   .nav button .ni{position:relative;display:flex}
   .nav button svg{width:17px;height:17px}
-  .nav .navbadge{position:absolute;top:-7px;right:-8px;min-width:14px;height:14px;padding:0 3.5px;background:var(--tomato);color:#fff;border-radius:999px;font-size:9px;font-weight:700;line-height:1;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 2px rgba(38,36,34,.95)}
+  .nav .navbadge{position:absolute;top:-7px;right:-8px;min-width:14px;height:14px;padding:0 3.5px;background:var(--tomato);color:#fff;border-radius:999px;font-size:9px;font-weight:700;line-height:1;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 2px rgba(255,255,255,.9)}
+  /* sans flou d'arrière-plan, le verre deviendrait illisible : on retombe sur un fond plein */
+  @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+    .nav{background:rgba(252,250,247,.97)}
+  }
 
   /* ---- glissement de la page à chaque changement d'onglet ---- */
   @keyframes pageIn{from{opacity:0;transform:translateX(var(--slide,22px))}to{opacity:1;transform:translateX(0)}}
@@ -241,7 +317,7 @@
   .sharecard{background:var(--card);border-radius:var(--r);padding:18px;width:100%;max-width:420px;box-shadow:0 16px 40px rgba(0,0,0,.3)}
   .sharecard h4{font-family:var(--disp);font-weight:700;font-size:18px;margin:0 0 4px}
   .sharecard p{font-size:13.5px;color:var(--muted);margin:0 0 12px;line-height:1.45}
-  .sharecard textarea{width:100%;height:44vh;padding:12px;border-radius:12px;border:1.5px solid var(--line);background:var(--paper);font-family:var(--sans);font-size:13px;line-height:1.5;color:var(--ink);resize:none;outline:none}
+  .sharecard textarea{width:100%;height:88px;padding:12px;border-radius:12px;border:1.5px solid var(--line);background:var(--paper);font-family:var(--sans);font-size:13px;line-height:1.5;color:var(--ink);resize:none;outline:none;word-break:break-all}
   .sharecard .act{margin-top:12px}
 
   /* ---- confirmation « j'ai cuisiné » quand il manque des ingrédients ---- */
@@ -313,8 +389,8 @@
 
 <div class="sharebox" id="shareBox" hidden>
   <div class="sharecard">
-    <h4>Copier la recette</h4>
-    <p>Ton navigateur ne permet pas le partage direct. Sélectionne tout le texte, copie-le, puis colle-le dans un message.</p>
+    <h4>Copier le lien</h4>
+    <p>Ton navigateur ne permet pas le partage direct. Le lien est déjà sélectionné : copie-le, puis colle-le dans un message.</p>
     <textarea id="shareText" readonly></textarea>
     <button class="act act-cook" id="shareClose">Fermer</button>
   </div>
@@ -1288,12 +1364,73 @@ const scrollEl = document.getElementById("scroll");
 const VIEWS = ["home","fridge","shopping"];
 let pageDir = 0;   // sens du glissement au prochain rendu : +1 vers la droite, -1 vers la gauche, 0 aucun
 
-// fait glisser la pastille claire sous l'onglet actif
-function moveThumb(){
+/* Bascule la matière du menu quand un aplat sombre passe dessous.
+   On ne peut pas lire le fond depuis le CSS : on teste donc le chevauchement
+   avec les seuls éléments réellement sombres de l'application. */
+const DARK_BEHIND = ".pantry-banner, .act-cook, .cf-yes, .ca.primary, .dhero";
+function syncNavMaterial(){
+  const nav = document.getElementById("nav");
+  if(!nav) return;
+  const n = nav.getBoundingClientRect();
+  let sombre = false;
+  document.querySelectorAll(DARK_BEHIND).forEach(el=>{
+    if(sombre) return;
+    const r = el.getBoundingClientRect();
+    if(r.width && r.height && r.left < n.right && r.right > n.left && r.top < n.bottom && r.bottom > n.top) sombre = true;
+  });
+  nav.classList.toggle("on-dark", sombre);
+}
+/* Le défilement déclencherait ce test des centaines de fois par seconde : on le
+   limite à un passage toutes les 80 ms, en gardant un appel immédiat pour la
+   réactivité et un appel de fin pour ne pas rester sur une position périmée.
+   Volontairement sans requestAnimationFrame, que certains contextes suspendent. */
+let darkLast = 0, darkTimer = 0;
+function queueNavMaterial(){
+  const now = Date.now();
+  clearTimeout(darkTimer);
+  if(now - darkLast > 80){ darkLast = now; syncNavMaterial(); }
+  else darkTimer = setTimeout(()=>{ darkLast = Date.now(); syncNavMaterial(); }, 80);
+}
+
+/* Déplace la capsule sous l'onglet actif.
+   Ses deux bords sont animés à des vitesses différentes : celui qui part devant
+   arrive vite, celui qui suit met plus longtemps. Entre les deux, la capsule
+   s'allonge puis se resserre — c'est ce décalage qui donne l'aspect liquide,
+   plutôt qu'un bloc rigide qui glisse. */
+/* Courbes calibrées à la mesure : l'écart entre les deux fait toute l'ampleur de
+   l'étirement. Plus creusées, la capsule s'allongeait jusqu'à 271 px pour une cible
+   de 120 — elle traversait presque toute la barre. Là, le pic tourne autour de 160 px. */
+const THUMB_RAPIDE = "cubic-bezier(.3,.58,.34,1)";   // bord d'attaque : part devant
+const THUMB_LENT   = "cubic-bezier(.33,.3,.34,1)";   // bord de fuite : traîne puis rattrape
+function moveThumb(animer){
+  const nav=document.getElementById("nav");
   const btn=document.querySelector(".nav button.active"), thumb=document.getElementById("navThumb");
-  if(!btn||!thumb) return;
-  thumb.style.width=btn.offsetWidth+"px";
-  thumb.style.transform="translateX("+btn.offsetLeft+"px)";
+  if(!btn||!thumb||!nav) return;
+  const gauche = btn.offsetLeft;
+  const droite = nav.offsetWidth - (btn.offsetLeft + btn.offsetWidth);
+  const avant  = parseFloat(thumb.style.left);
+
+  // premier placement, redimensionnement, chargement des polices : on se pose sans animer
+  if(!animer || isNaN(avant)){
+    thumb.classList.remove("moving");             // un redimensionnement en plein vol ne doit rien laisser traîner
+    thumb.style.transition="none";
+    thumb.style.left=gauche+"px"; thumb.style.right=droite+"px";
+    void thumb.offsetWidth;                       // force la prise en compte avant de rendre la main
+    thumb.style.transition="";
+    return;
+  }
+  if(Math.abs(avant-gauche) < 1) return;          // déjà en place, rien à animer
+
+  const versLaDroite = gauche > avant;
+  const rapide = ".44s "+THUMB_RAPIDE, lent = ".50s "+THUMB_LENT;
+  thumb.style.transition =
+    "left "+(versLaDroite?lent:rapide)+", right "+(versLaDroite?rapide:lent)+
+    ", background .28s, box-shadow .28s";
+  thumb.style.left=gauche+"px"; thumb.style.right=droite+"px";
+
+  thumb.classList.remove("moving");
+  void thumb.offsetWidth;                          // redémarre l'aplatissement à chaque bascule
+  thumb.classList.add("moving");
 }
 // le contenu est enveloppé dans .page : on l'anime sans déplacer la zone de défilement elle-même
 function setPage(html){
@@ -1310,13 +1447,15 @@ function setView(v){
   document.getElementById("quickWrap").style.display = v==="home"?"":"none";
   scrollEl.scrollTop=0;
   render();
-  moveThumb();
+  moveThumb(true);            // seul cas où la capsule doit s'étirer
+  queueNavMaterial();
 }
 function render(){
   if(state.view==="home") renderHome();
   else if(state.view==="fridge") renderFridge();
   else if(state.view==="shopping") renderShopping();
   updateBadges();
+  queueNavMaterial();
 }
 function updateBadges(){
   const fb=document.getElementById("fridgeBadge");
@@ -1587,6 +1726,7 @@ function renderDetail(){
       <ol class="steps">${v.etapes.map(e=>`<li><div class="st">${e}</div></li>`).join("")}</ol>
     </div>
   `;
+  queueNavMaterial();   // le bouton sombre « j'ai cuisiné » peut arriver sous la pastille
 }
 
 /* ---------- actions ---------- */
@@ -1662,32 +1802,7 @@ function addMissingToShopping(){
   toast(added? added+" article"+(added>1?"s":"")+" ajouté"+(added>1?"s":"")+" aux courses" : "Déjà dans ta liste");
 }
 
-/* ---------- partage ----------
-   Le texte doit se suffire à lui-même : le destinataire n'a pas l'application.
-   Il reprend les portions choisies et, si le mode est actif, la version air fryer. */
-function recipeText(){
-  const r=currentRecipe; if(!r) return "";
-  const v=viewOf(r);
-  const factor=state.currentPortions/r.portions;
-  const p=state.currentPortions;
-  const L=[];
-  L.push(r.emoji+" "+r.nom.toUpperCase());
-  L.push(r.cat+" · "+r.diff+" · pour "+p+" personne"+(p>1?"s":""));
-  L.push("⏱ "+r.prep+" min de préparation"+(v.cuisson?" + "+v.cuisson+" min de cuisson":""));
-  // placé en tête : si la messagerie tronque le message, le lien reste visible
-  const lien = recipeUrl(r.id, p, !!v.af);
-  if(lien) L.push("👉 Voir la recette : "+lien);
-  if(v.af){
-    L.push("", "🍟 VERSION AIR FRYER — "+v.af.t+"°C · "+v.af.min+" min");
-    L.push(v.af.tip);
-  }
-  L.push("", "🧺 INGRÉDIENTS");
-  r.ing.forEach(i=>{ const q=qtyOnly(i,factor); L.push("• "+(q?q+" ":"")+cap(i.n)); });
-  L.push("", "👩‍🍳 PRÉPARATION");
-  v.etapes.forEach((e,n)=>L.push((n+1)+". "+e));
-  L.push("", "— Recette partagée depuis GabCook");
-  return L.join("\n");
-}
+/* ---------- partage ---------- */
 
 async function copyText(t){
   try{ if(navigator.clipboard && navigator.clipboard.writeText){ await navigator.clipboard.writeText(t); return true; } }catch(e){}
@@ -1708,21 +1823,26 @@ async function copyText(t){
   }catch(e){ return false; }
 }
 
+// on n'envoie que le lien : la recette se lit sur le site, pas dans le message
 async function shareRecipe(){
   const r=currentRecipe; if(!r) return;
-  const texte=recipeText();
+  const lien=recipeUrl(r.id, state.currentPortions, !!viewOf(r).af);
+  if(!lien){ toast("Le lien n'existe que depuis le site en ligne"); return; }
   // 1. feuille de partage du téléphone (SMS, WhatsApp, mail...)
   if(navigator.share){
-    try{ await navigator.share({title:r.emoji+" "+r.nom, text:texte}); return; }
+    try{ await navigator.share({title:r.emoji+" "+r.nom, url:lien}); return; }
     catch(e){ if(e && e.name==="AbortError") return; }   // partage annulé : on n'enchaîne pas
   }
   // 2. presse-papier
-  if(await copyText(texte)){ toast("📋 Recette copiée — colle-la dans un message"); return; }
-  // 3. dernier recours : on affiche le texte, sélectionnable à la main
+  if(await copyText(lien)){ toast("📋 Lien copié — colle-le dans un message"); return; }
+  // 3. dernier recours : on affiche le lien, sélectionnable à la main
+  showCopyBox(lien);
+}
+// fenêtre de repli, partagée par le partage de recette et le transfert de frigo
+function showCopyBox(lien){
   const box=document.getElementById("shareBox"), ta=document.getElementById("shareText");
-  ta.value=texte; box.hidden=false;
-  // tout est présélectionné : une seule commande de copie suffit
-  ta.focus(); ta.setSelectionRange(0, texte.length); ta.scrollTop=0;
+  ta.value=lien; box.hidden=false;
+  ta.focus(); ta.setSelectionRange(0, lien.length); ta.scrollTop=0;   // présélectionné : une seule copie suffit
 }
 
 /* ---------- transfert d'un appareil à l'autre ----------
@@ -1790,8 +1910,7 @@ async function shareSync(){
     catch(e){ if(e && e.name==="AbortError") return; }
   }
   if(await copyText(url)){ toast("📋 Lien copié — ouvre-le sur l'autre appareil"); return; }
-  const box=document.getElementById("shareBox"), ta=document.getElementById("shareText");
-  ta.value=url; box.hidden=false; ta.focus(); ta.setSelectionRange(0,url.length); ta.scrollTop=0;
+  showCopyBox(url);
 }
 
 function toast(msg){
@@ -1820,9 +1939,13 @@ document.getElementById("shareBox").addEventListener("click",e=>{
   if(e.target.closest("#shareClose") || e.target.id==="shareBox") document.getElementById("shareBox").hidden=true;
 });
 
-addEventListener("resize", moveThumb);
+scrollEl.addEventListener("scroll", queueNavMaterial, {passive:true});
+detailScroll.addEventListener("scroll", queueNavMaterial, {passive:true});
+// selon le contexte, c'est la fenêtre et non le conteneur interne qui défile
+addEventListener("scroll", queueNavMaterial, {passive:true});
+addEventListener("resize", ()=>{ moveThumb(false); queueNavMaterial(); });
 // la largeur des libellés change quand la police s'est chargée
-if(document.fonts && document.fonts.ready) document.fonts.ready.then(moveThumb);
+if(document.fonts && document.fonts.ready) document.fonts.ready.then(()=>moveThumb(false));
 document.getElementById("search").addEventListener("input",e=>{
   state.search=e.target.value;
   if(state.view==="home") renderHome();
@@ -1949,7 +2072,7 @@ try{
     uid=(state.shopping.reduce((m,x)=>Math.max(m,x.id||0),0))+1;
   }
   render();
-  moveThumb();
+  moveThumb(false);
 
   // lien de transfert reçu depuis un autre appareil : ?sync=...
   const recu = readSyncLink();
