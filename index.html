@@ -80,12 +80,24 @@
   .pantry-banner .pb-cook b{font-family:var(--disp);font-weight:800;font-size:22px;color:var(--camel-light);display:block;line-height:1}
   .pantry-banner .pb-cook small{font-size:11px;opacity:.85}
 
-  .filters{display:flex;gap:8px;overflow-x:auto;margin:18px -18px 4px;padding:0 18px 4px;scrollbar-width:none}
-  .filters::-webkit-scrollbar{display:none}
+  /* Deux zones distinctes plutôt qu'une bande qui défile : les interrupteurs
+     se cumulent, les catégories s'excluent. Tout tient à l'écran, rien n'est caché
+     derrière un défilement horizontal qui ne s'annonce pas. */
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}
   .chip{flex:0 0 auto;padding:8px 14px;border-radius:999px;background:var(--card);border:1.5px solid var(--line);font-size:13px;font-weight:600;color:var(--muted);white-space:nowrap;transition:.15s}
   .chip.active{background:var(--ink);border-color:var(--ink);color:#fff}
   .chip.cookable{color:var(--basil);border-color:#CFE3D0}
   .chip.cookable.active{background:var(--basil);border-color:var(--basil);color:#fff}
+  .chip.mine{color:var(--camel-deep);border-color:var(--camel-light)}
+  .chip.mine.active{background:var(--camel-deep);border-color:var(--camel-deep);color:#fff}
+  .chip.micro{color:#3F6288;border-color:#CFDCEA}
+  .chip.micro.active{background:#3F6288;border-color:#3F6288;color:#fff}
+
+  /* les catégories sont volontairement plus discrètes : c'est un second niveau de tri */
+  .cats{display:flex;flex-wrap:wrap;gap:6px;margin:9px 0 0}
+  .cat{padding:6px 12px;border-radius:999px;background:transparent;border:1.5px solid var(--line);font-size:12.5px;font-weight:600;color:var(--muted);white-space:nowrap;transition:.15s}
+  .cat.active{background:var(--ink);border-color:var(--ink);color:#fff}
+  .clearfilters{margin-top:14px;padding:10px 18px;border-radius:999px;background:var(--card);border:1.5px solid var(--line);font-size:13.5px;font-weight:700;color:var(--ink)}
 
   .sectionlabel{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 2px 12px}
 
@@ -311,6 +323,44 @@
   .act-shop,.act-shop2{background:var(--camel-tint);color:var(--camel-deep);border-color:#E7D8C4}
   .act[disabled]{opacity:.9}
 
+  /* ---- éditeur de recette personnelle ----
+     Volontairement au-dessus de la pastille de navigation : un formulaire en cours
+     de saisie ne doit pas pouvoir être abandonné d'un effleurement d'onglet. */
+  .editor{position:fixed;inset:0;z-index:75;max-width:460px;margin:0 auto;background:var(--paper);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .28s cubic-bezier(.4,0,.2,1)}
+  .editor.open{transform:translateX(0)}
+  .ed-head{display:flex;align-items:center;gap:12px;padding:calc(14px + env(safe-area-inset-top)) 18px 12px;border-bottom:1px solid var(--line);background:var(--paper)}
+  .ed-head h2{font-family:var(--disp);font-weight:800;font-size:20px;margin:0;letter-spacing:-.02em;flex:1}
+  .ed-scroll{flex:1;overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 18px calc(28px + env(safe-area-inset-bottom))}
+  .ed-lab{font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:22px 2px 9px}
+  .ed-in{width:100%;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);font-size:15px;color:var(--ink);outline:none;font-family:var(--sans)}
+  .ed-in:focus{border-color:var(--camel);box-shadow:0 0 0 3px var(--camel-tint)}
+  textarea.ed-in{resize:vertical;min-height:74px;line-height:1.45;font-size:14.5px}
+  select.ed-in{-webkit-appearance:none;appearance:none;cursor:pointer}
+  .ed-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+  .ed-f{display:flex;flex-direction:column;gap:5px}
+  .ed-f small{font-size:11.5px;color:var(--muted);font-weight:600;margin-left:3px}
+  .ed-row{display:flex;gap:6px;align-items:center;margin-bottom:8px}
+  .ed-row .q{width:62px;flex:0 0 62px;text-align:center;padding:12px 4px}
+  .ed-row .u{width:92px;flex:0 0 92px;padding:12px 4px;font-size:13px;text-align:center}
+  .ed-row .n{flex:1;min-width:0}
+  .ed-del{width:30px;height:30px;flex:0 0 30px;border-radius:50%;background:rgba(0,0,0,.05);color:var(--muted);font-size:13px;display:flex;align-items:center;justify-content:center}
+  .ed-del:active{background:rgba(0,0,0,.13)}
+  .ed-step{display:flex;gap:9px;align-items:flex-start;margin-bottom:8px}
+  .ed-step .num{flex:0 0 28px;height:28px;border-radius:50%;background:var(--camel-tint);color:var(--camel-deep);font-family:var(--disp);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;margin-top:8px}
+  .ed-add{width:100%;padding:12px;border-radius:12px;border:1.5px dashed var(--camel-light);color:var(--camel-deep);font-weight:700;font-size:14px;background:transparent;margin-top:3px}
+  .ed-add:active{background:var(--camel-tint);border-color:var(--camel)}
+  .ed-actions{display:flex;gap:8px;margin:26px 0 6px}
+  .ed-err{background:var(--tomato-tint);border:1px solid #EBC3B8;color:#A33520;border-radius:12px;padding:11px 13px;font-size:13.5px;line-height:1.45;margin-top:14px}
+  .ed-hint{font-size:12.5px;color:var(--muted);line-height:1.5;margin:8px 2px 0}
+  .ed-emos{display:flex;flex-wrap:wrap;gap:7px}
+  .emo{width:42px;height:42px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);font-size:21px;display:flex;align-items:center;justify-content:center}
+  .emo.on{border-color:var(--camel);background:var(--camel-tint);box-shadow:0 0 0 3px var(--camel-tint)}
+
+  /* bouton d'ajout en tête de la liste de recettes */
+  .addcard{width:100%;padding:15px;border-radius:var(--r);border:1.8px dashed var(--camel-light);background:transparent;color:var(--camel-deep);font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;gap:9px;margin-bottom:12px}
+  .addcard:active{background:var(--camel-tint);border-color:var(--camel)}
+  .badge.perso{background:var(--camel-tint);color:var(--camel-deep)}
+
   /* ---- partage d'une recette (repli quand ni la feuille de partage ni le presse-papier ne répondent) ---- */
   .sharebox{position:fixed;inset:0;z-index:90;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(43,42,40,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
   .sharebox[hidden]{display:none}
@@ -340,6 +390,10 @@
   .afbox .afs b{font-weight:700}
   .afbox.ko{background:#FBEAE5;border-color:#EBC3B8}
   .afbox.ko .aft,.afbox.ko .afs{color:#A33520}
+  /* bleu froid pour le micro-ondes : impossible de le confondre avec l'ambre de l'air fryer */
+  .afbox.micro{background:#EAF0F7;border-color:#CFDCEA}
+  .afbox.micro .aft,.afbox.micro .afs{color:#33547A}
+  .badge.micro{background:#EAF0F7;color:#3F6288}
 
   @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
   :focus-visible{outline:2.5px solid var(--camel);outline-offset:2px;border-radius:6px}
@@ -387,6 +441,14 @@
 
 <div class="detail" id="detail" aria-hidden="true"><div class="detail-scroll" id="detailScroll"></div></div>
 
+<div class="editor" id="editor" aria-hidden="true">
+  <div class="ed-head">
+    <button class="backbtn" id="edBack" aria-label="Fermer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2B2A28" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <h2 id="edTitle">Nouvelle recette</h2>
+  </div>
+  <div class="ed-scroll" id="edScroll"></div>
+</div>
+
 <div class="sharebox" id="shareBox" hidden>
   <div class="sharecard">
     <h4>Copier le lien</h4>
@@ -398,7 +460,7 @@
 
 <div class="sharebox" id="importBox" hidden>
   <div class="sharecard">
-    <h4>Récupérer ce frigo ?</h4>
+    <h4 id="importTitle">Récupérer ce frigo ?</h4>
     <p id="importInfo"></p>
     <div class="cf-row">
       <button class="act cf-no" id="importNo">Annuler</button>
@@ -852,7 +914,33 @@ const RECIPES = [
    etapes:["Faites griller les tranches de pain jusqu'à ce qu'elles soient bien dorées et croustillantes.","Coupez l'avocat en deux, retirez le noyau et prélevez la chair à la cuillère.","Écrasez-la grossièrement à la fourchette avec le jus d'un demi-citron, du sel et du poivre. Gardez des morceaux, c'est meilleur qu'une purée lisse.","Portez une petite casserole d'eau à frémissement et ajoutez 1 c. à soupe de vinaigre si vous en avez.","Cassez chaque œuf dans un ramequin, puis faites-le glisser doucement dans l'eau frémissante, jamais bouillante.","Pochez 3 min : le blanc doit envelopper le jaune, qui reste coulant.","Récupérez les œufs à l'écumoire et posez-les sur du papier absorbant.","Tartinez généreusement l'avocat écrasé sur les toasts.","Posez un œuf poché sur chaque toast.","Arrosez d'un filet d'huile d'olive, salez, parsemez de piment et servez aussitôt."]},
   {id:"smoothiebowl",nom:"Smoothie bowl aux fruits rouges",emoji:"🍓",cat:"Petit-déj",prep:10,cuisson:0,portions:2,diff:"Facile",
    ing:[{q:2,u:"",n:"bananes"},{q:250,u:"g",n:"fruits rouges surgelés"},{q:15,u:"cl",n:"lait"},{q:2,u:"c. à soupe",n:"yaourt nature"},{q:2,u:"c. à soupe",n:"granola"},{q:1,u:"c. à soupe",n:"graines de chia"},{q:1,u:"c. à soupe",n:"miel"}],
-   etapes:["Coupez une banane et demie en rondelles et gardez le reste pour la décoration.","Mettez les fruits rouges surgelés, les rondelles de banane et le yaourt dans un blender.","Ajoutez seulement la moitié du lait : le secret d'un smoothie bowl, c'est une texture épaisse à la cuillère, pas une boisson.","Mixez par à-coups en raclant les parois. Ajoutez le lait restant petit à petit, uniquement si le blender peine.","Arrêtez dès que le mélange est lisse et se tient : il doit former un pic sur la spatule.","Goûtez et ajoutez le miel si les fruits sont acides.","Répartissez dans deux bols et lissez la surface.","Disposez le reste de banane en rondelles sur le dessus.","Parsemez de granola et de graines de chia.","Servez immédiatement, avant que la préparation ne fonde."]}
+   etapes:["Coupez une banane et demie en rondelles et gardez le reste pour la décoration.","Mettez les fruits rouges surgelés, les rondelles de banane et le yaourt dans un blender.","Ajoutez seulement la moitié du lait : le secret d'un smoothie bowl, c'est une texture épaisse à la cuillère, pas une boisson.","Mixez par à-coups en raclant les parois. Ajoutez le lait restant petit à petit, uniquement si le blender peine.","Arrêtez dès que le mélange est lisse et se tient : il doit former un pic sur la spatule.","Goûtez et ajoutez le miel si les fruits sont acides.","Répartissez dans deux bols et lissez la surface.","Disposez le reste de banane en rondelles sur le dessus.","Parsemez de granola et de graines de chia.","Servez immédiatement, avant que la préparation ne fonde."]},
+
+  /* ===== recettes pensées pour le micro-ondes ===== */
+  {id:"mugcake",nom:"Mug cake au chocolat",emoji:"🍫",cat:"Dessert",prep:5,cuisson:2,portions:1,diff:"Facile",
+   ing:[{q:4,u:"c. à soupe",n:"farine"},{q:3,u:"c. à soupe",n:"sucre"},{q:2,u:"c. à soupe",n:"cacao"},{q:3,u:"c. à soupe",n:"lait"},{q:2,u:"c. à soupe",n:"huile"},{q:1,u:"",n:"œuf"},{q:1,u:"pincée",n:"levure chimique"},{q:20,u:"g",n:"chocolat noir"}],
+   etapes:["Prenez un grand mug, au moins deux fois plus haut que la pâte : elle va gonfler énormément avant de retomber.","Versez-y la farine, le sucre, le cacao et la levure. Mélangez à la fourchette pour casser les grumeaux de cacao.","Ajoutez l'œuf, le lait et l'huile.","Mélangez énergiquement dans le mug jusqu'à obtenir une pâte lisse, en raclant bien les angles du fond où la farine se cache.","Enfoncez les carrés de chocolat au centre, sans les recouvrir : ils formeront le cœur coulant.","Faites cuire 1 min 40 à pleine puissance, sans couvrir.","Regardez à travers la porte : la pâte doit gonfler puis se stabiliser. Si le dessus est encore liquide, relancez par tranches de 15 secondes.","Arrêtez dès que le dessus est juste pris. Dix secondes de trop transforment le mug cake en éponge sèche.","Laissez reposer 1 min et mangez directement dans le mug, à la cuillère."]},
+  {id:"oeufpoche",nom:"Œuf poché au micro-ondes",emoji:"🥚",cat:"Petit-déj",prep:2,cuisson:1,portions:1,diff:"Facile",
+   ing:[{q:1,u:"",n:"œuf"},{q:15,u:"cl",n:"eau"},{q:1,u:"c. à café",n:"vinaigre"},{q:1,u:"pincée",n:"sel"}],
+   etapes:["Versez l'eau dans un bol ou un mug, ajoutez le vinaigre et une pincée de sel.","Cassez l'œuf délicatement dedans : il doit être entièrement recouvert d'eau, sinon le blanc sèche et durcit.","Percez le jaune d'un coup de pointe de couteau. C'est indispensable : la membrane emprisonne la vapeur et le jaune explose sans cette entaille.","Couvrez d'une petite assiette.","Faites cuire 50 secondes à puissance moyenne.","Vérifiez : le blanc doit être opaque et le jaune encore coulant. Relancez par tranches de 10 secondes si besoin.","Récupérez l'œuf à l'écumoire et posez-le sur du papier absorbant.","Servez sur du pain, une salade ou un bol de riz."]},
+  {id:"pdtmicro",nom:"Pomme de terre farcie au micro-ondes",emoji:"🥔",cat:"Plat",prep:10,cuisson:12,portions:2,diff:"Facile",
+   ing:[{q:2,u:"",n:"pommes de terre"},{q:60,u:"g",n:"gruyère râpé"},{q:2,u:"c. à soupe",n:"crème fraîche"},{q:60,u:"g",n:"lardons"},{q:1,u:"",n:"bouquet de ciboulette"},{q:1,u:"pincée",n:"poivre"}],
+   etapes:["Choisissez deux grosses pommes de terre de taille comparable, pour qu'elles cuisent en même temps.","Lavez-les et piquez-les une dizaine de fois à la fourchette sur toute leur surface : sans ces trous, la vapeur les fait éclater.","Posez-les sur une assiette et faites cuire 8 min à pleine puissance.","Retournez-les et poursuivez 3 à 4 min. Un couteau doit s'enfoncer sans résistance jusqu'au centre.","Pendant ce temps, faites cuire les lardons 1 min 30 au micro-ondes, entre deux feuilles de papier absorbant qui boiront la graisse.","Sortez les pommes de terre, coupez-les en deux dans la longueur et creusez-les à la cuillère en laissant 1 cm de chair contre la peau.","Écrasez la chair récupérée avec la crème, la moitié du gruyère, les lardons et du poivre.","Remplissez les demi-peaux de cette farce et parsemez du reste de gruyère.","Repassez 1 min au micro-ondes pour faire fondre le fromage. Il fondra sans dorer : c'est la limite de l'appareil.","Parsemez de ciboulette ciselée et servez chaud."]},
+  {id:"legumesvapeur",nom:"Légumes vapeur au micro-ondes",emoji:"🥦",cat:"Accompagnement",prep:10,cuisson:8,portions:4,diff:"Facile",
+   ing:[{q:300,u:"g",n:"brocoli"},{q:2,u:"",n:"carottes"},{q:200,u:"g",n:"haricots verts"},{q:3,u:"c. à soupe",n:"eau"},{q:20,u:"g",n:"beurre"},{q:1,u:"pincée",n:"sel"}],
+   etapes:["Lavez les légumes. Détaillez le brocoli en petits bouquets, épluchez les carottes et coupez-les en rondelles fines, équeutez les haricots.","Coupez tout à une taille comparable : au micro-ondes plus qu'ailleurs, un gros morceau reste cru pendant que le petit se défait.","Mettez les carottes dans un plat avec les 3 c. à soupe d'eau : ce sont les plus longues à cuire.","Couvrez d'un couvercle ou d'une assiette et lancez 3 min à pleine puissance.","Ajoutez les haricots, couvrez à nouveau et poursuivez 3 min.","Ajoutez le brocoli, qui ne demande que 2 min, et relancez.","Vérifiez la cuisson à la pointe du couteau : les légumes doivent être tendres mais encore fermes.","Égouttez le reste d'eau, ajoutez le beurre et le sel, et mélangez pour enrober.","Servez aussitôt : gardés au chaud, ils continuent de cuire et se ramollissent."]},
+  {id:"popcorn",nom:"Pop-corn maison",emoji:"🍿",cat:"Apéro",prep:2,cuisson:3,portions:4,diff:"Facile",
+   ing:[{q:80,u:"g",n:"maïs à pop-corn"},{q:1,u:"c. à soupe",n:"huile"},{q:1,u:"pincée",n:"sel"}],
+   etapes:["Mettez les grains de maïs dans un grand saladier qui va au micro-ondes, avec l'huile et le sel.","Mélangez pour que chaque grain soit enrobé d'un film d'huile.","Couvrez d'une grande assiette posée à l'envers : elle laisse échapper la vapeur tout en retenant les grains qui sautent.","Lancez 2 min à pleine puissance.","Écoutez plutôt que de regarder l'horloge : les grains éclatent d'abord vite, puis de plus en plus lentement.","Arrêtez dès qu'il s'écoule 2 secondes entre deux éclatements. Un grain brûlé parfume tout le saladier et rien ne rattrape ce goût.","Sortez le saladier avec un torchon, il est brûlant, et retirez l'assiette en dirigeant la vapeur loin de votre visage.","Jetez les grains non éclatés au fond, salez et servez aussitôt."]},
+  {id:"chocolatchaud",nom:"Chocolat chaud",emoji:"☕",cat:"Petit-déj",prep:3,cuisson:3,portions:2,diff:"Facile",
+   ing:[{q:40,u:"cl",n:"lait"},{q:60,u:"g",n:"chocolat noir"},{q:1,u:"c. à soupe",n:"sucre"},{q:1,u:"pincée",n:"cannelle"}],
+   etapes:["Hachez le chocolat au couteau : en petits morceaux, il fond sans grumeaux.","Versez le lait dans un grand pichet ou deux grands mugs, sans dépasser la moitié de leur hauteur. Le lait monte d'un coup et déborde.","Chauffez 1 min 30 à pleine puissance.","Ajoutez le chocolat haché et le sucre, puis mélangez 30 secondes au fouet : la chaleur du lait suffit à faire fondre l'essentiel.","Remettez 30 secondes si des morceaux résistent, puis fouettez à nouveau.","Fouettez énergiquement une dernière fois pour faire mousser.","Ajoutez la cannelle et servez très chaud."]},
+  {id:"rizmicro",nom:"Riz au micro-ondes",emoji:"🍚",cat:"Accompagnement",prep:3,cuisson:15,portions:4,diff:"Facile",
+   ing:[{q:250,u:"g",n:"riz"},{q:50,u:"cl",n:"eau"},{q:1,u:"pincée",n:"sel"}],
+   etapes:["Rincez le riz à l'eau froide jusqu'à ce que l'eau ressorte claire : c'est l'amidon de surface qui fait déborder.","Versez-le dans un grand plat qui va au micro-ondes, avec l'eau et le sel. Le plat doit être au moins trois fois plus haut que le liquide.","Ne couvrez pas pour l'instant.","Lancez 5 min à pleine puissance, le temps que l'eau arrive à ébullition.","Couvrez alors d'un couvercle ou d'une assiette, baissez à puissance moyenne et poursuivez 10 min.","Ne remuez jamais pendant la cuisson : le riz deviendrait collant.","Sortez le plat, gardez-le couvert et laissez reposer 5 min hors du micro-ondes. C'est pendant ce repos que les derniers grains finissent d'absorber l'eau.","Égrainez à la fourchette et servez."]},
+  {id:"omelettemicro",nom:"Omelette au micro-ondes",emoji:"🍳",cat:"Plat",prep:5,cuisson:3,portions:1,diff:"Facile",
+   ing:[{q:3,u:"",n:"œufs"},{q:2,u:"c. à soupe",n:"lait"},{q:40,u:"g",n:"gruyère râpé"},{q:1,u:"c. à soupe",n:"ciboulette"},{q:1,u:"pincée",n:"sel"}],
+   etapes:["Cassez les œufs dans une assiette creuse ou un bol large et plat : plus la couche est fine, plus la cuisson est régulière.","Ajoutez le lait, le sel et du poivre, puis battez à la fourchette.","Incorporez le gruyère râpé et la ciboulette ciselée.","Couvrez d'une assiette et faites cuire 1 min à puissance moyenne.","Sortez, remuez en ramenant les bords pris vers le centre, puis relancez 45 secondes.","Répétez une dernière fois si nécessaire : l'omelette doit être prise mais encore brillante.","Ne cherchez pas à la faire dorer, le micro-ondes n'en est pas capable : arrêtez-vous à la texture, pas à la couleur.","Laissez reposer 1 min à couvert, puis pliez-la en deux et faites-la glisser dans une assiette."]}
 ];
 
 /* ---------- MODE AIR FRYER ----------
@@ -1177,18 +1265,122 @@ const AF = {
   cremebrulee:{four:1,ko:"La crème prend au bain-marie à 100°C, très doucement. L'air fryer ne descend pas si bas et son souffle forme une peau au lieu de laisser figer la crème."}
 };
 
+/* ---------- MODE MICRO-ONDES ----------
+   Un micro-ondes n'est pas un petit four : il chauffe l'eau contenue dans les
+   aliments, donc il cuit, réchauffe et fait fondre, mais il ne dore, ne saisit
+   et ne croustille jamais. Impossible d'y adapter la plupart des recettes.
+   Cette table est donc une liste choisie, pas une conversion automatique :
+   ok:1 -> aucune cuisson, la recette convient telle quelle
+   w    -> puissance conseillée      min -> temps total au micro-ondes
+   s    -> étapes réécrites, indexées sur les étapes d'origine
+   Toute recette absente de cette table est masquée en mode micro-ondes.        */
+const MO = {
+
+  /* --- rien à cuire : ces recettes conviennent sans rien changer --- */
+  guacamole:{ok:1}, tapenade:{ok:1}, houmous:{ok:1}, tzatziki:{ok:1},
+  saladegrecque:{ok:1}, coleslaw:{ok:1}, carottesrapees:{ok:1},
+  saladefruits:{ok:1}, tiramisu:{ok:1}, smoothiebowl:{ok:1}, gaspacho:{ok:1},
+
+  /* --- pensées pour le micro-ondes : rien à réécrire --- */
+  mugcake:{ok:1}, oeufpoche:{ok:1}, pdtmicro:{ok:1}, legumesvapeur:{ok:1},
+  popcorn:{ok:1}, chocolatchaud:{ok:1}, rizmicro:{ok:1}, omelettemicro:{ok:1},
+
+  /* --- conversions --- */
+  compote:{w:"pleine puissance",min:9,tip:"Un plat couvert : c'est la vapeur emprisonnée qui cuit les pommes.",s:{
+    1:"Mettez les morceaux dans un plat qui va au micro-ondes, avec les 5 c. à soupe d'eau.",
+    3:"Couvrez d'une assiette et lancez 9 min à pleine puissance, en remuant à mi-cuisson."}},
+
+  oeufsbrouilles:{w:"600 W",min:2,tip:"Un bol deux fois trop grand : les œufs gonflent beaucoup. Et on remue à chaque arrêt, sinon c'est du caoutchouc.",s:{
+    1:"Ajoutez le beurre coupé en morceaux et la crème dans un bol deux fois plus grand que nécessaire : les œufs gonflent énormément.",
+    2:"Lancez 40 secondes à puissance moyenne.",
+    3:"Sortez le bol et remuez énergiquement à la fourchette, en ramenant les bords déjà pris vers le centre.",
+    4:"Répétez par tranches de 20 secondes, en remuant à chaque sortie. Ce brassage répété remplace la spatule dans la poêle : c'est lui qui fait les petits amas crémeux plutôt qu'un bloc.",
+    5:"Arrêtez quand ils sont encore un peu baveux : la chaleur du bol finit la cuisson."}},
+
+  porridge:{w:"pleine puissance",min:5,tip:"Prends un bol deux fois trop grand : le lait déborde en quelques secondes.",s:{
+    0:"Versez les flocons d'avoine et le lait dans un grand bol qui va au micro-ondes, avec une pincée de sel. Prenez-le deux fois plus grand que nécessaire, le lait monte d'un coup.",
+    1:"Lancez 2 min à pleine puissance.",
+    2:"Remuez, puis relancez par tranches de 1 min en remuant à chaque fois, jusqu'à ce que le porridge soit crémeux. Comptez 4 à 5 min en tout.",
+    3:"Ajoutez un peu de lait s'il épaissit trop vite : il se resserre encore en refroidissant.",
+    5:"Ajoutez la cannelle et 1 c. à soupe de miel."}},
+
+  puree:{w:"pleine puissance",min:14,tip:"Les pommes de terre cuisent dans leur propre vapeur : 3 c. à soupe d'eau suffisent, pas une casserole pleine.",s:{
+    1:"Mettez-les dans un plat qui va au micro-ondes avec seulement 3 c. à soupe d'eau. Salez.",
+    2:"Couvrez et lancez 10 à 12 min à pleine puissance, en remuant à mi-cuisson : un couteau doit s'enfoncer sans résistance.",
+    3:"Videz l'eau restante et laissez s'évaporer 1 min à découvert : une pomme de terre sèche donne une purée plus onctueuse.",
+    5:"Faites tiédir le lait 40 secondes au micro-ondes. Un lait froid rendrait la purée collante."}},
+
+  mousse:{w:"600 W",min:0,tip:"Seul le chocolat passe au micro-ondes ; tout le reste se monte au fouet.",s:{
+    0:"Cassez le chocolat en morceaux dans un bol et faites-le fondre au micro-ondes par tranches de 30 secondes, en remuant entre chaque. Le chocolat brûle sans prévenir s'il chauffe d'un seul coup."}},
+
+  fondant:{w:"pleine puissance",min:6,tip:"Un mug à la fois : le micro-ondes ne chauffe jamais deux récipients de la même façon.",s:{
+    0:"Beurrez 6 mugs ou ramequins qui vont au micro-ondes. Aucun préchauffage nécessaire.",
+    1:"Cassez le chocolat en morceaux et coupez le beurre en dés. Faites-les fondre ensemble au micro-ondes par tranches de 30 secondes, en remuant entre chaque.",
+    5:"Répartissez la pâte dans les mugs sans dépasser la moitié de leur hauteur : elle gonfle beaucoup.",
+    6:"Faites cuire un mug à la fois, 50 à 60 secondes à pleine puissance. Le tour doit être pris et le centre encore brillant. Quelques secondes de trop et le cœur coulant disparaît.",
+    7:"Laissez reposer 1 min et dégustez directement dans le mug."}},
+
+  rizaulait:{w:"600 W",min:30,tip:"Un plat très large et on remue à chaque arrêt : le lait monte brutalement et le riz colle au fond.",s:{
+    1:"Versez le lait dans un grand plat qui va au micro-ondes, avec le sucre et la vanille. Prenez-le très large : le lait monte d'un coup.",
+    2:"Ajoutez le riz rincé et mélangez.",
+    3:"Lancez 5 min à pleine puissance, puis poursuivez par tranches de 5 min à puissance moyenne, en remuant à chaque arrêt. Comptez 30 min en tout : ce brassage remplace la cuillère en bois et empêche le riz d'attacher."}},
+
+  pannacotta:{w:"pleine puissance",min:2,tip:"La crème déborde sans prévenir : reste devant la porte.",s:{
+    1:"Versez la crème dans un grand bol qui va au micro-ondes, avec le sucre et la vanille.",
+    2:"Chauffez 2 min à pleine puissance : la crème doit être fumante sans bouillir. Surveillez sans vous éloigner, elle déborde brutalement."}},
+
+  veloutepotiron:{w:"pleine puissance",min:22,tip:"Il faut un mixeur plongeant pour la finition ; le micro-ondes ne fait que la cuisson.",s:{
+    2:"Mettez l'oignon émincé dans un grand plat qui va au micro-ondes avec le beurre, et lancez 2 min à pleine puissance.",
+    3:"Ajoutez le potiron et la pomme de terre.",
+    5:"Couvrez et lancez 18 à 20 min à pleine puissance, en remuant deux fois : les morceaux doivent s'écraser à la fourchette.",
+    7:"Remettez 1 min si le velouté a refroidi, poivrez et servez."}},
+
+  macncheese:{w:"pleine puissance",min:18,tip:"Le dessus gratiné est impossible : le plat sera crémeux, jamais croustillant.",s:{
+    0:"Mettez les macaronis dans un grand plat qui va au micro-ondes, couvrez d'eau à 2 cm au-dessus et salez. Lancez 10 à 12 min à pleine puissance, en remuant à mi-cuisson, puis égouttez.",
+    1:"Faites fondre le beurre 30 secondes dans un bol.",
+    2:"Ajoutez la farine, mélangez, puis versez le lait petit à petit en fouettant. Chauffez 3 à 4 min à pleine puissance en fouettant toutes les minutes, jusqu'à ce que la sauce nappe la cuillère.",
+    5:"Versez le tout dans le plat et mélangez.",
+    6:"Le micro-ondes ne dore pas : parsemez la chapelure en sachant qu'elle restera pâle, ou passez-la simplement et assumez un mac and cheese tout crémeux."}},
+
+  onepot:{w:"pleine puissance",min:14,tip:"Un plat large et haut : le bouillon monte facilement.",s:{
+    1:"Dans un grand plat qui va au micro-ondes, mettez les pâtes crues, les tomates, l'oignon et l'ail.",
+    3:"Couvrez et lancez 12 à 14 min à pleine puissance, en remuant toutes les 4 min.",
+    4:"Les pâtes sont prêtes quand elles sont tendres et que le liquide a réduit en sauce. Ajoutez un peu d'eau chaude si cela sèche trop vite.",
+    6:"Mélangez et servez directement dans le plat de cuisson."}},
+
+  taboule:{w:"pleine puissance",min:2,tip:"Le micro-ondes ne sert qu'à chauffer l'eau de la semoule.",s:{
+    1:"Chauffez l'eau 2 min au micro-ondes, versez-la à hauteur de la semoule, couvrez et laissez gonfler 10 min."}},
+
+  caviaraubergine:{w:"pleine puissance",min:12,tip:"Pique bien les aubergines, sinon elles éclatent. La chair sera fondante mais sans le goût fumé du four.",s:{
+    0:"Aucun préchauffage : le micro-ondes est prêt tout de suite.",
+    1:"Lavez les aubergines et piquez-les généreusement à la fourchette. Sans ces trous, la vapeur les fait éclater.",
+    2:"Posez-les dans un plat couvert et lancez 10 à 12 min à pleine puissance, en les retournant à mi-cuisson : elles doivent être molles sous le doigt."}}
+};
+function moOk(r){ return !!MO[r.id]; }
+
 // la recette d'origine exige-t-elle un four ?
 function needsOven(r){ const a=AF[r.id]; return !!(a && a.four); }
 // réalisable sans four (soit elle n'en a jamais eu besoin, soit une version air fryer existe)
 function afOk(r){ const a=AF[r.id]; return !a || !a.ko; }
-// version affichée d'une recette selon le mode actif : {cuisson, etapes, af}
+// version affichée d'une recette selon le mode actif : {cuisson, etapes, af, mo}
+// les deux modes s'excluent : on ne peut pas cuire un plat à l'air fryer et au micro-ondes à la fois
 function viewOf(r){
+  const brut = {cuisson:r.cuisson, etapes:r.etapes, af:null, mo:null};
+  if(state.micro){
+    const m = MO[r.id];
+    if(!m || m.ok) return brut;                      // rien à réécrire
+    return {
+      cuisson: (m.min!=null ? m.min : r.cuisson),
+      etapes: m.s ? r.etapes.map((e,i)=> m.s[i]!=null ? m.s[i] : e) : r.etapes,
+      af: null, mo: m
+    };
+  }
   const a = state.airfryer ? AF[r.id] : null;
-  if(!a || a.ko) return {cuisson:r.cuisson, etapes:r.etapes, af:null};
+  if(!a || a.ko) return brut;
   return {
     cuisson: (a.min!=null ? a.min : r.cuisson),
     etapes: a.s ? r.etapes.map((e,i)=> a.s[i]!=null ? a.s[i] : e) : r.etapes,
-    af: a
+    af: a, mo: null
   };
 }
 
@@ -1351,7 +1543,17 @@ const Store = {
 };
 
 /* ---------- état ---------- */
-const state = { view:"home", search:"", filter:"Tous", onlyCookable:false, airfryer:false, fridge:[], shopping:[], currentPortions:0, cooked:false, confirmCook:false };
+const state = { view:"home", search:"", filter:"Tous", onlyCookable:false, onlyPerso:false, airfryer:false, micro:false, fridge:[], shopping:[], perso:[], currentPortions:0, cooked:false, confirmCook:false };
+
+/* Les recettes personnelles ont exactement la même forme que celles du catalogue :
+   tout ce qui suit — filtres, recherche, statut des ingrédients, débit du frigo,
+   liste de courses — fonctionne sur elles sans traitement particulier.
+   `recue` porte une recette arrivée par lien, visible le temps qu'on décide de la garder. */
+function allRecipes(){ return RECIPES.concat(state.perso); }
+function findRecipe(id){ return allRecipes().find(r=>r.id===id) || null; }
+// tout texte saisi par l'utilisateur finit dans du HTML : on retire ce qui pourrait y être interprété
+function clean(s){ return (s==null?"":String(s)).replace(/[<>]/g,"").trim(); }
+function esc(s){ return (s==null?"":String(s)).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 const COMMON = [
   {n:"Œufs",q:6,u:""},{n:"Lait",q:1,u:"l"},{n:"Beurre",q:250,u:"g"},{n:"Farine",q:1,u:"kg"},
   {n:"Sucre",q:1,u:"kg"},{n:"Huile d'olive",q:50,u:"cl"},{n:"Ail",q:1,u:""},{n:"Oignons",q:3,u:""},
@@ -1468,9 +1670,11 @@ function updateBadges(){
 /* ---------- ACCUEIL ---------- */
 function filteredRecipes(){
   const q=norm(state.search);
-  return RECIPES.filter(r=>{
+  return allRecipes().filter(r=>{
     if(state.filter!=="Tous" && r.cat!==state.filter) return false;
     if(state.airfryer && !afOk(r)) return false;
+    if(state.micro && !moOk(r)) return false;
+    if(state.onlyPerso && !r.perso) return false;
     if(state.onlyCookable && missingFor(r).length>0) return false;
     if(q){
       const inName=norm(r.nom).includes(q);
@@ -1482,9 +1686,10 @@ function filteredRecipes(){
   });
 }
 function renderHome(){
-  const pool = state.airfryer ? RECIPES.filter(afOk) : RECIPES;
+  const toutes = allRecipes();
+  const pool = state.micro ? toutes.filter(moOk) : state.airfryer ? toutes.filter(afOk) : toutes;
   const cookableCount = pool.filter(r=>missingFor(r).length===0).length;
-  const cats=["Tous", ...Array.from(new Set(RECIPES.map(r=>r.cat)))];
+  const cats=["Tous", ...Array.from(new Set(toutes.map(r=>r.cat)))];
   const list=filteredRecipes();
   let html=`
     <div class="pantry-banner">
@@ -1495,14 +1700,27 @@ function renderHome(){
       <div class="pb-cook"><b>${cookableCount}</b><small>recette${cookableCount>1?"s":""} prête${cookableCount>1?"s":""} à cuisiner</small></div>
     </div>
     <div class="filters">
-      <button class="chip cookable ${state.onlyCookable?"active":""}" data-cook="1">✓ Ce que je peux cuisiner</button>
-      <button class="chip fryer ${state.airfryer?"active":""}" data-fryer="1">🍟 Sans four · air fryer</button>
-      ${cats.map(c=>`<button class="chip ${state.filter===c&&!state.onlyCookable?"active":""}" data-cat="${c}">${c}</button>`).join("")}
+      <button class="chip cookable ${state.onlyCookable?"active":""}" data-cook="1">✓ Je peux le cuisiner</button>
+      <button class="chip fryer ${state.airfryer?"active":""}" data-fryer="1">🍟 Air fryer</button>
+      <button class="chip micro ${state.micro?"active":""}" data-micro="1">🔆 Micro-ondes</button>
+      ${state.perso.length?`<button class="chip mine ${state.onlyPerso?"active":""}" data-mine="1">✏️ Mes recettes</button>`:""}
+    </div>
+    <div class="cats">
+      ${cats.map(c=>`<button class="cat ${state.filter===c?"active":""}" data-cat="${esc(c)}">${esc(c)}</button>`).join("")}
     </div>
     <div class="sectionlabel">${list.length} recette${list.length>1?"s":""}</div>
+    <button class="addcard" id="addRecipe">＋ Ajouter ma recette</button>
   `;
   if(!list.length){
-    html+=`<div class="empty"><div class="big">🍽️</div><p>Aucune recette trouvée.</p><p>Essaie un autre mot ou change de filtre.</p></div>`;
+    const actifs=[];
+    if(state.search) actifs.push("la recherche « "+esc(state.search)+" »");
+    if(state.filter!=="Tous") actifs.push("la catégorie "+esc(state.filter));
+    if(state.onlyCookable) actifs.push("« je peux le cuisiner »");
+    if(state.airfryer) actifs.push("le mode air fryer");
+    if(state.micro) actifs.push("le mode micro-ondes");
+    if(state.onlyPerso) actifs.push("« mes recettes »");
+    html+=`<div class="empty"><div class="big">🍽️</div><p>Aucune recette ne correspond.</p>
+      ${actifs.length?`<p>Filtres actifs : ${actifs.join(", ")}.</p><button class="clearfilters" id="clearFilters">Tout réafficher</button>`:`<p>Essaie un autre mot.</p>`}</div>`;
   } else {
     html+=list.map(r=>{
       const miss=missingFor(r);
@@ -1513,11 +1731,13 @@ function renderHome(){
       else if(miss.length===0) badge=`<span class="badge ready">✓ Prêt à cuisiner</span>`;
       else badge=`<span class="badge miss">Il te manque ${miss.length} ingrédient${miss.length>1?"s":""}</span>`;
       if(v.af) badge+=`<span class="badge af">🍟 ${v.af.t}°C</span>`;
-      return `<button class="card" data-recipe="${r.id}">
-          <div class="emoji">${r.emoji}</div>
+      if(v.mo) badge+=`<span class="badge micro">🔆 ${v.mo.min} min</span>`;
+      if(r.perso) badge+=`<span class="badge perso">✏️ Ma recette</span>`;
+      return `<button class="card" data-recipe="${esc(r.id)}">
+          <div class="emoji">${esc(r.emoji)}</div>
           <div class="info">
-            <h3>${r.nom}</h3>
-            <div class="meta"><span>🕒 ${totalTime} min</span><span>🍴 ${r.diff}</span><span>👥 ${r.portions}</span></div>
+            <h3>${esc(r.nom)}</h3>
+            <div class="meta"><span>🕒 ${totalTime} min</span><span>🍴 ${esc(r.diff)}</span><span>👥 ${r.portions}</span></div>
             <div class="status">${badge}</div>
           </div>
         </button>`;
@@ -1594,7 +1814,7 @@ let currentRecipe=null;
 const DEEPLINK = location.protocol==="http:" || location.protocol==="https:";
 function recipeUrl(id, portions, af){
   if(!DEEPLINK) return "";
-  const r = RECIPES.find(x=>x.id===id);
+  const r = findRecipe(id);
   let u = location.origin + location.pathname + "?r=" + encodeURIComponent(id);
   if(r && portions && portions!==r.portions) u += "&p=" + portions;
   if(af) u += "&af=1";
@@ -1610,7 +1830,7 @@ function stripUrl(){
 }
 
 function openRecipe(id, fromUrl){
-  const r=RECIPES.find(x=>x.id===id);
+  const r=findRecipe(id);
   if(!r) return;
   currentRecipe=r;
   state.currentPortions=r.portions;
@@ -1659,7 +1879,7 @@ function renderDetail(){
     } else if(state.confirmCook){
       actions+=`<div class="confirm">
         <div class="cf-t">⚠️ Il te manque ${missing.length} ingrédient${missing.length>1?"s":""}</div>
-        <div class="cf-s"><b>${missing.map(m=>cap(m.i.n)).join(", ")}.</b><br>Si tu continues, le frigo ne sera débité que de ce qu'il contient vraiment.</div>
+        <div class="cf-s"><b>${esc(missing.map(m=>cap(m.i.n)).join(", "))}.</b><br>Si tu continues, le frigo ne sera débité que de ce qu'il contient vraiment.</div>
         <div class="cf-row">
           <button class="act cf-no" id="cancelCook">Annuler</button>
           <button class="act cf-yes" id="forceCook">Cuisiner quand même</button>
@@ -1675,6 +1895,7 @@ function renderDetail(){
       actions+=`<button class="act act-shop2" disabled>✓ Manquants ajoutés à la liste</button>`;
     }
   }
+  if(r.perso) actions+=`<button class="act cf-no" id="editRecipe">✏️ Modifier ma recette</button>`;
 
   detailScroll.innerHTML=`
     <div class="dhero">
@@ -1682,19 +1903,23 @@ function renderDetail(){
         <button class="backbtn" id="backBtn" aria-label="Retour"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2B2A28" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg></button>
         <button class="backbtn" id="shareBtn" aria-label="Partager la recette"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#2B2A28" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"/><path d="m8 7 4-4 4 4"/><path d="M4 13v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6"/></svg></button>
       </div>
-      <div class="demoji">${r.emoji}</div>
-      <div class="dcat">${r.cat}</div>
-      <h2>${r.nom}</h2>
+      <div class="demoji">${esc(r.emoji)}</div>
+      <div class="dcat">${esc(r.cat)}${r.perso?" · ma recette":""}</div>
+      <h2>${esc(r.nom)}</h2>
       <div class="dmeta">
         <div class="pill"><b>${r.prep} min</b><small>Préparation</small></div>
-        <div class="pill"><b>${v.cuisson} min</b><small>${v.af?"Cuisson air fryer":"Cuisson"}</small></div>
-        <div class="pill"><b>${r.diff}</b><small>Difficulté</small></div>
+        <div class="pill"><b>${v.cuisson} min</b><small>${v.af?"Cuisson air fryer":v.mo?"Cuisson micro-ondes":"Cuisson"}</small></div>
+        <div class="pill"><b>${esc(r.diff)}</b><small>Difficulté</small></div>
       </div>
     </div>
     <div class="dbody">
       ${v.af?`<div class="afbox">
         <div class="aft">🍟 Version air fryer</div>
         <div class="afs"><b>${v.af.t}°C · ${v.af.min} min</b>${needsOven(r)?" — au lieu du four":" — au lieu de la friture ou de la poêle"}.<br>${v.af.tip}</div>
+      </div>`:""}
+      ${v.mo?`<div class="afbox micro">
+        <div class="aft">🔆 Version micro-ondes</div>
+        <div class="afs"><b>${esc(v.mo.w)} · ${v.mo.min} min</b>.<br>${esc(v.mo.tip)}</div>
       </div>`:""}
       ${koAf?`<div class="afbox ko">
         <div class="aft">🚫 Pas d'équivalent air fryer</div>
@@ -1717,16 +1942,187 @@ function renderDetail(){
             hint=`<span class="ihint">manque ${fmtNum(short)}${st.f.u?(" "+st.f.u):""}</span>`;
             tick=`<span class="tick low">!</span>`; cls="is-low";
           } else { tick=`<span class="tick need"></span>`; cls="is-need"; }
-          return `<li class="${cls}">${tick}<span class="iname">${cap(i.n)}${hint}</span><span class="iqty">${qtyOnly(i,factor)}</span></li>`;
+          return `<li class="${cls}">${tick}<span class="iname">${esc(cap(i.n))}${hint}</span><span class="iqty">${qtyOnly(i,factor)}</span></li>`;
         }).join("")}
       </ul>
       <div class="acts">${actions}</div>
       <div style="height:26px"></div>
-      <h4 style="font-family:var(--disp);font-weight:700;font-size:18px;margin:0 0 14px">Préparation${v.af?" <span style=\"font-size:13px;color:#A9700F;font-weight:700\">· air fryer</span>":""}</h4>
-      <ol class="steps">${v.etapes.map(e=>`<li><div class="st">${e}</div></li>`).join("")}</ol>
+      <h4 style="font-family:var(--disp);font-weight:700;font-size:18px;margin:0 0 14px">Préparation${v.af?" <span style=\"font-size:13px;color:#A9700F;font-weight:700\">· air fryer</span>":v.mo?" <span style=\"font-size:13px;color:#3F6288;font-weight:700\">· micro-ondes</span>":""}</h4>
+      <ol class="steps">${v.etapes.map(e=>`<li><div class="st">${esc(e)}</div></li>`).join("")}</ol>
     </div>
   `;
   queueNavMaterial();   // le bouton sombre « j'ai cuisiné » peut arriver sous la pastille
+}
+
+/* ---------- ÉDITEUR DE RECETTE PERSONNELLE ----------
+   Une recette créée ici a la même forme qu'une recette du catalogue : elle passe
+   donc par les mêmes filtres, la même comparaison au frigo et le même débit
+   quand on la cuisine, sans code dédié. */
+const editorEl=document.getElementById("editor");
+const edScroll=document.getElementById("edScroll");
+const ED_UNITS=[["","pièce(s)"],["g","g"],["kg","kg"],["ml","ml"],["cl","cl"],["l","l"],["c. à café","c. à café"],["c. à soupe","c. à soupe"],["pincée","pincée"],["poignée","poignée"]];
+const ED_EMOJIS=["🍽️","🍝","🍲","🥘","🍗","🥩","🐟","🦐","🥗","🍕","🥪","🍳","🥔","🍆","🍚","🍜","🌮","🥧","🍰","🍪","🥞","🥣","🍎","🧀"];
+let draft=null, draftErr="";
+
+function savePerso(){ Store.set("gabcook_perso", state.perso); }
+
+// remet une recette venue du stockage ou d'un lien dans un état sûr et complet
+function sanitizeRecipe(x){
+  if(!x || typeof x!=="object") return null;
+  const nom=clean(x.nom);
+  const ing=Array.isArray(x.ing) ? x.ing
+        .map(i=>({q:(i && i.q!=null && isFinite(i.q)) ? +i.q : null, u:clean(i&&i.u), n:clean(i&&i.n)}))
+        .filter(i=>i.n) : [];
+  const etapes=Array.isArray(x.etapes) ? x.etapes.map(clean).filter(Boolean) : [];
+  if(!nom || !ing.length || !etapes.length) return null;
+  const num=(v,min,max,def)=>{ const n=parseInt(v,10); return isNaN(n)?def:Math.min(max,Math.max(min,n)); };
+  return {
+    id: clean(x.id) || ("perso-"+Date.now().toString(36)+Math.random().toString(36).slice(2,6)),
+    nom, emoji: clean(x.emoji)||"🍽️", cat: clean(x.cat)||"Plat", diff: clean(x.diff)||"Facile",
+    prep: num(x.prep,0,999,0), cuisson: num(x.cuisson,0,999,0), portions: num(x.portions,1,50,4),
+    ing, etapes, perso:true
+  };
+}
+
+function openEditor(id){
+  const r = id ? state.perso.find(x=>x.id===id) : null;
+  draft = r
+    ? {id:r.id, nom:r.nom, emoji:r.emoji, cat:r.cat, diff:r.diff, prep:r.prep, cuisson:r.cuisson,
+       portions:r.portions, ing:r.ing.map(i=>({q:(i.q==null?"":String(i.q)), u:i.u, n:i.n})), etapes:r.etapes.slice()}
+    : {id:null, nom:"", emoji:"🍽️", cat:"Plat", diff:"Facile", prep:15, cuisson:20,
+       portions:4, ing:[{q:"",u:"",n:""}], etapes:[""]};
+  draftErr="";
+  document.getElementById("edTitle").textContent = r ? "Modifier la recette" : "Nouvelle recette";
+  renderEditor();
+  edScroll.scrollTop=0;
+  editorEl.classList.add("open");
+  editorEl.setAttribute("aria-hidden","false");
+  document.body.style.overflow="hidden";
+}
+function closeEditor(){
+  editorEl.classList.remove("open");
+  editorEl.setAttribute("aria-hidden","true");
+  if(!detailEl.classList.contains("open")) document.body.style.overflow="";
+  draft=null; draftErr="";
+}
+
+function renderEditor(){
+  const d=draft; if(!d) return;
+  const cats=Array.from(new Set(RECIPES.map(r=>r.cat)));
+  const uOpts=sel=>ED_UNITS.map(o=>`<option value="${esc(o[0])}"${o[0]===sel?" selected":""}>${esc(o[1])}</option>`).join("");
+  const opts=(list,sel)=>list.map(v=>`<option value="${esc(v)}"${v===sel?" selected":""}>${esc(v)}</option>`).join("");
+  edScroll.innerHTML=`
+    <div class="ed-lab">Le plat</div>
+    <input class="ed-in" type="text" data-ed="nom" value="${esc(d.nom)}" placeholder="Nom du plat, ex. Gratin de mamie" autocomplete="off">
+
+    <div class="ed-lab">Une image pour le reconnaître</div>
+    <div class="ed-emos">${ED_EMOJIS.map(e=>`<button class="emo${e===d.emoji?" on":""}" data-emoji="${esc(e)}">${e}</button>`).join("")}</div>
+
+    <div class="ed-lab">Repères</div>
+    <div class="ed-grid">
+      <div class="ed-f"><small>Catégorie</small><select class="ed-in" data-ed="cat">${opts(cats,d.cat)}</select></div>
+      <div class="ed-f"><small>Difficulté</small><select class="ed-in" data-ed="diff">${opts(["Facile","Moyen","Difficile"],d.diff)}</select></div>
+      <div class="ed-f"><small>Pour combien de personnes</small><input class="ed-in" type="number" inputmode="numeric" min="1" max="50" data-ed="portions" value="${esc(d.portions)}"></div>
+      <div class="ed-f"><small>Préparation (min)</small><input class="ed-in" type="number" inputmode="numeric" min="0" data-ed="prep" value="${esc(d.prep)}"></div>
+      <div class="ed-f"><small>Cuisson (min)</small><input class="ed-in" type="number" inputmode="numeric" min="0" data-ed="cuisson" value="${esc(d.cuisson)}"></div>
+    </div>
+
+    <div class="ed-lab">Ingrédients</div>
+    ${d.ing.map((i,k)=>`
+      <div class="ed-row">
+        <input class="ed-in q" type="number" inputmode="decimal" step="any" data-ed="ing.q" data-k="${k}" value="${esc(i.q)}" placeholder="Qté" aria-label="Quantité">
+        <select class="ed-in u" data-ed="ing.u" data-k="${k}" aria-label="Unité">${uOpts(i.u)}</select>
+        <input class="ed-in n" type="text" data-ed="ing.n" data-k="${k}" value="${esc(i.n)}" placeholder="Ingrédient" autocomplete="off" aria-label="Nom de l'ingrédient">
+        <button class="ed-del" data-del-ing="${k}" aria-label="Retirer cet ingrédient">✕</button>
+      </div>`).join("")}
+    <button class="ed-add" id="edAddIng">＋ Ajouter un ingrédient</button>
+    <p class="ed-hint">Ces quantités servent à comparer avec ton frigo et à le débiter quand tu cuisineras le plat. Laisse la quantité vide si elle n'a pas d'importance.</p>
+
+    <div class="ed-lab">Préparation, étape par étape</div>
+    ${d.etapes.map((e,k)=>`
+      <div class="ed-step">
+        <span class="num">${k+1}</span>
+        <textarea class="ed-in" data-ed="etape" data-k="${k}" placeholder="Que faut-il faire à cette étape ?">${esc(e)}</textarea>
+        <button class="ed-del" data-del-step="${k}" style="margin-top:9px" aria-label="Retirer cette étape">✕</button>
+      </div>`).join("")}
+    <button class="ed-add" id="edAddStep">＋ Ajouter une étape</button>
+
+    ${draftErr?`<div class="ed-err">${esc(draftErr)}</div>`:""}
+
+    <div class="ed-actions">
+      <button class="act cf-no" id="edCancel">Annuler</button>
+      <button class="act act-cook" id="edSave">${d.id?"Enregistrer":"Créer la recette"}</button>
+    </div>
+    ${d.id?`<button class="ca" id="edDelete" style="width:100%;color:var(--tomato);border-color:#EBC3B8">Supprimer cette recette</button>`:""}
+    <div style="height:10px"></div>`;
+}
+
+// saisie au fil de l'eau : on écrit dans le brouillon sans re-rendre, pour ne pas perdre le curseur
+function edSet(el){
+  if(!draft) return;
+  const champ=el.dataset.ed, k=+el.dataset.k, v=el.value;
+  if(champ==="ing.q") draft.ing[k].q=v;
+  else if(champ==="ing.u") draft.ing[k].u=v;
+  else if(champ==="ing.n") draft.ing[k].n=v;
+  else if(champ==="etape") draft.etapes[k]=v;
+  else draft[champ]=v;
+}
+
+function saveDraft(){
+  const d=draft; if(!d) return;
+  const nom=clean(d.nom);
+  const ing=d.ing.map(i=>({q:parseQty(i.q), u:i.u||"", n:clean(i.n)})).filter(i=>i.n);
+  const etapes=d.etapes.map(clean).filter(Boolean);
+  const manque=[];
+  if(!nom) manque.push("un nom");
+  if(!ing.length) manque.push("au moins un ingrédient");
+  if(!etapes.length) manque.push("au moins une étape");
+  if(manque.length){
+    draftErr="Il manque encore "+manque.join(", ")+".";
+    renderEditor();
+    edScroll.scrollTop=edScroll.scrollHeight;
+    return;
+  }
+  const r=sanitizeRecipe({id:d.id, nom, emoji:d.emoji, cat:d.cat, diff:d.diff,
+    prep:d.prep, cuisson:d.cuisson, portions:d.portions, ing, etapes});
+  if(!r){ draftErr="Cette recette n'a pas pu être enregistrée."; renderEditor(); return; }
+  const i=state.perso.findIndex(x=>x.id===r.id);
+  const modif = i>-1;
+  if(modif) state.perso[i]=r; else state.perso.push(r);
+  savePerso(); fillQuickpick();
+  closeEditor();
+  if(currentRecipe && currentRecipe.id===r.id){ currentRecipe=r; renderDetail(); }
+  render();
+  toast(modif ? "✅ Recette mise à jour" : "✅ « "+r.nom+" » ajoutée à tes recettes");
+}
+
+function deleteRecipe(id){
+  const r=state.perso.find(x=>x.id===id); if(!r) return;
+  state.perso=state.perso.filter(x=>x.id!==id);
+  // sans recette perso, le filtre correspondant disparaît : il ne doit pas rester actif
+  if(!state.perso.length) state.onlyPerso=false;
+  savePerso(); fillQuickpick();
+  closeEditor();
+  if(currentRecipe && currentRecipe.id===id){ stripUrl(); doClose(); }
+  else render();
+  toast("🗑️ « "+r.nom+" » supprimée");
+}
+
+/* --- partage d'une recette personnelle : elle voyage entière dans le lien,
+       puisque le destinataire ne l'a pas dans son catalogue --- */
+function recipeShareUrl(r){
+  if(!DEEPLINK) return "";
+  const d={v:1,n:r.nom,e:r.emoji,c:r.cat,d:r.diff,p:r.prep,k:r.cuisson,o:r.portions,
+    i:r.ing.map(x=>[x.q,x.u,x.n]), s:r.etapes};
+  return location.origin+location.pathname+"?rp="+b64url(JSON.stringify(d));
+}
+function readRecipeLink(raw){
+  try{
+    const d=JSON.parse(unb64url(raw));
+    if(!d || d.v!==1) return null;
+    return sanitizeRecipe({nom:d.n, emoji:d.e, cat:d.c, diff:d.d, prep:d.p, cuisson:d.k, portions:d.o,
+      ing:(Array.isArray(d.i)?d.i:[]).map(a=>({q:a[0], u:a[1], n:a[2]})), etapes:d.s});
+  }catch(e){ return null; }
 }
 
 /* ---------- actions ---------- */
@@ -1826,8 +2222,10 @@ async function copyText(t){
 // on n'envoie que le lien : la recette se lit sur le site, pas dans le message
 async function shareRecipe(){
   const r=currentRecipe; if(!r) return;
-  const lien=recipeUrl(r.id, state.currentPortions, !!viewOf(r).af);
+  // une recette perso n'existe pas chez le destinataire : elle voyage entière dans le lien
+  const lien = r.perso ? recipeShareUrl(r) : recipeUrl(r.id, state.currentPortions, !!viewOf(r).af);
   if(!lien){ toast("Le lien n'existe que depuis le site en ligne"); return; }
+  if(lien.length>7000){ toast("Recette trop longue pour tenir dans un lien"); return; }
   // 1. feuille de partage du téléphone (SMS, WhatsApp, mail...)
   if(navigator.share){
     try{ await navigator.share({title:r.emoji+" "+r.nom, url:lien}); return; }
@@ -1878,16 +2276,38 @@ function readSyncLink(){
   }catch(e){ return null; }
 }
 
-let pendingSync=null;
+let pendingSync=null, pendingRecipe=null;
 function askImport(d){
-  pendingSync=d;
+  pendingSync=d; pendingRecipe=null;
   const nf=d.f.length, ns=d.s.length;
+  document.getElementById("importTitle").textContent="Récupérer ce frigo ?";
   document.getElementById("importInfo").textContent =
     "Ce lien contient "+nf+" ingrédient"+(nf>1?"s":"")+" et "+ns+" article"+(ns>1?"s":"")+
     " de courses. Les récupérer remplacera ce qui est enregistré sur cet appareil.";
   document.getElementById("importBox").hidden=false;
 }
+function askImportRecipe(r){
+  pendingRecipe=r; pendingSync=null;
+  document.getElementById("importTitle").textContent="Ajouter cette recette ?";
+  document.getElementById("importInfo").textContent =
+    "« "+r.nom+" » — "+r.ing.length+" ingrédient"+(r.ing.length>1?"s":"")+", "+
+    r.etapes.length+" étape"+(r.etapes.length>1?"s":"")+". Elle rejoindra tes recettes sur cet appareil.";
+  document.getElementById("importBox").hidden=false;
+}
 function applyImport(){
+  if(pendingRecipe){
+    const r=pendingRecipe;
+    // identifiant neuf : deux personnes peuvent s'échanger la même recette sans écrasement
+    r.id="perso-"+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+    state.perso.push(r);
+    savePerso(); fillQuickpick();
+    pendingRecipe=null;
+    document.getElementById("importBox").hidden=true;
+    stripUrl(); render();
+    openRecipe(r.id, true);
+    toast("✅ « "+r.nom+" » ajoutée à tes recettes");
+    return;
+  }
   const d=pendingSync; if(!d) return;
   state.fridge  = d.f.map(a=>({n:a[0], q:(a[1]==null?null:a[1]), u:a[2]||""}));
   state.shopping= d.s.map(a=>({id:uid++, label:a[0], base:a[1]||a[0], q:(a[2]==null?null:a[2]), u:a[3]||"", from:a[4]||"", checked:!!a[5]}));
@@ -1928,10 +2348,47 @@ document.getElementById("nav").addEventListener("click",e=>{
   if(detailEl.classList.contains("open")){ stripUrl(); doClose(); }
   setView(b.dataset.view);
 });
+/* ---------- événements de l'éditeur ---------- */
+edScroll.addEventListener("input", e=>{ const el=e.target.closest("[data-ed]"); if(el) edSet(el); });
+edScroll.addEventListener("change", e=>{ const el=e.target.closest("[data-ed]"); if(el) edSet(el); });
+edScroll.addEventListener("click", e=>{
+  if(!draft) return;
+  const emo=e.target.closest("[data-emoji]");
+  if(emo){ draft.emoji=emo.dataset.emoji; renderEditor(); return; }
+  const dIng=e.target.closest("[data-del-ing]");
+  if(dIng){
+    // on garde toujours une ligne : un formulaire vide n'aide personne
+    if(draft.ing.length>1) draft.ing.splice(+dIng.dataset.delIng,1); else draft.ing=[{q:"",u:"",n:""}];
+    renderEditor(); return;
+  }
+  const dStep=e.target.closest("[data-del-step]");
+  if(dStep){
+    if(draft.etapes.length>1) draft.etapes.splice(+dStep.dataset.delStep,1); else draft.etapes=[""];
+    renderEditor(); return;
+  }
+  if(e.target.closest("#edAddIng")){
+    draft.ing.push({q:"",u:"",n:""}); renderEditor();
+    const champs=edScroll.querySelectorAll('[data-ed="ing.n"]');
+    if(champs.length) champs[champs.length-1].focus();
+    return;
+  }
+  if(e.target.closest("#edAddStep")){
+    draft.etapes.push(""); renderEditor();
+    const champs=edScroll.querySelectorAll('[data-ed="etape"]');
+    if(champs.length) champs[champs.length-1].focus();
+    return;
+  }
+  if(e.target.closest("#edSave")){ saveDraft(); return; }
+  if(e.target.closest("#edCancel")){ closeEditor(); return; }
+  if(e.target.closest("#edDelete")){ deleteRecipe(draft.id); return; }
+});
+document.getElementById("edBack").addEventListener("click", closeEditor);
+
 document.getElementById("importBox").addEventListener("click",e=>{
   if(e.target.closest("#importYes")){ applyImport(); return; }
   if(e.target.closest("#importNo") || e.target.id==="importBox"){
-    pendingSync=null; document.getElementById("importBox").hidden=true; stripUrl();
+    pendingSync=null; pendingRecipe=null;
+    document.getElementById("importBox").hidden=true; stripUrl();
   }
 });
 document.getElementById("shareBox").addEventListener("click",e=>{
@@ -1951,26 +2408,53 @@ document.getElementById("search").addEventListener("input",e=>{
   if(state.view==="home") renderHome();
 });
 const quick=document.getElementById("quickpick");
-RECIPES.slice().sort((a,b)=>a.nom.localeCompare(b.nom)).forEach(r=>{
-  const o=document.createElement("option");
-  o.value=r.id; o.textContent=r.emoji+"  "+r.nom;
-  quick.appendChild(o);
-});
+// reconstruit à chaque changement du carnet personnel, pas seulement au chargement
+function fillQuickpick(){
+  while(quick.options.length>1) quick.remove(1);
+  allRecipes().slice().sort((a,b)=>a.nom.localeCompare(b.nom)).forEach(r=>{
+    const o=document.createElement("option");
+    o.value=r.id; o.textContent=r.emoji+"  "+r.nom+(r.perso?"  ·  ma recette":"");
+    quick.appendChild(o);
+  });
+}
+fillQuickpick();
 quick.addEventListener("change",e=>{ if(e.target.value){ openRecipe(e.target.value); e.target.value=""; } });
 
 scrollEl.addEventListener("click",e=>{
   const card=e.target.closest("[data-recipe]");
   if(card){ openRecipe(card.dataset.recipe); return; }
+  // catégories et interrupteurs sont indépendants : choisir une catégorie
+  // ne doit plus désactiver « je peux le cuisiner » comme c'était le cas avant
   const cat=e.target.closest("[data-cat]");
-  if(cat){ state.filter=cat.dataset.cat; state.onlyCookable=false; renderHome(); return; }
+  if(cat){ state.filter=cat.dataset.cat; renderHome(); return; }
   const cook=e.target.closest("[data-cook]");
   if(cook){ state.onlyCookable=!state.onlyCookable; renderHome(); return; }
+  const mine=e.target.closest("[data-mine]");
+  if(mine){ state.onlyPerso=!state.onlyPerso; renderHome(); return; }
+  if(e.target.closest("#clearFilters")){
+    state.search=""; document.getElementById("search").value="";
+    state.filter="Tous"; state.onlyCookable=false; state.onlyPerso=false;
+    if(state.airfryer){ state.airfryer=false; Store.set("gabcook_airfryer", false); }
+    if(state.micro){ state.micro=false; Store.set("gabcook_micro", false); }
+    renderHome(); return;
+  }
+  // les deux modes de cuisson s'excluent : activer l'un éteint l'autre
   const fry=e.target.closest("[data-fryer]");
   if(fry){
     state.airfryer=!state.airfryer;
+    if(state.airfryer && state.micro){ state.micro=false; Store.set("gabcook_micro", false); }
     Store.set("gabcook_airfryer", state.airfryer);
     renderHome();
     toast(state.airfryer? "🍟 Recettes adaptées à l'air fryer" : "Retour aux recettes classiques");
+    return;
+  }
+  const mic=e.target.closest("[data-micro]");
+  if(mic){
+    state.micro=!state.micro;
+    if(state.micro && state.airfryer){ state.airfryer=false; Store.set("gabcook_airfryer", false); }
+    Store.set("gabcook_micro", state.micro);
+    renderHome();
+    toast(state.micro? "🔆 Seulement ce qui se fait au micro-ondes" : "Retour aux recettes classiques");
     return;
   }
   const delF=e.target.closest("[data-del-fridge]");
@@ -2002,6 +2486,7 @@ scrollEl.addEventListener("click",e=>{
   }
   if(e.target.closest("#clearBtn")){ state.shopping=[]; saveShopping(); renderShopping(); updateBadges(); return; }
   if(e.target.closest("#syncOut")){ shareSync(); return; }
+  if(e.target.closest("#addRecipe")){ openEditor(); return; }
 });
 
 scrollEl.addEventListener("change",e=>{
@@ -2036,6 +2521,7 @@ detailScroll.addEventListener("click",e=>{
     else cookRecipe();
     return;
   }
+  if(e.target.closest("#editRecipe")){ openEditor(currentRecipe && currentRecipe.id); return; }
   if(e.target.closest("#cancelCook")){ state.confirmCook=false; renderDetail(); return; }
   if(e.target.closest("#forceCook")){ cookRecipe(); return; }
   if(e.target.closest("#addMissing")){ addMissingToShopping(); return; }
@@ -2064,6 +2550,11 @@ try{
   const f=await Store.get("gabcook_fridge");
   const s=await Store.get("gabcook_shopping");
   state.airfryer = (await Store.get("gabcook_airfryer")) === true;
+  state.micro = (await Store.get("gabcook_micro")) === true;
+  if(state.micro) state.airfryer=false;      // sécurité si les deux avaient été enregistrés
+  const p=await Store.get("gabcook_perso");
+  if(Array.isArray(p)) state.perso = p.map(sanitizeRecipe).filter(Boolean);
+  fillQuickpick();
   if(Array.isArray(f)){
     state.fridge = f.map(x => (typeof x==="string") ? {n:x, q:null, u:""} : {n:x.n, q:(x.q===undefined?null:x.q), u:(x.u||"")});
   }
@@ -2078,10 +2569,17 @@ try{
   const recu = readSyncLink();
   if(recu){ askImport(recu); return; }
 
-  // ouverture depuis un lien partagé : ?r=recette&p=portions&af=1
+  // recette personnelle reçue par lien : ?rp=...
   const q = new URLSearchParams(location.search);
+  const rp = q.get("rp");
+  if(rp){
+    const venue = readRecipeLink(rp);
+    if(venue){ askImportRecipe(venue); return; }
+  }
+
+  // ouverture depuis un lien partagé : ?r=recette&p=portions&af=1
   const rid = q.get("r");
-  if(rid && RECIPES.some(x=>x.id===rid)){
+  if(rid && findRecipe(rid)){
     // le mode air fryer du lien vaut pour cette visite seulement, il n'écrase pas le réglage enregistré
     if(q.get("af")==="1") state.airfryer=true;
     openRecipe(rid, true);
