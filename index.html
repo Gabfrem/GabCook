@@ -352,6 +352,21 @@
   .ed-actions{display:flex;gap:8px;margin:26px 0 6px}
   .ed-err{background:var(--tomato-tint);border:1px solid #EBC3B8;color:#A33520;border-radius:12px;padding:11px 13px;font-size:13.5px;line-height:1.45;margin-top:14px}
   .ed-hint{font-size:12.5px;color:var(--muted);line-height:1.5;margin:8px 2px 0}
+  /* deux chemins nettement distincts : importer un lien, ou tout saisir soi-même */
+  .ed-import{background:var(--camel-tint);border:1.5px solid var(--camel-light);border-radius:14px;padding:15px;margin-top:6px}
+  .ed-import-t{display:flex;align-items:center;gap:8px;font-family:var(--disp);font-weight:800;font-size:16px;color:var(--camel-deep);margin-bottom:5px}
+  .ed-import-s{font-size:13px;color:#6E5133;line-height:1.5;margin-bottom:12px}
+  .ed-import .ed-in{background:#fff}
+  .ed-import-btn{width:100%;margin-top:9px;padding:13px;border-radius:12px;background:var(--camel-deep);color:#fff;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px}
+  .ed-import-btn:active{transform:scale(.985)}
+  .ed-import-btn[disabled]{opacity:.6}
+  .ed-imsg{font-size:13px;line-height:1.45;margin-top:10px;font-weight:600}
+  .ed-imsg.load{color:var(--camel-deep)}
+  .ed-imsg.err{color:var(--tomato)}
+  .ed-imsg.ok{color:var(--basil)}
+  .ed-or{display:flex;align-items:center;gap:12px;margin:22px 0 2px;color:var(--muted);font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em}
+  .ed-or::before,.ed-or::after{content:"";flex:1;height:1px;background:var(--line)}
+
   .ed-emos{display:flex;flex-wrap:wrap;gap:7px}
   .emo{width:42px;height:42px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);font-size:21px;display:flex;align-items:center;justify-content:center}
   .emo.on{border-color:var(--camel);background:var(--camel-tint);box-shadow:0 0 0 3px var(--camel-tint)}
@@ -367,6 +382,10 @@
   .sharecard{background:var(--card);border-radius:var(--r);padding:18px;width:100%;max-width:420px;box-shadow:0 16px 40px rgba(0,0,0,.3)}
   .sharecard h4{font-family:var(--disp);font-weight:700;font-size:18px;margin:0 0 4px}
   .sharecard p{font-size:13.5px;color:var(--muted);margin:0 0 12px;line-height:1.45}
+  .warnbox{background:#FBEFD6;border:1px solid #F0DDB4;color:#7A5008;border-radius:12px;padding:11px 13px;font-size:13px;line-height:1.5;margin-top:12px}
+  .warnbox[hidden]{display:none}
+  .warnbox .cf-row{margin-top:10px}
+  .warnbox .cf-row .act{padding:11px;font-size:13.5px}
   .sharecard textarea{width:100%;height:88px;padding:12px;border-radius:12px;border:1.5px solid var(--line);background:var(--paper);font-family:var(--sans);font-size:13px;line-height:1.5;color:var(--ink);resize:none;outline:none;word-break:break-all}
   .sharecard .act{margin-top:12px}
 
@@ -462,9 +481,23 @@
   <div class="sharecard">
     <h4 id="importTitle">Récupérer ce frigo ?</h4>
     <p id="importInfo"></p>
+    <div class="warnbox" id="importWarn" hidden></div>
     <div class="cf-row">
       <button class="act cf-no" id="importNo">Annuler</button>
-      <button class="act cf-yes" id="importYes">Récupérer</button>
+      <button class="act cf-yes" id="importYes">Ajouter</button>
+    </div>
+  </div>
+</div>
+
+<div class="sharebox" id="pasteBox" hidden>
+  <div class="sharecard">
+    <h4>Importer un lien reçu</h4>
+    <p>Colle ici le lien qu'on t'a envoyé — une recette ou un frigo. Utile sur iPhone, où un lien ouvert depuis un message arrive dans Safari et non dans l'application installée.</p>
+    <textarea id="pasteText" placeholder="https://…?rp=…" autocomplete="off" autocapitalize="off" spellcheck="false"></textarea>
+    <div class="warnbox" id="pasteErr" hidden>Ce lien n'a pas été reconnu. Vérifie que tu as bien copié l'adresse entière.</div>
+    <div class="cf-row">
+      <button class="act cf-no" id="pasteCancel">Annuler</button>
+      <button class="act cf-yes" id="pasteOk">Importer</button>
     </div>
   </div>
 </div>
@@ -1776,7 +1809,11 @@ function renderFridge(){
   const have=new Set(state.fridge.map(f=>norm(f.n)));
   html+=`<div class="suggest-label">Ajouter rapidement</div><div class="suggest">`+
     COMMON.map((c,i)=>`<button class="sg ${have.has(norm(c.n))?"added":""}" data-quick="${i}">+ ${c.n}</button>`).join("")+`</div>`;
-  html+=`<div class="course-actions" style="margin-top:24px"><button class="ca" id="syncOut">📤 Transférer vers un autre appareil</button></div>`;
+  html+=`<div class="course-actions" style="margin-top:24px">
+    <button class="ca" id="syncOut">📤 Transférer</button>
+    <button class="ca" id="syncIn">📥 Importer un lien</button>
+  </div>
+  <p class="ed-hint">« Transférer » envoie ton frigo et tes courses vers un autre appareil. « Importer » récupère un lien qu'on t'a envoyé — recette ou frigo — sans passer par le navigateur.</p>`;
   setPage(html);
 }
 
@@ -1984,6 +2021,140 @@ function sanitizeRecipe(x){
   };
 }
 
+/* ---------- import depuis Marmiton ----------
+   GabCook est un site statique : il ne peut pas lire une page Marmiton directement
+   (le navigateur bloque les requêtes vers un autre domaine). On passe donc par un
+   relais public qui va chercher la page pour nous. Ces relais sont gratuits mais
+   parfois lents ou indisponibles : on réessaie et on bascule sur un second.
+   La page Marmiton contient ses données au format schema.org/Recipe (JSON-LD),
+   qu'on lit plutôt que de gratter le HTML, bien plus fragile. */
+const RELAIS = [
+  u => "https://api.allorigins.win/raw?url=" + encodeURIComponent(u),
+  u => "https://corsproxy.io/?url=" + encodeURIComponent(u),
+  u => "https://api.allorigins.win/get?url=" + encodeURIComponent(u)   // renvoie du JSON {contents}
+];
+async function fetchViaRelais(url){
+  for(let i=0;i<RELAIS.length;i++){
+    for(let essai=0; essai<2; essai++){
+      try{
+        const c=new AbortController(); const t=setTimeout(()=>c.abort(), 14000);
+        const r=await fetch(RELAIS[i](url), {signal:c.signal}); clearTimeout(t);
+        if(!r.ok) continue;
+        let txt=await r.text();
+        if(i===2){ try{ txt=JSON.parse(txt).contents; }catch(e){} }   // endpoint /get
+        if(txt && txt.length>2000) return txt;
+      }catch(e){ /* relais suivant */ }
+    }
+  }
+  return null;
+}
+// « PT1H30M » -> minutes
+function isoMinutes(d){ const m=String(d||"").match(/PT(?:(\d+)H)?(?:(\d+)M)?/); return m ? (+(m[1]||0))*60 + (+(m[2]||0)) : 0; }
+// « 4 personnes » / « 4 parts » -> 4
+function parseYield(y){ if(Array.isArray(y)) y=y[0]; const n=parseInt(String(y==null?"":y),10); return (n>0&&n<=50)?n:4; }
+// catégorie Marmiton -> catégorie GabCook
+function mapCategory(c){ const s=norm(Array.isArray(c)?c[0]:c);
+  if(/dessert|gateau|patiss/.test(s)) return "Dessert";
+  if(/entree/.test(s)) return "Entrée";
+  if(/aperi|amuse/.test(s)) return "Apéro";
+  if(/petit dej|dejeuner/.test(s)) return "Petit-déj";
+  if(/accompagn|garniture/.test(s)) return "Accompagnement";
+  return "Plat";
+}
+// « 200 g de crème fraîche » -> {q, u, n}
+const MARM_FRAC={"½":0.5,"¼":0.25,"¾":0.75,"⅓":1/3,"⅔":2/3,"⅛":0.125};
+const MARM_UNITS=[
+  [/^(kg|kilos?|kilogrammes?)$/i,"kg"],[/^(g|gr|grammes?)$/i,"g"],
+  [/^(l|litres?)$/i,"l"],[/^cl$/i,"cl"],[/^ml$/i,"ml"],
+  [/^cuill?[eè]res?\s*à\s*soupe$/i,"c. à soupe"],[/^cuill?[eè]res?\s*à\s*caf[eé]$/i,"c. à café"],
+  [/^pinc[eé]es?$/i,"pincée"],[/^poign[eé]es?$/i,"poignée"]
+];
+function marmNum(s){ s=(s||"").trim(); if(MARM_FRAC[s]!=null) return MARM_FRAC[s];
+  const e=s.match(/^(\d+)\s+([½¼¾⅓⅔⅛])$/); if(e) return +e[1]+MARM_FRAC[e[2]];
+  const f=s.match(/^(\d+)\s*\/\s*(\d+)$/); if(f) return +f[1]/+f[2];
+  const n=parseFloat(s.replace(",",".")); return isNaN(n)?null:n; }
+function parseMarmIngredient(str){
+  let s=String(str||"").replace(/\s+/g," ").replace(/"[^"]*"/g,"").trim();
+  const m=s.match(/^(\d+\s*[½¼¾⅓⅔⅛]|[½¼¾⅓⅔⅛]|[\d.,]+(?:\s*\/\s*\d+)?)\s*(.*)$/);
+  if(!m) return {q:null, u:"", n:coupeNote(s)};
+  const q=marmNum(m[1]); let reste=m[2].trim(); let u="";
+  const mot=reste.match(/^(\S+(?:\s*à\s*\S+)?)\s+(.*)$/);
+  if(mot){ for(const [re,canon] of MARM_UNITS){ if(re.test(mot[1])){ u=canon; reste=mot[2]; break; } } }
+  reste=reste.replace(/^(de\s+|d'|des\s+|du\s+)/i,"").trim();
+  return {q, u, n:coupeNote(reste)||coupeNote(s)};
+}
+// coupe les remarques entre parenthèses, même non fermées, et la ponctuation résiduelle
+function coupeNote(s){ return String(s||"").split(/[()]/)[0].replace(/[.,;:]+$/,"").trim(); }
+// aplatit recipeInstructions sous toutes ses formes (texte, HowToStep, HowToSection…)
+function flattenSteps(inst){
+  const out=[];
+  (function walk(x){
+    if(!x) return;
+    if(typeof x==="string"){ x.split(/\n+/).forEach(l=>{ l=l.trim(); if(l) out.push(l); }); return; }
+    if(Array.isArray(x)){ x.forEach(walk); return; }
+    if(x.text){ walk(String(x.text)); return; }   // une étape peut contenir plusieurs lignes
+    if(x.itemListElement){ walk(x.itemListElement); return; }
+  })(inst);
+  return out;
+}
+function extractRecipeJsonLd(html){
+  const doc=new DOMParser().parseFromString(html, "text/html");
+  let rec=null;
+  doc.querySelectorAll('script[type="application/ld+json"]').forEach(s=>{
+    if(rec) return;
+    try{ const d=JSON.parse(s.textContent);
+      (Array.isArray(d)?d:(d["@graph"]||[d])).forEach(o=>{
+        const t=o && o["@type"];
+        if(t==="Recipe" || (Array.isArray(t)&&t.includes("Recipe"))) rec=o;
+      });
+    }catch(e){}
+  });
+  return rec;
+}
+async function importMarmiton(){
+  const d=draft; if(!d) return;
+  const url=(d.url||"").trim();
+  if(!/^https?:\/\/(www\.)?marmiton\.org\//i.test(url)){
+    d.imstate="err"; d.imsg="Colle un lien qui commence par https://www.marmiton.org/…"; renderEditor(); return;
+  }
+  d.importing=true; d.imstate="load"; d.imsg="Récupération de la recette… (quelques secondes)"; renderEditor();
+  let html=null;
+  try{ html=await fetchViaRelais(url); }catch(e){}
+  if(!html){
+    d.importing=false; d.imstate="err";
+    d.imsg="Impossible de récupérer la page. Le service qui va chercher Marmiton est peut-être occupé — réessaie dans un instant.";
+    renderEditor(); return;
+  }
+  const rec=extractRecipeJsonLd(html);
+  if(!rec || !rec.name){
+    d.importing=false; d.imstate="err";
+    d.imsg="Cette page ne contient pas de recette lisible. Vérifie que le lien pointe bien vers une recette Marmiton (et pas une liste de résultats).";
+    renderEditor(); return;
+  }
+  const ing=(rec.recipeIngredient||[]).map(parseMarmIngredient)
+              .map(i=>({q:(i.q==null?"":String(i.q)), u:i.u, n:clean(i.n)})).filter(i=>i.n);
+  const etapes=flattenSteps(rec.recipeInstructions).map(clean).filter(Boolean);
+  // on ne garde du formulaire que ce qui a un sens : nom, repères, ingrédients, étapes.
+  d.nom=clean(rec.name);
+  d.cat=mapCategory(rec.recipeCategory);
+  d.portions=parseYield(rec.recipeYield);
+  d.prep=isoMinutes(rec.prepTime);
+  d.cuisson=isoMinutes(rec.cookTime) || Math.max(0, isoMinutes(rec.totalTime)-isoMinutes(rec.prepTime));
+  if(ing.length) d.ing=ing;
+  if(etapes.length) d.etapes=etapes;
+  d.importing=false;
+  if(!ing.length || !etapes.length){
+    d.imstate="err";
+    d.imsg="Recette « "+esc(d.nom)+" » trouvée, mais "+(!ing.length?"les ingrédients":"les étapes")+" n'ont pas pu être lus. Complète à la main ci-dessous.";
+  } else {
+    d.imstate="ok";
+    d.imsg="✅ « "+esc(d.nom)+" » importée : "+ing.length+" ingrédients, "+etapes.length+" étapes. Relis et corrige si besoin, puis enregistre.";
+  }
+  d.url="";
+  renderEditor();
+  edScroll.scrollTop=0;
+}
+
 function openEditor(id){
   const r = id ? state.perso.find(x=>x.id===id) : null;
   draft = r
@@ -2012,6 +2183,16 @@ function renderEditor(){
   const uOpts=sel=>ED_UNITS.map(o=>`<option value="${esc(o[0])}"${o[0]===sel?" selected":""}>${esc(o[1])}</option>`).join("");
   const opts=(list,sel)=>list.map(v=>`<option value="${esc(v)}"${v===sel?" selected":""}>${esc(v)}</option>`).join("");
   edScroll.innerHTML=`
+    ${d.id?"":`
+    <div class="ed-import">
+      <div class="ed-import-t">🔗 Importer depuis Marmiton</div>
+      <div class="ed-import-s">Tu as déjà la recette sur Marmiton ? Colle son lien : GabCook remplit le nom, les ingrédients et les étapes tout seul. Tu pourras tout relire et corriger avant d'enregistrer.</div>
+      <input class="ed-in" type="url" inputmode="url" autocomplete="off" autocapitalize="off" spellcheck="false" data-ed="url" value="${esc(d.url||"")}" placeholder="https://www.marmiton.org/recettes/...">
+      <button class="ed-import-btn" id="edImport"${d.importing?" disabled":""}>${d.importing?"⏳ Import en cours…":"🔗 Importer cette recette"}</button>
+      ${d.imsg?`<div class="ed-imsg ${d.imstate||""}">${d.imsg}</div>`:""}
+    </div>
+    <div class="ed-or"><span>ou remplis tout toi-même</span></div>
+    `}
     <div class="ed-lab">Le plat</div>
     <input class="ed-in" type="text" data-ed="nom" value="${esc(d.nom)}" placeholder="Nom du plat, ex. Gratin de mamie" autocomplete="off">
 
@@ -2264,8 +2445,7 @@ function syncUrl(){
     s: state.shopping.map(x=>[x.label, x.base, x.q, x.u, x.from, x.checked?1:0])};
   return location.origin + location.pathname + "?sync=" + b64url(JSON.stringify(data));
 }
-function readSyncLink(){
-  const raw = new URLSearchParams(location.search).get("sync");
+function readSyncLink(raw){
   if(!raw) return null;
   try{
     const d = JSON.parse(unb64url(raw));
@@ -2276,6 +2456,31 @@ function readSyncLink(){
   }catch(e){ return null; }
 }
 
+/* Sur iOS, une application ajoutée à l'écran d'accueil possède son PROPRE espace de
+   stockage, séparé de celui de Safari, et le système n'y redirige jamais les liens
+   reçus dans un message : ils s'ouvrent toujours dans Safari. Un lien de partage
+   atterrit donc à côté de l'application installée, et l'ajout n'y apparaît pas.
+   Rien dans le code ne peut détourner cette règle : on prévient, et on offre
+   l'autre chemin — coller le lien depuis l'application elle-même. */
+const STANDALONE = (window.matchMedia && matchMedia("(display-mode: standalone)").matches) || navigator.standalone===true;
+const IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform==="MacIntel" && navigator.maxTouchPoints>1);
+const HORS_APP = IOS && !STANDALONE;
+
+// accepte une URL complète, ou seulement le fragment contenant le paramètre
+function importFromLink(txt){
+  const s=(txt||"").trim();
+  if(!s) return false;
+  let rp=null, sync=null;
+  try{ const u=new URL(s, location.href); rp=u.searchParams.get("rp"); sync=u.searchParams.get("sync"); }catch(e){}
+  if(!rp && !sync){
+    const m=s.match(/[?&](rp|sync)=([^&\s]+)/);
+    if(m){ if(m[1]==="rp") rp=m[2]; else sync=m[2]; }
+  }
+  if(rp){ const r=readRecipeLink(rp); if(r){ askImportRecipe(r); return true; } }
+  if(sync){ const d=readSyncLink(sync); if(d){ askImport(d); return true; } }
+  return false;
+}
+
 let pendingSync=null, pendingRecipe=null;
 function askImport(d){
   pendingSync=d; pendingRecipe=null;
@@ -2284,6 +2489,8 @@ function askImport(d){
   document.getElementById("importInfo").textContent =
     "Ce lien contient "+nf+" ingrédient"+(nf>1?"s":"")+" et "+ns+" article"+(ns>1?"s":"")+
     " de courses. Les récupérer remplacera ce qui est enregistré sur cet appareil.";
+  document.getElementById("importYes").textContent="Récupérer";
+  avertirHorsApp();
   document.getElementById("importBox").hidden=false;
 }
 function askImportRecipe(r){
@@ -2292,7 +2499,20 @@ function askImportRecipe(r){
   document.getElementById("importInfo").textContent =
     "« "+r.nom+" » — "+r.ing.length+" ingrédient"+(r.ing.length>1?"s":"")+", "+
     r.etapes.length+" étape"+(r.etapes.length>1?"s":"")+". Elle rejoindra tes recettes sur cet appareil.";
+  document.getElementById("importYes").textContent="Ajouter";
+  avertirHorsApp();
   document.getElementById("importBox").hidden=false;
+}
+// prévient quand l'ajout va se faire dans Safari plutôt que dans l'application installée
+function avertirHorsApp(){
+  const z=document.getElementById("importWarn");
+  z.hidden = !HORS_APP;
+  if(HORS_APP) z.innerHTML =
+    "⚠️ Tu es dans Safari, pas dans l'application de ton écran d'accueil : sur iPhone, "+
+    "les deux ne partagent pas leurs données et l'ajout ne s'y retrouvera pas."+
+    "<br><b>Copie ce lien</b>, ouvre GabCook depuis ton écran d'accueil, puis va dans "+
+    "<b>Frigo → Importer un lien</b>."+
+    "<div class=\"cf-row\"><button class=\"act cf-no\" id=\"copyIncoming\">📋 Copier le lien</button></div>";
 }
 function applyImport(){
   if(pendingRecipe){
@@ -2351,6 +2571,8 @@ document.getElementById("nav").addEventListener("click",e=>{
 /* ---------- événements de l'éditeur ---------- */
 edScroll.addEventListener("input", e=>{ const el=e.target.closest("[data-ed]"); if(el) edSet(el); });
 edScroll.addEventListener("change", e=>{ const el=e.target.closest("[data-ed]"); if(el) edSet(el); });
+// Entrée dans le champ du lien Marmiton = lancer l'import
+edScroll.addEventListener("keydown", e=>{ if(e.key==="Enter" && e.target.dataset.ed==="url"){ e.preventDefault(); importMarmiton(); } });
 edScroll.addEventListener("click", e=>{
   if(!draft) return;
   const emo=e.target.closest("[data-emoji]");
@@ -2378,13 +2600,29 @@ edScroll.addEventListener("click", e=>{
     if(champs.length) champs[champs.length-1].focus();
     return;
   }
+  if(e.target.closest("#edImport")){ importMarmiton(); return; }
   if(e.target.closest("#edSave")){ saveDraft(); return; }
   if(e.target.closest("#edCancel")){ closeEditor(); return; }
   if(e.target.closest("#edDelete")){ deleteRecipe(draft.id); return; }
 });
 document.getElementById("edBack").addEventListener("click", closeEditor);
 
+document.getElementById("pasteBox").addEventListener("click",e=>{
+  const box=document.getElementById("pasteBox");
+  if(e.target.closest("#pasteOk")){
+    const ok=importFromLink(document.getElementById("pasteText").value);
+    if(ok) box.hidden=true;                      // la fenêtre de confirmation prend le relais
+    else document.getElementById("pasteErr").hidden=false;
+    return;
+  }
+  if(e.target.closest("#pasteCancel") || e.target.id==="pasteBox") box.hidden=true;
+});
+
 document.getElementById("importBox").addEventListener("click",e=>{
+  if(e.target.closest("#copyIncoming")){
+    copyText(location.href).then(ok=>toast(ok? "📋 Lien copié — colle-le dans l'application" : "Copie impossible, sélectionne l'adresse à la main"));
+    return;
+  }
   if(e.target.closest("#importYes")){ applyImport(); return; }
   if(e.target.closest("#importNo") || e.target.id==="importBox"){
     pendingSync=null; pendingRecipe=null;
@@ -2486,6 +2724,12 @@ scrollEl.addEventListener("click",e=>{
   }
   if(e.target.closest("#clearBtn")){ state.shopping=[]; saveShopping(); renderShopping(); updateBadges(); return; }
   if(e.target.closest("#syncOut")){ shareSync(); return; }
+  if(e.target.closest("#syncIn")){
+    const ta=document.getElementById("pasteText");
+    ta.value=""; document.getElementById("pasteErr").hidden=true;
+    document.getElementById("pasteBox").hidden=false; ta.focus();
+    return;
+  }
   if(e.target.closest("#addRecipe")){ openEditor(); return; }
 });
 
@@ -2566,7 +2810,7 @@ try{
   moveThumb(false);
 
   // lien de transfert reçu depuis un autre appareil : ?sync=...
-  const recu = readSyncLink();
+  const recu = readSyncLink(new URLSearchParams(location.search).get("sync"));
   if(recu){ askImport(recu); return; }
 
   // recette personnelle reçue par lien : ?rp=...
