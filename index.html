@@ -512,6 +512,11 @@
   .authsep{display:flex;align-items:center;gap:10px;margin:13px 0;color:var(--muted);font-size:12px;font-weight:600}
   .authsep::before,.authsep::after{content:"";flex:1;height:1px;background:var(--line)}
   .welcomelogo{width:56px;height:56px;border-radius:15px;display:block;margin:2px auto 10px;box-shadow:var(--shadow-soft)}
+  /* galerie « mes plats » : grille de photos carrées */
+  .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:6px}
+  .pgcell{aspect-ratio:1;border-radius:10px;overflow:hidden;background:var(--camel-tint);padding:0;border:none}
+  .pgcell img{width:100%;height:100%;object-fit:cover}
+  .pgcell:active{transform:scale(.96)}
   .sharecard .act{margin-top:12px}
 
   /* ---- confirmation « j'ai cuisiné » quand il manque des ingrédients ---- */
@@ -1753,6 +1758,7 @@ const Store = {
 /* ---------- état ---------- */
 const state = { view:"home", search:"", filter:"Tous", onlyCookable:false, onlyPerso:false, airfryer:false, micro:false, fridge:[], shopping:[], perso:[], recipePhotos:{}, profile:{pseudo:"",avatar:""}, stats:{cooked:0,byRecipe:{},firstAt:null,lastAt:null},
   social:{tab:"feed", loaded:false, loading:false, friends:[], incoming:[], outgoing:[], q:"", results:null, searching:false, posts:[], feedLoaded:false, feedLoading:false, openComments:{}, commentDrafts:{}},
+  gallery:{loaded:false, loading:false, posts:[]},
   currentPortions:0, cooked:false, confirmCook:false };
 
 /* Les recettes personnelles ont exactement la même forme que celles du catalogue :
@@ -1923,9 +1929,7 @@ function recommendations(max){
   scored.sort((a,b)=>b.s-a.s);
   return scored.slice(0, max||8).map(x=>x.r);
 }
-// photo d'une recette : ta photo (plat cuisiné/perso) prime, sinon celle importée, sinon rien
-function recipePhoto(r){ return (r && (state.recipePhotos[r.id] || r.photo)) || ""; }
-// dégradé de fond par catégorie, pour égayer les vignettes emoji sans photo
+// dégradé de fond par catégorie, pour égayer les vignettes emoji
 const CAT_GRAD={
   "Plat":"linear-gradient(135deg,#F2E4D3,#E7C9A9)",
   "Entrée":"linear-gradient(135deg,#E4EFE0,#CBE0C4)",
@@ -1935,13 +1939,10 @@ const CAT_GRAD={
   "Accompagnement":"linear-gradient(135deg,#E7E7DD,#D3D3C0)"
 };
 function catGradient(cat){ return CAT_GRAD[cat] || "linear-gradient(135deg,#F2EBE1,#E0CDB4)"; }
-// contenu d'une vignette : photo réelle si dispo, sinon emoji sur dégradé de catégorie
-function thumbInner(r){
-  const ph=recipePhoto(r);
-  if(ph) return `<img src="${esc(ph)}" alt="" loading="lazy">`;
-  return esc(r.emoji||"🍽️");
-}
-function thumbStyle(r){ return recipePhoto(r) ? "" : ` style="background:${catGradient(r.cat)}"`; }
+// vignette : toujours l'emoji sur le dégradé de sa catégorie (les vraies photos
+// vont dans la galerie du profil, pas sur les cartes — choix de l'utilisateur)
+function thumbInner(r){ return esc(r.emoji||"🍽️"); }
+function thumbStyle(r){ return ` style="background:${catGradient(r.cat)}"`; }
 
 // carte pleine largeur d'une recette (liste principale)
 function cardHTML(r){
@@ -2218,6 +2219,18 @@ async function loadFeed(){
   }catch(e){}
   state.social.feedLoading=false; state.social.feedLoaded=true;
 }
+// galerie du profil : toutes MES publications (les plats que j'ai réalisés et pris en photo)
+async function loadMyGallery(){
+  if(!cloudActif()){ state.gallery.loaded=true; return; }
+  if(state.gallery.loading) return;
+  state.gallery.loading=true;
+  try{
+    const {data}=await sb.from("posts").select("id,recipe_id,recipe_name,emoji,photo_url,description,created_at,visibility")
+      .eq("author",currentUser.id).order("created_at",{ascending:false}).limit(200);
+    state.gallery.posts=(data||[]).filter(p=>p.photo_url);
+  }catch(e){}
+  state.gallery.loading=false; state.gallery.loaded=true;
+}
 
 // ❤️ j'aime : mise à jour optimiste immédiate, puis écriture en base
 async function toggleLike(postId){
@@ -2271,6 +2284,7 @@ async function deletePost(id){
     if(p && p.photo_path){ try{ await sb.storage.from("dishes").remove([p.photo_path]); }catch(e){} }
   }catch(e){}
   state.social.posts=state.social.posts.filter(x=>x.id!==id);
+  state.gallery.loaded=false;
   renderSocial();
   toast("Publication supprimée");
 }
@@ -2423,7 +2437,7 @@ async function publishPost(){
     // cette photo devient la vignette de la recette (illustration automatique de ce que tu cuisines)
     if(d.recipeId){ state.recipePhotos[d.recipeId]=photo_url; saveRecipePhotos(); }
     postBusy=false; closePostComposer();
-    state.social.feedLoaded=false;    // le fil se rechargera avec le nouveau post
+    state.social.feedLoaded=false; state.gallery.loaded=false;   // fil + galerie se rechargeront
     toast("✅ Plat publié !");
   }catch(e){ postBusy=false; renderPostComposer("Publication impossible : "+(e&&e.message?e.message:e),"err"); }
 }
@@ -2562,6 +2576,8 @@ function renderDetail(){
     }
   }
   if(r.perso) actions+=`<button class="act cf-no" id="editRecipe">✏️ Modifier ma recette</button>`;
+  // publier une photo de ce plat, à tout moment (pas seulement juste après l'avoir cuisiné)
+  if(cloudActif() && !state.confirmCook) actions+=`<button class="act cf-no" id="sharePlate">📸 Publier une photo de ce plat</button>`;
 
   detailScroll.innerHTML=`
     <div class="dhero">
@@ -2569,7 +2585,7 @@ function renderDetail(){
         <button class="backbtn" id="backBtn" aria-label="Retour"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2B2A28" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg></button>
         <button class="backbtn" id="shareBtn" aria-label="Partager la recette"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#2B2A28" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"/><path d="m8 7 4-4 4 4"/><path d="M4 13v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6"/></svg></button>
       </div>
-      ${recipePhoto(r)?`<img class="dphoto" src="${esc(recipePhoto(r))}" alt="">`:`<div class="demoji">${esc(r.emoji)}</div>`}
+      <div class="demoji">${esc(r.emoji)}</div>
       <div class="dcat">${esc(r.cat)}${r.perso?" · ma recette":""}</div>
       <h2>${esc(r.nom)}</h2>
       <div class="dmeta">
@@ -2834,14 +2850,7 @@ function renderEditor(){
     <div class="ed-lab">Le plat</div>
     <input class="ed-in" type="text" data-ed="nom" value="${esc(d.nom)}" placeholder="Nom du plat, ex. Gratin de mamie" autocomplete="off">
 
-    <div class="ed-lab">Une photo du plat (facultatif)</div>
-    <label class="photozone" for="edPhoto" style="aspect-ratio:16/9">
-      ${d.photo?`<img src="${esc(d.photo)}" alt="">`:`<span class="ph-emoji">📷</span><span>Ajouter une photo</span>`}
-    </label>
-    <input id="edPhoto" type="file" accept="image/*" capture="environment" style="display:none">
-    ${d.photo?`<div style="text-align:center;margin-top:6px"><button class="authswitch" id="edPhotoClear" style="color:var(--tomato)">Retirer la photo</button></div>`:""}
-
-    <div class="ed-lab">Ou un emoji pour la reconnaître</div>
+    <div class="ed-lab">Une image pour la reconnaître</div>
     <div class="ed-emos">${ED_EMOJIS.map(e=>`<button class="emo${e===d.emoji?" on":""}" data-emoji="${esc(e)}">${e}</button>`).join("")}</div>
 
     <div class="ed-lab">Repères</div>
@@ -3296,6 +3305,17 @@ function renderAuth(msg, cls){
         <div style="text-align:center;margin-top:4px"><button class="authswitch" id="acctBack" style="color:var(--muted)">Retour</button></div>`;
       return;
     }
+    if(acctView==="gallery"){
+      if(!state.gallery.loaded) loadMyGallery().then(()=>{ if(currentUser && acctView==="gallery") renderAuth(""); });
+      const g=state.gallery;
+      card.innerHTML=`
+        <h4>Mes plats en photo${g.loaded&&g.posts.length?" · "+g.posts.length:""}</h4>
+        ${!g.loaded ? `<p class="viewsub">Chargement…</p>`
+          : (!g.posts.length ? `<p class="viewsub">Tu n'as pas encore publié de plat en photo. Cuisine quelque chose, prends-le en photo, et il apparaîtra ici — et sur le fil.</p>`
+          : `<div class="pgrid">${g.posts.map(p=>`<button class="pgcell" data-gopen="${esc(p.recipe_id||"")}" title="${esc(p.recipe_name||"")}"><img src="${esc(p.photo_url)}" alt="" loading="lazy"></button>`).join("")}</div>`)}
+        <div style="text-align:center;margin-top:10px"><button class="authswitch" id="acctBack" style="color:var(--muted)">Retour</button></div>`;
+      return;
+    }
     // menu principal
     const fav=favRecipe(), distinct=Object.keys(state.stats.byRecipe||{}).length, cooked=state.stats.cooked||0;
     card.innerHTML=`
@@ -3311,6 +3331,7 @@ function renderAuth(msg, cls){
         <div class="statc"><b>${distinct}</b><span>recette${distinct>1?"s":""} différente${distinct>1?"s":""}</span></div>
         ${fav?`<div class="statc wide"><b style="font-size:15px">⭐ ${esc(fav.nom)}</b><span>ta préférée — ${fav.n} fois</span></div>`:""}
       </div>
+      <button class="gbtn" id="galleryOpen" style="margin-top:10px">🍽️ Mes plats en photo</button>
       ${msg?`<div class="authmsg ${cls||""}">${msg}</div>`:""}
       <div class="cf-row" style="margin-top:14px">
         <button class="act cf-no" id="authClose">Fermer</button>
@@ -3372,6 +3393,7 @@ async function doLogout(){
   try{ await sb.auth.signOut(); }catch(e){}
   currentUser=null; _lastUid=null;
   state.social={tab:"feed", loaded:false, loading:false, friends:[], incoming:[], outgoing:[], q:"", results:null, searching:false, posts:[], feedLoaded:false, feedLoading:false, openComments:{}, commentDrafts:{}};
+  state.gallery={loaded:false, loading:false, posts:[]};
   await hydrate(); updateAccountUI(); closeAuth();
   if(state.view==="social") setView("home"); else render();
   updateBadges();
@@ -3506,7 +3528,10 @@ document.getElementById("authBox").addEventListener("click",e=>{
   if(e.target.closest("#pseudoEdit")){ acctView="pseudo"; renderAuth(""); return; }
   if(e.target.closest("#pseudoSave")){ savePseudoFromInput(); return; }
   if(e.target.closest("#avatarEdit")){ acctView="avatar"; renderAuth(""); return; }
+  if(e.target.closest("#galleryOpen")){ acctView="gallery"; renderAuth(""); return; }
   if(e.target.closest("#acctBack")){ acctView="menu"; renderAuth(""); return; }
+  const go=e.target.closest("[data-gopen]");
+  if(go){ const rid=go.dataset.gopen; closeAuth(); acctView="menu"; if(rid && findRecipe(rid)) openRecipe(rid); return; }
   if(e.target.closest("#avatarClear")){ setAvatar(""); return; }
   const em=e.target.closest("[data-av]");
   if(em){ setAvatar(em.dataset.av); return; }
@@ -3536,7 +3561,9 @@ document.getElementById("postBox").addEventListener("click",e=>{
   const v=e.target.closest("[data-vis]");
   if(v){ draftPost.visibility=v.dataset.vis; renderPostComposer(""); return; }
   if(e.target.closest("#postPublish")){ if(draftPost) draftPost.description=(document.getElementById("postDesc")||{}).value||""; publishPost(); return; }
-  if(e.target.closest("#postCancel") || e.target.id==="postBox"){ closePostComposer(); return; }
+  // on ne ferme QUE par le bouton explicite : un toucher sur le fond ne doit pas
+  // faire perdre la photo qu'on s'apprêtait à publier
+  if(e.target.closest("#postCancel")){ closePostComposer(); return; }
 });
 document.getElementById("postBox").addEventListener("input",e=>{ if(e.target.id==="postDesc" && draftPost) draftPost.description=e.target.value; });
 document.getElementById("postBox").addEventListener("change",e=>{
@@ -3712,6 +3739,7 @@ detailScroll.addEventListener("click",e=>{
     return;
   }
   if(e.target.closest("#editRecipe")){ openEditor(currentRecipe && currentRecipe.id); return; }
+  if(e.target.closest("#sharePlate")){ if(currentRecipe) openPostComposer(currentRecipe); return; }
   if(e.target.closest("#cancelCook")){ state.confirmCook=false; renderDetail(); return; }
   if(e.target.closest("#forceCook")){ cookRecipe(); return; }
   if(e.target.closest("#addMissing")){ addMissingToShopping(); return; }
@@ -3786,6 +3814,7 @@ async function handleAuth(session){
   await hydrate();
   // social : on repart de zéro pour ce compte et on se rend trouvable par pseudo
   state.social={tab:"feed", loaded:false, loading:false, friends:[], incoming:[], outgoing:[], q:"", results:null, searching:false, posts:[], feedLoaded:false, feedLoading:false, openComments:{}, commentDrafts:{}};
+  state.gallery={loaded:false, loading:false, posts:[]};
   if(currentUser){
     if(!state.profile.pseudo){ state.profile.pseudo=(currentUser.email||"").split("@")[0]; saveProfile(); }
     else pushProfile();
