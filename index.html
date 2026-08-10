@@ -127,6 +127,38 @@
   .ftag{font-size:12.5px;font-weight:700;color:var(--muted);padding:0 4px}
   .ftag.ok{color:var(--basil)}
 
+  /* ---- social : sous-onglets Fil / Amis ---- */
+  .subtabs{display:flex;gap:6px;background:var(--card);border:1.5px solid var(--line);border-radius:999px;padding:4px;margin:10px 0 6px}
+  .subtab{flex:1;padding:9px;border-radius:999px;font-size:13.5px;font-weight:700;color:var(--muted);text-align:center}
+  .subtab.on{background:var(--ink);color:#fff}
+
+  /* ---- composeur de publication ---- */
+  .photozone{width:100%;aspect-ratio:4/3;border-radius:14px;border:1.5px dashed var(--camel-light);background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--camel-deep);font-weight:700;font-size:14px;overflow:hidden;cursor:pointer}
+  .photozone img{width:100%;height:100%;object-fit:cover}
+  .photozone .ph-emoji{font-size:34px}
+  .vistoggle{display:flex;gap:8px;margin-top:4px}
+  .visbtn{flex:1;padding:11px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);font-size:13.5px;font-weight:700;color:var(--muted);display:flex;flex-direction:column;gap:2px;align-items:center;line-height:1.2}
+  .visbtn small{font-weight:500;font-size:11px}
+  .visbtn.on{border-color:var(--camel);background:var(--camel-tint);color:var(--camel-deep)}
+  .postmeta{display:flex;align-items:center;gap:9px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:9px 11px;margin-bottom:2px}
+  .postmeta .pe{font-size:22px}
+  #postPublish:disabled{opacity:1;background:var(--line);color:var(--muted)}
+
+  /* ---- carte de post dans le fil ---- */
+  .post{background:var(--card);border:1px solid rgba(234,227,216,.7);border-radius:16px;margin-bottom:14px;box-shadow:var(--shadow-soft);overflow:hidden}
+  .posthead{display:flex;align-items:center;gap:10px;padding:11px 13px}
+  .posthead .fav{width:36px;height:36px;flex:0 0 36px;border-radius:50%;background:var(--camel-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:800;font-size:15px;overflow:hidden}
+  .posthead .fav img{width:100%;height:100%;object-fit:cover}
+  .posthead .pwho{flex:1;min-width:0}
+  .posthead .pwho b{font-size:14.5px;font-weight:700;display:block;line-height:1.15;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .posthead .pwho span{font-size:11.5px;color:var(--muted)}
+  .posthead .pvis{font-size:11px;color:var(--muted);font-weight:600;flex:0 0 auto}
+  .postimg{width:100%;display:block;background:var(--camel-tint)}
+  .postbody{padding:11px 13px}
+  .postbody .prec{font-family:var(--disp);font-weight:700;font-size:14.5px;margin-bottom:3px}
+  .postbody .pdesc{font-size:14px;line-height:1.5;color:var(--ink)}
+  .postbody .pdel{margin-top:9px;font-size:12.5px;color:var(--tomato);font-weight:700;background:none;border:none;padding:2px}
+
   .card{background:var(--card);border-radius:var(--r);padding:14px;display:flex;gap:14px;align-items:center;margin-bottom:12px;box-shadow:var(--shadow-soft);border:1px solid rgba(234,227,216,.7);transition:transform .12s, box-shadow .12s;text-align:left;width:100%}
   .card:active{transform:scale(.985)}
   .card .emoji{flex:0 0 58px;height:58px;width:58px;border-radius:14px;background:var(--camel-tint);display:flex;align-items:center;justify-content:center;font-size:30px}
@@ -571,6 +603,10 @@
 
 <div class="sharebox" id="authBox" hidden>
   <div class="sharecard" id="authCard"></div>
+</div>
+
+<div class="sharebox" id="postBox" hidden>
+  <div class="sharecard tall" id="postCard"></div>
 </div>
 
 <div class="toast" id="toast"></div>
@@ -1691,7 +1727,7 @@ const Store = {
 
 /* ---------- état ---------- */
 const state = { view:"home", search:"", filter:"Tous", onlyCookable:false, onlyPerso:false, airfryer:false, micro:false, fridge:[], shopping:[], perso:[], profile:{pseudo:"",avatar:""}, stats:{cooked:0,byRecipe:{},firstAt:null,lastAt:null},
-  social:{loaded:false, loading:false, friends:[], incoming:[], outgoing:[], q:"", results:null, searching:false},
+  social:{tab:"feed", loaded:false, loading:false, friends:[], incoming:[], outgoing:[], q:"", results:null, searching:false, posts:[], feedLoaded:false, feedLoading:false},
   currentPortions:0, cooked:false, confirmCook:false };
 
 /* Les recettes personnelles ont exactement la même forme que celles du catalogue :
@@ -2095,54 +2131,190 @@ async function removeFriend(id){
   await loadSocial(); renderSocial(); updateBadges();
 }
 
+// « il y a 2 h », « hier », etc.
+function timeAgo(ts){
+  const d=(Date.now()-new Date(ts).getTime())/1000;
+  if(d<60) return "à l'instant";
+  if(d<3600) return "il y a "+Math.floor(d/60)+" min";
+  if(d<86400) return "il y a "+Math.floor(d/3600)+" h";
+  if(d<172800) return "hier";
+  if(d<604800) return "il y a "+Math.floor(d/86400)+" j";
+  return dateFr(ts);
+}
+// charge le fil : posts publics + de mes amis (le RLS filtre déjà côté base)
+async function loadFeed(){
+  if(!cloudActif()){ state.social.feedLoaded=true; return; }
+  if(state.social.feedLoading) return;
+  state.social.feedLoading=true;
+  try{
+    const {data}=await sb.from("posts").select("*").order("created_at",{ascending:false}).limit(60);
+    const rows=data||[];
+    const ids=[...new Set(rows.map(p=>p.author))];
+    const profs={};
+    if(ids.length){
+      const {data:pp}=await sb.from("profiles").select("id,pseudo,avatar").in("id",ids);
+      (pp||[]).forEach(p=>profs[p.id]=p);
+    }
+    state.social.posts = rows.map(p=>({...p, prof: profs[p.author]||{pseudo:"?",avatar:""}}));
+  }catch(e){}
+  state.social.feedLoading=false; state.social.feedLoaded=true;
+}
+async function deletePost(id){
+  if(!cloudActif()) return;
+  const p=state.social.posts.find(x=>x.id===id);
+  try{
+    await sb.from("posts").delete().eq("id",id);
+    if(p && p.photo_path){ try{ await sb.storage.from("dishes").remove([p.photo_path]); }catch(e){} }
+  }catch(e){}
+  state.social.posts=state.social.posts.filter(x=>x.id!==id);
+  renderSocial();
+  toast("Publication supprimée");
+}
+function postCardHTML(p){
+  const mine = currentUser && p.author===currentUser.id;
+  return `<div class="post">
+    <div class="posthead">
+      <span class="fav">${avatarFor(p.prof)}</span>
+      <span class="pwho"><b>${esc(p.prof.pseudo||"?")}</b><span>${esc(timeAgo(p.created_at))}</span></span>
+      <span class="pvis">${p.visibility==="friends"?"👥 Amis":"🌍 Public"}</span>
+    </div>
+    ${p.photo_url?`<img class="postimg" src="${esc(p.photo_url)}" alt="" loading="lazy">`:""}
+    <div class="postbody">
+      ${p.recipe_name?`<div class="prec">${esc(p.emoji||"🍽️")} ${esc(p.recipe_name)}</div>`:""}
+      ${p.description?`<div class="pdesc">${esc(p.description)}</div>`:""}
+      ${mine?`<button class="pdel" data-delpost="${esc(p.id)}">Supprimer</button>`:""}
+    </div>
+  </div>`;
+}
+
 function renderSocial(){
   if(!currentUser){
     setPage(`<div style="height:calc(16px + env(safe-area-inset-top))"></div>
       <h2 class="viewtitle">Social</h2>
       <div class="empty"><div class="big">👥</div>
-        <p>Connecte-toi pour retrouver tes amis et partager tes plats.</p>
+        <p>Connecte-toi pour retrouver tes amis et partager tes plats en photo.</p>
         <button class="clearfilters" id="socialLogin">Se connecter</button></div>`);
     return;
   }
-  if(!state.social.loaded){
-    loadSocial().then(()=>{ if(state.view==="social") renderSocial(); updateBadges(); });
-  }
   const s=state.social;
+  if(!s.loaded) loadSocial().then(()=>{ if(state.view==="social") renderSocial(); updateBadges(); });
+
   let html=`<div style="height:calc(16px + env(safe-area-inset-top))"></div>
     <h2 class="viewtitle">Social</h2>
-    <p class="viewsub">Trouve tes amis par leur pseudo. Le fil des plats en photo arrive à l'étape suivante.</p>
-    <div class="add-row"><input type="search" id="friendSearch" placeholder="Rechercher un pseudo…" autocomplete="off" value="${esc(s.q)}"><button class="add-btn" id="friendSearchBtn">Chercher</button></div>`;
+    <div class="subtabs">
+      <div class="subtab ${s.tab==="feed"?"on":""}" data-subtab="feed">🍽️ Fil</div>
+      <div class="subtab ${s.tab==="friends"?"on":""}" data-subtab="friends">👥 Amis${s.incoming.length?" ·"+s.incoming.length:""}</div>
+    </div>`;
 
-  if(s.searching){
-    html+=`<div class="sectionlabel">Recherche…</div>`;
-  } else if(s.results!==null){
-    html+=`<div class="sectionlabel">Résultats</div>`;
-    if(!s.results.length) html+=`<p class="viewsub">Aucun pseudo ne correspond. Ton ami doit avoir créé un compte et choisi un pseudo (dans son menu de compte).</p>`;
-    else html+=s.results.map(p=>{
-      const rel=relationWith(p.id);
-      const act = rel==="friend" ? `<span class="ftag ok">✓ Ami</span>`
-        : rel==="outgoing" ? `<span class="ftag">Envoyée</span>`
-        : rel==="incoming" ? `<button class="fbtn ok" data-accept="${esc(p.id)}">Accepter</button>`
-        : `<button class="fbtn ok" data-add="${esc(p.id)}">＋ Ajouter</button>`;
-      return personRow(p, act);
-    }).join("");
-  }
-
-  if(s.incoming.length){
-    html+=`<div class="sectionlabel">Demandes reçues · ${s.incoming.length}</div>`;
-    html+=s.incoming.map(p=>personRow(p, `<button class="fbtn ok" data-accept="${esc(p.id)}">Accepter</button><button class="fbtn no" data-remove="${esc(p.id)}" aria-label="Refuser">✕</button>`)).join("");
-  }
-
-  html+=`<div class="sectionlabel">Mes amis${s.friends.length?" · "+s.friends.length:""}</div>`;
-  if(!s.friends.length) html+=`<p class="viewsub">Pas encore d'amis. Cherche un pseudo ci-dessus pour commencer.</p>`;
-  else html+=s.friends.map(p=>personRow(p, `<button class="fbtn no" data-remove="${esc(p.id)}">Retirer</button>`)).join("");
-
-  if(s.outgoing.length){
-    html+=`<div class="sectionlabel">Demandes envoyées</div>`;
-    html+=s.outgoing.map(p=>personRow(p, `<span class="ftag">En attente</span><button class="fbtn no" data-remove="${esc(p.id)}">Annuler</button>`)).join("");
+  if(s.tab==="feed"){
+    if(!s.feedLoaded) loadFeed().then(()=>{ if(state.view==="social") renderSocial(); });
+    if(!s.feedLoaded || s.feedLoading){
+      html+=`<div class="sectionlabel">Chargement du fil…</div>`;
+    } else if(!s.posts.length){
+      html+=`<div class="empty"><div class="big">📸</div><p>Le fil est vide pour l'instant.</p>
+        <p>Cuisine un plat, prends-le en photo au moment du « J'ai cuisiné ce plat », et il apparaîtra ici — chez toi et chez tes amis.</p></div>`;
+    } else {
+      html+=s.posts.map(postCardHTML).join("");
+    }
+  } else {
+    html+=`<div class="add-row"><input type="search" id="friendSearch" placeholder="Rechercher un pseudo…" autocomplete="off" value="${esc(s.q)}"><button class="add-btn" id="friendSearchBtn">Chercher</button></div>`;
+    if(s.searching){ html+=`<div class="sectionlabel">Recherche…</div>`; }
+    else if(s.results!==null){
+      html+=`<div class="sectionlabel">Résultats</div>`;
+      if(!s.results.length) html+=`<p class="viewsub">Aucun pseudo ne correspond. Ton ami doit avoir créé un compte et choisi un pseudo (dans son menu de compte).</p>`;
+      else html+=s.results.map(p=>{
+        const rel=relationWith(p.id);
+        const act = rel==="friend" ? `<span class="ftag ok">✓ Ami</span>`
+          : rel==="outgoing" ? `<span class="ftag">Envoyée</span>`
+          : rel==="incoming" ? `<button class="fbtn ok" data-accept="${esc(p.id)}">Accepter</button>`
+          : `<button class="fbtn ok" data-add="${esc(p.id)}">＋ Ajouter</button>`;
+        return personRow(p, act);
+      }).join("");
+    }
+    if(s.incoming.length){
+      html+=`<div class="sectionlabel">Demandes reçues · ${s.incoming.length}</div>`;
+      html+=s.incoming.map(p=>personRow(p, `<button class="fbtn ok" data-accept="${esc(p.id)}">Accepter</button><button class="fbtn no" data-remove="${esc(p.id)}" aria-label="Refuser">✕</button>`)).join("");
+    }
+    html+=`<div class="sectionlabel">Mes amis${s.friends.length?" · "+s.friends.length:""}</div>`;
+    if(!s.friends.length) html+=`<p class="viewsub">Pas encore d'amis. Cherche un pseudo ci-dessus pour commencer.</p>`;
+    else html+=s.friends.map(p=>personRow(p, `<button class="fbtn no" data-remove="${esc(p.id)}">Retirer</button>`)).join("");
+    if(s.outgoing.length){
+      html+=`<div class="sectionlabel">Demandes envoyées</div>`;
+      html+=s.outgoing.map(p=>personRow(p, `<span class="ftag">En attente</span><button class="fbtn no" data-remove="${esc(p.id)}">Annuler</button>`)).join("");
+    }
   }
   setPage(html);
 }
+
+/* ---------- COMPOSEUR DE PUBLICATION ---------- */
+let draftPost=null, postBusy=false;
+function openPostComposer(r){
+  if(!cloudActif()) return;
+  const v=viewOf(r);
+  draftPost={recipeId:r.id, recipeName:r.nom, emoji:r.emoji, dataUrl:"", blob:null, description:"", visibility:"public"};
+  postBusy=false;
+  renderPostComposer("");
+  document.getElementById("postBox").hidden=false;
+}
+function closePostComposer(){ document.getElementById("postBox").hidden=true; draftPost=null; }
+function renderPostComposer(msg, cls){
+  const d=draftPost; if(!d) return;
+  document.getElementById("postCard").innerHTML=`
+    <h4>Partager ce plat</h4>
+    <div class="postmeta"><span class="pe">${esc(d.emoji||"🍽️")}</span><span style="font-weight:700">${esc(d.recipeName)}</span></div>
+    <label class="photozone" for="postPhoto">
+      ${d.dataUrl?`<img src="${esc(d.dataUrl)}" alt="">`:`<span class="ph-emoji">📷</span><span>Ajouter une photo</span>`}
+    </label>
+    <input id="postPhoto" type="file" accept="image/*" style="display:none">
+    <textarea id="postDesc" placeholder="Un mot sur ton plat… (facultatif)" style="height:70px">${esc(d.description)}</textarea>
+    <div class="vistoggle">
+      <button class="visbtn ${d.visibility==="public"?"on":""}" data-vis="public">🌍 Public<small>tout le monde</small></button>
+      <button class="visbtn ${d.visibility==="friends"?"on":""}" data-vis="friends">👥 Amis<small>tes amis seulement</small></button>
+    </div>
+    ${msg?`<div class="authmsg ${cls||""}">${msg}</div>`:""}
+    <div class="cf-row" style="margin-top:14px">
+      <button class="act cf-no" id="postCancel">Plus tard</button>
+      <button class="act act-cook" id="postPublish"${(postBusy||!d.dataUrl)?" disabled":""}>${postBusy?"⏳ Publication…":"Publier"}</button>
+    </div>`;
+}
+async function publishPost(){
+  const d=draftPost; if(!d || postBusy || !cloudActif() || !d.blob) return;
+  postBusy=true; renderPostComposer("Envoi de la photo…","load");
+  try{
+    const path=currentUser.id+"/"+Date.now()+"-"+Math.random().toString(36).slice(2,8)+".jpg";
+    const up=await sb.storage.from("dishes").upload(path, d.blob, {contentType:"image/jpeg", upsert:false});
+    if(up.error){ postBusy=false; renderPostComposer("La photo n'a pas pu être envoyée. Réessaie.","err"); return; }
+    const pub=sb.storage.from("dishes").getPublicUrl(path);
+    const photo_url=pub.data.publicUrl;
+    const desc=clean(document.getElementById("postDesc")?document.getElementById("postDesc").value:d.description).slice(0,500);
+    const {error}=await sb.from("posts").insert({
+      author:currentUser.id, recipe_id:d.recipeId, recipe_name:d.recipeName, emoji:d.emoji,
+      photo_path:path, photo_url, description:desc, visibility:d.visibility
+    });
+    if(error){ postBusy=false; renderPostComposer("La publication a échoué. Réessaie.","err"); return; }
+    postBusy=false; closePostComposer();
+    state.social.feedLoaded=false;    // le fil se rechargera avec le nouveau post
+    toast("✅ Plat publié !");
+  }catch(e){ postBusy=false; renderPostComposer("Publication impossible pour le moment.","err"); }
+}
+// compresse une photo de plat (plus grande que l'avatar) en Blob + aperçu
+function compressPhoto(file, cb){
+  if(!file || !/^image\//.test(file.type)){ cb(null); return; }
+  const img=new Image(), url=URL.createObjectURL(file);
+  img.onload=()=>{
+    const max=1080; let w=img.naturalWidth, h=img.naturalHeight;
+    const sc=Math.min(1, max/Math.max(w,h)); w=Math.round(w*sc); h=Math.round(h*sc);
+    const cv=document.createElement("canvas"); cv.width=w; cv.height=h;
+    cv.getContext("2d").drawImage(img,0,0,w,h);
+    URL.revokeObjectURL(url);
+    const dataUrl=cv.toDataURL("image/jpeg",0.82);
+    cv.toBlob(b=>cb({dataUrl, blob:b||null}), "image/jpeg", 0.82);
+  };
+  img.onerror=()=>{ URL.revokeObjectURL(url); cb(null); };
+  img.src=url;
+}
+
+/* ---------- DÉTAIL RECETTE ---------- */
 
 /* ---------- DÉTAIL RECETTE ---------- */
 const detailEl=document.getElementById("detail");
@@ -2655,6 +2827,8 @@ function cookRecipe(){
   updateBadges();
   const reste = manque? " ("+manque+" manquant"+(manque>1?"s":"")+" non débité"+(manque>1?"s":"")+")" : "";
   toast(changed? "🧊 Frigo mis à jour — "+changed+" ingrédient"+(changed>1?"s":"")+" débité"+(changed>1?"s":"")+reste : "✅ Plat réalisé");
+  // connecté : on propose de partager le plat en photo (façon Instagram)
+  if(cloudActif()) setTimeout(()=>openPostComposer(r), 500);
 }
 // journalise chaque plat réalisé pour les statistiques du compte
 function recordCooked(r){
@@ -3027,7 +3201,7 @@ async function doLogout(){
   if(!sb) return;
   try{ await sb.auth.signOut(); }catch(e){}
   currentUser=null; _lastUid=null;
-  state.social={loaded:false, loading:false, friends:[], incoming:[], outgoing:[], q:"", results:null, searching:false};
+  state.social={tab:"feed", loaded:false, loading:false, friends:[], incoming:[], outgoing:[], q:"", results:null, searching:false, posts:[], feedLoaded:false, feedLoading:false};
   await hydrate(); updateAccountUI(); closeAuth();
   if(state.view==="social") setView("home"); else render();
   updateBadges();
@@ -3177,6 +3351,25 @@ document.getElementById("authBox").addEventListener("change",e=>{
   }
 });
 
+// composeur de publication
+document.getElementById("postBox").addEventListener("click",e=>{
+  if(!draftPost) return;
+  const v=e.target.closest("[data-vis]");
+  if(v){ draftPost.visibility=v.dataset.vis; renderPostComposer(""); return; }
+  if(e.target.closest("#postPublish")){ if(draftPost) draftPost.description=(document.getElementById("postDesc")||{}).value||""; publishPost(); return; }
+  if(e.target.closest("#postCancel") || e.target.id==="postBox"){ closePostComposer(); return; }
+});
+document.getElementById("postBox").addEventListener("input",e=>{ if(e.target.id==="postDesc" && draftPost) draftPost.description=e.target.value; });
+document.getElementById("postBox").addEventListener("change",e=>{
+  if(e.target.id==="postPhoto" && e.target.files && e.target.files[0]){
+    renderPostComposer("Préparation de la photo…","load");
+    compressPhoto(e.target.files[0], res=>{
+      if(res && res.blob){ draftPost.dataUrl=res.dataUrl; draftPost.blob=res.blob; renderPostComposer(""); }
+      else renderPostComposer("Cette image n'a pas pu être chargée. Essaie-en une autre.","err");
+    });
+  }
+});
+
 document.getElementById("importBox").addEventListener("click",e=>{
   if(e.target.closest("#copyIncoming")){
     copyText(location.href).then(ok=>toast(ok? "📋 Lien copié — colle-le dans l'application" : "Copie impossible, sélectionne l'adresse à la main"));
@@ -3283,6 +3476,8 @@ scrollEl.addEventListener("click",e=>{
   if(e.target.closest("#addRecipe")){ openEditor(); return; }
   // ----- social -----
   if(e.target.closest("#socialLogin")){ openAuth(); return; }
+  const sub=e.target.closest("[data-subtab]");
+  if(sub){ state.social.tab=sub.dataset.subtab; renderSocial(); return; }
   if(e.target.closest("#friendSearchBtn")){
     const inp=document.getElementById("friendSearch"); if(inp) state.social.q=inp.value;
     searchProfiles(); return;
@@ -3290,6 +3485,7 @@ scrollEl.addEventListener("click",e=>{
   const add=e.target.closest("[data-add]"); if(add){ addFriend(add.dataset.add); return; }
   const acc=e.target.closest("[data-accept]"); if(acc){ acceptFriend(acc.dataset.accept); return; }
   const rem=e.target.closest("[data-remove]"); if(rem){ removeFriend(rem.dataset.remove); return; }
+  const dp=e.target.closest("[data-delpost]"); if(dp){ deletePost(dp.dataset.delpost); return; }
 });
 
 scrollEl.addEventListener("change",e=>{
@@ -3399,7 +3595,7 @@ async function handleAuth(session){
   if(seConnecte) await seedCloudFromLocal();
   await hydrate();
   // social : on repart de zéro pour ce compte et on se rend trouvable par pseudo
-  state.social={loaded:false, loading:false, friends:[], incoming:[], outgoing:[], q:"", results:null, searching:false};
+  state.social={tab:"feed", loaded:false, loading:false, friends:[], incoming:[], outgoing:[], q:"", results:null, searching:false, posts:[], feedLoaded:false, feedLoading:false};
   if(currentUser){
     if(!state.profile.pseudo){ state.profile.pseudo=(currentUser.email||"").split("@")[0]; saveProfile(); }
     else pushProfile();
