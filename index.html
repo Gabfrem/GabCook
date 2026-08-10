@@ -107,7 +107,8 @@
   .shelf::-webkit-scrollbar{display:none}
   .rcard{flex:0 0 152px;background:var(--card);border:1px solid rgba(234,227,216,.7);border-radius:16px;padding:12px;box-shadow:var(--shadow-soft);text-align:left;display:flex;flex-direction:column;gap:7px;transition:transform .12s}
   .rcard:active{transform:scale(.97)}
-  .rcard .remoji{width:100%;height:64px;border-radius:12px;background:var(--camel-tint);display:flex;align-items:center;justify-content:center;font-size:32px}
+  .rcard .remoji{width:100%;height:88px;border-radius:12px;background:var(--camel-tint);display:flex;align-items:center;justify-content:center;font-size:36px;overflow:hidden}
+  .rcard .remoji img{width:100%;height:100%;object-fit:cover}
   .rcard h4{font-family:var(--disp);font-weight:700;font-size:14px;margin:0;line-height:1.2;letter-spacing:-.01em}
   .rcard .rmeta{font-size:11.5px;color:var(--muted)}
   .rcard .rtag{font-size:11px;color:var(--basil);font-weight:700}
@@ -180,9 +181,11 @@
   .cadd .csend{flex:0 0 auto;padding:0 14px;border-radius:11px;background:var(--camel);color:var(--ink);font-weight:700;font-size:13.5px}
   .cadd .csend:active{background:var(--camel-deep);color:#fff}
 
-  .card{background:var(--card);border-radius:var(--r);padding:14px;display:flex;gap:14px;align-items:center;margin-bottom:12px;box-shadow:var(--shadow-soft);border:1px solid rgba(234,227,216,.7);transition:transform .12s, box-shadow .12s;text-align:left;width:100%}
+  .card{background:var(--card);border-radius:var(--r);padding:12px;display:flex;gap:13px;align-items:center;margin-bottom:12px;box-shadow:var(--shadow-soft);border:1px solid rgba(234,227,216,.7);transition:transform .12s, box-shadow .12s;text-align:left;width:100%}
   .card:active{transform:scale(.985)}
-  .card .emoji{flex:0 0 58px;height:58px;width:58px;border-radius:14px;background:var(--camel-tint);display:flex;align-items:center;justify-content:center;font-size:30px}
+  /* vignette : plus grande, photo réelle si dispo, sinon emoji sur dégradé de catégorie */
+  .card .emoji{flex:0 0 88px;height:88px;width:88px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:42px;overflow:hidden;position:relative}
+  .card .emoji img{width:100%;height:100%;object-fit:cover}
   .card .info{flex:1;min-width:0}
   .card .info h3{font-family:var(--disp);font-weight:700;font-size:16.5px;margin:0 0 3px;letter-spacing:-.01em;line-height:1.15}
   .card .meta{font-size:12.5px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap}
@@ -205,6 +208,7 @@
   .backbtn{background:rgba(255,255,255,.9);border-radius:11px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.14)}
   .backbtn:active{background:#fff;transform:scale(.94)}
   .dhero .demoji{font-size:52px;line-height:1;margin-bottom:6px}
+  .dhero .dphoto{width:100%;height:190px;object-fit:cover;border-radius:14px;margin-bottom:10px;box-shadow:0 4px 14px rgba(0,0,0,.18)}
   .dhero h2{font-family:var(--disp);font-weight:800;font-size:26px;margin:0;letter-spacing:-.02em;line-height:1.1}
   .dhero .dcat{font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:rgba(43,42,40,.62);margin-bottom:4px}
   .dmeta{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
@@ -1747,7 +1751,7 @@ const Store = {
 };
 
 /* ---------- état ---------- */
-const state = { view:"home", search:"", filter:"Tous", onlyCookable:false, onlyPerso:false, airfryer:false, micro:false, fridge:[], shopping:[], perso:[], profile:{pseudo:"",avatar:""}, stats:{cooked:0,byRecipe:{},firstAt:null,lastAt:null},
+const state = { view:"home", search:"", filter:"Tous", onlyCookable:false, onlyPerso:false, airfryer:false, micro:false, fridge:[], shopping:[], perso:[], recipePhotos:{}, profile:{pseudo:"",avatar:""}, stats:{cooked:0,byRecipe:{},firstAt:null,lastAt:null},
   social:{tab:"feed", loaded:false, loading:false, friends:[], incoming:[], outgoing:[], q:"", results:null, searching:false, posts:[], feedLoaded:false, feedLoading:false, openComments:{}, commentDrafts:{}},
   currentPortions:0, cooked:false, confirmCook:false };
 
@@ -1919,6 +1923,26 @@ function recommendations(max){
   scored.sort((a,b)=>b.s-a.s);
   return scored.slice(0, max||8).map(x=>x.r);
 }
+// photo d'une recette : ta photo (plat cuisiné/perso) prime, sinon celle importée, sinon rien
+function recipePhoto(r){ return (r && (state.recipePhotos[r.id] || r.photo)) || ""; }
+// dégradé de fond par catégorie, pour égayer les vignettes emoji sans photo
+const CAT_GRAD={
+  "Plat":"linear-gradient(135deg,#F2E4D3,#E7C9A9)",
+  "Entrée":"linear-gradient(135deg,#E4EFE0,#CBE0C4)",
+  "Apéro":"linear-gradient(135deg,#FBE9D0,#F3D3A6)",
+  "Dessert":"linear-gradient(135deg,#F6E1E6,#E8C4CE)",
+  "Petit-déj":"linear-gradient(135deg,#FBEFC9,#F3DE9C)",
+  "Accompagnement":"linear-gradient(135deg,#E7E7DD,#D3D3C0)"
+};
+function catGradient(cat){ return CAT_GRAD[cat] || "linear-gradient(135deg,#F2EBE1,#E0CDB4)"; }
+// contenu d'une vignette : photo réelle si dispo, sinon emoji sur dégradé de catégorie
+function thumbInner(r){
+  const ph=recipePhoto(r);
+  if(ph) return `<img src="${esc(ph)}" alt="" loading="lazy">`;
+  return esc(r.emoji||"🍽️");
+}
+function thumbStyle(r){ return recipePhoto(r) ? "" : ` style="background:${catGradient(r.cat)}"`; }
+
 // carte pleine largeur d'une recette (liste principale)
 function cardHTML(r){
   const miss=missingFor(r), v=viewOf(r), totalTime=r.prep+v.cuisson;
@@ -1930,7 +1954,7 @@ function cardHTML(r){
   if(v.mo) badge+=`<span class="badge micro">🔆 ${v.mo.min} min</span>`;
   if(r.perso) badge+=`<span class="badge perso">✏️ Ma recette</span>`;
   return `<button class="card" data-recipe="${esc(r.id)}">
-      <div class="emoji">${esc(r.emoji)}</div>
+      <div class="emoji"${thumbStyle(r)}>${thumbInner(r)}</div>
       <div class="info">
         <h3>${esc(r.nom)}</h3>
         <div class="meta"><span>🕒 ${totalTime} min</span><span>🍴 ${esc(r.diff)}</span><span>👥 ${r.portions}</span></div>
@@ -1942,7 +1966,7 @@ function cardHTML(r){
 function recoCardHTML(r){
   const cookable = state.fridge.length && missingFor(r).length===0;
   return `<button class="rcard" data-recipe="${esc(r.id)}">
-      <div class="remoji">${esc(r.emoji)}</div>
+      <div class="remoji"${thumbStyle(r)}>${thumbInner(r)}</div>
       <h4>${esc(r.nom)}</h4>
       <div class="rmeta">🕒 ${r.prep+viewOf(r).cuisson} min · ${esc(r.cat)}</div>
       ${cookable?`<div class="rtag">✓ Prêt à cuisiner</div>`:``}
@@ -2396,6 +2420,8 @@ async function publishPost(){
       photo_path:path, photo_url, description:desc, visibility:d.visibility
     });
     if(error){ postBusy=false; renderPostComposer(tradPost(error.message, "post"),"err"); return; }
+    // cette photo devient la vignette de la recette (illustration automatique de ce que tu cuisines)
+    if(d.recipeId){ state.recipePhotos[d.recipeId]=photo_url; saveRecipePhotos(); }
     postBusy=false; closePostComposer();
     state.social.feedLoaded=false;    // le fil se rechargera avec le nouveau post
     toast("✅ Plat publié !");
@@ -2543,7 +2569,7 @@ function renderDetail(){
         <button class="backbtn" id="backBtn" aria-label="Retour"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2B2A28" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg></button>
         <button class="backbtn" id="shareBtn" aria-label="Partager la recette"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#2B2A28" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"/><path d="m8 7 4-4 4 4"/><path d="M4 13v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6"/></svg></button>
       </div>
-      <div class="demoji">${esc(r.emoji)}</div>
+      ${recipePhoto(r)?`<img class="dphoto" src="${esc(recipePhoto(r))}" alt="">`:`<div class="demoji">${esc(r.emoji)}</div>`}
       <div class="dcat">${esc(r.cat)}${r.perso?" · ma recette":""}</div>
       <h2>${esc(r.nom)}</h2>
       <div class="dmeta">
@@ -2620,7 +2646,7 @@ function sanitizeRecipe(x){
     id: clean(x.id) || ("perso-"+Date.now().toString(36)+Math.random().toString(36).slice(2,6)),
     nom, emoji: clean(x.emoji)||"🍽️", cat: clean(x.cat)||"Plat", diff: clean(x.diff)||"Facile",
     prep: num(x.prep,0,999,0), cuisson: num(x.cuisson,0,999,0), portions: num(x.portions,1,50,4),
-    ing, etapes, perso:true
+    ing, etapes, photo:(typeof x.photo==="string"?x.photo:""), perso:true
   };
 }
 
@@ -2653,6 +2679,14 @@ async function fetchViaRelais(url){
 }
 // « PT1H30M » -> minutes
 function isoMinutes(d){ const m=String(d||"").match(/PT(?:(\d+)H)?(?:(\d+)M)?/); return m ? (+(m[1]||0))*60 + (+(m[2]||0)) : 0; }
+// l'image JSON-LD peut être une chaîne, un tableau, ou un objet {url} : on en tire une URL https
+function marmImage(img){
+  let u=img;
+  if(Array.isArray(u)) u=u[0];
+  if(u && typeof u==="object") u=u.url||u.contentUrl||"";
+  u=String(u||"");
+  return /^https?:\/\//.test(u) ? u : "";
+}
 // « 4 personnes » / « 4 parts » -> 4
 function parseYield(y){ if(Array.isArray(y)) y=y[0]; const n=parseInt(String(y==null?"":y),10); return (n>0&&n<=50)?n:4; }
 // catégorie Marmiton -> catégorie GabCook
@@ -2739,6 +2773,7 @@ async function importMarmiton(){
   const etapes=flattenSteps(rec.recipeInstructions).map(clean).filter(Boolean);
   // on ne garde du formulaire que ce qui a un sens : nom, repères, ingrédients, étapes.
   d.nom=clean(rec.name);
+  d.photo=marmImage(rec.image);          // vraie photo du plat depuis Marmiton
   d.cat=mapCategory(rec.recipeCategory);
   d.portions=parseYield(rec.recipeYield);
   d.prep=isoMinutes(rec.prepTime);
@@ -2762,9 +2797,9 @@ function openEditor(id){
   const r = id ? state.perso.find(x=>x.id===id) : null;
   draft = r
     ? {id:r.id, nom:r.nom, emoji:r.emoji, cat:r.cat, diff:r.diff, prep:r.prep, cuisson:r.cuisson,
-       portions:r.portions, ing:r.ing.map(i=>({q:(i.q==null?"":String(i.q)), u:i.u, n:i.n})), etapes:r.etapes.slice()}
+       portions:r.portions, photo:r.photo||"", ing:r.ing.map(i=>({q:(i.q==null?"":String(i.q)), u:i.u, n:i.n})), etapes:r.etapes.slice()}
     : {id:null, nom:"", emoji:"🍽️", cat:"Plat", diff:"Facile", prep:15, cuisson:20,
-       portions:4, ing:[{q:"",u:"",n:""}], etapes:[""]};
+       portions:4, photo:"", ing:[{q:"",u:"",n:""}], etapes:[""]};
   draftErr="";
   document.getElementById("edTitle").textContent = r ? "Modifier la recette" : "Nouvelle recette";
   renderEditor();
@@ -2799,7 +2834,14 @@ function renderEditor(){
     <div class="ed-lab">Le plat</div>
     <input class="ed-in" type="text" data-ed="nom" value="${esc(d.nom)}" placeholder="Nom du plat, ex. Gratin de mamie" autocomplete="off">
 
-    <div class="ed-lab">Une image pour le reconnaître</div>
+    <div class="ed-lab">Une photo du plat (facultatif)</div>
+    <label class="photozone" for="edPhoto" style="aspect-ratio:16/9">
+      ${d.photo?`<img src="${esc(d.photo)}" alt="">`:`<span class="ph-emoji">📷</span><span>Ajouter une photo</span>`}
+    </label>
+    <input id="edPhoto" type="file" accept="image/*" capture="environment" style="display:none">
+    ${d.photo?`<div style="text-align:center;margin-top:6px"><button class="authswitch" id="edPhotoClear" style="color:var(--tomato)">Retirer la photo</button></div>`:""}
+
+    <div class="ed-lab">Ou un emoji pour la reconnaître</div>
     <div class="ed-emos">${ED_EMOJIS.map(e=>`<button class="emo${e===d.emoji?" on":""}" data-emoji="${esc(e)}">${e}</button>`).join("")}</div>
 
     <div class="ed-lab">Repères</div>
@@ -2868,7 +2910,7 @@ function saveDraft(){
     return;
   }
   const r=sanitizeRecipe({id:d.id, nom, emoji:d.emoji, cat:d.cat, diff:d.diff,
-    prep:d.prep, cuisson:d.cuisson, portions:d.portions, ing, etapes});
+    prep:d.prep, cuisson:d.cuisson, portions:d.portions, photo:d.photo||"", ing, etapes});
   if(!r){ draftErr="Cette recette n'a pas pu être enregistrée."; renderEditor(); return; }
   const i=state.perso.findIndex(x=>x.id===r.id);
   const modif = i>-1;
@@ -2915,6 +2957,7 @@ function saveFridge(){ Store.set("gabcook_fridge", state.fridge); }
 function saveShopping(){ Store.set("gabcook_shopping", state.shopping); }
 function saveProfile(){ Store.set("gabcook_profile", state.profile); pushProfile(); }
 function saveStats(){ Store.set("gabcook_stats", state.stats); }
+function saveRecipePhotos(){ Store.set("gabcook_photos", state.recipePhotos); }
 
 function addToFridge(n,q,u){
   // on range sous le nom du produit : « jaunes d'œufs » et « gousses d'ail » rejoignent Œufs et Ail
@@ -3392,11 +3435,20 @@ document.getElementById("nav").addEventListener("click",e=>{
 });
 /* ---------- événements de l'éditeur ---------- */
 edScroll.addEventListener("input", e=>{ const el=e.target.closest("[data-ed]"); if(el) edSet(el); });
-edScroll.addEventListener("change", e=>{ const el=e.target.closest("[data-ed]"); if(el) edSet(el); });
+edScroll.addEventListener("change", e=>{
+  const el=e.target.closest("[data-ed]"); if(el){ edSet(el); return; }
+  if(e.target.id==="edPhoto" && draft && e.target.files && e.target.files[0]){
+    compressPhoto(e.target.files[0], res=>{
+      if(res && res.dataUrl){ draft.photo=res.dataUrl; renderEditor(); }
+      else toast("Cette image n'a pas pu être chargée");
+    });
+  }
+});
 // Entrée dans le champ du lien Marmiton = lancer l'import
 edScroll.addEventListener("keydown", e=>{ if(e.key==="Enter" && e.target.dataset.ed==="url"){ e.preventDefault(); importMarmiton(); } });
 edScroll.addEventListener("click", e=>{
   if(!draft) return;
+  if(e.target.closest("#edPhotoClear")){ draft.photo=""; renderEditor(); return; }
   const emo=e.target.closest("[data-emoji]");
   if(emo){ draft.emoji=emo.dataset.emoji; renderEditor(); return; }
   const dIng=e.target.closest("[data-del-ing]");
@@ -3697,6 +3749,8 @@ async function hydrate(){
   state.profile = (pr && typeof pr==="object") ? {pseudo:clean(pr.pseudo), avatar:(pr.avatar||"")} : {pseudo:"",avatar:""};
   const st=await Store.get("gabcook_stats");
   state.stats = (st && typeof st==="object") ? {cooked:+st.cooked||0, byRecipe:(st.byRecipe||{}), firstAt:st.firstAt||null, lastAt:st.lastAt||null} : {cooked:0,byRecipe:{},firstAt:null,lastAt:null};
+  const ph=await Store.get("gabcook_photos");
+  state.recipePhotos = (ph && typeof ph==="object") ? ph : {};
   state.fridge = Array.isArray(f) ? f.map(x => (typeof x==="string") ? {n:x, q:null, u:""} : {n:x.n, q:(x.q===undefined?null:x.q), u:(x.u||"")}) : [];
   state.shopping = Array.isArray(s) ? s.map(x => ({id:x.id, label:x.label, base:x.base, q:(x.q===undefined?null:x.q), u:(x.u||""), from:x.from||"", checked:!!x.checked})) : [];
   uid=(state.shopping.reduce((m,x)=>Math.max(m,x.id||0),0))+1;
@@ -3710,7 +3764,7 @@ async function seedCloudFromLocal(){
     const {data}=await sb.from("gabcook_store").select("key").limit(1);
     if(data && data.length) return;          // le compte a déjà des données : on n'écrase rien
   }catch(e){ return; }
-  const keys=["gabcook_fridge","gabcook_shopping","gabcook_perso","gabcook_airfryer","gabcook_micro","gabcook_profile","gabcook_stats"];
+  const keys=["gabcook_fridge","gabcook_shopping","gabcook_perso","gabcook_airfryer","gabcook_micro","gabcook_profile","gabcook_stats","gabcook_photos"];
   let verse=0;
   for(const k of keys){
     const v=localGet(k);
