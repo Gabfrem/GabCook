@@ -2265,7 +2265,7 @@ function renderPostComposer(msg, cls){
     <label class="photozone" for="postPhoto">
       ${d.dataUrl?`<img src="${esc(d.dataUrl)}" alt="">`:`<span class="ph-emoji">📷</span><span>Ajouter une photo</span>`}
     </label>
-    <input id="postPhoto" type="file" accept="image/*" style="display:none">
+    <input id="postPhoto" type="file" accept="image/*" capture="environment" style="display:none">
     <textarea id="postDesc" placeholder="Un mot sur ton plat… (facultatif)" style="height:70px">${esc(d.description)}</textarea>
     <div class="vistoggle">
       <button class="visbtn ${d.visibility==="public"?"on":""}" data-vis="public">🌍 Public<small>tout le monde</small></button>
@@ -2283,32 +2283,55 @@ async function publishPost(){
   try{
     const path=currentUser.id+"/"+Date.now()+"-"+Math.random().toString(36).slice(2,8)+".jpg";
     const up=await sb.storage.from("dishes").upload(path, d.blob, {contentType:"image/jpeg", upsert:false});
-    if(up.error){ postBusy=false; renderPostComposer("La photo n'a pas pu être envoyée. Réessaie.","err"); return; }
+    if(up.error){ postBusy=false; renderPostComposer(tradPost(up.error.message, "photo"),"err"); return; }
     const pub=sb.storage.from("dishes").getPublicUrl(path);
     const photo_url=pub.data.publicUrl;
-    const desc=clean(document.getElementById("postDesc")?document.getElementById("postDesc").value:d.description).slice(0,500);
+    const desc=clean(d.description).slice(0,500);
     const {error}=await sb.from("posts").insert({
       author:currentUser.id, recipe_id:d.recipeId, recipe_name:d.recipeName, emoji:d.emoji,
       photo_path:path, photo_url, description:desc, visibility:d.visibility
     });
-    if(error){ postBusy=false; renderPostComposer("La publication a échoué. Réessaie.","err"); return; }
+    if(error){ postBusy=false; renderPostComposer(tradPost(error.message, "post"),"err"); return; }
     postBusy=false; closePostComposer();
     state.social.feedLoaded=false;    // le fil se rechargera avec le nouveau post
     toast("✅ Plat publié !");
-  }catch(e){ postBusy=false; renderPostComposer("Publication impossible pour le moment.","err"); }
+  }catch(e){ postBusy=false; renderPostComposer("Publication impossible : "+(e&&e.message?e.message:e),"err"); }
+}
+// traduit les erreurs de publication en message clair, et garde le détail technique pour diagnostic
+function tradPost(m, quoi){
+  const s=String(m||"").toLowerCase();
+  if(s.includes("bucket not found")) return "L'espace photo « dishes » n'existe pas encore dans Supabase (Storage → New bucket, en public).";
+  if(s.includes("row-level security")||s.includes("violates")||s.includes("permission")) return (quoi==="photo"
+    ? "Envoi de photo refusé : les droits d'upload ne sont pas encore configurés (règles storage.objects)."
+    : "Publication refusée : la table « posts » n'est pas encore configurée (RLS/SQL non exécuté).");
+  if(s.includes("does not exist")||s.includes("schema cache")||s.includes("relation")) return "La table « posts » n'existe pas encore — exécute le SQL dans Supabase.";
+  return (quoi==="photo"?"Envoi de la photo impossible : ":"Publication impossible : ")+m;
+}
+// convertit un data-URL en Blob (repli si canvas.toBlob n'est pas dispo)
+function dataUrlToBlob(dataUrl){
+  try{
+    const [head,b64]=dataUrl.split(","); const bin=atob(b64);
+    const arr=new Uint8Array(bin.length); for(let i=0;i<bin.length;i++) arr[i]=bin.charCodeAt(i);
+    return new Blob([arr], {type:(head.match(/:(.*?);/)||[,"image/jpeg"])[1]});
+  }catch(e){ return null; }
 }
 // compresse une photo de plat (plus grande que l'avatar) en Blob + aperçu
 function compressPhoto(file, cb){
-  if(!file || !/^image\//.test(file.type)){ cb(null); return; }
+  // certains appareils photo renvoient un type MIME vide : on n'exclut que ce qui est clairement non-image
+  if(!file || (file.type && !/^image\//.test(file.type))){ cb(null); return; }
   const img=new Image(), url=URL.createObjectURL(file);
   img.onload=()=>{
-    const max=1080; let w=img.naturalWidth, h=img.naturalHeight;
-    const sc=Math.min(1, max/Math.max(w,h)); w=Math.round(w*sc); h=Math.round(h*sc);
-    const cv=document.createElement("canvas"); cv.width=w; cv.height=h;
-    cv.getContext("2d").drawImage(img,0,0,w,h);
-    URL.revokeObjectURL(url);
-    const dataUrl=cv.toDataURL("image/jpeg",0.82);
-    cv.toBlob(b=>cb({dataUrl, blob:b||null}), "image/jpeg", 0.82);
+    try{
+      const max=1080; let w=img.naturalWidth||img.width, h=img.naturalHeight||img.height;
+      if(!w||!h){ URL.revokeObjectURL(url); cb(null); return; }
+      const sc=Math.min(1, max/Math.max(w,h)); w=Math.round(w*sc); h=Math.round(h*sc);
+      const cv=document.createElement("canvas"); cv.width=w; cv.height=h;
+      cv.getContext("2d").drawImage(img,0,0,w,h);
+      URL.revokeObjectURL(url);
+      const dataUrl=cv.toDataURL("image/jpeg",0.82);
+      if(cv.toBlob) cv.toBlob(b=>cb({dataUrl, blob:b||dataUrlToBlob(dataUrl)}), "image/jpeg", 0.82);
+      else cb({dataUrl, blob:dataUrlToBlob(dataUrl)});
+    }catch(e){ cb(null); }
   };
   img.onerror=()=>{ URL.revokeObjectURL(url); cb(null); };
   img.src=url;
