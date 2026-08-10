@@ -100,6 +100,32 @@
   .clearfilters{margin-top:14px;padding:10px 18px;border-radius:999px;background:var(--card);border:1.5px solid var(--line);font-size:13.5px;font-weight:700;color:var(--ink)}
 
   .sectionlabel{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 2px 12px}
+  .hello{font-family:var(--disp);font-weight:800;font-size:20px;letter-spacing:-.02em;margin:4px 2px 0}
+
+  /* étagère « Recommandé pour toi » : défilement horizontal avec la carte suivante qui dépasse */
+  .shelf{display:flex;gap:11px;overflow-x:auto;margin:0 -18px 2px;padding:2px 18px 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .shelf::-webkit-scrollbar{display:none}
+  .rcard{flex:0 0 152px;background:var(--card);border:1px solid rgba(234,227,216,.7);border-radius:16px;padding:12px;box-shadow:var(--shadow-soft);text-align:left;display:flex;flex-direction:column;gap:7px;transition:transform .12s}
+  .rcard:active{transform:scale(.97)}
+  .rcard .remoji{width:100%;height:64px;border-radius:12px;background:var(--camel-tint);display:flex;align-items:center;justify-content:center;font-size:32px}
+  .rcard h4{font-family:var(--disp);font-weight:700;font-size:14px;margin:0;line-height:1.2;letter-spacing:-.01em}
+  .rcard .rmeta{font-size:11.5px;color:var(--muted)}
+  .rcard .rtag{font-size:11px;color:var(--basil);font-weight:700}
+
+  /* ---- social : amis ---- */
+  .viewtitle{font-family:var(--disp);font-weight:800;font-size:24px;margin:0 0 2px;letter-spacing:-.02em}
+  .viewsub{color:var(--muted);font-size:14px;margin:0 0 8px;line-height:1.5}
+  .frow{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:10px 12px;margin-bottom:9px;box-shadow:var(--shadow-soft)}
+  .frow .fav{width:40px;height:40px;flex:0 0 40px;border-radius:50%;background:var(--camel-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:800;font-size:16px;overflow:hidden}
+  .frow .fav img{width:100%;height:100%;object-fit:cover}
+  .frow .fname{flex:1;min-width:0;font-size:15px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .frow .factions{flex:0 0 auto;display:flex;gap:6px;align-items:center}
+  .fbtn{padding:8px 12px;border-radius:10px;font-size:13px;font-weight:700;border:1.5px solid var(--line);background:var(--card);color:var(--ink)}
+  .fbtn.ok{background:var(--basil);border-color:var(--basil);color:#fff}
+  .fbtn.no{background:var(--card);color:var(--muted)}
+  .fbtn:active{transform:scale(.96)}
+  .ftag{font-size:12.5px;font-weight:700;color:var(--muted);padding:0 4px}
+  .ftag.ok{color:var(--basil)}
 
   .card{background:var(--card);border-radius:var(--r);padding:14px;display:flex;gap:14px;align-items:center;margin-bottom:12px;box-shadow:var(--shadow-soft);border:1px solid rgba(234,227,216,.7);transition:transform .12s, box-shadow .12s;text-align:left;width:100%}
   .card:active{transform:scale(.985)}
@@ -250,10 +276,13 @@
     100%{transform:scaleY(1)}
   }
   .nav .thumb.moving{animation:thumbSquash .5s cubic-bezier(.34,.9,.3,1)}
-  .nav button{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:11px;
-       padding:9px 15px;border-radius:999px;color:rgba(43,42,40,.70);
+  .nav button{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:9px;
+       padding:9px 14px;border-radius:999px;color:rgba(43,42,40,.70);
        font-size:12px;font-weight:700;letter-spacing:.045em;text-transform:uppercase;white-space:nowrap;
        transition:color .3s}
+  /* 4 onglets : seul l'onglet actif montre son libellé, les autres restent en icône — ça tient sur mobile */
+  .nav button .lbl{display:none}
+  .nav button.active .lbl{display:inline}
   /* brun profond plutôt que le camel clair : sur sa propre capsule teintée,
      le camel n'aurait pas assez de contraste pour du texte de 12 px */
   .nav button.active{color:#6E5133}
@@ -472,12 +501,6 @@
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
       <input type="search" id="search" placeholder="Rechercher une recette, un plat..." autocomplete="off">
     </div>
-    <div class="quickpick" id="quickWrap">
-      <select id="quickpick" aria-label="Choisir une recette">
-        <option value="">Choisir une recette dans le menu...</option>
-      </select>
-      <span class="chev">▾</span>
-    </div>
   </div>
   <div class="scroll" id="scroll"></div>
 </div>
@@ -486,15 +509,19 @@
   <span class="thumb" id="navThumb"></span>
   <button data-view="home" class="active">
     <span class="ni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></span>
-    Accueil
+    <span class="lbl">Accueil</span>
   </button>
   <button data-view="fridge">
     <span class="ni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M6 10h12"/><path d="M9 5.5v2"/><path d="M9 13.5v2.5"/></svg><span class="navbadge" id="fridgeBadge" style="display:none"></span></span>
-    Frigo
+    <span class="lbl">Frigo</span>
   </button>
   <button data-view="shopping">
     <span class="ni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h2l2.2 12.4a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L23 8H6.2"/><circle cx="10" cy="21" r="1"/><circle cx="19" cy="21" r="1"/></svg><span class="navbadge" id="shopBadge" style="display:none"></span></span>
-    Courses
+    <span class="lbl">Courses</span>
+  </button>
+  <button data-view="social">
+    <span class="ni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><circle cx="17.5" cy="9" r="2.6"/><path d="M16 15.2c2.6.2 4.5 2 4.5 4.8"/></svg><span class="navbadge" id="socialBadge" style="display:none"></span></span>
+    <span class="lbl">Social</span>
   </button>
 </div>
 
@@ -1663,7 +1690,9 @@ const Store = {
 };
 
 /* ---------- état ---------- */
-const state = { view:"home", search:"", filter:"Tous", onlyCookable:false, onlyPerso:false, airfryer:false, micro:false, fridge:[], shopping:[], perso:[], profile:{pseudo:"",avatar:""}, stats:{cooked:0,byRecipe:{},firstAt:null,lastAt:null}, currentPortions:0, cooked:false, confirmCook:false };
+const state = { view:"home", search:"", filter:"Tous", onlyCookable:false, onlyPerso:false, airfryer:false, micro:false, fridge:[], shopping:[], perso:[], profile:{pseudo:"",avatar:""}, stats:{cooked:0,byRecipe:{},firstAt:null,lastAt:null},
+  social:{loaded:false, loading:false, friends:[], incoming:[], outgoing:[], q:"", results:null, searching:false},
+  currentPortions:0, cooked:false, confirmCook:false };
 
 /* Les recettes personnelles ont exactement la même forme que celles du catalogue :
    tout ce qui suit — filtres, recherche, statut des ingrédients, débit du frigo,
@@ -1683,7 +1712,7 @@ const COMMON = [
 ];
 
 const scrollEl = document.getElementById("scroll");
-const VIEWS = ["home","fridge","shopping"];
+const VIEWS = ["home","fridge","shopping","social"];
 let pageDir = 0;   // sens du glissement au prochain rendu : +1 vers la droite, -1 vers la gauche, 0 aucun
 
 /* Bascule la matière du menu quand un aplat sombre passe dessous.
@@ -1766,7 +1795,6 @@ function setView(v){
   state.view=v;
   document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active", b.dataset.view===v));
   document.getElementById("searchWrap").style.display = v==="home"?"":"none";
-  document.getElementById("quickWrap").style.display = v==="home"?"":"none";
   scrollEl.scrollTop=0;
   render();
   moveThumb(true);            // seul cas où la capsule doit s'étirer
@@ -1776,6 +1804,7 @@ function render(){
   if(state.view==="home") renderHome();
   else if(state.view==="fridge") renderFridge();
   else if(state.view==="shopping") renderShopping();
+  else if(state.view==="social") renderSocial();
   updateBadges();
   queueNavMaterial();
 }
@@ -1785,6 +1814,9 @@ function updateBadges(){
   const sb=document.getElementById("shopBadge");
   const n=state.shopping.filter(s=>!s.checked).length;
   if(n){ sb.style.display="flex"; sb.textContent=n; } else sb.style.display="none";
+  const soc=document.getElementById("socialBadge");
+  const ni=state.social.incoming.length;   // demandes d'amis reçues
+  if(ni){ soc.style.display="flex"; soc.textContent=ni; } else soc.style.display="none";
 }
 
 /* ---------- ACCUEIL ---------- */
@@ -1805,13 +1837,72 @@ function filteredRecipes(){
     return true;
   });
 }
+// recommandations d'après l'historique : recettes NON encore cuisinées qui
+// partagent des ingrédients et des catégories avec ce que l'utilisateur cuisine.
+function recommendations(max){
+  const by=state.stats.byRecipe||{};
+  const cookedIds=Object.keys(by);
+  if(!cookedIds.length) return [];
+  const ingW={}, catW={};
+  cookedIds.forEach(id=>{
+    const r=findRecipe(id); if(!r) return;
+    const w=by[id]||1;
+    catW[r.cat]=(catW[r.cat]||0)+w;
+    r.ing.forEach(i=>keywords(i.n).forEach(k=>{ ingW[k]=(ingW[k]||0)+w; }));
+  });
+  const scored=[];
+  allRecipes().forEach(r=>{
+    if(by[r.id]) return;                 // déjà cuisinée → on propose de la nouveauté
+    let s=0; const vus={};
+    r.ing.forEach(i=>keywords(i.n).forEach(k=>{ if(ingW[k] && !vus[k]){ s+=ingW[k]; vus[k]=1; } }));
+    s = s/Math.sqrt(r.ing.length||1);    // évite que les recettes à rallonge dominent
+    if(catW[r.cat]) s += catW[r.cat]*0.4;
+    if(s>0) scored.push({r,s});
+  });
+  scored.sort((a,b)=>b.s-a.s);
+  return scored.slice(0, max||8).map(x=>x.r);
+}
+// carte pleine largeur d'une recette (liste principale)
+function cardHTML(r){
+  const miss=missingFor(r), v=viewOf(r), totalTime=r.prep+v.cuisson;
+  let badge;
+  if(!state.fridge.length) badge=`<span class="badge neutral">${r.ing.length} ingrédients</span>`;
+  else if(miss.length===0) badge=`<span class="badge ready">✓ Prêt à cuisiner</span>`;
+  else badge=`<span class="badge miss">Il te manque ${miss.length} ingrédient${miss.length>1?"s":""}</span>`;
+  if(v.af) badge+=`<span class="badge af">🍟 ${v.af.t}°C</span>`;
+  if(v.mo) badge+=`<span class="badge micro">🔆 ${v.mo.min} min</span>`;
+  if(r.perso) badge+=`<span class="badge perso">✏️ Ma recette</span>`;
+  return `<button class="card" data-recipe="${esc(r.id)}">
+      <div class="emoji">${esc(r.emoji)}</div>
+      <div class="info">
+        <h3>${esc(r.nom)}</h3>
+        <div class="meta"><span>🕒 ${totalTime} min</span><span>🍴 ${esc(r.diff)}</span><span>👥 ${r.portions}</span></div>
+        <div class="status">${badge}</div>
+      </div>
+    </button>`;
+}
+// carte compacte pour l'étagère « Recommandé pour toi »
+function recoCardHTML(r){
+  const cookable = state.fridge.length && missingFor(r).length===0;
+  return `<button class="rcard" data-recipe="${esc(r.id)}">
+      <div class="remoji">${esc(r.emoji)}</div>
+      <h4>${esc(r.nom)}</h4>
+      <div class="rmeta">🕒 ${r.prep+viewOf(r).cuisson} min · ${esc(r.cat)}</div>
+      ${cookable?`<div class="rtag">✓ Prêt à cuisiner</div>`:``}
+    </button>`;
+}
 function renderHome(){
   const toutes = allRecipes();
   const pool = state.micro ? toutes.filter(moOk) : state.airfryer ? toutes.filter(afOk) : toutes;
   const cookableCount = pool.filter(r=>missingFor(r).length===0).length;
   const cats=["Tous", ...Array.from(new Set(toutes.map(r=>r.cat)))];
   const list=filteredRecipes();
+  // vue par défaut = aucun filtre actif : c'est là qu'on montre les recommandations
+  const vueDefaut = state.filter==="Tous" && !norm(state.search) && !state.onlyCookable && !state.onlyPerso && !state.airfryer && !state.micro;
+  const recos = vueDefaut ? recommendations(8) : [];
+
   let html=`
+    ${currentUser?`<div class="hello">Bonjour ${esc(displayName())} 👋</div>`:""}
     <div class="pantry-banner">
       <div class="pb-txt">
         <div class="pb-num">${state.fridge.length} ingrédient${state.fridge.length>1?"s":""}</div>
@@ -1828,9 +1919,16 @@ function renderHome(){
     <div class="cats">
       ${cats.map(c=>`<button class="cat ${state.filter===c?"active":""}" data-cat="${esc(c)}">${esc(c)}</button>`).join("")}
     </div>
-    <div class="sectionlabel">${list.length} recette${list.length>1?"s":""}</div>
-    <button class="addcard" id="addRecipe">＋ Ajouter ma recette</button>
   `;
+
+  if(recos.length){
+    html+=`<div class="sectionlabel">✨ Recommandé pour toi</div>
+      <div class="shelf">${recos.map(recoCardHTML).join("")}</div>`;
+  }
+
+  html+=`<div class="sectionlabel">${vueDefaut?"Toutes les recettes · "+list.length:list.length+" recette"+(list.length>1?"s":"")}</div>
+    <button class="addcard" id="addRecipe">＋ Ajouter ma recette</button>`;
+
   if(!list.length){
     const actifs=[];
     if(state.search) actifs.push("la recherche « "+esc(state.search)+" »");
@@ -1842,26 +1940,7 @@ function renderHome(){
     html+=`<div class="empty"><div class="big">🍽️</div><p>Aucune recette ne correspond.</p>
       ${actifs.length?`<p>Filtres actifs : ${actifs.join(", ")}.</p><button class="clearfilters" id="clearFilters">Tout réafficher</button>`:`<p>Essaie un autre mot.</p>`}</div>`;
   } else {
-    html+=list.map(r=>{
-      const miss=missingFor(r);
-      const v=viewOf(r);
-      const totalTime=r.prep+v.cuisson;
-      let badge;
-      if(!state.fridge.length) badge=`<span class="badge neutral">${r.ing.length} ingrédients</span>`;
-      else if(miss.length===0) badge=`<span class="badge ready">✓ Prêt à cuisiner</span>`;
-      else badge=`<span class="badge miss">Il te manque ${miss.length} ingrédient${miss.length>1?"s":""}</span>`;
-      if(v.af) badge+=`<span class="badge af">🍟 ${v.af.t}°C</span>`;
-      if(v.mo) badge+=`<span class="badge micro">🔆 ${v.mo.min} min</span>`;
-      if(r.perso) badge+=`<span class="badge perso">✏️ Ma recette</span>`;
-      return `<button class="card" data-recipe="${esc(r.id)}">
-          <div class="emoji">${esc(r.emoji)}</div>
-          <div class="info">
-            <h3>${esc(r.nom)}</h3>
-            <div class="meta"><span>🕒 ${totalTime} min</span><span>🍴 ${esc(r.diff)}</span><span>👥 ${r.portions}</span></div>
-            <div class="status">${badge}</div>
-          </div>
-        </button>`;
-    }).join("");
+    html+=list.map(cardHTML).join("");
   }
   setPage(html);
 }
@@ -1923,6 +2002,144 @@ function renderShopping(){
         <button class="cdel" data-del-shop="${s.id}" aria-label="Supprimer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></button>
       </div>`).join("");
     html+=`<div class="course-actions"><button class="ca primary" id="stockBtn" ${bought?"":"disabled"}>🧊 Ranger ${bought?"("+bought+")":""} dans le frigo</button><button class="ca" id="clearBtn">Tout effacer</button></div>`;
+  }
+  setPage(html);
+}
+
+/* ---------- SOCIAL : profils publics & amis (étape 1) ----------
+   Contrairement au reste (données privées), ces échanges sont partagés entre
+   comptes : tout passe par les tables `profiles` et `friendships`, dont les règles
+   RLS garantissent qu'on ne voit/modifie que ce qui nous concerne. */
+
+// miroir du profil dans la table publique `profiles`, pour être trouvable par pseudo
+async function pushProfile(){
+  if(!cloudActif()) return;
+  try{
+    await sb.from("profiles").upsert({
+      id: currentUser.id,
+      pseudo: (state.profile.pseudo||displayName()),
+      avatar: (state.profile.avatar||""),
+      updated_at: new Date().toISOString()
+    });
+  }catch(e){}
+}
+
+// rend l'avatar d'une autre personne (photo, emoji, ou initiale)
+function avatarFor(p){
+  const a=(p&&p.avatar)||"";
+  if(a.slice(0,5)==="data:") return `<img src="${esc(a)}" alt="">`;
+  if(a) return esc(a);
+  return esc(((p&&p.pseudo)||"?").charAt(0).toUpperCase());
+}
+function personRow(p, actions){
+  return `<div class="frow"><span class="fav">${avatarFor(p)}</span><span class="fname">${esc(p.pseudo||"?")}</span><span class="factions">${actions}</span></div>`;
+}
+function relationWith(id){
+  const s=state.social;
+  if(s.friends.some(f=>f.id===id)) return "friend";
+  if(s.incoming.some(f=>f.id===id)) return "incoming";
+  if(s.outgoing.some(f=>f.id===id)) return "outgoing";
+  return null;
+}
+
+// charge amis + demandes, avec les profils (pseudo/avatar) associés
+async function loadSocial(){
+  if(!cloudActif()){ state.social.loaded=true; return; }
+  if(state.social.loading) return;
+  state.social.loading=true;
+  try{
+    const me=currentUser.id;
+    const {data:links}=await sb.from("friendships").select("*").or("requester.eq."+me+",addressee.eq."+me);
+    const rows=links||[];
+    const ids=[...new Set(rows.map(r=> r.requester===me ? r.addressee : r.requester))];
+    const profs={};
+    if(ids.length){
+      const {data:pp}=await sb.from("profiles").select("id,pseudo,avatar").in("id",ids);
+      (pp||[]).forEach(p=>profs[p.id]=p);
+    }
+    const prof=id=>profs[id]||{id,pseudo:"?",avatar:""};
+    state.social.friends  = rows.filter(r=>r.status==="accepted").map(r=>prof(r.requester===me?r.addressee:r.requester));
+    state.social.incoming = rows.filter(r=>r.status==="pending"&&r.addressee===me).map(r=>prof(r.requester));
+    state.social.outgoing = rows.filter(r=>r.status==="pending"&&r.requester===me).map(r=>prof(r.addressee));
+  }catch(e){}
+  state.social.loading=false; state.social.loaded=true;
+}
+
+async function searchProfiles(){
+  const q=(state.social.q||"").trim();
+  if(!cloudActif() || q.length<2){ state.social.results=null; renderSocial(); return; }
+  state.social.searching=true; renderSocial();
+  let res=[];
+  try{
+    const {data}=await sb.from("profiles").select("id,pseudo,avatar").ilike("pseudo", q+"%").neq("id",currentUser.id).limit(20);
+    res=data||[];
+  }catch(e){}
+  state.social.searching=false; state.social.results=res;
+  renderSocial();
+}
+async function addFriend(id){
+  if(!cloudActif()) return;
+  if(relationWith(id)==="incoming"){ return acceptFriend(id); }   // l'autre m'avait déjà invité
+  try{ await sb.from("friendships").insert({requester:currentUser.id, addressee:id, status:"pending"}); }catch(e){}
+  await loadSocial(); renderSocial(); updateBadges(); toast("Demande d'ami envoyée");
+}
+async function acceptFriend(id){
+  if(!cloudActif()) return;
+  try{ await sb.from("friendships").update({status:"accepted"}).eq("requester",id).eq("addressee",currentUser.id); }catch(e){}
+  await loadSocial(); renderSocial(); updateBadges(); toast("Vous êtes amis 🎉");
+}
+async function removeFriend(id){
+  if(!cloudActif()) return;
+  const me=currentUser.id;
+  try{ await sb.from("friendships").delete().or("and(requester.eq."+me+",addressee.eq."+id+"),and(requester.eq."+id+",addressee.eq."+me+")"); }catch(e){}
+  await loadSocial(); renderSocial(); updateBadges();
+}
+
+function renderSocial(){
+  if(!currentUser){
+    setPage(`<div style="height:calc(16px + env(safe-area-inset-top))"></div>
+      <h2 class="viewtitle">Social</h2>
+      <div class="empty"><div class="big">👥</div>
+        <p>Connecte-toi pour retrouver tes amis et partager tes plats.</p>
+        <button class="clearfilters" id="socialLogin">Se connecter</button></div>`);
+    return;
+  }
+  if(!state.social.loaded){
+    loadSocial().then(()=>{ if(state.view==="social") renderSocial(); updateBadges(); });
+  }
+  const s=state.social;
+  let html=`<div style="height:calc(16px + env(safe-area-inset-top))"></div>
+    <h2 class="viewtitle">Social</h2>
+    <p class="viewsub">Trouve tes amis par leur pseudo. Le fil des plats en photo arrive à l'étape suivante.</p>
+    <div class="add-row"><input type="search" id="friendSearch" placeholder="Rechercher un pseudo…" autocomplete="off" value="${esc(s.q)}"><button class="add-btn" id="friendSearchBtn">Chercher</button></div>`;
+
+  if(s.searching){
+    html+=`<div class="sectionlabel">Recherche…</div>`;
+  } else if(s.results!==null){
+    html+=`<div class="sectionlabel">Résultats</div>`;
+    if(!s.results.length) html+=`<p class="viewsub">Aucun pseudo ne correspond. Ton ami doit avoir créé un compte et choisi un pseudo (dans son menu de compte).</p>`;
+    else html+=s.results.map(p=>{
+      const rel=relationWith(p.id);
+      const act = rel==="friend" ? `<span class="ftag ok">✓ Ami</span>`
+        : rel==="outgoing" ? `<span class="ftag">Envoyée</span>`
+        : rel==="incoming" ? `<button class="fbtn ok" data-accept="${esc(p.id)}">Accepter</button>`
+        : `<button class="fbtn ok" data-add="${esc(p.id)}">＋ Ajouter</button>`;
+      return personRow(p, act);
+    }).join("");
+  }
+
+  if(s.incoming.length){
+    html+=`<div class="sectionlabel">Demandes reçues · ${s.incoming.length}</div>`;
+    html+=s.incoming.map(p=>personRow(p, `<button class="fbtn ok" data-accept="${esc(p.id)}">Accepter</button><button class="fbtn no" data-remove="${esc(p.id)}" aria-label="Refuser">✕</button>`)).join("");
+  }
+
+  html+=`<div class="sectionlabel">Mes amis${s.friends.length?" · "+s.friends.length:""}</div>`;
+  if(!s.friends.length) html+=`<p class="viewsub">Pas encore d'amis. Cherche un pseudo ci-dessus pour commencer.</p>`;
+  else html+=s.friends.map(p=>personRow(p, `<button class="fbtn no" data-remove="${esc(p.id)}">Retirer</button>`)).join("");
+
+  if(s.outgoing.length){
+    html+=`<div class="sectionlabel">Demandes envoyées</div>`;
+    html+=s.outgoing.map(p=>personRow(p, `<span class="ftag">En attente</span><button class="fbtn no" data-remove="${esc(p.id)}">Annuler</button>`)).join("");
   }
   setPage(html);
 }
@@ -2397,7 +2614,7 @@ function readRecipeLink(raw){
 let uid=1;
 function saveFridge(){ Store.set("gabcook_fridge", state.fridge); }
 function saveShopping(){ Store.set("gabcook_shopping", state.shopping); }
-function saveProfile(){ Store.set("gabcook_profile", state.profile); }
+function saveProfile(){ Store.set("gabcook_profile", state.profile); pushProfile(); }
 function saveStats(){ Store.set("gabcook_stats", state.stats); }
 
 function addToFridge(n,q,u){
@@ -2749,7 +2966,6 @@ function renderAuth(msg, cls){
         <div class="statc"><b>${cooked}</b><span>plat${cooked>1?"s":""} cuisiné${cooked>1?"s":""}</span></div>
         <div class="statc"><b>${distinct}</b><span>recette${distinct>1?"s":""} différente${distinct>1?"s":""}</span></div>
         ${fav?`<div class="statc wide"><b style="font-size:15px">⭐ ${esc(fav.nom)}</b><span>ta préférée — ${fav.n} fois</span></div>`:""}
-        <div class="statc wide"><b style="font-size:14px;font-weight:700">☁️ Synchronisé${state.stats.firstAt?" · depuis le "+dateFr(state.stats.firstAt):""}</b><span>tes données te suivent sur tous tes appareils</span></div>
       </div>
       ${msg?`<div class="authmsg ${cls||""}">${msg}</div>`:""}
       <div class="cf-row" style="margin-top:14px">
@@ -2811,8 +3027,10 @@ async function doLogout(){
   if(!sb) return;
   try{ await sb.auth.signOut(); }catch(e){}
   currentUser=null; _lastUid=null;
+  state.social={loaded:false, loading:false, friends:[], incoming:[], outgoing:[], q:"", results:null, searching:false};
   await hydrate(); updateAccountUI(); closeAuth();
-  render();
+  if(state.view==="social") setView("home"); else render();
+  updateBadges();
   toast("Déconnecté — retour au frigo de cet appareil");
 }
 
@@ -2986,18 +3204,9 @@ document.getElementById("search").addEventListener("input",e=>{
   state.search=e.target.value;
   if(state.view==="home") renderHome();
 });
-const quick=document.getElementById("quickpick");
-// reconstruit à chaque changement du carnet personnel, pas seulement au chargement
-function fillQuickpick(){
-  while(quick.options.length>1) quick.remove(1);
-  allRecipes().slice().sort((a,b)=>a.nom.localeCompare(b.nom)).forEach(r=>{
-    const o=document.createElement("option");
-    o.value=r.id; o.textContent=r.emoji+"  "+r.nom+(r.perso?"  ·  ma recette":"");
-    quick.appendChild(o);
-  });
-}
-fillQuickpick();
-quick.addEventListener("change",e=>{ if(e.target.value){ openRecipe(e.target.value); e.target.value=""; } });
+// le menu déroulant a été retiré (redondant avec la recherche et la liste) ;
+// on garde la fonction inoffensive pour ne pas toucher tous les appelants
+function fillQuickpick(){}
 
 scrollEl.addEventListener("click",e=>{
   const card=e.target.closest("[data-recipe]");
@@ -3072,6 +3281,15 @@ scrollEl.addEventListener("click",e=>{
     return;
   }
   if(e.target.closest("#addRecipe")){ openEditor(); return; }
+  // ----- social -----
+  if(e.target.closest("#socialLogin")){ openAuth(); return; }
+  if(e.target.closest("#friendSearchBtn")){
+    const inp=document.getElementById("friendSearch"); if(inp) state.social.q=inp.value;
+    searchProfiles(); return;
+  }
+  const add=e.target.closest("[data-add]"); if(add){ addFriend(add.dataset.add); return; }
+  const acc=e.target.closest("[data-accept]"); if(acc){ acceptFriend(acc.dataset.accept); return; }
+  const rem=e.target.closest("[data-remove]"); if(rem){ removeFriend(rem.dataset.remove); return; }
 });
 
 scrollEl.addEventListener("change",e=>{
@@ -3094,7 +3312,10 @@ scrollEl.addEventListener("keydown",e=>{
     if(v && !state.shopping.some(s=>norm(s.base)===norm(v))){ state.shopping.push({id:uid++,label:v,base:v,q:null,u:"",from:"",checked:false}); saveShopping(); }
     e.target.value=""; renderShopping(); updateBadges();
   }
+  if(e.target.id==="friendSearch"){ e.preventDefault(); state.social.q=e.target.value; searchProfiles(); }
 });
+// garde le champ de recherche d'amis en mémoire pendant la frappe (sans relancer de requête)
+scrollEl.addEventListener("input",e=>{ if(e.target.id==="friendSearch") state.social.q=e.target.value; });
 
 detailScroll.addEventListener("click",e=>{
   if(e.target.closest("#backBtn")){ closeRecipe(); return; }
@@ -3177,6 +3398,13 @@ async function handleAuth(session){
   currentUser = u;
   if(seConnecte) await seedCloudFromLocal();
   await hydrate();
+  // social : on repart de zéro pour ce compte et on se rend trouvable par pseudo
+  state.social={loaded:false, loading:false, friends:[], incoming:[], outgoing:[], q:"", results:null, searching:false};
+  if(currentUser){
+    if(!state.profile.pseudo){ state.profile.pseudo=(currentUser.email||"").split("@")[0]; saveProfile(); }
+    else pushProfile();
+    loadSocial().then(()=>{ updateBadges(); if(state.view==="social") renderSocial(); });
+  }
   updateAccountUI();
   closeAuth();
   if(currentUser && state.view==="home") setView("home"); else render();
@@ -3193,6 +3421,12 @@ async function handleAuth(session){
     }catch(e){}
   }
   await hydrate();
+  // session déjà active au chargement : se rendre trouvable + charger les amis
+  if(currentUser){
+    if(!state.profile.pseudo){ state.profile.pseudo=(currentUser.email||"").split("@")[0]; saveProfile(); }
+    else pushProfile();
+    loadSocial().then(()=>{ updateBadges(); if(state.view==="social") renderSocial(); });
+  }
   updateAccountUI();
   render();
   moveThumb(false);
