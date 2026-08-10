@@ -158,6 +158,27 @@
   .postbody .prec{font-family:var(--disp);font-weight:700;font-size:14.5px;margin-bottom:3px}
   .postbody .pdesc{font-size:14px;line-height:1.5;color:var(--ink)}
   .postbody .pdel{margin-top:9px;font-size:12.5px;color:var(--tomato);font-weight:700;background:none;border:none;padding:2px}
+  /* actions d'un post : j'aime + commenter */
+  .postacts{display:flex;align-items:center;gap:8px;padding:4px 13px 12px}
+  .postacts .likebtn,.postacts .combtn{display:inline-flex;align-items:center;gap:5px;background:var(--paper);border:1.5px solid var(--line);border-radius:999px;padding:7px 13px;font-size:14px;font-weight:700;color:var(--ink)}
+  .postacts .likebtn.on{background:var(--tomato-tint);border-color:#EBC3B8}
+  .postacts .likebtn:active,.postacts .combtn:active{transform:scale(.95)}
+  .postacts .cnt{font-size:13px;color:var(--muted);font-weight:700}
+  .postacts .pdel{margin-left:auto;font-size:12.5px;color:var(--tomato);font-weight:700;background:none;border:none;padding:6px}
+  /* commentaires */
+  .comments{border-top:1px solid var(--line);padding:11px 13px}
+  .crow{display:flex;align-items:flex-start;gap:9px;margin-bottom:9px}
+  .crow .cav{width:28px;height:28px;flex:0 0 28px;border-radius:50%;background:var(--camel-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:800;font-size:12px;overflow:hidden}
+  .crow .cav img{width:100%;height:100%;object-fit:cover}
+  .crow .cbub{flex:1;min-width:0;font-size:14px;line-height:1.4}
+  .crow .cbub b{font-weight:700}
+  .crow .cdelc{flex:0 0 auto;background:none;border:none;color:#C9BFAE;font-size:12px;padding:2px 4px}
+  .cnone{font-size:13px;color:var(--muted);margin-bottom:9px}
+  .cadd{display:flex;gap:7px;margin-top:4px}
+  .cadd .cinput{flex:1;min-width:0;padding:10px 12px;border-radius:11px;border:1.5px solid var(--line);background:var(--paper);font-size:14px;outline:none}
+  .cadd .cinput:focus{border-color:var(--camel);background:#fff}
+  .cadd .csend{flex:0 0 auto;padding:0 14px;border-radius:11px;background:var(--camel);color:var(--ink);font-weight:700;font-size:13.5px}
+  .cadd .csend:active{background:var(--camel-deep);color:#fff}
 
   .card{background:var(--card);border-radius:var(--r);padding:14px;display:flex;gap:14px;align-items:center;margin-bottom:12px;box-shadow:var(--shadow-soft);border:1px solid rgba(234,227,216,.7);transition:transform .12s, box-shadow .12s;text-align:left;width:100%}
   .card:active{transform:scale(.985)}
@@ -1727,7 +1748,7 @@ const Store = {
 
 /* ---------- état ---------- */
 const state = { view:"home", search:"", filter:"Tous", onlyCookable:false, onlyPerso:false, airfryer:false, micro:false, fridge:[], shopping:[], perso:[], profile:{pseudo:"",avatar:""}, stats:{cooked:0,byRecipe:{},firstAt:null,lastAt:null},
-  social:{tab:"feed", loaded:false, loading:false, friends:[], incoming:[], outgoing:[], q:"", results:null, searching:false, posts:[], feedLoaded:false, feedLoading:false},
+  social:{tab:"feed", loaded:false, loading:false, friends:[], incoming:[], outgoing:[], q:"", results:null, searching:false, posts:[], feedLoaded:false, feedLoading:false, openComments:{}, commentDrafts:{}},
   currentPortions:0, cooked:false, confirmCook:false };
 
 /* Les recettes personnelles ont exactement la même forme que celles du catalogue :
@@ -2147,17 +2168,76 @@ async function loadFeed(){
   if(state.social.feedLoading) return;
   state.social.feedLoading=true;
   try{
+    const me=currentUser.id;
     const {data}=await sb.from("posts").select("*").order("created_at",{ascending:false}).limit(60);
     const rows=data||[];
-    const ids=[...new Set(rows.map(p=>p.author))];
+    const pids=rows.map(p=>p.id);
+    // réactions et commentaires des posts visibles, en deux requêtes groupées
+    let reacts=[], coms=[];
+    if(pids.length){
+      const r1=await sb.from("reactions").select("post_id,user_id").in("post_id",pids); reacts=r1.data||[];
+      const r2=await sb.from("comments").select("id,post_id,user_id,text,created_at").in("post_id",pids).order("created_at",{ascending:true}); coms=r2.data||[];
+    }
+    // profils de tous ceux à afficher (auteurs de posts + de commentaires)
+    const ids=[...new Set(rows.map(p=>p.author).concat(coms.map(c=>c.user_id)))];
     const profs={};
     if(ids.length){
       const {data:pp}=await sb.from("profiles").select("id,pseudo,avatar").in("id",ids);
       (pp||[]).forEach(p=>profs[p.id]=p);
     }
-    state.social.posts = rows.map(p=>({...p, prof: profs[p.author]||{pseudo:"?",avatar:""}}));
+    const prof=id=>profs[id]||{pseudo:"?",avatar:""};
+    const likeCount={}, liked={}, commentsBy={};
+    reacts.forEach(r=>{ likeCount[r.post_id]=(likeCount[r.post_id]||0)+1; if(r.user_id===me) liked[r.post_id]=true; });
+    coms.forEach(c=>{ (commentsBy[c.post_id]=commentsBy[c.post_id]||[]).push({...c, prof:prof(c.user_id)}); });
+    state.social.posts = rows.map(p=>({...p, prof:prof(p.author),
+      likeCount:likeCount[p.id]||0, liked:!!liked[p.id], comments:commentsBy[p.id]||[]}));
   }catch(e){}
   state.social.feedLoading=false; state.social.feedLoaded=true;
+}
+
+// ❤️ j'aime : mise à jour optimiste immédiate, puis écriture en base
+async function toggleLike(postId){
+  if(!cloudActif()) return;
+  const p=state.social.posts.find(x=>x.id===postId); if(!p) return;
+  const wasLiked=p.liked;
+  p.liked=!wasLiked; p.likeCount+= wasLiked?-1:1;
+  patchPostActions(p);
+  try{
+    if(wasLiked) await sb.from("reactions").delete().eq("post_id",postId).eq("user_id",currentUser.id);
+    else await sb.from("reactions").insert({post_id:postId, user_id:currentUser.id, emoji:"❤️"});
+  }catch(e){ p.liked=wasLiked; p.likeCount+= wasLiked?1:-1; patchPostActions(p); }
+}
+// met à jour le bouton like d'un post sans re-rendre tout le fil (évite le saut de défilement)
+function patchPostActions(p){
+  const el=scrollEl.querySelector('.post[data-post="'+CSS.escape(p.id)+'"] .likebtn');
+  if(!el) return;
+  el.classList.toggle("on", p.liked);
+  const hrt=el.querySelector(".hrt"); if(hrt) hrt.textContent = p.liked?"❤️":"🤍";
+  el.querySelector(".cnt").textContent = p.likeCount||"";
+}
+async function addComment(postId){
+  if(!cloudActif()) return;
+  const txt=clean((state.social.commentDrafts[postId]||"")).slice(0,500);
+  if(!txt) return;
+  const p=state.social.posts.find(x=>x.id===postId); if(!p) return;
+  state.social.commentDrafts[postId]="";
+  try{
+    const {data,error}=await sb.from("comments").insert({post_id:postId, user_id:currentUser.id, text:txt}).select().single();
+    if(error){ toast("Commentaire non envoyé"); return; }
+    p.comments.push({id:data.id, post_id:postId, user_id:currentUser.id, text:txt, created_at:data.created_at, prof:{pseudo:displayName(), avatar:state.profile.avatar}});
+    rerenderFeedKeepScroll();
+  }catch(e){ toast("Commentaire non envoyé"); }
+}
+async function deleteComment(postId, id){
+  if(!cloudActif()) return;
+  const p=state.social.posts.find(x=>x.id===postId); if(!p) return;
+  try{ await sb.from("comments").delete().eq("id",id); }catch(e){}
+  p.comments=p.comments.filter(c=>c.id!==id);
+  rerenderFeedKeepScroll();
+}
+// re-rend le fil en conservant la position de défilement
+function rerenderFeedKeepScroll(){
+  const y=scrollEl.scrollTop; renderSocial(); scrollEl.scrollTop=y;
 }
 async function deletePost(id){
   if(!cloudActif()) return;
@@ -2172,7 +2252,26 @@ async function deletePost(id){
 }
 function postCardHTML(p){
   const mine = currentUser && p.author===currentUser.id;
-  return `<div class="post">
+  const open = !!state.social.openComments[p.id];
+  const nc = p.comments.length;
+  let comHTML="";
+  if(open){
+    comHTML=`<div class="comments">
+      ${p.comments.map(c=>{
+        const cmine = currentUser && (c.user_id===currentUser.id || p.author===currentUser.id);
+        return `<div class="crow">
+          <span class="cav">${avatarFor(c.prof)}</span>
+          <span class="cbub"><b>${esc(c.prof.pseudo||"?")}</b> ${esc(c.text)}</span>
+          ${cmine?`<button class="cdelc" data-delcom="${esc(p.id)}|${esc(c.id)}" aria-label="Supprimer">✕</button>`:""}
+        </div>`;
+      }).join("") || `<div class="cnone">Sois le premier à commenter.</div>`}
+      <div class="cadd">
+        <input class="cinput" data-cinput="${esc(p.id)}" placeholder="Ajouter un commentaire…" value="${esc(state.social.commentDrafts[p.id]||"")}" autocomplete="off">
+        <button class="csend" data-csend="${esc(p.id)}">Envoyer</button>
+      </div>
+    </div>`;
+  }
+  return `<div class="post" data-post="${esc(p.id)}">
     <div class="posthead">
       <span class="fav">${avatarFor(p.prof)}</span>
       <span class="pwho"><b>${esc(p.prof.pseudo||"?")}</b><span>${esc(timeAgo(p.created_at))}</span></span>
@@ -2182,8 +2281,13 @@ function postCardHTML(p){
     <div class="postbody">
       ${p.recipe_name?`<div class="prec">${esc(p.emoji||"🍽️")} ${esc(p.recipe_name)}</div>`:""}
       ${p.description?`<div class="pdesc">${esc(p.description)}</div>`:""}
+    </div>
+    <div class="postacts">
+      <button class="likebtn${p.liked?" on":""}" data-like="${esc(p.id)}"><span class="hrt">${p.liked?"❤️":"🤍"}</span> <span class="cnt">${p.likeCount||""}</span></button>
+      <button class="combtn" data-comtoggle="${esc(p.id)}">💬 <span class="cnt">${nc||""}</span></button>
       ${mine?`<button class="pdel" data-delpost="${esc(p.id)}">Supprimer</button>`:""}
     </div>
+    ${comHTML}
   </div>`;
 }
 
@@ -3224,7 +3328,7 @@ async function doLogout(){
   if(!sb) return;
   try{ await sb.auth.signOut(); }catch(e){}
   currentUser=null; _lastUid=null;
-  state.social={tab:"feed", loaded:false, loading:false, friends:[], incoming:[], outgoing:[], q:"", results:null, searching:false, posts:[], feedLoaded:false, feedLoading:false};
+  state.social={tab:"feed", loaded:false, loading:false, friends:[], incoming:[], outgoing:[], q:"", results:null, searching:false, posts:[], feedLoaded:false, feedLoading:false, openComments:{}, commentDrafts:{}};
   await hydrate(); updateAccountUI(); closeAuth();
   if(state.view==="social") setView("home"); else render();
   updateBadges();
@@ -3509,6 +3613,11 @@ scrollEl.addEventListener("click",e=>{
   const acc=e.target.closest("[data-accept]"); if(acc){ acceptFriend(acc.dataset.accept); return; }
   const rem=e.target.closest("[data-remove]"); if(rem){ removeFriend(rem.dataset.remove); return; }
   const dp=e.target.closest("[data-delpost]"); if(dp){ deletePost(dp.dataset.delpost); return; }
+  const lk=e.target.closest("[data-like]"); if(lk){ toggleLike(lk.dataset.like); return; }
+  const ct=e.target.closest("[data-comtoggle]");
+  if(ct){ const id=ct.dataset.comtoggle; state.social.openComments[id]=!state.social.openComments[id]; rerenderFeedKeepScroll(); return; }
+  const cs=e.target.closest("[data-csend]"); if(cs){ addComment(cs.dataset.csend); return; }
+  const dc=e.target.closest("[data-delcom]"); if(dc){ const [pid,cid]=dc.dataset.delcom.split("|"); deleteComment(pid,cid); return; }
 });
 
 scrollEl.addEventListener("change",e=>{
@@ -3532,9 +3641,13 @@ scrollEl.addEventListener("keydown",e=>{
     e.target.value=""; renderShopping(); updateBadges();
   }
   if(e.target.id==="friendSearch"){ e.preventDefault(); state.social.q=e.target.value; searchProfiles(); }
+  if(e.target.dataset && e.target.dataset.cinput){ e.preventDefault(); state.social.commentDrafts[e.target.dataset.cinput]=e.target.value; addComment(e.target.dataset.cinput); }
 });
-// garde le champ de recherche d'amis en mémoire pendant la frappe (sans relancer de requête)
-scrollEl.addEventListener("input",e=>{ if(e.target.id==="friendSearch") state.social.q=e.target.value; });
+// mémorise la frappe (recherche d'amis + brouillon de commentaire) sans re-rendre
+scrollEl.addEventListener("input",e=>{
+  if(e.target.id==="friendSearch") state.social.q=e.target.value;
+  else if(e.target.dataset && e.target.dataset.cinput) state.social.commentDrafts[e.target.dataset.cinput]=e.target.value;
+});
 
 detailScroll.addEventListener("click",e=>{
   if(e.target.closest("#backBtn")){ closeRecipe(); return; }
@@ -3618,7 +3731,7 @@ async function handleAuth(session){
   if(seConnecte) await seedCloudFromLocal();
   await hydrate();
   // social : on repart de zéro pour ce compte et on se rend trouvable par pseudo
-  state.social={tab:"feed", loaded:false, loading:false, friends:[], incoming:[], outgoing:[], q:"", results:null, searching:false, posts:[], feedLoaded:false, feedLoading:false};
+  state.social={tab:"feed", loaded:false, loading:false, friends:[], incoming:[], outgoing:[], q:"", results:null, searching:false, posts:[], feedLoaded:false, feedLoading:false, openComments:{}, commentDrafts:{}};
   if(currentUser){
     if(!state.profile.pseudo){ state.profile.pseudo=(currentUser.email||"").split("@")[0]; saveProfile(); }
     else pushProfile();
