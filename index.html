@@ -519,21 +519,26 @@
   .pgcell:active{transform:scale(.96)}
 
   /* ---- page profil (plein écran, façon Instagram) ---- */
-  .prof-top{display:flex;align-items:center;gap:20px;padding:6px 4px 0}
-  .prof-av{width:86px;height:86px;flex:0 0 86px;border-radius:50%;background:var(--camel-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:800;font-size:36px;overflow:hidden}
-  .prof-av img{width:100%;height:100%;object-fit:cover}
-  .prof-stats{flex:1;display:flex;justify-content:space-around;text-align:center}
-  .prof-stats .st b{font-family:var(--disp);font-weight:800;font-size:20px;display:block;line-height:1}
-  .prof-stats .st span{font-size:12px;color:var(--muted)}
-  .prof-name{font-family:var(--disp);font-weight:800;font-size:18px;margin:14px 2px 2px;letter-spacing:-.01em}
-  .prof-bio{font-size:14px;line-height:1.5;color:var(--ink);margin:2px 2px 0;white-space:pre-wrap}
-  .prof-priv{font-size:12px;color:var(--muted);margin:6px 2px 0;display:inline-flex;align-items:center;gap:5px}
-  .prof-actions{display:flex;gap:8px;margin:16px 0 4px}
-  .prof-actions .act{flex:1;padding:11px;font-size:14px}
+  /* profil GabCook : bannière chaude + avatar rond centré qui déborde, stats en pastilles */
+  .prof-hero{height:120px;margin:0 -18px;background:linear-gradient(160deg,#C6A98A 0%,#A9885F 100%);position:relative;display:flex;justify-content:center}
+  .prof-bigav{position:absolute;bottom:-46px;width:100px;height:100px;border-radius:50%;background:var(--camel-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:800;font-size:42px;overflow:hidden;border:4px solid var(--paper);box-shadow:var(--shadow)}
+  .prof-bigav img{width:100%;height:100%;object-fit:cover}
+  .prof-name{font-family:var(--disp);font-weight:800;font-size:22px;margin:56px 2px 0;letter-spacing:-.02em;text-align:center}
+  .prof-bio{font-size:14px;line-height:1.5;color:var(--ink);margin:6px 24px 0;white-space:pre-wrap;text-align:center}
+  .prof-priv{font-size:12px;color:var(--muted);display:inline-flex;align-items:center;gap:5px;vertical-align:middle}
+  .prof-pills{display:flex;gap:9px;margin:16px 0 2px}
+  .pstat{flex:1;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:11px 6px;text-align:center;box-shadow:var(--shadow-soft)}
+  .pstat b{font-family:var(--disp);font-weight:800;font-size:21px;display:block;line-height:1;color:var(--ink)}
+  .pstat span{font-size:11px;color:var(--muted);font-weight:600}
+  .prof-actions{display:flex;gap:8px;margin:14px 0 4px}
+  .prof-actions .act{flex:1;padding:12px;font-size:14px}
   .prof-locked{text-align:center;color:var(--muted);padding:40px 20px}
   .prof-locked .big{font-size:36px;margin-bottom:8px}
-  .prof-sep{height:1px;background:var(--line);margin:18px 0 0}
-  .prof-gridlabel{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:16px 2px 12px;text-align:center}
+  .prof-gridlabel{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 2px 12px;text-align:center}
+  /* lien vers la recette dans le détail d'une publication */
+  .pv-recipe{display:inline-flex;align-items:center;gap:6px;background:var(--camel-tint);border:1px solid var(--camel-light);border-radius:11px;padding:8px 12px;font-family:var(--disp);font-weight:700;font-size:14px;color:var(--camel-deep);margin-bottom:8px}
+  .pv-recipe span{font-family:var(--sans);font-weight:600;font-size:12px;opacity:.8}
+  .pv-recipe:active{background:var(--camel-light)}
   .sharecard .act{margin-top:12px}
 
   /* ---- confirmation « j'ai cuisiné » quand il manque des ingrédients ---- */
@@ -620,6 +625,14 @@
     <h2 id="profTitle">Profil</h2>
   </div>
   <div class="ed-scroll" id="profScroll"></div>
+</div>
+
+<div class="editor" id="postView" aria-hidden="true">
+  <div class="ed-head">
+    <button class="backbtn" id="postViewBack" aria-label="Fermer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2B2A28" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <h2>Publication</h2>
+  </div>
+  <div class="ed-scroll" id="postViewScroll" style="padding:0 0 calc(28px + env(safe-area-inset-bottom))"></div>
 </div>
 
 <div class="sharebox" id="shareBox" hidden>
@@ -1785,6 +1798,7 @@ const state = { view:"home", search:"", filter:"Tous", onlyCookable:false, onlyP
   social:{tab:"feed", loaded:false, loading:false, friends:[], incoming:[], outgoing:[], q:"", results:null, searching:false, posts:[], feedLoaded:false, feedLoading:false, openComments:{}, commentDrafts:{}},
   gallery:{loaded:false, loading:false, posts:[]},
   profileView:{open:false, id:null, loading:false, data:null, posts:[], friendCount:0},
+  postView:{open:false, id:null, post:null, loading:false, commentDraft:""},
   currentPortions:0, cooked:false, confirmCook:false };
 
 /* Les recettes personnelles ont exactement la même forme que celles du catalogue :
@@ -2307,44 +2321,147 @@ function renderProfile(){
   const av = d.avatar && d.avatar.slice(0,5)==="data:" ? `<img src="${esc(d.avatar)}" alt="">` : (d.avatar?esc(d.avatar):esc((d.pseudo||"?").charAt(0).toUpperCase()));
   const pubCount = pv.posts.length;
 
-  let stats = `<div class="st"><b>${pubCount}</b><span>publication${pubCount>1?"s":""}</span></div>`;
+  // pastilles de stats, façon GabCook (pas la rangée plate d'Instagram)
+  let stats = `<div class="pstat"><b>${pubCount}</b><span>🍽️ plat${pubCount>1?"s":""}</span></div>`;
   if(mine){
-    stats += `<div class="st"><b>${pv.friendCount}</b><span>ami${pv.friendCount>1?"s":""}</span></div>`
-           + `<div class="st"><b>${state.stats.cooked||0}</b><span>cuisinés</span></div>`;
+    stats += `<div class="pstat"><b>${pv.friendCount}</b><span>👥 ami${pv.friendCount>1?"s":""}</span></div>`
+           + `<div class="pstat"><b>${state.stats.cooked||0}</b><span>🔥 cuisinés</span></div>`;
   }
 
   let actions="";
   if(mine){
-    actions = `<button class="act cf-no" id="profEdit">Modifier le profil</button>
+    actions = `<button class="act cf-no" id="profEdit">✏️ Modifier</button>
                <button class="act cf-no" id="profLogout">Se déconnecter</button>`;
   } else {
-    const b = rel==="friend" ? `<button class="act cf-no" data-remove="${esc(pv.id)}">✓ Amis</button>`
+    actions = rel==="friend" ? `<button class="act cf-no" data-remove="${esc(pv.id)}">✓ Amis</button>`
       : rel==="outgoing" ? `<button class="act cf-no" disabled>Demande envoyée</button>`
       : rel==="incoming" ? `<button class="act act-cook" data-accept="${esc(pv.id)}">Accepter la demande</button>`
       : `<button class="act act-cook" data-add="${esc(pv.id)}">＋ Ajouter en ami</button>`;
-    actions = b;
   }
 
   let body;
   if(locked){
-    body = `<div class="prof-sep"></div><div class="prof-locked"><div class="big">🔒</div><p><b>Compte privé</b></p><p>Ajoute ${esc(d.pseudo||"cette personne")} en ami pour voir ses plats.</p></div>`;
+    body = `<div class="prof-locked"><div class="big">🔒</div><p><b>Compte privé</b></p><p>Ajoute ${esc(d.pseudo||"cette personne")} en ami pour voir ses plats.</p></div>`;
   } else if(!pv.posts.length){
-    body = `<div class="prof-sep"></div><div class="prof-locked"><div class="big">📸</div><p>${mine?"Tu n'as pas encore publié de plat.":"Aucun plat publié pour l'instant."}</p></div>`;
+    body = `<div class="prof-locked"><div class="big">📸</div><p>${mine?"Tu n'as pas encore publié de plat. Cuisine, prends une photo, et il apparaîtra ici.":"Aucun plat publié pour l'instant."}</p></div>`;
   } else {
-    body = `<div class="prof-gridlabel">Ses plats · ${pv.posts.length}</div>
-      <div class="pgrid">${pv.posts.map(p=>`<button class="pgcell" data-gopen="${esc(p.recipe_id||"")}" title="${esc(p.recipe_name||"")}"><img src="${esc(p.photo_url)}" alt="" loading="lazy"></button>`).join("")}</div>`;
+    body = `<div class="prof-gridlabel">${mine?"Mes plats":"Ses plats"} · ${pv.posts.length}</div>
+      <div class="pgrid">${pv.posts.map(p=>`<button class="pgcell" data-openpost="${esc(p.id)}" title="${esc(p.recipe_name||"")}"><img src="${esc(p.photo_url)}" alt="" loading="lazy"></button>`).join("")}</div>`;
   }
 
   profScroll.innerHTML=`
-    <div class="prof-top">
-      <span class="prof-av">${av}</span>
-      <div class="prof-stats">${stats}</div>
+    <div class="prof-hero">
+      <span class="prof-bigav">${av}</span>
     </div>
     <div class="prof-name">${esc(d.pseudo||"?")}${mine&&d.is_private?` <span class="prof-priv">🔒 privé</span>`:""}</div>
-    ${d.bio?`<div class="prof-bio">${esc(d.bio)}</div>`:(mine?`<div class="prof-bio" style="color:var(--muted)">Ajoute une description dans « Modifier le profil ».</div>`:"")}
+    ${d.bio?`<div class="prof-bio">${esc(d.bio)}</div>`:(mine?`<div class="prof-bio" style="color:var(--muted)">Ajoute une description dans « ✏️ Modifier ».</div>`:"")}
+    <div class="prof-pills">${stats}</div>
     <div class="prof-actions">${actions}</div>
     ${body}
-    <div style="height:24px"></div>`;
+    <div style="height:28px"></div>`;
+}
+
+/* ---------- DÉTAIL D'UNE PUBLICATION (photo + réactions + commentaires) ---------- */
+const postViewEl=document.getElementById("postView");
+const postViewScroll=document.getElementById("postViewScroll");
+function openPost(id){
+  if(!cloudActif() || !id) return;
+  state.postView={open:true, id, post:null, loading:true, commentDraft:""};
+  renderPostView();
+  postViewEl.classList.add("open"); postViewEl.setAttribute("aria-hidden","false");
+  document.body.style.overflow="hidden";
+  loadPost(id).then(()=>{ if(state.postView.open) renderPostView(); });
+}
+function closePostView(){
+  state.postView.open=false;
+  postViewEl.classList.remove("open"); postViewEl.setAttribute("aria-hidden","true");
+  if(!detailEl.classList.contains("open") && !editorEl.classList.contains("open") && !profilePageEl.classList.contains("open")) document.body.style.overflow="";
+}
+async function loadPost(id){
+  const me=currentUser.id;
+  try{
+    const {data:post}=await sb.from("posts").select("*").eq("id",id).maybeSingle();
+    if(!post){ state.postView.loading=false; return; }
+    const {data:reacts}=await sb.from("reactions").select("user_id").eq("post_id",id);
+    const {data:coms}=await sb.from("comments").select("id,user_id,text,created_at").eq("post_id",id).order("created_at",{ascending:true});
+    const ids=[...new Set([post.author].concat((coms||[]).map(c=>c.user_id)))];
+    const profs={};
+    if(ids.length){ const {data:pp}=await sb.from("profiles").select("id,pseudo,avatar").in("id",ids); (pp||[]).forEach(p=>profs[p.id]=p); }
+    const prof=uid=>profs[uid]||{pseudo:"?",avatar:""};
+    post.prof=prof(post.author);
+    post.likeCount=(reacts||[]).length;
+    post.liked=(reacts||[]).some(r=>r.user_id===me);
+    post.comments=(coms||[]).map(c=>({...c, post_id:id, prof:prof(c.user_id)}));
+    state.postView.post=post;
+  }catch(e){}
+  state.postView.loading=false;
+}
+function renderPostView(){
+  const pv=state.postView, sc=postViewScroll;
+  if(pv.loading && !pv.post){ sc.innerHTML=`<div class="prof-locked"><div class="big">⏳</div><p>Chargement…</p></div>`; return; }
+  const p=pv.post;
+  if(!p){ sc.innerHTML=`<div class="prof-locked"><div class="big">🤔</div><p>Cette publication n'est plus disponible.</p></div>`; return; }
+  const mine=currentUser && p.author===currentUser.id;
+  sc.innerHTML=`
+    <div class="post" data-post="${esc(p.id)}" style="margin:0;border:none;border-radius:0;box-shadow:none">
+      <div class="posthead" data-openprofile="${esc(p.author)}">
+        <span class="fav">${avatarFor(p.prof)}</span>
+        <span class="pwho"><b>${esc(p.prof.pseudo||"?")}</b><span>${esc(timeAgo(p.created_at))}</span></span>
+        <span class="pvis">${p.visibility==="friends"?"👥 Amis":"🌍 Public"}</span>
+      </div>
+      ${p.photo_url?`<img class="postimg" src="${esc(p.photo_url)}" alt="">`:""}
+      <div class="postbody">
+        ${p.recipe_name?`<button class="pv-recipe" data-gopen="${esc(p.recipe_id||"")}">${esc(p.emoji||"🍽️")} ${esc(p.recipe_name)} <span>voir la recette ›</span></button>`:""}
+        ${p.description?`<div class="pdesc">${esc(p.description)}</div>`:""}
+      </div>
+      <div class="postacts">
+        <button class="likebtn${p.liked?" on":""}" data-pvlike><span class="hrt">${p.liked?"❤️":"🤍"}</span> <span class="cnt">${p.likeCount||""}</span></button>
+        <span class="combtn" style="pointer-events:none">💬 <span class="cnt">${p.comments.length||""}</span></span>
+        ${mine?`<button class="pdel" data-pvdelpost>Supprimer</button>`:""}
+      </div>
+      <div class="comments">
+        ${p.comments.map(c=>{
+          const cmine=currentUser&&(c.user_id===currentUser.id||p.author===currentUser.id);
+          return `<div class="crow"><span class="cav" data-openprofile="${esc(c.user_id)}">${avatarFor(c.prof)}</span><span class="cbub"><b data-openprofile="${esc(c.user_id)}">${esc(c.prof.pseudo||"?")}</b> ${esc(c.text)}</span>${cmine?`<button class="cdelc" data-pvdelcom="${esc(c.id)}" aria-label="Supprimer">✕</button>`:""}</div>`;
+        }).join("")||`<div class="cnone">Sois le premier à commenter.</div>`}
+        <div class="cadd"><input class="cinput" id="pvCommentInput" placeholder="Ajouter un commentaire…" value="${esc(pv.commentDraft||"")}" autocomplete="off"><button class="csend" data-pvcsend>Envoyer</button></div>
+      </div>
+    </div>`;
+}
+async function postViewLike(){
+  const p=state.postView.post; if(!p || !cloudActif()) return;
+  const was=p.liked; p.liked=!was; p.likeCount+= was?-1:1;
+  const b=postViewScroll.querySelector(".likebtn");
+  if(b){ b.classList.toggle("on",p.liked); b.querySelector(".hrt").textContent=p.liked?"❤️":"🤍"; b.querySelector(".cnt").textContent=p.likeCount||""; }
+  state.social.feedLoaded=false;
+  try{ if(was) await sb.from("reactions").delete().eq("post_id",p.id).eq("user_id",currentUser.id);
+       else await sb.from("reactions").insert({post_id:p.id, user_id:currentUser.id, emoji:"❤️"}); }
+  catch(e){ p.liked=was; p.likeCount+= was?1:-1; renderPostView(); }
+}
+async function postViewSend(){
+  const p=state.postView.post; if(!p || !cloudActif()) return;
+  const txt=clean((state.postView.commentDraft||"")).slice(0,500); if(!txt) return;
+  state.postView.commentDraft="";
+  try{
+    const {data,error}=await sb.from("comments").insert({post_id:p.id, user_id:currentUser.id, text:txt}).select().single();
+    if(error){ toast("Commentaire non envoyé"); return; }
+    p.comments.push({id:data.id, user_id:currentUser.id, text:txt, created_at:data.created_at, prof:{pseudo:displayName(), avatar:state.profile.avatar}});
+    state.social.feedLoaded=false;
+    renderPostView();
+  }catch(e){ toast("Commentaire non envoyé"); }
+}
+async function postViewDelComment(cid){
+  const p=state.postView.post; if(!p) return;
+  try{ await sb.from("comments").delete().eq("id",cid); }catch(e){}
+  p.comments=p.comments.filter(c=>c.id!==cid); state.social.feedLoaded=false; renderPostView();
+}
+async function postViewDelPost(){
+  const p=state.postView.post; if(!p) return;
+  try{ await sb.from("posts").delete().eq("id",p.id); if(p.photo_path){ try{ await sb.storage.from("dishes").remove([p.photo_path]); }catch(e){} } }catch(e){}
+  state.social.feedLoaded=false;
+  closePostView();
+  if(state.profileView.open){ state.profileView.posts=state.profileView.posts.filter(x=>x.id!==p.id); renderProfile(); }
+  toast("Publication supprimée");
 }
 
 // ❤️ j'aime : mise à jour optimiste immédiate, puis écriture en base
@@ -3548,6 +3665,7 @@ document.getElementById("nav").addEventListener("click",e=>{
   // la pastille reste au-dessus d'une recette ouverte : on la referme avant de changer d'onglet.
   // Fermeture directe et non via l'historique, dont le retour asynchrone effacerait l'animation de page.
   if(detailEl.classList.contains("open")){ stripUrl(); doClose(); }
+  if(state.postView.open) closePostView();
   if(state.profileView.open) closeProfile();
   setView(b.dataset.view);
 });
@@ -3623,9 +3741,22 @@ profScroll.addEventListener("click",e=>{
   const add=e.target.closest("[data-add]"); if(add){ addFriend(add.dataset.add).then(()=>{ if(state.profileView.open) renderProfile(); }); return; }
   const acc=e.target.closest("[data-accept]"); if(acc){ acceptFriend(acc.dataset.accept).then(()=>{ if(state.profileView.open) renderProfile(); }); return; }
   const rem=e.target.closest("[data-remove]"); if(rem){ removeFriend(rem.dataset.remove).then(()=>{ if(state.profileView.open) renderProfile(); }); return; }
-  const go=e.target.closest("[data-gopen]");
-  if(go){ const rid=go.dataset.gopen; closeProfile(); if(rid && findRecipe(rid)) openRecipe(rid); return; }
+  const op=e.target.closest("[data-openprofile]"); if(op && op.dataset.openprofile){ openProfile(op.dataset.openprofile); return; }
+  const oc=e.target.closest("[data-openpost]"); if(oc){ openPost(oc.dataset.openpost); return; }
 });
+
+// détail d'une publication : retour, like, commentaire, suppression, ouverture recette/profil
+document.getElementById("postViewBack").addEventListener("click", closePostView);
+postViewScroll.addEventListener("click",e=>{
+  if(e.target.closest("[data-pvlike]")){ postViewLike(); return; }
+  if(e.target.closest("[data-pvcsend]")){ postViewSend(); return; }
+  const dcm=e.target.closest("[data-pvdelcom]"); if(dcm){ postViewDelComment(dcm.dataset.pvdelcom); return; }
+  if(e.target.closest("[data-pvdelpost]")){ postViewDelPost(); return; }
+  const op=e.target.closest("[data-openprofile]"); if(op && op.dataset.openprofile){ closePostView(); openProfile(op.dataset.openprofile); return; }
+  const go=e.target.closest("[data-gopen]"); if(go){ const rid=go.dataset.gopen; closePostView(); if(rid && findRecipe(rid)) openRecipe(rid); return; }
+});
+postViewScroll.addEventListener("input",e=>{ if(e.target.id==="pvCommentInput") state.postView.commentDraft=e.target.value; });
+postViewScroll.addEventListener("keydown",e=>{ if(e.key==="Enter" && e.target.id==="pvCommentInput"){ e.preventDefault(); state.postView.commentDraft=e.target.value; postViewSend(); } });
 document.getElementById("authBox").addEventListener("click",e=>{
   if(e.target.closest("#authGo")){ doAuth(); return; }
   if(e.target.closest("#authGoogle")){ doGoogle(); return; }
