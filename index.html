@@ -535,6 +535,33 @@
   .prof-locked{text-align:center;color:var(--muted);padding:40px 20px}
   .prof-locked .big{font-size:36px;margin-bottom:8px}
   .prof-gridlabel{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 2px 12px;text-align:center}
+  .pstat.tap{cursor:pointer}
+  .pstat.tap:active{transform:scale(.96)}
+  /* bouton « personnaliser la bannière » posé sur le bandeau (mon profil) */
+  .prof-hero .heroedit{position:absolute;top:10px;right:10px;width:34px;height:34px;border-radius:50%;border:none;background:rgba(255,255,255,.85);backdrop-filter:blur(4px);font-size:16px;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-soft)}
+  .prof-hero .heroedit:active{transform:scale(.92)}
+  /* recettes créées par la personne, sur son profil */
+  .prof-reclist{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+  .recrow{display:flex;align-items:center;gap:11px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 12px;box-shadow:var(--shadow-soft);text-align:left;width:100%}
+  .recrow .remoji{width:42px;height:42px;flex:0 0 42px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:22px;background:var(--camel-tint)}
+  .recrow .rmeta{flex:1;min-width:0}
+  .recrow .rmeta b{font-family:var(--disp);font-weight:800;font-size:15px;display:block;line-height:1.15}
+  .recrow .rmeta span{font-size:12px;color:var(--muted)}
+  .recrow .radd{flex:0 0 auto;border:none;background:var(--camel-deep);color:#fff;font-family:var(--disp);font-weight:800;font-size:13px;border-radius:10px;padding:8px 12px}
+  .recrow .radd.done{background:var(--card);color:var(--muted);border:1px solid var(--line)}
+  .recrow .radd:active{transform:scale(.95)}
+  /* crédit d'origine sur une recette importée d'un autre profil */
+  .dcredit{display:inline-flex;align-items:center;gap:6px;background:var(--camel-tint);border:1px solid var(--camel-light);color:var(--camel-deep);font-weight:700;font-size:12.5px;border-radius:999px;padding:5px 12px;margin:2px auto 0}
+  /* choix de la bannière dans l'éditeur de profil */
+  .bannerprev{height:96px;border-radius:14px;margin:2px 0 10px;background:linear-gradient(160deg,#C6A98A,#A9885F);position:relative;overflow:hidden;box-shadow:var(--shadow-soft)}
+  .banswatches{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:4px 0 8px}
+  .banswatch{height:46px;border-radius:11px;border:3px solid transparent;padding:0}
+  .banswatch.on{border-color:var(--ink);box-shadow:0 0 0 2px var(--paper) inset}
+  .banphotos{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:4px 0 8px}
+  .banphoto{aspect-ratio:1;border-radius:10px;overflow:hidden;border:3px solid transparent;padding:0;background:var(--camel-tint)}
+  .banphoto.on{border-color:var(--ink)}
+  .banphoto img{width:100%;height:100%;object-fit:cover}
+  .banpos{width:100%;margin:6px 0 2px}
   /* lien vers la recette dans le détail d'une publication */
   .pv-recipe{display:inline-flex;align-items:center;gap:6px;background:var(--camel-tint);border:1px solid var(--camel-light);border-radius:11px;padding:8px 12px;font-family:var(--disp);font-weight:700;font-size:14px;color:var(--camel-deep);margin-bottom:8px}
   .pv-recipe span{font-family:var(--sans);font-weight:600;font-size:12px;opacity:.8}
@@ -633,6 +660,14 @@
     <h2>Publication</h2>
   </div>
   <div class="ed-scroll" id="postViewScroll" style="padding:0 0 calc(28px + env(safe-area-inset-bottom))"></div>
+</div>
+
+<div class="editor" id="friendsPage" aria-hidden="true">
+  <div class="ed-head">
+    <button class="backbtn" id="friendsBack" aria-label="Fermer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2B2A28" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <h2 id="friendsTitle">Amis</h2>
+  </div>
+  <div class="ed-scroll" id="friendsScroll"></div>
 </div>
 
 <div class="sharebox" id="shareBox" hidden>
@@ -1794,11 +1829,12 @@ const Store = {
 };
 
 /* ---------- état ---------- */
-const state = { view:"home", search:"", filter:"Tous", onlyCookable:false, onlyPerso:false, airfryer:false, micro:false, fridge:[], shopping:[], perso:[], recipePhotos:{}, profile:{pseudo:"",avatar:"",bio:"",isPrivate:false}, stats:{cooked:0,byRecipe:{},firstAt:null,lastAt:null},
+const state = { view:"home", search:"", filter:"Tous", onlyCookable:false, onlyPerso:false, airfryer:false, micro:false, fridge:[], shopping:[], perso:[], recipePhotos:{}, profile:{pseudo:"",avatar:"",bio:"",isPrivate:false,banner:"",bannerPos:50}, stats:{cooked:0,byRecipe:{},firstAt:null,lastAt:null},
   social:{tab:"feed", loaded:false, loading:false, friends:[], incoming:[], outgoing:[], q:"", results:null, searching:false, posts:[], feedLoaded:false, feedLoading:false, openComments:{}, commentDrafts:{}},
   gallery:{loaded:false, loading:false, posts:[]},
-  profileView:{open:false, id:null, loading:false, data:null, posts:[], friendCount:0},
+  profileView:{open:false, id:null, loading:false, data:null, posts:[], friendCount:0, recipes:[]},
   postView:{open:false, id:null, post:null, loading:false, commentDraft:""},
+  friendsSheet:{open:false, id:null, name:"", loading:false, list:null},
   currentPortions:0, cooked:false, confirmCook:false };
 
 /* Les recettes personnelles ont exactement la même forme que celles du catalogue :
@@ -2138,10 +2174,12 @@ async function pushProfile(){
   if(!cloudActif()) return;
   try{
     const full={ id: currentUser.id, pseudo:(state.profile.pseudo||displayName()), avatar:(state.profile.avatar||""),
-      bio:(state.profile.bio||""), is_private:!!state.profile.isPrivate, updated_at:new Date().toISOString() };
+      bio:(state.profile.bio||""), is_private:!!state.profile.isPrivate,
+      banner:(state.profile.banner||""), banner_pos:(state.profile.bannerPos==null?50:state.profile.bannerPos),
+      updated_at:new Date().toISOString() };
     const {error}=await sb.from("profiles").upsert(full);
-    // repli si les colonnes bio/is_private n'existent pas encore (SQL pas encore exécuté)
-    if(error && /bio|is_private|column/.test((error.message||"").toLowerCase())){
+    // repli si les colonnes récentes (bio/is_private/banner) n'existent pas encore (SQL pas encore exécuté)
+    if(error && /bio|is_private|banner|column/.test((error.message||"").toLowerCase())){
       await sb.from("profiles").upsert({ id:full.id, pseudo:full.pseudo, avatar:full.avatar, updated_at:full.updated_at });
     }
   }catch(e){}
@@ -2276,10 +2314,34 @@ async function loadMyGallery(){
 /* ---------- PAGE PROFIL (plein écran, façon Instagram) ---------- */
 const profilePageEl=document.getElementById("profilePage");
 const profScroll=document.getElementById("profScroll");
+/* bannières de profil : quelques dégradés prédéfinis + possibilité d'une photo perso */
+const BANNERS={
+  camel:"linear-gradient(160deg,#C6A98A 0%,#A9885F 100%)",
+  sunset:"linear-gradient(160deg,#F6B24B 0%,#E7663B 100%)",
+  tomato:"linear-gradient(160deg,#E98A7B 0%,#C0392B 100%)",
+  herb:"linear-gradient(160deg,#AECB8F 0%,#5E8A4E 100%)",
+  berry:"linear-gradient(160deg,#C79BE0 0%,#7E4FA8 100%)",
+  ocean:"linear-gradient(160deg,#8FD0E8 0%,#3E7FB0 100%)",
+  cream:"linear-gradient(160deg,#F0E4D3 0%,#D8C3A5 100%)",
+  night:"linear-gradient(160deg,#5B5A57 0%,#2B2A28 100%)"
+};
+const BANNER_ORDER=["camel","sunset","tomato","herb","berry","ocean","cream","night"];
+// une bannière est soit "preset:<id>", soit une URL/data-URI de photo ; sinon défaut camel
+function isPhotoBanner(b){ b=b||""; return b.slice(0,5)==="data:" || b.slice(0,4)==="http"; }
+function cssSafe(u){ return String(u||"").replace(/["'()\\]/g,""); }
+function bannerStyle(banner, pos){
+  const b=banner||"";
+  if(isPhotoBanner(b)){
+    const y=Math.max(0,Math.min(100, pos==null?50:+pos));
+    return `background-image:url('${cssSafe(b)}');background-size:cover;background-position:center ${y}%`;
+  }
+  const id=b.slice(0,7)==="preset:"?b.slice(7):"camel";
+  return `background:${BANNERS[id]||BANNERS.camel}`;
+}
 function openProfile(id){
   if(!currentUser){ openAuth(); return; }
   const pv=state.profileView;
-  pv.open=true; pv.id=id||currentUser.id; pv.data=null; pv.posts=[]; pv.friendCount=0; pv.loading=true;
+  pv.open=true; pv.id=id||currentUser.id; pv.data=null; pv.posts=[]; pv.friendCount=0; pv.recipes=[]; pv.loading=true;
   renderProfile();
   profilePageEl.classList.add("open"); profilePageEl.setAttribute("aria-hidden","false");
   document.body.style.overflow="hidden";
@@ -2290,22 +2352,44 @@ function closeProfile(){
   profilePageEl.classList.remove("open"); profilePageEl.setAttribute("aria-hidden","true");
   if(!detailEl.classList.contains("open") && !editorEl.classList.contains("open")) document.body.style.overflow="";
 }
+// ids des amis (amitiés acceptées) d'une personne quelconque — nécessite la policy RLS de lecture des amitiés acceptées
+async function friendIdsOf(id){
+  try{
+    const {data}=await sb.from("friendships").select("requester,addressee").or("requester.eq."+id+",addressee.eq."+id).eq("status","accepted");
+    return (data||[]).map(r=> r.requester===id ? r.addressee : r.requester);
+  }catch(e){ return []; }
+}
 async function loadProfileData(id){
   const pv=state.profileView;
   const mine = id===currentUser.id;
   if(!cloudActif()){ pv.loading=false; return; }
   try{
+    if(!state.social.loaded) await loadSocial();   // pour connaître l'amitié (déverrouillage privé) et mes amis
     if(mine){
-      pv.data={id, pseudo:displayName(), avatar:state.profile.avatar, bio:state.profile.bio, is_private:state.profile.isPrivate};
-      if(!state.social.loaded) await loadSocial();
-      pv.friendCount=state.social.friends.length;
+      pv.data={id, pseudo:displayName(), avatar:state.profile.avatar, bio:state.profile.bio, is_private:state.profile.isPrivate, banner:state.profile.banner, banner_pos:state.profile.bannerPos};
     } else {
-      const {data:prow}=await sb.from("profiles").select("id,pseudo,avatar,bio,is_private").eq("id",id).maybeSingle();
+      // essaie avec la bannière ; repli si les colonnes récentes n'existent pas encore
+      let prow=null;
+      const r=await sb.from("profiles").select("id,pseudo,avatar,bio,is_private,banner,banner_pos").eq("id",id).maybeSingle();
+      if(r.error){ const r2=await sb.from("profiles").select("id,pseudo,avatar,bio,is_private").eq("id",id).maybeSingle(); prow=r2.data; }
+      else prow=r.data;
       pv.data=prow||{id, pseudo:"?", avatar:"", bio:"", is_private:false};
     }
+    const rel = mine ? "self" : relationWith(id);
+    const locked = !mine && pv.data.is_private && rel!=="friend";
+    if(locked){ pv.friendCount=0; pv.friendIds=[]; pv.posts=[]; pv.recipes=[]; pv.loading=false; return; }
+    // amis (nombre + ids pour la liste)
+    const fids = mine ? state.social.friends.map(f=>f.id) : await friendIdsOf(id);
+    pv.friendIds=fids; pv.friendCount=fids.length;
+    // plats publiés (avec photo)
     const {data:posts}=await sb.from("posts").select("id,recipe_id,recipe_name,emoji,photo_url,created_at,visibility")
       .eq("author",id).order("created_at",{ascending:false}).limit(200);
     pv.posts=(posts||[]).filter(p=>p.photo_url);
+    // recettes créées par la personne (best-effort : la table peut ne pas exister)
+    try{
+      const {data:recs}=await sb.from("recipes").select("id,author_name,data,created_at").eq("author",id).order("created_at",{ascending:false}).limit(200);
+      pv.recipes=recs||[];
+    }catch(e){ pv.recipes=[]; }
   }catch(e){}
   pv.loading=false;
 }
@@ -2320,12 +2404,15 @@ function renderProfile(){
 
   const av = d.avatar && d.avatar.slice(0,5)==="data:" ? `<img src="${esc(d.avatar)}" alt="">` : (d.avatar?esc(d.avatar):esc((d.pseudo||"?").charAt(0).toUpperCase()));
   const pubCount = pv.posts.length;
+  const recCount = (pv.recipes||[]).length;
 
-  // pastilles de stats, façon GabCook (pas la rangée plate d'Instagram)
-  let stats = `<div class="pstat"><b>${pubCount}</b><span>🍽️ plat${pubCount>1?"s":""}</span></div>`;
-  if(mine){
-    stats += `<div class="pstat"><b>${pv.friendCount}</b><span>👥 ami${pv.friendCount>1?"s":""}</span></div>`
-           + `<div class="pstat"><b>${state.stats.cooked||0}</b><span>🔥 cuisinés</span></div>`;
+  // pastilles : plats + amis (cliquable → liste) pour tout profil visible ; cuisinés seulement sur le mien (privé)
+  let stats="";
+  if(!locked){
+    const fc=pv.friendCount||0;
+    stats = `<div class="pstat"><b>${pubCount}</b><span>🍽️ plat${pubCount>1?"s":""}</span></div>`
+          + `<div class="pstat tap" data-friends="${esc(pv.id)}"><b>${fc}</b><span>👥 ami${fc>1?"s":""}</span></div>`;
+    if(mine) stats += `<div class="pstat"><b>${state.stats.cooked||0}</b><span>🔥 cuisinés</span></div>`;
   }
 
   let actions="";
@@ -2349,16 +2436,78 @@ function renderProfile(){
       <div class="pgrid">${pv.posts.map(p=>`<button class="pgcell" data-openpost="${esc(p.id)}" title="${esc(p.recipe_name||"")}"><img src="${esc(p.photo_url)}" alt="" loading="lazy"></button>`).join("")}</div>`;
   }
 
+  // recettes créées de toutes pièces par la personne (consultables + ajoutables)
+  let recipesSec="";
+  if(!locked && recCount){
+    recipesSec = `<div class="prof-gridlabel">${mine?"Mes recettes":"Ses recettes"} · ${recCount}</div>
+      <div class="prof-reclist">${pv.recipes.map(row=>{
+        const rd=row.data||{};
+        const ingN=Array.isArray(rd.ing)?rd.ing.length:0;
+        const already=state.perso.some(x=>x.id===row.id);
+        const btn = mine ? "" : (already
+            ? `<span class="radd done">✓ Ajoutée</span>`
+            : `<button class="radd" data-addrec="${esc(row.id)}">＋ Ajouter</button>`);
+        return `<div class="recrow" data-openrec="${esc(row.id)}"><span class="remoji">${esc(rd.emoji||"🍽️")}</span><span class="rmeta"><b>${esc(rd.nom||"Recette")}</b><span>${esc(rd.cat||"Plat")}${ingN?` · ${ingN} ingrédient${ingN>1?"s":""}`:""}</span></span>${btn}</div>`;
+      }).join("")}</div>`;
+  }
+
+  const heroEdit = mine ? `<button class="heroedit" id="bannerEdit" aria-label="Personnaliser la bannière">🎨</button>` : "";
+
   profScroll.innerHTML=`
-    <div class="prof-hero">
+    <div class="prof-hero" style="${bannerStyle(d.banner, d.banner_pos)}">
+      ${heroEdit}
       <span class="prof-bigav">${av}</span>
     </div>
     <div class="prof-name">${esc(d.pseudo||"?")}${mine&&d.is_private?` <span class="prof-priv">🔒 privé</span>`:""}</div>
     ${d.bio?`<div class="prof-bio">${esc(d.bio)}</div>`:(mine?`<div class="prof-bio" style="color:var(--muted)">Ajoute une description dans « ✏️ Modifier ».</div>`:"")}
-    <div class="prof-pills">${stats}</div>
+    ${stats?`<div class="prof-pills">${stats}</div>`:""}
     <div class="prof-actions">${actions}</div>
     ${body}
+    ${recipesSec}
     <div style="height:28px"></div>`;
+}
+
+/* ---------- liste d'amis d'un profil (mienne ou celle d'un autre) ---------- */
+const friendsPageEl=document.getElementById("friendsPage");
+const friendsScroll=document.getElementById("friendsScroll");
+function openFriendsSheet(id){
+  if(!cloudActif() || !id) return;
+  const fs=state.friendsSheet;
+  const mine=id===currentUser.id;
+  fs.open=true; fs.id=id; fs.loading=true; fs.list=null;
+  fs.name = mine ? "Mes amis" : ((state.profileView.data&&state.profileView.data.pseudo) ? "Amis de "+state.profileView.data.pseudo : "Amis");
+  renderFriendsSheet();
+  friendsPageEl.classList.add("open"); friendsPageEl.setAttribute("aria-hidden","false");
+  document.body.style.overflow="hidden";
+  loadFriendsSheet(id).then(()=>{ if(fs.open) renderFriendsSheet(); });
+}
+function closeFriendsSheet(){
+  state.friendsSheet.open=false;
+  friendsPageEl.classList.remove("open"); friendsPageEl.setAttribute("aria-hidden","true");
+  if(state.profileView.open) document.body.style.overflow="hidden";
+  else if(!detailEl.classList.contains("open") && !editorEl.classList.contains("open")) document.body.style.overflow="";
+}
+async function loadFriendsSheet(id){
+  const fs=state.friendsSheet;
+  try{
+    const mine=id===currentUser.id;
+    let ids;
+    if(mine && state.social.loaded) ids=state.social.friends.map(f=>f.id);
+    else if(state.profileView.open && state.profileView.id===id && state.profileView.friendIds) ids=state.profileView.friendIds;
+    else ids=await friendIdsOf(id);
+    if(!ids.length){ fs.list=[]; fs.loading=false; return; }
+    const {data:profs}=await sb.from("profiles").select("id,pseudo,avatar").in("id",ids);
+    fs.list=(profs||[]).sort((a,b)=>(a.pseudo||"").localeCompare(b.pseudo||""));
+  }catch(e){ fs.list=[]; }
+  fs.loading=false;
+}
+function renderFriendsSheet(){
+  const fs=state.friendsSheet;
+  document.getElementById("friendsTitle").textContent=fs.name||"Amis";
+  if(fs.loading && fs.list==null){ friendsScroll.innerHTML=`<div class="prof-locked"><div class="big">⏳</div><p>Chargement…</p></div>`; return; }
+  if(!fs.list || !fs.list.length){ friendsScroll.innerHTML=`<div class="prof-locked"><div class="big">👥</div><p>Aucun ami pour l'instant.</p></div>`; return; }
+  friendsScroll.innerHTML=`<div style="display:flex;flex-direction:column;gap:7px;padding:8px 2px">${
+    fs.list.map(p=>personRow(p, p.id===currentUser.id?`<span class="ftag">Toi</span>`:"")).join("")}</div>`;
 }
 
 /* ---------- DÉTAIL D'UNE PUBLICATION (photo + réactions + commentaires) ---------- */
@@ -2760,6 +2909,16 @@ function doClose(){
   detailEl.setAttribute("aria-hidden","true");
   document.body.style.overflow="";
   currentRecipe=null;
+  // si la recette avait été ouverte depuis un profil, on y revient (état encore en mémoire)
+  if(_returnProfileId!=null && state.profileView.data){
+    _returnProfileId=null;
+    state.profileView.open=true;
+    profilePageEl.classList.add("open"); profilePageEl.setAttribute("aria-hidden","false");
+    document.body.style.overflow="hidden";
+    renderProfile();
+    return;
+  }
+  _returnProfileId=null;
   render();
 }
 function closeRecipe(){
@@ -2773,6 +2932,69 @@ addEventListener("popstate", e=>{
   if(id){ if(!currentRecipe || currentRecipe.id!==id) openRecipe(id, true); }
   else if(currentRecipe) doClose();
 });
+
+/* ---------- recettes partagées entre profils ----------
+   Une recette « créée de toutes pièces » est miroitée dans la table publique `recipes`
+   pour apparaître sur le profil de son auteur ; on peut la consulter puis l'ajouter à
+   ses propres recettes, avec le crédit de l'auteur d'origine. */
+let _returnProfileId=null;   // profil vers lequel revenir quand on ferme une recette ouverte depuis un profil
+// objet recette « propre » à stocker en base (sans champs transitoires ni crédit)
+function recipeData(r){
+  return { nom:r.nom, emoji:r.emoji, cat:r.cat, diff:r.diff, prep:r.prep, cuisson:r.cuisson,
+           portions:r.portions, ing:r.ing, etapes:r.etapes, photo:r.photo||"" };
+}
+// ouvre une recette depuis un profil : la mienne (normale) ou celle d'un autre (aperçu + ajout)
+function openProfileRecipe(row, authorName){
+  const owned=state.perso.find(x=>x.id===row.id);
+  let r;
+  if(owned){ r=owned; }
+  else {
+    r=sanitizeRecipe(row.data||row); if(!r){ toast("Recette indisponible"); return; }
+    r.id=row.id; r.credit=authorName||""; r._preview=true;
+  }
+  _returnProfileId = state.profileView.open ? state.profileView.id : null;
+  if(state.profileView.open){ state.profileView.open=false; profilePageEl.classList.remove("open"); profilePageEl.setAttribute("aria-hidden","true"); }
+  currentRecipe=r; state.currentPortions=r.portions; state.cooked=false; state.confirmCook=false;
+  renderDetail();
+  detailEl.classList.add("open"); detailEl.setAttribute("aria-hidden","false");
+  document.body.style.overflow="hidden";
+}
+// ajoute la recette actuellement consultée (aperçu) à mes recettes, en gardant le crédit
+function importSharedRecipe(){
+  const r=currentRecipe; if(!r) return;
+  if(state.perso.some(x=>x.id===r.id)){ delete r._preview; renderDetail(); toast("Déjà dans tes recettes"); return; }
+  delete r._preview; r.perso=true;
+  state.perso.push(r); savePerso(); fillQuickpick();
+  renderDetail(); render();
+  toast("✅ « "+r.nom+" » ajoutée à tes recettes");
+}
+// ajout direct depuis la liste d'un profil, sans ouvrir la recette
+function addSharedRecipeById(recId){
+  const row=state.profileView.recipes.find(x=>x.id===recId); if(!row) return;
+  if(state.perso.some(x=>x.id===recId)){ toast("Déjà dans tes recettes"); return; }
+  const r=sanitizeRecipe(row.data||row); if(!r){ toast("Recette indisponible"); return; }
+  r.id=recId; r.credit=row.author_name||(state.profileView.data&&state.profileView.data.pseudo)||""; r.perso=true;
+  state.perso.push(r); savePerso(); fillQuickpick();
+  renderProfile(); render();
+  toast("✅ « "+r.nom+" » ajoutée à tes recettes");
+}
+// miroir cloud des recettes originales (créées de toutes pièces)
+async function pushRecipes(){
+  if(!cloudActif()) return;
+  const rows=state.perso.filter(isOriginalRecipe).map(r=>({ id:r.id, author:currentUser.id,
+    author_name:displayName(), data:recipeData(r), updated_at:new Date().toISOString() }));
+  if(!rows.length) return;
+  try{ await sb.from("recipes").upsert(rows); }catch(e){}
+}
+async function pushOneRecipe(r){
+  if(!cloudActif() || !isOriginalRecipe(r)) return;
+  try{ await sb.from("recipes").upsert({ id:r.id, author:currentUser.id, author_name:displayName(),
+    data:recipeData(r), updated_at:new Date().toISOString() }); }catch(e){}
+}
+async function unshareRecipe(id){
+  if(!cloudActif()) return;
+  try{ await sb.from("recipes").delete().eq("id",id); }catch(e){}
+}
 function renderDetail(){
   const r=currentRecipe;
   if(!r) return;
@@ -2783,7 +3005,10 @@ function renderDetail(){
   const missing=statuses.filter(x=>x.st.s!=="have");
 
   let actions="";
-  if(!state.fridge.length){
+  if(r._preview){
+    // recette consultée sur le profil de quelqu'un d'autre : on la découvre puis on l'ajoute
+    actions=`<button class="act act-cook" id="importRec">➕ Ajouter à mes recettes</button>`;
+  } else if(!state.fridge.length){
     actions=`<button class="act act-shop" id="addMissing">🛒 Ajouter tous les ingrédients à ma liste</button>`;
   } else {
     if(state.cooked){
@@ -2807,9 +3032,9 @@ function renderDetail(){
       actions+=`<button class="act act-shop2" disabled>✓ Manquants ajoutés à la liste</button>`;
     }
   }
-  if(r.perso) actions+=`<button class="act cf-no" id="editRecipe">✏️ Modifier ma recette</button>`;
+  if(!r._preview && r.perso) actions+=`<button class="act cf-no" id="editRecipe">✏️ Modifier ma recette</button>`;
   // publier une photo de ce plat, à tout moment (pas seulement juste après l'avoir cuisiné)
-  if(cloudActif() && !state.confirmCook) actions+=`<button class="act cf-no" id="sharePlate">📸 Publier une photo de ce plat</button>`;
+  if(!r._preview && cloudActif() && !state.confirmCook) actions+=`<button class="act cf-no" id="sharePlate">📸 Publier une photo de ce plat</button>`;
 
   detailScroll.innerHTML=`
     <div class="dhero">
@@ -2818,8 +3043,9 @@ function renderDetail(){
         <button class="backbtn" id="shareBtn" aria-label="Partager la recette"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#2B2A28" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"/><path d="m8 7 4-4 4 4"/><path d="M4 13v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6"/></svg></button>
       </div>
       <div class="demoji">${esc(r.emoji)}</div>
-      <div class="dcat">${esc(r.cat)}${r.perso?" · ma recette":""}</div>
+      <div class="dcat">${esc(r.cat)}${r.credit?"":(r.perso?" · ma recette":"")}</div>
       <h2>${esc(r.nom)}</h2>
+      ${r.credit?`<div class="dcredit">👤 Recette de ${esc(r.credit)}</div>`:""}
       <div class="dmeta">
         <div class="pill"><b>${r.prep} min</b><small>Préparation</small></div>
         <div class="pill"><b>${v.cuisson} min</b><small>${v.af?"Cuisson air fryer":v.mo?"Cuisson micro-ondes":"Cuisson"}</small></div>
@@ -2894,9 +3120,14 @@ function sanitizeRecipe(x){
     id: clean(x.id) || ("perso-"+Date.now().toString(36)+Math.random().toString(36).slice(2,6)),
     nom, emoji: clean(x.emoji)||"🍽️", cat: clean(x.cat)||"Plat", diff: clean(x.diff)||"Facile",
     prep: num(x.prep,0,999,0), cuisson: num(x.cuisson,0,999,0), portions: num(x.portions,1,50,4),
-    ing, etapes, photo:(typeof x.photo==="string"?x.photo:""), perso:true
+    ing, etapes, photo:(typeof x.photo==="string"?x.photo:""), perso:true,
+    credit: clean(x.credit)||"",   // pseudo de l'auteur si la recette vient d'un autre profil
+    src: clean(x.src)||""          // "marmiton" pour les imports ; vide = créée de toutes pièces
   };
 }
+// une recette n'est proposée sur mon profil que si je l'ai créée de toutes pièces
+// (ni importée d'un autre profil, ni tirée de Marmiton)
+function isOriginalRecipe(r){ return r && r.perso && !r.credit && !r.src; }
 
 /* ---------- import depuis Marmiton ----------
    GabCook est un site statique : il ne peut pas lire une page Marmiton directement
@@ -3021,6 +3252,7 @@ async function importMarmiton(){
   const etapes=flattenSteps(rec.recipeInstructions).map(clean).filter(Boolean);
   // on ne garde du formulaire que ce qui a un sens : nom, repères, ingrédients, étapes.
   d.nom=clean(rec.name);
+  d.src="marmiton";                      // tiré de Marmiton : non proposé comme « recette originale » sur le profil
   d.photo=marmImage(rec.image);          // vraie photo du plat depuis Marmiton
   d.cat=mapCategory(rec.recipeCategory);
   d.portions=parseYield(rec.recipeYield);
@@ -3045,9 +3277,10 @@ function openEditor(id){
   const r = id ? state.perso.find(x=>x.id===id) : null;
   draft = r
     ? {id:r.id, nom:r.nom, emoji:r.emoji, cat:r.cat, diff:r.diff, prep:r.prep, cuisson:r.cuisson,
-       portions:r.portions, photo:r.photo||"", ing:r.ing.map(i=>({q:(i.q==null?"":String(i.q)), u:i.u, n:i.n})), etapes:r.etapes.slice()}
+       portions:r.portions, photo:r.photo||"", ing:r.ing.map(i=>({q:(i.q==null?"":String(i.q)), u:i.u, n:i.n})), etapes:r.etapes.slice(),
+       src:r.src||"", credit:r.credit||""}   // conservés pour ne pas transformer un import en « recette originale »
     : {id:null, nom:"", emoji:"🍽️", cat:"Plat", diff:"Facile", prep:15, cuisson:20,
-       portions:4, photo:"", ing:[{q:"",u:"",n:""}], etapes:[""]};
+       portions:4, photo:"", ing:[{q:"",u:"",n:""}], etapes:[""], src:"", credit:""};
   draftErr="";
   document.getElementById("edTitle").textContent = r ? "Modifier la recette" : "Nouvelle recette";
   renderEditor();
@@ -3151,12 +3384,14 @@ function saveDraft(){
     return;
   }
   const r=sanitizeRecipe({id:d.id, nom, emoji:d.emoji, cat:d.cat, diff:d.diff,
-    prep:d.prep, cuisson:d.cuisson, portions:d.portions, photo:d.photo||"", ing, etapes});
+    prep:d.prep, cuisson:d.cuisson, portions:d.portions, photo:d.photo||"", ing, etapes,
+    src:d.src||"", credit:d.credit||""});
   if(!r){ draftErr="Cette recette n'a pas pu être enregistrée."; renderEditor(); return; }
   const i=state.perso.findIndex(x=>x.id===r.id);
   const modif = i>-1;
   if(modif) state.perso[i]=r; else state.perso.push(r);
   savePerso(); fillQuickpick();
+  pushOneRecipe(r);   // miroir cloud si c'est une recette originale (partagée sur mon profil)
   closeEditor();
   if(currentRecipe && currentRecipe.id===r.id){ currentRecipe=r; renderDetail(); }
   render();
@@ -3169,6 +3404,7 @@ function deleteRecipe(id){
   // sans recette perso, le filtre correspondant disparaît : il ne doit pas rester actif
   if(!state.perso.length) state.onlyPerso=false;
   savePerso(); fillQuickpick();
+  unshareRecipe(id);   // retire aussi la recette partagée sur mon profil
   closeEditor();
   if(currentRecipe && currentRecipe.id===id){ stripUrl(); doClose(); }
   else render();
@@ -3490,6 +3726,33 @@ function updateAccountUI(){
 }
 
 let authMode="login", authBusy=false, authWelcome=false, acctView="menu";
+let bannerDraft=null;                       // choix de bannière en cours d'édition
+let bannerPhotos={loaded:false, list:[]};   // mes photos de plats proposées pour la bannière
+async function loadBannerPhotos(){
+  if(!cloudActif()){ bannerPhotos.loaded=true; return; }
+  try{
+    const {data}=await sb.from("posts").select("photo_url,created_at").eq("author",currentUser.id).order("created_at",{ascending:false}).limit(24);
+    bannerPhotos.list=(data||[]).map(p=>p.photo_url).filter(Boolean);
+  }catch(e){}
+  bannerPhotos.loaded=true;
+  if(acctView==="banner"){ const w=document.getElementById("banPhotosWrap"); if(w) w.innerHTML=renderBannerPhotos(); }
+}
+function renderBannerPhotos(){
+  if(!bannerPhotos.loaded) return `<div style="font-size:13px;color:var(--muted);padding:4px 2px">Chargement de tes photos…</div>`;
+  if(!bannerPhotos.list.length) return `<div style="font-size:13px;color:var(--muted);padding:4px 2px">Publie des photos de plats pour pouvoir en mettre une ici.</div>`;
+  const cur=bannerDraft?bannerDraft.banner:"";
+  return `<div class="banphotos">${bannerPhotos.list.map(u=>`<button class="banphoto${cur===u?" on":""}" data-banphoto="${esc(u)}"><img src="${esc(u)}" alt="" loading="lazy"></button>`).join("")}</div>`;
+}
+function saveBanner(){
+  if(bannerDraft){ state.profile.banner=bannerDraft.banner; state.profile.bannerPos=bannerDraft.pos; }
+  saveProfile();
+  bannerDraft=null;
+  closeAuth(); updateAccountUI();
+  if(state.profileView.open && state.profileView.id===currentUser.id && state.profileView.data){
+    state.profileView.data.banner=state.profile.banner; state.profileView.data.banner_pos=state.profile.bannerPos; renderProfile();
+  }
+  toast("✅ Bannière mise à jour");
+}
 function openAuth(welcome){
   authWelcome=!!welcome; authMode="login"; acctView="menu";
   renderAuth("");
@@ -3522,6 +3785,24 @@ function renderAuth(msg, cls){
         <div class="emopick">${AVATARS.map(e=>`<button class="emo${av===e?" on":""}" data-av="${esc(e)}">${e}</button>`).join("")}</div>
         ${av?`<div style="text-align:center;margin-top:6px"><button class="authswitch" id="avatarClear" style="color:var(--tomato)">Retirer la photo</button></div>`:""}
         <div style="text-align:center;margin-top:4px"><button class="authswitch" id="acctBack" style="color:var(--muted)">Retour</button></div>`;
+      return;
+    }
+    if(acctView==="banner"){
+      if(!bannerDraft) bannerDraft={ banner: state.profile.banner||"preset:camel", pos: state.profile.bannerPos==null?50:state.profile.bannerPos };
+      const bd=bannerDraft, isPhoto=isPhotoBanner(bd.banner);
+      if(!bannerPhotos.loaded) loadBannerPhotos();
+      card.innerHTML=`
+        <h4>Ta bannière</h4>
+        <div class="bannerprev" style="${bannerStyle(bd.banner, bd.pos)}"></div>
+        ${isPhoto?`<input class="banpos" id="banPos" type="range" min="0" max="100" value="${bd.pos}"><div style="font-size:12px;color:var(--muted);text-align:center;margin:-2px 0 6px">← glisse pour cadrer la photo →</div>`:""}
+        <div class="ed-lab" style="margin:8px 2px 6px">Couleurs</div>
+        <div class="banswatches">${BANNER_ORDER.map(id=>`<button class="banswatch${bd.banner==="preset:"+id?" on":""}" data-banpreset="${id}" style="background:${BANNERS[id]}" aria-label="${id}"></button>`).join("")}</div>
+        <div class="ed-lab" style="margin:12px 2px 6px">Une de tes photos de plats</div>
+        <div id="banPhotosWrap">${renderBannerPhotos()}</div>
+        <div class="cf-row" style="margin-top:16px">
+          <button class="act cf-no" id="bannerCancel">Annuler</button>
+          <button class="act act-cook" id="bannerSave">Enregistrer</button>
+        </div>`;
       return;
     }
     // formulaire d'édition du profil
@@ -3664,7 +3945,9 @@ document.getElementById("nav").addEventListener("click",e=>{
   if(!b) return;
   // la pastille reste au-dessus d'une recette ouverte : on la referme avant de changer d'onglet.
   // Fermeture directe et non via l'historique, dont le retour asynchrone effacerait l'animation de page.
+  _returnProfileId=null;   // pas de retour-profil quand on quitte par la nav
   if(detailEl.classList.contains("open")){ stripUrl(); doClose(); }
+  if(state.friendsSheet.open) closeFriendsSheet();
   if(state.postView.open) closePostView();
   if(state.profileView.open) closeProfile();
   setView(b.dataset.view);
@@ -3738,9 +4021,13 @@ document.getElementById("profBack").addEventListener("click", closeProfile);
 profScroll.addEventListener("click",e=>{
   if(e.target.closest("#profEdit")){ acctView="menu"; renderAuth(""); document.getElementById("authBox").hidden=false; return; }
   if(e.target.closest("#profLogout")){ doLogout(); return; }
+  if(e.target.closest("#bannerEdit")){ acctView="banner"; bannerDraft=null; renderAuth(""); document.getElementById("authBox").hidden=false; return; }
   const add=e.target.closest("[data-add]"); if(add){ addFriend(add.dataset.add).then(()=>{ if(state.profileView.open) renderProfile(); }); return; }
   const acc=e.target.closest("[data-accept]"); if(acc){ acceptFriend(acc.dataset.accept).then(()=>{ if(state.profileView.open) renderProfile(); }); return; }
   const rem=e.target.closest("[data-remove]"); if(rem){ removeFriend(rem.dataset.remove).then(()=>{ if(state.profileView.open) renderProfile(); }); return; }
+  const fr=e.target.closest("[data-friends]"); if(fr){ openFriendsSheet(fr.dataset.friends); return; }
+  const ar=e.target.closest("[data-addrec]"); if(ar){ addSharedRecipeById(ar.dataset.addrec); return; }
+  const orc=e.target.closest("[data-openrec]"); if(orc){ openProfileRecipe((state.profileView.recipes||[]).find(x=>x.id===orc.dataset.openrec)||{id:orc.dataset.openrec}, state.profileView.data&&state.profileView.data.pseudo); return; }
   const op=e.target.closest("[data-openprofile]"); if(op && op.dataset.openprofile){ openProfile(op.dataset.openprofile); return; }
   const oc=e.target.closest("[data-openpost]"); if(oc){ openPost(oc.dataset.openpost); return; }
 });
@@ -3757,6 +4044,13 @@ postViewScroll.addEventListener("click",e=>{
 });
 postViewScroll.addEventListener("input",e=>{ if(e.target.id==="pvCommentInput") state.postView.commentDraft=e.target.value; });
 postViewScroll.addEventListener("keydown",e=>{ if(e.key==="Enter" && e.target.id==="pvCommentInput"){ e.preventDefault(); state.postView.commentDraft=e.target.value; postViewSend(); } });
+
+// liste d'amis : retour + ouverture du profil d'un ami
+document.getElementById("friendsBack").addEventListener("click", closeFriendsSheet);
+friendsScroll.addEventListener("click",e=>{
+  const op=e.target.closest("[data-openprofile]");
+  if(op && op.dataset.openprofile){ closeFriendsSheet(); openProfile(op.dataset.openprofile); return; }
+});
 document.getElementById("authBox").addEventListener("click",e=>{
   if(e.target.closest("#authGo")){ doAuth(); return; }
   if(e.target.closest("#authGoogle")){ doGoogle(); return; }
@@ -3766,6 +4060,13 @@ document.getElementById("authBox").addEventListener("click",e=>{
   if(e.target.closest("#profileSave")){ saveProfileEdits(); return; }
   if(e.target.closest("#avatarEdit")){ acctView="avatar"; renderAuth(""); return; }
   if(e.target.closest("#acctBack")){ acctView="menu"; renderAuth(""); return; }
+  // bannière
+  const bpr=e.target.closest("[data-banpreset]");
+  if(bpr){ if(!bannerDraft) bannerDraft={banner:"preset:camel",pos:50}; bannerDraft.banner="preset:"+bpr.dataset.banpreset; renderAuth(""); return; }
+  const bph=e.target.closest("[data-banphoto]");
+  if(bph){ if(!bannerDraft) bannerDraft={banner:"preset:camel",pos:50}; bannerDraft.banner=bph.dataset.banphoto; if(bannerDraft.pos==null) bannerDraft.pos=50; renderAuth(""); return; }
+  if(e.target.closest("#bannerSave")){ saveBanner(); return; }
+  if(e.target.closest("#bannerCancel")){ bannerDraft=null; closeAuth(); return; }
   const pv=e.target.closest("[data-priv]");
   if(pv){ state.profile.isPrivate = pv.dataset.priv==="private"; saveProfile(); renderAuth(""); return; }
   if(e.target.closest("#avatarClear")){ setAvatar(""); return; }
@@ -3779,6 +4080,14 @@ document.getElementById("authBox").addEventListener("keydown",e=>{
   if(e.key!=="Enter") return;
   if(e.target.id==="authEmail"||e.target.id==="authPass"){ e.preventDefault(); doAuth(); }
   else if(e.target.id==="pseudoInput"){ e.preventDefault(); saveProfileEdits(); }
+});
+// cadrage de la bannière photo : aperçu mis à jour en direct pendant le glissement
+document.getElementById("authBox").addEventListener("input",e=>{
+  if(e.target.id==="banPos" && bannerDraft){
+    bannerDraft.pos=+e.target.value;
+    const prev=document.querySelector("#authCard .bannerprev");
+    if(prev) prev.setAttribute("style", bannerStyle(bannerDraft.banner, bannerDraft.pos));
+  }
 });
 // import d'une photo de profil (compressée avant stockage)
 document.getElementById("authBox").addEventListener("change",e=>{
@@ -3976,6 +4285,7 @@ detailScroll.addEventListener("click",e=>{
     return;
   }
   if(e.target.closest("#editRecipe")){ openEditor(currentRecipe && currentRecipe.id); return; }
+  if(e.target.closest("#importRec")){ importSharedRecipe(); return; }
   if(e.target.closest("#sharePlate")){ if(currentRecipe) openPostComposer(currentRecipe); return; }
   if(e.target.closest("#cancelCook")){ state.confirmCook=false; renderDetail(); return; }
   if(e.target.closest("#forceCook")){ cookRecipe(); return; }
@@ -4011,7 +4321,7 @@ async function hydrate(){
   const p=await Store.get("gabcook_perso");
   state.perso = Array.isArray(p) ? p.map(sanitizeRecipe).filter(Boolean) : [];
   const pr=await Store.get("gabcook_profile");
-  state.profile = (pr && typeof pr==="object") ? {pseudo:clean(pr.pseudo), avatar:(pr.avatar||""), bio:clean(pr.bio), isPrivate:!!pr.isPrivate} : {pseudo:"",avatar:"",bio:"",isPrivate:false};
+  state.profile = (pr && typeof pr==="object") ? {pseudo:clean(pr.pseudo), avatar:(pr.avatar||""), bio:clean(pr.bio), isPrivate:!!pr.isPrivate, banner:(pr.banner||""), bannerPos:(pr.bannerPos==null?50:pr.bannerPos)} : {pseudo:"",avatar:"",bio:"",isPrivate:false,banner:"",bannerPos:50};
   const st=await Store.get("gabcook_stats");
   state.stats = (st && typeof st==="object") ? {cooked:+st.cooked||0, byRecipe:(st.byRecipe||{}), firstAt:st.firstAt||null, lastAt:st.lastAt||null} : {cooked:0,byRecipe:{},firstAt:null,lastAt:null};
   const ph=await Store.get("gabcook_photos");
@@ -4055,6 +4365,7 @@ async function handleAuth(session){
   if(currentUser){
     if(!state.profile.pseudo){ state.profile.pseudo=(currentUser.email||"").split("@")[0]; saveProfile(); }
     else pushProfile();
+    pushRecipes();   // partage mes recettes originales pour qu'elles apparaissent sur mon profil
     loadSocial().then(()=>{ updateBadges(); if(state.view==="social") renderSocial(); });
   }
   updateAccountUI();
@@ -4077,6 +4388,7 @@ async function handleAuth(session){
   if(currentUser){
     if(!state.profile.pseudo){ state.profile.pseudo=(currentUser.email||"").split("@")[0]; saveProfile(); }
     else pushProfile();
+    pushRecipes();   // partage mes recettes originales pour qu'elles apparaissent sur mon profil
     loadSocial().then(()=>{ updateBadges(); if(state.view==="social") renderSocial(); });
   }
   updateAccountUI();
