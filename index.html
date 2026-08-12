@@ -711,6 +711,7 @@
   .cardfav:active{transform:scale(.8)}
   .favdetail.on{background:var(--tomato-tint)}
   .dpin{background:var(--camel-tint);font-size:18px;line-height:1}
+  .shareleft{opacity:.7;font-weight:700;font-variant-numeric:tabular-nums;margin-left:2px}
   .chip.favchip.active{background:var(--tomato);border-color:var(--tomato);color:#fff}
   .badge.planned{background:var(--camel-deep);color:#fff;border:none}
   .card.is-planned{box-shadow:0 0 0 1.5px var(--camel-light),var(--shadow-soft)}
@@ -744,6 +745,8 @@
   :root[data-theme="dark"] .badge.micro{background:#1E2733;color:#8FB4E0}
   /* bandeau recette : texte sombre lisible sur le dégradé camel */
   :root[data-theme="dark"] .dhero{color:#26211b}
+  /* mode cuisine : le dégradé clair codé en dur devient un dégradé sombre */
+  :root[data-theme="dark"] .cookmode{background:radial-gradient(130% 92% at 50% -10%, #2A2530 0%, #1A181D 45%, #100F14 100%)}
   :root[data-theme="dark"] .dmeta .pill b{color:#26211b}                    /* nombres des pastilles restent sombres sur les pastilles claires */
   /* boutons ronds (retour/partage/cœur/roue…) : liseré pour se détacher du fond sombre */
   :root[data-theme="dark"] .backbtn{border:1px solid var(--line)}
@@ -2575,6 +2578,7 @@ const state = { view:"home", search:"", filter:"Tous", onlyCookable:false, onlyP
   postView:{open:false, id:null, post:null, loading:false, commentDraft:""},
   friendsSheet:{open:false, id:null, name:"", loading:false, list:null},
   cook:{open:false, recipe:null, steps:[], step:0, factor:1},
+  pendingShare:null,   // {id, until} : fenêtre de 15 min pour publier une photo après avoir fermé le composeur sans poster
   currentPortions:0, cooked:false, confirmCook:false };
 
 /* Les recettes personnelles ont exactement la même forme que celles du catalogue :
@@ -3543,7 +3547,34 @@ function openPostComposer(r){
   renderPostComposer("");
   document.getElementById("postBox").hidden=false;
 }
-function closePostComposer(){ document.getElementById("postBox").hidden=true; draftPost=null; }
+function closePostComposer(posted){
+  const d=draftPost;
+  if(d && d.recipeId){
+    if(posted){
+      // publié : plus besoin du bouton de rappel
+      if(state.pendingShare && state.pendingShare.id===d.recipeId) state.pendingShare=null;
+    } else {
+      // fermé sans publier : on laisse 15 min pour publier via le bouton de la fiche recette
+      state.pendingShare={id:d.recipeId, until:Date.now()+15*60*1000};
+    }
+  }
+  document.getElementById("postBox").hidden=true; draftPost=null;
+  // refléter l'apparition/disparition du bouton « Publier une photo » sur la fiche
+  if(currentRecipe && detailEl.classList.contains("open")) renderDetail();
+}
+// compte à rebours du bouton « Publier une photo de ce plat » (15 min après cuisson)
+let shareIv=null;
+function updateShareCountdown(){
+  const ps=state.pendingShare, el=document.getElementById("shareLeft");
+  if(!ps || ps.until<=Date.now()){
+    if(ps) state.pendingShare=null;
+    if(shareIv){ clearInterval(shareIv); shareIv=null; }
+    if(currentRecipe && detailEl.classList.contains("open")) renderDetail();   // le bouton disparaît
+    return;
+  }
+  const rem=Math.max(0, Math.round((ps.until-Date.now())/1000));
+  if(el) el.textContent="("+Math.floor(rem/60)+":"+String(rem%60).padStart(2,"0")+")";
+}
 function renderPostComposer(msg, cls){
   const d=draftPost; if(!d) return;
   document.getElementById("postCard").innerHTML=`
@@ -3581,7 +3612,7 @@ async function publishPost(){
     if(error){ postBusy=false; renderPostComposer(tradPost(error.message, "post"),"err"); return; }
     // cette photo devient la vignette de la recette (illustration automatique de ce que tu cuisines)
     if(d.recipeId){ state.recipePhotos[d.recipeId]=photo_url; saveRecipePhotos(); }
-    postBusy=false; closePostComposer();
+    postBusy=false; closePostComposer(true);   // publié : pas de bouton de rappel
     state.social.feedLoaded=false; state.gallery.loaded=false;   // fil + galerie se rechargeront
     toast("✅ Plat publié !");
   }catch(e){ postBusy=false; renderPostComposer("Publication impossible : "+(e&&e.message?e.message:e),"err"); }
@@ -3673,6 +3704,7 @@ function doClose(){
   detailEl.setAttribute("aria-hidden","true");
   document.body.style.overflow="";
   currentRecipe=null;
+  if(shareIv){ clearInterval(shareIv); shareIv=null; }   // le compte à rebours de partage ne tourne que fiche ouverte
   // si la recette avait été ouverte depuis un profil, on y revient (état encore en mémoire)
   if(_returnProfileId!=null && state.profileView.data){
     _returnProfileId=null;
@@ -3800,7 +3832,9 @@ function renderDetail(){
   }
   if(!r._preview && r.perso) actions+=`<button class="act cf-no" id="editRecipe">✏️ Modifier ma recette</button>`;
   // publier une photo de ce plat, à tout moment (pas seulement juste après l'avoir cuisiné)
-  if(!r._preview && cloudActif() && !state.confirmCook) actions+=`<button class="act cf-no" id="sharePlate">📸 Publier une photo de ce plat</button>`;
+  // le bouton « publier une photo » n'apparaît qu'après avoir cuisiné et fermé le composeur sans poster (fenêtre de 15 min)
+  if(!r._preview && cloudActif() && !state.confirmCook && state.pendingShare && state.pendingShare.id===r.id && state.pendingShare.until>Date.now())
+    actions+=`<button class="act cf-no" id="sharePlate">📸 Publier une photo de ce plat <span class="shareleft" id="shareLeft"></span></button>`;
 
   detailScroll.innerHTML=`
     <div class="dhero">
@@ -3863,6 +3897,9 @@ function renderDetail(){
     </div>
   `;
   queueNavMaterial();   // le bouton sombre « j'ai cuisiné » peut arriver sous la pastille
+  // compte à rebours du bouton « Publier une photo » (fenêtre de 15 min)
+  if(document.getElementById("sharePlate")){ updateShareCountdown(); if(!shareIv) shareIv=setInterval(updateShareCountdown,1000); }
+  else if(shareIv){ clearInterval(shareIv); shareIv=null; }
 }
 
 /* ================= MODE CUISINE PAS À PAS =================
@@ -3950,8 +3987,15 @@ function renderCookStep(){
   next.textContent = i===n-1 ? "✅ Terminé" : "Suivant ▶";
   next.classList.toggle("done", i===n-1);
 }
-function cookNext(){ const c=state.cook; if(!c.open) return; if(c.step>=c.steps.length-1){ closeCookMode(); toast("👨‍🍳 Bon appétit !"); return; } c.step++; renderCookStep(); }
+function cookNext(){ const c=state.cook; if(!c.open) return; if(c.step>=c.steps.length-1){ finishCookMode(); return; } c.step++; renderCookStep(); }
 function cookPrev(){ const c=state.cook; if(!c.open || c.step<=0) return; c.step--; renderCookStep(); }
+// fin du pas-à-pas = plat réalisé : on ferme, on comptabilise (débit frigo + stats) et on propose de publier une photo
+function finishCookMode(){
+  const r=currentRecipe;
+  closeCookMode();
+  if(r && !state.cooked){ cookRecipe(); }        // cookRecipe débite, enregistre, retire des prévus et ouvre le composeur photo
+  else { toast("👨‍🍳 Bon appétit !"); if(r && cloudActif()) setTimeout(()=>openPostComposer(r), 400); }
+}
 
 /* ----- minuteur (anneau circulaire) ----- */
 const RING_C = 2*Math.PI*84;   // circonférence de l'anneau (r=84 dans le viewBox 200×200)
