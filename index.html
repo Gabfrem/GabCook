@@ -694,6 +694,10 @@
   .page.turning .card:nth-child(4){animation-delay:.12s}
   .page.turning .card:nth-child(5){animation-delay:.16s}
   .page.turning .card:nth-child(n+6){animation-delay:.2s}
+  /* micro-transition du contenu des sous-onglets (Social : Fil ↔ Amis) */
+  @keyframes subSwap{from{opacity:0;transform:translateX(var(--sub-dir,16px))}to{opacity:1;transform:none}}
+  .subcontent.swap{animation:subSwap .3s cubic-bezier(.2,.72,.28,1)}
+  .subtab{transition:background .22s ease,color .22s ease,box-shadow .22s ease}
   /* page réglages */
   .set-sec{margin:6px 2px 22px}
   .set-lab{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 4px 10px}
@@ -2684,6 +2688,24 @@ function moveThumb(animer){
   void thumb.offsetWidth;                          // redémarre l'aplatissement à chaque bascule
   thumb.classList.add("moving");
 }
+// la largeur du menu change selon le libellé de l'onglet actif : on l'anime en douceur
+// (au lieu du saut brut) tout en plaçant la capsule sur la largeur finale
+function positionNav(animate){
+  const nav=document.getElementById("nav");
+  if(!nav){ moveThumb(animate); return; }
+  const prev = nav.style.width ? parseFloat(nav.style.width) : nav.getBoundingClientRect().width;
+  nav.style.transition="none";
+  nav.style.width="auto";                          // largeur naturelle finale
+  const target = nav.getBoundingClientRect().width;
+  moveThumb(animate);                              // capsule calée sur la largeur finale
+  if(!animate || isNaN(prev) || Math.abs(prev-target)<1){
+    nav.style.width=target+"px"; void nav.offsetWidth; nav.style.transition="";
+    return;
+  }
+  nav.style.width=prev+"px"; void nav.offsetWidth; // on repart de l'ancienne largeur
+  nav.style.transition="width .42s cubic-bezier(.34,.9,.3,1), background .28s, box-shadow .28s";
+  nav.style.width=target+"px";                     // ... et on grandit/rétrécit en douceur
+}
 // le contenu est enveloppé dans .page : on l'anime sans déplacer la zone de défilement elle-même
 function setPage(html){
   const turn = pageDir!==0;
@@ -2698,7 +2720,7 @@ function setView(v){
   document.getElementById("searchWrap").style.display = v==="home"?"":"none";
   scrollEl.scrollTop=0;
   render();
-  moveThumb(true);            // seul cas où la capsule doit s'étirer
+  positionNav(true);          // seul cas où la capsule doit s'étirer + le menu se redimensionner en douceur
   queueNavMaterial();
 }
 function render(){
@@ -3478,6 +3500,7 @@ function postCardHTML(p){
   </div>`;
 }
 
+let _socialAnim=false, _socialDir="16px";   // micro-transition au changement de sous-onglet (Fil/Amis)
 function renderSocial(){
   if(!currentUser){
     setPage(`<div style="height:calc(16px + env(safe-area-inset-top))"></div>
@@ -3495,7 +3518,9 @@ function renderSocial(){
     <div class="subtabs">
       <div class="subtab ${s.tab==="feed"?"on":""}" data-subtab="feed">🍽️ Fil</div>
       <div class="subtab ${s.tab==="friends"?"on":""}" data-subtab="friends">👥 Amis${s.incoming.length?" ·"+s.incoming.length:""}</div>
-    </div>`;
+    </div>
+    <div class="subcontent${_socialAnim?" swap":""}"${_socialAnim?` style="--sub-dir:${_socialDir}"`:""}>`;
+  _socialAnim=false;
 
   if(s.tab==="feed"){
     if(!s.feedLoaded) loadFeed().then(()=>{ if(state.view==="social") renderSocial(); });
@@ -3534,7 +3559,7 @@ function renderSocial(){
       html+=s.outgoing.map(p=>personRow(p, `<span class="ftag">En attente</span><button class="fbtn no" data-remove="${esc(p.id)}">Annuler</button>`)).join("");
     }
   }
-  setPage(html);
+  setPage(html+"</div>");   // ferme .subcontent
 }
 
 /* ---------- COMPOSEUR DE PUBLICATION ---------- */
@@ -3944,6 +3969,7 @@ function openCookMode(){
   document.getElementById("cookTitle").textContent=r.nom;
   cookModeEl.classList.add("open"); cookModeEl.setAttribute("aria-hidden","false");
   document.body.style.overflow="hidden";
+  acquireWake();   // l'écran reste allumé tout le temps de la recette pas à pas
   // entrée d'historique dédiée : le bouton retour du téléphone ferme le mode cuisine
   if(DEEPLINK){ try{ history.pushState({r:(r.id||null), cook:1}, "", location.href); }catch(e){} }
   renderCookStep();
@@ -3954,6 +3980,7 @@ function closeCookMode(){                        // action utilisateur (bouton �
 }
 function doCloseCook(){
   clearTimer();
+  releaseWake();   // recette terminée/quittée : l'écran peut se remettre en veille normalement
   state.cook.open=false;
   cookModeEl.classList.remove("open"); cookModeEl.setAttribute("aria-hidden","true");
   document.body.style.overflow = detailEl.classList.contains("open") ? "hidden" : "";
@@ -4038,7 +4065,6 @@ function startCookTimer(){
   cookTimer.endAt=Date.now()+cookTimer.planned*1000;
   cookTimer.remaining=cookTimer.planned;
   cookTimer.running=true; cookTimer.done=false;
-  acquireWake();
   cookTimer.iv=setInterval(tickCookTimer,250);
   renderTimer();
 }
@@ -4055,8 +4081,8 @@ function fireCookTimer(){
   cookTimer.running=false; cookTimer.done=true; cookTimer.remaining=0;
   renderTimer(); startAlarm(); notifyDone();
 }
-function stopCookTimer(){                       // arrête minuteur ou sonnerie (bouton ⏹)
-  stopAlarm(); releaseWake();
+function stopCookTimer(){                       // arrête minuteur ou sonnerie (bouton ⏹) — l'écran reste allumé (mode cuisine)
+  stopAlarm();
   if(cookTimer){ if(cookTimer.iv) clearInterval(cookTimer.iv); cookTimer.iv=null; cookTimer.running=false; cookTimer.done=false; cookTimer.remaining=null; }
   renderTimer();
 }
@@ -4074,7 +4100,7 @@ function adjustTimer(delta){
     const num=document.getElementById("ckTnum"); if(num) num.textContent=fmtClock(cookTimer.planned);
   }
 }
-function clearTimer(){ stopAlarm(); releaseWake(); if(cookTimer&&cookTimer.iv) clearInterval(cookTimer.iv); cookTimer=null; }
+function clearTimer(){ stopAlarm(); if(cookTimer&&cookTimer.iv) clearInterval(cookTimer.iv); cookTimer=null; }   // (ne libère PAS le wake lock : géré à l'ouverture/fermeture du mode cuisine)
 
 /* ----- sonnerie (Web Audio), vibration, notification, wake lock ----- */
 function unlockAudio(){ try{ audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)(); if(audioCtx.state==="suspended") audioCtx.resume(); }catch(e){} }
@@ -4086,9 +4112,9 @@ async function acquireWake(){ try{ if("wakeLock" in navigator){ wakeLock=await n
 function releaseWake(){ try{ if(wakeLock){ wakeLock.release(); wakeLock=null; } }catch(e){} }
 function requestNotify(){ try{ if("Notification" in window && Notification.permission==="default") Notification.requestPermission(); }catch(e){} }
 function notifyDone(){ try{ if("Notification" in window && Notification.permission==="granted"){ const c=state.cook; new Notification("⏰ Minuteur terminé", {body:(c&&c.recipe?c.recipe.nom+" — ":"")+"c'est prêt !", tag:"gabcook-timer"}); } }catch(e){} }
-// l'écran qui se rallume libère le wake lock : on le reprend et on rattrape le temps écoulé
+// revenir sur l'app libère le wake lock du système : on le reprend tant que le mode cuisine est ouvert, et on rattrape le minuteur
 document.addEventListener("visibilitychange",()=>{
-  if(document.visibilityState==="visible" && cookTimer && cookTimer.running){ acquireWake(); tickCookTimer(); }
+  if(document.visibilityState==="visible" && state.cook.open){ acquireWake(); if(cookTimer && cookTimer.running) tickCookTimer(); }
 });
 // événements du mode cuisine
 document.getElementById("cookClose").addEventListener("click", closeCookMode);
@@ -5264,9 +5290,9 @@ scrollEl.addEventListener("scroll", queueNavMaterial, {passive:true});
 detailScroll.addEventListener("scroll", queueNavMaterial, {passive:true});
 // selon le contexte, c'est la fenêtre et non le conteneur interne qui défile
 addEventListener("scroll", queueNavMaterial, {passive:true});
-addEventListener("resize", ()=>{ moveThumb(false); queueNavMaterial(); });
+addEventListener("resize", ()=>{ positionNav(false); queueNavMaterial(); });
 // la largeur des libellés change quand la police s'est chargée
-if(document.fonts && document.fonts.ready) document.fonts.ready.then(()=>moveThumb(false));
+if(document.fonts && document.fonts.ready) document.fonts.ready.then(()=>positionNav(false));
 document.getElementById("search").addEventListener("input",e=>{
   state.search=e.target.value;
   if(state.view==="home") renderHome();
@@ -5376,7 +5402,7 @@ scrollEl.addEventListener("click",e=>{
   // ----- social -----
   if(e.target.closest("#socialLogin")){ openAuth(); return; }
   const sub=e.target.closest("[data-subtab]");
-  if(sub){ state.social.tab=sub.dataset.subtab; renderSocial(); return; }
+  if(sub){ const t=sub.dataset.subtab; if(t!==state.social.tab){ _socialAnim=true; _socialDir=(t==="friends"?"18px":"-18px"); state.social.tab=t; renderSocial(); } return; }
   if(e.target.closest("#friendSearchBtn")){
     const inp=document.getElementById("friendSearch"); if(inp) state.social.q=inp.value;
     searchProfiles(); return;
@@ -5560,7 +5586,7 @@ async function handleAuth(session){
   }
   updateAccountUI();
   render();
-  moveThumb(false);
+  positionNav(false);
 
   // lien de transfert reçu depuis un autre appareil : ?sync=...
   const recu = readSyncLink(new URLSearchParams(location.search).get("sync"));
