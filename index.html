@@ -207,8 +207,8 @@
   .detail-scroll{flex:1;overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:calc(100px + env(safe-area-inset-bottom))}
   .dhero{background:linear-gradient(160deg,#C6A98A 0%,#A9885F 100%);padding:calc(16px + env(safe-area-inset-top)) 20px 26px;color:var(--ink);position:relative}
   .dtop{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-  .backbtn{background:rgba(255,255,255,.9);border-radius:11px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.14)}
-  .backbtn:active{background:#fff;transform:scale(.94)}
+  .backbtn{background:var(--card);border-radius:11px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.14)}
+  .backbtn:active{background:var(--card);transform:scale(.94)}
   .dhero .demoji{font-size:52px;line-height:1;margin-bottom:6px}
   .dhero .dphoto{width:100%;height:190px;object-fit:cover;border-radius:14px;margin-bottom:10px;box-shadow:0 4px 14px rgba(0,0,0,.18)}
   .dhero h2{font-family:var(--disp);font-weight:800;font-size:26px;margin:0;letter-spacing:-.02em;line-height:1.1}
@@ -744,6 +744,30 @@
   :root[data-theme="dark"] .badge.micro{background:#1E2733;color:#8FB4E0}
   /* bandeau recette : texte sombre lisible sur le dégradé camel */
   :root[data-theme="dark"] .dhero{color:#26211b}
+  :root[data-theme="dark"] .dmeta .pill b{color:#26211b}                    /* nombres des pastilles restent sombres sur les pastilles claires */
+  /* boutons ronds (retour/partage/cœur/roue…) : liseré pour se détacher du fond sombre */
+  :root[data-theme="dark"] .backbtn{border:1px solid var(--line)}
+  /* puces de filtre colorées : texte clair + bord sombre au lieu des pastels clairs */
+  :root[data-theme="dark"] .chip.cookable{color:#84C793;border-color:#33473A}
+  :root[data-theme="dark"] .chip.mine{color:#D7B893;border-color:#463B2C}
+  :root[data-theme="dark"] .chip.micro{color:#8FB4E0;border-color:#2C3A47}
+  :root[data-theme="dark"] .chip.fryer{color:#E3AB4E;border-color:#43371D}
+  /* boutons « ajouter à ma liste » + petites étiquettes */
+  :root[data-theme="dark"] .act-shop,:root[data-theme="dark"] .act-shop2{border-color:var(--line);color:#D7B893}
+  :root[data-theme="dark"] .tick.low{background:#3A2E19;color:#E3AB4E;border-color:#4C3C1F}
+  :root[data-theme="dark"] .tag.have-item{border-color:#2F4636;color:#84C793}
+  /* encadrés d'info (avertissement / air fryer / micro-ondes) */
+  :root[data-theme="dark"] .warnbox{background:#33291A;border-color:#463A1F;color:#E3AB4E}
+  :root[data-theme="dark"] .afbox{background:#2A2417;border-color:#403619}
+  :root[data-theme="dark"] .afbox.ko{background:#33211D;border-color:#4A2A24}
+  :root[data-theme="dark"] .afbox.micro{background:#1E2733;border-color:#2C3A47}
+  :root[data-theme="dark"] .afbox .aft,:root[data-theme="dark"] .afbox .afs{color:#E3AB4E}
+  :root[data-theme="dark"] .afbox.micro .aft,:root[data-theme="dark"] .afbox.micro .afs{color:#8FB4E0}
+  /* bords roses/pêches codés en dur */
+  :root[data-theme="dark"] .set-row.danger{border-color:#4A2A24}
+  :root[data-theme="dark"] .postacts .likebtn.on{border-color:#5A2E28}
+  :root[data-theme="dark"] .ck-timer.ringing{border-color:#5A2E28}
+  :root[data-theme="dark"] .tag.have-item,:root[data-theme="dark"] .badge.ready{background:var(--basil-tint)}
   /* interrupteur (réglages) */
   .switch{position:relative;display:inline-block;width:50px;height:30px;flex:0 0 auto}
   .switch input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer;z-index:2}
