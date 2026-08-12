@@ -27,6 +27,8 @@
     --paper:#F7F5F1;
     --card:#FFFFFF;
     --ink:#2B2A28;
+    --strong:#2B2A28;   /* surface « forte » (boutons/bandeaux sombres à texte blanc) — distincte du texte pour le mode sombre */
+    --page-bg:#E7E1D7;  /* fond derrière la colonne 460px */
     --muted:#8B8175;
     --line:#EAE3D8;
     --camel:#BEA088;
@@ -45,7 +47,7 @@
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{margin:0;padding:0}
-  body{font-family:var(--sans);color:var(--ink);background:#E7E1D7;line-height:1.5;-webkit-font-smoothing:antialiased}
+  body{font-family:var(--sans);color:var(--ink);background:var(--page-bg);line-height:1.5;-webkit-font-smoothing:antialiased}
   button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
   input{font-family:inherit}
 
@@ -71,7 +73,7 @@
   .quickpick select:focus{border-color:var(--camel)}
   .quickpick .chev{position:absolute;right:14px;top:50%;transform:translateY(-50%);pointer-events:none;color:var(--muted)}
 
-  .pantry-banner{margin-top:16px;background:var(--ink);color:#fff;border-radius:var(--r);padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:var(--shadow);overflow:hidden;position:relative}
+  .pantry-banner{margin-top:16px;background:var(--strong);color:#fff;border-radius:var(--r);padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:var(--shadow);overflow:hidden;position:relative}
   .pantry-banner::after{content:"";position:absolute;right:-30px;top:-30px;width:120px;height:120px;background:radial-gradient(circle,rgba(190,160,136,.4),transparent 70%)}
   .pantry-banner .pb-txt{position:relative;z-index:1}
   .pantry-banner .pb-num{font-family:var(--disp);font-weight:800;font-size:22px;line-height:1}
@@ -85,7 +87,7 @@
      derrière un défilement horizontal qui ne s'annonce pas. */
   .filters{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}
   .chip{flex:0 0 auto;padding:8px 14px;border-radius:999px;background:var(--card);border:1.5px solid var(--line);font-size:13px;font-weight:600;color:var(--muted);white-space:nowrap;transition:.15s}
-  .chip.active{background:var(--ink);border-color:var(--ink);color:#fff}
+  .chip.active{background:var(--strong);border-color:var(--strong);color:#fff}
   .chip.cookable{color:var(--basil);border-color:#CFE3D0}
   .chip.cookable.active{background:var(--basil);border-color:var(--basil);color:#fff}
   .chip.mine{color:var(--camel-deep);border-color:var(--camel-light)}
@@ -96,7 +98,7 @@
   /* les catégories sont volontairement plus discrètes : c'est un second niveau de tri */
   .cats{display:flex;flex-wrap:wrap;gap:6px;margin:9px 0 0}
   .cat{padding:6px 12px;border-radius:999px;background:transparent;border:1.5px solid var(--line);font-size:12.5px;font-weight:600;color:var(--muted);white-space:nowrap;transition:.15s}
-  .cat.active{background:var(--ink);border-color:var(--ink);color:#fff}
+  .cat.active{background:var(--strong);border-color:var(--strong);color:#fff}
   .clearfilters{margin-top:14px;padding:10px 18px;border-radius:999px;background:var(--card);border:1.5px solid var(--line);font-size:13.5px;font-weight:700;color:var(--ink)}
 
   .sectionlabel{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 2px 12px}
@@ -131,7 +133,7 @@
   /* ---- social : sous-onglets Fil / Amis ---- */
   .subtabs{display:flex;gap:6px;background:var(--card);border:1.5px solid var(--line);border-radius:999px;padding:4px;margin:10px 0 6px}
   .subtab{flex:1;padding:9px;border-radius:999px;font-size:13.5px;font-weight:700;color:var(--muted);text-align:center}
-  .subtab.on{background:var(--ink);color:#fff}
+  .subtab.on{background:var(--strong);color:#fff}
 
   /* ---- composeur de publication ---- */
   .photozone{width:100%;aspect-ratio:4/3;border-radius:14px;border:1.5px dashed var(--camel-light);background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--camel-deep);font-weight:700;font-size:14px;overflow:hidden;cursor:pointer}
@@ -234,7 +236,7 @@
   ul.ing li .iname{flex:1}
   ul.ing li .iqty{color:var(--muted);font-weight:600;font-size:13px;white-space:nowrap}
 
-  .add-missing{width:100%;margin-top:16px;padding:15px;border-radius:14px;background:var(--ink);color:#fff;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;gap:9px;transition:.15s}
+  .add-missing{width:100%;margin-top:16px;padding:15px;border-radius:14px;background:var(--strong);color:#fff;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;gap:9px;transition:.15s}
   .add-missing:active{transform:scale(.98)}
   .add-missing.done{background:var(--basil)}
   .add-missing.allset{background:var(--basil-tint);color:var(--basil)}
@@ -338,8 +340,11 @@
        font-size:12px;font-weight:700;letter-spacing:.045em;text-transform:uppercase;white-space:nowrap;
        transition:color .3s}
   /* 4 onglets : seul l'onglet actif montre son libellé, les autres restent en icône — ça tient sur mobile */
+  /* le libellé prend sa place tout de suite (la capsule reste bien calée) mais son texte
+     apparaît en fondu-glissé plutôt que d'un coup */
   .nav button .lbl{display:none}
-  .nav button.active .lbl{display:inline}
+  .nav button.active .lbl{display:inline-block;animation:navLbl .38s cubic-bezier(.2,.72,.28,1)}
+  @keyframes navLbl{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:none}}
   /* brun profond plutôt que le camel clair : sur sa propre capsule teintée,
      le camel n'aurait pas assez de contraste pour du texte de 12 px */
   .nav button.active{color:#6E5133}
@@ -378,7 +383,7 @@
   @keyframes pageIn{from{opacity:0;transform:translateX(var(--slide,22px))}to{opacity:1;transform:translateX(0)}}
   .page.turning{animation:pageIn .34s cubic-bezier(.22,.61,.36,1)}
 
-  .toast{position:fixed;bottom:calc(84px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:12px 18px;border-radius:12px;font-size:13.5px;font-weight:600;z-index:80;opacity:0;pointer-events:none;transition:.25s;max-width:88%;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+  .toast{position:fixed;bottom:calc(84px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%) translateY(20px);background:var(--strong);color:#fff;padding:12px 18px;border-radius:12px;font-size:13.5px;font-weight:600;z-index:80;opacity:0;pointer-events:none;transition:.25s;max-width:88%;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.25)}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
   /* ---- frigo quantifié ---- */
@@ -404,7 +409,7 @@
   .acts{display:flex;flex-direction:column;gap:9px;margin-top:16px}
   .act{width:100%;padding:15px;border-radius:14px;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;gap:9px;transition:.15s;border:1.5px solid transparent}
   .act:active{transform:scale(.985)}
-  .act-cook{background:var(--ink);color:#fff}
+  .act-cook{background:var(--strong);color:#fff}
   .act-cooked{background:var(--basil-tint);color:var(--basil)}
   .act-shop,.act-shop2{background:var(--camel-tint);color:var(--camel-deep);border-color:#E7D8C4}
   .act[disabled]{opacity:.9}
@@ -618,7 +623,7 @@
   .ck-nav{display:flex;gap:11px;padding:12px 18px calc(14px + env(safe-area-inset-bottom));border-top:1px solid var(--line)}
   .ck-navbtn{flex:1;border-radius:15px;padding:16px 12px;font-family:var(--disp);font-weight:800;font-size:16px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);box-shadow:var(--shadow-soft)}
   .ck-navbtn:disabled{opacity:.34;box-shadow:none}
-  .ck-navbtn.ck-next{flex:1.45;background:var(--ink);color:#fff;border-color:var(--ink)}
+  .ck-navbtn.ck-next{flex:1.45;background:var(--strong);color:#fff;border-color:var(--strong)}
   .ck-navbtn.ck-next.done{background:linear-gradient(135deg,var(--basil),#2E6B3D);border-color:transparent}
   .ck-navbtn:active:not(:disabled){transform:scale(.97)}
   /* bouton de lancement sur la fiche recette */
@@ -670,9 +675,87 @@
   .afbox.micro .aft,.afbox.micro .afs{color:#33547A}
   .badge.micro{background:#EAF0F7;color:#3F6288}
 
+  /* ============ animations & micro-interactions globales ============ */
+  /* transitions douces sur tout ce qui se touche */
+  .card,.rcard,.act,.chip,.cat,.gbtn,.visbtn,.emo,.fbtn,.pgcell,.recrow,.pstat,.banswatch,.banphoto,.backbtn,.radd,.ck-navbtn,.ck-tadjb,.ck-tbtn,.ck-launch,.pv-recipe,.set-row,.act-cook,.act-shop,.act-shop2{transition:transform .16s cubic-bezier(.2,.7,.3,1),box-shadow .22s ease,background .2s ease,border-color .2s ease,color .2s ease,opacity .2s ease}
+  /* retour tactile au toucher, partout */
+  .act:active,.gbtn:active,.pv-recipe:active,.card:active,.rcard:active,.ck-navbtn:active,.ck-launch:active,.ck-tbtn:active,.set-row:active{transform:scale(.98)}
+  .chip:active,.cat:active,.visbtn:active,.emo:active,.fbtn:active,.pgcell:active,.recrow:active,.pstat.tap:active,.banswatch:active,.banphoto:active,.backbtn:active,.radd:active,.ck-tadjb:active{transform:scale(.92)}
+  /* apparition des fenêtres modales : fondu + léger surgissement */
+  @keyframes modalPop{from{opacity:0;transform:translateY(12px) scale(.965)}to{opacity:1;transform:none}}
+  @keyframes backdropIn{from{opacity:0}to{opacity:1}}
+  .sharebox:not([hidden]){animation:backdropIn .22s ease}
+  .sharebox:not([hidden]) .sharecard{animation:modalPop .34s cubic-bezier(.2,.75,.3,1)}
+  /* apparition en douceur des listes/cartes quand on change d'onglet (pas à la recherche) */
+  @keyframes riseIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  .page.turning .card,.page.turning .post,.page.turning .rshelf,.page.turning .empty{animation:riseIn .44s cubic-bezier(.2,.7,.3,1) both}
+  .page.turning .card:nth-child(2){animation-delay:.04s}
+  .page.turning .card:nth-child(3){animation-delay:.08s}
+  .page.turning .card:nth-child(4){animation-delay:.12s}
+  .page.turning .card:nth-child(5){animation-delay:.16s}
+  .page.turning .card:nth-child(n+6){animation-delay:.2s}
+  /* page réglages */
+  .set-sec{margin:6px 2px 22px}
+  .set-lab{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 4px 10px}
+  .set-email{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:14.5px;font-weight:600;color:var(--ink);box-shadow:var(--shadow-soft);margin-bottom:10px;word-break:break-all;display:flex;align-items:center;gap:9px}
+  .set-row{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;font-size:15px;font-weight:700;color:var(--ink);box-shadow:var(--shadow-soft);text-align:left;margin-bottom:10px}
+  .set-row .set-arrow{color:var(--muted);font-size:20px;font-weight:400}
+  .set-row.danger{color:var(--tomato);border-color:#F0C9BF}
+  .set-note{font-size:12px;color:var(--muted);line-height:1.5;margin:2px 6px 0}
+
+  /* favoris (❤️) sur les cartes et le détail + plats prévus (📌) */
+  .card{position:relative;cursor:pointer}
+  .card .info{padding-right:30px}
+  .cardfav{position:absolute;top:8px;right:8px;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;line-height:1;background:transparent;border:none;opacity:.5;z-index:2;transition:opacity .2s,transform .16s}
+  .cardfav.on{opacity:1}
+  .cardfav:active{transform:scale(.8)}
+  .favdetail.on{background:var(--tomato-tint)}
+  .dpin{background:var(--camel-tint);font-size:18px;line-height:1}
+  .chip.favchip.active{background:var(--tomato);border-color:var(--tomato);color:#fff}
+  .badge.planned{background:var(--camel-deep);color:#fff;border:none}
+  .card.is-planned{box-shadow:0 0 0 1.5px var(--camel-light),var(--shadow-soft)}
+
+  /* ============ mode sombre ============ */
+  :root[data-theme="dark"]{
+    color-scheme:dark;
+    --paper:#1A181D; --card:#242128; --page-bg:#111014;
+    --ink:#ECE7DF; --strong:#39343F; --muted:#9C948A; --line:#353139;
+    --camel-tint:#2C2730; --tomato-tint:#3A211D; --basil-tint:#1F2A21;
+    --shadow:0 8px 26px rgba(0,0,0,.5); --shadow-soft:0 2px 12px rgba(0,0,0,.4);
+  }
+  /* icônes à trait sombre → clair */
+  :root[data-theme="dark"] [stroke="#2B2A28"]{stroke:var(--ink)}
+  /* fonds blancs codés en dur → surface sombre */
+  :root[data-theme="dark"] .gbtn,
+  :root[data-theme="dark"] .ed-import .ed-in,
+  :root[data-theme="dark"] .cadd .cinput:focus,
+  :root[data-theme="dark"] .fiqty:focus,
+  :root[data-theme="dark"] .backbtn:active{background:var(--card)}
+  :root[data-theme="dark"] .logo-mark{background:#EDE7DE}
+  /* menu du bas : verre sombre, encres claires */
+  :root[data-theme="dark"] .nav{background:rgba(26,24,30,.5)}
+  :root[data-theme="dark"] .nav button{color:rgba(236,231,223,.72)}
+  /* pastilles : tons sombres + texte clair */
+  :root[data-theme="dark"] .badge.ready{color:#84C793}
+  :root[data-theme="dark"] .badge.miss{color:#EE8A76}
+  :root[data-theme="dark"] .badge.perso{color:#D7B893}
+  :root[data-theme="dark"] .badge.neutral{background:#2A2730;color:var(--muted)}
+  :root[data-theme="dark"] .badge.af{background:#33291A;color:#E0A64B}
+  :root[data-theme="dark"] .badge.micro{background:#1E2733;color:#8FB4E0}
+  /* bandeau recette : texte sombre lisible sur le dégradé camel */
+  :root[data-theme="dark"] .dhero{color:#26211b}
+  /* interrupteur (réglages) */
+  .switch{position:relative;display:inline-block;width:50px;height:30px;flex:0 0 auto}
+  .switch input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer;z-index:2}
+  .switch .track{position:absolute;inset:0;border-radius:999px;background:var(--line);transition:background .25s}
+  .switch .knob{position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.3);transition:transform .25s}
+  .switch input:checked ~ .track{background:var(--camel-deep)}
+  .switch input:checked ~ .knob{transform:translateX(20px)}
+
   @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
   :focus-visible{outline:2.5px solid var(--camel);outline-offset:2px;border-radius:6px}
 </style>
+<script>/* applique le thème avant l'affichage pour éviter tout clignotement clair */try{var _t=localStorage.getItem("gabcook_theme");if(_t&&JSON.parse(_t)==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
 </head>
 <body>
 <div class="app">
@@ -727,8 +810,28 @@
   <div class="ed-head">
     <button class="backbtn" id="profBack" aria-label="Fermer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2B2A28" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg></button>
     <h2 id="profTitle">Profil</h2>
+    <button class="backbtn" id="profSettings" aria-label="Réglages" hidden><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#2B2A28" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
   </div>
   <div class="ed-scroll" id="profScroll"></div>
+</div>
+
+<div class="editor" id="settingsPage" aria-hidden="true">
+  <div class="ed-head">
+    <button class="backbtn" id="settingsBack" aria-label="Retour"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2B2A28" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <h2>Réglages</h2>
+  </div>
+  <div class="ed-scroll" id="settingsScroll"></div>
+</div>
+
+<div class="sharebox" id="resetBox" hidden>
+  <div class="sharecard">
+    <h4>⚠️ Réinitialiser le compte</h4>
+    <p>Cette action efface <b>définitivement</b> toutes tes données : frigo, liste de courses, recettes perso, statistiques, profil, et tout ton réseau social (publications, amis, recettes partagées). Tu seras déconnecté·e.<br><b>C'est irréversible.</b></p>
+    <div class="cf-row" style="margin-top:14px">
+      <button class="act cf-no" id="resetCancel">Annuler</button>
+      <button class="act cf-yes" id="resetConfirm" disabled>Confirmer (5)</button>
+    </div>
+  </div>
 </div>
 
 <div class="editor" id="postView" aria-hidden="true">
@@ -1919,7 +2022,7 @@ const Store = {
 };
 
 /* ---------- état ---------- */
-const state = { view:"home", search:"", filter:"Tous", onlyCookable:false, onlyPerso:false, airfryer:false, micro:false, fridge:[], shopping:[], perso:[], recipePhotos:{}, profile:{pseudo:"",avatar:"",bio:"",isPrivate:false,banner:"",bannerPos:50}, stats:{cooked:0,byRecipe:{},firstAt:null,lastAt:null},
+const state = { view:"home", search:"", filter:"Tous", onlyCookable:false, onlyPerso:false, onlyFav:false, airfryer:false, micro:false, fridge:[], shopping:[], perso:[], favorites:[], planned:[], recipePhotos:{}, profile:{pseudo:"",avatar:"",bio:"",isPrivate:false,banner:"",bannerPos:50}, stats:{cooked:0,byRecipe:{},firstAt:null,lastAt:null},
   social:{tab:"feed", loaded:false, loading:false, friends:[], incoming:[], outgoing:[], q:"", results:null, searching:false, posts:[], feedLoaded:false, feedLoading:false, openComments:{}, commentDrafts:{}},
   gallery:{loaded:false, loading:false, posts:[]},
   profileView:{open:false, id:null, loading:false, data:null, posts:[], friendCount:0, recipes:[]},
@@ -1934,6 +2037,20 @@ const state = { view:"home", search:"", filter:"Tous", onlyCookable:false, onlyP
    `recue` porte une recette arrivée par lien, visible le temps qu'on décide de la garder. */
 function allRecipes(){ return RECIPES.concat(state.perso); }
 function findRecipe(id){ return allRecipes().find(r=>r.id===id) || null; }
+
+/* recettes aimées (❤️) et recettes prévues (📌 « à réaliser », épinglées en haut) */
+function isFav(id){ return state.favorites.includes(id); }
+function saveFavorites(){ Store.set("gabcook_favorites", state.favorites); }
+function toggleFav(id){
+  const i=state.favorites.indexOf(id);
+  if(i>-1) state.favorites.splice(i,1); else state.favorites.unshift(id);
+  if(!state.favorites.length) state.onlyFav=false;   // plus de favoris : on ne reste pas coincé sur ce filtre
+  saveFavorites();
+}
+function isPlanned(id){ return state.planned.includes(id); }
+function savePlanned(){ Store.set("gabcook_planned", state.planned); }
+function addPlanned(id){ if(!state.planned.includes(id)){ state.planned.unshift(id); savePlanned(); } }
+function removePlanned(id){ const i=state.planned.indexOf(id); if(i>-1){ state.planned.splice(i,1); savePlanned(); } }
 // tout texte saisi par l'utilisateur finit dans du HTML : on retire ce qui pourrait y être interprété
 function clean(s){ return (s==null?"":String(s)).replace(/[<>]/g,"").trim(); }
 function esc(s){ return (s==null?"":String(s)).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
@@ -2061,6 +2178,7 @@ function filteredRecipes(){
     if(state.airfryer && !afOk(r)) return false;
     if(state.micro && !moOk(r)) return false;
     if(state.onlyPerso && !r.perso) return false;
+    if(state.onlyFav && !isFav(r.id)) return false;
     if(state.onlyCookable && missingFor(r).length>0) return false;
     if(q){
       const inName=norm(r.nom).includes(q);
@@ -2114,21 +2232,24 @@ function thumbStyle(r){ return ` style="background:${catGradient(r.cat)}"`; }
 // carte pleine largeur d'une recette (liste principale)
 function cardHTML(r){
   const miss=missingFor(r), v=viewOf(r), totalTime=r.prep+v.cuisson;
-  let badge;
-  if(!state.fridge.length) badge=`<span class="badge neutral">${r.ing.length} ingrédients</span>`;
-  else if(miss.length===0) badge=`<span class="badge ready">✓ Prêt à cuisiner</span>`;
-  else badge=`<span class="badge miss">Il te manque ${miss.length} ingrédient${miss.length>1?"s":""}</span>`;
+  const fav=isFav(r.id), planned=isPlanned(r.id);
+  let badge="";
+  if(planned) badge+=`<button class="badge planned" data-unpin="${esc(r.id)}" title="Retirer des plats prévus">📌 À réaliser</button>`;
+  if(!state.fridge.length) badge+=`<span class="badge neutral">${r.ing.length} ingrédients</span>`;
+  else if(miss.length===0) badge+=`<span class="badge ready">✓ Prêt à cuisiner</span>`;
+  else badge+=`<span class="badge miss">Il te manque ${miss.length} ingrédient${miss.length>1?"s":""}</span>`;
   if(v.af) badge+=`<span class="badge af">🍟 ${v.af.t}°C</span>`;
   if(v.mo) badge+=`<span class="badge micro">🔆 ${v.mo.min} min</span>`;
   if(r.perso) badge+=`<span class="badge perso">✏️ Ma recette</span>`;
-  return `<button class="card" data-recipe="${esc(r.id)}">
+  return `<div class="card${planned?" is-planned":""}" data-recipe="${esc(r.id)}">
       <div class="emoji"${thumbStyle(r)}>${thumbInner(r)}</div>
       <div class="info">
         <h3>${esc(r.nom)}</h3>
         <div class="meta"><span>🕒 ${totalTime} min</span><span>🍴 ${esc(r.diff)}</span><span>👥 ${r.portions}</span></div>
         <div class="status">${badge}</div>
       </div>
-    </button>`;
+      <button class="cardfav${fav?" on":""}" data-fav="${esc(r.id)}" aria-label="${fav?"Retirer des favoris":"Ajouter aux favoris"}">${fav?"❤️":"🤍"}</button>
+    </div>`;
 }
 // carte compacte pour l'étagère « Recommandé pour toi »
 function recoCardHTML(r){
@@ -2145,9 +2266,14 @@ function renderHome(){
   const pool = state.micro ? toutes.filter(moOk) : state.airfryer ? toutes.filter(afOk) : toutes;
   const cookableCount = pool.filter(r=>missingFor(r).length===0).length;
   const cats=["Tous", ...Array.from(new Set(toutes.map(r=>r.cat)))];
-  const list=filteredRecipes();
+  let list=filteredRecipes();
+  // les recettes prévues (📌) remontent en tête de liste, comme épinglées
+  if(state.planned.length){
+    const plan=list.filter(r=>isPlanned(r.id)), rest=list.filter(r=>!isPlanned(r.id));
+    list=plan.concat(rest);
+  }
   // vue par défaut = aucun filtre actif : c'est là qu'on montre les recommandations
-  const vueDefaut = state.filter==="Tous" && !norm(state.search) && !state.onlyCookable && !state.onlyPerso && !state.airfryer && !state.micro;
+  const vueDefaut = state.filter==="Tous" && !norm(state.search) && !state.onlyCookable && !state.onlyPerso && !state.onlyFav && !state.airfryer && !state.micro;
   const recos = vueDefaut ? recommendations(8) : [];
 
   let html=`
@@ -2161,6 +2287,7 @@ function renderHome(){
     </div>
     <div class="filters">
       <button class="chip cookable ${state.onlyCookable?"active":""}" data-cook="1">✓ Je peux le cuisiner</button>
+      ${state.favorites.length?`<button class="chip favchip ${state.onlyFav?"active":""}" data-favfilter="1">❤️ Favoris</button>`:""}
       <button class="chip fryer ${state.airfryer?"active":""}" data-fryer="1">🍟 Air fryer</button>
       <button class="chip micro ${state.micro?"active":""}" data-micro="1">🔆 Micro-ondes</button>
       ${state.perso.length?`<button class="chip mine ${state.onlyPerso?"active":""}" data-mine="1">✏️ Mes recettes</button>`:""}
@@ -2490,6 +2617,7 @@ function renderProfile(){
   const rel = mine ? "self" : relationWith(pv.id);
   const locked = !mine && d.is_private && rel!=="friend";
   document.getElementById("profTitle").textContent = mine ? "Mon profil" : (d.pseudo||"Profil");
+  document.getElementById("profSettings").hidden = !mine;   // roue crantée seulement sur mon profil
 
   if(pv.loading && !pv.data){ profScroll.innerHTML=`<div class="prof-locked"><div class="big">⏳</div><p>Chargement…</p></div>`; return; }
 
@@ -2508,8 +2636,7 @@ function renderProfile(){
 
   let actions="";
   if(mine){
-    actions = `<button class="act cf-no" id="profEdit">✏️ Modifier</button>
-               <button class="act cf-no" id="profLogout">Se déconnecter</button>`;
+    actions = `<button class="act cf-no" id="profEdit">✏️ Modifier mon profil</button>`;
   } else {
     actions = rel==="friend" ? `<button class="act cf-no" data-remove="${esc(pv.id)}">✓ Amis</button>`
       : rel==="outgoing" ? `<button class="act cf-no" disabled>Demande envoyée</button>`
@@ -3133,7 +3260,11 @@ function renderDetail(){
     <div class="dhero">
       <div class="dtop">
         <button class="backbtn" id="backBtn" aria-label="Retour"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2B2A28" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg></button>
-        <button class="backbtn" id="shareBtn" aria-label="Partager la recette"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#2B2A28" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"/><path d="m8 7 4-4 4 4"/><path d="M4 13v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6"/></svg></button>
+        <div style="display:flex;gap:9px">
+          ${isPlanned(r.id)?`<button class="backbtn dpin" id="unpinBtn" aria-label="Retirer des plats prévus" title="Prévu — appuie pour retirer">📌</button>`:""}
+          <button class="backbtn favdetail${isFav(r.id)?" on":""}" id="favBtn" aria-label="${isFav(r.id)?"Retirer des favoris":"Ajouter aux favoris"}"><svg width="21" height="21" viewBox="0 0 24 24" fill="${isFav(r.id)?"#C7462F":"none"}" stroke="${isFav(r.id)?"#C7462F":"#2B2A28"}" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 1 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
+          <button class="backbtn" id="shareBtn" aria-label="Partager la recette"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#2B2A28" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"/><path d="m8 7 4-4 4 4"/><path d="M4 13v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6"/></svg></button>
+        </div>
       </div>
       <div class="demoji">${esc(r.emoji)}</div>
       <div class="dcat">${esc(r.cat)}${r.credit?"":(r.perso?" · ma recette":"")}</div>
@@ -3752,6 +3883,7 @@ function cookRecipe(){
   });
   saveFridge();
   recordCooked(r);
+  removePlanned(r.id);        // réalisée → elle quitte les plats prévus
   state.cooked=true;
   state.confirmCook=false;
   renderDetail();
@@ -3798,8 +3930,9 @@ function addMissingToShopping(){
     state.shopping.push({id:uid++, label, base:p.n, q, u, from:r.nom, checked:false});
     added++;
   });
+  addPlanned(r.id);        // on prévoit de la réaliser → épinglée en haut de l'accueil
   saveShopping(); renderDetail(); updateBadges();
-  toast(added? added+" article"+(added>1?"s":"")+" ajouté"+(added>1?"s":"")+" aux courses" : "Déjà dans ta liste");
+  toast(added? added+" article"+(added>1?"s":"")+" ajouté"+(added>1?"s":"")+" aux courses · 📌 recette prévue" : "📌 Recette ajoutée à tes plats prévus");
 }
 
 /* ---------- partage ---------- */
@@ -4011,21 +4144,25 @@ function updateAccountUI(){
 
 let authMode="login", authBusy=false, authWelcome=false, acctView="menu";
 let bannerDraft=null;                       // choix de bannière en cours d'édition
-let bannerPhotos={loaded:false, list:[]};   // mes photos de plats proposées pour la bannière
-async function loadBannerPhotos(){
-  if(!cloudActif()){ bannerPhotos.loaded=true; return; }
-  try{
-    const {data}=await sb.from("posts").select("photo_url,created_at").eq("author",currentUser.id).order("created_at",{ascending:false}).limit(24);
-    bannerPhotos.list=(data||[]).map(p=>p.photo_url).filter(Boolean);
-  }catch(e){}
-  bannerPhotos.loaded=true;
-  if(acctView==="banner"){ const w=document.getElementById("banPhotosWrap"); if(w) w.innerHTML=renderBannerPhotos(); }
-}
-function renderBannerPhotos(){
-  if(!bannerPhotos.loaded) return `<div style="font-size:13px;color:var(--muted);padding:4px 2px">Chargement de tes photos…</div>`;
-  if(!bannerPhotos.list.length) return `<div style="font-size:13px;color:var(--muted);padding:4px 2px">Publie des photos de plats pour pouvoir en mettre une ici.</div>`;
-  const cur=bannerDraft?bannerDraft.banner:"";
-  return `<div class="banphotos">${bannerPhotos.list.map(u=>`<button class="banphoto${cur===u?" on":""}" data-banphoto="${esc(u)}"><img src="${esc(u)}" alt="" loading="lazy"></button>`).join("")}</div>`;
+// bannière depuis une vraie photo de la galerie : on compresse puis on téléverse (Storage) → URL
+function uploadBanner(file){
+  if(!bannerDraft) bannerDraft={banner:"preset:camel", pos:50, busy:false};
+  bannerDraft.busy=true; renderAuth("Traitement de la photo…","load");
+  compressPhoto(file, async out=>{
+    if(!out){ bannerDraft.busy=false; renderAuth("Cette image n'a pas pu être chargée. Essaie-en une autre.","err"); return; }
+    if(cloudActif() && out.blob){
+      try{
+        const path=currentUser.id+"/banner-"+Date.now()+"-"+Math.random().toString(36).slice(2,6)+".jpg";
+        const up=await sb.storage.from("dishes").upload(path, out.blob, {contentType:"image/jpeg", upsert:false});
+        if(!up.error){ bannerDraft.banner=sb.storage.from("dishes").getPublicUrl(path).data.publicUrl; }
+        else bannerDraft.banner=out.dataUrl;   // repli : image intégrée
+      }catch(e){ bannerDraft.banner=out.dataUrl; }
+    } else {
+      bannerDraft.banner=out.dataUrl;          // hors ligne : image intégrée localement
+    }
+    if(bannerDraft.pos==null) bannerDraft.pos=50;
+    bannerDraft.busy=false; renderAuth("");
+  });
 }
 function saveBanner(){
   if(bannerDraft){ state.profile.banner=bannerDraft.banner; state.profile.bannerPos=bannerDraft.pos; }
@@ -4072,20 +4209,21 @@ function renderAuth(msg, cls){
       return;
     }
     if(acctView==="banner"){
-      if(!bannerDraft) bannerDraft={ banner: state.profile.banner||"preset:camel", pos: state.profile.bannerPos==null?50:state.profile.bannerPos };
+      if(!bannerDraft) bannerDraft={ banner: state.profile.banner||"preset:camel", pos: state.profile.bannerPos==null?50:state.profile.bannerPos, busy:false };
       const bd=bannerDraft, isPhoto=isPhotoBanner(bd.banner);
-      if(!bannerPhotos.loaded) loadBannerPhotos();
       card.innerHTML=`
         <h4>Ta bannière</h4>
         <div class="bannerprev" style="${bannerStyle(bd.banner, bd.pos)}"></div>
-        ${isPhoto?`<input class="banpos" id="banPos" type="range" min="0" max="100" value="${bd.pos}"><div style="font-size:12px;color:var(--muted);text-align:center;margin:-2px 0 6px">← glisse pour cadrer la photo →</div>`:""}
-        <div class="ed-lab" style="margin:8px 2px 6px">Couleurs</div>
+        ${isPhoto?`<input class="banpos" id="banPos" type="range" min="0" max="100" value="${bd.pos}"><div style="font-size:12px;color:var(--muted);text-align:center;margin:-2px 0 8px">← glisse pour cadrer la photo →</div>`:""}
+        ${msg?`<div class="authmsg ${cls||""}">${msg}</div>`:""}
+        <label class="gbtn" for="bannerFile">🖼️ Choisir une photo de ta galerie</label>
+        <input id="bannerFile" type="file" accept="image/*" style="display:none">
+        ${isPhoto?`<div style="text-align:center;margin-top:6px"><button class="authswitch" id="bannerPhotoClear" style="color:var(--tomato)">Retirer la photo</button></div>`:""}
+        <div class="authsep">ou une couleur</div>
         <div class="banswatches">${BANNER_ORDER.map(id=>`<button class="banswatch${bd.banner==="preset:"+id?" on":""}" data-banpreset="${id}" style="background:${BANNERS[id]}" aria-label="${id}"></button>`).join("")}</div>
-        <div class="ed-lab" style="margin:12px 2px 6px">Une de tes photos de plats</div>
-        <div id="banPhotosWrap">${renderBannerPhotos()}</div>
         <div class="cf-row" style="margin-top:16px">
           <button class="act cf-no" id="bannerCancel">Annuler</button>
-          <button class="act act-cook" id="bannerSave">Enregistrer</button>
+          <button class="act act-cook" id="bannerSave"${bd.busy?" disabled":""}>${bd.busy?"⏳ …":"Enregistrer"}</button>
         </div>`;
       return;
     }
@@ -4160,16 +4298,103 @@ async function doGoogle(){
       ? "La connexion Google n'est pas encore activée côté Supabase." : "Connexion Google impossible pour le moment.", "err");
   }catch(e){ renderAuth("Connexion Google indisponible.","err"); }
 }
-async function doLogout(){
+async function doLogout(silent){
   if(!sb) return;
   try{ await sb.auth.signOut(); }catch(e){}
   currentUser=null; _lastUid=null;
   state.social={tab:"feed", loaded:false, loading:false, friends:[], incoming:[], outgoing:[], q:"", results:null, searching:false, posts:[], feedLoaded:false, feedLoading:false, openComments:{}, commentDrafts:{}};
   state.gallery={loaded:false, loading:false, posts:[]};
+  if(state.profileView.open) closeProfile();
   await hydrate(); updateAccountUI(); closeAuth();
   if(state.view==="social") setView("home"); else render();
   updateBadges();
-  toast("Déconnecté — retour au frigo de cet appareil");
+  if(!silent) toast("Déconnecté — retour au frigo de cet appareil");
+}
+
+/* ---------- page RÉGLAGES (roue crantée du profil) ---------- */
+const settingsPageEl=document.getElementById("settingsPage");
+function openSettings(){
+  if(!currentUser){ openAuth(); return; }
+  renderSettings();
+  settingsPageEl.classList.add("open"); settingsPageEl.setAttribute("aria-hidden","false");
+  document.body.style.overflow="hidden";
+}
+function closeSettings(){
+  settingsPageEl.classList.remove("open"); settingsPageEl.setAttribute("aria-hidden","true");
+  document.body.style.overflow = state.profileView.open ? "hidden" : "";
+}
+function currentTheme(){ return document.documentElement.getAttribute("data-theme")==="dark" ? "dark" : "light"; }
+function setTheme(theme){
+  if(theme==="dark") document.documentElement.setAttribute("data-theme","dark");
+  else document.documentElement.removeAttribute("data-theme");
+  try{ localStorage.setItem("gabcook_theme", JSON.stringify(theme)); }catch(e){}
+  if(typeof syncNavMaterial==="function") syncNavMaterial();   // le menu du bas relit le fond sous lui
+}
+function renderSettings(){
+  const dark=currentTheme()==="dark";
+  document.getElementById("settingsScroll").innerHTML=`
+    <div class="set-sec">
+      <div class="set-lab">Apparence</div>
+      <label class="set-row" style="cursor:pointer">
+        <span>${dark?"🌙":"☀️"} Mode sombre</span>
+        <span class="switch"><input type="checkbox" id="darkToggle"${dark?" checked":""}><span class="track"></span><span class="knob"></span></span>
+      </label>
+    </div>
+    <div class="set-sec">
+      <div class="set-lab">Compte</div>
+      <div class="set-email">📧 ${esc((currentUser&&currentUser.email)||displayName())}</div>
+      <button class="set-row" id="setLogout"><span>🚪 Se déconnecter</span><span class="set-arrow">›</span></button>
+    </div>
+    <div class="set-sec">
+      <div class="set-lab">Zone sensible</div>
+      <button class="set-row danger" id="setReset"><span>♻️ Réinitialiser le compte</span><span class="set-arrow">›</span></button>
+      <div class="set-note">Efface définitivement toutes tes données (frigo, recettes, profil, publications, amis) et te déconnecte. Irréversible.</div>
+    </div>`;
+}
+
+/* ---------- réinitialisation du compte (confirmation à rebours de 5 s) ---------- */
+let resetTimer=null;
+function openResetConfirm(){
+  const box=document.getElementById("resetBox"), btn=document.getElementById("resetConfirm");
+  box.hidden=false;
+  let left=5; btn.disabled=true; btn.textContent="Confirmer ("+left+")";
+  clearInterval(resetTimer);
+  resetTimer=setInterval(()=>{
+    left--;
+    if(left<=0){ clearInterval(resetTimer); resetTimer=null; btn.disabled=false; btn.textContent="Oui, tout effacer"; }
+    else btn.textContent="Confirmer ("+left+")";
+  },1000);
+}
+function closeResetConfirm(){ clearInterval(resetTimer); resetTimer=null; document.getElementById("resetBox").hidden=true; }
+async function resetAccount(){
+  closeResetConfirm();
+  toast("♻️ Réinitialisation en cours…");
+  if(cloudActif()){
+    const me=currentUser.id;
+    // photos de mes plats dans le Storage (best-effort)
+    try{
+      const {data:mine}=await sb.from("posts").select("photo_path").eq("author",me);
+      const paths=(mine||[]).map(p=>p.photo_path).filter(Boolean);
+      if(paths.length){ try{ await sb.storage.from("dishes").remove(paths); }catch(e){} }
+    }catch(e){}
+    // lignes des tables sociales + clé-valeur (chacune protégée par son RLS « propriétaire »)
+    for(const [t,col] of [["reactions","user_id"],["comments","user_id"],["posts","author"],["recipes","author"]]){
+      try{ await sb.from(t).delete().eq(col, me); }catch(e){}
+    }
+    try{ await sb.from("friendships").delete().or("requester.eq."+me+",addressee.eq."+me); }catch(e){}
+    try{ await sb.from("profiles").delete().eq("id", me); }catch(e){}
+    try{ await sb.from("gabcook_store").delete().eq("user_id", me); }catch(e){}
+  }
+  // local
+  ["gabcook_fridge","gabcook_shopping","gabcook_perso","gabcook_airfryer","gabcook_micro","gabcook_profile","gabcook_stats","gabcook_photos","gabcook_favorites","gabcook_planned"].forEach(k=>{ try{ localStorage.removeItem(k); }catch(e){} });
+  // état en mémoire remis à neuf
+  state.fridge=[]; state.shopping=[]; state.perso=[]; state.recipePhotos={};
+  state.favorites=[]; state.planned=[]; state.onlyFav=false;
+  state.profile={pseudo:"",avatar:"",bio:"",isPrivate:false,banner:"",bannerPos:50};
+  state.stats={cooked:0,byRecipe:{},firstAt:null,lastAt:null};
+  closeSettings();
+  await doLogout(true);   // déconnexion silencieuse : on repart de l'état « pas de compte »
+  toast("✅ Compte réinitialisé — tout est reparti de zéro");
 }
 
 /* --- édition du profil --- */
@@ -4302,9 +4527,22 @@ document.getElementById("acctBtn").addEventListener("click",()=>{
 });
 // page profil : retour, édition, déconnexion, actions d'amitié, ouverture d'une recette
 document.getElementById("profBack").addEventListener("click", closeProfile);
+// roue crantée → page réglages ; réglages → déconnexion / réinitialisation
+document.getElementById("profSettings").addEventListener("click", openSettings);
+document.getElementById("settingsBack").addEventListener("click", closeSettings);
+document.getElementById("settingsScroll").addEventListener("click",e=>{
+  if(e.target.closest("#setLogout")){ closeSettings(); doLogout(); return; }
+  if(e.target.closest("#setReset")){ openResetConfirm(); return; }
+});
+document.getElementById("settingsScroll").addEventListener("change",e=>{
+  if(e.target.id==="darkToggle"){ setTheme(e.target.checked?"dark":"light"); renderSettings(); }
+});
+document.getElementById("resetBox").addEventListener("click",e=>{
+  if(e.target.closest("#resetCancel") || e.target.id==="resetBox"){ closeResetConfirm(); return; }
+  if(e.target.closest("#resetConfirm") && !e.target.closest("#resetConfirm").disabled){ resetAccount(); return; }
+});
 profScroll.addEventListener("click",e=>{
   if(e.target.closest("#profEdit")){ acctView="menu"; renderAuth(""); document.getElementById("authBox").hidden=false; return; }
-  if(e.target.closest("#profLogout")){ doLogout(); return; }
   if(e.target.closest("#bannerEdit")){ acctView="banner"; bannerDraft=null; renderAuth(""); document.getElementById("authBox").hidden=false; return; }
   const add=e.target.closest("[data-add]"); if(add){ addFriend(add.dataset.add).then(()=>{ if(state.profileView.open) renderProfile(); }); return; }
   const acc=e.target.closest("[data-accept]"); if(acc){ acceptFriend(acc.dataset.accept).then(()=>{ if(state.profileView.open) renderProfile(); }); return; }
@@ -4347,8 +4585,7 @@ document.getElementById("authBox").addEventListener("click",e=>{
   // bannière
   const bpr=e.target.closest("[data-banpreset]");
   if(bpr){ if(!bannerDraft) bannerDraft={banner:"preset:camel",pos:50}; bannerDraft.banner="preset:"+bpr.dataset.banpreset; renderAuth(""); return; }
-  const bph=e.target.closest("[data-banphoto]");
-  if(bph){ if(!bannerDraft) bannerDraft={banner:"preset:camel",pos:50}; bannerDraft.banner=bph.dataset.banphoto; if(bannerDraft.pos==null) bannerDraft.pos=50; renderAuth(""); return; }
+  if(e.target.closest("#bannerPhotoClear")){ if(bannerDraft) bannerDraft.banner="preset:camel"; renderAuth(""); return; }
   if(e.target.closest("#bannerSave")){ saveBanner(); return; }
   if(e.target.closest("#bannerCancel")){ bannerDraft=null; closeAuth(); return; }
   const pv=e.target.closest("[data-priv]");
@@ -4381,6 +4618,9 @@ document.getElementById("authBox").addEventListener("change",e=>{
       if(data) setAvatar(data);
       else renderAuth("Cette image n'a pas pu être chargée. Essaie une autre.","err");
     });
+  }
+  if(e.target.id==="bannerFile" && e.target.files && e.target.files[0]){
+    uploadBanner(e.target.files[0]);
   }
 });
 
@@ -4432,11 +4672,36 @@ document.getElementById("search").addEventListener("input",e=>{
   state.search=e.target.value;
   if(state.view==="home") renderHome();
 });
+// glisser horizontalement pour changer d'onglet (Accueil ↔ Frigo ↔ Courses ↔ Social)
+let swX=0, swY=0, swOn=false;
+scrollEl.addEventListener("touchstart",e=>{
+  if(e.touches.length!==1){ swOn=false; return; }
+  // on n'intercepte pas si le geste part d'un défileur horizontal ou d'un champ,
+  // ni si un panneau plein écran (recette, éditeur, profil…) est ouvert
+  if(e.target.closest(".shelf, input, textarea, select")){ swOn=false; return; }
+  if(document.querySelector(".editor.open, .detail.open")){ swOn=false; return; }
+  const t=e.touches[0]; swX=t.clientX; swY=t.clientY; swOn=true;
+},{passive:true});
+scrollEl.addEventListener("touchend",e=>{
+  if(!swOn) return; swOn=false;
+  const t=e.changedTouches[0], dx=t.clientX-swX, dy=t.clientY-swY;
+  if(Math.abs(dx)<64 || Math.abs(dx)<Math.abs(dy)*1.7) return;   // trop peu horizontal : on laisse défiler / cliquer
+  const i=VIEWS.indexOf(state.view);
+  if(dx<0 && i<VIEWS.length-1) setView(VIEWS[i+1]);            // vers la gauche → onglet suivant
+  else if(dx>0 && i>0) setView(VIEWS[i-1]);                    // vers la droite → onglet précédent
+},{passive:true});
 // le menu déroulant a été retiré (redondant avec la recherche et la liste) ;
 // on garde la fonction inoffensive pour ne pas toucher tous les appelants
 function fillQuickpick(){}
 
 scrollEl.addEventListener("click",e=>{
+  // le cœur et l'épingle sont dans la carte : on les traite avant l'ouverture de la recette
+  const favBtn=e.target.closest("[data-fav]");
+  if(favBtn){ const id=favBtn.dataset.fav, was=isFav(id); toggleFav(id); renderHome(); toast(was?"Retiré des favoris":"❤️ Ajouté aux favoris"); return; }
+  const unpin=e.target.closest("[data-unpin]");
+  if(unpin){ removePlanned(unpin.dataset.unpin); renderHome(); toast("Retiré de tes plats prévus"); return; }
+  const favF=e.target.closest("[data-favfilter]");
+  if(favF){ state.onlyFav=!state.onlyFav; renderHome(); return; }
   const card=e.target.closest("[data-recipe]");
   if(card){ openRecipe(card.dataset.recipe); return; }
   // catégories et interrupteurs sont indépendants : choisir une catégorie
@@ -4560,6 +4825,8 @@ scrollEl.addEventListener("input",e=>{
 
 detailScroll.addEventListener("click",e=>{
   if(e.target.closest("#backBtn")){ closeRecipe(); return; }
+  if(e.target.closest("#unpinBtn")){ const r=currentRecipe; if(!r) return; removePlanned(r.id); renderDetail(); toast("Retiré de tes plats prévus"); return; }
+  if(e.target.closest("#favBtn")){ const r=currentRecipe; if(!r) return; const was=isFav(r.id); toggleFav(r.id); renderDetail(); toast(was?"Retiré des favoris":"❤️ Ajouté aux favoris"); return; }
   if(e.target.closest("#shareBtn")){ shareRecipe(); return; }
   if(e.target.closest("#cookBtn")){
     // débiter le frigo n'a de sens que si on avait vraiment tout : sinon on demande confirmation
@@ -4611,6 +4878,11 @@ async function hydrate(){
   state.stats = (st && typeof st==="object") ? {cooked:+st.cooked||0, byRecipe:(st.byRecipe||{}), firstAt:st.firstAt||null, lastAt:st.lastAt||null} : {cooked:0,byRecipe:{},firstAt:null,lastAt:null};
   const ph=await Store.get("gabcook_photos");
   state.recipePhotos = (ph && typeof ph==="object") ? ph : {};
+  const favs=await Store.get("gabcook_favorites");
+  state.favorites = Array.isArray(favs) ? favs.filter(x=>typeof x==="string") : [];
+  const plans=await Store.get("gabcook_planned");
+  state.planned = Array.isArray(plans) ? plans.filter(x=>typeof x==="string") : [];
+  state.onlyFav=false;
   state.fridge = Array.isArray(f) ? f.map(x => (typeof x==="string") ? {n:x, q:null, u:""} : {n:x.n, q:(x.q===undefined?null:x.q), u:(x.u||"")}) : [];
   state.shopping = Array.isArray(s) ? s.map(x => ({id:x.id, label:x.label, base:x.base, q:(x.q===undefined?null:x.q), u:(x.u||""), from:x.from||"", checked:!!x.checked})) : [];
   uid=(state.shopping.reduce((m,x)=>Math.max(m,x.id||0),0))+1;
@@ -4624,7 +4896,7 @@ async function seedCloudFromLocal(){
     const {data}=await sb.from("gabcook_store").select("key").limit(1);
     if(data && data.length) return;          // le compte a déjà des données : on n'écrase rien
   }catch(e){ return; }
-  const keys=["gabcook_fridge","gabcook_shopping","gabcook_perso","gabcook_airfryer","gabcook_micro","gabcook_profile","gabcook_stats","gabcook_photos"];
+  const keys=["gabcook_fridge","gabcook_shopping","gabcook_perso","gabcook_airfryer","gabcook_micro","gabcook_profile","gabcook_stats","gabcook_photos","gabcook_favorites","gabcook_planned"];
   let verse=0;
   for(const k of keys){
     const v=localGet(k);
