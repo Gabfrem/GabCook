@@ -782,7 +782,7 @@
   @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
   :focus-visible{outline:2.5px solid var(--camel);outline-offset:2px;border-radius:6px}
 </style>
-<script>/* applique le thème avant l'affichage pour éviter tout clignotement clair */try{var _t=localStorage.getItem("gabcook_theme");if(_t&&JSON.parse(_t)==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>/* applique le thème avant l'affichage pour éviter tout clignotement clair */try{var _t=localStorage.getItem("gabcook_theme");if(_t&&JSON.parse(_t)==="dark"){document.documentElement.setAttribute("data-theme","dark");var _m=document.querySelector('meta[name="theme-color"]');if(_m)_m.setAttribute("content","#1A181D");var _a=document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]');if(_a)_a.setAttribute("content","black-translucent");}}catch(e){}</script>
 </head>
 <body>
 <div class="app">
@@ -3910,6 +3910,7 @@ function renderDetail(){
 const cookModeEl=document.getElementById("cookMode");
 const cookBody=document.getElementById("cookBody");
 let cookTimer=null;               // {planned, endAt, remaining, running, done, iv}
+let cookIntent=null;              // "cook" (bouton J'ai cuisiné) ou "mode" (lancer le pas à pas) : action du bouton « Cuisiner quand même »
 let audioCtx=null, alarmIv=null, wakeLock=null;
 
 // repère une durée dans le texte d'une étape → secondes (0 si aucune)
@@ -4918,7 +4919,15 @@ function setTheme(theme){
   if(theme==="dark") document.documentElement.setAttribute("data-theme","dark");
   else document.documentElement.removeAttribute("data-theme");
   try{ localStorage.setItem("gabcook_theme", JSON.stringify(theme)); }catch(e){}
+  applyStatusBar(theme);
   if(typeof syncNavMaterial==="function") syncNavMaterial();   // le menu du bas relit le fond sous lui
+}
+// teinte la barre d'état du téléphone (haut de l'écran) selon le thème
+function applyStatusBar(theme){
+  const m=document.querySelector('meta[name="theme-color"]');
+  if(m) m.setAttribute("content", theme==="dark" ? "#1A181D" : "#F7F5F1");
+  const a=document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]');
+  if(a) a.setAttribute("content", theme==="dark" ? "black-translucent" : "default");
 }
 function renderSettings(){
   const dark=currentTheme()==="dark";
@@ -5421,16 +5430,27 @@ detailScroll.addEventListener("click",e=>{
   if(e.target.closest("#cookBtn")){
     // débiter le frigo n'a de sens que si on avait vraiment tout : sinon on demande confirmation
     const r=currentRecipe;
-    if(r && missingFor(r, state.currentPortions/r.portions).length){ state.confirmCook=true; renderDetail(); }
+    if(r && missingFor(r, state.currentPortions/r.portions).length){ state.confirmCook=true; cookIntent="cook"; renderDetail(); }
     else cookRecipe();
     return;
   }
-  if(e.target.closest("#cookStart")){ openCookMode(); return; }
+  if(e.target.closest("#cookStart")){
+    // même avertissement que « J'ai cuisiné » : si le frigo est renseigné et qu'il manque des ingrédients, on demande avant de lancer le pas à pas
+    const r=currentRecipe;
+    if(r && state.fridge.length && missingFor(r, state.currentPortions/r.portions).length){ state.confirmCook=true; cookIntent="mode"; renderDetail(); const c=detailScroll.querySelector(".confirm"); if(c) c.scrollIntoView({behavior:"smooth", block:"center"}); }
+    else openCookMode();
+    return;
+  }
   if(e.target.closest("#editRecipe")){ openEditor(currentRecipe && currentRecipe.id); return; }
   if(e.target.closest("#importRec")){ importSharedRecipe(); return; }
   if(e.target.closest("#sharePlate")){ if(currentRecipe) openPostComposer(currentRecipe); return; }
-  if(e.target.closest("#cancelCook")){ state.confirmCook=false; renderDetail(); return; }
-  if(e.target.closest("#forceCook")){ cookRecipe(); return; }
+  if(e.target.closest("#cancelCook")){ state.confirmCook=false; cookIntent=null; renderDetail(); return; }
+  if(e.target.closest("#forceCook")){
+    const intent=cookIntent; state.confirmCook=false; cookIntent=null;
+    if(intent==="mode"){ renderDetail(); openCookMode(); }   // lancer le pas à pas malgré les manques
+    else cookRecipe();                                        // enregistrer « cuisiné » malgré les manques
+    return;
+  }
   if(e.target.closest("#addMissing")){ addMissingToShopping(); return; }
   if(e.target.closest("#pMinus")){ if(state.currentPortions>1){ state.currentPortions--; state.confirmCook=false; renderDetail(); } return; }
   if(e.target.closest("#pPlus")){ state.currentPortions++; state.confirmCook=false; renderDetail(); return; }
