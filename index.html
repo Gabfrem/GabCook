@@ -65,10 +65,11 @@
   :root[data-theme="dark"] .brand{background:#1A2F22;box-shadow:0 6px 18px rgba(0,0,0,.45)}
   .logo-mark{display:none}
   .brand-txt{display:flex;flex-direction:column;line-height:1.05}
-  .brand h1{font-family:var(--script);font-weight:400;font-size:27px;letter-spacing:.01em;margin:0;color:#E4A131;text-shadow:0 1px 0 rgba(0,0,0,.12)}
+  .brand h1{font-family:var(--script);font-weight:400;font-size:27px;letter-spacing:.01em;margin:0;color:#E4A131;text-shadow:0 1px 0 rgba(0,0,0,.12);line-height:1.25;padding-bottom:2px}
   .brand .ck{color:#E4A131}
   /* la baseline n'est pas une étiquette de frigo : on annule le fond/bordure de .tag */
-  .brand .tag{display:block;background:none;border:none;padding:0;border-radius:0;font-size:11px;color:rgba(251,245,230,.75);font-weight:500;margin-top:2px}
+  .brand .tag{display:block;background:none;border:none;padding:0;border-radius:0;font-size:11px;color:rgba(251,245,230,.7);font-weight:500;margin-top:7px;letter-spacing:.015em}
+  .brand-txt{gap:0}
 
   .search{position:relative;margin:14px 8px 0}
   .search svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--camel)}
@@ -2883,6 +2884,22 @@ function positionNav(animate){
   nav.style.transition="width .42s cubic-bezier(.34,.9,.3,1), background .28s, box-shadow .28s";
   nav.style.width=target+"px";                     // ... et on grandit/rétrécit en douceur
 }
+/* Selon la hauteur du contenu, c'est la fenêtre ou la zone interne qui défile :
+   ces deux fonctions lisent/rétablissent la position sans se soucier de laquelle. */
+function posDefilement(){ return scrollEl.scrollTop || window.scrollY || document.documentElement.scrollTop || 0; }
+function remetDefilement(y){
+  if(scrollEl.scrollTop) scrollEl.scrollTop=y;
+  else if(scrollEl.scrollHeight>scrollEl.clientHeight) scrollEl.scrollTop=y;
+  if(window.scrollY || document.documentElement.scrollTop) window.scrollTo(0,y);
+}
+// re-rend la vue courante sans bouger l'écran (like, note, épingle…)
+function rerenderKeepScroll(){
+  const y=posDefilement();
+  const tb=document.getElementById("topbar"), etaitReplie=tb&&tb.classList.contains("hide");
+  render();
+  if(etaitReplie && tb) tb.classList.add("hide");   // l'en-tête ne doit pas resurgir tout seul
+  remetDefilement(y);
+}
 // le contenu est enveloppé dans .page : on l'anime sans déplacer la zone de défilement elle-même
 function setPage(html){
   const turn = pageDir!==0;
@@ -2993,10 +3010,16 @@ const PHOTO_FALLBACK={
 };
 /* Photo précise de chaque recette : cherchée une seule fois sur Wikimedia Commons à partir
    du nom du plat, puis mise en cache sur l'appareil. "" = rien trouvé, on garde le repli. */
+/* Le cache est versionné : quand on améliore la recherche de photos, on incrémente PHOTO_VER
+   et les anciennes images (parfois hors sujet) sont automatiquement réoubliées. */
+const PHOTO_VER=3;
 let photoCache={};
-try{ photoCache=JSON.parse(localStorage.getItem("gabcook_photocache")||"{}"); }catch(e){ photoCache={}; }
+try{
+  const brut=JSON.parse(localStorage.getItem("gabcook_photocache")||"{}");
+  photoCache = (brut && brut.v===PHOTO_VER && brut.m) ? brut.m : {};
+}catch(e){ photoCache={}; }
 let _pcT=null;
-function savePhotoCache(){ clearTimeout(_pcT); _pcT=setTimeout(()=>{ try{ localStorage.setItem("gabcook_photocache", JSON.stringify(photoCache)); }catch(e){} },900); }
+function savePhotoCache(){ clearTimeout(_pcT); _pcT=setTimeout(()=>{ try{ localStorage.setItem("gabcook_photocache", JSON.stringify({v:PHOTO_VER, m:photoCache})); }catch(e){} },900); }
 function dishPhoto(r){
   if(state.recipePhotos[r.id]) return state.recipePhotos[r.id];   // ta propre photo publiée : elle prime
   if(r.photo) return r.photo;                                      // photo de la recette (import / perso)
@@ -5737,23 +5760,30 @@ document.getElementById("search").addEventListener("input",e=>{
 (function autoHideTopbar(){
   const tb=document.getElementById("topbar");
   if(!tb) return;
-  let lastY=0, up=0, down=0;
-  const show=()=>{ tb.classList.remove("hide"); };
+  let lastY=0, up=0, down=0, verrou=0;
+  /* replier/déplier change la hauteur de la page : le navigateur émet alors un défilement
+     « fantôme » qui annulerait aussitôt l'action. On ignore donc les évènements juste après. */
+  const show=()=>{ if(!tb.classList.contains("hide")) return; tb.classList.remove("hide"); verrou=Date.now()+420; up=down=0; };
   const hide=()=>{
+    if(tb.classList.contains("hide")) return;
     if(document.activeElement===document.getElementById("search")) return;   // on ne masque pas pendant une recherche
     tb.style.setProperty("--tb-h", tb.offsetHeight+"px");
-    tb.classList.add("hide");
+    tb.classList.add("hide"); verrou=Date.now()+420; up=down=0;
   };
-  scrollEl.addEventListener("scroll",()=>{
-    const y=scrollEl.scrollTop, d=y-lastY;
+  const onScroll=()=>{
+    const y=posDefilement();
+    if(Date.now()<verrou){ lastY=y; return; }       // décalage dû au repli lui-même : on ignore
+    const d=y-lastY;
     lastY=y;
-    if(y<60){ up=down=0; show(); return; }         // tout en haut : toujours visible
-    if(d>0){ down+=d; up=0; if(down>28) hide(); }  // on descend franchement → on replie
-    else if(d<0){ up-=d; down=0; if(up>18) show(); } // un petit retour vers le haut suffit à le rappeler
-  },{passive:true});
-  // la recherche et les changements d'onglet remettent l'en-tête en place
+    if(y<60){ up=down=0; show(); return; }          // tout en haut : toujours visible
+    if(d>0){ down+=d; up=0; if(down>28) hide(); }   // on descend franchement → on replie
+    else if(d<0){ up-=d; down=0; if(up>18) show(); }// un petit retour vers le haut suffit à le rappeler
+  };
+  // selon la hauteur du contenu, c'est la fenêtre OU la zone interne qui défile : on écoute les deux
+  scrollEl.addEventListener("scroll", onScroll, {passive:true});
+  addEventListener("scroll", onScroll, {passive:true});
   document.getElementById("search").addEventListener("focus", show);
-  window.addEventListener("yummly:view", show);
+  addEventListener("yummly:view", show);
 })();
 // glisser horizontalement pour changer d'onglet (Accueil ↔ Frigo ↔ Courses ↔ Social)
 let swX=0, swY=0, swOn=false;
@@ -5780,9 +5810,20 @@ function fillQuickpick(){}
 scrollEl.addEventListener("click",e=>{
   // le cœur et l'épingle sont dans la carte : on les traite avant l'ouverture de la recette
   const favBtn=e.target.closest("[data-fav]");
-  if(favBtn){ const id=favBtn.dataset.fav, was=isFav(id); toggleFav(id); renderHome(); toast(was?"Retiré des favoris":"❤️ Ajouté aux favoris"); return; }
+  if(favBtn){
+    const id=favBtn.dataset.fav, was=isFav(id), avant=state.favorites.length;
+    toggleFav(id);
+    // mise à jour sur place : pas de re-rendu, donc l'écran ne bouge pas d'un pixel
+    document.querySelectorAll('[data-fav="'+CSS.escape(id)+'"]').forEach(b=>{
+      b.classList.toggle("on", isFav(id)); b.textContent = isFav(id)?"❤️":"🤍";
+    });
+    // seuls ces deux cas changent vraiment la liste : on re-rend en gardant la position
+    if(state.onlyFav || (avant===0)!==(state.favorites.length===0)) rerenderKeepScroll();
+    toast(was?"Retiré des favoris":"❤️ Ajouté aux favoris");
+    return;
+  }
   const unpin=e.target.closest("[data-unpin]");
-  if(unpin){ removePlanned(unpin.dataset.unpin); renderHome(); toast("Retiré de tes plats prévus"); return; }
+  if(unpin){ removePlanned(unpin.dataset.unpin); rerenderKeepScroll(); toast("Retiré de tes plats prévus"); return; }
   const favF=e.target.closest("[data-favfilter]");
   if(favF){ state.onlyFav=!state.onlyFav; renderHome(); return; }
   const card=e.target.closest("[data-recipe]");
@@ -5791,9 +5832,15 @@ scrollEl.addEventListener("click",e=>{
   // ne doit plus désactiver « je peux le cuisiner » comme c'était le cas avant
   const cat=e.target.closest("[data-cat]");
   if(cat){ state.filter=cat.dataset.cat; renderHome(); return; }
-  // notation : une étoile de la grille/à la une
+  // notation depuis une carte : on met à jour les étoiles sur place
   const st=e.target.closest("[data-rate]");
-  if(st){ rateRecipe(st.dataset.rate, +st.dataset.star); renderHome(); return; }
+  if(st){
+    const id=st.dataset.rate;
+    rateRecipe(id, +st.dataset.star);
+    document.querySelectorAll('[data-recipe="'+CSS.escape(id)+'"] .stars:not(.tap)').forEach(s=>{ s.outerHTML=starsHTML(id); });
+    if(state.catSort==="note") rerenderKeepScroll();   // le classement change → on re-rend sans bouger l'écran
+    return;
+  }
   // retour depuis une page catégorie : on efface catégorie, recherche et filtres
   if(e.target.closest("#catBack")){
     state.filter="Tous"; state.search=""; const si=document.getElementById("search"); if(si) si.value="";
