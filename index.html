@@ -240,6 +240,8 @@
   .stars{display:inline-flex;gap:2px;line-height:1}
   .stars .star{font-size:15px;color:#D9D2BE;background:none;border:none;padding:0;transition:color .15s,transform .12s}
   .stars .star.on{color:var(--camel)}
+  .stars .votes{font-size:11.5px;font-weight:700;color:var(--muted);margin-left:4px;align-self:center}
+  .stars .votes.none{opacity:.55}
   .stars.tap .star{font-size:30px;padding:0 3px}
   .stars.tap .star:active{transform:scale(1.25)}
   .drate{margin-top:10px;display:flex;flex-direction:column;gap:2px}
@@ -2690,7 +2692,7 @@ const state = { view:"home", search:"", filter:"Tous", onlyCookable:false, onlyP
   postView:{open:false, id:null, post:null, loading:false, commentDraft:""},
   friendsSheet:{open:false, id:null, name:"", loading:false, list:null},
   cook:{open:false, recipe:null, steps:[], step:0, factor:1},
-  ratings:{},                                   // {idRecette: 1..5} — les mieux notées passent « à la une »
+  ratings:{}, ratingsGlobal:{},                 // ma note {id:1..5} et les moyennes de tous {id:{sum,n}}
   catSort:"note", catFilters:{temps:"", diff:"", regime:""}, filtersOpen:false,
   pendingShare:null,   // {id, until} : fenêtre de 15 min pour publier une photo après avoir fermé le composeur sans poster
   currentPortions:0, cooked:false, confirmCook:false };
@@ -2711,22 +2713,64 @@ function toggleFav(id){
   if(!state.favorites.length) state.onlyFav=false;   // plus de favoris : on ne reste pas coincé sur ce filtre
   saveFavorites();
 }
-/* ---- notes en étoiles ---- */
-function ratingOf(id){ return state.ratings[id]||0; }
+/* ---- notes en étoiles ----
+   Ma note est locale (elle marche hors ligne et sans compte) ET partagée dans la table
+   `ratings` de Supabase : la note affichée est la MOYENNE de tous les utilisateurs,
+   avec le nombre de votes. Le classement « à la une » est donc le même pour tout le monde. */
+function ratingOf(id){ return state.ratings[id]||0; }          // MA note
+function globalRating(id){                                      // {moy, n} tous utilisateurs
+  const g=state.ratingsGlobal[id];
+  if(g && g.n) return {moy:g.sum/g.n, n:g.n};
+  const mine=ratingOf(id);
+  return mine ? {moy:mine, n:1} : {moy:0, n:0};                 // hors ligne : au moins la mienne
+}
 function saveRatings(){ Store.set("gabcook_ratings", state.ratings); }
 function rateRecipe(id, n){
   n=Math.max(0,Math.min(5,+n||0));
-  if(ratingOf(id)===n) n=0;                       // re-toucher la même étoile retire la note
+  const avant=ratingOf(id);
+  if(avant===n) n=0;                              // re-toucher la même étoile retire la note
   if(n) state.ratings[id]=n; else delete state.ratings[id];
   saveRatings();
+  // mise à jour immédiate de la moyenne affichée, puis envoi au serveur
+  const g=state.ratingsGlobal[id]||(state.ratingsGlobal[id]={sum:0,n:0});
+  if(avant){ g.sum-=avant; g.n--; }
+  if(n){ g.sum+=n; g.n++; }
+  if(g.n<=0){ g.sum=0; g.n=0; }
+  pushRating(id, n);
 }
-// étoiles : cliquables (fiche recette) ou simple affichage (listes)
+async function pushRating(id, n){
+  if(!cloudActif()) return;
+  try{
+    if(n) await sb.from("ratings").upsert({recipe_id:id, user_id:currentUser.id, stars:n}, {onConflict:"recipe_id,user_id"});
+    else  await sb.from("ratings").delete().eq("recipe_id",id).eq("user_id",currentUser.id);
+  }catch(e){}
+}
+// charge toutes les notes (tous utilisateurs) et en fait des moyennes
+async function loadRatings(){
+  if(!cloudActif()) return;
+  try{
+    const {data,error}=await sb.from("ratings").select("recipe_id,stars,user_id");
+    if(error||!data) return;
+    const agg={};
+    data.forEach(r=>{ const a=agg[r.recipe_id]||(agg[r.recipe_id]={sum:0,n:0}); a.sum+=r.stars; a.n++;
+      if(r.user_id===currentUser.id) state.ratings[r.recipe_id]=r.stars; });   // mes notes suivent mon compte
+    state.ratingsGlobal=agg;
+    if(state.view==="home") renderHome();
+  }catch(e){}
+}
+/* étoiles : cliquables (fiche recette, c'est MA note) ou affichage de la moyenne + nb de votes */
 function starsHTML(id, interactive){
-  const v=ratingOf(id);
-  let s=`<span class="stars${interactive?" tap":""}${v?"":" none"}">`;
-  for(let i=1;i<=5;i++) s+= interactive
-    ? `<button class="star${i<=v?" on":""}" data-rate="${esc(id)}" data-star="${i}" aria-label="${i} étoile${i>1?"s":""}">★</button>`
-    : `<span class="star${i<=v?" on":""}">★</span>`;
+  if(interactive){
+    const v=ratingOf(id);
+    let s=`<span class="stars tap">`;
+    for(let i=1;i<=5;i++) s+=`<button class="star${i<=v?" on":""}" data-rate="${esc(id)}" data-star="${i}" aria-label="${i} étoile${i>1?"s":""}">★</button>`;
+    return s+`</span>`;
+  }
+  const {moy,n}=globalRating(id);
+  const pleines=Math.round(moy);
+  let s=`<span class="stars${n?"":" none"}">`;
+  for(let i=1;i<=5;i++) s+=`<span class="star${i<=pleines?" on":""}">★</span>`;
+  s+=n?`<b class="votes">(${n})</b>`:`<b class="votes none">–</b>`;
   return s+`</span>`;
 }
 /* ---- régime : une recette est végétarienne si aucun ingrédient n'est de la chair animale ---- */
@@ -3016,18 +3060,32 @@ function photoAcceptable(titre, nom){
   if(!mots.length) return true;
   return mots.some(m=>t.includes(m) || t.includes(m.replace(/s$/,"")));   // le titre doit parler du plat (FR ou EN)
 }
+/* Le titre seul ne suffit pas (« Burger King building » contient bien « burger ») : on exige
+   que l'image appartienne à une catégorie culinaire de Commons — c'est le signal fiable. */
+const CAT_FOOD=/(food|dish|dishes|cuisine|cooking|meal|recipe|dessert|cake|pastry|bread|soup|salad|pasta|pizza|meat|beef|pork|chicken|fish|seafood|vegetab|fruit|cheese|drink|beverage|breakfast|lunch|dinner|snack|confectioner|gastronom|aliment|plats|patisserie|boulangerie|viande|legume|fromage)/i;
+function estCulinaire(cats){ return (cats||[]).some(c=>CAT_FOOD.test(c)); }
+/* on veut un PLAT cuisiné, pas un marché, une ferme, un animal vivant ou un ingrédient brut */
+const PAS_UN_PLAT=/(market|marche|farm|ferme|livestock|poultry|butcher|boucherie|abattoir|slaughter|cattle|bovin|cow |vache|hen |poule |rooster|coq |elevage|breeding|plantation|harvest|recolte|drying|sechage|shop|store|magasin|supermarket|grocery|vendor|seller|stall|etal|packaging|emballage|logo|canned|conserve|aquarium|zoo|garden|jardin|orchard|verger|field|champ)/i;
 async function chercheCommons(terme, nom){
   const u="https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*"
-    +"&generator=search&gsrnamespace=6&gsrlimit=8&gsrsearch="+encodeURIComponent(terme+" filetype:bitmap")
-    +"&prop=imageinfo&iiprop=url&iiurlwidth=600";
+    +"&generator=search&gsrnamespace=6&gsrlimit=10&gsrsearch="+encodeURIComponent(terme+" filetype:bitmap")
+    +"&prop=imageinfo|categories&cllimit=20&clshow=!hidden&iiprop=url&iiurlwidth=600";
   try{
     const j=await (await fetch(u)).json();
     const p=j.query&&j.query.pages?Object.values(j.query.pages):[];
     p.sort((a,b)=>(a.index||0)-(b.index||0));
+    let secours="";
     for(const x of p){
       if(!x.imageinfo||!x.imageinfo[0]) continue;
-      if(photoAcceptable(x.title.replace(/^File:/,""), nom)) return x.imageinfo[0].thumburl.split("?")[0];
+      const titre=x.title.replace(/^File:/,"");
+      const cats=(x.categories||[]).map(c=>c.title.replace(/^Category:/,""));
+      if(!estCulinaire(cats)) continue;                       // ni plat ni aliment → on écarte
+      if(PAS_UN_PLAT.test(titre+" "+cats.join(" "))) continue; // marché, ferme, ingrédient brut → on écarte
+      const url=x.imageinfo[0].thumburl.split("?")[0];
+      if(photoAcceptable(titre+" "+cats.join(" "), nom)) return url;   // en plus, ça parle du bon plat
+      if(!secours) secours=url;                                // sinon on garde la 1re photo culinaire
     }
+    return secours;
   }catch(e){}
   return "";
 }
@@ -3154,7 +3212,7 @@ function applyCatFilters(list){
 function sortList(list){
   const t=r=>r.prep+viewOf(r).cuisson, D={"Facile":0,"Moyen":1,"Difficile":2};
   const a=list.slice();
-  if(state.catSort==="note") a.sort((x,y)=>ratingOf(y.id)-ratingOf(x.id) || x.nom.localeCompare(y.nom));
+  if(state.catSort==="note") a.sort((x,y)=>globalRating(y.id).moy-globalRating(x.id).moy || globalRating(y.id).n-globalRating(x.id).n || x.nom.localeCompare(y.nom));
   else if(state.catSort==="rapide") a.sort((x,y)=>t(x)-t(y));
   else if(state.catSort==="facile") a.sort((x,y)=>(D[x.diff]??9)-(D[y.diff]??9) || t(x)-t(y));
   else if(state.catSort==="az") a.sort((x,y)=>x.nom.localeCompare(y.nom));
@@ -3173,7 +3231,7 @@ function renderHome(){
   let recos = recommendations(6);
   if(recos.length<6){
     const vus={}; recos.forEach(r=>vus[r.id]=1);
-    const reste=toutes.filter(r=>!vus[r.id]).sort((a,b)=>ratingOf(b.id)-ratingOf(a.id));
+    const reste=toutes.filter(r=>!vus[r.id]).sort((a,b)=>globalRating(b.id).moy-globalRating(a.id).moy);
     recos=recos.concat(reste.slice(0,6-recos.length));
   }
 
@@ -3214,7 +3272,7 @@ function renderCategoryPage(){
     list=plan.concat(rest);
   }
   // « à la une » : les 3 mieux notées de la sélection (seulement si on a vraiment noté)
-  const notees=list.filter(r=>ratingOf(r.id)>0).sort((a,b)=>ratingOf(b.id)-ratingOf(a.id));
+  const notees=list.filter(r=>globalRating(r.id).n>0).sort((a,b)=>globalRating(b.id).moy-globalRating(a.id).moy || globalRating(b.id).n-globalRating(a.id).n);
   const une = notees.slice(0,3);
   const uneIds={}; une.forEach(r=>uneIds[r.id]=1);
   const reste = list.filter(r=>!uneIds[r.id]);
@@ -5987,6 +6045,7 @@ async function handleAuth(session){
     if(!state.profile.pseudo){ state.profile.pseudo=(currentUser.email||"").split("@")[0]; saveProfile(); }
     else pushProfile();
     pushRecipes();   // partage mes recettes originales pour qu'elles apparaissent sur mon profil
+    loadRatings();   // notes de tous les utilisateurs (moyennes + mes notes)
     loadSocial().then(()=>{ updateBadges(); if(state.view==="social") renderSocial(); });
   }
   updateAccountUI();
@@ -6010,6 +6069,7 @@ async function handleAuth(session){
     if(!state.profile.pseudo){ state.profile.pseudo=(currentUser.email||"").split("@")[0]; saveProfile(); }
     else pushProfile();
     pushRecipes();   // partage mes recettes originales pour qu'elles apparaissent sur mon profil
+    loadRatings();   // notes de tous les utilisateurs (moyennes + mes notes)
     loadSocial().then(()=>{ updateBadges(); if(state.view==="social") renderSocial(); });
   }
   updateAccountUI();
