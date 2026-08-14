@@ -274,6 +274,14 @@
        display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
   .gc-meta{font-size:12px;font-weight:600;color:var(--ink);opacity:.72}
   .gc-prix{font-size:12px;font-weight:800;color:var(--camel-deep);margin-top:2px}
+  /* total estimé de la liste de courses */
+  .coursetotal{background:var(--strong);color:#FBF5E6;border-radius:18px;padding:14px 16px;margin:10px 0 14px;box-shadow:var(--shadow)}
+  .coursetotal .ct-main{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+  .coursetotal .ct-lab{font-size:13px;font-weight:600;opacity:.85}
+  .coursetotal .ct-val{font-family:var(--disp);font-weight:800;font-size:26px;color:var(--camel)}
+  .coursetotal .ct-sub{font-size:12.5px;opacity:.9;margin-top:5px;line-height:1.45}
+  .coursetotal .ct-sub b{color:var(--camel-light)}
+  .coursetotal .ct-note{font-size:11px;opacity:.6;margin-top:7px}
   /* comparatif de prix, en bas de la fiche recette */
   .prixbloc{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;margin-top:22px;box-shadow:var(--shadow-soft)}
   .prix-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
@@ -2854,6 +2862,32 @@ function prixRecette(r){
 function euros(v){ return (Math.round(v*100)/100).toFixed(2).replace(".",",")+" €"; }
 /* Indice de prix par enseigne (moyenne du marché = 1,00). Ordre de grandeur, pas un relevé. */
 const ENSEIGNES=[["Lidl",0.86],["Aldi",0.87],["E.Leclerc",0.91],["Intermarché",0.96],["Auchan",0.98],["Carrefour",1.00],["Super U",1.03],["Monoprix",1.24]];
+/* Total estimé de la liste de courses (affiché en haut de l'onglet Courses). */
+function prixCourses(){
+  let total=0, reste=0, inconnus=0;
+  state.shopping.forEach(s=>{
+    const c=coutIngredient({n:s.base||s.label, q:s.q, u:s.u||""}, 1);
+    if(c==null){ inconnus++; return; }
+    total+=c;
+    if(!s.checked) reste+=c;                 // ce qu'il reste réellement à acheter
+  });
+  return {total, reste, inconnus};
+}
+function prixCoursesHTML(){
+  const p=prixCourses();
+  if(!p.total) return "";
+  const coches=state.shopping.filter(s=>s.checked).length;
+  const mini=Math.min(...ENSEIGNES.map(e=>e[1])), enseigneMini=ENSEIGNES.find(e=>e[1]===mini);
+  return `<div class="coursetotal">
+    <div class="ct-main">
+      <span class="ct-lab">Total estimé</span>
+      <span class="ct-val">≈ ${euros(p.total)}</span>
+    </div>
+    ${coches?`<div class="ct-sub">Il te reste <b>${euros(p.reste)}</b> à acheter (${coches} article${coches>1?"s":""} déjà coché${coches>1?"s":""}).</div>`:""}
+    <div class="ct-sub">Environ <b>${euros(p.total*mini)}</b> chez ${esc(enseigneMini[0])}, <b>${euros(p.total*1.24)}</b> chez Monoprix.</div>
+    <div class="ct-note">Estimation à partir de prix moyens${p.inconnus?` · ${p.inconnus} article${p.inconnus>1?"s":""} non chiffré${p.inconnus>1?"s":""}`:""}</div>
+  </div>`;
+}
 /* Comparatif affiché tout en bas de la fiche recette, après les étapes. */
 function prixHTML(r){
   const p=prixRecette(r);
@@ -2883,6 +2917,17 @@ function prixHTML(r){
    `ratings` de Supabase : la note affichée est la MOYENNE de tous les utilisateurs,
    avec le nombre de votes. Le classement « à la une » est donc le même pour tout le monde. */
 function ratingOf(id){ return state.ratings[id]||0; }          // MA note
+/* Classement « à la une » : une note de 5/5 avec 1 seul vote ne doit pas passer devant
+   un 4,8/5 avec 30 votes. On pondère donc la moyenne par le nombre de votes (moyenne
+   bayésienne) : plus il y a de votes, plus la note compte pour sa vraie valeur. */
+const NOTE_LISSAGE=5;      // nombre de votes « fictifs » à 3/5 : il faut de vrais votes pour monter
+const NOTE_BASE=3;         // note de départ tant qu'une recette n'a presque pas été votée
+function scoreNote(id){
+  const g=state.ratingsGlobal[id];
+  const n=g?g.n:0;
+  if(!n){ const m=ratingOf(id); return m? (m+NOTE_LISSAGE*NOTE_BASE)/(1+NOTE_LISSAGE) : 0; }
+  return (g.sum + NOTE_LISSAGE*NOTE_BASE)/(n+NOTE_LISSAGE);
+}
 function globalRating(id){                                      // {moy, n} tous utilisateurs
   const g=state.ratingsGlobal[id];
   if(g && g.n) return {moy:g.sum/g.n, n:g.n};
@@ -3470,7 +3515,7 @@ function applyCatFilters(list){
 function sortList(list){
   const t=r=>r.prep+viewOf(r).cuisson, D={"Facile":0,"Moyen":1,"Difficile":2};
   const a=list.slice();
-  if(state.catSort==="note") a.sort((x,y)=>globalRating(y.id).moy-globalRating(x.id).moy || globalRating(y.id).n-globalRating(x.id).n || x.nom.localeCompare(y.nom));
+  if(state.catSort==="note") a.sort((x,y)=>scoreNote(y.id)-scoreNote(x.id) || globalRating(y.id).n-globalRating(x.id).n || x.nom.localeCompare(y.nom));
   else if(state.catSort==="rapide") a.sort((x,y)=>t(x)-t(y));
   else if(state.catSort==="facile") a.sort((x,y)=>(D[x.diff]??9)-(D[y.diff]??9) || t(x)-t(y));
   else if(state.catSort==="az") a.sort((x,y)=>x.nom.localeCompare(y.nom));
@@ -3503,6 +3548,8 @@ function renderHome(){
       <div class="pb-cook"><b>${cookableCount}</b><small>recette${cookableCount>1?"s":""} prête${cookableCount>1?"s":""} à cuisiner</small></div>
     </div>
 
+    <button class="addcard" id="addRecipe">＋ Ajouter ma recette</button>
+
     <div class="sectionlabel">Catégories :</div>
     <div class="catgrid">
       ${HOME_TILES.map(t=>`<button class="cattile" data-cattile="${esc(t.cat)}" style="background:${t.bg}">
@@ -3511,8 +3558,7 @@ function renderHome(){
     </div>
 
     <div class="sectionlabel">${state.stats.cooked?"Recommandé pour toi :":"À découvrir :"}</div>
-    <div class="gcgrid">${recos.map(gridCardHTML).join("")}</div>
-    <button class="addcard" id="addRecipe">＋ Ajouter ma recette</button>`;
+    <div class="gcgrid">${recos.map(gridCardHTML).join("")}</div>`;
   setPage(html);
   primePhotos(recos);
 }
@@ -3530,7 +3576,7 @@ function renderCategoryPage(){
     list=plan.concat(rest);
   }
   // « à la une » : les 3 mieux notées de la sélection (seulement si on a vraiment noté)
-  const notees=list.filter(r=>globalRating(r.id).n>0).sort((a,b)=>globalRating(b.id).moy-globalRating(a.id).moy || globalRating(b.id).n-globalRating(a.id).n);
+  const notees=list.filter(r=>globalRating(r.id).n>0).sort((a,b)=>scoreNote(b.id)-scoreNote(a.id) || globalRating(b.id).n-globalRating(a.id).n);
   const une = notees.slice(0,3);
   const uneIds={}; une.forEach(r=>uneIds[r.id]=1);
   const reste = list.filter(r=>!uneIds[r.id]);
@@ -3634,6 +3680,7 @@ function renderShopping(){
   if(!state.shopping.length){
     html+=`<div class="empty"><div class="big">🛒</div><p>Ta liste est vide.</p><p>Ouvre une recette et ajoute les ingrédients qui te manquent.</p></div>`;
   } else {
+    html+=prixCoursesHTML();
     html+=state.shopping.map(s=>`
       <div class="course-item ${s.checked?"checked":""}" data-shop-id="${s.id}">
         <button class="cbox" data-toggle="${s.id}" aria-label="Cocher">${s.checked?"✓":""}</button>
@@ -4863,22 +4910,27 @@ function isOriginalRecipe(r){ return r && r.perso && !r.credit && !r.src; }
    parfois lents ou indisponibles : on réessaie et on bascule sur un second.
    La page Marmiton contient ses données au format schema.org/Recipe (JSON-LD),
    qu'on lit plutôt que de gratter le HTML, bien plus fragile. */
+/* Ces relais publics tombent en panne de temps en temps (allorigins renvoyait des 408 en
+   août 2026, d'où l'import cassé). On les essaie dans l'ordre, avec un délai court pour
+   passer vite au suivant, et `json:true` pour ceux qui emballent la page dans du JSON. */
 const RELAIS = [
-  u => "https://api.allorigins.win/raw?url=" + encodeURIComponent(u),
-  u => "https://corsproxy.io/?url=" + encodeURIComponent(u),
-  u => "https://api.allorigins.win/get?url=" + encodeURIComponent(u)   // renvoie du JSON {contents}
+  {f:u=>"https://corsproxy.io/?url="+encodeURIComponent(u)},
+  {f:u=>"https://api.allorigins.win/raw?url="+encodeURIComponent(u)},
+  {f:u=>"https://api.allorigins.win/get?url="+encodeURIComponent(u), json:true},
+  {f:u=>"https://api.codetabs.com/v1/proxy?quest="+encodeURIComponent(u)},
+  {f:u=>"https://thingproxy.freeboard.io/fetch/"+u}
 ];
 async function fetchViaRelais(url){
-  for(let i=0;i<RELAIS.length;i++){
+  for(const relais of RELAIS){
     for(let essai=0; essai<2; essai++){
       try{
-        const c=new AbortController(); const t=setTimeout(()=>c.abort(), 14000);
-        const r=await fetch(RELAIS[i](url), {signal:c.signal}); clearTimeout(t);
-        if(!r.ok) continue;
+        const c=new AbortController(); const t=setTimeout(()=>c.abort(), 9000);
+        const r=await fetch(relais.f(url), {signal:c.signal}); clearTimeout(t);
+        if(!r.ok) break;                        // relais en panne : inutile de réessayer
         let txt=await r.text();
-        if(i===2){ try{ txt=JSON.parse(txt).contents; }catch(e){} }   // endpoint /get
+        if(relais.json){ try{ txt=JSON.parse(txt).contents; }catch(e){} }
         if(txt && txt.length>2000) return txt;
-      }catch(e){ /* relais suivant */ }
+      }catch(e){ /* on tente le relais suivant */ }
     }
   }
   return null;
