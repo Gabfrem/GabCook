@@ -231,6 +231,10 @@
   .dishimg[src]{opacity:1}
   .dishimg.failed{display:none}
   .dishemo{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:0}
+  /* léger fondu sombre en bas de chaque photo : la transition vers le texte est plus douce */
+  .gc-img::after,.feat-img::after{content:"";position:absolute;left:0;right:0;bottom:0;height:42%;z-index:2;pointer-events:none;
+       background:linear-gradient(180deg,rgba(12,22,15,0) 0%,rgba(12,22,15,.42) 100%)}
+  .feat-img::after{height:38%}
 
   /* ---- étoiles de notation ---- */
   .stars{display:inline-flex;gap:2px;line-height:1}
@@ -2933,24 +2937,124 @@ function catGradient(cat){ return CAT_GRAD[cat] || "linear-gradient(135deg,#F2EB
    recette (import Marmiton / recette perso), sinon une photo d'illustration choisie
    d'après les mots du nom et de la catégorie. Le « lock » rend la photo stable :
    la même recette montre toujours la même image. L'emoji reste le filet de sécurité. */
-const PHOTO_HINT={"Plat":"dish,meal","Entrée":"salad,starter","Dessert":"dessert,cake",
-  "Apéro":"appetizer,snack","Petit-déj":"breakfast","Accompagnement":"side dish,vegetables"};
-// mots inutiles pour illustrer (préparations, ustensiles) : on garde l'aliment
-const PHOTO_STOP=new Set(["maison","facon","express","minute","rapide","simple","facile","parfait","gratine","gratinee","poele","poelee","four","cocotte","express","sauce","sautee","saute","roti","rotie","au","aux","a","la","le","les","de","du","des","et","en","sans","avec","mon","ma","mes","ptit","petit","grand"]);
-function photoWords(r){
-  const mots=norm(r.nom).split(" ").filter(w=>w.length>2 && !PHOTO_STOP.has(w)).slice(0,3);
-  if(!mots.length) mots.push(norm(r.cat));
-  return mots.join(",");
+/* Photo de repli par catégorie : vraies photos de plats (Wikimedia Commons), affichées
+   tout de suite pendant que la photo précise de la recette est recherchée. */
+const PHOTO_FALLBACK={
+  "Plat":"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Beef_stew_with_dried_plums.jpg/960px-Beef_stew_with_dried_plums.jpg",
+  "Entrée":"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Bowtie_pasta_salad_bowl_close-up.jpg/960px-Bowtie_pasta_salad_bowl_close-up.jpg",
+  "Dessert":"https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Piece_of_chocolate_cake_on_a_white_plate_decorated_with_chocolate_sauce.jpg/960px-Piece_of_chocolate_cake_on_a_white_plate_decorated_with_chocolate_sauce.jpg",
+  "Apéro":"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Appetizer_Platter.jpg/960px-Appetizer_Platter.jpg",
+  "Petit-déj":"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Honey_Run_Covered_Bridge_2024_Pancake_Breakfast-104A2111.jpg/960px-Honey_Run_Covered_Bridge_2024_Pancake_Breakfast-104A2111.jpg",
+  "Accompagnement":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Gungoguma_%28roasted_sweet_potatoes%29_2.jpg/960px-Gungoguma_%28roasted_sweet_potatoes%29_2.jpg"
+};
+/* Photo précise de chaque recette : cherchée une seule fois sur Wikimedia Commons à partir
+   du nom du plat, puis mise en cache sur l'appareil. "" = rien trouvé, on garde le repli. */
+let photoCache={};
+try{ photoCache=JSON.parse(localStorage.getItem("gabcook_photocache")||"{}"); }catch(e){ photoCache={}; }
+let _pcT=null;
+function savePhotoCache(){ clearTimeout(_pcT); _pcT=setTimeout(()=>{ try{ localStorage.setItem("gabcook_photocache", JSON.stringify(photoCache)); }catch(e){} },900); }
+function dishPhoto(r){
+  if(state.recipePhotos[r.id]) return state.recipePhotos[r.id];   // ta propre photo publiée : elle prime
+  if(r.photo) return r.photo;                                      // photo de la recette (import / perso)
+  if(photoCache[r.id]) return photoCache[r.id];                    // photo trouvée pour ce plat
+  return PHOTO_FALLBACK[r.cat]||PHOTO_FALLBACK["Plat"];
 }
-function hashId(s){ let h=0; for(let i=0;i<s.length;i++) h=(h*31+s.charCodeAt(i))|0; return Math.abs(h); }
-function dishPhoto(r, w, h){
-  const perso = state.recipePhotos[r.id];          // ta propre photo de ce plat : elle prime
-  if(perso) return perso;
-  if(r.photo) return r.photo;                       // photo de la recette (import / perso)
-  // les virgules séparent les mots-clés dans le chemin : on encode chaque mot, pas les virgules
-  const kw = (photoWords(r)+","+(PHOTO_HINT[r.cat]||"food")).split(",")
-    .map(m=>encodeURIComponent(m.trim().replace(/\s+/g,"+"))).filter(Boolean).join(",");
-  return "https://loremflickr.com/"+(w||400)+"/"+(h||300)+"/"+kw+"?lock="+(hashId(r.id)%9000+1);
+// file d'attente : on ne cherche que les photos des recettes réellement affichées
+const _pAsked=new Set(); let _pRunning=0; const _pQueue=[];
+function primePhotos(list){
+  (list||[]).forEach(r=>{
+    if(!r || state.recipePhotos[r.id] || r.photo) return;
+    if(photoCache[r.id]!==undefined || _pAsked.has(r.id)) return;
+    _pAsked.add(r.id); _pQueue.push(r);
+  });
+  pumpPhotos();
+}
+function pumpPhotos(){
+  while(_pRunning<3 && _pQueue.length){
+    const r=_pQueue.shift(); _pRunning++;
+    fetchPhoto(r).catch(()=>{}).then(()=>{ _pRunning--; pumpPhotos(); });
+  }
+}
+/* Commons contient aussi des gravures, cartes, monuments… : on ne garde une image que si son
+   titre reprend un mot du plat ET ne ressemble pas à un document non culinaire. */
+const PHOTO_REJET=["antiquit","gravure","engraving","manuscrit","manuscript","carte ","map ","portrait","eglise","church",
+"statue","musee","museum","livre","book","blason","coat of arms","logo","drapeau","flag","affiche","poster","timbre","stamp",
+"peinture","painting","monument","chateau","castle","cimetiere","cemetery","tombe","grave","panorama","facade","rue ","street",
+"batiment","building","plan ","schema","diagram","portrait","sculpture","fresque","mosaique","medaille","piece de monnaie"];
+/* Commons est surtout anglophone : ce petit glossaire sert à la fois à valider un titre
+   anglais et à relancer la recherche en anglais quand le nom français ne donne rien. */
+const FR_EN={boeuf:"beef",bœuf:"beef",poulet:"chicken",porc:"pork",veau:"veal",agneau:"lamb",dinde:"turkey",canard:"duck",
+poisson:"fish",saumon:"salmon",thon:"tuna",cabillaud:"cod",colin:"hake",truite:"trout",crevettes:"shrimp",crevette:"shrimp",
+gambas:"prawn",moules:"mussels",lardons:"bacon",jambon:"ham",saucisses:"sausage",saucisse:"sausage",merguez:"sausage",
+pates:"pasta",spaghetti:"spaghetti",nouilles:"noodles",riz:"rice",semoule:"couscous",boulgour:"bulgur",quinoa:"quinoa",
+polenta:"polenta",gnocchis:"gnocchi",lasagnes:"lasagne",tarte:"tart",quiche:"quiche",gateau:"cake",crepes:"crepe",
+soupe:"soup",veloute:"soup",salade:"salad",oeufs:"eggs",oeuf:"egg",omelette:"omelette",fromage:"cheese",
+pommes:"apple",pomme:"apple",banane:"banana",citron:"lemon",chocolat:"chocolate",fraise:"strawberry",
+aubergines:"eggplant",aubergine:"eggplant",courgettes:"zucchini",courgette:"zucchini",tomates:"tomato",tomate:"tomato",
+oignons:"onion",oignon:"onion",carottes:"carrot",carotte:"carrot",champignons:"mushroom",champignon:"mushroom",
+poireaux:"leek",poivrons:"pepper",poivron:"pepper",brocoli:"broccoli",chou:"cabbage",epinards:"spinach",
+lentilles:"lentil",haricots:"beans",pois:"peas",patates:"potato",patate:"potato",frites:"fries",puree:"mashed potatoes",
+gratin:"gratin",curry:"curry",tajine:"tagine",couscous:"couscous",burger:"burger",pizza:"pizza",tacos:"taco",
+farcies:"stuffed",farcis:"stuffed",roti:"roast",rotie:"roast",grille:"grilled",vapeur:"steamed",sautee:"stir fry",saute:"stir fry"};
+function motsPlat(nom){
+  return norm(nom).split(" ").filter(w=>w.length>3 && !PHOTO_STOPW.has(w));
+}
+// mots du plat + leurs équivalents anglais
+function motsPlatEtEn(nom){
+  const m=motsPlat(nom), out=m.slice();
+  m.forEach(w=>{ const e=FR_EN[w]; if(e) e.split(" ").forEach(x=>{ if(x.length>3) out.push(norm(x)); }); });
+  return out;
+}
+function versAnglais(nom){
+  return motsPlat(nom).map(w=>FR_EN[w]||"").filter(Boolean).join(" ");
+}
+const PHOTO_STOPW=new Set(["avec","sans","pour","dans","maison","facon","express","rapide","simple","facile","recette","assiette","petit","grand","tout","tous"]);
+function photoAcceptable(titre, nom){
+  const t=norm(titre);
+  if(PHOTO_REJET.some(m=>t.includes(norm(m).trim()))) return false;
+  const mots=motsPlatEtEn(nom);
+  if(!mots.length) return true;
+  return mots.some(m=>t.includes(m) || t.includes(m.replace(/s$/,"")));   // le titre doit parler du plat (FR ou EN)
+}
+async function chercheCommons(terme, nom){
+  const u="https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*"
+    +"&generator=search&gsrnamespace=6&gsrlimit=8&gsrsearch="+encodeURIComponent(terme+" filetype:bitmap")
+    +"&prop=imageinfo&iiprop=url&iiurlwidth=600";
+  try{
+    const j=await (await fetch(u)).json();
+    const p=j.query&&j.query.pages?Object.values(j.query.pages):[];
+    p.sort((a,b)=>(a.index||0)-(b.index||0));
+    for(const x of p){
+      if(!x.imageinfo||!x.imageinfo[0]) continue;
+      if(photoAcceptable(x.title.replace(/^File:/,""), nom)) return x.imageinfo[0].thumburl.split("?")[0];
+    }
+  }catch(e){}
+  return "";
+}
+async function fetchPhoto(r){
+  const nom=clean(r.nom).replace(/\s*\(.*?\)\s*/g," ").trim();
+  let url=await chercheCommons(nom, nom);
+  if(!url){                                   // 2e essai : la version anglaise du plat
+    const en=versAnglais(nom);
+    if(en) url=await chercheCommons(en+" food", nom);
+  }
+  if(!url){                                   // 3e essai : les mots forts en français
+    const mots=motsPlat(nom).slice(0,2).join(" ");
+    if(mots) url=await chercheCommons(mots+" plat cuisine", nom);
+  }
+  photoCache[r.id]=url; savePhotoCache();
+  if(url) applyPhoto(r.id, url);
+}
+// remplace l'image dans les cartes déjà affichées (et le bandeau de la fiche si elle est ouverte)
+function applyPhoto(id, url){
+  try{
+    document.querySelectorAll('[data-recipe="'+CSS.escape(id)+'"] .dishimg').forEach(img=>{
+      img.classList.remove("failed"); img.src=url;
+    });
+    if(currentRecipe && currentRecipe.id===id){
+      const h=document.querySelector(".dhero-photo"); if(h){ h.style.display=""; h.src=url; }
+    }
+  }catch(e){}
 }
 // vignette : la photo du plat, avec repli sur l'emoji si l'image ne charge pas
 function thumbInner(r, w, h){
@@ -3094,6 +3198,7 @@ function renderHome(){
     <div class="gcgrid">${recos.map(gridCardHTML).join("")}</div>
     <button class="addcard" id="addRecipe">＋ Ajouter ma recette</button>`;
   setPage(html);
+  primePhotos(recos);
 }
 /* page d'une catégorie : titre, tri + filtres, « à la une » (mieux notées), puis la grille */
 function renderCategoryPage(){
@@ -3159,6 +3264,7 @@ function renderCategoryPage(){
     if(reste.length>homeLimit) html+=`<div class="seemore-wrap"><button class="seemore" data-more="1">Voir plus <span>▶</span></button></div>`;
   }
   setPage(html);
+  primePhotos(une.concat(reste.slice(0,homeLimit)));
 }
 
 /* ---------- FRIGO ---------- */
@@ -4192,6 +4298,7 @@ function renderDetail(){
     </div>
   `;
   queueNavMaterial();   // le bouton sombre « j'ai cuisiné » peut arriver sous la pastille
+  primePhotos([r]);     // cherche la photo précise de ce plat si on ne l'a pas encore
   // compte à rebours du bouton « Publier une photo » (fenêtre de 15 min)
   if(document.getElementById("sharePlate")){ updateShareCountdown(); if(!shareIv) shareIv=setInterval(updateShareCountdown,1000); }
   else if(shareIv){ clearInterval(shareIv); shareIv=null; }
