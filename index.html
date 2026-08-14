@@ -228,8 +228,10 @@
   .seemore:active{transform:scale(.96)}
 
   /* ---- photo de plat : elle recouvre la vignette, l'emoji reste dessous en repli ---- */
-  .dishimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;opacity:0;transition:opacity .35s ease}
-  .dishimg[src]{opacity:1}
+  /* la photo apparaît en fondu quand elle a fini de charger (plus de « pop » brutal) */
+  .dishimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;opacity:0;
+       transform:scale(1.04);transition:opacity .45s ease, transform .6s cubic-bezier(.2,.7,.3,1)}
+  .dishimg.ok{opacity:1;transform:none}
   .dishimg.failed{display:none}
   .dishemo{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:0}
   /* léger fondu sombre en bas de chaque photo : la transition vers le texte est plus douce */
@@ -801,6 +803,31 @@
   .page.turning .card:nth-child(4){animation-delay:.12s}
   .page.turning .card:nth-child(5){animation-delay:.16s}
   .page.turning .card:nth-child(n+6){animation-delay:.2s}
+  /* ---- apparition en cascade des contenus, à chaque rendu de vue ---- */
+  @keyframes popIn{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:none}}
+  .page .cattile,.page .gcard,.page .feat,.page .sectionlabel,.page .catbar,.page .cathead,
+  .page .pantry-banner,.page .filters,.page .addcard,.page .seemore-wrap,.page .fitems,.page .add-row{
+    animation:popIn .42s cubic-bezier(.2,.72,.28,1) both}
+  .page .cattile:nth-child(2),.page .gcard:nth-child(2){animation-delay:.05s}
+  .page .cattile:nth-child(3),.page .gcard:nth-child(3){animation-delay:.09s}
+  .page .cattile:nth-child(4),.page .gcard:nth-child(4){animation-delay:.13s}
+  .page .cattile:nth-child(5),.page .gcard:nth-child(5){animation-delay:.17s}
+  .page .cattile:nth-child(6),.page .gcard:nth-child(6){animation-delay:.21s}
+  .page .gcard:nth-child(n+7){animation-delay:.24s}
+  .page .feat:nth-of-type(2){animation-delay:.07s}
+  .page .feat:nth-of-type(3){animation-delay:.13s}
+  /* transitions sur tout ce qui change d'état */
+  .subtab,.cbtn,.fopt,.seemore,.catback,.acctbtn,.set-row,.switch .track,.switch .knob,.pgcell,.recrow,
+  .cattile,.gcard,.feat,.star,.cardfav,.chip,.cat,.fbtn,.visbtn,.emo,.banswatch,.tick,.cbox,.ca,
+  .add-btn,.f-add,.clearfilters,.authswitch,.ck-navbtn,.ck-tadjb,.ck-tbtn,.pv-recipe,.likebtn,.combtn{
+    transition:transform .16s cubic-bezier(.2,.7,.3,1),background .22s ease,color .22s ease,
+               border-color .22s ease,box-shadow .24s ease,opacity .22s ease}
+  .gcard:active,.feat:active,.cattile:active{transform:scale(.975)}
+  .star:active{transform:scale(1.3)}
+  .seemore:active,.cbtn:active,.catback:active{transform:scale(.94)}
+  /* défilement fluide pour les sauts internes (retour en haut, section plats…) */
+  .scroll{scroll-behavior:smooth}
+
   /* micro-transition du contenu des sous-onglets (Social : Fil ↔ Amis) */
   @keyframes subSwap{from{opacity:0;transform:translateX(var(--sub-dir,16px))}to{opacity:1;transform:none}}
   .subcontent.swap{animation:subSwap .3s cubic-bezier(.2,.72,.28,1)}
@@ -2775,9 +2802,20 @@ function starsHTML(id, interactive){
   return s+`</span>`;
 }
 /* ---- régime : une recette est végétarienne si aucun ingrédient n'est de la chair animale ---- */
-const NON_VEGE=["poulet","boeuf","porc","veau","agneau","dinde","lardon","jambon","saucisse","merguez","chorizo","bacon","viande","steak","escalope","cuisse","travers","echine","onglet","roti","canard","poisson","saumon","thon","cabillaud","colin","truite","crevette","gambas","moule","fruits de mer","anchois","seiche","calamar","chair a saucisse","kefta","charcuterie","magret","confit","filet mignon","rillette","pate","surimi","hareng","sardine","maquereau","lotte","daurade","bar","merlu","haddock","crabe","homard","langoustine","coquille"];
+/* Mots de chair animale, comparés en MOTS ENTIERS : « pâte brisée » ne doit pas être pris
+   pour du « pâté », ni « coquillettes » pour des coquilles Saint-Jacques. */
+const NON_VEGE=["poulet","poulets","volaille","boeuf","porc","veau","agneau","mouton","dinde","canard","lapin","pintade","caille","oie",
+"lardon","lardons","jambon","bacon","saucisse","saucisses","saucisson","merguez","chorizo","andouille","boudin","charcuterie",
+"pancetta","coppa","speck","poitrine","echine","rillettes","terrine","foie","gesier","magret","confit","viande","chair",
+"steak","steaks","rumsteck","entrecote","faux filet","bavette","onglet","gigot","paleron","jarret","travers","cotelette","cotelettes",
+"escalope","escalopes","cuisse","cuisses","aile","ailes","filet mignon","roti","kefta","keftas","kebab","gyros","merlan",
+"poisson","poissons","saumon","thon","cabillaud","colin","truite","merlu","lieu","haddock","eglefin","sole","limande","turbot",
+"sardine","sardines","maquereau","hareng","anchois","anchoi","lotte","daurade","dorade","bar","raie","espadon","surimi",
+"crevette","crevettes","gambas","langoustine","langouste","homard","crabe","ecrevisse","moule","moules","huitre","huitres",
+"palourde","coquillage","coquillages","saint jacques","calamar","calamars","encornet","seiche","poulpe","fruits de mer","lard","saindoux"];
+const NON_VEGE_RE=new RegExp("(^|\\s)("+NON_VEGE.map(m=>norm(m).replace(/\s+/g,"\\s+")).join("|")+")(s?)($|\\s)","i");
 function isVege(r){
-  return !r.ing.some(i=>{ const n=norm(i.n); return NON_VEGE.some(m=>n.includes(norm(m))); });
+  return !r.ing.some(i=>NON_VEGE_RE.test(norm(i.n)));
 }
 function isPlanned(id){ return state.planned.includes(id); }
 function savePlanned(){ Store.set("gabcook_planned", state.planned); }
@@ -2888,9 +2926,11 @@ function positionNav(animate){
    ces deux fonctions lisent/rétablissent la position sans se soucier de laquelle. */
 function posDefilement(){ return scrollEl.scrollTop || window.scrollY || document.documentElement.scrollTop || 0; }
 function remetDefilement(y){
-  if(scrollEl.scrollTop) scrollEl.scrollTop=y;
-  else if(scrollEl.scrollHeight>scrollEl.clientHeight) scrollEl.scrollTop=y;
+  const av=scrollEl.style.scrollBehavior;
+  scrollEl.style.scrollBehavior="auto";           // rétablir la position doit être instantané, pas animé
+  if(scrollEl.scrollTop || scrollEl.scrollHeight>scrollEl.clientHeight) scrollEl.scrollTop=y;
   if(window.scrollY || document.documentElement.scrollTop) window.scrollTo(0,y);
+  scrollEl.style.scrollBehavior=av;
 }
 // re-rend la vue courante sans bouger l'écran (like, note, épingle…)
 function rerenderKeepScroll(){
@@ -3012,7 +3052,7 @@ const PHOTO_FALLBACK={
    du nom du plat, puis mise en cache sur l'appareil. "" = rien trouvé, on garde le repli. */
 /* Le cache est versionné : quand on améliore la recherche de photos, on incrémente PHOTO_VER
    et les anciennes images (parfois hors sujet) sont automatiquement réoubliées. */
-const PHOTO_VER=3;
+const PHOTO_VER=5;
 let photoCache={};
 try{
   const brut=JSON.parse(localStorage.getItem("gabcook_photocache")||"{}");
@@ -3020,11 +3060,34 @@ try{
 }catch(e){ photoCache={}; }
 let _pcT=null;
 function savePhotoCache(){ clearTimeout(_pcT); _pcT=setTimeout(()=>{ try{ localStorage.setItem("gabcook_photocache", JSON.stringify({v:PHOTO_VER, m:photoCache})); }catch(e){} },900); }
+/* Replis par FAMILLE de plat (photos Commons vérifiées) : bien plus juste qu'une seule
+   photo par catégorie quand la recherche précise ne trouve rien. */
+const W="https://upload.wikimedia.org/wikipedia/commons/thumb/";
+const FAMILY_PHOTOS=[
+  [/\bfrites?\b|potatoes|wedges/, W+"e/e5/French_fries_3.jpg/960px-French_fries_3.jpg"],
+  [/\bgratin\b/, W+"6/62/Gratin_Dauphinoise.JPG/960px-Gratin_Dauphinoise.JPG"],
+  [/\bpuree\b|ecrase/, W+"3/3d/C%C3%B4tes_d%27agneau_de_Sisteron_%C3%A0_la_pur%C3%A9e_de_pommes_de_terre_au_persil_et_%C3%A0_l%27ail.JPG/960px-C%C3%B4tes_d%27agneau_de_Sisteron_%C3%A0_la_pur%C3%A9e_de_pommes_de_terre_au_persil_et_%C3%A0_l%27ail.JPG"],
+  [/\brosti\b/, W+"a/a0/Sweet_potato_rosti_-_Malt_Cafe_2026-01-14.jpg/960px-Sweet_potato_rosti_-_Malt_Cafe_2026-01-14.jpg"],
+  [/\bquinoa\b/, W+"6/64/Healthy_quinoa_salad_with_dried_fruit.jpg/960px-Healthy_quinoa_salad_with_dried_fruit.jpg"],
+  [/\bpolenta\b/, W+"a/af/Polenta_as_a_side_dish.jpg/960px-Polenta_as_a_side_dish.jpg"],
+  [/\bsemoule\b|couscous|boulgour/, W+"a/ab/%D9%85%D8%B3%D9%81%D9%88%D9%81_%D8%AA%D9%88%D9%86%D8%B3%D9%8A_%D8%A8%D8%A7%D9%84%D8%B1%D9%85%D8%A7%D9%86_%D9%88%D8%A7%D9%84%D8%B2%D8%A8%D9%8A%D8%A8.jpg/960px-%D9%85%D8%B3%D9%81%D9%88%D9%81_%D8%AA%D9%88%D9%86%D8%B3%D9%8A_%D8%A8%D8%A7%D9%84%D8%B1%D9%85%D8%A7%D9%86_%D9%88%D8%A7%D9%84%D8%B2%D8%A8%D9%8A%D8%A8.jpg"],
+  [/\briz\b|risotto/, W+"a/aa/Ceramic_bowl_full_of_white_rice.jpg/960px-Ceramic_bowl_full_of_white_rice.jpg"],
+  [/\bpates?\b|spaghetti|tagliatelle|penne|macaroni|nouilles|gnocchis?|lasagnes?|tortellinis?/, W+"b/b3/Bavette_al_pomodoro_1.jpg/960px-Bavette_al_pomodoro_1.jpg"],
+  [/\bsoupe\b|veloute|minestrone|potage/, W+"7/7c/-2022-02-01_Bowl_of_spring_vegetable_soup%2C_Trimingham%2C_Norfolk.JPG/960px--2022-02-01_Bowl_of_spring_vegetable_soup%2C_Trimingham%2C_Norfolk.JPG"],
+  [/\bsalade\b|taboule|coleslaw/, W+"6/6d/Bowtie_pasta_salad_bowl_close-up.jpg/960px-Bowtie_pasta_salad_bowl_close-up.jpg"],
+  [/legumes|courgettes?|carottes?|haricots?|brocolis?|chou|epinards?|poireaux?|butternut|potiron|petits pois/, W+"8/8f/Sunday_roast_vegetable_side_dish_at_The_Stag%2C_Little_Easton%2C_Essex%2C_England.jpg/960px-Sunday_roast_vegetable_side_dish_at_The_Stag%2C_Little_Easton%2C_Essex%2C_England.jpg"],
+  [/pommes de terre|patates?|grenailles/, W+"e/e5/French_fries_3.jpg/960px-French_fries_3.jpg"]
+];
+function familyPhoto(r){
+  const n=norm(r.nom);
+  for(const [re,u] of FAMILY_PHOTOS) if(re.test(n)) return u;
+  return "";
+}
 function dishPhoto(r){
   if(state.recipePhotos[r.id]) return state.recipePhotos[r.id];   // ta propre photo publiée : elle prime
   if(r.photo) return r.photo;                                      // photo de la recette (import / perso)
   if(photoCache[r.id]) return photoCache[r.id];                    // photo trouvée pour ce plat
-  return PHOTO_FALLBACK[r.cat]||PHOTO_FALLBACK["Plat"];
+  return familyPhoto(r) || PHOTO_FALLBACK[r.cat] || PHOTO_FALLBACK["Plat"];
 }
 // file d'attente : on ne cherche que les photos des recettes réellement affichées
 const _pAsked=new Set(); let _pRunning=0; const _pQueue=[];
@@ -3063,8 +3126,12 @@ poireaux:"leek",poivrons:"pepper",poivron:"pepper",brocoli:"broccoli",chou:"cabb
 lentilles:"lentil",haricots:"beans",pois:"peas",patates:"potato",patate:"potato",frites:"fries",puree:"mashed potatoes",
 gratin:"gratin",curry:"curry",tajine:"tagine",couscous:"couscous",burger:"burger",pizza:"pizza",tacos:"taco",
 farcies:"stuffed",farcis:"stuffed",roti:"roast",rotie:"roast",grille:"grilled",vapeur:"steamed",sautee:"stir fry",saute:"stir fry"};
+/* Expressions à traiter d'un bloc : « pommes de terre » n'est pas une pomme ! */
+const PHRASES=[[/pommes? de terre/g,"patate"],[/lait de coco/g,"coco"],[/fruits de mer/g,"seafood"],
+  [/blancs? de poulet/g,"poulet"],[/chair a saucisse/g,"saucisse"],[/pate (brisee|feuilletee|sablee)/g,"tarte"]];
+function normPlat(nom){ let n=norm(nom); PHRASES.forEach(([re,v])=>{ n=n.replace(re,v); }); return n; }
 function motsPlat(nom){
-  return norm(nom).split(" ").filter(w=>w.length>3 && !PHOTO_STOPW.has(w));
+  return normPlat(nom).split(" ").filter(w=>w.length>3 && !PHOTO_STOPW.has(w));
 }
 // mots du plat + leurs équivalents anglais
 function motsPlatEtEn(nom){
@@ -3097,31 +3164,36 @@ async function chercheCommons(terme, nom){
     const j=await (await fetch(u)).json();
     const p=j.query&&j.query.pages?Object.values(j.query.pages):[];
     p.sort((a,b)=>(a.index||0)-(b.index||0));
-    let secours="";
     for(const x of p){
       if(!x.imageinfo||!x.imageinfo[0]) continue;
       const titre=x.title.replace(/^File:/,"");
       const cats=(x.categories||[]).map(c=>c.title.replace(/^Category:/,""));
       if(!estCulinaire(cats)) continue;                       // ni plat ni aliment → on écarte
       if(PAS_UN_PLAT.test(titre+" "+cats.join(" "))) continue; // marché, ferme, ingrédient brut → on écarte
-      const url=x.imageinfo[0].thumburl.split("?")[0];
-      if(photoAcceptable(titre+" "+cats.join(" "), nom)) return url;   // en plus, ça parle du bon plat
-      if(!secours) secours=url;                                // sinon on garde la 1re photo culinaire
+      // exigence stricte : la photo doit parler du plat, sinon on préfère le repli par famille
+      if(photoAcceptable(titre+" "+cats.join(" "), nom)) return x.imageinfo[0].thumburl.split("?")[0];
     }
-    return secours;
   }catch(e){}
   return "";
 }
+/* « Riz blanc parfait », « Purée maison », « Riz au micro-ondes »… : ces qualificatifs
+   font échouer la recherche. On les retire pour ne garder que le plat lui-même. */
+const QUALIFS=/\b(maison|express|parfaits?|rapides?|faciles?|simples?|minute|croustillantes?|fondantes?|gratinees?|onctueuses?|cremeuses?|epicees?|parfumes?|parfumees?|ancienne|mamie|grand[- ]mere|revisitee?s?)\b|\bau micro[- ]ondes\b|\ba la poele\b|\bau four\b|\ben cocotte\b/gi;
+function nomSimplifie(nom){
+  return clean(nom).replace(/\s*\(.*?\)\s*/g," ").replace(QUALIFS," ").replace(/\s+/g," ").trim();
+}
 async function fetchPhoto(r){
   const nom=clean(r.nom).replace(/\s*\(.*?\)\s*/g," ").trim();
+  const simple=nomSimplifie(nom);
   let url=await chercheCommons(nom, nom);
-  if(!url){                                   // 2e essai : la version anglaise du plat
-    const en=versAnglais(nom);
-    if(en) url=await chercheCommons(en+" food", nom);
+  if(!url && simple && simple!==nom) url=await chercheCommons(simple, simple);   // sans les qualificatifs
+  if(!url){                                   // essai suivant : la version anglaise du plat
+    const en=versAnglais(simple||nom);
+    if(en) url=await chercheCommons(en+" dish", simple||nom);
   }
-  if(!url){                                   // 3e essai : les mots forts en français
-    const mots=motsPlat(nom).slice(0,2).join(" ");
-    if(mots) url=await chercheCommons(mots+" plat cuisine", nom);
+  if(!url){                                   // dernier essai : les 2 mots forts en français
+    const mots=motsPlat(simple||nom).slice(0,2).join(" ");
+    if(mots) url=await chercheCommons(mots+" plat cuisine", mots);
   }
   photoCache[r.id]=url; savePhotoCache();
   if(url) applyPhoto(r.id, url);
@@ -3130,7 +3202,7 @@ async function fetchPhoto(r){
 function applyPhoto(id, url){
   try{
     document.querySelectorAll('[data-recipe="'+CSS.escape(id)+'"] .dishimg').forEach(img=>{
-      img.classList.remove("failed"); img.src=url;
+      img.classList.remove("failed","ok"); img.src=url;   // « ok » sera remis au chargement → fondu
     });
     if(currentRecipe && currentRecipe.id===id){
       const h=document.querySelector(".dhero-photo"); if(h){ h.style.display=""; h.src=url; }
@@ -3140,6 +3212,7 @@ function applyPhoto(id, url){
 // vignette : la photo du plat, avec repli sur l'emoji si l'image ne charge pas
 function thumbInner(r, w, h){
   return `<img class="dishimg" src="${esc(dishPhoto(r,w,h))}" alt="" loading="lazy" decoding="async"
+     onload="this.classList.add('ok')"
      onerror="this.classList.add('failed');this.removeAttribute('src')"><span class="dishemo">${esc(r.emoji||"🍽️")}</span>`;
 }
 function thumbStyle(r){ return ` style="background:${catGradient(r.cat)}"`; }
