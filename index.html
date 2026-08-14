@@ -57,14 +57,18 @@
   .scroll{flex:1;overflow-x:hidden;overflow-y:auto;padding:0 18px calc(100px + env(safe-area-inset-bottom));-webkit-overflow-scrolling:touch}
 
   /* en-tête Yummly : bandeau vert sapin arrondi, logo script moutarde */
-  .topbar{position:sticky;top:0;z-index:20;background:transparent;padding:calc(10px + env(safe-area-inset-top)) 10px 6px}
+  /* il se replie quand on descend et revient dès qu'on remonte un peu (voir le script) */
+  .topbar{position:sticky;top:0;z-index:20;background:transparent;padding:calc(10px + env(safe-area-inset-top)) 10px 6px;
+       transition:margin-top .34s cubic-bezier(.4,0,.2,1), opacity .26s ease, transform .34s cubic-bezier(.4,0,.2,1)}
+  .topbar.hide{margin-top:calc(-1 * var(--tb-h, 130px));opacity:0;transform:translateY(-8px);pointer-events:none}
   .brand{display:flex;align-items:center;gap:11px;background:#1D402D;border-radius:20px;padding:12px 16px;box-shadow:0 6px 18px rgba(29,64,45,.28)}
   :root[data-theme="dark"] .brand{background:#1A2F22;box-shadow:0 6px 18px rgba(0,0,0,.45)}
   .logo-mark{display:none}
   .brand-txt{display:flex;flex-direction:column;line-height:1.05}
   .brand h1{font-family:var(--script);font-weight:400;font-size:27px;letter-spacing:.01em;margin:0;color:#E4A131;text-shadow:0 1px 0 rgba(0,0,0,.12)}
   .brand .ck{color:#E4A131}
-  .brand .tag{font-size:11px;color:rgba(251,245,230,.72);font-weight:500;margin-top:2px}
+  /* la baseline n'est pas une étiquette de frigo : on annule le fond/bordure de .tag */
+  .brand .tag{display:block;background:none;border:none;padding:0;border-radius:0;font-size:11px;color:rgba(251,245,230,.75);font-weight:500;margin-top:2px}
 
   .search{position:relative;margin:14px 8px 0}
   .search svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--camel)}
@@ -222,6 +226,12 @@
   .seemore span{font-size:12px}
   .seemore:active{transform:scale(.96)}
 
+  /* ---- photo de plat : elle recouvre la vignette, l'emoji reste dessous en repli ---- */
+  .dishimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;opacity:0;transition:opacity .35s ease}
+  .dishimg[src]{opacity:1}
+  .dishimg.failed{display:none}
+  .dishemo{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:0}
+
   /* ---- étoiles de notation ---- */
   .stars{display:inline-flex;gap:2px;line-height:1}
   .stars .star{font-size:15px;color:#D9D2BE;background:none;border:none;padding:0;transition:color .15s,transform .12s}
@@ -236,7 +246,7 @@
   .feat{background:var(--card);border-radius:22px;overflow:hidden;margin-bottom:14px;box-shadow:var(--shadow);border:1px solid var(--line)}
   .feat:active{transform:scale(.99)}
   .feat-img{height:180px;display:flex;align-items:center;justify-content:center;position:relative}
-  .feat-img span{font-size:76px;filter:drop-shadow(0 8px 16px rgba(0,0,0,.22))}
+  .feat-img .dishemo{font-size:76px;filter:drop-shadow(0 8px 16px rgba(0,0,0,.22))}
   .feat-pin{position:absolute;top:12px;left:12px;background:var(--strong);color:#FBF5E6;font-size:11.5px;font-weight:700;font-style:normal;padding:5px 10px;border-radius:999px}
   .feat-body{padding:12px 14px 14px}
   .feat-row{display:flex;align-items:flex-start;gap:10px;margin-top:6px}
@@ -248,7 +258,7 @@
   .gcard{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:var(--shadow-soft);border:1px solid var(--line);display:flex;flex-direction:column;text-align:left}
   .gcard:active{transform:scale(.97)}
   .gc-img{height:104px;display:flex;align-items:center;justify-content:center;position:relative}
-  .gc-img span{font-size:46px;filter:drop-shadow(0 6px 12px rgba(0,0,0,.2))}
+  .gc-img .dishemo{font-size:46px;filter:drop-shadow(0 6px 12px rgba(0,0,0,.2))}
   .gc-img .cardfav{position:absolute;top:6px;right:6px;width:28px;height:28px;font-size:14px;background:rgba(251,245,230,.85);border-radius:50%}
   .gc-body{padding:9px 10px 11px}
   .gc-body h4{font-family:var(--disp);font-weight:800;font-size:14.5px;margin:3px 0 3px;color:var(--ink);line-height:1.2;
@@ -290,7 +300,13 @@
   .dtop{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
   .backbtn{background:var(--card);border-radius:11px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.14)}
   .backbtn:active{background:var(--card);transform:scale(.94)}
-  .dhero .demoji{font-size:52px;line-height:1;margin-bottom:6px}
+  /* photo du plat en fond du bandeau, assombrie en vert pour garder le texte lisible */
+  .dhero{overflow:hidden}
+  .dhero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+       background:linear-gradient(180deg,rgba(22,49,31,.55) 0%,rgba(22,49,31,.82) 100%)}
+  .dhero > *{position:relative;z-index:2}
+  .dhero > .dhero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.45}
+  .dhero .demoji{font-size:52px;line-height:1;margin-bottom:6px;filter:drop-shadow(0 6px 12px rgba(0,0,0,.45))}
   .dhero .dphoto{width:100%;height:190px;object-fit:cover;border-radius:14px;margin-bottom:10px;box-shadow:0 4px 14px rgba(0,0,0,.18)}
   .dhero h2{font-family:var(--disp);font-weight:800;font-size:26px;margin:0;letter-spacing:-.02em;line-height:1.1}
   .dhero .dcat{font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:rgba(251,245,230,.65);margin-bottom:4px}
@@ -2832,6 +2848,7 @@ function setView(v){
   document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active", b.dataset.view===v));
   document.getElementById("searchWrap").style.display = v==="home"?"":"none";
   scrollEl.scrollTop=0;
+  try{ dispatchEvent(new Event("yummly:view")); }catch(e){}   // l'en-tête réapparaît à chaque changement d'onglet
   render();
   positionNav(true);          // seul cas où la capsule doit s'étirer + le menu se redimensionner en douceur
   queueNavMaterial();
@@ -2911,7 +2928,35 @@ const CAT_GRAD={
 function catGradient(cat){ return CAT_GRAD[cat] || "linear-gradient(135deg,#F2EBE1,#E0CDB4)"; }
 // vignette : toujours l'emoji sur le dégradé de sa catégorie (les vraies photos
 // vont dans la galerie du profil, pas sur les cartes — choix de l'utilisateur)
-function thumbInner(r){ return esc(r.emoji||"🍽️"); }
+/* ---------- PHOTOS DE PLATS ----------
+   Ordre de préférence : la photo que TU as publiée pour ce plat, puis la photo de la
+   recette (import Marmiton / recette perso), sinon une photo d'illustration choisie
+   d'après les mots du nom et de la catégorie. Le « lock » rend la photo stable :
+   la même recette montre toujours la même image. L'emoji reste le filet de sécurité. */
+const PHOTO_HINT={"Plat":"dish,meal","Entrée":"salad,starter","Dessert":"dessert,cake",
+  "Apéro":"appetizer,snack","Petit-déj":"breakfast","Accompagnement":"side dish,vegetables"};
+// mots inutiles pour illustrer (préparations, ustensiles) : on garde l'aliment
+const PHOTO_STOP=new Set(["maison","facon","express","minute","rapide","simple","facile","parfait","gratine","gratinee","poele","poelee","four","cocotte","express","sauce","sautee","saute","roti","rotie","au","aux","a","la","le","les","de","du","des","et","en","sans","avec","mon","ma","mes","ptit","petit","grand"]);
+function photoWords(r){
+  const mots=norm(r.nom).split(" ").filter(w=>w.length>2 && !PHOTO_STOP.has(w)).slice(0,3);
+  if(!mots.length) mots.push(norm(r.cat));
+  return mots.join(",");
+}
+function hashId(s){ let h=0; for(let i=0;i<s.length;i++) h=(h*31+s.charCodeAt(i))|0; return Math.abs(h); }
+function dishPhoto(r, w, h){
+  const perso = state.recipePhotos[r.id];          // ta propre photo de ce plat : elle prime
+  if(perso) return perso;
+  if(r.photo) return r.photo;                       // photo de la recette (import / perso)
+  // les virgules séparent les mots-clés dans le chemin : on encode chaque mot, pas les virgules
+  const kw = (photoWords(r)+","+(PHOTO_HINT[r.cat]||"food")).split(",")
+    .map(m=>encodeURIComponent(m.trim().replace(/\s+/g,"+"))).filter(Boolean).join(",");
+  return "https://loremflickr.com/"+(w||400)+"/"+(h||300)+"/"+kw+"?lock="+(hashId(r.id)%9000+1);
+}
+// vignette : la photo du plat, avec repli sur l'emoji si l'image ne charge pas
+function thumbInner(r, w, h){
+  return `<img class="dishimg" src="${esc(dishPhoto(r,w,h))}" alt="" loading="lazy" decoding="async"
+     onerror="this.classList.add('failed');this.removeAttribute('src')"><span class="dishemo">${esc(r.emoji||"🍽️")}</span>`;
+}
 function thumbStyle(r){ return ` style="background:${catGradient(r.cat)}"`; }
 
 // carte pleine largeur d'une recette (liste principale)
@@ -2962,7 +3007,7 @@ const HOME_TILES=[
 function featureCardHTML(r){
   const v=viewOf(r), t=r.prep+v.cuisson, fav=isFav(r.id);
   return `<div class="feat" data-recipe="${esc(r.id)}">
-      <div class="feat-img"${thumbStyle(r)}><span>${thumbInner(r)}</span>${isPlanned(r.id)?`<em class="feat-pin">📌 À réaliser</em>`:""}</div>
+      <div class="feat-img"${thumbStyle(r)}>${thumbInner(r,800,420)}${isPlanned(r.id)?`<em class="feat-pin">📌 À réaliser</em>`:""}</div>
       <div class="feat-body">
         ${starsHTML(r.id)}
         <div class="feat-row">
@@ -2978,7 +3023,7 @@ function gridCardHTML(r){
   const v=viewOf(r), t=r.prep+v.cuisson, fav=isFav(r.id);
   const miss=state.fridge.length?missingFor(r).length:-1;
   return `<div class="gcard" data-recipe="${esc(r.id)}">
-      <div class="gc-img"${thumbStyle(r)}><span>${thumbInner(r)}</span>
+      <div class="gc-img"${thumbStyle(r)}>${thumbInner(r,400,300)}
         <button class="cardfav${fav?" on":""}" data-fav="${esc(r.id)}" aria-label="Favori">${fav?"❤️":"🤍"}</button>
       </div>
       <div class="gc-body">
@@ -4094,6 +4139,7 @@ function renderDetail(){
           <button class="backbtn" id="shareBtn" aria-label="Partager la recette"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#1D402D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"/><path d="m8 7 4-4 4 4"/><path d="M4 13v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6"/></svg></button>
         </div>
       </div>
+      <img class="dhero-photo" src="${esc(dishPhoto(r,900,600))}" alt="" onerror="this.style.display='none'">
       <div class="demoji">${esc(r.emoji)}</div>
       <div class="dcat">${esc(r.cat)}${r.credit?"":(r.perso?" · ma recette":"")}</div>
       <h2>${esc(r.nom)}</h2>
@@ -5521,6 +5567,29 @@ document.getElementById("search").addEventListener("input",e=>{
   state.search=e.target.value;
   if(state.view==="home") renderHome();
 });
+/* l'en-tête se replie quand on descend et revient dès qu'on remonte un peu :
+   on gagne de la place à l'écran sans perdre l'accès à la recherche */
+(function autoHideTopbar(){
+  const tb=document.getElementById("topbar");
+  if(!tb) return;
+  let lastY=0, up=0, down=0;
+  const show=()=>{ tb.classList.remove("hide"); };
+  const hide=()=>{
+    if(document.activeElement===document.getElementById("search")) return;   // on ne masque pas pendant une recherche
+    tb.style.setProperty("--tb-h", tb.offsetHeight+"px");
+    tb.classList.add("hide");
+  };
+  scrollEl.addEventListener("scroll",()=>{
+    const y=scrollEl.scrollTop, d=y-lastY;
+    lastY=y;
+    if(y<60){ up=down=0; show(); return; }         // tout en haut : toujours visible
+    if(d>0){ down+=d; up=0; if(down>28) hide(); }  // on descend franchement → on replie
+    else if(d<0){ up-=d; down=0; if(up>18) show(); } // un petit retour vers le haut suffit à le rappeler
+  },{passive:true});
+  // la recherche et les changements d'onglet remettent l'en-tête en place
+  document.getElementById("search").addEventListener("focus", show);
+  window.addEventListener("yummly:view", show);
+})();
 // glisser horizontalement pour changer d'onglet (Accueil ↔ Frigo ↔ Courses ↔ Social)
 let swX=0, swY=0, swOn=false;
 scrollEl.addEventListener("touchstart",e=>{
