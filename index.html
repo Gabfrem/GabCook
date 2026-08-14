@@ -273,6 +273,23 @@
   .gc-body h4{font-family:var(--disp);font-weight:800;font-size:14.5px;margin:3px 0 3px;color:var(--ink);line-height:1.2;
        display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
   .gc-meta{font-size:12px;font-weight:600;color:var(--ink);opacity:.72}
+  .gc-prix{font-size:12px;font-weight:800;color:var(--camel-deep);margin-top:2px}
+  /* comparatif de prix, en bas de la fiche recette */
+  .prixbloc{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;margin-top:22px;box-shadow:var(--shadow-soft)}
+  .prix-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+  .prix-head h4{font-family:var(--disp);font-weight:800;font-size:17px;margin:0;color:var(--ink)}
+  .prix-big{font-family:var(--disp);font-weight:800;font-size:22px;color:var(--camel-deep);text-align:right;line-height:1.05}
+  .prix-big small{display:block;font-family:var(--sans);font-size:10.5px;font-weight:600;color:var(--muted);letter-spacing:.02em}
+  .prix-sub{font-size:13.5px;color:var(--ink);opacity:.85;margin:6px 0 12px}
+  .prix-list{display:flex;flex-direction:column;gap:7px}
+  .prix-row{display:flex;align-items:center;gap:9px;font-size:13px}
+  .prix-row .pr-n{flex:0 0 33%;font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .prix-row .pr-n em{font-style:normal;font-size:10px;color:var(--basil);font-weight:800;display:block}
+  .prix-row .pr-bar{flex:1;height:9px;background:var(--camel-tint);border-radius:99px;overflow:hidden}
+  .prix-row .pr-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--camel),var(--camel-deep));border-radius:99px;transition:width .5s cubic-bezier(.2,.7,.3,1)}
+  .prix-row.best .pr-bar i{background:linear-gradient(90deg,#7FBF8F,var(--basil))}
+  .prix-row .pr-v{flex:0 0 auto;font-family:var(--disp);font-weight:800;font-size:13.5px;color:var(--ink);min-width:58px;text-align:right}
+  .prix-note{font-size:11.5px;color:var(--muted);line-height:1.5;margin-top:12px}
   .gc-ok{font-size:11.5px;font-weight:700;color:var(--basil);margin-top:3px}
   .gc-ko{font-size:11.5px;font-weight:700;color:var(--camel-deep);margin-top:3px}
   /* ---- en-tête + barre tri/filtres d'une catégorie ---- */
@@ -987,6 +1004,17 @@
     <h2>Réglages</h2>
   </div>
   <div class="ed-scroll" id="settingsScroll"></div>
+</div>
+
+<div class="sharebox" id="confirmBox" hidden>
+  <div class="sharecard">
+    <h4 id="confirmTitle">Confirmer</h4>
+    <p id="confirmText"></p>
+    <div class="cf-row" style="margin-top:14px">
+      <button class="act cf-no" id="confirmNo">Annuler</button>
+      <button class="act cf-yes" id="confirmYes">Supprimer</button>
+    </div>
+  </div>
 </div>
 
 <div class="sharebox" id="resetBox" hidden>
@@ -2677,6 +2705,10 @@ if(CLOUD_ON && window.supabase && window.supabase.createClient){
 }
 let currentUser = null;                 // {id, email} quand connecté, sinon null
 const cloudActif = () => !!(sb && currentUser);
+/* Comptes administrateurs : peuvent supprimer les publications et commentaires de tout le monde
+   (modération). Côté serveur, une policy RLS autorise la même chose — voir le SQL fourni. */
+const ADMINS=["gabin.fremin@gmail.com"];
+const isAdmin = () => !!(currentUser && ADMINS.includes(String(currentUser.email||"").toLowerCase()));
 
 /* ---------- persistance ----------
    Trois niveaux : le cloud quand on est connecté, sinon le stockage local de
@@ -2721,7 +2753,7 @@ const state = { view:"home", search:"", filter:"Tous", onlyCookable:false, onlyP
   friendsSheet:{open:false, id:null, name:"", loading:false, list:null},
   cook:{open:false, recipe:null, steps:[], step:0, factor:1},
   ratings:{}, ratingsGlobal:{},                 // ma note {id:1..5} et les moyennes de tous {id:{sum,n}}
-  catSort:"note", catFilters:{temps:"", diff:"", regime:""}, filtersOpen:false,
+  catSort:"note", catFilters:{temps:"", diff:"", regime:"", prix:""}, filtersOpen:false,
   pendingShare:null,   // {id, until} : fenêtre de 15 min pour publier une photo après avoir fermé le composeur sans poster
   currentPortions:0, cooked:false, confirmCook:false };
 
@@ -2741,6 +2773,111 @@ function toggleFav(id){
   if(!state.favorites.length) state.onlyFav=false;   // plus de favoris : on ne reste pas coincé sur ce filtre
   saveFavorites();
 }
+/* ================= ESTIMATION DU PRIX D'UNE RECETTE =================
+   IMPORTANT : ce sont des prix moyens INTÉGRÉS à l'application, pas des prix relevés en
+   magasin (aucune enseigne ne publie ses prix librement). Le comparatif applique un indice
+   par enseigne à cette estimation : il sert à situer un ordre de grandeur, pas à l'euro près. */
+const PRIX=[ // [motif, prix, unité de référence]  kg = €/kg, l = €/L, pc = €/pièce
+  [/sel|poivre|muscade|cannelle|vanille|piment|curcuma|paprika|cumin|curry|colombo|safran|origan|thym|laurier|herbes|basilic|persil|coriandre|ciboulette|estragon|romarin|bouquet garni|levure|bicarbonate/,25,"kg"],
+  [/huile d.olive/,8,"l"],[/huile de sesame/,12,"l"],[/huile/,2.5,"l"],
+  [/beurre/,10,"kg"],[/creme fraiche|creme liquide|creme/,3.5,"l"],[/lait de coco/,3.5,"l"],[/lait/,1.1,"l"],
+  [/oeufs?|œufs?/,0.35,"pc"],[/farine/,1.2,"kg"],[/sucre|cassonade/,1.3,"kg"],[/miel/,12,"kg"],
+  [/parmesan/,20,"kg"],[/gruyere|emmental|comte|fromage rape/,12,"kg"],[/mozzarella/,9,"kg"],
+  [/fromage de chevre|chevre/,14,"kg"],[/roquefort|bleu/,16,"kg"],[/ricotta|mascarpone/,8,"kg"],[/fromage blanc|yaourt/,0.45,"pc"],
+  [/riz basmati|riz arborio|riz/,2.2,"kg"],[/pates|spaghetti|tagliatelle|penne|macaroni|coquillettes|nouilles|tortellinis?|cannellonis?|lasagnes?/,1.8,"kg"],
+  [/semoule|couscous|boulgour/,2.2,"kg"],[/quinoa/,6,"kg"],[/polenta/,2.5,"kg"],[/gnocchis/,3,"kg"],
+  [/flocons d.avoine|avoine/,2.5,"kg"],[/chapelure/,3,"kg"],[/pain de mie|baguette|pain/,2.5,"kg"],
+  [/pate brisee|pate feuilletee|pate sablee|pate a pizza|pate a tarte/,1.6,"pc"],[/tortillas|pains? pita|galettes/,0.35,"pc"],
+  [/blancs? de poulet|escalopes? de (poulet|dinde)/,12,"kg"],[/cuisses? de poulet|poulet fermier|poulet/,6.5,"kg"],
+  [/dinde/,10,"kg"],[/boeuf hache|steaks? haches?/,12,"kg"],[/boeuf a braiser|boeuf a griller|rumsteck|onglet|entrecote|steaks?|roti de boeuf|boeuf/,15,"kg"],
+  [/veau/,18,"kg"],[/agneau/,16,"kg"],[/lardons|bacon|poitrine/,10,"kg"],[/jambon/,12,"kg"],
+  [/chorizo|saucisson/,14,"kg"],[/saucisses|merguez|chair a saucisse/,9,"kg"],[/travers de porc|echine|filet mignon|sautee? de porc|roti de porc|porc/,9,"kg"],
+  [/saumon|truite/,20,"kg"],[/cabillaud|colin|poisson blanc|filets? de poisson|dos de/,16,"kg"],[/thon/,12,"kg"],
+  [/crevettes|gambas/,20,"kg"],[/moules/,4,"kg"],[/fruits de mer/,14,"kg"],[/anchois/,25,"kg"],
+  [/tomates concassees|sauce tomate|coulis/,1.8,"kg"],[/concentre de tomate/,5,"kg"],[/tomates cerises/,6,"kg"],[/tomates?/,3,"kg"],
+  [/pommes de terre|patates douces|patate douce|grenailles/,1.6,"kg"],[/oignons?|echalotes?/,1.6,"kg"],[/gousses? d.ail|ail/,8,"kg"],
+  [/carottes?/,1.3,"kg"],[/courgettes?/,2.5,"kg"],[/aubergines?/,3,"kg"],[/poivrons?/,4,"kg"],
+  [/champignons/,5,"kg"],[/brocoli|chou-fleur|chou/,2.8,"kg"],[/epinards/,4,"kg"],[/poireaux?/,2.5,"kg"],
+  [/salade verte|salade|laitue|roquette/,1.5,"pc"],[/concombre/,1,"pc"],[/citrons? verts?|citrons?/,0.55,"pc"],
+  [/avocat/,1.5,"pc"],[/bananes?/,1.8,"kg"],[/pommes?|poires?/,2.5,"kg"],[/fraises|myrtilles|fruits rouges|cerises/,10,"kg"],
+  [/courge butternut|potiron|courge/,2,"kg"],[/petits pois|haricots verts/,3,"kg"],
+  [/haricots (rouges|blancs)|pois chiches|lentilles|mais/,2.2,"kg"],[/olives/,9,"kg"],[/cornichons|capres/,8,"kg"],
+  [/tofu/,9,"kg"],[/amandes|noix|cacahuetes|pate d.arachide|sesame/,12,"kg"],
+  [/chocolat/,10,"kg"],[/cacao/,12,"kg"],[/creme de marron|confiture/,6,"kg"],
+  [/sauce soja/,5,"l"],[/vinaigre/,2,"l"],[/moutarde/,5,"kg"],[/mayonnaise|ketchup/,5,"kg"],
+  [/vin (blanc|rouge)|biere|cognac/,4,"l"],[/bouillon/,0.4,"l"],[/eau/,0,"l"],
+  [/gingembre/,8,"kg"],[/pate de curry/,15,"kg"],[/sirop d.erable/,15,"l"],[/glace|creme glacee/,5,"kg"]
+];
+// poids moyen d'une pièce, pour les ingrédients tarifés au kilo mais comptés à l'unité
+const POIDS_PIECE=[[/gousses? d.ail/,0.005],[/echalotes?/,0.03],[/oignons?/,0.15],[/tomates?/,0.12],[/carottes?/,0.1],
+[/courgettes?/,0.25],[/aubergines?/,0.3],[/poivrons?/,0.15],[/pommes de terre|patates?/,0.15],[/pommes?|poires?/,0.15],
+[/citrons?/,0.1],[/bananes?/,0.12],[/poireaux?/,0.2],[/brocoli|chou-fleur|chou/,0.5],[/courge butternut|courge|potiron/,1.2],
+[/cuisses? de poulet|escalopes? de poulet|blancs? de poulet/,0.2],[/poulet fermier|poulet entier|poulet/,1.4],
+[/escalopes?|paves?|filets?|dos de|steaks?/,0.15],[/tranches?/,0.03],[/saucisses|merguez/,0.08],
+[/gambas|crevettes/,0.025],[/champignons/,0.02],[/olives/,0.005],[/abricots|prunes|figues/,0.05]];
+/* Comparaison en MOTS ENTIERS : sans cela « bŒUF haché » tombait dans le motif des « œufs »
+   (« b-oeuf ») et se retrouvait facturé à la pièce. */
+const _bord=new WeakMap();
+function trouve(liste, n){
+  for(const e of liste){
+    let re=_bord.get(e);
+    if(!re){ re=new RegExp("(^|\\s)(?:"+e[0].source+")(?=$|\\s)","i"); _bord.set(e,re); }
+    if(re.test(n)) return e;
+  }
+  return null;
+}
+// coût estimé d'un ingrédient, en euros ; renvoie null si on ne sait pas le chiffrer
+function coutIngredient(i, factor){
+  const n=norm(pantryName(i.n));
+  const e=trouve(PRIX,n); if(!e) return null;
+  const [,prix,unite]=e;
+  const q=(i.q!=null?i.q:1)*(factor||1);
+  const fam=unitFamily(i.u), petite=SMALL[i.u];
+  if(unite==="pc"){
+    if(fam==="piece"||!i.u) return prix*q;
+    const pp=trouve(POIDS_PIECE,n); const kg=fam==="masse"?toBase(q,i.u)/1000:(fam==="volume"?toBase(q,i.u)/1000:0);
+    return pp&&kg?prix*(kg/pp[1]):prix*q;
+  }
+  let base;                                   // en kg ou en litres
+  if(petite) base=(petite.g*q)/1000;          // pincée, cuillère, poignée
+  else if(fam==="masse"||fam==="volume") base=toBase(q,i.u)/1000;
+  else { const pp=trouve(POIDS_PIECE,n); base=q*(pp?pp[1]:0.15); }
+  return prix*base;
+}
+// prix total et par personne d'une recette (portions d'origine)
+function prixRecette(r){
+  let total=0, inconnus=0;
+  r.ing.forEach(i=>{ const c=coutIngredient(i,1); if(c==null) inconnus++; else total+=c; });
+  const parPers=total/(r.portions||1);
+  return {total, parPers, inconnus};
+}
+function euros(v){ return (Math.round(v*100)/100).toFixed(2).replace(".",",")+" €"; }
+/* Indice de prix par enseigne (moyenne du marché = 1,00). Ordre de grandeur, pas un relevé. */
+const ENSEIGNES=[["Lidl",0.86],["Aldi",0.87],["E.Leclerc",0.91],["Intermarché",0.96],["Auchan",0.98],["Carrefour",1.00],["Super U",1.03],["Monoprix",1.24]];
+/* Comparatif affiché tout en bas de la fiche recette, après les étapes. */
+function prixHTML(r){
+  const p=prixRecette(r);
+  if(!p.total) return "";
+  const facteur=state.currentPortions/(r.portions||1);
+  const lignes=ENSEIGNES.map(([nom,idx])=>({nom, t:p.total*idx*facteur, pp:p.parPers*idx}));
+  const mini=Math.min(...lignes.map(l=>l.t)), maxi=Math.max(...lignes.map(l=>l.t));
+  return `<div class="prixbloc">
+    <div class="prix-head">
+      <h4>💶 Combien ça coûte ?</h4>
+      <div class="prix-big">≈ ${euros(p.parPers)}<small>par personne</small></div>
+    </div>
+    <div class="prix-sub">Soit environ <b>${euros(p.total*facteur)}</b> pour ${state.currentPortions} personne${state.currentPortions>1?"s":""}.</div>
+    <div class="prix-list">
+      ${lignes.map(l=>`<div class="prix-row${l.t===mini?" best":""}">
+        <span class="pr-n">${esc(l.nom)}${l.t===mini?` <em>le moins cher</em>`:""}</span>
+        <span class="pr-bar"><i style="width:${Math.round(l.t/maxi*100)}%"></i></span>
+        <span class="pr-v">${euros(l.t)}</span>
+      </div>`).join("")}
+    </div>
+    <div class="prix-note">Estimation à partir de prix moyens constatés en France, ajustés par un indice de cher­té propre à chaque enseigne. Ce n'est pas un relevé de prix en magasin : comptez-le comme un ordre de grandeur.${p.inconnus?` ${p.inconnus} ingrédient${p.inconnus>1?"s":""} non chiffré${p.inconnus>1?"s":""}.`:""}</div>
+  </div>`;
+}
+
 /* ---- notes en étoiles ----
    Ma note est locale (elle marche hors ligne et sans compte) ET partagée dans la table
    `ratings` de Supabase : la note affichée est la MOYENNE de tous les utilisateurs,
@@ -3040,19 +3177,20 @@ function catGradient(cat){ return CAT_GRAD[cat] || "linear-gradient(135deg,#F2EB
    la même recette montre toujours la même image. L'emoji reste le filet de sécurité. */
 /* Photo de repli par catégorie : vraies photos de plats (Wikimedia Commons), affichées
    tout de suite pendant que la photo précise de la recette est recherchée. */
+const WC="https://upload.wikimedia.org/wikipedia/commons/thumb/";
 const PHOTO_FALLBACK={
-  "Plat":"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Beef_stew_with_dried_plums.jpg/960px-Beef_stew_with_dried_plums.jpg",
-  "Entrée":"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Bowtie_pasta_salad_bowl_close-up.jpg/960px-Bowtie_pasta_salad_bowl_close-up.jpg",
-  "Dessert":"https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Piece_of_chocolate_cake_on_a_white_plate_decorated_with_chocolate_sauce.jpg/960px-Piece_of_chocolate_cake_on_a_white_plate_decorated_with_chocolate_sauce.jpg",
-  "Apéro":"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Appetizer_Platter.jpg/960px-Appetizer_Platter.jpg",
-  "Petit-déj":"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Honey_Run_Covered_Bridge_2024_Pancake_Breakfast-104A2111.jpg/960px-Honey_Run_Covered_Bridge_2024_Pancake_Breakfast-104A2111.jpg",
-  "Accompagnement":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Gungoguma_%28roasted_sweet_potatoes%29_2.jpg/960px-Gungoguma_%28roasted_sweet_potatoes%29_2.jpg"
+  "Plat":WC+"3/31/NZ_beef_steak_with_pasta_and_vegetables.jpg/960px-NZ_beef_steak_with_pasta_and_vegetables.jpg",
+  "Entrée":WC+"6/6d/Bowtie_pasta_salad_bowl_close-up.jpg/960px-Bowtie_pasta_salad_bowl_close-up.jpg",
+  "Dessert":WC+"e/ef/Chocolate_cake_and_Victoria_sponge.jpg/960px-Chocolate_cake_and_Victoria_sponge.jpg",
+  "Apéro":WC+"8/85/%22_13_-_ITALY_-_Cicchetti_Venetian_cuisine_appetizers_Gourmet_restaurant_high_quality_%28not_are_tapas%2C_are_ciccheti%29.jpg/960px-%22_13_-_ITALY_-_Cicchetti_Venetian_cuisine_appetizers_Gourmet_restaurant_high_quality_%28not_are_tapas%2C_are_ciccheti%29.jpg",
+  "Petit-déj":WC+"c/c2/-2012-12-05_Scrambled_eggs_on_toast%2C_Trimingham%2C_Norfolk.JPG/960px--2012-12-05_Scrambled_eggs_on_toast%2C_Trimingham%2C_Norfolk.JPG",
+  "Accompagnement":WC+"8/8f/Sunday_roast_vegetable_side_dish_at_The_Stag%2C_Little_Easton%2C_Essex%2C_England.jpg/960px-Sunday_roast_vegetable_side_dish_at_The_Stag%2C_Little_Easton%2C_Essex%2C_England.jpg"
 };
 /* Photo précise de chaque recette : cherchée une seule fois sur Wikimedia Commons à partir
    du nom du plat, puis mise en cache sur l'appareil. "" = rien trouvé, on garde le repli. */
 /* Le cache est versionné : quand on améliore la recherche de photos, on incrémente PHOTO_VER
    et les anciennes images (parfois hors sujet) sont automatiquement réoubliées. */
-const PHOTO_VER=5;
+const PHOTO_VER=6;
 let photoCache={};
 try{
   const brut=JSON.parse(localStorage.getItem("gabcook_photocache")||"{}");
@@ -3062,8 +3200,30 @@ let _pcT=null;
 function savePhotoCache(){ clearTimeout(_pcT); _pcT=setTimeout(()=>{ try{ localStorage.setItem("gabcook_photocache", JSON.stringify({v:PHOTO_VER, m:photoCache})); }catch(e){} },900); }
 /* Replis par FAMILLE de plat (photos Commons vérifiées) : bien plus juste qu'une seule
    photo par catégorie quand la recherche précise ne trouve rien. */
-const W="https://upload.wikimedia.org/wikipedia/commons/thumb/";
+const W=WC;
 const FAMILY_PHOTOS=[
+  [/\bboulettes?\b|\bkeftas?\b/, W+"7/7c/Spaghetti_and_meatballs_1.jpg/960px-Spaghetti_and_meatballs_1.jpg"],
+  [/\bbrochettes?\b|souvlaki|yakitori|\bkebab\b|shawarma|gyros/, W+"a/af/Grilled_meat_skewers_served_over_creamy_hummus_with_garnishes_for_a_fresh_Mediterranean_dish.jpg/960px-Grilled_meat_skewers_served_over_creamy_hummus_with_garnishes_for_a_fresh_Mediterranean_dish.jpg"],
+  [/\bburgers?\b/, W+"7/7d/Cheeseburger_on_a_plate.jpg/960px-Cheeseburger_on_a_plate.jpg"],
+  [/tacos|burritos?|quesadillas?|fajitas|enchiladas/, W+"3/3b/Tacos_from_Cocuyos.jpg/960px-Tacos_from_Cocuyos.jpg"],
+  [/wraps?|sandwich|croque|panini|\bpita\b/, W+"a/a5/Sandwich_Plate%2C_Turkey_%26_the_Wolf_-_Hello_New_Orleans.jpg/960px-Sandwich_Plate%2C_Turkey_%26_the_Wolf_-_Hello_New_Orleans.jpg"],
+  [/\bcurry\b|tikka|massala|colombo|\bmafe\b|tajine|dahl|biryani|jollof/, W+"8/88/Thai_Green_Curry_with_Rice.jpg/960px-Thai_Green_Curry_with_Rice.jpg"],
+  [/omelette|frittata|tortilla|shakshuka/, W+"c/c3/Omelette_aux_truffes.jpg/960px-Omelette_aux_truffes.jpg"],
+  [/\boeufs?\b|\bœufs?\b/, W+"9/92/Fried_eggs_in_a_sahan.jpg/960px-Fried_eggs_in_a_sahan.jpg"],
+  [/pancakes?|pain perdu|gaufres?|crepes?|galettes de sarrasin/, W+"2/2c/Slicing_Pancakes_with_Fork_374819.jpg/960px-Slicing_Pancakes_with_Fork_374819.jpg"],
+  [/muffins?|madeleines?|financiers?/, W+"f/fa/Vegan_Blueberry_Muffins_%284276797087%29.jpg/960px-Vegan_Blueberry_Muffins_%284276797087%29.jpg"],
+  [/cookies?|sables?/, W+"5/50/Chocolate_chip_cookies.jpg/960px-Chocolate_chip_cookies.jpg"],
+  [/porridge|granola|smoothie|avocado toast/, W+"d/d8/Oatmeal_porridge_1-minute_with_additional_ingredients.jpg/960px-Oatmeal_porridge_1-minute_with_additional_ingredients.jpg"],
+  [/chocolat chaud/, W+"a/a3/Hot_chocolate_with_marshmellow.jpg/960px-Hot_chocolate_with_marshmellow.jpg"],
+  [/gateau|\bcake\b(?! sale)|brownie|fondant|quatre.quarts|marbre|banana bread/, W+"e/ef/Chocolate_cake_and_Victoria_sponge.jpg/960px-Chocolate_cake_and_Victoria_sponge.jpg"],
+  [/tartes?|tatin|crumble|clafoutis|cheesecake/, W+"d/d3/Fruit_pie.jpg/960px-Fruit_pie.jpg"],
+  [/mousse|panna|creme (brulee|caramel)|flan|tiramisu|iles flottantes|riz au lait|compote|salade de fruits/, W+"1/11/Ice_Cream_for_Breakfast_Day.jpg/960px-Ice_Cream_for_Breakfast_Day.jpg"],
+  [/pizza|pissaladiere/, W+"d/d4/Margherita_Originale.JPG/960px-Margherita_Originale.JPG"],
+  [/apero|tapas|nachos|bruschetta|gougeres|chips|cake sale|samoussas|tapenade|houmous|guacamole|tzatziki|caviar/, W+"8/85/%22_13_-_ITALY_-_Cicchetti_Venetian_cuisine_appetizers_Gourmet_restaurant_high_quality_%28not_are_tapas%2C_are_ciccheti%29.jpg/960px-%22_13_-_ITALY_-_Cicchetti_Venetian_cuisine_appetizers_Gourmet_restaurant_high_quality_%28not_are_tapas%2C_are_ciccheti%29.jpg"],
+  [/poissons?|saumon|cabillaud|colin|truite|thon|brandade|moules|crevettes?|gambas|fruits de mer|papillote|meuniere/, W+"b/b5/Cooked_fillets_of_painted_sweetlips_fish_on_a_plate.JPG/960px-Cooked_fillets_of_painted_sweetlips_fish_on_a_plate.JPG"],
+  [/poulet|dinde|volaille|nuggets|cordon bleu|wings|ailes/, W+"5/53/Grilled_chicken_and_risotto.jpg/960px-Grilled_chicken_and_risotto.jpg"],
+  [/boeuf|steaks?|bourguignon|carbonnade|daube|goulash|stroganoff|onglet|hachis|chili/, W+"3/31/NZ_beef_steak_with_pasta_and_vegetables.jpg/960px-NZ_beef_steak_with_pasta_and_vegetables.jpg"],
+  [/\bporc\b|jambon|lardons|saucisses?|travers|echine|ribs|rougail|filet mignon|tartiflette/, W+"1/1a/Hong_Kong_style_Pork_Chop_and_Fried_Eggs_with_vegetables_rice.jpg/960px-Hong_Kong_style_Pork_Chop_and_Fried_Eggs_with_vegetables_rice.jpg"],
   [/\bfrites?\b|potatoes|wedges/, W+"e/e5/French_fries_3.jpg/960px-French_fries_3.jpg"],
   [/\bgratin\b/, W+"6/62/Gratin_Dauphinoise.JPG/960px-Gratin_Dauphinoise.JPG"],
   [/\bpuree\b|ecrase/, W+"3/3d/C%C3%B4tes_d%27agneau_de_Sisteron_%C3%A0_la_pur%C3%A9e_de_pommes_de_terre_au_persil_et_%C3%A0_l%27ail.JPG/960px-C%C3%B4tes_d%27agneau_de_Sisteron_%C3%A0_la_pur%C3%A9e_de_pommes_de_terre_au_persil_et_%C3%A0_l%27ail.JPG"],
@@ -3288,6 +3448,7 @@ function gridCardHTML(r){
         ${starsHTML(r.id)}
         <h4>${esc(r.nom)}</h4>
         <div class="gc-meta">🕒 ${t} min · ${esc(r.diff)}</div>
+        <div class="gc-prix">≈ ${euros(prixRecette(r).parPers)} / pers.</div>
         ${miss===0?`<div class="gc-ok">✓ Prêt à cuisiner</div>`:miss>0?`<div class="gc-ko">Il manque ${miss}</div>`:``}
       </div>
     </div>`;
@@ -3302,6 +3463,7 @@ function applyCatFilters(list){
     if(f.temps==="long" && t<=30) return false;
     if(f.diff && r.diff!==f.diff) return false;
     if(f.regime==="vege" && !isVege(r)) return false;
+    if(f.prix){ const p=prixRecette(r).parPers; if(p>+f.prix) return false; }   // budget par personne
     return true;
   });
 }
@@ -3374,7 +3536,7 @@ function renderCategoryPage(){
   const reste = list.filter(r=>!uneIds[r.id]);
 
   const f=state.catFilters;
-  const nbFiltres=(f.temps?1:0)+(f.diff?1:0)+(f.regime?1:0);
+  const nbFiltres=(f.temps?1:0)+(f.diff?1:0)+(f.regime?1:0)+(f.prix?1:0);
   const SORTS=[["note","Mieux notés"],["rapide","Plus rapides"],["facile","Plus faciles"],["az","A → Z"]];
 
   let html=`
@@ -3395,6 +3557,7 @@ function renderCategoryPage(){
       ${grp("Temps","temps",[["","Peu importe"],["court","< 15 min"],["moyen","15 – 30 min"],["long","+ de 30 min"]])}
       ${grp("Difficulté","diff",[["","Toutes"],["Facile","Facile"],["Moyen","Moyen"],["Difficile","Difficile"]])}
       ${grp("Régime","regime",[["","Tous"],["vege","Végétarien"]])}
+      ${grp("Budget (par personne)","prix",[["","Peu importe"],["1","≤ 1 €"],["2","≤ 2 €"],["3","≤ 3 €"],["5","≤ 5 €"]])}
       <div class="fgrp"><div class="flab">Autres :</div><div class="fopts">
         <button class="fopt${state.onlyCookable?" on":""}" data-cook="1">✓ Je peux le cuisiner</button>
         ${state.favorites.length?`<button class="fopt${state.onlyFav?" on":""}" data-favfilter="1">❤️ Favoris</button>`:""}
@@ -3868,7 +4031,7 @@ function renderPostView(){
   if(pv.loading && !pv.post){ sc.innerHTML=`<div class="prof-locked"><div class="big">⏳</div><p>Chargement…</p></div>`; return; }
   const p=pv.post;
   if(!p){ sc.innerHTML=`<div class="prof-locked"><div class="big">🤔</div><p>Cette publication n'est plus disponible.</p></div>`; return; }
-  const mine=currentUser && p.author===currentUser.id;
+  const mine=currentUser && (p.author===currentUser.id || isAdmin());
   sc.innerHTML=`
     <div class="post" data-post="${esc(p.id)}" style="margin:0;border:none;border-radius:0;box-shadow:none">
       <div class="posthead" data-openprofile="${esc(p.author)}">
@@ -3888,7 +4051,7 @@ function renderPostView(){
       </div>
       <div class="comments">
         ${p.comments.map(c=>{
-          const cmine=currentUser&&(c.user_id===currentUser.id||p.author===currentUser.id);
+          const cmine=currentUser&&(c.user_id===currentUser.id||p.author===currentUser.id||isAdmin());
           return `<div class="crow"><span class="cav" data-openprofile="${esc(c.user_id)}">${avatarFor(c.prof)}</span><span class="cbub"><b data-openprofile="${esc(c.user_id)}">${esc(c.prof.pseudo||"?")}</b> ${esc(c.text)}</span>${cmine?`<button class="cdelc" data-pvdelcom="${esc(c.id)}" aria-label="Supprimer">✕</button>`:""}</div>`;
         }).join("")||`<div class="cnone">Sois le premier à commenter.</div>`}
         <div class="cadd"><input class="cinput" id="pvCommentInput" placeholder="Ajouter un commentaire…" value="${esc(pv.commentDraft||"")}" autocomplete="off"><button class="csend" data-pvcsend>Envoyer</button></div>
@@ -3988,14 +4151,14 @@ async function deletePost(id){
   toast("Publication supprimée");
 }
 function postCardHTML(p){
-  const mine = currentUser && p.author===currentUser.id;
+  const mine = currentUser && (p.author===currentUser.id || isAdmin());
   const open = !!state.social.openComments[p.id];
   const nc = p.comments.length;
   let comHTML="";
   if(open){
     comHTML=`<div class="comments">
       ${p.comments.map(c=>{
-        const cmine = currentUser && (c.user_id===currentUser.id || p.author===currentUser.id);
+        const cmine = currentUser && (c.user_id===currentUser.id || p.author===currentUser.id || isAdmin());
         return `<div class="crow">
           <span class="cav" data-openprofile="${esc(c.user_id)}">${avatarFor(c.prof)}</span>
           <span class="cbub"><b data-openprofile="${esc(c.user_id)}">${esc(c.prof.pseudo||"?")}</b> ${esc(c.text)}</span>
@@ -4449,6 +4612,7 @@ function renderDetail(){
       <h4 style="font-family:var(--disp);font-weight:700;font-size:18px;margin:0 0 14px">Préparation${v.af?" <span style=\"font-size:13px;color:#A9700F;font-weight:700\">· air fryer</span>":v.mo?" <span style=\"font-size:13px;color:#3F6288;font-weight:700\">· micro-ondes</span>":""}</h4>
       ${v.etapes.filter(e=>clean(e)).length?`<button class="ck-launch" id="cookStart">👨‍🍳 Cuisiner pas à pas</button>`:""}
       <ol class="steps">${v.etapes.map(e=>`<li><div class="st">${esc(e)}</div></li>`).join("")}</ol>
+      ${prixHTML(r)}
     </div>
   `;
   queueNavMaterial();   // le bouton sombre « j'ai cuisiné » peut arriver sous la pastille
@@ -5459,6 +5623,21 @@ async function doLogout(silent){
   if(!silent) toast("Déconnecté — retour au frigo de cet appareil");
 }
 
+/* ---------- confirmation avant suppression (publications, commentaires) ---------- */
+let _confirmAction=null;
+function askConfirm(titre, texte, action, libelle){
+  _confirmAction=action;
+  document.getElementById("confirmTitle").textContent=titre;
+  document.getElementById("confirmText").textContent=texte;
+  document.getElementById("confirmYes").textContent=libelle||"Supprimer";
+  document.getElementById("confirmBox").hidden=false;
+}
+function closeConfirm(){ document.getElementById("confirmBox").hidden=true; _confirmAction=null; }
+document.getElementById("confirmBox").addEventListener("click",e=>{
+  if(e.target.closest("#confirmNo") || e.target.id==="confirmBox"){ closeConfirm(); return; }
+  if(e.target.closest("#confirmYes")){ const a=_confirmAction; closeConfirm(); if(a) a(); return; }
+});
+
 /* ---------- page RÉGLAGES (roue crantée du profil) ---------- */
 const settingsPageEl=document.getElementById("settingsPage");
 function openSettings(){
@@ -5715,8 +5894,13 @@ document.getElementById("postViewBack").addEventListener("click", closePostView)
 postViewScroll.addEventListener("click",e=>{
   if(e.target.closest("[data-pvlike]")){ postViewLike(); return; }
   if(e.target.closest("[data-pvcsend]")){ postViewSend(); return; }
-  const dcm=e.target.closest("[data-pvdelcom]"); if(dcm){ postViewDelComment(dcm.dataset.pvdelcom); return; }
-  if(e.target.closest("[data-pvdelpost]")){ postViewDelPost(); return; }
+  const dcm=e.target.closest("[data-pvdelcom]");
+  if(dcm){ const c=dcm.dataset.pvdelcom; askConfirm("Supprimer ce commentaire ?","Il sera retiré définitivement pour tout le monde.",()=>postViewDelComment(c)); return; }
+  if(e.target.closest("[data-pvdelpost]")){
+    const p=state.postView.post, autre=p&&currentUser&&p.author!==currentUser.id;
+    askConfirm("Supprimer cette publication ?", autre?"Publication d'un autre utilisateur : elle sera retirée définitivement pour tout le monde.":"Elle sera retirée définitivement, ainsi que sa photo.", postViewDelPost);
+    return;
+  }
   const op=e.target.closest("[data-openprofile]"); if(op && op.dataset.openprofile){ closePostView(); openProfile(op.dataset.openprofile); return; }
   const go=e.target.closest("[data-gopen]"); if(go){ const rid=go.dataset.gopen; closePostView(); if(rid && findRecipe(rid)) openRecipe(rid); return; }
 });
@@ -5918,7 +6102,7 @@ scrollEl.addEventListener("click",e=>{
   if(e.target.closest("#catBack")){
     state.filter="Tous"; state.search=""; const si=document.getElementById("search"); if(si) si.value="";
     state.onlyCookable=state.onlyFav=state.onlyPerso=false; state.filtersOpen=false;
-    state.catFilters={temps:"",diff:"",regime:""};
+    state.catFilters={temps:"",diff:"",regime:"",prix:""};
     scrollEl.scrollTop=0; renderHome(); return;
   }
   // tri : on tourne dans la liste des tris
@@ -5929,7 +6113,7 @@ scrollEl.addEventListener("click",e=>{
   if(e.target.closest("[data-togglefilters]")){ state.filtersOpen=!state.filtersOpen; renderHome(); return; }
   const fo=e.target.closest("[data-f]");
   if(fo){ const k=fo.dataset.f; state.catFilters[k] = (state.catFilters[k]===fo.dataset.v ? "" : fo.dataset.v); renderHome(); return; }
-  if(e.target.closest("[data-fclear]")){ state.catFilters={temps:"",diff:"",regime:""}; renderHome(); return; }
+  if(e.target.closest("[data-fclear]")){ state.catFilters={temps:"",diff:"",regime:"",prix:""}; renderHome(); return; }
   // tuiles de catégories de l'accueil
   const tile=e.target.closest("[data-cattile]");
   if(tile){ state.filter=tile.dataset.cattile; scrollEl.scrollTop=0; renderHome(); return; }
@@ -6012,12 +6196,12 @@ scrollEl.addEventListener("click",e=>{
   const add=e.target.closest("[data-add]"); if(add){ addFriend(add.dataset.add); return; }
   const acc=e.target.closest("[data-accept]"); if(acc){ acceptFriend(acc.dataset.accept); return; }
   const rem=e.target.closest("[data-remove]"); if(rem){ removeFriend(rem.dataset.remove); return; }
-  const dp=e.target.closest("[data-delpost]"); if(dp){ deletePost(dp.dataset.delpost); return; }
+  const dp=e.target.closest("[data-delpost]"); if(dp){ const id=dp.dataset.delpost; const po=state.social.posts.find(x=>x.id===id); const autre=po&&currentUser&&po.author!==currentUser.id; askConfirm("Supprimer cette publication ?", autre?"Publication d'un autre utilisateur : elle sera retirée définitivement pour tout le monde.":"Elle sera retirée définitivement, ainsi que sa photo.", ()=>deletePost(id)); return; }
   const lk=e.target.closest("[data-like]"); if(lk){ toggleLike(lk.dataset.like); return; }
   const ct=e.target.closest("[data-comtoggle]");
   if(ct){ const id=ct.dataset.comtoggle; state.social.openComments[id]=!state.social.openComments[id]; rerenderFeedKeepScroll(); return; }
   const cs=e.target.closest("[data-csend]"); if(cs){ addComment(cs.dataset.csend); return; }
-  const dc=e.target.closest("[data-delcom]"); if(dc){ const [pid,cid]=dc.dataset.delcom.split("|"); deleteComment(pid,cid); return; }
+  const dc=e.target.closest("[data-delcom]"); if(dc){ const [pid,cid]=dc.dataset.delcom.split("|"); askConfirm("Supprimer ce commentaire ?","Il sera retiré définitivement pour tout le monde.",()=>deleteComment(pid,cid)); return; }
   const op=e.target.closest("[data-openprofile]"); if(op && op.dataset.openprofile){ openProfile(op.dataset.openprofile); return; }
 });
 
