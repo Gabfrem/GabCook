@@ -900,7 +900,8 @@
   /* ---- apparition en cascade des contenus, à chaque rendu de vue ---- */
   @keyframes popIn{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:none}}
   .page .cattile,.page .gcard,.page .feat,.page .sectionlabel,.page .catbar,.page .cathead,
-  .page .pantry-banner,.page .filters,.page .addcard,.page .seemore-wrap,.page .fitems,.page .add-row{
+  .page .pantry-banner,.page .filters,.page .addcard,.page .seemore-wrap,.page .fitems,.page .add-row,
+  .page .weekbtn,.page .coursetotal{
     animation:popIn .42s cubic-bezier(.2,.72,.28,1) both}
   .page .cattile:nth-child(2),.page .gcard:nth-child(2){animation-delay:.05s}
   .page .cattile:nth-child(3),.page .gcard:nth-child(3){animation-delay:.09s}
@@ -910,6 +911,14 @@
   .page .gcard:nth-child(n+7){animation-delay:.24s}
   .page .feat:nth-of-type(2){animation-delay:.07s}
   .page .feat:nth-of-type(3){animation-delay:.13s}
+  /* Réaction au TOUCHER, façon iOS : l'élément se creuse et s'atténue dès que le doigt
+     se pose (sans attendre le clic) et revient avec un léger ressort quand on relâche.
+     `:active` ne suffit pas sur mobile : la classe est posée par le script. */
+  .pressing{transform:scale(.955)!important;opacity:.72!important;
+       transition:transform .08s ease-out, opacity .08s ease-out !important}
+  .cattile.pressing,.gcard.pressing,.feat.pressing,.wk-day.pressing{transform:scale(.97)!important}
+  .weekbtn.pressing,.addcard.pressing,.set-row.pressing{transform:scale(.98)!important}
+  .star.pressing{transform:scale(1.25)!important;opacity:1!important}
   /* transitions sur tout ce qui change d'état */
   .subtab,.cbtn,.fopt,.seemore,.catback,.acctbtn,.set-row,.switch .track,.switch .knob,.pgcell,.recrow,
   .cattile,.gcard,.feat,.star,.cardfav,.chip,.cat,.fbtn,.visbtn,.emo,.banswatch,.tick,.cbox,.ca,
@@ -2841,11 +2850,11 @@ const state = { view:"home", search:"", filter:"Tous", onlyCookable:false, onlyP
   friendsSheet:{open:false, id:null, name:"", loading:false, list:null},
   cook:{open:false, recipe:null, steps:[], step:0, factor:1},
   ratings:{}, ratingsGlobal:{},                 // ma note {id:1..5} et les moyennes de tous {id:{sum,n}}
-  catSort:"note", catFilters:{temps:"", diff:"", regime:"", prix:""}, filtersOpen:false,
+  catSort:"note", catFilters:{temps:"", diff:"", regime:"", prix:"", cuisine:""}, filtersOpen:false,
   pendingShare:null,   // {id, until} : fenêtre de 15 min pour publier une photo après avoir fermé le composeur sans poster
   /* planificateur de semaine : les réglages (équipements, goûts) sont mémorisés même
      quand on supprime la semaine, pour ne pas les redemander à chaque fois */
-  semaine:{equip:null, prefs:{deteste:[], allerg:[]}, nb:5, budget:40, plats:[], creeLe:null},
+  semaine:{equip:null, prefs:{deteste:[], allerg:[]}, cuisine:"", nb:5, budget:40, plats:[], creeLe:null},
   weekUI:{open:false, etape:0, gen:false},
   currentPortions:0, cooked:false, confirmCook:false };
 
@@ -2923,6 +2932,7 @@ function recetteOK(r, s){
   const t=texteRecette(r);
   for(const a of s.prefs.allerg){ const A=ALLERGENES.find(x=>x.id===a); if(A&&A.re.test(t)) return false; }
   for(const d of s.prefs.deteste){ const D=AVERSIONS.find(x=>x.id===d); if(D&&D.re.test(t)) return false; }
+  if(s.cuisine && cuisineDe(r)!==s.cuisine) return false;        // envie d'une cuisine précise
   return true;
 }
 function candidatsSemaine(s){ return allRecipes().filter(r=>recetteOK(r,s)); }
@@ -3177,6 +3187,28 @@ function starsHTML(id, interactive){
   s+=n?`<b class="votes">(${n})</b>`:`<b class="votes none">–</b>`;
   return s+`</span>`;
 }
+/* ---- origine du plat (très général) : sert au filtre « Cuisine » et au planificateur ---- */
+const CUISINES=[
+  {id:"ital", nom:"Italienne", emoji:"🇮🇹",
+   re:/pizza|pasta|pates|spaghetti|tagliatelle|penne|macaroni|lasagne|cannelloni|tortellini|gnocchi|risotto|carbonara|bolognaise|amatriciana|puttanesca|cacio|norma|parmigiana|tiramisu|panna cotta|bruschetta|minestrone|pesto|mozzarella|focaccia|osso/},
+  {id:"asie", nom:"Asiatique", emoji:"🥢",
+   re:/wok|nouilles|riz cantonais|riz saute|pad thai|bo bun|teriyaki|yakisoba|ramen|chow mein|nasi goreng|oyakodon|loc lac|kung pao|general tao|aigre-doux|sauce soja|gingembre|tofu|curry japonais|samoussa|nem|biryani|tikka|massala|dahl|butter chicken|tandoori|colombo|curry|coco/},
+  {id:"mex",  nom:"Mexicaine", emoji:"🌮",
+   re:/tacos|burrito|quesadilla|fajitas|enchiladas|chili|guacamole|nachos|tortillas|wrap/},
+  {id:"med",  nom:"Méditerranéenne", emoji:"🫒",
+   re:/grecque|souvlaki|gyros|tzatziki|houmous|falafel|taboule|moussaka|feta|olives|tapenade|ratatouille|tian|shakshuka|paella|tortilla espagnole|gaspacho|caviar d.aubergine|pissaladiere/},
+  {id:"orient",nom:"Orientale / Maghreb", emoji:"🍢",
+   re:/tajine|couscous|kefta|merguez|mafe|yassa|semoule|shawarma|kebab|harissa|boulgour/},
+  {id:"us",   nom:"Américaine", emoji:"🍔",
+   re:/burger|ribs|travers de porc laques|cheesecake|brownie|pancakes|cookies|mac and cheese|nuggets|muffins|granola|banana bread|smoothie|coleslaw|cesar|fish and chips/},
+  {id:"fr",   nom:"Française", emoji:"🇫🇷", re:/.*/}      // par défaut
+];
+function cuisineDe(r){
+  const t=norm(r.nom+" "+r.ing.map(i=>i.n).join(" "));
+  for(const c of CUISINES) if(c.id!=="fr" && c.re.test(t)) return c.id;
+  return "fr";
+}
+
 /* ---- régime : une recette est végétarienne si aucun ingrédient n'est de la chair animale ---- */
 /* Mots de chair animale, comparés en MOTS ENTIERS : « pâte brisée » ne doit pas être pris
    pour du « pâté », ni « coquillettes » pour des coquilles Saint-Jacques. */
@@ -3703,6 +3735,7 @@ function applyCatFilters(list){
     if(f.diff && r.diff!==f.diff) return false;
     if(f.regime==="vege" && !isVege(r)) return false;
     if(f.prix){ const p=prixRecette(r).parPers; if(p>+f.prix) return false; }   // budget par personne
+    if(f.cuisine && cuisineDe(r)!==f.cuisine) return false;
     return true;
   });
 }
@@ -3784,7 +3817,7 @@ function renderCategoryPage(){
   const reste = list.filter(r=>!uneIds[r.id]);
 
   const f=state.catFilters;
-  const nbFiltres=(f.temps?1:0)+(f.diff?1:0)+(f.regime?1:0)+(f.prix?1:0);
+  const nbFiltres=(f.temps?1:0)+(f.diff?1:0)+(f.regime?1:0)+(f.prix?1:0)+(f.cuisine?1:0);
   const SORTS=[["note","Mieux notés"],["rapide","Plus rapides"],["facile","Plus faciles"],["az","A → Z"]];
 
   let html=`
@@ -3806,6 +3839,7 @@ function renderCategoryPage(){
       ${grp("Difficulté","diff",[["","Toutes"],["Facile","Facile"],["Moyen","Moyen"],["Difficile","Difficile"]])}
       ${grp("Régime","regime",[["","Tous"],["vege","Végétarien"]])}
       ${grp("Budget (par personne)","prix",[["","Peu importe"],["1","≤ 1 €"],["2","≤ 2 €"],["3","≤ 3 €"],["5","≤ 5 €"]])}
+      ${grp("Cuisine","cuisine",[["","Toutes"]].concat(CUISINES.map(c=>[c.id, c.emoji+" "+c.nom])))}
       <div class="fgrp"><div class="flab">Autres :</div><div class="fopts">
         <button class="fopt${state.onlyCookable?" on":""}" data-cook="1">✓ Je peux le cuisiner</button>
         ${state.favorites.length?`<button class="fopt${state.onlyFav?" on":""}" data-favfilter="1">❤️ Favoris</button>`:""}
@@ -5902,7 +5936,7 @@ function renderWeek(){
   const s=state.semaine, u=state.weekUI, e=u.etape;
   const nav=document.getElementById("weekNav");
   document.getElementById("weekTitle").textContent = e===9 ? "Ma semaine" : "Générer ma semaine";
-  document.getElementById("weekProg").style.width = e===9 ? "100%" : Math.round((e+1)/5*100)+"%";
+  document.getElementById("weekProg").style.width = e===9 ? "100%" : Math.round((e+1)/6*100)+"%";
   const cls="wk-step"+(_wkSens<0?" back":"");
   let html="", boutons="";
 
@@ -5927,7 +5961,18 @@ function renderWeek(){
     </div>`;
     boutons=`<button data-wk="prev">◀ Retour</button><button class="go" data-wk="next">Continuer ▶</button>`;
   }
-  else if(e===2){                                // ---- nombre de plats ----
+  else if(e===2){                                // ---- cuisine souhaitée (facultatif) ----
+    html=`<div class="${cls}">
+      <div class="wk-h">Une envie particulière ?</div>
+      <p class="wk-p">Tu peux orienter toute la semaine vers un type de cuisine. C'est facultatif.</p>
+      <div class="wk-chips">
+        <button class="wk-chip${s.cuisine?"":" on"}" data-cui="">Peu importe</button>
+        ${CUISINES.map(c=>`<button class="wk-chip${s.cuisine===c.id?" on":""}" data-cui="${c.id}">${c.emoji} ${esc(c.nom)}</button>`).join("")}
+      </div>
+    </div>`;
+    boutons=`<button data-wk="prev">◀ Retour</button><button class="go" data-wk="next">Continuer ▶</button>`;
+  }
+  else if(e===3){                                // ---- nombre de plats ----
     html=`<div class="${cls}">
       <div class="wk-h">Combien de plats ?</div>
       <p class="wk-p">Le nombre de repas que tu veux préparer cette semaine.</p>
@@ -5939,7 +5984,7 @@ function renderWeek(){
     </div>`;
     boutons=`<button data-wk="prev">◀ Retour</button><button class="go" data-wk="next">Continuer ▶</button>`;
   }
-  else if(e===3){                                // ---- budget ----
+  else if(e===4){                                // ---- budget ----
     html=`<div class="${cls}">
       <div class="wk-h">Ton budget</div>
       <p class="wk-p">Ce que tu es prêt·e à mettre dans les courses pour ces ${s.nb} plat${s.nb>1?"s":""} (estimation pour 4 parts par plat).</p>
@@ -6033,6 +6078,8 @@ weekScroll.addEventListener("click",e=>{
   const al=e.target.closest("[data-al]");
   if(al){ const id=al.dataset.al, a=s.prefs.allerg, i=a.indexOf(id);
     if(i>-1) a.splice(i,1); else a.push(id); saveSemaine(); renderWeek(); return; }
+  const cui=e.target.closest("[data-cui]");
+  if(cui){ s.cuisine=cui.dataset.cui; saveSemaine(); renderWeek(); return; }
   const nb=e.target.closest("[data-nb]");
   if(nb){ s.nb=Math.max(1,Math.min(14,s.nb+(+nb.dataset.nb))); saveSemaine(); renderWeek(); return; }
   const rr=e.target.closest("[data-reroll]");
@@ -6452,6 +6499,26 @@ document.getElementById("search").addEventListener("input",e=>{
   state.search=e.target.value;
   if(state.view==="home") renderHome();
 });
+/* Retour au toucher façon iOS : dès que le doigt se pose sur un élément cliquable, il se
+   creuse ; il se relâche au lever du doigt, si on part en défilant, ou si on sort de lui. */
+(function toucherIOS(){
+  const SEL="button,[role=button],label.gbtn,.cattile,.gcard,.feat,.wk-day,.card,.recrow,.set-row,.pgcell,"
+          + ".chip,.cat,.fopt,.wk-chip,.wk-opt,.weekbtn,.addcard,.seemore,.cbtn,.subtab,.ca,.fbtn,.visbtn,.emo,.banswatch";
+  let cible=null;
+  const relache=()=>{ if(cible){ cible.classList.remove("pressing"); cible=null; } };
+  document.addEventListener("pointerdown",e=>{
+    const t=e.target.closest(SEL);
+    if(!t || t.disabled) return;
+    relache(); cible=t; t.classList.add("pressing");
+  },{passive:true});
+  ["pointerup","pointercancel","pointerleave","touchend","touchcancel","dragstart"].forEach(ev=>
+    document.addEventListener(ev, relache, {passive:true}));
+  document.addEventListener("scroll", relache, {passive:true, capture:true});
+  document.addEventListener("pointermove",e=>{                 // le doigt glisse hors du bouton
+    if(cible && !cible.contains(document.elementFromPoint(e.clientX,e.clientY))) relache();
+  },{passive:true});
+})();
+
 /* l'en-tête se replie quand on descend et revient dès qu'on remonte un peu :
    on gagne de la place à l'écran sans perdre l'accès à la recherche */
 (function autoHideTopbar(){
@@ -6469,16 +6536,22 @@ document.getElementById("search").addEventListener("input",e=>{
   };
   const onScroll=()=>{
     const y=posDefilement();
+    // tout en haut : l'en-tête doit TOUJOURS revenir, même pendant le verrou
+    // (sans cette priorité, remonter d'un coup pouvait le laisser replié)
+    if(y<60){ up=down=0; lastY=y; tb.classList.remove("hide"); return; }
     if(Date.now()<verrou){ lastY=y; return; }       // décalage dû au repli lui-même : on ignore
     const d=y-lastY;
     lastY=y;
-    if(y<60){ up=down=0; show(); return; }          // tout en haut : toujours visible
     if(d>0){ down+=d; up=0; if(down>28) hide(); }   // on descend franchement → on replie
     else if(d<0){ up-=d; down=0; if(up>18) show(); }// un petit retour vers le haut suffit à le rappeler
   };
   // selon la hauteur du contenu, c'est la fenêtre OU la zone interne qui défile : on écoute les deux
   scrollEl.addEventListener("scroll", onScroll, {passive:true});
   addEventListener("scroll", onScroll, {passive:true});
+  // filet de sécurité : après l'inertie du doigt, on revérifie qu'on n'est pas resté replié en haut
+  ["touchend","pointerup"].forEach(ev=>addEventListener(ev,()=>{
+    [120,400,900].forEach(t=>setTimeout(()=>{ if(posDefilement()<60){ up=down=0; tb.classList.remove("hide"); } },t));
+  },{passive:true}));
   document.getElementById("search").addEventListener("focus", show);
   addEventListener("yummly:view", show);
 })();
@@ -6550,7 +6623,7 @@ scrollEl.addEventListener("click",e=>{
   if(e.target.closest("#catBack")){
     state.filter="Tous"; state.search=""; const si=document.getElementById("search"); if(si) si.value="";
     state.onlyCookable=state.onlyFav=state.onlyPerso=false; state.filtersOpen=false;
-    state.catFilters={temps:"",diff:"",regime:"",prix:""};
+    state.catFilters={temps:"",diff:"",regime:"",prix:"",cuisine:""};
     scrollEl.scrollTop=0; renderHome(); return;
   }
   // tri : on tourne dans la liste des tris
@@ -6561,7 +6634,7 @@ scrollEl.addEventListener("click",e=>{
   if(e.target.closest("[data-togglefilters]")){ state.filtersOpen=!state.filtersOpen; renderHome(); return; }
   const fo=e.target.closest("[data-f]");
   if(fo){ const k=fo.dataset.f; state.catFilters[k] = (state.catFilters[k]===fo.dataset.v ? "" : fo.dataset.v); renderHome(); return; }
-  if(e.target.closest("[data-fclear]")){ state.catFilters={temps:"",diff:"",regime:"",prix:""}; renderHome(); return; }
+  if(e.target.closest("[data-fclear]")){ state.catFilters={temps:"",diff:"",regime:"",prix:"",cuisine:""}; renderHome(); return; }
   // tuiles de catégories de l'accueil
   const tile=e.target.closest("[data-cattile]");
   if(tile){ state.filter=tile.dataset.cattile; scrollEl.scrollTop=0; renderHome(); return; }
