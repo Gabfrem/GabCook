@@ -1029,6 +1029,106 @@
   .switch input:checked ~ .track{background:var(--camel-deep)}
   .switch input:checked ~ .knob{transform:translateX(20px)}
 
+  /* ==========================================================================
+     ORDINATEUR / TABLETTE
+     L'app est pensée pour un téléphone : une colonne de 460 px perdue au milieu
+     d'un écran 27" est triste. Trois paliers, sans toucher au balisage :
+       ≥ 720 px  la colonne respire et les grilles passent à 3 colonnes
+       ≥ 1080 px le menu du bas devient une colonne à gauche, contenu large
+       ≥ 1500 px on plafonne pour que les lignes de texte restent lisibles
+     ========================================================================== */
+
+  /* ---- tablette : on élargit, rien ne bouge de place ---- */
+  @media (min-width:720px){
+    .app{max-width:720px}
+    .scroll{padding-left:26px;padding-right:26px}
+    .catgrid{grid-template-columns:repeat(3,1fr);gap:16px}
+    .cattile{aspect-ratio:5/4}
+    .gcgrid{grid-template-columns:repeat(3,1fr);gap:16px}
+    .detail,.editor:not(.cookmode),#weekPage{max-width:720px}
+  }
+
+  /* ---- ordinateur : menu latéral + contenu large ---- */
+  @media (min-width:1080px){
+    :root{--sbw:224px;--sbgap:34px}
+    body{background:var(--page-bg)}
+    /* la colonne de contenu est décalée pour laisser la place au menu de gauche */
+    /* la gouttière de gauche (celle du menu) garde le fond de page, la colonne de
+       lecture garde le fond papier : un simple dégradé à arête franche suffit */
+    .app{max-width:1240px;padding-left:calc(var(--sbw) + var(--sbgap));box-shadow:none;
+         background:linear-gradient(to right, var(--page-bg) calc(var(--sbw) + var(--sbgap)),
+                                             var(--paper)   calc(var(--sbw) + var(--sbgap)))}
+    .scroll{padding:0 30px 60px}
+
+    /* --- le menu devient une barre latérale --- */
+    .nav{flex-direction:column;align-items:stretch;width:var(--sbw);
+         left:max(18px, calc(50% - 620px));right:auto;
+         top:50%;bottom:auto;transform:translateY(-50%);
+         padding:10px;border-radius:26px;
+         background:rgba(255,255,255,.10)}
+    :root[data-theme="dark"] .nav{background:rgba(21,32,25,.55)}
+    .nav button{justify-content:flex-start;gap:13px;padding:14px 16px;font-size:12.5px;border-radius:18px}
+    /* de la place pour tout le monde : chaque onglet montre son libellé */
+    .nav button .lbl{display:inline-block;animation:none}
+    .nav .thumb{left:10px;right:10px;top:0;bottom:100%;border-radius:18px}
+    .nav .thumb.moving{animation:none}          /* l'écrasement n'a pas de sens à la verticale */
+
+    /* --- en-tête : bandeau large, plus de repli au défilement (inutile ici) --- */
+    .topbar{padding-top:26px}
+    .topbar.hide{margin-top:0;opacity:1;transform:none;pointer-events:auto}
+    .brand{padding:16px 24px;border-radius:24px}
+    .brand .wordmark{height:36px}
+    .search{margin:16px 0 0;max-width:520px}
+
+    /* --- grilles : on profite de la largeur --- */
+    .catgrid{grid-template-columns:repeat(3,1fr);gap:18px}
+    .cattile{aspect-ratio:16/10;border-radius:24px}
+    .gcgrid{grid-template-columns:repeat(4,1fr);gap:18px}
+    .featwrap{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+    .featwrap .feat{margin-bottom:0}
+    .wk-grid{grid-template-columns:repeat(3,1fr)}
+    .statgrid{grid-template-columns:repeat(4,1fr)}
+    .pgrid{grid-template-columns:repeat(5,1fr)}
+    .sectionlabel{font-size:20px;margin:30px 2px 14px}
+
+    /* --- fiches et panneaux : des cartes flottantes, pas du plein écran ---
+       calées sur la zone libre à droite du menu, et centrées dedans */
+    .detail,.editor:not(.cookmode),#weekPage{
+         left:calc(var(--sbw) + var(--sbgap) + 18px);right:18px;
+         top:34px;bottom:34px;max-width:900px;margin:0 auto;
+         border-radius:26px;overflow:hidden;
+         box-shadow:0 34px 90px rgba(16,32,22,.34)}
+    .dhero{padding-top:22px}
+    /* le mode cuisine reste plein écran : c'est voulu, on cuisine devant l'écran */
+
+    /* --- confort de lecture ---
+       Une liste ou un fil d'actualité étalé sur 980 px devient pénible à parcourir :
+       ces blocs gardent une largeur de lecture, les grilles seules prennent la place. */
+    .dsteps li{max-width:74ch}
+    .subcontent,.fitems,.shelf-wrap,.pantry-banner{max-width:700px}
+    .post{max-width:640px}
+    .set-row,.warnbox,.coursetotal{max-width:700px}
+    /* le frigo et les courses tiennent sur deux colonnes */
+    .fitems{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:900px}
+  }
+
+  /* ---- très grand écran : on plafonne, une ligne de 1500 px ne se lit pas ---- */
+  @media (min-width:1500px){
+    .app{max-width:1300px}
+    .gcgrid{grid-template-columns:repeat(5,1fr)}
+    .nav{left:max(18px, calc(50% - 650px))}
+  }
+
+  /* la souris n'a pas de doigt : un vrai survol rend l'interface vivante */
+  @media (hover:hover) and (pointer:fine){
+    .cattile,.gcard,.feat,.card,.recrow,.set-row,.wk-day{transition:transform .2s cubic-bezier(.2,.8,.3,1), box-shadow .2s}
+    .cattile:hover,.gcard:hover,.feat:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(29,64,45,.18)}
+    .card:hover,.recrow:hover,.set-row:hover,.wk-day:hover{transform:translateY(-2px)}
+    .nav button:hover{color:var(--camel-deep)}
+    .seemore:hover,.addcard:hover{filter:brightness(1.04)}
+    .chip:hover,.cat:hover,.fopt:hover{filter:brightness(.97)}
+  }
+
   @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
   :focus-visible{outline:2.5px solid var(--camel);outline-offset:2px;border-radius:6px}
 </style>
@@ -3637,10 +3737,34 @@ function queueNavMaterial(){
    de 120 — elle traversait presque toute la barre. Là, le pic tourne autour de 160 px. */
 const THUMB_RAPIDE = "cubic-bezier(.3,.58,.34,1)";   // bord d'attaque : part devant
 const THUMB_LENT   = "cubic-bezier(.33,.3,.34,1)";   // bord de fuite : traîne puis rattrape
+/* Sur ordinateur le menu passe à la verticale (barre latérale) : la capsule se pose
+   alors par le haut et le bas au lieu de la gauche et de la droite. */
+function navVertical(){
+  const nav=document.getElementById("nav");
+  return !!nav && getComputedStyle(nav).flexDirection==="column";
+}
 function moveThumb(animer){
   const nav=document.getElementById("nav");
   const btn=document.querySelector(".nav button.active"), thumb=document.getElementById("navThumb");
   if(!btn||!thumb||!nav) return;
+  if(navVertical()){
+    const haut=btn.offsetTop, bas=nav.offsetHeight-(btn.offsetTop+btn.offsetHeight);
+    const avant=parseFloat(thumb.style.top);
+    thumb.style.left=""; thumb.style.right="";
+    if(!animer || isNaN(avant)){
+      thumb.style.transition="none";
+      thumb.style.top=haut+"px"; thumb.style.bottom=bas+"px";
+      void thumb.offsetWidth; thumb.style.transition="";
+      return;
+    }
+    if(Math.abs(avant-haut)<1) return;
+    const versLeBas = haut>avant;
+    const rapide=".44s "+THUMB_RAPIDE, lent=".50s "+THUMB_LENT;
+    thumb.style.transition="top "+(versLeBas?lent:rapide)+", bottom "+(versLeBas?rapide:lent);
+    thumb.style.top=haut+"px"; thumb.style.bottom=bas+"px";
+    return;
+  }
+  thumb.style.top=""; thumb.style.bottom="";
   const gauche = btn.offsetLeft;
   const droite = nav.offsetWidth - (btn.offsetLeft + btn.offsetWidth);
   const avant  = parseFloat(thumb.style.left);
@@ -3672,6 +3796,8 @@ function moveThumb(animer){
 function positionNav(animate){
   const nav=document.getElementById("nav");
   if(!nav){ moveThumb(animate); return; }
+  // barre latérale : la largeur est fixe et tous les libellés sont visibles, rien à animer
+  if(navVertical()){ nav.style.width=""; nav.style.transition=""; moveThumb(animate); return; }
   const prev = nav.style.width ? parseFloat(nav.style.width) : nav.getBoundingClientRect().width;
   nav.style.transition="none";
   nav.style.width="auto";                          // largeur naturelle finale
@@ -3816,7 +3942,7 @@ const PHOTO_FALLBACK={
    du nom du plat, puis mise en cache sur l'appareil. "" = rien trouvé, on garde le repli. */
 /* Le cache est versionné : quand on améliore la recherche de photos, on incrémente PHOTO_VER
    et les anciennes images (parfois hors sujet) sont automatiquement réoubliées. */
-const PHOTO_VER=8;
+const PHOTO_VER=11;
 let photoCache={};
 try{
   const brut=JSON.parse(localStorage.getItem("gabcook_photocache")||"{}");
@@ -3864,8 +3990,51 @@ const FAMILY_PHOTOS=[
   [/legumes|courgettes?|carottes?|haricots?|brocolis?|chou|epinards?|poireaux?|butternut|potiron|petits pois/, W+"8/8f/Sunday_roast_vegetable_side_dish_at_The_Stag%2C_Little_Easton%2C_Essex%2C_England.jpg/960px-Sunday_roast_vegetable_side_dish_at_The_Stag%2C_Little_Easton%2C_Essex%2C_England.jpg"],
   [/pommes de terre|patates?|grenailles/, W+"e/e5/French_fries_3.jpg/960px-French_fries_3.jpg"]
 ];
+/* Quand aucune photo précise n'existe, on retombe sur la famille — mais une seule image
+   pour treize recettes de poulet se voit tout de suite dans une grille. Les familles les
+   plus fournies ont donc plusieurs photos, réparties de façon stable par recette. */
+const FAMILY_VARIANTES=[
+  [/\bpoulets?\b|\bvolaille\b|\bdinde\b/, [
+    W+"1/1b/Roasted_Chicken_Dinner_Plate%2C_Broccoli%2C_Demi_Glace.jpg/960px-Roasted_Chicken_Dinner_Plate%2C_Broccoli%2C_Demi_Glace.jpg",
+    W+"7/7b/Roasted_Chicken_Dinner_Plate%2C_Broccoli%2C_Stuffing%2C_Potatoes%2C_Demi_Glace.jpg/960px-Roasted_Chicken_Dinner_Plate%2C_Broccoli%2C_Stuffing%2C_Potatoes%2C_Demi_Glace.jpg"]],
+  [/\bpoissons?\b|cabillaud|colin|merlu|\bmorue\b|\btruite\b|\bsaumon\b|\bthon\b|dorade|lieu noir/, [
+    W+"b/b5/Cooked_fillets_of_painted_sweetlips_fish_on_a_plate.JPG/960px-Cooked_fillets_of_painted_sweetlips_fish_on_a_plate.JPG",
+    W+"4/42/Pan_seared_sea_bass_at_the_White_Hart_Inn%2C_Moreton%2C_Essex%2C_England.jpg/960px-Pan_seared_sea_bass_at_the_White_Hart_Inn%2C_Moreton%2C_Essex%2C_England.jpg"]],
+  [/\bboeufs?\b|\bbœufs?\b|\bveau\b|paleron|bavette|rumsteck/, [
+    W+"f/f9/Beef_stew_with_dried_plums.jpg/960px-Beef_stew_with_dried_plums.jpg",
+    W+"5/56/Beef_stew_at_restaurant_Frans_%26_Sandra.jpg/960px-Beef_stew_at_restaurant_Frans_%26_Sandra.jpg",
+    W+"9/9d/Veal_stew_with_linguini.jpg/960px-Veal_stew_with_linguini.jpg"]],
+  [/\bpates\b|\bpâtes\b|tagliatelles?|spaghettis?|penne|linguine|fusilli|one pot pasta/, [
+    W+"2/2e/Pasta_-_Bistro_Don_Giovanni_-_Sarah_Stierch_2018_01.jpg/960px-Pasta_-_Bistro_Don_Giovanni_-_Sarah_Stierch_2018_01.jpg",
+    W+"6/6c/Spaghetti_in_Spicy_Tomato_Sauce_with_Smoked_Fish_ready_to_eat.jpg/960px-Spaghetti_in_Spicy_Tomato_Sauce_with_Smoked_Fish_ready_to_eat.jpg"]],
+  [/\bcurry\b|tikka|massala|colombo|\bmafe\b|dahl|biryani/, [
+    W+"8/88/Thai_Green_Curry_with_Rice.jpg/960px-Thai_Green_Curry_with_Rice.jpg",
+    W+"9/95/Fish_curry_rice_Thali_%2824896444813%29.jpg/960px-Fish_curry_rice_Thali_%2824896444813%29.jpg"]],
+  [/\blegumes\b|\blégumes\b|courgettes?|aubergines?|brocolis?|haricots verts|carottes?|epinards|poelee/, [
+    W+"b/bf/Ready_Grilled_vegetables.jpg/960px-Ready_Grilled_vegetables.jpg",
+    W+"4/45/Grilled_Vegetables%2C_Polenta_and_Fresh_Mozzarella.jpg/960px-Grilled_Vegetables%2C_Polenta_and_Fresh_Mozzarella.jpg",
+    W+"0/06/Liat_Portal_for_Foodie_Disorder_-_Saut%C3%A9ed_Green_Beans_with_Onions.jpg/960px-Liat_Portal_for_Foodie_Disorder_-_Saut%C3%A9ed_Green_Beans_with_Onions.jpg"]],
+  [/\briz\b/, [
+    W+"a/aa/Ceramic_bowl_full_of_white_rice.jpg/960px-Ceramic_bowl_full_of_white_rice.jpg",
+    W+"1/12/HK_SYP_%E8%A5%BF%E7%87%9F%E7%9B%A4_Sai_Ying_Pun_%E9%B4%BB%E8%88%88%E8%8C%B6%E9%A4%90%E5%BB%B3_Hung_Hing_Restaurant_dinner_white_cooked_rice_August_2019_SSG_03.jpg/960px-HK_SYP_%E8%A5%BF%E7%87%9F%E7%9B%A4_Sai_Ying_Pun_%E9%B4%BB%E8%88%88%E8%8C%B6%E9%A4%90%E5%BB%B3_Hung_Hing_Restaurant_dinner_white_cooked_rice_August_2019_SSG_03.jpg"]],
+  [/\bsalades?\b|taboule|fattoush/, [
+    W+"e/eb/Mixed_green_salad.jpg/960px-Mixed_green_salad.jpg",
+    W+"e/ee/Salads_for_two.jpg/960px-Salads_for_two.jpg"]],
+  [/\bporcs?\b|\bechine\b|\btravers\b|\blardons?\b|saucisses?/, [
+    W+"5/5f/Longhorn_Cowboy_Pork_Chops_.jpg/960px-Longhorn_Cowboy_Pork_Chops_.jpg",
+    W+"0/00/Pork_dish_at_The_Basement_restaurant%2C_Singapore_Management_University_-_20140410.jpg/960px-Pork_dish_at_The_Basement_restaurant%2C_Singapore_Management_University_-_20140410.jpg"]],
+  [/\bsoupes?\b|\bveloutes?\b|\bveloutés?\b|chaudree|potage/, [
+    W+"7/7c/-2022-02-01_Bowl_of_spring_vegetable_soup%2C_Trimingham%2C_Norfolk.JPG/960px--2022-02-01_Bowl_of_spring_vegetable_soup%2C_Trimingham%2C_Norfolk.JPG",
+    W+"5/56/Vegetable_soup_and_beer_in_Tapiola.jpg/960px-Vegetable_soup_and_beer_in_Tapiola.jpg"]],
+  [/\bcrepes?\b|\bcrêpes?\b|galettes de sarrasin|pain perdu|gaufres/, [
+    W+"0/06/CoffeaCrepeSept08.jpg/960px-CoffeaCrepeSept08.jpg",
+    W+"d/dc/CoffeaVeggieCrepe.jpg/960px-CoffeaVeggieCrepe.jpg"]]
+];
+// même recette → toujours la même variante (pas de sautillement d'un affichage à l'autre)
+function empreinte(s){ let h=0; for(let i=0;i<s.length;i++) h=(h*31+s.charCodeAt(i))>>>0; return h; }
 function familyPhoto(r){
   const n=norm(r.nom);
+  for(const [re,liste] of FAMILY_VARIANTES) if(re.test(n)) return liste[empreinte(r.id)%liste.length];
   for(const [re,u] of FAMILY_PHOTOS) if(re.test(n)) return u;
   return "";
 }
@@ -3930,12 +4099,19 @@ function versAnglais(nom){
   return motsPlat(nom).map(w=>FR_EN[w]||"").filter(Boolean).join(" ");
 }
 const PHOTO_STOPW=new Set(["avec","sans","pour","dans","maison","facon","express","rapide","simple","facile","recette","assiette","petit","grand","tout","tous"]);
-function photoAcceptable(titre, nom){
-  const t=norm(titre);
-  if(PHOTO_REJET.some(m=>t.includes(norm(m).trim()))) return false;
+/* Une image validée par ses seules CATÉGORIES laisse passer les scènes de restaurant :
+   « Bistro du Coin - Sarah Stierch 03 », rangé dans « French fries », illustrait les frites
+   maison par une photo de salle. Dès que le plat a un mot qui le caractérise (potiron,
+   oignons, mimosa…), on exige ce mot dans le TITRE du fichier, pas seulement autour. */
+function photoAcceptable(titre, cats, nom){
+  const t=norm(titre), tout=norm(titre+" "+(cats||[]).join(" "));
+  if(PHOTO_REJET.some(m=>tout.includes(norm(m).trim()))) return false;
   const mots=motsPlatEtEn(nom);
   if(!mots.length) return true;
-  return mots.some(m=>t.includes(m) || t.includes(m.replace(/s$/,"")));   // le titre doit parler du plat (FR ou EN)
+  const contient=(s,m)=>s.includes(m) || s.includes(m.replace(/s$/,""));
+  const precis=mots.filter(m=>m.length>=5 && !MOTS_TROP_COURANTS.has(m));
+  if(precis.length) return precis.some(m=>contient(t,m));   // exigence forte : dans le titre
+  return mots.some(m=>contient(tout,m));                    // plat au nom purement générique
 }
 /* Le titre seul ne suffit pas (« Burger King building » contient bien « burger ») : on exige
    que l'image appartienne à une catégorie culinaire de Commons — c'est le signal fiable. */
@@ -3945,8 +4121,18 @@ function estCulinaire(cats){ return (cats||[]).some(c=>CAT_FOOD.test(c)); }
    « Saltimbocca », « Msemmen ») qui ne contient aucun mot générique de nourriture.
    Une image rangée dans la catégorie du plat lui-même est pourtant la meilleure preuve
    possible. On l'accepte, sauf pour les mots trop courants (« burger » → Burger King). */
-const MOTS_TROP_COURANTS=new Set(["burger","pizza","poulet","salade","pates","gateau","tarte","soupe",
-  "pain","sandwich","frites","crepes","toast","chicken","salad","cake","bread","soup","rice"]);
+/* Mots qui nomment une FAMILLE, pas un plat. Chercher « poulet » ou « pâtes » sur Commons
+   renvoie toujours la même image, d'où des dizaines de recettes illustrées à l'identique :
+   ces mots ne doivent jamais servir de terme de recherche à eux seuls. */
+const MOTS_TROP_COURANTS=new Set([
+  "burger","pizza","poulet","salade","pates","gateau","tarte","soupe","pain","sandwich","frites",
+  "crepes","toast","gratin","curry","veloute","risotto","saumon","galettes","spaghetti","quiche",
+  "omelette","oeufs","boeuf","porc","agneau","veau","dinde","canard","poisson","crevettes","gambas",
+  "legumes","riz","semoule","puree","chocolat","pommes","tomate","tomates","fromage","jambon","lard",
+  "sauce","brochettes","boulettes","wraps","nouilles","pancakes","muffins","cookies","glace","creme",
+  "smoothie","salades","plat","plats","tajine","couscous","chili","tacos","wok","poele","cocotte",
+  "chicken","salad","cake","bread","soup","rice","pasta","noodles","beef","pork","fish","shrimp",
+  "cheese","eggs","vegetables","potatoes","dish","food","meal","sauce"]);
 /* Un nom de plat peut aussi être un nom de village ou de personne (« Maakouda » est
    à la fois une galette et une commune d'Algérie) : ces catégories trahissent le piège. */
 const CAT_PAS_UN_PLAT=/\b(births|deaths|people|portraits|singers?|vocalists?|musicians?|actors?|actresses|footballers?|players?|politicians?|writers?|villages?|communes?|province|municipalit|district|prefecture|churches|mosques|stations?|streets?)\b/i;
@@ -3961,13 +4147,24 @@ function catEstLePlat(cats, nom){
   });
 }
 /* on veut un PLAT cuisiné, pas un marché, une ferme, un animal vivant ou un ingrédient brut */
-const PAS_UN_PLAT=/(market|marche|farm|ferme|livestock|poultry|butcher|boucherie|abattoir|slaughter|cattle|bovin|cow |vache|hen |poule |rooster|coq |elevage|breeding|plantation|harvest|recolte|drying|sechage|shop|store|magasin|supermarket|grocery|vendor|seller|stall|etal|packaging|emballage|logo|canned|conserve|aquarium|zoo|garden|jardin|orchard|verger|field|champ)/i;
-async function chercheCommons(terme, nom){
+const PAS_UN_PLAT=/(market|marche|farm|ferme|livestock|poultry|butcher|boucherie|abattoir|slaughter|cattle|bovin|cow |vache|hen |poule |rooster|coq |elevage|breeding|plantation|harvest|recolte|drying|sechage|shop|store|magasin|supermarket|grocery|vendor|seller|stall|etal|packaging|emballage|logo|canned|conserve|aquarium|zoo|garden|jardin|orchard|verger|field|champ|skyline|cityscape|panorama|aerial|\bcichorium\b|\bsolanum\b|\bbrassica\b|\ballium\b|\bcapsicum\b|\bcucurbita\b|herbarium|botanical|cultivar|seedling)/i;
+/* Une même photo sur deux recettes différentes se remarque immédiatement dans une grille.
+   Toute image déjà attribuée à un autre plat est donc écartée, et la recherche continue. */
+function urlDejaPrise(url, id){
+  for(const k in photoCache) if(k!==id && photoCache[k]===url) return true;
+  return false;
+}
+/* Commons limite le débit (HTTP 429). Sans ce drapeau, un refus passager était enregistré
+   comme « ce plat n'a pas de photo » et la recette gardait son repli pour toujours. */
+let photoReseauKO=false;
+async function chercheCommons(terme, nom, id){
   const u="https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*"
-    +"&generator=search&gsrnamespace=6&gsrlimit=10&gsrsearch="+encodeURIComponent(terme+" filetype:bitmap")
+    +"&generator=search&gsrnamespace=6&gsrlimit=14&gsrsearch="+encodeURIComponent(terme+" filetype:bitmap")
     +"&prop=imageinfo|categories&cllimit=20&clshow=!hidden&iiprop=url&iiurlwidth=600";
   try{
-    const j=await (await fetch(u)).json();
+    const rep=await fetch(u);
+    if(!rep.ok){ photoReseauKO=true; return ""; }
+    const j=await rep.json();
     const p=j.query&&j.query.pages?Object.values(j.query.pages):[];
     p.sort((a,b)=>(a.index||0)-(b.index||0));
     for(const x of p){
@@ -3978,9 +4175,12 @@ async function chercheCommons(terme, nom){
       if(!estCulinaire(cats) && !saPropreCat) continue;       // ni plat ni aliment → on écarte
       if(PAS_UN_PLAT.test(titre+" "+cats.join(" "))) continue; // marché, ferme, ingrédient brut → on écarte
       // exigence stricte : la photo doit parler du plat, sinon on préfère le repli par famille
-      if(saPropreCat || photoAcceptable(titre+" "+cats.join(" "), nom)) return x.imageinfo[0].thumburl.split("?")[0];
+      if(!saPropreCat && !photoAcceptable(titre, cats, nom)) continue;
+      const url=x.imageinfo[0].thumburl.split("?")[0];
+      if(urlDejaPrise(url, id)) continue;                     // déjà utilisée par une autre recette
+      return url;
     }
-  }catch(e){}
+  }catch(e){ photoReseauKO=true; }
   return "";
 }
 /* « Riz blanc parfait », « Purée maison », « Riz au micro-ondes »… : ces qualificatifs
@@ -4011,28 +4211,46 @@ const PHOTO_TERME={
   crostinichampignons:"crostini funghi", polpette:"polpette al sugo", piadina:"piadina romagnola",
   pastapistou:"pasta burrata", caponata:"caponata", gazpacho:"gazpacho andaluz",
   arancini:"arancini", ossobuco:"ossobuco alla milanese", saltimbocca:"saltimbocca alla romana",
-  mapotofu:"mapo doufu", briam:"briam greek", panzanella:"panzanella salad"
+  mapotofu:"mapo doufu", briam:"briam greek", panzanella:"panzanella salad",
+  // classiques dont le nom français ne tombe sur rien de bon (mesuré à l'audit)
+  frites:"french fries homemade", puree:"mashed potatoes",
+  pureecarottes:"carrot puree", pureepatatedouce:"sweet potato mash",
+  oeufsmimosa:"deviled eggs", veloutepotiron:"pumpkin soup", veloutebutternut:"butternut squash soup",
+  veloutechampignons:"cream of mushroom soup", veloutetomate:"tomato soup bowl",
+  gambas:"garlic prawns", saladefruits:"fruit salad bowl", endivesjambon:"endives au jambon",
+  fondant:"chocolate lava cake", boeufoignons:"beef with onions",
+  tikka:"chicken tikka masala", bobun:"bun bo nam bo", risotto:"risotto ai funghi",
+  risottotomate:"tomato risotto", risottopotiron:"pumpkin risotto", burger:"cheeseburger homemade",
+  semoule:"couscous semolina side", patesbeurre:"buttered pasta parmesan",
+  popcorn:"popcorn bowl", samoussas:"samosa", couscous:"couscous royal",
+  cakemarbre:"marble cake", cakesale:"savoury loaf cake", saucissespuree:"sausages and mash",
+  phillycheesesteak:"cheesesteak sandwich", friteaufour:"oven fries potato", gateauyaourt:"gateau au yaourt",
+  endivesjambon:"endive gratin ham", risottopotiron:"pumpkin risotto plate"
 };
 async function fetchPhoto(r){
   const nom=clean(r.nom).replace(/\s*\(.*?\)\s*/g," ").trim();
   const simple=nomSimplifie(nom);
   // « Bibimbap coréen », « Chilaquiles à la sauce tomate »… : le 1er mot est le nom du plat
   // et suffit souvent à trouver la bonne photo, là où la phrase entière échoue.
+  // Mais seulement s'il NOMME le plat : « Poulet rôti » ne doit pas chercher « poulet ».
   const mots0=motsPlat(simple||nom);
+  const id=r.id;
   let url="";
-  if(PHOTO_TERME[r.id]) url=await chercheCommons(PHOTO_TERME[r.id], PHOTO_TERME[r.id]);
-  if(!url && mots0.length>1 && mots0[0].length>=5) url=await chercheCommons(mots0[0], mots0[0]);
-  if(!url) url=await chercheCommons(nom, nom);
-  if(!url && simple && simple!==nom) url=await chercheCommons(simple, simple);   // sans les qualificatifs
+  photoReseauKO=false;
+  if(PHOTO_TERME[id]) url=await chercheCommons(PHOTO_TERME[id], PHOTO_TERME[id], id);
+  if(!url && mots0.length>1 && mots0[0].length>=5 && !MOTS_TROP_COURANTS.has(mots0[0]))
+    url=await chercheCommons(mots0[0], mots0[0], id);
+  if(!url) url=await chercheCommons(nom, nom, id);
+  if(!url && simple && simple!==nom) url=await chercheCommons(simple, simple, id);   // sans les qualificatifs
   if(!url){                                   // essai suivant : la version anglaise du plat
     const en=versAnglais(simple||nom);
-    if(en) url=await chercheCommons(en+" dish", simple||nom);
+    if(en) url=await chercheCommons(en+" dish", simple||nom, id);
   }
-  if(!url){                                   // dernier essai : les 2 mots forts en français
-    const mots=motsPlat(simple||nom).slice(0,2).join(" ");
-    if(mots) url=await chercheCommons(mots+" plat cuisine", mots);
-  }
-  photoCache[r.id]=url; savePhotoCache();
+  // Plus de recherche « à tout prix » sur les 2 mots forts : elle ramenait des photos de
+  // restaurant ou de marché. Une photo de la bonne famille vaut mieux qu'un plat au hasard.
+  // Un échec réseau ne s'enregistre pas : sinon un simple 429 condamnerait la recette
+  // à garder son repli jusqu'au prochain changement de PHOTO_VER.
+  if(url || !photoReseauKO){ photoCache[r.id]=url; savePhotoCache(); }
   if(url) applyPhoto(r.id, url);
 }
 // remplace l'image dans les cartes déjà affichées (et le bandeau de la fiche si elle est ouverte)
@@ -4262,7 +4480,7 @@ function renderCategoryPage(){
       <button class="clearfilters" id="clearFilters">Tout réafficher</button></div>`;
   } else {
     if(une.length){
-      html+=`<div class="sectionlabel">À la une :</div>${une.map(featureCardHTML).join("")}`;
+      html+=`<div class="sectionlabel">À la une :</div><div class="featwrap">${une.map(featureCardHTML).join("")}</div>`;
       if(reste.length) html+=`<div class="sectionlabel">Toutes les recettes :</div>`;
     }
     html+=`<div class="gcgrid">${reste.slice(0,homeLimit).map(gridCardHTML).join("")}</div>`;
