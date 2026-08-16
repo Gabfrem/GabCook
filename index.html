@@ -1055,18 +1055,17 @@
   @media (min-width:1080px){
     :root{--sbw:250px}
     body{background:var(--page-bg)}
-    /* La colonne de lecture est une vraie feuille posée sur le fond : coins arrondis
-       et ombre douce, collée à la barre latérale. Plus d'arête franche au milieu du vide. */
-    .app{max-width:calc(var(--sbw) + 1000px);padding-left:var(--sbw);
-         background:var(--paper);box-shadow:0 0 0 1px var(--line), 0 24px 70px rgba(0,0,0,.28);
-         border-radius:0 30px 30px 0;min-height:100vh}
-    .scroll{padding:0 34px 70px}
+    /* L'application occupe tout l'écran : plus de feuille flottante entourée de vide.
+       Le confort de lecture est assuré par une gouttière calculée, pas par une largeur fixe. */
+    .app{max-width:none;width:100%;padding-left:var(--sbw);
+         background:var(--paper);box-shadow:none;border-radius:0;min-height:100vh}
+    .scroll{padding:0 max(38px, calc((100% - 1320px)/2)) 80px}
 
     /* --- barre latérale pleine hauteur, adossée à la feuille --- */
     .nav{flex-direction:column;align-items:stretch;justify-content:flex-start;
-         width:var(--sbw);left:max(0px, calc(50% - (var(--sbw) + 1000px)/2));right:auto;
+         width:var(--sbw);left:0;right:auto;
          top:0;bottom:0;transform:none;
-         padding:26px 14px 22px;border-radius:30px 0 0 30px;
+         padding:26px 14px 22px;border-radius:0;
          background:#1D402D;backdrop-filter:none;-webkit-backdrop-filter:none;
          box-shadow:inset -1px 0 0 rgba(0,0,0,.12), 0 18px 60px rgba(16,32,22,.13)}
     /* la barre doit reculer sous la feuille, donc rester nettement plus sombre qu'elle */
@@ -1092,12 +1091,26 @@
          background:linear-gradient(180deg,#E9AC44,#D8952B);box-shadow:0 3px 12px rgba(0,0,0,.22)}
     .nav .thumb.moving{animation:none}          /* l'écrasement n'a pas de sens à la verticale */
 
-    /* --- en-tête : le logo est parti dans la barre, il ne reste que la recherche --- */
-    .topbar{padding:26px 0 2px}
+    /* --- en-tête : le logo est parti dans la barre, il ne reste que la recherche ---
+       Elle reste accessible en permanence, sur un fond légèrement voilé pour que le
+       contenu passe dessous sans heurt. */
+    .topbar{padding:22px max(38px, calc((100% - 1320px)/2)) 14px;
+         background:color-mix(in srgb, var(--paper) 86%, transparent);
+         backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+         border-bottom:1px solid transparent;transition:border-color .25s}
+    .topbar.scrolled{border-bottom-color:var(--line)}
     .topbar.hide{margin-top:0;opacity:1;transform:none;pointer-events:auto}
     .brand{padding:16px 24px;border-radius:24px}
-    .search{margin:0 0 0;max-width:560px}
+    .search{margin:0;max-width:560px}
     .search input{padding:14px 18px 14px 46px;font-size:15.5px}
+    .scroll{padding-top:2px}
+
+    /* --- lissage : la jonction barre/contenu est un dégradé, pas une arête ---
+       et les angles des cartes sont adoucis pour aller avec le plein écran */
+    .app{box-shadow:inset 18px 0 24px -22px rgba(0,0,0,.5)}
+    .gcard,.feat,.card,.cattile,.post,.wk-day,.set-row{border-radius:20px}
+    .cattile{border-radius:24px}
+    .gc-img,.feat-img{border-radius:0}
 
     /* --- grilles : on profite de la largeur --- */
     .catgrid{grid-template-columns:repeat(3,1fr);gap:16px}
@@ -1115,13 +1128,18 @@
     .pgrid{grid-template-columns:repeat(5,1fr)}
     .sectionlabel{font-size:20px;margin:30px 2px 14px}
 
-    /* --- fiches et panneaux : des cartes flottantes, pas du plein écran ---
-       calées sur la zone libre à droite de la barre, et centrées dedans */
+    /* --- fiches et panneaux : ils occupent toute la zone à droite de la barre ---
+       Une carte flottante rognée sur le bord droit ne servait à rien : ces panneaux se
+       comportent maintenant comme des pages, et leur contenu garde sa largeur de lecture. */
     .detail,.editor:not(.cookmode),#weekPage{
-         left:calc(max(0px, 50% - (var(--sbw) + 1000px)/2) + var(--sbw) + 24px);right:24px;
-         top:34px;bottom:34px;max-width:940px;margin:0 auto;
-         border-radius:26px;overflow:hidden;
-         box-shadow:0 34px 90px rgba(16,32,22,.34)}
+         left:var(--sbw);right:0;top:0;bottom:0;
+         max-width:none;margin:0;border-radius:0;box-shadow:none}
+    .detail-scroll,.editor:not(.cookmode) .ed-scroll{
+         padding-left:max(24px, calc((100% - 1000px)/2));
+         padding-right:max(24px, calc((100% - 1000px)/2))}
+    .editor:not(.cookmode) .ed-head,.detail .dhero{
+         padding-left:max(24px, calc((100% - 1000px)/2));
+         padding-right:max(24px, calc((100% - 1000px)/2))}
     .dhero{padding-top:22px}
     /* le mode cuisine reste plein écran : c'est voulu, on cuisine devant l'écran */
 
@@ -1143,10 +1161,6 @@
   @media (min-width:1500px){
     :root{--sbw:264px}
     /* on élargit la feuille : à 1900 px, une colonne de 1000 laissait un vide énorme */
-    .app{max-width:calc(var(--sbw) + 1180px)}
-    .nav{left:max(0px, calc(50% - (var(--sbw) + 1180px)/2))}
-    .detail,.editor:not(.cookmode),#weekPage{
-         left:calc(max(0px, 50% - (var(--sbw) + 1180px)/2) + var(--sbw) + 24px)}
     .gcgrid{grid-template-columns:repeat(4,1fr)}
     .gcgrid-reco{grid-template-columns:repeat(3,1fr)}
     .catgrid{grid-template-columns:repeat(3,1fr)}
@@ -1161,6 +1175,17 @@
     .seemore:hover,.addcard:hover{filter:brightness(1.04)}
     .chip:hover,.cat:hover,.fopt:hover{filter:brightness(.97)}
   }
+
+  /* ---- PHOTOS DE PROFIL RONDES ----
+     Tous les avatars sont des ronds en flex (`display:flex;align-items:center`) contenant
+     une image en `width:100%;height:100%`. Une image reste un élément flex : `flex-shrink`
+     la rétrécit en largeur et `align-items:center` l'empêche de prendre toute la hauteur.
+     Résultat mesuré : 26×36 dans un rond de 40×40, donc un ovale écrasé, partout.
+     On la sort du flux pour qu'elle remplisse réellement son conteneur. */
+  .acctbtn,.frow .fav,.posthead .fav,.crow .cav,.bigav{position:relative}
+  .acctbtn,.frow .fav,.posthead .fav,.crow .cav,.bigav,.prof-bigav{overflow:hidden}
+  .acctbtn img,.frow .fav img,.posthead .fav img,.crow .cav img,.bigav img,.prof-bigav img{
+       position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit}
 
   @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
   :focus-visible{outline:2.5px solid var(--camel);outline-offset:2px;border-radius:6px}
@@ -7241,6 +7266,7 @@ document.getElementById("search").addEventListener("input",e=>{
   };
   const onScroll=()=>{
     const y=posDefilement();
+    tb.classList.toggle("scrolled", y>6);   // sur ordinateur : trait de séparation quand ça défile
     // tout en haut : l'en-tête doit TOUJOURS revenir, même pendant le verrou
     // (sans cette priorité, remonter d'un coup pouvait le laisser replié)
     if(y<60){ up=down=0; lastY=y; tb.classList.remove("hide"); return; }
