@@ -968,8 +968,11 @@
   /* ============ mode sombre ============ */
   :root[data-theme="dark"]{
     color-scheme:dark;
-    --paper:#152019; --card:#1E2C22; --page-bg:#0E1712;
-    --ink:#F0E9D3; --strong:#2C4534; --muted:#9AA48D; --line:#2C3B2F;
+    /* Les quatre surfaces (fond, feuille, carte, bordure) tenaient dans 20 points de
+       luminance : tout se confondait en une bouillie vert-noir, sans relief. Elles sont
+       maintenant espacées d'environ 10 points chacune, du plus sombre au plus clair. */
+    --paper:#1A2620; --card:#25362B; --page-bg:#070C09;
+    --ink:#F0E9D3; --strong:#2C4534; --muted:#9AA48D; --line:#35473B;
     --camel-tint:#2C3324; --tomato-tint:#3A2417; --basil-tint:#1E2E1E;
     --camel-light:#8A6A2C;
     --shadow:0 8px 26px rgba(0,0,0,.5); --shadow-soft:0 2px 12px rgba(0,0,0,.4);
@@ -1055,7 +1058,7 @@
     /* La colonne de lecture est une vraie feuille posée sur le fond : coins arrondis
        et ombre douce, collée à la barre latérale. Plus d'arête franche au milieu du vide. */
     .app{max-width:calc(var(--sbw) + 1000px);padding-left:var(--sbw);
-         background:var(--paper);box-shadow:0 0 0 1px rgba(29,64,45,.07), 0 18px 60px rgba(16,32,22,.13);
+         background:var(--paper);box-shadow:0 0 0 1px var(--line), 0 24px 70px rgba(0,0,0,.28);
          border-radius:0 30px 30px 0;min-height:100vh}
     .scroll{padding:0 34px 70px}
 
@@ -1066,7 +1069,8 @@
          padding:26px 14px 22px;border-radius:30px 0 0 30px;
          background:#1D402D;backdrop-filter:none;-webkit-backdrop-filter:none;
          box-shadow:inset -1px 0 0 rgba(0,0,0,.12), 0 18px 60px rgba(16,32,22,.13)}
-    :root[data-theme="dark"] .nav{background:#14261B}
+    /* la barre doit reculer sous la feuille, donc rester nettement plus sombre qu'elle */
+    :root[data-theme="dark"] .nav{background:#0C1C13;box-shadow:inset -1px 0 0 rgba(255,255,255,.05), 0 18px 60px rgba(0,0,0,.5)}
     .nav::before,.nav::after{display:none}       /* le verre n'a plus lieu d'être sur un aplat */
     /* le logo Yummly vient s'installer en haut de la barre (déplacé par placeBrand) */
     .nav .brand{order:-1;background:none;box-shadow:none;padding:2px 8px 30px;border-radius:0;
@@ -1101,6 +1105,9 @@
     .cattile .ct-emoji{inset:0 auto 0 0;width:132px;font-size:56px;transform:none}
     .cattile .ct-name{padding:0 18px 0 132px;font-size:17px;background:none;text-align:left}
     .gcgrid{grid-template-columns:repeat(4,1fr);gap:18px}
+    /* l'accueil propose exactement 6 recommandations : sur 4 ou 5 colonnes il restait
+       une carte orpheline sur la 2e ligne. 3 colonnes → deux rangées pleines. */
+    .gcgrid-reco{grid-template-columns:repeat(3,1fr)}
     .featwrap{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
     .featwrap .feat{margin-bottom:0}
     .wk-grid{grid-template-columns:repeat(3,1fr)}
@@ -1135,7 +1142,13 @@
   /* ---- très grand écran : on plafonne, une ligne de 1500 px ne se lit pas ---- */
   @media (min-width:1500px){
     :root{--sbw:264px}
-    .gcgrid{grid-template-columns:repeat(5,1fr)}
+    /* on élargit la feuille : à 1900 px, une colonne de 1000 laissait un vide énorme */
+    .app{max-width:calc(var(--sbw) + 1180px)}
+    .nav{left:max(0px, calc(50% - (var(--sbw) + 1180px)/2))}
+    .detail,.editor:not(.cookmode),#weekPage{
+         left:calc(max(0px, 50% - (var(--sbw) + 1180px)/2) + var(--sbw) + 24px)}
+    .gcgrid{grid-template-columns:repeat(4,1fr)}
+    .gcgrid-reco{grid-template-columns:repeat(3,1fr)}
     .catgrid{grid-template-columns:repeat(3,1fr)}
   }
 
@@ -3972,7 +3985,7 @@ const PHOTO_FALLBACK={
    du nom du plat, puis mise en cache sur l'appareil. "" = rien trouvé, on garde le repli. */
 /* Le cache est versionné : quand on améliore la recherche de photos, on incrémente PHOTO_VER
    et les anciennes images (parfois hors sujet) sont automatiquement réoubliées. */
-const PHOTO_VER=11;
+const PHOTO_VER=12;
 let photoCache={};
 try{
   const brut=JSON.parse(localStorage.getItem("gabcook_photocache")||"{}");
@@ -4162,7 +4175,12 @@ const MOTS_TROP_COURANTS=new Set([
   "sauce","brochettes","boulettes","wraps","nouilles","pancakes","muffins","cookies","glace","creme",
   "smoothie","salades","plat","plats","tajine","couscous","chili","tacos","wok","poele","cocotte",
   "chicken","salad","cake","bread","soup","rice","pasta","noodles","beef","pork","fish","shrimp",
-  "cheese","eggs","vegetables","potatoes","dish","food","meal","sauce"]);
+  "cheese","eggs","vegetables","potatoes","dish","food","meal","sauce",
+  // morceaux et cuissons : « côtes » renvoyait le village de Cotes (Leicestershire)
+  "cotes","cotelettes","pave","paves","filet","filets","escalope","escalopes","cuisse","cuisses",
+  "magret","travers","entrecote","bavette","roti","rotie","rotis","saute","sautee","sautes",
+  "poele","poelee","mijote","mijotee","farci","farcie","farcies","gratine","gratinee",
+  "marine","marinee","croustillant","croustillante","fondue","emince","emincee"]);
 /* Un nom de plat peut aussi être un nom de village ou de personne (« Maakouda » est
    à la fois une galette et une commune d'Algérie) : ces catégories trahissent le piège. */
 const CAT_PAS_UN_PLAT=/\b(births|deaths|people|portraits|singers?|vocalists?|musicians?|actors?|actresses|footballers?|players?|politicians?|writers?|villages?|communes?|province|municipalit|district|prefecture|churches|mosques|stations?|streets?)\b/i;
@@ -4170,10 +4188,17 @@ function catEstLePlat(cats, nom){
   if((cats||[]).some(c=>CAT_PAS_UN_PLAT.test(c))) return false;
   const mots=motsPlat(nom).filter(w=>w.length>=5 && !MOTS_TROP_COURANTS.has(w));
   if(!mots.length) return false;
+  const colle=(cw)=>mots.some(m=>cw.slice(0,4)===m.slice(0,4));
   return (cats||[]).some(c=>{
+    // « Cordon, Isabela », « Cotes, Leicestershire » : une virgule, c'est un lieu, pas un plat
+    if(c.includes(",")) return false;
     const cn=norm(c).replace(/[^a-z0-9 ]/g," ").replace(/\s+/g," ").trim();
-    if(!cn || cn.split(" ").length>2) return false;          // une catégorie dédiée est courte
-    return cn.split(" ").some(cw=>cw.length>=5 && mots.some(m=>cw.slice(0,4)===m.slice(0,4)));
+    if(!cn) return false;
+    const jetons=cn.split(" ").filter(w=>w.length>=5);
+    if(!jetons.length || cn.split(" ").length>2) return false;   // une catégorie dédiée est courte
+    // TOUS les mots significatifs de la catégorie doivent parler du plat : « Mapo doufu » oui,
+    // « Cordon Isabela » non (le 2e mot n'a rien à voir avec la recette).
+    return jetons.every(colle);
   });
 }
 /* on veut un PLAT cuisiné, pas un marché, une ferme, un animal vivant ou un ingrédient brut */
@@ -4255,6 +4280,7 @@ const PHOTO_TERME={
   popcorn:"popcorn bowl", samoussas:"samosa", couscous:"couscous royal",
   cakemarbre:"marble cake", cakesale:"savoury loaf cake", saucissespuree:"sausages and mash",
   phillycheesesteak:"cheesesteak sandwich", friteaufour:"oven fries potato", gateauyaourt:"gateau au yaourt",
+  cotesporc:"pork chops mustard sauce", cordonbleu:"cordon bleu schnitzel",
   endivesjambon:"endive gratin ham", risottopotiron:"pumpkin risotto plate"
 };
 async function fetchPhoto(r){
@@ -4447,7 +4473,7 @@ function renderHome(){
     </div>
 
     <div class="sectionlabel">${state.stats.cooked?"Recommandé pour toi :":"À découvrir :"}</div>
-    <div class="gcgrid">${recos.map(gridCardHTML).join("")}</div>`;
+    <div class="gcgrid gcgrid-reco">${recos.map(gridCardHTML).join("")}</div>`;
   setPage(html);
   primePhotos(recos);
 }
