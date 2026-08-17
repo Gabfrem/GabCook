@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -821,6 +820,8 @@
   @keyframes ckpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
   .ck-tbig{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
   .ck-tnum{font-family:var(--disp);font-weight:800;font-size:45px;line-height:1;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:.01em}
+  /* format avec les heures (1:05:30) : 7 caractères au lieu de 5, il faut rétrécir */
+  .ck-tnum.long{font-size:31px;letter-spacing:-.01em}
   .ck-timer.ringing .ck-tnum{color:var(--tomato)}
   .ck-tsuffix{font-size:10.5px;color:var(--muted);font-weight:700;margin-top:6px;letter-spacing:.09em;text-transform:uppercase}
   .ck-tadj{display:flex;gap:9px;justify-content:center;margin:17px 0 0}
@@ -853,6 +854,7 @@
     .ck-aside{flex:1;max-width:380px;overflow-y:auto;padding-bottom:8px}
     .ck-ringwrap{width:158px;height:158px}
     .ck-tnum{font-size:38px}
+    .ck-tnum.long{font-size:26px}
     .ck-nav{max-width:820px;margin:0 auto;width:100%}
   }
   @media(orientation:landscape) and (min-width:940px){ .ck-stage{max-width:1040px;margin:0 auto} }
@@ -865,7 +867,37 @@
   /* ---- confirmation « j'ai cuisiné » quand il manque des ingrédients ---- */
   .confirm{background:var(--tomato-tint);border:1px solid #EBC3B8;border-radius:14px;padding:14px}
   .confirm .cf-t{font-family:var(--disp);font-weight:700;font-size:15px;color:var(--tomato);margin-bottom:5px}
+  /* ---- note personnelle sur une recette ---- */
+  .notebox{margin-top:26px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 15px 12px;
+       box-shadow:var(--shadow-soft);transition:border-color .25s}
+  .notebox.filled{border-color:var(--camel)}
+  .nb-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}
+  .nb-t{font-family:var(--disp);font-weight:800;font-size:16px;color:var(--ink)}
+  .nb-state{font-size:11.5px;color:var(--camel-deep);font-weight:700;opacity:0;transition:opacity .3s}
+  .nb-state.on{opacity:1}
+  .nb-area{width:100%;box-sizing:border-box;resize:vertical;min-height:64px;font-family:inherit;font-size:14.5px;
+       line-height:1.5;color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:12px;
+       padding:10px 12px;outline:none;transition:border-color .2s, box-shadow .2s}
+  .nb-area:focus{border-color:var(--camel);box-shadow:0 0 0 3px var(--camel-tint)}
+  .nb-area::placeholder{color:var(--muted)}
+  .nb-hint{font-size:11.5px;color:var(--muted);margin-top:7px}
+  /* petit repère sur les cartes des recettes annotées */
+  .gc-note{position:absolute;top:8px;left:8px;font-size:13px;background:rgba(251,245,230,.9);
+       border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;
+       box-shadow:0 2px 6px rgba(0,0,0,.18)}
+  :root[data-theme="dark"] .gc-note{background:rgba(20,32,24,.9)}
+
   .confirm .cf-s{font-size:13.5px;color:#8E3A28;line-height:1.5}
+  /* liste des manquants : on veut les lire d'un coup d'œil, pas une phrase à virgules */
+  .confirm .cf-list{list-style:none;margin:9px 0 11px;padding:0;display:flex;flex-direction:column;gap:5px}
+  .confirm .cf-list li{display:flex;align-items:baseline;gap:8px;font-size:13.5px;color:#8E3A28;
+       background:rgba(255,255,255,.45);border-radius:9px;padding:6px 10px}
+  :root[data-theme="dark"] .confirm .cf-list li{background:rgba(0,0,0,.18);color:var(--ink)}
+  .confirm .cfi-n{font-weight:700;flex:1;min-width:0}
+  .confirm .cfi-q{font-variant-numeric:tabular-nums;opacity:.9;white-space:nowrap}
+  .confirm .cfi-p{font-size:11px;opacity:.75;white-space:nowrap;font-style:italic}
+  .cf-add{background:var(--card);border:1.5px solid var(--camel);color:var(--camel-deep);font-weight:700}
+  .cf-row{flex-wrap:wrap}
   .confirm .cf-s b{font-weight:700}
   .cf-row{display:flex;gap:8px;margin-top:13px}
   .cf-row .act{flex:1;padding:13px;font-size:14px}
@@ -3211,13 +3243,98 @@ const PANTRY = [
   {re:/^tomates? cerises?$/i,                         n:"tomates cerises"},
   {re:/^concentré de tomate$/i,                       n:"concentré de tomate"},
   {re:/^sauce tomate$/i,                              n:"sauce tomate"},
-  {re:/^nouilles de riz$/i,                           n:"nouilles de riz"}
+  {re:/^nouilles de riz$/i,                           n:"nouilles de riz"},
+  /* le citron vert est un autre fruit : sans cette ligne, la règle générale
+     (« citron » est inclus dans « citron vert ») ferait passer l'un pour l'autre */
+  {re:/^citrons? verts?$/i,                           n:"citron vert"},
+  {re:/^chocolat blanc$/i,                            n:"chocolat blanc"}
 ];
+/* ==========================================================================
+   NOM GÉNÉRIQUE D'UN INGRÉDIENT
+   « 2 gousses d'ail », « ail frais », « blanc de poulet », « oignon rouge »…
+   désignent en cuisine l'ail, le poulet, l'oignon. Sans normalisation, chaque
+   variante crée une entrée distincte dans le frigo et AUCUNE recette ne sait
+   qu'on a le produit. On ramène donc tout à un nom canonique, avec une règle
+   de prudence : on ne fusionne jamais deux produits réellement différents
+   (pommes de terre ≠ pommes, lait de coco ≠ lait, haricots verts ≠ haricots).
+   ========================================================================== */
+
+/* Ces noms sont des produits à part entière : ils traversent la normalisation intacts. */
+const GARDER_TEL_QUEL = [
+  /^pommes? de terre$/i, /^patates? douces?$/i, /^lait de coco$/i, /^lait concentré$/i,
+  /^huile d[’']olive$/i, /^huile de sésame$/i, /^vinaigre balsamique$/i,
+  /^haricots? (verts?|rouges?|blancs?|noirs?)$/i, /^chou (rouge|vert|blanc|chinois)$/i,
+  /^chou-fleur$/i, /^choux? de bruxelles$/i, /^vin (blanc|rouge)$/i,
+  /^chocolat (noir|blanc|au lait)$/i, /^sucre (glace|vanillé|roux|complet)$/i,
+  /^fromage (blanc|râpé|de chèvre|à raclette)$/i, /^crème (de coco|de marron)$/i,
+  /^pâte (brisée|sablée|feuilletée|à pizza|à tarte|de curry|d[’']amande)$/i,
+  /^tomates? (cerises?|séchées?|concassées?|pelées?)$/i, /^concentré de tomates?$/i,
+  /^sauce (tomate|soja|worcestershire)$/i, /^nouilles de riz$/i, /^vermicelles? de riz$/i,
+  /^galettes? de riz$/i, /^lait (de soja|d[’']amande|ribot)$/i, /^poudre d[’']amandes?$/i,
+  /^levure (chimique|boulangère|de bière)$/i, /^ail en poudre$/i, /^oignons? (nouveaux?|nouvelles?|frits?)$/i,
+  /^gâteaux? de riz$/i, /^beurre de cacahuète$/i, /^blancs? d[’']?(œuf|oeuf)s?$/i,
+  /^jaunes? d[’']?(œuf|oeuf)s?$/i, /^gousses? de vanille$/i, /^petits pois$/i,
+  /^pousses? de soja$/i, /^lait de brebis$/i, /^huile de tournesol$/i
+];
+/* Conditionnement et découpe : ce qui précède « de » décrit la portion, pas le produit.
+   « 2 gousses d'ail » → ail ;  « blanc de poulet » → poulet ;  « botte de persil » → persil. */
+const PORTIONS = new RegExp(
+  "^\\s*(?:\\d+[\\d.,/ ]*)?\\s*(?:une?|deux|trois|quelques|petite?s?|grosse?s?)?\\s*" +
+  "(?:gousses?|bottes?|brins?|branches?|tranches?|filets?|escalopes?|blancs?|cuisses?|" +
+  "pav[ée]s?|aiguillettes?|morceaux?|c[ôo]tes?|boîtes?|boites?|bocaux?|bocal|sachets?|" +
+  "pots?|barquettes?|cubes?|feuilles?|pinc[ée]es?|poign[ée]es?|t[êe]tes?|grappes?|" +
+  "parts?|portions?|tablettes?|b[âa]tons?|tiges?|rondelles?|lamelles?|z[ée]ni?tes?)\\s+" +
+  "d[’']?(?:e\\s+|es\\s+|u\\s+)?", "i");
+/* Qualificatifs qui ne changent pas la nature du produit. */
+/* ⚠️ `\b` est ASCII : il ne reconnaît pas de frontière après « râpé » ou « émincé ».
+   On délimite donc explicitement par un espace, une virgule ou une extrémité. */
+const QUALIF_ING = new RegExp(
+  "(^|[\\s,])(?:frais|fra[îi]che?s?|surgel[ée]e?s?|congel[ée]e?s?|bio|nature|entiers?|enti[èe]re?s?|" +
+  "[ée]goutt[ée]e?s?|pel[ée]e?s?|[ée]pluch[ée]e?s?|[ée]minc[ée]e?s?|cisel[ée]e?s?|" +
+  "concass[ée]e?s?|r[âa]p[ée]e?s?|moulue?s?|doux|douce|all[ée]g[ée]e?s?|extra|vierge|" +
+  "de qualit[ée]|du commerce|maison|m[ûu]re?s?|de saison|coup[ée]e?s?|lav[ée]e?s?|" +
+  "d[ée]nud[ée]e?s?|d[ée]noyaut[ée]e?s?|effiloch[ée]e?s?|tranch[ée]e?s?|en morceaux|en d[ée]s|" +
+  "en rondelles|en lamelles|en poudre|liquide|semi-[ée]cr[ée]m[ée]|demi-[ée]cr[ée]m[ée])" +
+  "(?=[\\s,]|$)", "gi");
+/* Variantes de couleur/variété, seulement là où elles ne changent pas le produit.
+   (« poivron rouge » = poivron, mais « vin rouge » ≠ « vin blanc » : traité plus haut.) */
+/* Le citron VERT est un autre fruit que le citron jaune (un ceviche ne se fait pas
+   au citron jaune) : il ne figure pas dans cette liste. */
+const COULEUR_OK = /\b(oignons?|poivrons?|tomates?|raisins?)\s+(rouges?|jaunes?|verts?|blancs?)\b/i;
+/* Derniers rapprochements manuels. */
+const SYNONYMES = [
+  [/^patates?$/i, "pommes de terre"],
+  [/^cr[èe]me (liquide|enti[èe]re|[ée]paisse|fleurette|fra[îi]che( [ée]paisse| liquide)?)$/i, "crème"],
+  [/^persil (plat|fris[ée])$/i, "persil"],
+  [/^(gros )?sel( fin| de mer| de guérande)?$/i, "sel"],
+  [/^poivre( noir| du moulin| en grains)$/i, "poivre"],
+  [/^farines? (de bl[ée]|t\d+)$/i, "farine"],
+  [/^sucres? (en poudre|semoule|blanc|cristallis[ée])$/i, "sucre"],
+  [/^(steaks? )?hach[ée]s?$/i, "viande hachée"],
+  [/^bl[ée] concass[ée]$/i, "boulgour"],
+  [/^oeufs?$/i, "œufs"]
+];
+function canonIngredient(nom){
+  let n=(nom||"").trim().replace(/\s+/g," ");
+  if(!n) return "";
+  if(GARDER_TEL_QUEL.some(re=>re.test(n))) return n.toLowerCase();
+  // les synonymes passent AVANT le nettoyage : « crème liquide » doit devenir « crème
+  // fraîche », pas « crème » (le qualificatif serait retiré avant d'être reconnu)
+  for(const [re,v] of SYNONYMES) if(re.test(n)) return v;
+  const av=n;
+  n=n.replace(PORTIONS,"");                       // « 2 gousses d'ail » → « ail »
+  n=n.replace(COULEUR_OK, (m,p)=>p);              // « oignon rouge » → « oignon »
+  n=n.replace(QUALIF_ING,"$1").replace(/\s+/g," ").replace(/\s*,\s*$/,"").trim();
+  n=n.replace(/^(?:de |d[’']|du |des |la |le |les )/i,"").trim();
+  if(!n) n=av;                                    // tout a été mangé : on garde l'original
+  for(const [re,v] of SYNONYMES) if(re.test(n)) return v;
+  return n.toLowerCase();
+}
 // {n:nom du produit, strict:le nom est déclaré donc la correspondance doit être exacte, part:…}
 function pantryOf(name){
   const n=(name||"").trim();
   for(const p of PANTRY){ if(p.re.test(n)) return {n:n.replace(p.re,p.n), n1:(p.n1?n.replace(p.re,p.n1):null), strict:true, part:!!p.part}; }
-  return {n, n1:null, strict:false, part:false};
+  return {n:canonIngredient(n), n1:null, strict:false, part:false};
 }
 function pantryName(name){ return pantryOf(name).n; }
 
@@ -3364,7 +3481,7 @@ const state = { view:"home", search:"", filter:"Tous", onlyCookable:false, onlyP
      quand on supprime la semaine, pour ne pas les redemander à chaque fois */
   semaine:{equip:null, prefs:{deteste:[], allerg:[]}, cuisine:"", nb:5, budget:40, plats:[], creeLe:null},
   weekUI:{open:false, etape:0, gen:false},
-  currentPortions:0, cooked:false, confirmCook:false };
+  currentPortions:0, cooked:false, confirmCook:false, notes:{} };
 
 /* Les recettes personnelles ont exactement la même forme que celles du catalogue :
    tout ce qui suit — filtres, recherche, statut des ingrédients, débit du frigo,
@@ -3601,6 +3718,17 @@ function prixCoursesHTML(){
   </div>`;
 }
 /* Comparatif affiché tout en bas de la fiche recette, après les étapes. */
+/* Bloc « Ma note » en bas de chaque fiche : un pense-bête privé, enregistré au fil de
+   la frappe (avec un léger différé pour ne pas écrire à chaque touche). */
+function noteBlockHTML(r){
+  const n=noteOf(r.id);
+  return `<div class="notebox${n?" filled":""}">
+    <div class="nb-head"><span class="nb-t">📝 Ma note</span><span class="nb-state" id="nbState">${n?"enregistrée":""}</span></div>
+    <textarea class="nb-area" id="recipeNote" rows="3" maxlength="1200"
+      placeholder="Un rappel pour la prochaine fois : moins de sel, cuisson plus courte, la version que préfère tout le monde…">${esc(n)}</textarea>
+    <div class="nb-hint">Visible seulement par toi. Rien n'est publié.</div>
+  </div>`;
+}
 function prixHTML(r){
   const p=prixRecette(r);
   if(!p.total) return "";
@@ -3738,6 +3866,16 @@ const NON_VEGE=["poulet","poulets","volaille","boeuf","porc","veau","agneau","mo
 const NON_VEGE_RE=new RegExp("(^|\\s)("+NON_VEGE.map(m=>norm(m).replace(/\s+/g,"\\s+")).join("|")+")(s?)($|\\s)","i");
 function isVege(r){
   return !r.ing.some(i=>NON_VEGE_RE.test(norm(i.n)));
+}
+/* ---------- NOTES PERSONNELLES ----------
+   Un carnet privé attaché à chaque recette : rappels, ajustements, « la prochaine fois,
+   moins de sel ». Jamais partagé, contrairement aux publications du fil social. */
+function noteOf(id){ return (state.notes && state.notes[id]) || ""; }
+function saveNotes(){ Store.set("gabcook_notes", state.notes); }
+function setNote(id, txt){
+  txt=clean(txt);
+  if(txt) state.notes[id]=txt; else delete state.notes[id];
+  saveNotes();
 }
 function isPlanned(id){ return state.planned.includes(id); }
 function savePlanned(){ Store.set("gabcook_planned", state.planned); }
@@ -4419,6 +4557,7 @@ function gridCardHTML(r){
   const miss=state.fridge.length?missingFor(r).length:-1;
   return `<div class="gcard" data-recipe="${esc(r.id)}">
       <div class="gc-img"${thumbStyle(r)}>${thumbInner(r,400,300)}
+        ${noteOf(r.id)?`<span class="gc-note" title="Tu as une note sur cette recette">📝</span>`:""}
         <button class="cardfav${fav?" on":""}" data-fav="${esc(r.id)}" aria-label="Favori">${fav?"❤️":"🤍"}</button>
       </div>
       <div class="gc-body">
@@ -5519,9 +5658,18 @@ function renderDetail(){
     } else if(state.confirmCook){
       actions+=`<div class="confirm">
         <div class="cf-t">⚠️ Il te manque ${missing.length} ingrédient${missing.length>1?"s":""}</div>
-        <div class="cf-s"><b>${esc(missing.map(m=>cap(m.i.n)).join(", "))}.</b><br>Si tu continues, le frigo ne sera débité que de ce qu'il contient vraiment.</div>
+        <ul class="cf-list">${missing.map(m=>{
+            const st=ingStatus(m.i, state.currentPortions/r.portions);
+            const q=qtyOnly(m.i, state.currentPortions/r.portions);
+            return `<li><span class="cfi-n">${esc(cap(m.i.n))}</span>`
+                 + (q?`<span class="cfi-q">${esc(q)}</span>`:"")
+                 + (st.s==="partial"?`<span class="cfi-p">il en reste un peu</span>`:"")
+                 + `</li>`;
+          }).join("")}</ul>
+        <div class="cf-s">Si tu continues, le frigo ne sera débité que de ce qu'il contient vraiment.</div>
         <div class="cf-row">
           <button class="act cf-no" id="cancelCook">Annuler</button>
+          <button class="act cf-add" id="addMissingConfirm">🛒 Ajouter à ma liste</button>
           <button class="act cf-yes" id="forceCook">Cuisiner quand même</button>
         </div>
       </div>`;
@@ -5601,6 +5749,7 @@ function renderDetail(){
       <h4 style="font-family:var(--disp);font-weight:700;font-size:18px;margin:0 0 14px">Préparation${v.af?" <span style=\"font-size:13px;color:#A9700F;font-weight:700\">· air fryer</span>":v.mo?" <span style=\"font-size:13px;color:#3F6288;font-weight:700\">· micro-ondes</span>":""}</h4>
       ${v.etapes.filter(e=>clean(e)).length?`<button class="ck-launch" id="cookStart">👨‍🍳 Cuisiner pas à pas</button>`:""}
       <ol class="steps">${v.etapes.map(e=>`<li><div class="st">${esc(e)}</div></li>`).join("")}</ol>
+      ${noteBlockHTML(r)}
       ${prixHTML(r)}
     </div>
   `;
@@ -5636,6 +5785,9 @@ function parseDuration(text){
   return 0;
 }
 function fmtClock(sec){ sec=Math.max(0,Math.round(sec)); const h=Math.floor(sec/3600),mn=Math.floor((sec%3600)/60),s=sec%60,p=n=>String(n).padStart(2,"0"); return h? h+":"+p(mn)+":"+p(s) : p(mn)+":"+p(s); }
+/* « 1:30:00 » fait 7 caractères contre 5 pour « 30:00 » : à 45 px il débordait de l'anneau.
+   On réduit la taille dès qu'on passe au format avec les heures. */
+function poseTemps(el, txt){ el.textContent=txt; el.classList.toggle("long", txt.length>5); }
 // ingrédients de la recette cités dans le texte de l'étape
 function stepIngredients(text, ings){
   const words=new Set(norm(text).split(" ").map(sing).filter(w=>w.length>2));
@@ -5716,7 +5868,9 @@ function ringSVG(frac){
   return `<svg class="ck-ring" viewBox="0 0 200 200" aria-hidden="true"><circle class="trk" cx="100" cy="100" r="84"/><circle class="fil" id="ckRingFill" cx="100" cy="100" r="84" style="stroke-dasharray:${RING_C.toFixed(1)};stroke-dashoffset:${off}"/></svg>`;
 }
 function ringBlock(frac, num, suffix){
-  return `<div class="ck-ringwrap">${ringSVG(frac)}<div class="ck-tbig"><div class="ck-tnum" id="ckTnum">${num}</div><div class="ck-tsuffix">${suffix}</div></div></div>`;
+  // la classe « long » doit être posée dès le premier rendu, pas seulement aux mises à jour
+  const cls = String(num).length>5 ? "ck-tnum long" : "ck-tnum";
+  return `<div class="ck-ringwrap">${ringSVG(frac)}<div class="ck-tbig"><div class="${cls}" id="ckTnum">${num}</div><div class="ck-tsuffix">${suffix}</div></div></div>`;
 }
 function renderTimer(){
   const z=document.getElementById("ckTimer"); if(!z||!cookTimer) return;
@@ -5739,7 +5893,7 @@ function renderTimer(){
   }
 }
 function paintRing(){
-  const num=document.getElementById("ckTnum"); if(num) num.textContent=fmtClock(cookTimer.remaining);
+  const num=document.getElementById("ckTnum"); if(num) poseTemps(num, fmtClock(cookTimer.remaining));
   const fill=document.getElementById("ckRingFill"); if(fill && cookTimer.total) fill.style.strokeDashoffset=(RING_C*(1-cookTimer.remaining/cookTimer.total)).toFixed(1);
 }
 function startCookTimer(){
@@ -5781,7 +5935,7 @@ function adjustTimer(delta){
   } else {
     cookTimer.planned=Math.max(30,(cookTimer.planned||0)+delta);
     cookTimer.total=cookTimer.planned;
-    const num=document.getElementById("ckTnum"); if(num) num.textContent=fmtClock(cookTimer.planned);
+    const num=document.getElementById("ckTnum"); if(num) poseTemps(num, fmtClock(cookTimer.planned));
   }
 }
 function clearTimer(){ stopAlarm(); if(cookTimer&&cookTimer.iv) clearInterval(cookTimer.iv); cookTimer=null; }   // (ne libère PAS le wake lock : géré à l'ouverture/fermeture du mode cuisine)
@@ -5855,18 +6009,23 @@ function isOriginalRecipe(r){ return r && r.perso && !r.credit && !r.src; }
 /* Ces relais publics tombent en panne de temps en temps (allorigins renvoyait des 408 en
    août 2026, d'où l'import cassé). On les essaie dans l'ordre, avec un délai court pour
    passer vite au suivant, et `json:true` pour ceux qui emballent la page dans du JSON. */
+/* Relais CORS, testés le 2026-08-17 sur une vraie fiche Marmiton :
+   corsproxy.io et proxy.cors.sh répondent (200 + JSON-LD complet), allorigins est très lent
+   mais finit parfois par répondre, codetabs et thingproxy sont morts. Ces services publics
+   tombent régulièrement : si l'import recasse, les tester un par un et réordonner. */
 const RELAIS = [
   {f:u=>"https://corsproxy.io/?url="+encodeURIComponent(u)},
+  {f:u=>"https://proxy.cors.sh/"+u},
   {f:u=>"https://api.allorigins.win/raw?url="+encodeURIComponent(u)},
   {f:u=>"https://api.allorigins.win/get?url="+encodeURIComponent(u), json:true},
-  {f:u=>"https://api.codetabs.com/v1/proxy?quest="+encodeURIComponent(u)},
-  {f:u=>"https://thingproxy.freeboard.io/fetch/"+u}
+  {f:u=>"https://api.codetabs.com/v1/proxy/?quest="+encodeURIComponent(u)}
 ];
 async function fetchViaRelais(url){
   for(const relais of RELAIS){
     for(let essai=0; essai<2; essai++){
       try{
-        const c=new AbortController(); const t=setTimeout(()=>c.abort(), 9000);
+        // 9 s était trop court : allorigins met souvent plus de 12 s à répondre
+        const c=new AbortController(); const t=setTimeout(()=>c.abort(), 16000);
         const r=await fetch(relais.f(url), {signal:c.signal}); clearTimeout(t);
         if(!r.ok) break;                        // relais en panne : inutile de réessayer
         let txt=await r.text();
@@ -5950,8 +6109,12 @@ function extractRecipeJsonLd(html){
 }
 async function importMarmiton(){
   const d=draft; if(!d) return;
-  const url=(d.url||"").trim();
-  if(!/^https?:\/\/(www\.)?marmiton\.org\//i.test(url)){
+  // on accepte ce qu'un téléphone colle vraiment : m.marmiton.org, lien sans https,
+  // paramètres de suivi collés au bout, espaces parasites
+  let url=(d.url||"").trim().replace(/\s+/g,"");
+  if(/^(www\.|m\.)?marmiton\.org\//i.test(url)) url="https://"+url;
+  url=url.replace(/^http:/i,"https:").replace(/^https:\/\/m\./i,"https://www.").split(/[?#]/)[0];
+  if(!/^https:\/\/(www\.)?marmiton\.org\//i.test(url)){
     d.imstate="err"; d.imsg="Colle un lien qui commence par https://www.marmiton.org/…"; renderEditor(); return;
   }
   d.importing=true; d.imstate="load"; d.imsg="Récupération de la recette… (quelques secondes)"; renderEditor();
@@ -6914,9 +7077,9 @@ async function resetAccount(){
     try{ await sb.from("gabcook_store").delete().eq("user_id", me); }catch(e){}
   }
   // local
-  ["gabcook_fridge","gabcook_shopping","gabcook_perso","gabcook_airfryer","gabcook_micro","gabcook_profile","gabcook_stats","gabcook_photos","gabcook_favorites","gabcook_planned","gabcook_ratings","gabcook_semaine"].forEach(k=>{ try{ localStorage.removeItem(k); }catch(e){} });
+  ["gabcook_fridge","gabcook_shopping","gabcook_perso","gabcook_airfryer","gabcook_micro","gabcook_profile","gabcook_stats","gabcook_photos","gabcook_favorites","gabcook_planned","gabcook_ratings","gabcook_semaine","gabcook_notes"].forEach(k=>{ try{ localStorage.removeItem(k); }catch(e){} });
   // état en mémoire remis à neuf
-  state.fridge=[]; state.shopping=[]; state.perso=[]; state.recipePhotos={};
+  state.fridge=[]; state.shopping=[]; state.perso=[]; state.recipePhotos={}; state.notes={};
   state.favorites=[]; state.planned=[]; state.onlyFav=false; state.ratings={};
   state.profile={pseudo:"",avatar:"",bio:"",isPrivate:false,banner:"",bannerPos:50};
   state.stats={cooked:0,byRecipe:{},firstAt:null,lastAt:null};
@@ -7196,6 +7359,21 @@ document.getElementById("shareBox").addEventListener("click",e=>{
 
 scrollEl.addEventListener("scroll", queueNavMaterial, {passive:true});
 detailScroll.addEventListener("scroll", queueNavMaterial, {passive:true});
+/* saisie de la note : on enregistre 600 ms après la dernière touche, jamais à chaque frappe
+   (le cloud n'a pas besoin d'un aller-retour par caractère) */
+let noteTimer=null;
+detailScroll.addEventListener("input", e=>{
+  const ta=e.target.closest("#recipeNote");
+  if(!ta || !currentRecipe) return;
+  const id=currentRecipe.id, box=ta.closest(".notebox"), etat=box&&box.querySelector(".nb-state");
+  clearTimeout(noteTimer);
+  noteTimer=setTimeout(()=>{
+    setNote(id, ta.value);
+    if(box) box.classList.toggle("filled", !!noteOf(id));
+    if(etat){ etat.textContent=noteOf(id)?"enregistrée":""; etat.classList.add("on");
+              setTimeout(()=>etat.classList.remove("on"), 1600); }
+  }, 600);
+});
 // selon le contexte, c'est la fenêtre et non le conteneur interne qui défile
 addEventListener("scroll", queueNavMaterial, {passive:true});
 addEventListener("resize", ()=>{ placeBrand(); positionNav(false); queueNavMaterial(); });
@@ -7414,8 +7592,11 @@ scrollEl.addEventListener("click",e=>{
     return;
   }
   if(e.target.closest("#shopAdd")){
-    const inp=document.getElementById("shopInput"); const v=inp.value.trim();
-    if(v && !state.shopping.some(s=>norm(s.base)===norm(v))){ state.shopping.push({id:uid++,label:v,base:v,q:null,u:"",from:"",checked:false}); saveShopping(); }
+    const inp=document.getElementById("shopInput");
+    // « gousse d'ail » saisi à la main devient « ail » : c'est sous ce nom que toutes les
+    // recettes sauront qu'on l'a, une fois l'article rangé dans le frigo
+    const v=cap(pantryName(inp.value.trim()));
+    if(v && !state.shopping.some(s=>ingKey(s.base)===ingKey(v))){ state.shopping.push({id:uid++,label:v,base:v,q:null,u:"",from:"",checked:false}); saveShopping(); }
     inp.value=""; renderShopping(); updateBadges(); return;
   }
   const tog=e.target.closest("[data-toggle]");
@@ -7518,6 +7699,7 @@ detailScroll.addEventListener("click",e=>{
     else cookRecipe();                                        // enregistrer « cuisiné » malgré les manques
     return;
   }
+  if(e.target.closest("#addMissingConfirm")){ addMissingToShopping(); state.confirmCook=false; cookIntent=null; renderDetail(); return; }
   if(e.target.closest("#addMissing")){ addMissingToShopping(); return; }
   if(e.target.closest("#pMinus")){ if(state.currentPortions>1){ state.currentPortions--; state.confirmCook=false; renderDetail(); } return; }
   if(e.target.closest("#pPlus")){ state.currentPortions++; state.confirmCook=false; renderDetail(); return; }
@@ -7618,6 +7800,8 @@ async function hydrate(){
   }
   const rts=await Store.get("gabcook_ratings");
   state.ratings = (rts && typeof rts==="object" && !Array.isArray(rts)) ? rts : {};
+  const nts=await Store.get("gabcook_notes");
+  state.notes = (nts && typeof nts==="object" && !Array.isArray(nts)) ? nts : {};
   const plans=await Store.get("gabcook_planned");
   state.planned = Array.isArray(plans) ? plans.filter(x=>typeof x==="string") : [];
   state.onlyFav=false;
@@ -7634,7 +7818,7 @@ async function seedCloudFromLocal(){
     const {data}=await sb.from("gabcook_store").select("key").limit(1);
     if(data && data.length) return;          // le compte a déjà des données : on n'écrase rien
   }catch(e){ return; }
-  const keys=["gabcook_fridge","gabcook_shopping","gabcook_perso","gabcook_airfryer","gabcook_micro","gabcook_profile","gabcook_stats","gabcook_photos","gabcook_favorites","gabcook_planned","gabcook_ratings","gabcook_semaine"];
+  const keys=["gabcook_fridge","gabcook_shopping","gabcook_perso","gabcook_airfryer","gabcook_micro","gabcook_profile","gabcook_stats","gabcook_photos","gabcook_favorites","gabcook_planned","gabcook_ratings","gabcook_semaine","gabcook_notes"];
   let verse=0;
   for(const k of keys){
     const v=localGet(k);
