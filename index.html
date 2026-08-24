@@ -1197,7 +1197,7 @@
     .post{max-width:640px}
     .set-row,.warnbox,.coursetotal{max-width:700px}
     /* ces blocs pleine largeur devenaient des bandeaux démesurés sur 930 px */
-    .weekbtn,.addcard{max-width:520px}
+    .weekbtn,.addcard,.scanbtn{max-width:520px}
     .hello{font-size:24px;margin-top:10px}
     /* le frigo et les courses tiennent sur deux colonnes */
     .fitems{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:900px}
@@ -1264,9 +1264,41 @@
   .scan-note{font-size:12.5px;color:var(--muted);text-align:center;padding:6px 0 2px}
   .scan-manuel{width:100%;margin-top:6px;padding:12px;border-radius:12px;border:1.5px dashed var(--camel-light);
        background:transparent;color:var(--camel-deep);font-weight:700;font-size:14px}
-  .scanbtn{width:100%;margin:4px 0 2px;display:flex;align-items:center;justify-content:center;gap:9px;
-       background:var(--strong);color:#FBF5E6;border-radius:14px;padding:13px;font-weight:700;font-size:14.5px;
-       box-shadow:var(--shadow-soft)}
+
+  /* ---- liste de courses visible pendant le scan ---- */
+  .sp-head{display:flex;align-items:baseline;justify-content:space-between;margin:0 2px 9px}
+  .sp-t{font-family:var(--disp);font-weight:800;font-size:16px;color:var(--ink)}
+  .sp-c{font-size:12px;font-weight:700;color:var(--camel-deep)}
+  .sp-liste{display:flex;flex-direction:column;gap:6px}
+  .sp-row{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);
+       border-radius:12px;padding:9px 11px;transition:background .25s,border-color .25s,opacity .25s}
+  .sp-row.on{background:var(--basil-tint);border-color:var(--basil)}
+  .sp-box{flex:0 0 auto;width:21px;height:21px;border-radius:7px;border:1.8px solid var(--line);
+       display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;background:var(--card)}
+  .sp-row.on .sp-box{background:var(--basil);border-color:var(--basil)}
+  .sp-n{flex:1;min-width:0;font-size:14.5px;font-weight:700;color:var(--ink);
+       overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .sp-row.on .sp-n{opacity:.72}
+  .sp-from{display:block;font-size:11px;font-weight:600;color:var(--muted);margin-top:1px}
+  .sp-q{flex:0 0 auto;font-size:12.5px;font-weight:800;color:var(--camel-deep);background:var(--camel-tint);
+       border-radius:999px;padding:4px 9px;white-space:nowrap;font-variant-numeric:tabular-nums}
+  /* l'article qui vient d'être scanné s'illumine une seconde */
+  @keyframes spFlash{0%{transform:scale(1)}22%{transform:scale(1.03);box-shadow:0 0 0 3px var(--camel)}100%{transform:scale(1)}}
+  .sp-row.flash{animation:spFlash .9s cubic-bezier(.3,.9,.3,1)}
+  .sp-stock{width:100%;margin-top:11px;padding:13px;border-radius:14px;background:var(--strong);color:#FBF5E6;
+       font-weight:800;font-size:14.5px;box-shadow:var(--shadow-soft)}
+
+  /* ---- bouton d'accès au scanner, action principale de l'onglet Courses ---- */
+  .scanbtn{width:100%;margin:14px 0 10px;display:flex;align-items:center;gap:13px;text-align:left;
+       background:linear-gradient(135deg,#E4A131,#C9862099);color:#1D402D;border-radius:18px;padding:15px 17px;
+       box-shadow:0 8px 22px rgba(228,161,49,.34)}
+  .scanbtn .sb-ico{flex:0 0 auto;width:42px;height:42px;border-radius:13px;background:rgba(29,64,45,.16);
+       display:flex;align-items:center;justify-content:center;font-size:21px}
+  .scanbtn .sb-txt{flex:1;min-width:0}
+  .scanbtn .sb-t{font-family:var(--disp);font-weight:800;font-size:16px;line-height:1.15}
+  .scanbtn .sb-s{font-size:12px;font-weight:600;opacity:.8;margin-top:2px}
+  .scanbtn .sb-fl{flex:0 0 auto;font-size:19px;opacity:.55}
+  :root[data-theme="dark"] .scanbtn{color:#12251A}
 
   @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
   :focus-visible{outline:2.5px solid var(--camel);outline-offset:2px;border-radius:6px}
@@ -4903,7 +4935,7 @@ function renderShopping(){
       ${unitSelect("", 'id="shopUnit"')}
       <button class="add-btn" id="shopAdd">Ajouter</button>
     </div>
-    <button class="scanbtn" id="scanBtn">📷 Scanner un code-barres</button>
+    <button class="scanbtn" id="scanBtn"><span class="sb-ico">📷</span><span class="sb-txt"><span class="sb-t">Scanner mes courses</span><span class="sb-s">Coche tes articles et relève les quantités</span></span><span class="sb-fl">›</span></button>
   `;
   if(!state.shopping.length){
     html+=`<div class="empty"><div class="big">🛒</div><p>Ta liste est vide.</p><p>Ouvre une recette et ajoute les ingrédients qui te manquent.</p></div>`;
@@ -6660,8 +6692,8 @@ async function ouvreScan(){
   const page=document.getElementById("scanPage");
   page.classList.add("open"); page.setAttribute("aria-hidden","false");
   document.body.style.overflow="hidden";
-  document.getElementById("scanPanel").innerHTML="";
   scanEtat.ouvert=true;
+  renderScanListe();
   history.pushState({scan:1},"");
   if(!isSecureContext){
     scanDit("La caméra exige une connexion sécurisée (https). En http, le navigateur la refuse.", true);
@@ -6731,31 +6763,66 @@ async function chercheEtAjoute(code){
   if(!nom){ scanDit("Produit trouvé mais sans nom exploitable.", true); panneauScanManuel(code); return; }
   let q=quantiteOFF(prod.quantity).q, u=quantiteOFF(prod.quantity).u;
   if(q==null && prod.product_quantity){ const n=parseFloat(prod.product_quantity); if(!isNaN(n)){ q=n; u="g"; } }
-  ajouteAuxCourses(nom, q, u);
+  const res=ajouteAuxCourses(nom, q, u);
   const brut=(prod.product_name_fr||prod.product_name||"").trim();
-  const panel=document.getElementById("scanPanel");
-  panel.insertAdjacentHTML("afterbegin",
-    '<div class="scan-hit"><div class="sh-txt"><div class="sh-n">'+esc(cap(nom))+'</div>'+
-    '<div class="sh-s">'+esc(brut||("code "+code))+'</div></div>'+
-    '<span class="sh-q">'+(q!=null?esc(fmtNum(roundNice(q))+(u?" "+u:"")):"ajouté")+'</span></div>');
-  scanDit("« "+cap(nom)+" » ajouté aux courses · scanne le suivant");
+  renderScanListe(res && res.item ? res.item.id : null);
+  const mots={coche:"coché dans ta liste", maj:"quantité mise à jour", cumul:"quantité cumulée", nouveau:"ajouté à ta liste"};
+  scanDit("« "+cap(nom)+" » "+(mots[res&&res.geste]||"ajouté")+(q!=null?" · "+fmtNum(roundNice(q))+(u?" "+u:""):"")+" · scanne le suivant");
 }
 
-/* ajoute, ou cumule si l'article est déjà là */
+/* Scanner un produit, c'est le mettre dans le caddie. L'article de la liste est donc
+   COCHÉ (prêt à être rangé au frigo) et sa quantité prévisionnelle est remplacée par
+   celle du produit réel : « Crème 20 cl » attendue par une recette devient « Crème 30 cl »
+   si c'est un pot de 30 cl qu'on achète.
+   Exception : si l'article est DÉJÀ coché, c'est qu'on l'a déjà scanné — on cumule alors,
+   pour pouvoir acheter deux pots. */
 function ajouteAuxCourses(nom, q, u){
   const v=cap(pantryName(nom));
-  if(!v) return;
+  if(!v) return null;
   const ex=state.shopping.find(s=>ingKey(s.base)===ingKey(v));
+  let cible, geste;
   if(ex){
-    if(q!=null){
-      if(ex.q!=null && comparable(ex.u,u)) ex.q=roundNice(fromBase(toBase(ex.q,ex.u)+toBase(q,u), ex.u));
-      else { ex.q=roundNice(q); ex.u=u||""; }
+    if(ex.checked && q!=null && ex.q!=null && comparable(ex.u,u)){
+      ex.q=roundNice(fromBase(toBase(ex.q,ex.u)+toBase(q,u), ex.u));   // 2e exemplaire
+      geste="cumul";
+    } else {
+      if(q!=null){ ex.q=roundNice(q); ex.u=u||""; }                    // la vraie quantité achetée
+      geste=ex.checked?"maj":"coche";
     }
+    ex.checked=true;
+    cible=ex;
   } else {
-    state.shopping.push({id:uid++, label:v, base:v, q:(q==null?null:roundNice(q)), u:u||"", from:"", checked:false});
+    cible={id:uid++, label:v, base:v, q:(q==null?null:roundNice(q)), u:u||"", from:"", checked:true};
+    state.shopping.push(cible);
+    geste="nouveau";
   }
   saveShopping(); updateBadges();
   if(state.view==="shopping") renderShopping();
+  return {item:cible, geste};
+}
+
+/* La liste de courses reste sous les yeux pendant qu'on scanne : on voit les articles
+   se cocher et leurs quantités se mettre à jour sans quitter la caméra. */
+function renderScanListe(idFlash){
+  const panel=document.getElementById("scanPanel");
+  if(!panel) return;
+  const liste=state.shopping;
+  const pris=liste.filter(s=>s.checked).length;
+  if(!liste.length){
+    panel.innerHTML='<div class="scan-note">Ta liste est vide. Les produits scannés viendront s\'y ajouter.</div>';
+    return;
+  }
+  panel.innerHTML=
+    '<div class="sp-head"><span class="sp-t">Ma liste</span>'+
+      '<span class="sp-c">'+pris+' / '+liste.length+' dans le caddie</span></div>'+
+    '<div class="sp-liste">'+liste.map(s=>
+      '<div class="sp-row'+(s.checked?" on":"")+(s.id===idFlash?" flash":"")+'" data-scan-toggle="'+s.id+'">'+
+        '<span class="sp-box">'+(s.checked?"✓":"")+'</span>'+
+        '<span class="sp-n">'+esc(s.label)+
+          (s.from?'<span class="sp-from">pour '+esc(s.from)+'</span>':'')+'</span>'+
+        (s.q!=null?'<span class="sp-q">'+esc(fmtNum(s.q)+(s.u?" "+s.u:""))+'</span>':'')+
+      '</div>').join("")+'</div>'+
+    (pris?'<button class="sp-stock" id="scanStock">🧊 Ranger '+(pris>1?("les "+pris+" produits"):"le produit")+' dans le frigo</button>':'');
 }
 
 function panneauScanManuel(code){
@@ -7312,7 +7379,20 @@ function semaineVersCourses(){
 }
 document.getElementById("weekBack").addEventListener("click", closeWeek);
 document.getElementById("scanBack").addEventListener("click", ()=>history.back());
-document.getElementById("scanPage").addEventListener("click", e=>{ if(e.target.closest("#scanQuit")) history.back(); });
+document.getElementById("scanPage").addEventListener("click", e=>{
+  if(e.target.closest("#scanQuit")){ history.back(); return; }
+  const t=e.target.closest("[data-scan-toggle]");
+  if(t){ const s=state.shopping.find(x=>x.id==t.dataset.scanToggle);
+         if(s){ s.checked=!s.checked; saveShopping(); updateBadges(); renderScanListe(); } return; }
+  if(e.target.closest("#scanStock")){
+    const pris=state.shopping.filter(s=>s.checked);
+    pris.forEach(s=>addToFridge(s.base, s.q, s.u));
+    state.shopping=state.shopping.filter(s=>!s.checked);
+    saveShopping(); updateBadges(); renderScanListe();
+    scanDit(pris.length+" produit"+(pris.length>1?"s rangés":" rangé")+" dans le frigo");
+    return;
+  }
+});
 weekScroll.addEventListener("click",e=>{
   const s=state.semaine;
   const eq=e.target.closest("[data-eq]");
