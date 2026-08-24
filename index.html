@@ -457,6 +457,19 @@
   ol.steps li .st{font-size:14.5px;padding-top:4px}
 
   .add-row{display:flex;gap:8px;margin:14px 0 6px}
+  /* ajout d'un article : nom, puis quantité et unité dans leurs propres champs */
+  .shop-add{flex-wrap:wrap}
+  .shop-add #shopInput{flex:1 1 100%;min-width:0}
+  .shop-add .qty-in{flex:0 0 74px;width:74px;padding:12px 10px;border-radius:12px;border:1.5px solid var(--line);
+       background:var(--card);color:var(--ink);font-size:15px;outline:none;text-align:center}
+  .shop-add .qty-in:focus{border-color:var(--camel)}
+  .shop-add .fiunit{flex:0 0 auto;padding:12px 10px;border-radius:12px;border:1.5px solid var(--line);
+       background:var(--card);color:var(--ink);font-size:14.5px}
+  .shop-add .add-btn{flex:1 1 auto}
+  /* quantité de l'article, détachée du nom */
+  .cqty{flex:0 0 auto;font-size:13px;font-weight:800;color:var(--camel-deep);background:var(--camel-tint);
+       border-radius:999px;padding:4px 10px;white-space:nowrap;font-variant-numeric:tabular-nums;margin-right:4px}
+  .course-item.checked .cqty{opacity:.45}
   .add-row input{flex:1;padding:13px 14px;border-radius:13px;border:1.5px solid var(--line);background:var(--card);font-size:15px;outline:none}
   .add-row input:focus{border-color:var(--camel);box-shadow:0 0 0 3px var(--camel-tint)}
   .add-row .add-btn{background:var(--camel);color:var(--ink);border-radius:13px;padding:0 18px;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center}
@@ -1220,6 +1233,41 @@
   .acctbtn img,.frow .fav img,.posthead .fav img,.crow .cav img,.bigav img,.prof-bigav img{
        position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit}
 
+  /* ---- scanner de codes-barres ---- */
+  .scanpage{background:#0B120E}
+  .scanpage .ed-head{background:#0B120E;border-bottom:1px solid rgba(251,245,230,.12)}
+  .scanpage .ed-head h2{color:#FBF5E6}
+  .scan-stage{position:relative;flex:1;min-height:0;overflow:hidden;background:#000;display:flex;align-items:center;justify-content:center}
+  #scanVideo{width:100%;height:100%;object-fit:cover;display:block}
+  /* viseur : quatre coins, pour viser le code sans masquer l'image */
+  .scan-frame{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+       width:min(78%,340px);aspect-ratio:5/3;pointer-events:none}
+  .scan-frame span{position:absolute;width:30px;height:30px;border:3px solid var(--camel)}
+  .scan-frame span:nth-child(1){top:0;left:0;border-right:none;border-bottom:none;border-radius:12px 0 0 0}
+  .scan-frame span:nth-child(2){top:0;right:0;border-left:none;border-bottom:none;border-radius:0 12px 0 0}
+  .scan-frame span:nth-child(3){bottom:0;left:0;border-right:none;border-top:none;border-radius:0 0 0 12px}
+  .scan-frame span:nth-child(4){bottom:0;right:0;border-left:none;border-top:none;border-radius:0 0 12px 0}
+  .scan-status{position:absolute;left:16px;right:16px;bottom:16px;text-align:center;color:#FBF5E6;
+       background:rgba(11,18,14,.78);border-radius:12px;padding:10px 14px;font-size:13.5px;font-weight:600;
+       backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+  .scan-status.err{background:rgba(150,52,36,.9)}
+  .scan-panel{flex:0 0 auto;max-height:46vh;overflow-y:auto;background:var(--paper);
+       padding:14px 16px calc(18px + env(safe-area-inset-bottom));border-radius:20px 20px 0 0}
+  .scan-panel:empty{display:none}
+  .scan-hit{display:flex;align-items:center;gap:11px;background:var(--card);border:1px solid var(--line);
+       border-radius:14px;padding:11px 12px;margin-bottom:9px;animation:popIn .3s both}
+  .scan-hit .sh-txt{flex:1;min-width:0}
+  .scan-hit .sh-n{font-family:var(--disp);font-weight:800;font-size:15.5px;color:var(--ink)}
+  .scan-hit .sh-s{font-size:12px;color:var(--muted);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .scan-hit .sh-q{flex:0 0 auto;font-size:13px;font-weight:800;color:var(--camel-deep);
+       background:var(--camel-tint);border-radius:999px;padding:5px 11px;white-space:nowrap}
+  .scan-note{font-size:12.5px;color:var(--muted);text-align:center;padding:6px 0 2px}
+  .scan-manuel{width:100%;margin-top:6px;padding:12px;border-radius:12px;border:1.5px dashed var(--camel-light);
+       background:transparent;color:var(--camel-deep);font-weight:700;font-size:14px}
+  .scanbtn{width:100%;margin:4px 0 2px;display:flex;align-items:center;justify-content:center;gap:9px;
+       background:var(--strong);color:#FBF5E6;border-radius:14px;padding:13px;font-weight:700;font-size:14.5px;
+       box-shadow:var(--shadow-soft)}
+
   @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
   :focus-visible{outline:2.5px solid var(--camel);outline-offset:2px;border-radius:6px}
 </style>
@@ -1289,6 +1337,20 @@
     <h2>Réglages</h2>
   </div>
   <div class="ed-scroll" id="settingsScroll"></div>
+</div>
+
+<!-- scanner de codes-barres : caméra + Open Food Facts -->
+<div class="editor scanpage" id="scanPage" aria-hidden="true">
+  <div class="ed-head">
+    <button class="backbtn" id="scanBack" aria-label="Fermer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D402D" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <h2>Scanner un produit</h2>
+  </div>
+  <div class="scan-stage">
+    <video id="scanVideo" playsinline muted autoplay></video>
+    <div class="scan-frame"><span></span><span></span><span></span><span></span></div>
+    <div class="scan-status" id="scanStatus">Démarrage de la caméra…</div>
+  </div>
+  <div class="scan-panel" id="scanPanel"></div>
 </div>
 
 <div class="editor" id="weekPage" aria-hidden="true">
@@ -3249,6 +3311,26 @@ const PANTRY = [
   {re:/^citrons? verts?$/i,                           n:"citron vert"},
   {re:/^chocolat blanc$/i,                            n:"chocolat blanc"}
 ];
+/* La quantité tapée dans le champ du nom en est extraite : « bœuf 500g » devient
+   l'article « Bœuf » avec 500 g à côté, et non un article nommé « bœuf 500g ». */
+const UNITES_TXT = "kg|g|mg|l|cl|ml|dl";
+function separeQuantite(txt){
+  const n0=(txt||"").trim().replace(/\s+/g," ");
+  if(!n0) return {n:"", q:null, u:""};
+  const num="(\\d+(?:[.,]\\d+)?)", art="(?:de\\s+|d[’']\\s*|du\\s+|des\\s+)?";
+  const val=s=>parseFloat(String(s).replace(",","."));
+  let m;
+  if((m=n0.match(new RegExp("^"+num+"\\s*("+UNITES_TXT+")\\b\\s*"+art+"(.+)$","i"))))   // « 500 g de bœuf »
+    return {q:val(m[1]), u:m[2].toLowerCase(), n:m[3].trim()};
+  if((m=n0.match(new RegExp("^(.+?)\\s+"+num+"\\s*("+UNITES_TXT+")$","i"))))            // « bœuf 500g »
+    return {q:val(m[2]), u:m[3].toLowerCase(), n:m[1].trim()};
+  if((m=n0.match(new RegExp("^(.+?)\\s*[x×]\\s*"+num+"$","i"))))                        // « oignons x3 »
+    return {q:val(m[2]), u:"", n:m[1].trim()};
+  if((m=n0.match(new RegExp("^"+num+"\\s+"+art+"(.+)$","i"))))                          // « 3 oignons »
+    return {q:val(m[1]), u:"", n:m[2].trim()};
+  return {n:n0, q:null, u:""};
+}
+
 /* ==========================================================================
    NOM GÉNÉRIQUE D'UN INGRÉDIENT
    « 2 gousses d'ail », « ail frais », « blanc de poulet », « oignon rouge »…
@@ -3272,9 +3354,15 @@ const GARDER_TEL_QUEL = [
   /^sauce (tomate|soja|worcestershire)$/i, /^nouilles de riz$/i, /^vermicelles? de riz$/i,
   /^galettes? de riz$/i, /^lait (de soja|d[’']amande|ribot)$/i, /^poudre d[’']amandes?$/i,
   /^levure (chimique|boulangère|de bière)$/i, /^ail en poudre$/i, /^oignons? (nouveaux?|nouvelles?|frits?)$/i,
-  /^gâteaux? de riz$/i, /^beurre de cacahuète$/i, /^blancs? d[’']?(œuf|oeuf)s?$/i,
-  /^jaunes? d[’']?(œuf|oeuf)s?$/i, /^gousses? de vanille$/i, /^petits pois$/i,
-  /^pousses? de soja$/i, /^lait de brebis$/i, /^huile de tournesol$/i
+  /^gâteaux? de riz$/i, /^beurre de cacahuète$/i,
+  /^gousses? de vanille$/i, /^petits pois$/i,
+  /^pousses? de soja$/i, /^lait de brebis$/i,
+  /* faux amis repérés à l'audit : ce sont des produits en soi, pas des variantes */
+  /^fromage frais$/i, /^cr[èe]me fra[îi]che [ée]paisse$/i, /^saumon fum[ée]$/i,
+  /^poitrine fum[ée]e$/i, /^jambon cru$/i, /^poisson blanc$/i, /^pain de mie$/i,
+  /^noix de (muscade|coco|p[ée]can)$/i, /^graines? de (s[ée]same|courge|pavot|lin)$/i,
+  /^dos de cabillaud$/i, /^lait de coco$/i, /^eau de fleur d[’']oranger$/i,
+  /^vinaigre (balsamique|de riz)$/i, /^huile de (s[ée]same|noix)$/i, /^sucre vanill[ée]$/i
 ];
 /* Conditionnement et découpe : ce qui précède « de » décrit la portion, pas le produit.
    « 2 gousses d'ail » → ail ;  « blanc de poulet » → poulet ;  « botte de persil » → persil. */
@@ -3283,8 +3371,11 @@ const PORTIONS = new RegExp(
   "(?:gousses?|bottes?|brins?|branches?|tranches?|filets?|escalopes?|blancs?|cuisses?|" +
   "pav[ée]s?|aiguillettes?|morceaux?|c[ôo]tes?|boîtes?|boites?|bocaux?|bocal|sachets?|" +
   "pots?|barquettes?|cubes?|feuilles?|pinc[ée]es?|poign[ée]es?|t[êe]tes?|grappes?|" +
-  "parts?|portions?|tablettes?|b[âa]tons?|tiges?|rondelles?|lamelles?|z[ée]ni?tes?)\\s+" +
+  "parts?|portions?|tablettes?|b[âa]tons?|tiges?|rondelles?|lamelles?|d[ée]s|" +
+  "tron[çc]ons?|c[œo]eurs?|gigots?|[ée]paules?|r[ôo]tis?|steaks?|darnes?)\\s+" +
   "d[’']?(?:e\\s+|es\\s+|u\\s+)?", "i");
+/* « petits oignons », « gros sel » : la taille ne change pas le produit. */
+const TAILLE = /^(?:petits?|petites?|gros|grosses?|grands?|grandes?|mini)\s+/i;
 /* Qualificatifs qui ne changent pas la nature du produit. */
 /* ⚠️ `\b` est ASCII : il ne reconnaît pas de frontière après « râpé » ou « émincé ».
    On délimite donc explicitement par un espace, une virgule ou une extrémité. */
@@ -3294,13 +3385,16 @@ const QUALIF_ING = new RegExp(
   "concass[ée]e?s?|r[âa]p[ée]e?s?|moulue?s?|doux|douce|all[ée]g[ée]e?s?|extra|vierge|" +
   "de qualit[ée]|du commerce|maison|m[ûu]re?s?|de saison|coup[ée]e?s?|lav[ée]e?s?|" +
   "d[ée]nud[ée]e?s?|d[ée]noyaut[ée]e?s?|effiloch[ée]e?s?|tranch[ée]e?s?|en morceaux|en d[ée]s|" +
-  "en rondelles|en lamelles|en poudre|liquide|semi-[ée]cr[ée]m[ée]|demi-[ée]cr[ée]m[ée])" +
+  "en rondelles|en lamelles|en poudre|liquide|semi-[ée]cr[ée]m[ée]|demi-[ée]cr[ée]m[ée]|" +
+  "d[ée]cortiqu[ée]e?s?|d[ée]sar[êe]t[ée]e?s?|vid[ée]e?s?|fine?s?|[ée]pais(?:se)?s?|" +
+  "demi-sel|du moulin|complets?|compl[èe]tes?|en grains|en branche|en conserve|en boîte|" +
+  "sans (?:peau|os|sucre|gluten|lactose)|bien m[ûu]re?s?|de printemps)" +
   "(?=[\\s,]|$)", "gi");
 /* Variantes de couleur/variété, seulement là où elles ne changent pas le produit.
    (« poivron rouge » = poivron, mais « vin rouge » ≠ « vin blanc » : traité plus haut.) */
 /* Le citron VERT est un autre fruit que le citron jaune (un ceviche ne se fait pas
    au citron jaune) : il ne figure pas dans cette liste. */
-const COULEUR_OK = /\b(oignons?|poivrons?|tomates?|raisins?)\s+(rouges?|jaunes?|verts?|blancs?)\b/i;
+const COULEUR_OK = /\b(oignons?|poivrons?|tomates?|raisins?|courgettes?|aubergines?|carottes?)\s+(rouges?|jaunes?|verts?|blancs?|violettes?|orange)\b/i;
 /* Derniers rapprochements manuels. */
 const SYNONYMES = [
   [/^patates?$/i, "pommes de terre"],
@@ -3311,8 +3405,24 @@ const SYNONYMES = [
   [/^farines? (de bl[ée]|t\d+)$/i, "farine"],
   [/^sucres? (en poudre|semoule|blanc|cristallis[ée])$/i, "sucre"],
   [/^(steaks? )?hach[ée]s?$/i, "viande hachée"],
+  [/^(b[œ]uf|boeuf|porc|veau|agneau|dinde|volaille) hach[ée]e?$/i, "viande hachée"],
   [/^bl[ée] concass[ée]$/i, "boulgour"],
-  [/^oeufs?$/i, "œufs"]
+  [/^oeufs?$/i, "œufs"],
+  /* variétés : une recette qui demande « riz » se fait très bien avec du basmati */
+  [/^riz (basmati|complet|long|rond|thaï|thai|arborio|parfum[ée]|blanc|jasmin)$/i, "riz"],
+  [/^p[âa]tes? (compl[èe]tes?|fra[îi]ches?|s[èe]ches?)$/i, "pâtes"],
+  [/^farines? (compl[èe]te|t\d+|de froment)$/i, "farine"],
+  [/^huiles? (de )?(colza|tournesol|friture|arachide|p[ée]pins de raisin|v[ée]g[ée]tale|neutre)$/i, "huile"],
+  [/^vinaigres? (de )?(vin|cidre|blanc|d[’']alcool|de xer[èe]s)$/i, "vinaigre"],
+  [/^moutardes? (de )?(dijon|forte|douce|[àa] l[’']ancienne)$/i, "moutarde"],
+  [/^jambons? (blanc|de paris|d[ée]coupé)$/i, "jambon"],
+  [/^lardons? (fum[ée]s?|nature|allum[ée]ttes?)$/i, "lardons"],
+  [/^(bouillons? cubes?|cubes? de bouillon)$/i, "bouillon"],
+  [/^pommes? (golden|granny|gala|pink lady|reinette|royal gala)$/i, "pommes"],
+  [/^(pommes? de terre|patates?) (nouvelles?|à chair ferme|grenailles?|charlotte|bintje)$/i, "pommes de terre"],
+  [/^salades? (verte|iceberg|romaine|batavia|frisée)$/i, "salade"],
+  [/^laits? (de vache|entier|[ée]cr[ée]m[ée])$/i, "lait"],
+  [/^yaourts? (grec|brass[ée]|de brebis|au lait entier)$/i, "yaourt"]
 ];
 function canonIngredient(nom){
   let n=(nom||"").trim().replace(/\s+/g," ");
@@ -3323,6 +3433,7 @@ function canonIngredient(nom){
   for(const [re,v] of SYNONYMES) if(re.test(n)) return v;
   const av=n;
   n=n.replace(PORTIONS,"");                       // « 2 gousses d'ail » → « ail »
+  n=n.replace(TAILLE,"");                         // « petits oignons » → « oignons »
   n=n.replace(COULEUR_OK, (m,p)=>p);              // « oignon rouge » → « oignon »
   n=n.replace(QUALIF_ING,"$1").replace(/\s+/g," ").replace(/\s*,\s*$/,"").trim();
   n=n.replace(/^(?:de |d[’']|du |des |la |le |les )/i,"").trim();
@@ -3343,10 +3454,40 @@ function pantryName(name){ return pantryOf(name).n; }
    « Poivron » couvre « poivron rouge », mais « Pommes » ne couvre pas « pommes de terre ».
    Dès qu'un des deux noms est déclaré dans PANTRY, on exige les mêmes mots de part et d'autre. */
 function ingKey(name){ return [...keywords(pantryName(name))].sort().join(" "); }
+/* ---------- FAMILLES DE PRODUITS ----------
+   « J'ai 2 kg de pâtes mais la recette veut des spaghetti » : le produit générique
+   couvre ses membres. Un seul sens — avoir des pâtes couvre les spaghetti, mais avoir
+   des spaghetti ne prétend pas couvrir « coquillettes ». On ne met ici que des familles
+   où le générique remplace VRAIMENT le membre en cuisine. */
+const FAMILLES = [
+  {gen:/^(pates|pate)$/,
+   membres:/^(spaghetti|tagliatelle|penne|fusilli|macaroni|linguine|farfalle|coquillette|rigatoni|orecchiette|conchiglie|tortellini|raviolis?|lasagne|gnocchi|vermicelle|nouille|capellini|bucatini|trofie|papardelle|cannelloni)/},
+  {gen:/^riz$/,          membres:/^(basmati|arborio|jasmin)/},
+  {gen:/^(fromage|fromagerape)$/,
+   membres:/^(gruyere|emmental|comte|cantal|mimolette|raclette)/},
+  {gen:/^(poisson|poissonblanc)$/,
+   membres:/^(cabillaud|colin|merlu|lieu|julienne|eglefin|merlan|dorade)/},
+  {gen:/^(viandehachee|viande)$/, membres:/^(steakhache|boeufhache|porchache)/},
+  {gen:/^salade$/,       membres:/^(laitue|batavia|romaine|frisee|roquette|mache|iceberg)/},
+  {gen:/^huile$/,        membres:/^(huiledetournesol|huiledecolza|huilevegetale)/},
+  {gen:/^farine$/,       membres:/^(farinedeble|farinet\d+)/},
+  {gen:/^sucre$/,        membres:/^(sucreblanc|sucresemoule|sucreenpoudre)/},
+  {gen:/^bouillon$/,     membres:/^(bouillondevolaille|bouillondelegumes|bouillondeboeuf|bouilloncube)/},
+  {gen:/^(herbesdeprovence|herbes)$/, membres:/^(thym|romarin|origan|sarriette)/}
+];
+// « pâtes » -> « pates », pour comparer sans espaces ni accents
+const cleFam = s => norm(s).replace(/[^a-z0-9]/g,"");
+/* Le nom du frigo (b) est-il le générique d'une famille dont l'ingrédient (a) fait partie ? */
+function familleCouvre(nomFrigo, nomRecette){
+  const g=cleFam(nomFrigo), m=cleFam(nomRecette);
+  return FAMILLES.some(f => f.gen.test(g) && f.membres.test(m));
+}
 function sameProduct(a, b){
   const pa=pantryOf(a), pb=pantryOf(b);
   const ka=keywords(pa.n), kb=keywords(pb.n);
   if(!ka.length || !kb.length) return false;
+  // b vient du frigo : s'il nomme la famille de a, il le couvre (pâtes -> spaghetti)
+  if(familleCouvre(pb.n, pa.n)) return true;
   if(pa.strict || pb.strict) return ingKey(a)===ingKey(b);
   return kb.every(w => ka.includes(w));
 }
@@ -4756,7 +4897,13 @@ function renderShopping(){
     <div style="height:calc(16px + env(safe-area-inset-top))"></div>
     <h2 style="font-family:var(--disp);font-weight:800;font-size:24px;margin:0 0 2px;letter-spacing:-.02em">Liste de courses</h2>
     <p style="color:var(--muted);font-size:14px;margin:0 0 4px">Coche ce que tu achètes, puis range-le dans le frigo.</p>
-    <div class="add-row"><input type="text" id="shopInput" placeholder="Ajouter un article..." autocomplete="off"><button class="add-btn" id="shopAdd">Ajouter</button></div>
+    <div class="add-row shop-add">
+      <input type="text" id="shopInput" placeholder="Ajouter un article..." autocomplete="off">
+      <input type="number" id="shopQty" class="qty-in" placeholder="Qté" min="0" step="any" inputmode="decimal">
+      ${unitSelect("", 'id="shopUnit"')}
+      <button class="add-btn" id="shopAdd">Ajouter</button>
+    </div>
+    <button class="scanbtn" id="scanBtn">📷 Scanner un code-barres</button>
   `;
   if(!state.shopping.length){
     html+=`<div class="empty"><div class="big">🛒</div><p>Ta liste est vide.</p><p>Ouvre une recette et ajoute les ingrédients qui te manquent.</p></div>`;
@@ -4766,6 +4913,7 @@ function renderShopping(){
       <div class="course-item ${s.checked?"checked":""}" data-shop-id="${s.id}">
         <button class="cbox" data-toggle="${s.id}" aria-label="Cocher">${s.checked?"✓":""}</button>
         <div class="clabel" data-toggle="${s.id}">${s.label}${s.from?`<span class="cfrom">pour ${s.from}</span>`:""}</div>
+        ${s.q!=null?`<span class="cqty">${fmtNum(s.q)}${s.u?" "+s.u:""}</span>`:""}
         <button class="cdel" data-del-shop="${s.id}" aria-label="Supprimer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></button>
       </div>`).join("");
     html+=`<div class="course-actions"><button class="ca primary" id="stockBtn" ${bought?"":"disabled"}>🧊 Ranger ${bought?"("+bought+")":""} dans le frigo</button><button class="ca" id="clearBtn">Tout effacer</button></div>`;
@@ -5569,6 +5717,7 @@ function closeRecipe(){
 }
 addEventListener("popstate", e=>{
   const st = e.state || {};
+  if(scanEtat.ouvert && !st.scan){ fermeScan(); return; }     // sortie du scanner par le bouton retour
   if(state.cook.open && !st.cook){ doCloseCook(); return; }   // sortie du mode cuisine par le bouton retour
   const id = st.r;
   if(id){ if(!currentRecipe || currentRecipe.id!==id) openRecipe(id, true); }
@@ -6383,18 +6532,20 @@ function addMissingToShopping(){
   let added=0;
   targets.forEach(({i,st})=>{
     const p=pantryOf(i.n);
-    // on achète le produit entier : « 5 jaunes d'œufs » entre dans la liste comme « 5 œufs »
-    const nom = n => p.part ? ((p.n1 && Math.abs(n)<=1) ? p.n1 : p.n) : i.n;
+    // on achète le produit entier, sous son nom générique : « 2 gousses d'ail » entre
+    // dans la liste comme « Ail », « 5 jaunes d'œufs » comme « 5 œufs »
+    const nom = n => (p.part && p.n1 && Math.abs(n)<=1) ? p.n1 : p.n;
     if(state.shopping.some(s=>ingKey(s.base)===ingKey(p.n))) return;
+    // la quantité n'est plus collée au nom : elle s'affiche dans sa propre pastille
     let q,u,label;
     if(st.s==="low" && st.f){
       const n=niceQty(fromBase(st.short, st.f.u), st.f.u);
-      q=n.q; u=n.u; label=(u? fmtNum(q)+" "+u+" "+nom(q) : fmtNum(q)+" "+nom(q));
+      q=n.q; u=n.u; label=cap(nom(q));
     } else if(i.q==null){
-      q=null; u=i.u||""; label=(i.u? i.u+" "+nom(1) : nom(1));
+      q=null; u=i.u||""; label=cap(nom(1));
     } else {
       const n=niceQty(i.q*factor, i.u);
-      q=n.q; u=n.u; label=(u? fmtNum(q)+" "+u+" "+nom(q) : fmtNum(q)+" "+nom(q));
+      q=n.q; u=n.u; label=cap(nom(q));
     }
     state.shopping.push({id:uid++, label, base:p.n, q, u, from:r.nom, checked:false});
     added++;
@@ -6402,6 +6553,231 @@ function addMissingToShopping(){
   addPlanned(r.id);        // on prévoit de la réaliser → épinglée en haut de l'accueil
   saveShopping(); renderDetail(); updateBadges();
   toast(added? added+" article"+(added>1?"s":"")+" ajouté"+(added>1?"s":"")+" aux courses · 📌 recette prévue" : "📌 Recette ajoutée à tes plats prévus");
+}
+
+/* ==========================================================================
+   SCANNER DE CODES-BARRES
+   Caméra -> code-barres -> Open Food Facts -> article générique + quantité.
+   Deux décodeurs : BarcodeDetector quand le navigateur l'a (Chrome Android),
+   sinon ZXing chargé à la demande depuis le CDN (indispensable sur iOS/Safari).
+   ATTENTION : la caméra exige un contexte sécurisé ; en http:// le navigateur refuse.
+   ========================================================================== */
+const ZXING_CDN="https://cdn.jsdelivr.net/npm/@zxing/library@0.21.3/umd/index.min.js";
+let scanEtat={ouvert:false, flux:null, boucle:null, lecteur:null, dernier:"", dernierAt:0};
+
+/* Catégories Open Food Facts -> ingrédient générique que les recettes comprennent.
+   L'ordre compte : la première correspondance gagne, du plus précis au plus large. */
+const OFF_CAT = [
+  [/olive-oils|huiles-d-olive/,          "huile d'olive"],
+  [/coconut-milks|laits-de-coco/,        "lait de coco"],
+  [/creams|cremes-fraiches|cremes-liquides|single-creams/, "crème"],
+  [/butters|beurres/,                    "beurre"],
+  [/yogurts|yaourts|fermented-milk/,     "yaourt"],
+  [/grated-cheeses|fromages-rapes/,      "fromage râpé"],
+  [/cheeses|fromages/,                   "fromage"],
+  [/milks|laits/,                        "lait"],
+  [/eggs|oeufs/,                         "œufs"],
+  [/pastas|pates-alimentaires|spaghetti|macaroni/, "pâtes"],
+  [/rices|riz/,                          "riz"],
+  [/flours|farines/,                     "farine"],
+  [/sugars|sucres/,                      "sucre"],
+  [/tomato-purees|concentres-de-tomates/,"concentré de tomate"],
+  [/tomato-sauces|sauces-tomates/,       "sauce tomate"],
+  [/canned-tomatoes|tomates-pelees/,     "tomates concassées"],
+  [/tomatoes|tomates/,                   "tomates"],
+  [/olives/,                             "olives"],
+  [/vegetable-oils|huiles-vegetales|sunflower-oils/, "huile"],
+  [/vinegars|vinaigres/,                 "vinaigre"],
+  [/mustards|moutardes/,                 "moutarde"],
+  [/soy-sauces|sauces-soja/,             "sauce soja"],
+  [/chocolates|chocolats/,               "chocolat noir"],
+  [/breads|pains/,                       "pain"],
+  [/lardons|bacons/,                     "lardons"],
+  [/hams|jambons/,                       "jambon"],
+  [/chickens|poulets|volailles/,         "poulet"],
+  [/minced-meat|viandes-hachees/,        "viande hachée"],
+  [/salmons|saumons/,                    "saumon"],
+  [/tunas|thons/,                        "thon"],
+  [/lentils|lentilles/,                  "lentilles"],
+  [/chick-peas|pois-chiches/,            "pois chiches"],
+  [/kidney-beans|haricots-rouges/,       "haricots rouges"],
+  [/canned-corn|sweet-corn/,             "maïs"],
+  [/peas|petits-pois/,                   "petits pois"]
+];
+
+/* « 50 cl », « 6 x 125 g », « 1L », « 500g » -> {q, u} */
+function quantiteOFF(txt){
+  const t=(txt||"").toLowerCase().replace(/\s+/g," ").trim();
+  if(!t) return {q:null,u:""};
+  const mult=t.match(/(\d+)\s*[x×]\s*(\d+(?:[.,]\d+)?)\s*(kg|g|mg|l|cl|ml|dl)\b/);
+  if(mult) return {q:parseFloat(mult[1])*parseFloat(mult[2].replace(",",".")), u:mult[3]};
+  const un=t.match(/(\d+(?:[.,]\d+)?)\s*(kg|g|mg|l|cl|ml|dl)\b/);
+  if(un) return {q:parseFloat(un[1].replace(",",".")), u:un[2]};
+  const pc=t.match(/^(\d+)\s*(?:pieces?|pi[èe]ces?|unit[ée]s?)?$/);
+  if(pc) return {q:parseFloat(pc[1]), u:""};
+  return {q:null,u:""};
+}
+
+/* Nom générique d'un produit scanné : les catégories d'abord (fiables),
+   le nom commercial ensuite (« Crème légère Bridélice 30cl » -> crème). */
+function nomGenerique(prod){
+  const cats=(prod.categories_tags||[]).join(" ");
+  for(const [re,nom] of OFF_CAT) if(re.test(cats)) return nom;
+  const brut=(prod.product_name_fr||prod.product_name||"").trim();
+  if(!brut) return "";
+  const marques=(prod.brands||"").split(",").map(b=>b.trim()).filter(Boolean);
+  let net=brut;
+  marques.forEach(m=>{ net=net.replace(new RegExp(m.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"),"gi")," "); });
+  net=net.replace(/\d+\s*(kg|g|l|cl|ml|dl)\b/gi," ")
+         .replace(/\b(bio|extra|premium|light|nature|allege|allégé|saveur|go[ûu]t|format|familial|le|la|les|nos|notre|du|de|des|au|aux)\b/gi," ")
+         .replace(/[^\p{L}\s-]+/gu," ")
+         .replace(/\s+/g," ").trim();
+  // « Biscuits NUTELLA Biscuits Noisettes » : le même mot revient, on ne le garde qu'une fois
+  const vus=new Set(), mots=[];
+  net.split(" ").forEach(m=>{ const k=norm(m); if(k.length>1 && !vus.has(k)){ vus.add(k); mots.push(m); } });
+  net=mots.slice(0,3).join(" ").replace(/(^|\s)(et|avec|sans|pour|en)(\s|$)/gi," ").replace(/\s+/g," ").trim();
+  // « Nutella » de la marque Nutella : tout a disparu, on repart du nom brut
+  if(!net) net=brut.replace(/[^\p{L}\s-]+/gu," ").replace(/\s+/g," ").trim().split(" ").slice(0,2).join(" ");
+  if(!net) return "";
+  return pantryName(net);
+}
+
+async function chargeZXing(){
+  if(window.ZXing) return true;
+  try{
+    await new Promise((ok,ko)=>{ const sc=document.createElement("script");
+      sc.src=ZXING_CDN; sc.onload=ok; sc.onerror=()=>ko(new Error("CDN injoignable")); document.head.appendChild(sc); });
+    return !!window.ZXing;
+  }catch(e){ return false; }
+}
+
+function scanDit(txt, err){
+  const el=document.getElementById("scanStatus");
+  if(el){ el.textContent=txt; el.classList.toggle("err", !!err); }
+}
+
+async function ouvreScan(){
+  const page=document.getElementById("scanPage");
+  page.classList.add("open"); page.setAttribute("aria-hidden","false");
+  document.body.style.overflow="hidden";
+  document.getElementById("scanPanel").innerHTML="";
+  scanEtat.ouvert=true;
+  history.pushState({scan:1},"");
+  if(!isSecureContext){
+    scanDit("La caméra exige une connexion sécurisée (https). En http, le navigateur la refuse.", true);
+    panneauScanManuel(); return;
+  }
+  if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
+    scanDit("Ce navigateur ne donne pas accès à la caméra.", true); panneauScanManuel(); return;
+  }
+  try{
+    scanEtat.flux=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:"environment"}}, audio:false});
+  }catch(e){
+    scanDit(e && e.name==="NotAllowedError" ? "Accès à la caméra refusé. Autorise-le dans les réglages du navigateur."
+                                            : "Caméra indisponible ("+((e&&e.name)||"erreur")+").", true);
+    panneauScanManuel(); return;
+  }
+  const v=document.getElementById("scanVideo");
+  v.srcObject=scanEtat.flux; try{ await v.play(); }catch(e){}
+  scanDit("Vise le code-barres du produit");
+  lanceDecodage(v);
+}
+
+async function lanceDecodage(video){
+  if("BarcodeDetector" in window){
+    let det;
+    try{ det=new BarcodeDetector({formats:["ean_13","ean_8","upc_a","upc_e","code_128"]}); }
+    catch(e){ det=new BarcodeDetector(); }
+    const tick=async()=>{
+      if(!scanEtat.ouvert) return;
+      try{ const codes=await det.detect(video); if(codes && codes.length) traiteCode(codes[0].rawValue); }catch(e){}
+      scanEtat.boucle=setTimeout(tick, 320);
+    };
+    tick(); return;
+  }
+  scanDit("Préparation du lecteur...");
+  const ok=await chargeZXing();
+  if(!ok){ scanDit("Lecteur de codes-barres indisponible (hors ligne ?).", true); panneauScanManuel(); return; }
+  scanDit("Vise le code-barres du produit");
+  try{
+    scanEtat.lecteur=new ZXing.BrowserMultiFormatReader();
+    scanEtat.lecteur.decodeFromVideoElement(video, (res)=>{ if(res && scanEtat.ouvert) traiteCode(res.getText()); });
+  }catch(e){ scanDit("Lecteur non démarré ("+(e.message||"")+").", true); panneauScanManuel(); }
+}
+
+function traiteCode(code){
+  code=String(code||"").replace(/\D/g,"");
+  if(code.length<8) return;
+  const t=Date.now();
+  if(code===scanEtat.dernier && t-scanEtat.dernierAt<4000) return;   // le même produit reste sous l'objectif
+  scanEtat.dernier=code; scanEtat.dernierAt=t;
+  if(navigator.vibrate) navigator.vibrate(40);
+  scanDit("Code lu, recherche du produit...");
+  chercheEtAjoute(code);
+}
+
+async function chercheEtAjoute(code){
+  let prod=null;
+  try{
+    const r=await fetch("https://world.openfoodfacts.org/api/v2/product/"+code+
+      ".json?fields=product_name,product_name_fr,quantity,product_quantity,categories_tags,brands");
+    if(r.ok){ const j=await r.json(); if(j && j.status===1) prod=j.product; }
+  }catch(e){}
+  if(!prod){
+    scanDit("Code "+code+" inconnu du catalogue Open Food Facts.", true);
+    panneauScanManuel(code); return;
+  }
+  const nom=nomGenerique(prod);
+  if(!nom){ scanDit("Produit trouvé mais sans nom exploitable.", true); panneauScanManuel(code); return; }
+  let q=quantiteOFF(prod.quantity).q, u=quantiteOFF(prod.quantity).u;
+  if(q==null && prod.product_quantity){ const n=parseFloat(prod.product_quantity); if(!isNaN(n)){ q=n; u="g"; } }
+  ajouteAuxCourses(nom, q, u);
+  const brut=(prod.product_name_fr||prod.product_name||"").trim();
+  const panel=document.getElementById("scanPanel");
+  panel.insertAdjacentHTML("afterbegin",
+    '<div class="scan-hit"><div class="sh-txt"><div class="sh-n">'+esc(cap(nom))+'</div>'+
+    '<div class="sh-s">'+esc(brut||("code "+code))+'</div></div>'+
+    '<span class="sh-q">'+(q!=null?esc(fmtNum(roundNice(q))+(u?" "+u:"")):"ajouté")+'</span></div>');
+  scanDit("« "+cap(nom)+" » ajouté aux courses · scanne le suivant");
+}
+
+/* ajoute, ou cumule si l'article est déjà là */
+function ajouteAuxCourses(nom, q, u){
+  const v=cap(pantryName(nom));
+  if(!v) return;
+  const ex=state.shopping.find(s=>ingKey(s.base)===ingKey(v));
+  if(ex){
+    if(q!=null){
+      if(ex.q!=null && comparable(ex.u,u)) ex.q=roundNice(fromBase(toBase(ex.q,ex.u)+toBase(q,u), ex.u));
+      else { ex.q=roundNice(q); ex.u=u||""; }
+    }
+  } else {
+    state.shopping.push({id:uid++, label:v, base:v, q:(q==null?null:roundNice(q)), u:u||"", from:"", checked:false});
+  }
+  saveShopping(); updateBadges();
+  if(state.view==="shopping") renderShopping();
+}
+
+function panneauScanManuel(code){
+  const panel=document.getElementById("scanPanel");
+  const note='<div class="scan-note">'+(code?"Code "+esc(code)+" non reconnu.":"Scan indisponible.")+
+             ' Tu peux saisir l\'article toi-même dans l\'onglet Courses.</div>'+
+             '<button class="scan-manuel" id="scanQuit">Retour à ma liste</button>';
+  panel.innerHTML=note+panel.innerHTML;
+}
+
+function fermeScan(){
+  if(!scanEtat.ouvert) return;
+  scanEtat.ouvert=false;
+  clearTimeout(scanEtat.boucle); scanEtat.boucle=null;
+  try{ if(scanEtat.lecteur && scanEtat.lecteur.reset) scanEtat.lecteur.reset(); }catch(e){}
+  scanEtat.lecteur=null;
+  if(scanEtat.flux){ scanEtat.flux.getTracks().forEach(t=>t.stop()); scanEtat.flux=null; }
+  const v=document.getElementById("scanVideo"); if(v) v.srcObject=null;
+  const page=document.getElementById("scanPage");
+  page.classList.remove("open"); page.setAttribute("aria-hidden","true");
+  document.body.style.overflow="";
+  scanEtat.dernier="";
 }
 
 /* ---------- partage ---------- */
@@ -6935,6 +7311,8 @@ function semaineVersCourses(){
   toast(n? n+" article"+(n>1?"s":"")+" ajouté"+(n>1?"s":"")+" aux courses" : "Tout est déjà dans ta liste");
 }
 document.getElementById("weekBack").addEventListener("click", closeWeek);
+document.getElementById("scanBack").addEventListener("click", ()=>history.back());
+document.getElementById("scanPage").addEventListener("click", e=>{ if(e.target.closest("#scanQuit")) history.back(); });
 weekScroll.addEventListener("click",e=>{
   const s=state.semaine;
   const eq=e.target.closest("[data-eq]");
@@ -7591,13 +7969,27 @@ scrollEl.addEventListener("click",e=>{
     if(name.trim()){ addToFridge(name,q,u); renderFridge(); updateBadges(); }
     return;
   }
+  if(e.target.closest("#scanBtn")){ ouvreScan(); return; }
   if(e.target.closest("#shopAdd")){
     const inp=document.getElementById("shopInput");
-    // « gousse d'ail » saisi à la main devient « ail » : c'est sous ce nom que toutes les
-    // recettes sauront qu'on l'a, une fois l'article rangé dans le frigo
-    const v=cap(pantryName(inp.value.trim()));
-    if(v && !state.shopping.some(s=>ingKey(s.base)===ingKey(v))){ state.shopping.push({id:uid++,label:v,base:v,q:null,u:"",from:"",checked:false}); saveShopping(); }
-    inp.value=""; renderShopping(); updateBadges(); return;
+    const inQ=document.getElementById("shopQty"), inU=document.getElementById("shopUnit");
+    // la quantité tapée dans le nom en est retirée (« bœuf 500g » → Bœuf + 500 g),
+    // puis « gousse d'ail » devient « ail » : c'est sous ce nom que toutes les recettes
+    // sauront qu'on l'a, une fois l'article rangé dans le frigo
+    const sep=separeQuantite(inp.value);
+    const v=cap(pantryName(sep.n));
+    // le champ dédié l'emporte sur ce qui a été deviné dans le texte
+    const qSaisie=inQ && inQ.value!=="" ? parseFloat(inQ.value) : null;
+    const q = (qSaisie!=null && !isNaN(qSaisie)) ? qSaisie : sep.q;
+    const u = (qSaisie!=null && !isNaN(qSaisie)) ? (inU?inU.value:"") : sep.u;
+    if(v){
+      const ex=state.shopping.find(s=>ingKey(s.base)===ingKey(v));
+      if(ex){ if(q!=null){ if(ex.q!=null && comparable(ex.u,u)) ex.q=roundNice(fromBase(toBase(ex.q,ex.u)+toBase(q,u), ex.u)); else { ex.q=roundNice(q); ex.u=u; } } }
+      else state.shopping.push({id:uid++,label:v,base:v,q:(q==null?null:roundNice(q)),u:u||"",from:"",checked:false});
+      saveShopping();
+    }
+    inp.value=""; if(inQ) inQ.value=""; if(inU) inU.value="";
+    renderShopping(); updateBadges(); return;
   }
   const tog=e.target.closest("[data-toggle]");
   if(tog){ const s=state.shopping.find(x=>x.id==tog.dataset.toggle); if(s){ s.checked=!s.checked; saveShopping(); renderShopping(); updateBadges(); } return; }
