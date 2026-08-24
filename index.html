@@ -1294,9 +1294,10 @@
        box-shadow:0 8px 22px rgba(228,161,49,.34)}
   .scanbtn .sb-ico{flex:0 0 auto;width:42px;height:42px;border-radius:13px;background:rgba(29,64,45,.16);
        display:flex;align-items:center;justify-content:center;font-size:21px}
-  .scanbtn .sb-txt{flex:1;min-width:0}
-  .scanbtn .sb-t{font-family:var(--disp);font-weight:800;font-size:16px;line-height:1.15}
-  .scanbtn .sb-s{font-size:12px;font-weight:600;opacity:.8;margin-top:2px}
+  /* deux <span> : sans display:block ils se suivaient sur la même ligne */
+  .scanbtn .sb-txt{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+  .scanbtn .sb-t{display:block;font-family:var(--disp);font-weight:800;font-size:16.5px;line-height:1.2}
+  .scanbtn .sb-s{display:block;font-size:12.5px;font-weight:600;opacity:.82;line-height:1.3}
   .scanbtn .sb-fl{flex:0 0 auto;font-size:19px;opacity:.55}
   :root[data-theme="dark"] .scanbtn{color:#12251A}
 
