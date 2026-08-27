@@ -97,7 +97,11 @@
   .pantry-banner .pb-txt{position:relative;z-index:1}
   .pantry-banner .pb-num{font-family:var(--disp);font-weight:800;font-size:22px;line-height:1}
   .pantry-banner .pb-sub{font-size:12.5px;opacity:.75;margin-top:3px}
-  .pantry-banner .pb-cook{position:relative;z-index:1;text-align:right}
+  .pantry-banner .pb-cook{position:relative;z-index:1;text-align:right;background:none;border:none;padding:6px 8px;border-radius:12px;color:inherit;transition:background .2s,transform .15s}
+  .pantry-banner .pb-cook.go{cursor:pointer;background:rgba(255,255,255,.10)}
+  .pantry-banner .pb-cook.go:active{transform:scale(.96)}
+  .pantry-banner .pb-cook:disabled{opacity:.75}
+  .pantry-banner .pb-cook.go::after{content:"A";position:absolute;right:-2px;top:50%;transform:translateY(-50%);font-size:17px;opacity:.6}
   .pantry-banner .pb-cook b{font-family:var(--disp);font-weight:800;font-size:22px;color:var(--camel-light);display:block;line-height:1}
   .pantry-banner .pb-cook small{font-size:11px;opacity:.85}
 
@@ -1198,6 +1202,8 @@
     .set-row,.warnbox,.coursetotal{max-width:700px}
     /* ces blocs pleine largeur devenaient des bandeaux démesurés sur 930 px */
     .weekbtn,.addcard,.scanbtn{max-width:520px}
+    .ag-wrap{margin:0;padding-left:0;padding-right:0}
+    .ag-jour{flex:1 1 0;min-width:0}
     .hello{font-size:24px;margin-top:10px}
     /* le frigo et les courses tiennent sur deux colonnes */
     .fitems{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:900px}
@@ -1300,6 +1306,63 @@
   .scanbtn .sb-s{display:block;font-size:12.5px;font-weight:600;opacity:.82;line-height:1.3}
   .scanbtn .sb-fl{flex:0 0 auto;font-size:19px;opacity:.55}
   :root[data-theme="dark"] .scanbtn{color:#12251A}
+
+  /* ---------- agenda de la semaine ---------- */
+  .ag-bandeau{background:var(--camel-tint);border:1px solid var(--camel-light);border-radius:14px;
+       padding:11px 14px;font-size:13.5px;color:var(--camel-deep);margin-bottom:12px;line-height:1.45}
+  /* une seule ligne : aujourd'hui à gauche, on fait défiler vers les jours suivants */
+  .ag-wrap{display:flex;gap:10px;overflow-x:auto;padding:2px 0 10px;margin:0 -18px;padding-left:18px;padding-right:18px;
+       scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
+  .ag-wrap::-webkit-scrollbar{display:none}
+  .ag-jour{flex:0 0 132px;display:flex;flex-direction:column;gap:8px;scroll-snap-align:start}
+  .ag-date{font-family:var(--disp);font-weight:800;font-size:13px;color:var(--muted);text-align:center;
+       padding:5px 0;border-radius:9px;background:var(--card);border:1px solid var(--line);white-space:nowrap;
+       overflow:hidden;text-overflow:ellipsis}
+  .ag-jour.today .ag-date{background:var(--strong);color:#FBF5E6;border-color:var(--strong)}
+  .ag-slot{position:relative;height:118px;border-radius:16px;border:1.5px solid var(--line);background:var(--card);
+       display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:8px;overflow:hidden;
+       text-align:center;transition:border-color .2s,background .2s,transform .15s}
+  .ag-slot:active{transform:scale(.97)}
+  .ag-rep{position:absolute;top:6px;left:8px;font-size:10px;font-weight:800;letter-spacing:.06em;
+       text-transform:uppercase;color:var(--muted)}
+  .ag-slot.vide{border-style:dashed}
+  .ag-plus{font-size:24px;color:var(--camel);font-weight:700}
+  .ag-slot.restes{background:var(--basil-tint);border-color:var(--basil)}
+  .ag-restes{font-size:12.5px;font-weight:700;color:var(--ink);line-height:1.5}
+  .ag-img{width:100%;height:52px;border-radius:10px;background-size:cover;background-position:center;margin-top:10px}
+  .ag-nom{font-size:12px;font-weight:700;color:var(--ink);line-height:1.25;
+       display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .ag-pied{margin-top:6px;display:flex;flex-direction:column;gap:9px}
+  .ag-res{font-size:13.5px;color:var(--muted);text-align:center;margin-bottom:2px}
+  .ag-act{width:100%;padding:13px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);
+       color:var(--ink);font-weight:700;font-size:14.5px}
+  .ag-act.primaire{background:var(--strong);color:#FBF5E6;border-color:var(--strong)}
+  .ag-act.efface{border-style:dashed;color:var(--muted);font-weight:600}
+
+  /* feuille de choix d'un repas */
+  .ag-ch-t{font-family:var(--disp);font-weight:800;font-size:19px;margin:2px 0 14px}
+  .ag-ch-s{font-family:var(--disp);font-weight:800;font-size:15px;margin:18px 0 9px}
+  .ag-opt{width:100%;display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;
+       padding:13px 15px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);margin-bottom:8px}
+  .ag-opt b{font-family:var(--disp);font-weight:800;font-size:15px;color:var(--ink)}
+  .ag-opt span{font-size:12px;color:var(--muted)}
+  .ag-opt.restes{border-color:var(--basil);background:var(--basil-tint)}
+  .ag-opt.vider{border-style:dashed}
+  .ag-search{width:100%;box-sizing:border-box;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);
+       background:var(--card);color:var(--ink);font-size:15px;font-family:inherit;outline:none;margin-bottom:10px}
+  .ag-search:focus{border-color:var(--camel)}
+  .ag-liste{display:flex;flex-direction:column;gap:7px}
+  .ag-rec{display:flex;align-items:center;gap:11px;text-align:left;padding:8px;border-radius:13px;
+       border:1px solid var(--line);background:var(--card)}
+  .ag-rec-img{flex:0 0 48px;width:48px;height:48px;border-radius:11px;background-size:cover;background-position:center}
+  .ag-rec-txt{flex:1;min-width:0}
+  .ag-rec-txt b{display:block;font-family:var(--disp);font-weight:800;font-size:14.5px;color:var(--ink);
+       overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .ag-rec-txt span{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+  .ag-vide{text-align:center;color:var(--muted);font-size:13.5px;padding:20px 0}
+  /* bouton « planifier » sur une fiche recette */
+  .planbtn{width:100%;margin:0 0 10px;padding:13px;border-radius:14px;border:1.5px solid var(--camel);
+       background:var(--camel-tint);color:var(--camel-deep);font-weight:800;font-size:14.5px}
 
   @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
   :focus-visible{outline:2.5px solid var(--camel);outline-offset:2px;border-radius:6px}
@@ -3438,7 +3501,6 @@ const SYNONYMES = [
   [/^farines? (de bl[ée]|t\d+)$/i, "farine"],
   [/^sucres? (en poudre|semoule|blanc|cristallis[ée])$/i, "sucre"],
   [/^(steaks? )?hach[ée]s?$/i, "viande hachée"],
-  [/^(b[œ]uf|boeuf|porc|veau|agneau|dinde|volaille) hach[ée]e?$/i, "viande hachée"],
   [/^bl[ée] concass[ée]$/i, "boulgour"],
   [/^oeufs?$/i, "œufs"],
   /* variétés : une recette qui demande « riz » se fait très bien avec du basmati */
@@ -3500,7 +3562,8 @@ const FAMILLES = [
    membres:/^(gruyere|emmental|comte|cantal|mimolette|raclette)/},
   {gen:/^(poisson|poissonblanc)$/,
    membres:/^(cabillaud|colin|merlu|lieu|julienne|eglefin|merlan|dorade)/},
-  {gen:/^(viandehachee|viande)$/, membres:/^(steakhache|boeufhache|porchache)/},
+  {gen:/^(viandehachee|viande)$/,
+   membres:/^(steakh?ach|boeufhach|porchach|veauhach|agneauhach|dindehach|volaillehach)/},
   {gen:/^salade$/,       membres:/^(laitue|batavia|romaine|frisee|roquette|mache|iceberg)/},
   {gen:/^huile$/,        membres:/^(huiledetournesol|huiledecolza|huilevegetale)/},
   {gen:/^farine$/,       membres:/^(farinedeble|farinet\d+)/},
@@ -3654,6 +3717,7 @@ const state = { view:"home", search:"", filter:"Tous", onlyCookable:false, onlyP
   /* planificateur de semaine : les réglages (équipements, goûts) sont mémorisés même
      quand on supprime la semaine, pour ne pas les redemander à chaque fois */
   semaine:{equip:null, prefs:{deteste:[], allerg:[]}, cuisine:"", nb:5, budget:40, plats:[], creeLe:null},
+  agenda:{},
   weekUI:{open:false, etape:0, gen:false},
   currentPortions:0, cooked:false, confirmCook:false, notes:{} };
 
@@ -3737,6 +3801,81 @@ function recetteOK(r, s){
 function candidatsSemaine(s){ return allRecipes().filter(r=>recetteOK(r,s)); }
 /* tire `nb` plats variés en restant sous le budget ; on privilégie les mieux notés
    et on évite de répéter la même famille de plat deux fois */
+/* ==========================================================================
+   AGENDA DE LA SEMAINE
+   Huit colonnes : aujourd'hui puis les 7 jours suivants. Deux repas par jour.
+   Un créneau contient soit une recette, soit « les restes », soit rien.
+   state.agenda = { "2026-08-17": {midi:{t:"r",id:"carbonara"}, soir:{t:"restes"}} }
+   ========================================================================== */
+const REPAS=["midi","soir"];
+function cleJour(d){ return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
+function joursAgenda(){
+  const out=[], base=new Date(); base.setHours(12,0,0,0);
+  for(let i=0;i<8;i++){ const d=new Date(base); d.setDate(base.getDate()+i); out.push(d); }
+  return out;
+}
+/* tous les créneaux dans l'ordre chronologique : c'est cet ordre qui sert au décalage */
+function creneaux(){
+  const out=[];
+  joursAgenda().forEach(d=>{ const c=cleJour(d); REPAS.forEach(rp=>out.push({cle:c, repas:rp, date:d})); });
+  return out;
+}
+function slotDe(cle, repas){ const j=state.agenda[cle]; return (j && j[repas]) || null; }
+function poseSlot(cle, repas, slot){
+  if(!state.agenda[cle]) state.agenda[cle]={};
+  if(slot) state.agenda[cle][repas]=slot; else delete state.agenda[cle][repas];
+  if(!Object.keys(state.agenda[cle]).length) delete state.agenda[cle];
+}
+function saveAgenda(){ Store.set("gabcook_agenda", state.agenda); }
+/* Nettoie les jours passés : l'agenda glisse tout seul avec le temps. */
+function purgeAgenda(){
+  const min=cleJour(joursAgenda()[0]);
+  let bouge=false;
+  Object.keys(state.agenda).forEach(k=>{ if(k<min){ delete state.agenda[k]; bouge=true; } });
+  if(bouge) saveAgenda();
+}
+/* « On a mangé les restes » : la recette qui occupait le créneau n'est pas perdue,
+   elle glisse au repas suivant, en poussant devant elle ce qui s'y trouvait déjà. */
+function poseRestes(cle, repas){
+  const liste=creneaux();
+  const i=liste.findIndex(c=>c.cle===cle && c.repas===repas);
+  if(i<0) return {decale:0, perdu:0};
+  let porte=slotDe(cle, repas);
+  poseSlot(cle, repas, {t:"restes"});
+  let decale=0, perdu=0;
+  // on ne pousse que des recettes : un « restes » rencontré en chemin est écrasé
+  for(let k=i+1; porte && porte.t==="r"; k++){
+    if(k>=liste.length){ perdu++; break; }
+    const c=liste[k], suivant=slotDe(c.cle, c.repas);
+    poseSlot(c.cle, c.repas, porte); decale++;
+    porte = (suivant && suivant.t==="r") ? suivant : null;
+  }
+  saveAgenda();
+  return {decale, perdu};
+}
+function videSlot(cle, repas){ poseSlot(cle, repas, null); saveAgenda(); }
+function assigneRecette(id, cle, repas){ poseSlot(cle, repas, {t:"r", id}); saveAgenda(); }
+/* recettes présentes dans l'agenda, sans doublon */
+function recettesAgenda(){
+  const ids=[];
+  creneaux().forEach(c=>{ const s=slotDe(c.cle,c.repas); if(s && s.t==="r" && !ids.includes(s.id)) ids.push(s.id); });
+  return ids;
+}
+function agendaCompte(){
+  let n=0; creneaux().forEach(c=>{ const s=slotDe(c.cle,c.repas); if(s && s.t==="r") n++; });
+  return n;
+}
+function coutAgenda(){
+  return recettesAgenda().reduce((t,id)=>{ const r=findRecipe(id); return t+(r?prixRecette(r).parPers*4:0); },0);
+}
+const JOURS_CT=["dim.","lun.","mar.","mer.","jeu.","ven.","sam."];
+const MOIS_CT=["janv.","févr.","mars","avr.","mai","juin","juil.","août","sept.","oct.","nov.","déc."];
+function libelleJour(d,i){
+  if(i===0) return "Aujourd'hui";
+  if(i===1) return "Demain";
+  return JOURS_CT[d.getDay()]+" "+d.getDate();
+}
+
 function genereSemaine(s){
   const pool=candidatsSemaine(s);
   if(!pool.length) return [];
@@ -3779,6 +3918,16 @@ function rerollPlat(i){
   return true;
 }
 function saveSemaine(){ Store.set("gabcook_semaine", state.semaine); }
+/* résumé affiché sur l'accueil : le prochain repas planifié, sinon une invitation */
+function prochainRepasTxt(){
+  const n=agendaCompte();
+  if(!n) return "Planifie tes repas ou laisse-nous proposer";
+  const suite=creneaux().find(c=>{ const sl=slotDe(c.cle,c.repas); return sl && sl.t==="r"; });
+  if(!suite) return n+" repas planifié"+(n>1?"s":"");
+  const r=findRecipe(slotDe(suite.cle,suite.repas).id);
+  const i=joursAgenda().findIndex(d=>cleJour(d)===suite.cle);
+  return (r?r.nom:"Plat")+" · "+libelleJour(joursAgenda()[i],i).toLowerCase()+" "+suite.repas;
+}
 function semaineFaite(){ return !!(state.semaine.plats && state.semaine.plats.length); }
 function coutSemaine(){
   return state.semaine.plats.reduce((t,id)=>{ const r=findRecipe(id); return t+(r?prixRecette(r).parPers*4:0); },0);
@@ -4791,16 +4940,12 @@ function renderHome(){
         <div class="pb-num">${state.fridge.length} ingrédient${state.fridge.length>1?"s":""}</div>
         <div class="pb-sub">${state.fridge.length? "dans ton frigo" : "Ajoute ce que tu as dans le frigo"}</div>
       </div>
-      <div class="pb-cook"><b>${cookableCount}</b><small>recette${cookableCount>1?"s":""} prête${cookableCount>1?"s":""} à cuisiner</small></div>
+      <button class="pb-cook${cookableCount?" go":""}" id="pbCook" ${cookableCount?"":"disabled"}><b>${cookableCount}</b><small>recette${cookableCount>1?"s":""} prête${cookableCount>1?"s":""} à cuisiner</small></button>
     </div>
 
-    ${semaineFaite()
-      ? `<button class="weekbtn" id="weekOpen"><span class="wb-em">🗓️</span>
-           <span class="wb-t"><b>Ma semaine</b><span>${state.semaine.plats.length} plat${state.semaine.plats.length>1?"s":""} · ≈ ${euros(coutSemaine())}</span></span>
-           <span class="wb-x" id="weekDel" role="button" aria-label="Supprimer la semaine">✕</span></button>`
-      : `<button class="weekbtn" id="weekStart"><span class="wb-em">🗓️</span>
-           <span class="wb-t"><b>Générer ma semaine</b><span>Des plats choisis pour toi, selon ton budget</span></span>
-           <span class="wb-em" style="font-size:18px">▶</span></button>`}
+    <button class="weekbtn" id="weekOpen"><span class="wb-em">🗓️</span>
+           <span class="wb-t"><b>Gérer ma semaine</b><span>${prochainRepasTxt()}</span></span>
+           <span class="wb-em" style="font-size:18px">▶</span></button>
 
     <button class="addcard" id="addRecipe">＋ Ajouter ma recette</button>
 
@@ -5929,6 +6074,7 @@ function renderDetail(){
       <div class="acts">${actions}</div>
       <div style="height:26px"></div>
       <h4 style="font-family:var(--disp);font-weight:700;font-size:18px;margin:0 0 14px">Préparation${v.af?" <span style=\"font-size:13px;color:#A9700F;font-weight:700\">· air fryer</span>":v.mo?" <span style=\"font-size:13px;color:#3F6288;font-weight:700\">· micro-ondes</span>":""}</h4>
+      <button class="planbtn" id="planBtn">🗓️ Planifier dans ma semaine</button>
       ${v.etapes.filter(e=>clean(e)).length?`<button class="ck-launch" id="cookStart">👨‍🍳 Cuisiner pas à pas</button>`:""}
       <ol class="steps">${v.etapes.map(e=>`<li><div class="st">${esc(e)}</div></li>`).join("")}</ol>
       ${noteBlockHTML(r)}
@@ -7245,9 +7391,80 @@ function closeWeek(){
   render();                                      // le bouton de l'accueil peut avoir changé
 }
 function wkGo(n){ _wkSens = n>state.weekUI.etape ? 1 : -1; state.weekUI.etape=n; renderWeek(); }
+/* ---------- vue agenda dans la page « Ma semaine » ---------- */
+function agendaHTML(){
+  const u=state.weekUI, jours=joursAgenda();
+  const enChoix=!!u.assigner;                      // on vient d'une recette : on choisit un créneau
+  const rAssign=enChoix?findRecipe(u.assigner):null;
+  let html="";
+  if(enChoix) html+=`<div class="ag-bandeau">Où veux-tu manger <b>${esc(rAssign?rAssign.nom:"ce plat")}</b> ? Touche un repas.</div>`;
+  html+=`<div class="ag-wrap">`+jours.map((d,i)=>{
+    const cle=cleJour(d);
+    return `<div class="ag-jour${i===0?" today":""}">
+      <div class="ag-date">${esc(libelleJour(d,i))}</div>
+      ${REPAS.map(rp=>{
+        const s=slotDe(cle,rp);
+        let dedans, cls="";
+        if(!s){ dedans=`<span class="ag-plus">＋</span>`; cls=" vide"; }
+        else if(s.t==="restes"){ dedans=`<span class="ag-restes">♻️<br>Les restes</span>`; cls=" restes"; }
+        else { const r=findRecipe(s.id);
+               dedans=r ? `<span class="ag-img" style="background-image:url('${esc(dishPhoto(r))}')"></span><span class="ag-nom">${esc(r.nom)}</span>`
+                        : `<span class="ag-nom">Recette supprimée</span>`;
+               cls=" plein"; }
+        return `<button class="ag-slot${cls}" data-slot="${cle}|${rp}">
+                  <span class="ag-rep">${rp==="midi"?"Midi":"Soir"}</span>${dedans}</button>`;
+      }).join("")}
+    </div>`;
+  }).join("")+`</div>`;
+  const n=agendaCompte();
+  html+=`<div class="ag-pied">
+    <div class="ag-res">${n? n+" repas planifié"+(n>1?"s":"")+" · ≈ "+euros(coutAgenda()) : "Aucun repas planifié pour l'instant"}</div>
+    <button class="ag-act primaire" id="agGen">✨ Me proposer des plats</button>
+    ${n?`<button class="ag-act" id="agCourses">🛒 Ajouter les ingrédients aux courses</button>`:""}
+    ${n?`<button class="ag-act efface" id="agVider">Tout effacer</button>`:""}
+  </div>`;
+  return html;
+}
+/* feuille de choix pour un créneau : une recette, les restes, ou vider */
+function choixSlotHTML(){
+  const u=state.weekUI, [cle,repas]=u.pick.split("|");
+  const d=joursAgenda().find(x=>cleJour(x)===cle);
+  const i=joursAgenda().findIndex(x=>cleJour(x)===cle);
+  const q=norm(u.pickQ||"");
+  const pool=RECIPES.concat(state.perso);
+  const suggestions=(q? pool.filter(r=>norm(r.nom).includes(q))
+                      : pool.filter(r=>isFav(r.id)||isPlanned(r.id)).concat(recommendations(8))
+                     ).filter((r,k,a)=>a.indexOf(r)===k).slice(0,30);
+  const actuel=slotDe(cle,repas);
+  return `<div class="ag-choix">
+    <div class="ag-ch-t">${esc(libelleJour(d,i))} · ${repas==="midi"?"midi":"soir"}</div>
+    <button class="ag-opt restes" data-ag-restes="1">♻️ <b>Les restes</b><span>Le plat précédent glisse au repas suivant</span></button>
+    ${actuel?`<button class="ag-opt vider" data-ag-vider="1">🗑️ <b>Vider ce repas</b></button>`:""}
+    <div class="ag-ch-s">Choisir une recette</div>
+    <input type="search" class="ag-search" id="agSearch" placeholder="Rechercher une recette..." value="${esc(u.pickQ||"")}" autocomplete="off">
+    <div class="ag-liste">${
+      suggestions.length? suggestions.map(r=>`<button class="ag-rec" data-ag-rec="${esc(r.id)}">
+          <span class="ag-rec-img" style="background-image:url('${esc(dishPhoto(r))}')"></span>
+          <span class="ag-rec-txt"><b>${esc(r.nom)}</b><span>${r.prep+viewOf(r).cuisson} min · ${esc(r.diff)}</span></span>
+        </button>`).join("")
+        : `<div class="ag-vide">Aucune recette pour « ${esc(u.pickQ||"")} »</div>`}</div>
+  </div>`;
+}
+
 function renderWeek(){
   const s=state.semaine, u=state.weekUI, e=u.etape;
   const nav=document.getElementById("weekNav");
+  // vue agenda : elle remplace l'ancien « résultat » et devient l'écran principal
+  if(u.vue==="agenda"){
+    const enChoix=!!u.pick;
+    document.getElementById("weekTitle").textContent = enChoix ? "Choisir un repas" : (u.assigner?"Planifier ce plat":"Ma semaine");
+    document.getElementById("weekProg").style.width="100%";
+    weekScroll.innerHTML = enChoix ? choixSlotHTML() : agendaHTML();
+    nav.innerHTML = enChoix ? `<button class="wk-btn ghost" id="agRetour">◀ Retour</button>` : "";
+    nav.style.display = enChoix ? "" : "none";
+    if(enChoix){ const f=document.getElementById("agSearch"); if(f && u.pickFocus){ f.focus(); u.pickFocus=false; } }
+    return;
+  }
   document.getElementById("weekTitle").textContent = e===9 ? "Ma semaine" : "Générer ma semaine";
   document.getElementById("weekProg").style.width = e===9 ? "100%" : Math.round((e+1)/6*100)+"%";
   const cls="wk-step"+(_wkSens<0?" back":"");
@@ -7360,24 +7577,125 @@ async function lanceGeneration(){
     toast("Aucun plat ne correspond — assouplis tes critères");
     state.weekUI.etape=0; renderWeek(); return;
   }
-  _wkSens=1; state.weekUI.etape=9; renderWeek();
+  const poses=placeDansAgenda(state.semaine.plats);
+  state.weekUI.vue="agenda"; state.weekUI.pick=null; state.weekUI.assigner=null;
+  renderWeek();
+  toast(poses+" repas placé"+(poses>1?"s":"")+" dans ta semaine");
+}
+/* Les plats proposés vont remplir les créneaux LIBRES, en commençant par le prochain
+   repas : on ne bouscule jamais ce que l'utilisateur a déjà planifié lui-même. */
+function placeDansAgenda(ids){
+  const libres=creneaux().filter(c=>!slotDe(c.cle,c.repas));
+  let n=0;
+  ids.forEach(id=>{ if(n>=libres.length) return; const c=libres[n]; assigneRecette(id,c.cle,c.repas); n++; });
+  saveAgenda();
+  return n;
 }
 // tout ajouter à la liste de courses
+/* Courses de la semaine : on additionne les besoins de tous les plats prévus, PUIS on
+   retire ce que le frigo contient déjà. Avant, chaque ingrédient était ajouté tel quel,
+   sans regarder le frigo (500 g de pâtes en stock -> on demandait quand même d'en acheter)
+   et le deuxième plat qui utilisait le même produit était purement ignoré. */
 function semaineVersCourses(){
-  let n=0;
+  const besoins=new Map();   // cle produit -> {nom, base, u, fam, pour:Set}
   state.semaine.plats.forEach(id=>{
     const r=findRecipe(id); if(!r) return;
     r.ing.forEach(i=>{
-      const p=pantryOf(i.n);
-      if(state.shopping.some(s=>ingKey(s.base)===ingKey(p.n))) return;
-      const q=i.q!=null?niceQty(i.q,i.u):null;
-      state.shopping.push({id:uid++, label:(q? fmtNum(q.q)+(q.u?" "+q.u:"")+" "+p.n : p.n), base:p.n, q:q?q.q:null, u:q?q.u:(i.u||""), from:r.nom, checked:false});
-      n++;
+      const p=pantryOf(i.n), cle=ingKey(p.n);
+      const fam=unitFamily(i.u);
+      let e=besoins.get(cle);
+      if(!e){ e={nom:p.n, base:0, u:i.u||"", fam, quantifie:(i.q!=null && fam), pour:new Set()}; besoins.set(cle,e); }
+      e.pour.add(r.nom);
+      if(i.q!=null && fam && e.fam===fam) e.base+=toBase(i.q, i.u);
+      else if(i.q==null || !fam || e.fam!==fam) e.quantifie=e.quantifie && false;
     });
   });
+  let ajoutes=0, couverts=0;
+  besoins.forEach(e=>{
+    // ce que le frigo couvre déjà de ce produit
+    const f=findFridge(e.nom);
+    let manque=e.base;
+    if(f && f.q==null){ couverts++; return; }                    // présent en quantité inconnue
+    if(f && e.quantifie && comparable(f.u, e.u)) manque=e.base - toBase(f.q, f.u);
+    else if(f && !e.quantifie){ couverts++; return; }
+    if(e.quantifie && manque<=0.0001){ couverts++; return; }      // le frigo suffit
+    const dejaLa=state.shopping.find(s=>ingKey(s.base)===ingKey(e.nom));
+    const n = e.quantifie ? niceQty(fromBase(manque, e.u), e.u) : null;
+    if(dejaLa){
+      if(n && dejaLa.q!=null && comparable(dejaLa.u, n.u))
+        dejaLa.q=roundNice(fromBase(toBase(dejaLa.q,dejaLa.u)+toBase(n.q,n.u), dejaLa.u));
+      else if(n && dejaLa.q==null){ dejaLa.q=n.q; dejaLa.u=n.u; }
+      return;
+    }
+    const pour=[...e.pour];
+    state.shopping.push({id:uid++, label:cap(e.nom), base:e.nom,
+      q:(n?n.q:null), u:(n?n.u:(e.u||"")),
+      from:(pour.length>1 ? pour.length+" plats" : pour[0]||""), checked:false});
+    ajoutes++;
+  });
   saveShopping(); updateBadges();
-  toast(n? n+" article"+(n>1?"s":"")+" ajouté"+(n>1?"s":"")+" aux courses" : "Tout est déjà dans ta liste");
+  const msg = ajoutes
+    ? ajoutes+" article"+(ajoutes>1?"s":"")+" ajouté"+(ajoutes>1?"s":"")+" aux courses"+
+      (couverts? " · "+couverts+" déjà dans ton frigo" : "")
+    : (couverts? "Tout est déjà dans ton frigo" : "Tout est déjà dans ta liste");
+  toast(msg);
 }
+
+/* ---------- interactions de l'agenda ---------- */
+function ouvreAgenda(pourRecette){
+  purgeAgenda();
+  state.weekUI={open:true, vue:"agenda", etape:9, gen:false, pick:null, pickQ:"", assigner:pourRecette||null};
+  weekPageEl.classList.add("open"); weekPageEl.setAttribute("aria-hidden","false");
+  document.body.style.overflow="hidden";
+  renderWeek();
+}
+weekPageEl.addEventListener("click", e=>{
+  const u=state.weekUI;
+  if(u.vue!=="agenda") return;
+
+  const slot=e.target.closest("[data-slot]");
+  if(slot){
+    const [cle,repas]=slot.dataset.slot.split("|");
+    if(u.assigner){                                   // on venait d'une recette : on la pose ici
+      assigneRecette(u.assigner, cle, repas);
+      const r=findRecipe(u.assigner); u.assigner=null;
+      renderWeek(); toast((r?r.nom:"Plat")+" planifié");
+      return;
+    }
+    u.pick=cle+"|"+repas; u.pickQ=""; u.pickFocus=false; renderWeek(); return;
+  }
+  if(e.target.closest("#agRetour")){ u.pick=null; u.pickQ=""; renderWeek(); return; }
+
+  if(u.pick){
+    const [cle,repas]=u.pick.split("|");
+    if(e.target.closest("[data-ag-restes]")){
+      const res=poseRestes(cle,repas);
+      u.pick=null; renderWeek();
+      toast(res.decale? "Les restes · le plat prévu glisse au repas suivant" : "Les restes notés");
+      return;
+    }
+    if(e.target.closest("[data-ag-vider]")){ videSlot(cle,repas); u.pick=null; renderWeek(); return; }
+    const rec=e.target.closest("[data-ag-rec]");
+    if(rec){ assigneRecette(rec.dataset.agRec, cle, repas); u.pick=null; renderWeek(); return; }
+    return;
+  }
+  if(e.target.closest("#agGen")){ state.weekUI.vue=null; wkGo(state.semaine.equip?1:0); return; }
+  if(e.target.closest("#agCourses")){
+    state.semaine.plats=recettesAgenda(); semaineVersCourses(); return;
+  }
+  if(e.target.closest("#agVider")){
+    askConfirm("Effacer toute la semaine ?","Les repas planifiés seront retirés de l'agenda.",()=>{
+      state.agenda={}; saveAgenda(); renderWeek();
+    },"Tout effacer");
+    return;
+  }
+});
+weekPageEl.addEventListener("input", e=>{
+  if(state.weekUI.vue==="agenda" && state.weekUI.pick && e.target.id==="agSearch"){
+    state.weekUI.pickQ=e.target.value; state.weekUI.pickFocus=true; renderWeek();
+  }
+});
+
 document.getElementById("weekBack").addEventListener("click", closeWeek);
 document.getElementById("scanBack").addEventListener("click", ()=>history.back());
 document.getElementById("scanPage").addEventListener("click", e=>{
@@ -7536,9 +7854,9 @@ async function resetAccount(){
     try{ await sb.from("gabcook_store").delete().eq("user_id", me); }catch(e){}
   }
   // local
-  ["gabcook_fridge","gabcook_shopping","gabcook_perso","gabcook_airfryer","gabcook_micro","gabcook_profile","gabcook_stats","gabcook_photos","gabcook_favorites","gabcook_planned","gabcook_ratings","gabcook_semaine","gabcook_notes"].forEach(k=>{ try{ localStorage.removeItem(k); }catch(e){} });
+  ["gabcook_fridge","gabcook_shopping","gabcook_perso","gabcook_airfryer","gabcook_micro","gabcook_profile","gabcook_stats","gabcook_photos","gabcook_favorites","gabcook_planned","gabcook_ratings","gabcook_semaine","gabcook_notes","gabcook_agenda"].forEach(k=>{ try{ localStorage.removeItem(k); }catch(e){} });
   // état en mémoire remis à neuf
-  state.fridge=[]; state.shopping=[]; state.perso=[]; state.recipePhotos={}; state.notes={};
+  state.fridge=[]; state.shopping=[]; state.perso=[]; state.recipePhotos={}; state.notes={}; state.agenda={};
   state.favorites=[]; state.planned=[]; state.onlyFav=false; state.ratings={};
   state.profile={pseudo:"",avatar:"",bio:"",isPrivate:false,banner:"",bannerPos:50};
   state.stats={cooked:0,byRecipe:{},firstAt:null,lastAt:null};
@@ -7977,7 +8295,7 @@ scrollEl.addEventListener("click",e=>{
       ()=>{ state.semaine.plats=[]; state.semaine.creeLe=null; saveSemaine(); rerenderKeepScroll(); toast("Semaine supprimée"); });
     return;
   }
-  if(e.target.closest("#weekOpen")){ openWeek("resultat"); return; }
+  if(e.target.closest("#weekOpen")){ ouvreAgenda(); return; }
   if(e.target.closest("#weekStart")){ openWeek(); return; }
   // notation depuis une carte : on met à jour les étoiles sur place
   const st=e.target.closest("[data-rate]");
@@ -8049,6 +8367,14 @@ scrollEl.addEventListener("click",e=>{
     const u=document.getElementById("fUnit").value;
     if(name.trim()){ addToFridge(name,q,u); renderFridge(); updateBadges(); }
     return;
+  }
+  // compteur « recettes prêtes à cuisiner » : une seule -> on l'ouvre, sinon on filtre
+  const pbc=e.target.closest("#pbCook");
+  if(pbc && !pbc.disabled){
+    const prets=RECIPES.concat(state.perso).filter(r=>missingFor(r).length===0);
+    if(prets.length===1){ openRecipe(prets[0].id); return; }
+    state.onlyCookable=true; state.filter="Tous"; state.search=""; renderHome();
+    remetDefilement(0); return;
   }
   if(e.target.closest("#scanBtn")){ ouvreScan(); return; }
   if(e.target.closest("#shopAdd")){
@@ -8172,6 +8498,7 @@ detailScroll.addEventListener("click",e=>{
     else cookRecipe();                                        // enregistrer « cuisiné » malgré les manques
     return;
   }
+  if(e.target.closest("#planBtn")){ const r=currentRecipe; if(r){ doClose(); setTimeout(()=>ouvreAgenda(r.id),260); } return; }
   if(e.target.closest("#addMissingConfirm")){ addMissingToShopping(); state.confirmCook=false; cookIntent=null; renderDetail(); return; }
   if(e.target.closest("#addMissing")){ addMissingToShopping(); return; }
   if(e.target.closest("#pMinus")){ if(state.currentPortions>1){ state.currentPortions--; state.confirmCook=false; renderDetail(); } return; }
@@ -8273,6 +8600,9 @@ async function hydrate(){
   }
   const rts=await Store.get("gabcook_ratings");
   state.ratings = (rts && typeof rts==="object" && !Array.isArray(rts)) ? rts : {};
+  const ag=await Store.get("gabcook_agenda");
+  state.agenda = (ag && typeof ag==="object" && !Array.isArray(ag)) ? ag : {};
+  purgeAgenda();
   const nts=await Store.get("gabcook_notes");
   state.notes = (nts && typeof nts==="object" && !Array.isArray(nts)) ? nts : {};
   const plans=await Store.get("gabcook_planned");
@@ -8291,7 +8621,7 @@ async function seedCloudFromLocal(){
     const {data}=await sb.from("gabcook_store").select("key").limit(1);
     if(data && data.length) return;          // le compte a déjà des données : on n'écrase rien
   }catch(e){ return; }
-  const keys=["gabcook_fridge","gabcook_shopping","gabcook_perso","gabcook_airfryer","gabcook_micro","gabcook_profile","gabcook_stats","gabcook_photos","gabcook_favorites","gabcook_planned","gabcook_ratings","gabcook_semaine","gabcook_notes"];
+  const keys=["gabcook_fridge","gabcook_shopping","gabcook_perso","gabcook_airfryer","gabcook_micro","gabcook_profile","gabcook_stats","gabcook_photos","gabcook_favorites","gabcook_planned","gabcook_ratings","gabcook_semaine","gabcook_notes","gabcook_agenda"];
   let verse=0;
   for(const k of keys){
     const v=localGet(k);
