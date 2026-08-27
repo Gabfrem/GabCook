@@ -1310,6 +1310,13 @@
   :root[data-theme="dark"] .scanbtn{color:#12251A}
 
   /* ---------- agenda : bande des jours + détail du jour ---------- */
+  .wk-h2{font-family:var(--disp);font-weight:800;font-size:16px;margin:26px 0 4px}
+  .wk-cren{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+  /* ces options-ci empilent un titre et une explication */
+  .wk-cren .wk-opt{flex-direction:column;align-items:flex-start;gap:2px}
+  .wk-cren .wk-opt b{font-family:var(--disp);font-weight:800;font-size:14.5px}
+  .wk-cren .wk-opt span{font-size:12px;font-weight:600;color:var(--muted)}
+
   .ag-bandeau{background:var(--camel-tint);border:1px solid var(--camel-light);border-radius:14px;
        padding:11px 14px;font-size:13.5px;color:var(--camel-deep);margin-bottom:14px;line-height:1.45}
   /* 8 jours qui tiennent dans la largeur : plus aucun défilement horizontal */
@@ -1349,6 +1356,14 @@
   .ag-cm{display:flex;flex-wrap:wrap;gap:10px;font-size:12.5px;color:var(--muted);font-weight:600}
   .ag-cm .ok{color:var(--basil);font-weight:800}
   .ag-cm .ko{color:var(--camel-deep);font-weight:800}
+  /* outils en haut à droite de la carte : re-tirage, restes, suppression */
+  .ag-outils{position:absolute;top:9px;right:9px;display:flex;gap:6px;z-index:2}
+  .ag-o{width:30px;height:30px;border-radius:50%;background:rgba(11,18,14,.58);color:#fff;font-size:14px;
+       display:flex;align-items:center;justify-content:center;line-height:1;
+       backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+       transition:background .2s,transform .16s}
+  .ag-o:active{transform:scale(.9)}
+  .ag-o.dice{background:rgba(228,161,49,.9);color:#1D402D}
   .ag-x{position:absolute;top:9px;right:9px;width:29px;height:29px;border-radius:50%;
        background:rgba(11,18,14,.55);color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center;
        backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .2s}
@@ -3776,7 +3791,7 @@ const state = { view:"home", search:"", filter:"Tous", onlyCookable:false, onlyP
   pendingShare:null,   // {id, until} : fenêtre de 15 min pour publier une photo après avoir fermé le composeur sans poster
   /* planificateur de semaine : les réglages (équipements, goûts) sont mémorisés même
      quand on supprime la semaine, pour ne pas les redemander à chaque fois */
-  semaine:{equip:null, prefs:{deteste:[], allerg:[]}, cuisine:"", nb:5, budget:40, plats:[], creeLe:null},
+  semaine:{equip:null, prefs:{deteste:[], allerg:[]}, cuisine:"", nb:5, budget:40, plats:[], creeLe:null, creneaux:"tous"},
   agenda:{},
   weekUI:{open:false, etape:0, gen:false},
   currentPortions:0, cooked:false, confirmCook:false, notes:{}, fridgeSaisie:"", shopSaisie:"" };
@@ -7614,7 +7629,11 @@ function carteRepasHTML(cle, repas, s){
         <div class="ag-cm"><span>🕒 ${t} min</span><span>🍴 ${esc(r.diff)}</span>
           ${manque===0?`<span class="ok">✓ Prêt à cuisiner</span>`:manque>0?`<span class="ko">${manque} ingrédient${manque>1?"s":""} manquant${manque>1?"s":""}</span>`:""}</div>
       </div>
-      <button class="ag-x" data-vider="${cle}|${repas}" aria-label="Retirer">✕</button>
+      <div class="ag-outils">
+        ${s.gen?`<button class="ag-o dice" data-reroll-slot="${cle}|${repas}" title="Un autre plat" aria-label="Proposer un autre plat">🎲</button>`:""}
+        <button class="ag-o" data-restes-slot="${cle}|${repas}" title="J'ai mangé les restes" aria-label="J'ai mangé les restes">♻️</button>
+        <button class="ag-o" data-vider="${cle}|${repas}" title="Retirer" aria-label="Retirer">✕</button>
+      </div>
     </div></div>`;
 }
 function agendaHTML(){
@@ -7733,6 +7752,15 @@ function renderWeek(){
         <span class="v">${s.nb}<small>plat${s.nb>1?"s":""}</small></span>
         <button data-nb="1">+</button>
       </div>
+      <div class="wk-h2">À quels repas ?</div>
+      <p class="wk-p">Le repas complémentaire sera noté « les restes ».</p>
+      <div class="wk-cren">
+        ${[["tous","Midi et soir","Un plat différent à chaque repas"],
+           ["midi","Seulement le midi","Le soir, on finit les restes"],
+           ["soir","Seulement le soir","Le lendemain midi, les restes"]]
+          .map(([v,t,d])=>`<button class="wk-opt${(s.creneaux||"tous")===v?" on":""}" data-cren="${v}">
+             <b>${t}</b><span>${d}</span></button>`).join("")}
+      </div>
     </div>`;
     boutons=`<button data-wk="prev">◀ Retour</button><button class="go" data-wk="next">Continuer ▶</button>`;
   }
@@ -7804,12 +7832,27 @@ async function lanceGeneration(){
   renderWeek();
   toast(poses+" repas placé"+(poses>1?"s":"")+" dans ta semaine");
 }
-/* Les plats proposés vont remplir les créneaux LIBRES, en commençant par le prochain
-   repas : on ne bouscule jamais ce que l'utilisateur a déjà planifié lui-même. */
+/* Les plats proposés remplissent les créneaux LIBRES, à partir du prochain repas :
+   on ne bouscule jamais ce que l'utilisateur a déjà planifié lui-même.
+   Selon l'option choisie, on ne vise que les midis ou que les soirs, et le repas
+   complémentaire reçoit « les restes » (le soir même, ou le lendemain midi). */
 function placeDansAgenda(ids){
-  const libres=creneaux().filter(c=>!slotDe(c.cle,c.repas));
+  const mode=state.semaine.creneaux||"tous";
+  const tous=creneaux();
+  const vise = mode==="tous" ? tous : tous.filter(c=>c.repas===mode);
+  const libres=vise.filter(c=>!slotDe(c.cle,c.repas));
   let n=0;
-  ids.forEach(id=>{ if(n>=libres.length) return; const c=libres[n]; assigneRecette(id,c.cle,c.repas); n++; });
+  ids.forEach(id=>{
+    if(n>=libres.length) return;
+    const c=libres[n]; n++;
+    poseSlot(c.cle, c.repas, {t:"r", id, gen:true});
+    if(mode!=="tous"){
+      // le repas d'après : ce sont les restes, s'il est encore libre
+      const i=tous.findIndex(x=>x.cle===c.cle && x.repas===c.repas);
+      const suite=tous[i+1];
+      if(suite && !slotDe(suite.cle, suite.repas)) poseSlot(suite.cle, suite.repas, {t:"restes"});
+    }
+  });
   saveAgenda();
   return n;
 }
@@ -7880,14 +7923,18 @@ function animeJour(){
   if(p){ p.classList.remove("swap"); void p.offsetWidth; p.classList.add("swap"); }
 }
 /* propose un seul plat pour un créneau, en évitant ce qui est déjà prévu */
-function proposePour(cle, repas){
-  const deja=recettesAgenda();
-  const pool=candidatsSemaine(state.semaine).filter(r=>!deja.includes(r.id));
-  const liste=pool.length?pool:RECIPES.filter(r=>!deja.includes(r.id));
+function proposePour(cle, repas, remplace){
+  // en remplacement, le plat actuellement affiché ne doit pas être re-tiré
+  const actuel=slotDe(cle,repas), exclu=(actuel && actuel.t==="r") ? actuel.id : null;
+  const deja=recettesAgenda().filter(id=>id!==exclu || !remplace);
+  const evite=id=>deja.includes(id) || id===exclu;
+  const pool=candidatsSemaine(state.semaine).filter(r=>!evite(r.id));
+  const liste=pool.length?pool:RECIPES.filter(r=>!evite(r.id));
   if(!liste.length) return null;
   const tri=liste.slice().sort((a,b)=>(scoreNote(b.id)+Math.random()*1.4)-(scoreNote(a.id)+Math.random()*1.4));
   const r=tri[0];
-  assigneRecette(r.id, cle, repas);
+  poseSlot(cle, repas, {t:"r", id:r.id, gen:true});   // reste marqué « proposé » : re-jouable
+  saveAgenda();
   return r;
 }
 weekPageEl.addEventListener("click", e=>{
@@ -7899,6 +7946,21 @@ weekPageEl.addEventListener("click", e=>{
 
   const vid=e.target.closest("[data-vider]");
   if(vid){ const [c,rp]=vid.dataset.vider.split("|"); videSlot(c,rp); renderWeek(); return; }
+
+  // « finalement, les restes » : le plat prévu ici glisse au repas suivant
+  const rst=e.target.closest("[data-restes-slot]");
+  if(rst){ const [c,rp]=rst.dataset.restesSlot.split("|");
+    const res=poseRestes(c,rp); renderWeek();
+    toast(res.decale? "Les restes · "+res.decale+" plat"+(res.decale>1?"s décalés":" décalé")
+                    : "Les restes notés");
+    return; }
+
+  // relancer un plat proposé par l'application
+  const rrs=e.target.closest("[data-reroll-slot]");
+  if(rrs){ const [c,rp]=rrs.dataset.rerollSlot.split("|");
+    const r=proposePour(c,rp,true); renderWeek();
+    toast(r? "🎲 "+r.nom : "Plus d'autre plat compatible");
+    return; }
 
   const add=e.target.closest("[data-add]");
   if(add){
@@ -7983,6 +8045,8 @@ weekScroll.addEventListener("click",e=>{
   if(cui){ s.cuisine=cui.dataset.cui; saveSemaine(); renderWeek(); return; }
   const nb=e.target.closest("[data-nb]");
   if(nb){ s.nb=Math.max(1,Math.min(14,s.nb+(+nb.dataset.nb))); saveSemaine(); renderWeek(); return; }
+  const cren=e.target.closest("[data-cren]");
+  if(cren){ s.creneaux=cren.dataset.cren; saveSemaine(); renderWeek(); return; }
   const rr=e.target.closest("[data-reroll]");
   if(rr){ const i=+rr.dataset.reroll;
     if(rerollPlat(i)){ renderWeek(); toast("🎲 Nouveau plat proposé"); } else toast("Plus d'autre plat compatible");
