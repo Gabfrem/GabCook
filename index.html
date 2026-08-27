@@ -914,6 +914,7 @@
   .confirm .cfi-q{font-variant-numeric:tabular-nums;opacity:.9;white-space:nowrap}
   .confirm .cfi-p{font-size:11px;opacity:.75;white-space:nowrap;font-style:italic}
   .cf-add{background:var(--card);border:1.5px solid var(--camel);color:var(--camel-deep);font-weight:700}
+  .cf-ok{background:var(--strong);color:#FBF5E6;font-weight:800;flex:1}
   .cf-row{flex-wrap:wrap}
   .confirm .cf-s b{font-weight:700}
   .cf-row{display:flex;gap:8px;margin-top:13px}
@@ -1202,8 +1203,9 @@
     .set-row,.warnbox,.coursetotal{max-width:700px}
     /* ces blocs pleine largeur devenaient des bandeaux démesurés sur 930 px */
     .weekbtn,.addcard,.scanbtn{max-width:520px}
-    .ag-wrap{margin:0;padding-left:0;padding-right:0}
-    .ag-jour{flex:1 1 0;min-width:0}
+    /* l'agenda garde une largeur de lecture : une carte de 985 px s'étirait pour rien */
+    .ag-days,.ag-panneau,.ag-pied,.ag-bandeau{max-width:640px}
+    .ag-panneau .ag-ci{height:186px}
     .hello{font-size:24px;margin-top:10px}
     /* le frigo et les courses tiennent sur deux colonnes */
     .fitems{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:900px}
@@ -1307,35 +1309,82 @@
   .scanbtn .sb-fl{flex:0 0 auto;font-size:19px;opacity:.55}
   :root[data-theme="dark"] .scanbtn{color:#12251A}
 
-  /* ---------- agenda de la semaine ---------- */
+  /* ---------- agenda : bande des jours + détail du jour ---------- */
   .ag-bandeau{background:var(--camel-tint);border:1px solid var(--camel-light);border-radius:14px;
-       padding:11px 14px;font-size:13.5px;color:var(--camel-deep);margin-bottom:12px;line-height:1.45}
-  /* une seule ligne : aujourd'hui à gauche, on fait défiler vers les jours suivants */
-  .ag-wrap{display:flex;gap:10px;overflow-x:auto;padding:2px 0 10px;margin:0 -18px;padding-left:18px;padding-right:18px;
-       scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
-  .ag-wrap::-webkit-scrollbar{display:none}
-  .ag-jour{flex:0 0 132px;display:flex;flex-direction:column;gap:8px;scroll-snap-align:start}
-  .ag-date{font-family:var(--disp);font-weight:800;font-size:13px;color:var(--muted);text-align:center;
-       padding:5px 0;border-radius:9px;background:var(--card);border:1px solid var(--line);white-space:nowrap;
-       overflow:hidden;text-overflow:ellipsis}
-  .ag-jour.today .ag-date{background:var(--strong);color:#FBF5E6;border-color:var(--strong)}
-  .ag-slot{position:relative;height:118px;border-radius:16px;border:1.5px solid var(--line);background:var(--card);
-       display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:8px;overflow:hidden;
-       text-align:center;transition:border-color .2s,background .2s,transform .15s}
-  .ag-slot:active{transform:scale(.97)}
-  .ag-rep{position:absolute;top:6px;left:8px;font-size:10px;font-weight:800;letter-spacing:.06em;
-       text-transform:uppercase;color:var(--muted)}
-  .ag-slot.vide{border-style:dashed}
-  .ag-plus{font-size:24px;color:var(--camel);font-weight:700}
-  .ag-slot.restes{background:var(--basil-tint);border-color:var(--basil)}
-  .ag-restes{font-size:12.5px;font-weight:700;color:var(--ink);line-height:1.5}
-  .ag-img{width:100%;height:52px;border-radius:10px;background-size:cover;background-position:center;margin-top:10px}
-  .ag-nom{font-size:12px;font-weight:700;color:var(--ink);line-height:1.25;
-       display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-  .ag-pied{margin-top:6px;display:flex;flex-direction:column;gap:9px}
+       padding:11px 14px;font-size:13.5px;color:var(--camel-deep);margin-bottom:14px;line-height:1.45}
+  /* 8 jours qui tiennent dans la largeur : plus aucun défilement horizontal */
+  .ag-days{display:grid;grid-template-columns:repeat(8,1fr);gap:4px;margin:2px 0 18px}
+  .ag-day{display:flex;flex-direction:column;align-items:center;gap:3px;padding:7px 0 6px;border-radius:14px;
+       background:transparent;border:none;transition:background .25s,transform .18s}
+  .agd-j{font-size:10.5px;font-weight:700;color:var(--muted);text-transform:lowercase;letter-spacing:.02em}
+  .agd-n{width:31px;height:31px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+       font-family:var(--disp);font-weight:800;font-size:14.5px;color:var(--ink);
+       transition:background .28s cubic-bezier(.3,.9,.3,1),color .22s,transform .28s cubic-bezier(.3,.9,.3,1)}
+  .ag-day.today .agd-n{box-shadow:inset 0 0 0 1.6px var(--camel)}
+  .ag-day.on .agd-n{background:var(--strong);color:#FBF5E6;transform:scale(1.1);box-shadow:0 4px 12px rgba(29,64,45,.3)}
+  .ag-day.on .agd-j{color:var(--ink)}
+  .ag-day:active{transform:scale(.94)}
+  /* pastilles : un point par repas prévu, vert pour les restes */
+  .agd-pts{display:flex;gap:3px;height:5px;align-items:center}
+  .agd-pts i{width:5px;height:5px;border-radius:50%;background:var(--camel);display:block}
+  .agd-pts i.r{background:var(--basil)}
+
+  /* détail du jour choisi */
+  @keyframes agSwap{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+  .ag-panneau{animation:agSwap .34s cubic-bezier(.2,.75,.3,1) both}
+  .ag-panneau.swap{animation:agSwap .34s cubic-bezier(.2,.75,.3,1) both}
+  .ag-jt{font-family:var(--disp);font-weight:800;font-size:18px;color:var(--ink);margin:0 2px 14px;letter-spacing:-.01em}
+  .ag-repas{margin-bottom:16px}
+  .ag-rl{font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:0 2px 7px}
+  /* carte du plat, dans l'esprit des « à la une » */
+  .ag-carte{position:relative;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;
+       box-shadow:var(--shadow-soft);animation:popIn .34s both;transition:transform .2s}
+  .ag-carte[data-recipe]:active{transform:scale(.985)}
+  .ag-ci{position:relative;height:132px;overflow:hidden}
+  .ag-ci .dishimg{width:100%;height:100%;object-fit:cover;display:block}
+  .ag-ci::after{content:"";position:absolute;inset:auto 0 0 0;height:44%;pointer-events:none;
+       background:linear-gradient(180deg,transparent,rgba(10,20,12,.42))}
+  .ag-cb{padding:11px 14px 13px}
+  .ag-cb h3{font-family:var(--disp);font-weight:800;font-size:16.5px;margin:0 0 5px;color:var(--ink);line-height:1.2}
+  .ag-cm{display:flex;flex-wrap:wrap;gap:10px;font-size:12.5px;color:var(--muted);font-weight:600}
+  .ag-cm .ok{color:var(--basil);font-weight:800}
+  .ag-cm .ko{color:var(--camel-deep);font-weight:800}
+  .ag-x{position:absolute;top:9px;right:9px;width:29px;height:29px;border-radius:50%;
+       background:rgba(11,18,14,.55);color:#fff;font-size:14px;display:flex;align-items:center;justify-content:center;
+       backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .2s}
+  .ag-carte.rst{display:flex;align-items:center;gap:12px;padding:15px;background:var(--basil-tint);border-color:var(--basil)}
+  .ag-rst-e{font-size:26px}
+  .ag-rst-t b{display:block;font-family:var(--disp);font-weight:800;font-size:16px;color:var(--ink)}
+  .ag-rst-t span{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
+  .ag-carte.rst .ag-x{top:50%;right:12px;transform:translateY(-50%);background:rgba(0,0,0,.14);color:var(--ink)}
+
+  /* créneau libre : le bouton ouvre trois bulles */
+  .ag-add{width:100%;display:flex;align-items:center;justify-content:center;gap:9px;padding:17px;
+       border-radius:18px;border:1.8px dashed var(--line);background:transparent;color:var(--muted);
+       font-weight:700;font-size:14.5px;transition:border-color .25s,color .25s,background .25s}
+  .ag-add .ag-addp{font-size:19px;color:var(--camel);transition:transform .3s cubic-bezier(.3,1.4,.5,1)}
+  .ag-add.on{border-color:var(--camel);color:var(--camel-deep);background:var(--camel-tint);border-style:solid}
+  .ag-add.on .ag-addp{transform:rotate(135deg)}
+  @keyframes bulleIn{from{opacity:0;transform:translateY(-10px) scale(.94)}to{opacity:1;transform:none}}
+  .ag-bulles{display:flex;flex-direction:column;gap:8px;margin-top:9px}
+  .ag-bulle{display:flex;align-items:center;gap:12px;text-align:left;padding:13px 15px;border-radius:16px;
+       background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow-soft);
+       animation:bulleIn .32s cubic-bezier(.25,.9,.3,1) both;transition:transform .16s,border-color .2s}
+  .ag-bulle.b1{animation-delay:.02s} .ag-bulle.b2{animation-delay:.08s} .ag-bulle.b3{animation-delay:.14s}
+  .ag-bulle:active{transform:scale(.975)}
+  .agb-e{flex:0 0 40px;width:40px;height:40px;border-radius:13px;background:var(--camel-tint);
+       display:flex;align-items:center;justify-content:center;font-size:19px}
+  .ag-bulle b{display:block;font-family:var(--disp);font-weight:800;font-size:14.5px;color:var(--ink)}
+  .ag-bulle i{display:block;font-style:normal;font-size:11.5px;color:var(--muted);margin-top:1px}
+  .ag-bulle b,.ag-bulle i{flex:1}
+  .ag-bulle > div{flex:1;min-width:0}
+
+  .ag-pied{margin-top:22px;display:flex;flex-direction:column;gap:9px;
+       border-top:1px solid var(--line);padding-top:16px}
   .ag-res{font-size:13.5px;color:var(--muted);text-align:center;margin-bottom:2px}
   .ag-act{width:100%;padding:13px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);
-       color:var(--ink);font-weight:700;font-size:14.5px}
+       color:var(--ink);font-weight:700;font-size:14.5px;transition:transform .16s}
+  .ag-act:active{transform:scale(.985)}
   .ag-act.primaire{background:var(--strong);color:#FBF5E6;border-color:var(--strong)}
   .ag-act.efface{border-style:dashed;color:var(--muted);font-weight:600}
 
@@ -7391,40 +7440,88 @@ function closeWeek(){
   render();                                      // le bouton de l'accueil peut avoir changé
 }
 function wkGo(n){ _wkSens = n>state.weekUI.etape ? 1 : -1; state.weekUI.etape=n; renderWeek(); }
-/* ---------- vue agenda dans la page « Ma semaine » ---------- */
+/* ---------- vue agenda : un jour à la fois ----------
+   Le défilement horizontal sur 8 colonnes était illisible sur téléphone. On garde
+   une bande de jours compacte en haut (avec une pastille quand des repas sont prévus)
+   et le détail du jour choisi en dessous, en grandes cartes. */
+const JOURS_LONG=["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"];
+const MOIS_LONG=["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"];
+function titreJour(d,i){
+  if(i===0) return "Aujourd'hui, "+JOURS_LONG[d.getDay()]+" "+d.getDate()+" "+MOIS_LONG[d.getMonth()];
+  if(i===1) return "Demain, "+JOURS_LONG[d.getDay()]+" "+d.getDate()+" "+MOIS_LONG[d.getMonth()];
+  return cap(JOURS_LONG[d.getDay()])+" "+d.getDate()+" "+MOIS_LONG[d.getMonth()];
+}
+function carteRepasHTML(cle, repas, s){
+  const lbl = repas==="midi" ? "Midi" : "Soir";
+  if(!s){
+    const ouvert = state.weekUI.bulles===cle+"|"+repas;
+    return `<div class="ag-repas vide">
+      <div class="ag-rl">${lbl}</div>
+      <button class="ag-add${ouvert?" on":""}" data-add="${cle}|${repas}">
+        <span class="ag-addp">＋</span><span>${ouvert?"Choisis une option":"Ajouter un plat"}</span></button>
+      ${ouvert?`<div class="ag-bulles">
+        <button class="ag-bulle b1" data-bulle="restes|${cle}|${repas}"><span class="agb-e">♻️</span><b>Les restes</b><i>Du repas précédent</i></button>
+        <button class="ag-bulle b2" data-bulle="manuel|${cle}|${repas}"><span class="agb-e">🍽️</span><b>Choisir un plat</b><i>Dans le catalogue</i></button>
+        <button class="ag-bulle b3" data-bulle="gen|${cle}|${repas}"><span class="agb-e">✨</span><b>Me proposer</b><i>Selon mes goûts</i></button>
+      </div>`:""}
+    </div>`;
+  }
+  if(s.t==="restes"){
+    return `<div class="ag-repas restes">
+      <div class="ag-rl">${lbl}</div>
+      <div class="ag-carte rst">
+        <span class="ag-rst-e">♻️</span>
+        <div class="ag-rst-t"><b>Les restes</b><span>Rien à cuisiner ce repas</span></div>
+        <button class="ag-x" data-vider="${cle}|${repas}" aria-label="Retirer">✕</button>
+      </div></div>`;
+  }
+  const r=findRecipe(s.id);
+  if(!r) return `<div class="ag-repas"><div class="ag-rl">${lbl}</div>
+      <div class="ag-carte"><div class="ag-cb"><h3>Recette introuvable</h3></div>
+      <button class="ag-x" data-vider="${cle}|${repas}" aria-label="Retirer">✕</button></div></div>`;
+  const t=r.prep+viewOf(r).cuisson, manque=state.fridge.length?missingFor(r).length:-1;
+  return `<div class="ag-repas">
+    <div class="ag-rl">${lbl}</div>
+    <div class="ag-carte" data-recipe="${esc(r.id)}">
+      <div class="ag-ci"${thumbStyle(r)}>${thumbInner(r,800,420)}</div>
+      <div class="ag-cb">
+        <h3>${esc(r.nom)}</h3>
+        <div class="ag-cm"><span>🕒 ${t} min</span><span>🍴 ${esc(r.diff)}</span>
+          ${manque===0?`<span class="ok">✓ Prêt à cuisiner</span>`:manque>0?`<span class="ko">${manque} ingrédient${manque>1?"s":""} manquant${manque>1?"s":""}</span>`:""}</div>
+      </div>
+      <button class="ag-x" data-vider="${cle}|${repas}" aria-label="Retirer">✕</button>
+    </div></div>`;
+}
 function agendaHTML(){
   const u=state.weekUI, jours=joursAgenda();
-  const enChoix=!!u.assigner;                      // on vient d'une recette : on choisit un créneau
-  const rAssign=enChoix?findRecipe(u.assigner):null;
+  if(!u.jour || !jours.some(d=>cleJour(d)===u.jour)) u.jour=cleJour(jours[0]);
+  const iSel=jours.findIndex(d=>cleJour(d)===u.jour), dSel=jours[iSel], cle=u.jour;
+  const enChoix=!!u.assigner, rAssign=enChoix?findRecipe(u.assigner):null;
   let html="";
-  if(enChoix) html+=`<div class="ag-bandeau">Où veux-tu manger <b>${esc(rAssign?rAssign.nom:"ce plat")}</b> ? Touche un repas.</div>`;
-  html+=`<div class="ag-wrap">`+jours.map((d,i)=>{
-    const cle=cleJour(d);
-    return `<div class="ag-jour${i===0?" today":""}">
-      <div class="ag-date">${esc(libelleJour(d,i))}</div>
-      ${REPAS.map(rp=>{
-        const s=slotDe(cle,rp);
-        let dedans, cls="";
-        if(!s){ dedans=`<span class="ag-plus">＋</span>`; cls=" vide"; }
-        else if(s.t==="restes"){ dedans=`<span class="ag-restes">♻️<br>Les restes</span>`; cls=" restes"; }
-        else { const r=findRecipe(s.id);
-               dedans=r ? `<span class="ag-img" style="background-image:url('${esc(dishPhoto(r))}')"></span><span class="ag-nom">${esc(r.nom)}</span>`
-                        : `<span class="ag-nom">Recette supprimée</span>`;
-               cls=" plein"; }
-        return `<button class="ag-slot${cls}" data-slot="${cle}|${rp}">
-                  <span class="ag-rep">${rp==="midi"?"Midi":"Soir"}</span>${dedans}</button>`;
-      }).join("")}
-    </div>`;
+  if(enChoix) html+=`<div class="ag-bandeau">Où veux-tu manger <b>${esc(rAssign?rAssign.nom:"ce plat")}</b> ? Choisis le jour, puis le repas.</div>`;
+  // bande des jours : lettre, numéro, pastilles des repas prévus
+  html+=`<div class="ag-days">`+jours.map((d,i)=>{
+    const k=cleJour(d), a=slotDe(k,"midi"), b=slotDe(k,"soir");
+    return `<button class="ag-day${k===cle?" on":""}${i===0?" today":""}" data-jour="${k}">
+      <span class="agd-j">${JOURS_CT[d.getDay()].replace(".","")}</span>
+      <span class="agd-n">${d.getDate()}</span>
+      <span class="agd-pts">${a?`<i class="${a.t==="restes"?"r":""}"></i>`:""}${b?`<i class="${b.t==="restes"?"r":""}"></i>`:""}</span>
+    </button>`;
   }).join("")+`</div>`;
+  html+=`<div class="ag-panneau" data-k="${cle}">
+    <div class="ag-jt">${esc(titreJour(dSel,iSel))}</div>
+    ${REPAS.map(rp=>carteRepasHTML(cle,rp,slotDe(cle,rp))).join("")}
+  </div>`;
   const n=agendaCompte();
   html+=`<div class="ag-pied">
-    <div class="ag-res">${n? n+" repas planifié"+(n>1?"s":"")+" · ≈ "+euros(coutAgenda()) : "Aucun repas planifié pour l'instant"}</div>
-    <button class="ag-act primaire" id="agGen">✨ Me proposer des plats</button>
+    <div class="ag-res">${n? n+" repas planifié"+(n>1?"s":"")+" cette semaine · ≈ "+euros(coutAgenda()) : "Aucun repas planifié pour l'instant"}</div>
+    <button class="ag-act primaire" id="agGen">✨ Me proposer toute la semaine</button>
     ${n?`<button class="ag-act" id="agCourses">🛒 Ajouter les ingrédients aux courses</button>`:""}
     ${n?`<button class="ag-act efface" id="agVider">Tout effacer</button>`:""}
   </div>`;
   return html;
 }
+
 /* feuille de choix pour un créneau : une recette, les restes, ou vider */
 function choixSlotHTML(){
   const u=state.weekUI, [cle,repas]=u.pick.split("|");
@@ -7644,45 +7741,75 @@ function semaineVersCourses(){
 /* ---------- interactions de l'agenda ---------- */
 function ouvreAgenda(pourRecette){
   purgeAgenda();
-  state.weekUI={open:true, vue:"agenda", etape:9, gen:false, pick:null, pickQ:"", assigner:pourRecette||null};
+  state.weekUI={open:true, vue:"agenda", etape:9, gen:false, pick:null, pickQ:"",
+                assigner:pourRecette||null, jour:cleJour(joursAgenda()[0]), bulles:null};
   weekPageEl.classList.add("open"); weekPageEl.setAttribute("aria-hidden","false");
   document.body.style.overflow="hidden";
   renderWeek();
+}
+/* rejoue l'animation d'entrée du panneau quand on change de jour */
+function animeJour(){
+  const p=document.querySelector(".ag-panneau");
+  if(p){ p.classList.remove("swap"); void p.offsetWidth; p.classList.add("swap"); }
+}
+/* propose un seul plat pour un créneau, en évitant ce qui est déjà prévu */
+function proposePour(cle, repas){
+  const deja=recettesAgenda();
+  const pool=candidatsSemaine(state.semaine).filter(r=>!deja.includes(r.id));
+  const liste=pool.length?pool:RECIPES.filter(r=>!deja.includes(r.id));
+  if(!liste.length) return null;
+  const tri=liste.slice().sort((a,b)=>(scoreNote(b.id)+Math.random()*1.4)-(scoreNote(a.id)+Math.random()*1.4));
+  const r=tri[0];
+  assigneRecette(r.id, cle, repas);
+  return r;
 }
 weekPageEl.addEventListener("click", e=>{
   const u=state.weekUI;
   if(u.vue!=="agenda") return;
 
-  const slot=e.target.closest("[data-slot]");
-  if(slot){
-    const [cle,repas]=slot.dataset.slot.split("|");
+  const jour=e.target.closest("[data-jour]");
+  if(jour){ if(u.jour!==jour.dataset.jour){ u.jour=jour.dataset.jour; u.bulles=null; renderWeek(); animeJour(); } return; }
+
+  const vid=e.target.closest("[data-vider]");
+  if(vid){ const [c,rp]=vid.dataset.vider.split("|"); videSlot(c,rp); renderWeek(); return; }
+
+  const add=e.target.closest("[data-add]");
+  if(add){
     if(u.assigner){                                   // on venait d'une recette : on la pose ici
-      assigneRecette(u.assigner, cle, repas);
-      const r=findRecipe(u.assigner); u.assigner=null;
+      const [c,rp]=add.dataset.add.split("|");
+      assigneRecette(u.assigner,c,rp);
+      const r=findRecipe(u.assigner); u.assigner=null; u.bulles=null;
       renderWeek(); toast((r?r.nom:"Plat")+" planifié");
       return;
     }
-    u.pick=cle+"|"+repas; u.pickQ=""; u.pickFocus=false; renderWeek(); return;
+    u.bulles = u.bulles===add.dataset.add ? null : add.dataset.add;
+    renderWeek(); return;
   }
-  if(e.target.closest("#agRetour")){ u.pick=null; u.pickQ=""; renderWeek(); return; }
 
-  if(u.pick){
-    const [cle,repas]=u.pick.split("|");
-    if(e.target.closest("[data-ag-restes]")){
-      const res=poseRestes(cle,repas);
-      u.pick=null; renderWeek();
+  const b=e.target.closest("[data-bulle]");
+  if(b){
+    const [quoi,cle,repas]=b.dataset.bulle.split("|");
+    u.bulles=null;
+    if(quoi==="restes"){
+      const res=poseRestes(cle,repas); renderWeek();
       toast(res.decale? "Les restes · le plat prévu glisse au repas suivant" : "Les restes notés");
-      return;
+    } else if(quoi==="gen"){
+      const r=proposePour(cle,repas); renderWeek();
+      toast(r? r.nom+" ajouté" : "Aucun plat disponible");
+    } else {                                          // choix manuel : on renvoie vers les recettes
+      closeWeek();
+      setView("home");
+      setTimeout(()=>askInfo("Choisis ta recette",
+        "Ouvre la recette qui te fait envie, puis touche « 🗓️ Planifier dans ma semaine » en bas de sa fiche."), 320);
     }
-    if(e.target.closest("[data-ag-vider]")){ videSlot(cle,repas); u.pick=null; renderWeek(); return; }
-    const rec=e.target.closest("[data-ag-rec]");
-    if(rec){ assigneRecette(rec.dataset.agRec, cle, repas); u.pick=null; renderWeek(); return; }
     return;
   }
+
+  const carte=e.target.closest(".ag-carte[data-recipe]");
+  if(carte){ const id=carte.dataset.recipe; closeWeek(); setTimeout(()=>openRecipe(id),260); return; }
+
   if(e.target.closest("#agGen")){ state.weekUI.vue=null; wkGo(state.semaine.equip?1:0); return; }
-  if(e.target.closest("#agCourses")){
-    state.semaine.plats=recettesAgenda(); semaineVersCourses(); return;
-  }
+  if(e.target.closest("#agCourses")){ state.semaine.plats=recettesAgenda(); semaineVersCourses(); return; }
   if(e.target.closest("#agVider")){
     askConfirm("Effacer toute la semaine ?","Les repas planifiés seront retirés de l'agenda.",()=>{
       state.agenda={}; saveAgenda(); renderWeek();
@@ -7690,6 +7817,7 @@ weekPageEl.addEventListener("click", e=>{
     return;
   }
 });
+
 weekPageEl.addEventListener("input", e=>{
   if(state.weekUI.vue==="agenda" && state.weekUI.pick && e.target.id==="agSearch"){
     state.weekUI.pickQ=e.target.value; state.weekUI.pickFocus=true; renderWeek();
@@ -7765,7 +7893,21 @@ function askConfirm(titre, texte, action, libelle){
   document.getElementById("confirmYes").textContent=libelle||"Supprimer";
   document.getElementById("confirmBox").hidden=false;
 }
-function closeConfirm(){ document.getElementById("confirmBox").hidden=true; _confirmAction=null; }
+function closeConfirm(){
+  document.getElementById("confirmBox").hidden=true; _confirmAction=null;
+  document.getElementById("confirmNo").hidden=false;
+  document.getElementById("confirmYes").className="act cf-yes";
+}
+/* même boîte que la confirmation, mais purement informative : un seul bouton */
+function askInfo(titre, texte, libelle){
+  _confirmAction=null;
+  document.getElementById("confirmTitle").textContent=titre;
+  document.getElementById("confirmText").textContent=texte;
+  document.getElementById("confirmNo").hidden=true;
+  const ok=document.getElementById("confirmYes");
+  ok.textContent=libelle||"J'ai compris"; ok.className="act cf-ok";
+  document.getElementById("confirmBox").hidden=false;
+}
 document.getElementById("confirmBox").addEventListener("click",e=>{
   if(e.target.closest("#confirmNo") || e.target.id==="confirmBox"){ closeConfirm(); return; }
   if(e.target.closest("#confirmYes")){ const a=_confirmAction; closeConfirm(); if(a) a(); return; }
