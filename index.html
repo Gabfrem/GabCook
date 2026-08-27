@@ -512,7 +512,7 @@
      un gain de luminosité, qui éclaircit ce qui passe derrière pour garder les
      libellés lisibles ; et surtout des ombres internes décalées en diagonale,
      qui imitent la compression de l'image contre la paroi épaisse du verre. */
-  .nav{position:fixed;bottom:calc(16px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:70;
+  .nav{position:fixed;bottom:calc(16px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:88;
        display:flex;padding:7px;border-radius:999px;isolation:isolate;
        background:rgba(255,255,255,.07);
        backdrop-filter:blur(9px) saturate(210%) brightness(1.09);
@@ -797,7 +797,7 @@
   .banpos{width:100%;margin:6px 0 2px}
 
   /* ---- mode cuisine pas à pas ---- */
-  .cookmode{z-index:78;background:radial-gradient(135% 95% at 50% -12%, #FFFDF4 0%, var(--paper) 42%, #F0E4C6 100%);display:flex;flex-direction:column}
+  .cookmode{z-index:95;background:radial-gradient(135% 95% at 50% -12%, #FFFDF4 0%, var(--paper) 42%, #F0E4C6 100%);display:flex;flex-direction:column}
   .ck-top{display:flex;align-items:center;gap:13px;padding:calc(12px + env(safe-area-inset-top)) 18px 11px}
   .ck-top .backbtn{flex:0 0 auto;width:42px;height:42px;border-radius:13px;background:var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-soft)}
   .ck-top .backbtn:active{transform:scale(.92)}
@@ -1412,6 +1412,17 @@
   /* bouton « planifier » sur une fiche recette */
   .planbtn{width:100%;margin:0 0 10px;padding:13px;border-radius:14px;border:1.5px solid var(--camel);
        background:var(--camel-tint);color:var(--camel-deep);font-weight:800;font-size:14.5px}
+
+  /* ---------- suggestions d'ingrédients ---------- */
+  @keyframes suggIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+  .sugg{display:flex;flex-wrap:wrap;gap:7px;margin:2px 0 10px;animation:suggIn .22s ease both}
+  .sugg-i{display:inline-flex;align-items:center;gap:6px;padding:8px 13px;border-radius:999px;
+       border:1.5px solid var(--line);background:var(--card);color:var(--ink);
+       font-size:13.5px;font-weight:700;transition:border-color .18s,background .18s,transform .14s}
+  .sugg-i:active{transform:scale(.95)}
+  .sugg-i.exact{border-color:var(--basil);background:var(--basil-tint)}
+  .sugg-ok{font-size:10.5px;font-weight:800;color:var(--basil);letter-spacing:.02em}
+  .sugg:empty{display:none}
 
   @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
   :focus-visible{outline:2.5px solid var(--camel);outline-offset:2px;border-radius:6px}
@@ -3768,7 +3779,7 @@ const state = { view:"home", search:"", filter:"Tous", onlyCookable:false, onlyP
   semaine:{equip:null, prefs:{deteste:[], allerg:[]}, cuisine:"", nb:5, budget:40, plats:[], creeLe:null},
   agenda:{},
   weekUI:{open:false, etape:0, gen:false},
-  currentPortions:0, cooked:false, confirmCook:false, notes:{} };
+  currentPortions:0, cooked:false, confirmCook:false, notes:{}, fridgeSaisie:"", shopSaisie:"" };
 
 /* Les recettes personnelles ont exactement la même forme que celles du catalogue :
    tout ce qui suit — filtres, recherche, statut des ingrédients, débit du frigo,
@@ -5083,6 +5094,118 @@ function renderCategoryPage(){
 function unitSelect(sel, attr){
   return `<select class="fiunit" ${attr}>`+UNIT_OPTS.map(o=>`<option value="${o[0]}" ${o[0]===sel?"selected":""}>${o[1]}</option>`).join("")+`</select>`;
 }
+/* ==========================================================================
+   SUGGESTIONS D'INGRÉDIENTS
+   Si l'utilisateur écrit « onion », « ognon » ou « oigon », Yummly ne reconnaît rien
+   et croit qu'il n'a pas d'oignon. On lui propose donc la forme que l'application
+   comprend, tirée du vocabulaire réel des 421 recettes.
+   ========================================================================== */
+let _vocabIng=null;
+function vocabIngredients(){
+  if(_vocabIng) return _vocabIng;
+  const vus=new Map();
+  const ajoute=n=>{
+    const c=pantryName((n||"").trim());
+    if(!c || c.length<2) return;
+    const k=norm(c);
+    if(!vus.has(k)) vus.set(k, {nom:cap(c), cle:k, poids:0});
+    vus.get(k).poids++;
+  };
+  RECIPES.forEach(r=>r.ing.forEach(i=>ajoute(i.n)));
+  state.perso.forEach(r=>(r.ing||[]).forEach(i=>ajoute(i.n)));
+  if(typeof COMMON!=="undefined") COMMON.forEach(c=>ajoute(c.n));
+  state.fridge.forEach(f=>ajoute(f.n));
+  _vocabIng=[...vus.values()].sort((a,b)=>b.poids-a.poids);
+  return _vocabIng;
+}
+function videVocab(){ _vocabIng=null; }
+/* « onion », « cheese », « garlic » ne sont pas des fautes de frappe mais de l'anglais :
+   aucune distance d'édition ne les rapprochera d'« oignon ». On réutilise donc le
+   glossaire FR→EN déjà présent (photos), inversé, complété des manques utiles. */
+let _aliasEN=null;
+function aliasEN(){
+  if(_aliasEN) return _aliasEN;
+  _aliasEN={};
+  Object.entries(FR_EN).forEach(([fr,en])=>{
+    String(en).split(" ").forEach(m=>{ m=norm(m); if(m.length>2 && !_aliasEN[m]) _aliasEN[m]=fr; });
+  });
+  Object.entries({garlic:"ail", butter:"beurre", flour:"farine", milk:"lait", cream:"creme",
+    sugar:"sucre", salt:"sel", oil:"huile", water:"eau", bread:"pain", ham:"jambon",
+    bacon:"lardons", shrimp:"crevettes", prawns:"crevettes", honey:"miel", lemon:"citron",
+    apple:"pommes", banana:"bananes", spinach:"epinards", zucchini:"courgettes",
+    eggplant:"aubergines", cucumber:"concombre", cabbage:"chou", leek:"poireaux",
+    parsley:"persil", basil:"basilic", mint:"menthe", thyme:"thym", ginger:"gingembre",
+    vinegar:"vinaigre", mustard:"moutarde", yogurt:"yaourt", noodles:"nouilles",
+    lentils:"lentilles", peas:"petits pois", corn:"mais", tuna:"thon", salmon:"saumon",
+    pork:"porc", lamb:"agneau", veal:"veau", turkey:"dinde", duck:"canard"
+  }).forEach(([en,fr])=>{ if(!_aliasEN[en]) _aliasEN[en]=fr; });
+  return _aliasEN;
+}
+/* Distance de Damerau-Levenshtein bornée. La TRANSPOSITION compte pour 1 : sans elle,
+   « onion » était à 3 de « oignon » (deux lettres inversées + un ajout) et n'était
+   jamais proposé. Bornée à `max` : au-delà on abandonne, c'est inutile et lent. */
+function distance(a, b, max){
+  if(Math.abs(a.length-b.length)>max) return max+1;
+  const n=a.length, m=b.length;
+  let av=null, prec=[...Array(m+1).keys()];
+  for(let i=1;i<=n;i++){
+    const cour=new Array(m+1); cour[0]=i; let mini=i;
+    for(let j=1;j<=m;j++){
+      let c=Math.min(cour[j-1]+1, prec[j]+1, prec[j-1]+(a[i-1]===b[j-1]?0:1));
+      if(i>1 && j>1 && a[i-1]===b[j-2] && a[i-2]===b[j-1]) c=Math.min(c, av[j-2]+1);
+      cour[j]=c; if(c<mini) mini=c;
+    }
+    if(mini>max) return max+1;
+    av=prec; prec=cour;
+  }
+  return prec[m];
+}
+/* Propositions classées : préfixe exact, puis contenu, puis proche à la faute de frappe près. */
+function suggereIngredients(saisie, limite){
+  const brut=(saisie||"").trim();
+  const q=norm(brut);
+  if(q.length<2) return [];
+  // « patate » n'a aucune parenté de lettres avec « pommes de terre » : on interroge
+  // aussi la forme canonique de ce qui est tapé, qui connaît ces équivalences
+  let qc=norm(pantryName(brut));
+  const al=aliasEN()[q];                       // saisie en anglais -> nom français
+  if(al) qc=norm(pantryName(al));
+  const max = q.length<=4 ? 1 : (q.length<=7 ? 2 : 3);
+  const out=[];
+  vocabIngredients().forEach(v=>{
+    let score=null;
+    if(v.cle===q || v.cle===qc) score=0;
+    else if(qc && v.cle.startsWith(qc)) score=0.5;
+    else if(v.cle.startsWith(q)) score=1;
+    else if(v.cle.includes(q)) score=2;
+    else {
+      const dTout=distance(q, v.cle, max);
+      // le nom entier prime sur un simple mot du nom : « beuf » doit proposer « Bœuf »
+      // avant « Bœuf haché »
+      if(dTout<=max) score=3+dTout;
+      else {
+        const dMot=Math.min(...v.cle.split(" ").map(m=>distance(q, m, max)));
+        if(dMot<=max) score=3.5+dMot;
+      }
+    }
+    if(score!=null) out.push({v, score});
+  });
+  out.sort((a,b)=> a.score-b.score || b.v.poids-a.v.poids || a.v.nom.length-b.v.nom.length);
+  return out.slice(0, limite||6).map(x=>x.v.nom);
+}
+/* rendu de la liste sous un champ de saisie */
+function suggestionsHTML(saisie, cible){
+  const l=suggereIngredients(saisie, 6);
+  const q=norm((saisie||"").trim());
+  if(!l.length || (l.length===1 && norm(l[0])===q)) return "";
+  return `<div class="sugg" data-sugg-for="${esc(cible)}">`+
+    l.map(n=>{
+      const exact = norm(n)===q;
+      return `<button class="sugg-i${exact?" exact":""}" data-sugg="${esc(n)}">
+        <span class="sugg-n">${esc(n)}</span>${exact?`<span class="sugg-ok">✓ reconnu</span>`:``}</button>`;
+    }).join("")+`</div>`;
+}
+
 function renderFridge(){
   let html=`
     <div style="height:calc(16px + env(safe-area-inset-top))"></div>
@@ -5094,6 +5217,7 @@ function renderFridge(){
       ${unitSelect("", 'id="fUnit"')}
       <button class="add-btn f-add" id="fAdd" aria-label="Ajouter">+</button>
     </div>
+    <div id="fSugg">${suggestionsHTML(state.fridgeSaisie||"","fInput")}</div>
   `;
   if(state.fridge.length){
     html+=`<div class="fitems">`+state.fridge.map((f,i)=>`
@@ -5130,6 +5254,7 @@ function renderShopping(){
       ${unitSelect("", 'id="shopUnit"')}
       <button class="add-btn" id="shopAdd">Ajouter</button>
     </div>
+    <div id="sSugg">${suggestionsHTML(state.shopSaisie||"","shopInput")}</div>
     <button class="scanbtn" id="scanBtn"><span class="sb-ico">📷</span><span class="sb-txt"><span class="sb-t">Scanner mes courses</span><span class="sb-s">Coche tes articles et relève les quantités</span></span><span class="sb-fl">›</span></button>
   `;
   if(!state.shopping.length){
@@ -6691,7 +6816,7 @@ function readRecipeLink(raw){
 
 /* ---------- actions ---------- */
 let uid=1;
-function saveFridge(){ Store.set("gabcook_fridge", state.fridge); }
+function saveFridge(){ videVocab(); Store.set("gabcook_fridge", state.fridge); }
 function saveShopping(){ Store.set("gabcook_shopping", state.shopping); }
 function saveProfile(){ Store.set("gabcook_profile", state.profile); pushProfile(); }
 function saveStats(){ Store.set("gabcook_stats", state.stats); }
@@ -7714,7 +7839,9 @@ function semaineVersCourses(){
     let manque=e.base;
     if(f && f.q==null){ couverts++; return; }                    // présent en quantité inconnue
     if(f && e.quantifie && comparable(f.u, e.u)) manque=e.base - toBase(f.q, f.u);
-    else if(f && !e.quantifie){ couverts++; return; }
+    // on l'a, mais dans une unité qu'on ne sait pas comparer (3 paquets vs 400 g) :
+    // inutile d'en faire racheter, on considère que c'est couvert
+    else if(f){ couverts++; return; }
     if(e.quantifie && manque<=0.0001){ couverts++; return; }      // le frigo suffit
     const dejaLa=state.shopping.find(s=>ingKey(s.base)===ingKey(e.nom));
     const n = e.quantifie ? niceQty(fromBase(manque, e.u), e.u) : null;
@@ -8058,6 +8185,41 @@ function trad(m){
   return "Ça n'a pas marché. Vérifie tes identifiants et réessaie.";
 }
 
+/* ---------- suggestions : saisie et sélection ----------
+   On ne re-rend pas toute la page à chaque touche (le champ perdrait le focus) :
+   seule la petite liste sous le champ est remplacée. */
+function majSuggestions(champId, zoneId, cleEtat){
+  const inp=document.getElementById(champId), zone=document.getElementById(zoneId);
+  if(!inp || !zone) return;
+  state[cleEtat]=inp.value;
+  // sur les courses, la quantité tapée dans le nom ne doit pas polluer la recherche
+  const base = champId==="shopInput" ? separeQuantite(inp.value).n : inp.value;
+  zone.innerHTML=suggestionsHTML(base, champId);
+}
+scrollEl.addEventListener("input", e=>{
+  if(e.target.id==="fInput")    majSuggestions("fInput","fSugg","fridgeSaisie");
+  if(e.target.id==="shopInput") majSuggestions("shopInput","sSugg","shopSaisie");
+});
+scrollEl.addEventListener("click", e=>{
+  const s=e.target.closest("[data-sugg]");
+  if(!s) return;
+  const zone=s.closest(".sugg"), champ=zone && zone.dataset.suggFor;
+  const inp=champ && document.getElementById(champ);
+  if(!inp) return;
+  if(champ==="shopInput"){
+    // on garde la quantité déjà tapée et on ne remplace que le nom
+    const sep=separeQuantite(inp.value);
+    inp.value = sep.q!=null ? (s.dataset.sugg+" "+fmtNum(sep.q)+(sep.u||"")) : s.dataset.sugg;
+    state.shopSaisie=inp.value;
+    document.getElementById("sSugg").innerHTML="";
+  } else {
+    inp.value=s.dataset.sugg;
+    state.fridgeSaisie=inp.value;
+    document.getElementById("fSugg").innerHTML="";
+  }
+  inp.focus();
+}, true);
+
 /* ---------- événements ---------- */
 document.getElementById("nav").addEventListener("click",e=>{
   const b=e.target.closest("button[data-view]");
@@ -8069,6 +8231,11 @@ document.getElementById("nav").addEventListener("click",e=>{
   if(state.friendsSheet.open) closeFriendsSheet();
   if(state.postView.open) closePostView();
   if(state.profileView.open) closeProfile();
+  // les panneaux plein écran ne doivent jamais bloquer la navigation
+  if(state.weekUI && state.weekUI.open) closeWeek();
+  if(scanEtat && scanEtat.ouvert) fermeScan();
+  if(editorEl.classList.contains("open")) closeEditor();
+  if(settingsPageEl && settingsPageEl.classList.contains("open")) closeSettings();
   setView(b.dataset.view);
 });
 /* ---------- événements de l'éditeur ---------- */
@@ -8507,7 +8674,7 @@ scrollEl.addEventListener("click",e=>{
     const name=document.getElementById("fInput").value;
     const q=parseQty(document.getElementById("fQty").value);
     const u=document.getElementById("fUnit").value;
-    if(name.trim()){ addToFridge(name,q,u); renderFridge(); updateBadges(); }
+    if(name.trim()){ addToFridge(name,q,u); state.fridgeSaisie=""; renderFridge(); updateBadges(); }
     return;
   }
   // compteur « recettes prêtes à cuisiner » : une seule -> on l'ouvre, sinon on filtre
@@ -8537,7 +8704,7 @@ scrollEl.addEventListener("click",e=>{
       else state.shopping.push({id:uid++,label:v,base:v,q:(q==null?null:roundNice(q)),u:u||"",from:"",checked:false});
       saveShopping();
     }
-    inp.value=""; if(inQ) inQ.value=""; if(inU) inU.value="";
+    inp.value=""; if(inQ) inQ.value=""; if(inU) inU.value=""; state.shopSaisie=""; videVocab();
     renderShopping(); updateBadges(); return;
   }
   const tog=e.target.closest("[data-toggle]");
@@ -8593,7 +8760,7 @@ scrollEl.addEventListener("keydown",e=>{
     const name=document.getElementById("fInput").value;
     const qv=parseQty(document.getElementById("fQty").value);
     const u=document.getElementById("fUnit").value;
-    if(name.trim()){ addToFridge(name,qv,u); renderFridge(); updateBadges(); }
+    if(name.trim()){ addToFridge(name,qv,u); state.fridgeSaisie=""; renderFridge(); updateBadges(); }
   }
   if(e.target.id==="shopInput"){
     const v=e.target.value.trim();
