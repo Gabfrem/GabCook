@@ -182,6 +182,11 @@
   .postimg{width:100%;display:block;background:var(--camel-tint)}
   .postbody{padding:11px 13px}
   .postbody .prec{font-family:var(--disp);font-weight:700;font-size:14.5px;margin-bottom:3px}
+  .postbody .prec.lien{display:inline-flex;align-items:center;gap:7px;padding:5px 11px;margin:0 0 5px -3px;
+       border-radius:999px;background:var(--camel-tint);color:var(--camel-deep);text-align:left;
+       transition:background .2s,transform .15s}
+  .postbody .prec.lien:active{transform:scale(.97)}
+  .prec-fl{font-family:var(--sans);font-size:11.5px;font-weight:700;opacity:.75}
   .postbody .pdesc{font-size:14px;line-height:1.5;color:var(--ink)}
   .postbody .pdel{margin-top:9px;font-size:12.5px;color:var(--tomato);font-weight:700;background:none;border:none;padding:2px}
   /* actions d'un post : j'aime + commenter */
@@ -628,6 +633,10 @@
   .fidel{width:26px;height:26px;flex:0 0 26px;border-radius:50%;background:rgba(0,0,0,.05);color:var(--muted);font-size:13px;display:flex;align-items:center;justify-content:center}
   .fidel:active{background:rgba(0,0,0,.12)}
 
+  /* le frigo couvre le produit générique mais pas le type exact demandé */
+  .tick.fam{background:var(--camel-tint);color:var(--camel-deep);border:1.5px solid var(--camel)}
+  .ihint.fam{color:var(--camel-deep);font-weight:600}
+  li.is-fam .iname{opacity:1}
   .tick.low{background:#FBE9CE;color:#B0761A;border:1.5px solid #ECD3A0}
   ul.ing li .iname .ihint{display:block;font-size:11.5px;color:#B0761A;font-weight:600;margin-top:1px}
 
@@ -1255,6 +1264,12 @@
   .scan-frame span:nth-child(2){top:0;right:0;border-left:none;border-bottom:none;border-radius:0 12px 0 0}
   .scan-frame span:nth-child(3){bottom:0;left:0;border-right:none;border-top:none;border-radius:0 0 0 12px}
   .scan-frame span:nth-child(4){bottom:0;right:0;border-left:none;border-top:none;border-radius:0 0 12px 0}
+  /* filet de sécurité : photographier le code quand la lecture en direct patine */
+  .scan-photo{position:absolute;left:0;right:0;bottom:64px;display:flex;justify-content:center;pointer-events:none}
+  .scan-photo-b{pointer-events:auto;background:rgba(251,245,230,.94);color:#1D402D;font-weight:800;font-size:13.5px;
+       padding:11px 18px;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.32);cursor:pointer;
+       backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+  .scan-photo-b:active{transform:scale(.96)}
   .scan-status{position:absolute;left:16px;right:16px;bottom:16px;text-align:center;color:#FBF5E6;
        background:rgba(11,18,14,.78);border-radius:12px;padding:10px 14px;font-size:13.5px;font-weight:600;
        backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
@@ -1270,6 +1285,15 @@
   .scan-hit .sh-q{flex:0 0 auto;font-size:13px;font-weight:800;color:var(--camel-deep);
        background:var(--camel-tint);border-radius:999px;padding:5px 11px;white-space:nowrap}
   .scan-note{font-size:12.5px;color:var(--muted);text-align:center;padding:6px 0 2px}
+  .scan-manu{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:13px;margin-bottom:10px}
+  .scan-in{width:100%;box-sizing:border-box;padding:12px 13px;border-radius:12px;border:1.5px solid var(--line);
+       background:var(--paper);color:var(--ink);font-size:15px;font-family:inherit;outline:none;margin-bottom:8px}
+  .scan-in:focus{border-color:var(--camel)}
+  .scan-mrow{display:flex;gap:8px;align-items:stretch}
+  .scan-mrow .qt{flex:0 0 78px;margin:0;text-align:center}
+  .scan-mrow .fiunit{flex:0 0 auto;padding:10px;border-radius:12px;border:1.5px solid var(--line);
+       background:var(--paper);color:var(--ink);font-size:14px}
+  .scan-ok{flex:1;border-radius:12px;background:var(--strong);color:#FBF5E6;font-weight:800;font-size:14.5px;padding:12px}
   .scan-manuel{width:100%;margin-top:6px;padding:12px;border-radius:12px;border:1.5px dashed var(--camel-light);
        background:transparent;color:var(--camel-deep);font-weight:700;font-size:14px}
 
@@ -1440,6 +1464,11 @@
   .sugg-i.exact{border-color:var(--basil);background:var(--basil-tint)}
   .sugg-ok{font-size:10.5px;font-weight:800;color:var(--basil);letter-spacing:.02em}
   .sugg:empty{display:none}
+
+  /* pendant la récupération des données : un liseré, pas un écran bloqué */
+  @keyframes chgBar{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+  body.chargement::before{content:"";position:fixed;top:0;left:0;right:0;height:3px;z-index:200;
+       background:linear-gradient(90deg,transparent,var(--camel),transparent);animation:chgBar 1.1s ease-in-out infinite}
 
   @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
   :focus-visible{outline:2.5px solid var(--camel);outline-offset:2px;border-radius:6px}
@@ -3771,6 +3800,18 @@ const Store = {
     }
     return localGet(key);
   },
+  /* Une lecture par clé, c'était 14 allers-retours réseau à l'ouverture — soit une
+     dizaine de secondes avant que l'application ne réponde. On lit tout d'un coup. */
+  async getMany(keys){
+    if(cloudActif()){
+      try{
+        const {data,error}=await sb.from("gabcook_store").select("key,value").in("key",keys);
+        if(!error){ const m={}; (data||[]).forEach(r=>{ m[r.key]=r.value; }); return m; }
+      }catch(e){}
+      return {};                        // connecté mais lecture impossible : pas de repli local
+    }
+    const m={}; keys.forEach(k=>{ m[k]=localGet(k); }); return m;
+  },
   async set(key,val){
     if(cloudActif()){
       try{ await sb.from("gabcook_store").upsert({user_id:currentUser.id, key, value:val, updated_at:new Date().toISOString()}); }catch(e){}
@@ -5860,7 +5901,9 @@ function postCardHTML(p){
     </div>
     ${p.photo_url?`<img class="postimg" src="${esc(p.photo_url)}" alt="" loading="lazy">`:""}
     <div class="postbody">
-      ${p.recipe_name?`<div class="prec">${esc(p.emoji||"🍽️")} ${esc(p.recipe_name)}</div>`:""}
+      ${p.recipe_name?(p.recipe_id && findRecipe(p.recipe_id)
+        ? `<button class="prec lien" data-feedrec="${esc(p.recipe_id)}">${esc(p.emoji||"🍽️")} ${esc(p.recipe_name)} <span class="prec-fl">voir la recette ›</span></button>`
+        : `<div class="prec">${esc(p.emoji||"🍽️")} ${esc(p.recipe_name)}</div>`):""}
       ${p.description?`<div class="pdesc">${esc(p.description)}</div>`:""}
     </div>
     <div class="postacts">
@@ -6120,13 +6163,52 @@ function closeRecipe(){
   stripUrl();
   doClose();
 }
-addEventListener("popstate", e=>{
-  const st = e.state || {};
-  if(scanEtat.ouvert && !st.scan){ fermeScan(); return; }     // sortie du scanner par le bouton retour
-  if(state.cook.open && !st.cook){ doCloseCook(); return; }   // sortie du mode cuisine par le bouton retour
-  const id = st.r;
-  if(id){ if(!currentRecipe || currentRecipe.id!==id) openRecipe(id, true); }
-  else if(currentRecipe) doClose();
+/* ==========================================================================
+   BOUTON RETOUR (Android) / GLISSÉ DEPUIS LE BORD (iOS)
+   Chaque écran superposé doit se refermer un niveau à la fois jusqu'à l'accueil,
+   et seulement là proposer de quitter. On garde en permanence une entrée
+   « tampon » dans l'historique : sans elle, le premier retour sortirait de l'app.
+   Ordre = du plus haut au plus bas à l'écran.
+   ========================================================================== */
+const ECRANS = [
+  {ouvert:()=>!document.getElementById("confirmBox").hidden,       ferme:()=>closeConfirm()},
+  {ouvert:()=>!document.getElementById("postBox").hidden,          ferme:()=>closePostComposer(false)},
+  {ouvert:()=>!document.getElementById("authBox").hidden,          ferme:()=>closeAuth()},
+  {ouvert:()=>state.cook && state.cook.open,                       ferme:()=>doCloseCook()},
+  {ouvert:()=>scanEtat && scanEtat.ouvert,                         ferme:()=>fermeScan()},
+  {ouvert:()=>state.weekUI && state.weekUI.open,                   ferme:()=>closeWeek()},
+  {ouvert:()=>settingsPageEl && settingsPageEl.classList.contains("open"), ferme:()=>closeSettings()},
+  {ouvert:()=>editorEl.classList.contains("open"),                 ferme:()=>closeEditor()},
+  {ouvert:()=>state.friendsSheet && state.friendsSheet.open,       ferme:()=>closeFriendsSheet()},
+  {ouvert:()=>state.postView && state.postView.open,               ferme:()=>closePostView()},
+  {ouvert:()=>detailEl.classList.contains("open"),                 ferme:()=>{ stripUrl(); doClose(); }},
+  {ouvert:()=>state.profileView && state.profileView.open,         ferme:()=>closeProfile()}
+];
+function fermeSommet(){
+  for(const e of ECRANS){
+    let o=false; try{ o=!!e.ouvert(); }catch(err){}
+    if(o){ try{ e.ferme(); }catch(err){} return true; }
+  }
+  return false;
+}
+/* l'entrée tampon : tant qu'elle existe, un retour reste dans l'application */
+function poseTampon(){ try{ history.pushState({yummly:1}, ""); }catch(e){} }
+let _quitterDemande=false;
+addEventListener("popstate", ()=>{
+  // 1) un écran superposé est ouvert : on le referme, un seul niveau à la fois
+  if(fermeSommet()){ poseTampon(); return; }
+  // 2) on est sur un autre onglet : retour à l'accueil
+  if(state.view!=="home"){ setView("home"); poseTampon(); return; }
+  // 3) accueil : on demande confirmation avant de quitter
+  if(!_quitterDemande){
+    _quitterDemande=true;
+    poseTampon();
+    askConfirm("Quitter Yummly ?", "Tu peux revenir quand tu veux, ton frigo et ta semaine sont conservés.",
+      ()=>{ _quitterDemande=false; history.back(); },   // plus de tampon reposé : on sort
+      "Quitter");
+    // si l'utilisateur annule, on redevient disponible pour une prochaine demande
+    setTimeout(()=>{ if(document.getElementById("confirmBox").hidden) _quitterDemande=false; }, 600);
+  }
 });
 
 /* ---------- recettes partagées entre profils ----------
@@ -6289,7 +6371,14 @@ function renderDetail(){
       <ul class="ing">
         ${statuses.map(({i,st})=>{
           let tick, cls, hint="";
-          if(st.s==="have"){ tick=`<span class="tick have">✓</span>`; cls="is-have"; }
+          if(st.s==="have"){
+            // couvert par le générique (« pâtes » pour des spaghetti) : on le signale
+            const parFam = st.f && familleCouvre(pantryOf(st.f.n).n, pantryOf(i.n).n);
+            if(parFam){
+              tick=`<span class="tick fam">!</span>`; cls="is-fam";
+              hint=`<span class="ihint fam">il faut du type « ${esc(cap(i.n))} » · tu as ${esc(cap(st.f.n))}</span>`;
+            } else { tick=`<span class="tick have">✓</span>`; cls="is-have"; }
+          }
           else if(st.s==="low"){
             const short=fromBase(st.short, st.f.u);
             hint=`<span class="ihint">manque ${fmtNum(short)}${st.f.u?(" "+st.f.u):""}</span>`;
@@ -6362,7 +6451,6 @@ function openCookMode(){
   document.body.style.overflow="hidden";
   acquireWake();   // l'écran reste allumé tout le temps de la recette pas à pas
   // entrée d'historique dédiée : le bouton retour du téléphone ferme le mode cuisine
-  if(DEEPLINK){ try{ history.pushState({r:(r.id||null), cook:1}, "", location.href); }catch(e){} }
   renderCookStep();
 }
 function closeCookMode(){                        // action utilisateur (bouton ✕ ou « Terminé »)
@@ -7011,17 +7099,42 @@ const OFF_CAT = [
   [/peas|petits-pois/,                   "petits pois"]
 ];
 
-/* « 50 cl », « 6 x 125 g », « 1L », « 500g » -> {q, u} */
+/* Clé de contrôle EAN/UPC : le dernier chiffre valide les précédents. Une lecture
+   optique bancale produit presque toujours un code qui échoue ce test — sans lui,
+   on interrogeait la base avec un code faux et on tombait sur un produit sans rapport. */
+function codeBarreValide(code){
+  if(!/^\d{8}$|^\d{12,13}$/.test(code)) return false;
+  const d=code.split("").map(Number), cle=d.pop();
+  let somme=0;
+  d.reverse().forEach((n,i)=>{ somme += n * ((i%2===0)?3:1); });
+  return ((10 - (somme%10)) % 10) === cle;
+}
+/* « 4 pièces », « x6 », « 500 g (4 pièces) », « 50 cl », « 6 x 125 g » -> {q,u} */
 function quantiteOFF(txt){
   const t=(txt||"").toLowerCase().replace(/\s+/g," ").trim();
   if(!t) return {q:null,u:""};
+  // « 6 x 125 g » est un multiple de poids, pas un nombre de pièces : on le teste avant
   const mult=t.match(/(\d+)\s*[x×]\s*(\d+(?:[.,]\d+)?)\s*(kg|g|mg|l|cl|ml|dl)\b/);
   if(mult) return {q:parseFloat(mult[1])*parseFloat(mult[2].replace(",",".")), u:mult[3]};
+  // un nombre de pièces annoncé explicitement prime : c'est ce qu'on compte en cuisine
+  const pcs=t.match(/(\d+)\s*(?:pi[èe]ces?|unit[ée]s?|fruits?|l[ée]gumes?)\b/) || t.match(/^[x×]\s*(\d+)$/) || t.match(/\b[x×]\s*(\d+)\b/);
+  if(pcs) return {q:parseFloat(pcs[1]), u:""};
   const un=t.match(/(\d+(?:[.,]\d+)?)\s*(kg|g|mg|l|cl|ml|dl)\b/);
   if(un) return {q:parseFloat(un[1].replace(",",".")), u:un[2]};
-  const pc=t.match(/^(\d+)\s*(?:pieces?|pi[èe]ces?|unit[ée]s?)?$/);
-  if(pc) return {q:parseFloat(pc[1]), u:""};
+  const seul=t.match(/^(\d+)$/);
+  if(seul) return {q:parseFloat(seul[1]), u:""};
   return {q:null,u:""};
+}
+/* Un filet de poivrons pesé en grammes : on préfère compter les poivrons.
+   POIDS_PIECE donne le poids moyen d'une pièce pour les produits qui se comptent. */
+function versPieces(nom, q, u){
+  if(q==null || !u || unitFamily(u)!=="masse") return {q,u};
+  const e=trouve(POIDS_PIECE, norm(nom));   // rend l'entrée [motif, poids d'une pièce]
+  if(!e) return {q,u};
+  const kg=toBase(q,u)/1000;                 // toBase(masse) rend des grammes
+  const n=Math.round(kg/e[1]);
+  if(n>=1 && n<=30) return {q:n, u:""};      // au-delà, le comptage n'a plus de sens
+  return {q,u};
 }
 
 /* Nom générique d'un produit scanné : les catégories d'abord (fiables),
@@ -7068,7 +7181,6 @@ async function ouvreScan(){
   document.body.style.overflow="hidden";
   scanEtat.ouvert=true;
   renderScanListe();
-  history.pushState({scan:1},"");
   if(!isSecureContext){
     scanDit("La caméra exige une connexion sécurisée (https). En http, le navigateur la refuse.", true);
     panneauScanManuel(); return;
@@ -7077,10 +7189,11 @@ async function ouvreScan(){
     scanDit("Ce navigateur ne donne pas accès à la caméra.", true); panneauScanManuel(); return;
   }
   try{
-    scanEtat.flux=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:"environment"}}, audio:false});
+    scanEtat.flux=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:"environment"}, width:{ideal:1280}, height:{ideal:720}}, audio:false});
   }catch(e){
-    scanDit(e && e.name==="NotAllowedError" ? "Accès à la caméra refusé. Autorise-le dans les réglages du navigateur."
-                                            : "Caméra indisponible ("+((e&&e.name)||"erreur")+").", true);
+    scanDit(e && e.name==="NotAllowedError" ? "Accès à la caméra refusé. Tu peux quand même photographier le code."
+                                            : "Caméra indisponible ("+((e&&e.name)||"erreur")+"). Photographie le code.", true);
+    boutonPhoto();                     // l'appareil photo natif reste accessible
     panneauScanManuel(); return;
   }
   const v=document.getElementById("scanVideo");
@@ -7089,7 +7202,25 @@ async function ouvreScan(){
   lanceDecodage(v);
 }
 
+/* La caméra met un instant à livrer une image exploitable : tant que `videoWidth`
+   vaut 0, tout décodeur travaille dans le vide. On attend donc une vraie frame. */
+function videoPrete(v, msMax){
+  return new Promise(res=>{
+    const t0=Date.now();
+    const check=()=>{
+      if(!scanEtat.ouvert) return res(false);
+      if(v.videoWidth>0 && v.readyState>=2) return res(true);
+      if(Date.now()-t0>(msMax||6000)) return res(false);
+      setTimeout(check,120);
+    };
+    check();
+  });
+}
 async function lanceDecodage(video){
+  const pret=await videoPrete(video);
+  if(!scanEtat.ouvert) return;
+  if(!pret){ scanDit("La caméra ne renvoie pas d'image. Réessaie ou prends une photo du code.", true); boutonPhoto(); return; }
+
   if("BarcodeDetector" in window){
     let det;
     try{ det=new BarcodeDetector({formats:["ean_13","ean_8","upc_a","upc_e","code_128"]}); }
@@ -7097,23 +7228,90 @@ async function lanceDecodage(video){
     const tick=async()=>{
       if(!scanEtat.ouvert) return;
       try{ const codes=await det.detect(video); if(codes && codes.length) traiteCode(codes[0].rawValue); }catch(e){}
-      scanEtat.boucle=setTimeout(tick, 320);
+      scanEtat.boucle=setTimeout(tick, 300);
     };
+    scanDit("Vise le code-barres du produit");
     tick(); return;
   }
+
   scanDit("Préparation du lecteur...");
   const ok=await chargeZXing();
-  if(!ok){ scanDit("Lecteur de codes-barres indisponible (hors ligne ?).", true); panneauScanManuel(); return; }
-  scanDit("Vise le code-barres du produit");
+  if(!ok || !scanEtat.ouvert){
+    if(scanEtat.ouvert){ scanDit("Lecteur indisponible (connexion ?). Prends une photo du code.", true); boutonPhoto(); }
+    return;
+  }
   try{
     scanEtat.lecteur=new ZXing.BrowserMultiFormatReader();
-    scanEtat.lecteur.decodeFromVideoElement(video, (res)=>{ if(res && scanEtat.ouvert) traiteCode(res.getText()); });
-  }catch(e){ scanDit("Lecteur non démarré ("+(e.message||"")+").", true); panneauScanManuel(); }
+    /* ATTENTION : `decodeFromVideoElement` ne lit QU'UNE FOIS puis s'arrête — c'est
+       pour cela que rien ne se passait sur iOS. La lecture en continu, c'est
+       `decodeFromVideoElementContinuously`. */
+    if(typeof scanEtat.lecteur.decodeFromVideoElementContinuously==="function"){
+      scanEtat.lecteur.decodeFromVideoElementContinuously(video, (res)=>{
+        if(res && scanEtat.ouvert) traiteCode(res.getText());
+      });
+    } else {
+      // très vieux build : on relance la lecture unique en boucle nous-mêmes
+      const tour=()=>{
+        if(!scanEtat.ouvert) return;
+        scanEtat.lecteur.decodeFromVideoElement(video)
+          .then(r=>{ if(r && scanEtat.ouvert) traiteCode(r.getText()); })
+          .catch(()=>{})
+          .then(()=>{ if(scanEtat.ouvert) scanEtat.boucle=setTimeout(tour,400); });
+      };
+      tour();
+    }
+    scanDit("Vise le code-barres du produit");
+    boutonPhoto();                       // filet de sécurité toujours disponible
+  }catch(e){
+    scanDit("Lecteur non démarré. Prends une photo du code.", true);
+    boutonPhoto();
+  }
+}
+/* Filet de sécurité : sur certains téléphones la lecture en direct reste capricieuse.
+   Une photo nette du code se décode beaucoup plus facilement. */
+function boutonPhoto(){
+  if(document.getElementById("scanPhotoWrap")) return;
+  const st=document.querySelector(".scan-stage");
+  if(!st) return;
+  const d=document.createElement("div");
+  d.id="scanPhotoWrap"; d.className="scan-photo";
+  d.innerHTML='<label class="scan-photo-b">📸 Photographier le code'+
+    '<input type="file" id="scanPhoto" accept="image/*" capture="environment" hidden></label>';
+  st.appendChild(d);
+  document.getElementById("scanPhoto").addEventListener("change", async e=>{
+    const f=e.target.files && e.target.files[0];
+    if(!f) return;
+    scanDit("Lecture de la photo...");
+    const url=URL.createObjectURL(f);
+    try{
+      if("BarcodeDetector" in window){
+        const img=new Image(); img.src=url;
+        await img.decode();
+        const det=new BarcodeDetector();
+        const codes=await det.detect(img);
+        if(codes && codes.length){ traiteCode(codes[0].rawValue); }
+        else scanDit("Aucun code lisible sur la photo. Rapproche-toi et recommence.", true);
+      } else {
+        const ok=await chargeZXing();
+        if(!ok) throw new Error("lecteur absent");
+        const lec=new ZXing.BrowserMultiFormatReader();
+        const r=await lec.decodeFromImageUrl(url);
+        if(r) traiteCode(r.getText());
+        else scanDit("Aucun code lisible sur la photo.", true);
+      }
+    }catch(err){
+      scanDit("Aucun code lisible sur la photo. Cadre bien le code, sans reflet.", true);
+    }finally{
+      URL.revokeObjectURL(url);
+      e.target.value="";
+    }
+  });
 }
 
 function traiteCode(code){
   code=String(code||"").replace(/\D/g,"");
   if(code.length<8) return;
+  if(!codeBarreValide(code)) return;         // lecture optique douteuse : on ignore et on relit
   const t=Date.now();
   if(code===scanEtat.dernier && t-scanEtat.dernierAt<4000) return;   // le même produit reste sous l'objectif
   scanEtat.dernier=code; scanEtat.dernierAt=t;
@@ -7130,15 +7328,20 @@ async function chercheEtAjoute(code){
     if(r.ok){ const j=await r.json(); if(j && j.status===1) prod=j.product; }
   }catch(e){}
   if(!prod){
-    scanDit("Code "+code+" inconnu du catalogue Open Food Facts.", true);
+    scanDit("Code "+code+" inconnu du catalogue. Nomme-le toi-même ci-dessous :", true);
     panneauScanManuel(code); return;
   }
-  const nom=nomGenerique(prod);
-  if(!nom){ scanDit("Produit trouvé mais sans nom exploitable.", true); panneauScanManuel(code); return; }
-  let q=quantiteOFF(prod.quantity).q, u=quantiteOFF(prod.quantity).u;
+  const brutNom=(prod.product_name_fr||prod.product_name||"").trim();
+  // plus d'impasse : à défaut de nom générique, le nom commercial nettoyé fait l'affaire
+  const nom=nomGenerique(prod) || pantryName(brutNom.replace(/[^\p{L}\s-]+/gu," ").replace(/\s+/g," ").trim().split(" ").slice(0,3).join(" "));
+  if(!nom){ scanDit("Produit trouvé mais sans nom exploitable.", true); panneauScanManuel(code, brutNom); return; }
+  const qt=quantiteOFF(prod.quantity);
+  let q=qt.q, u=qt.u;
   if(q==null && prod.product_quantity){ const n=parseFloat(prod.product_quantity); if(!isNaN(n)){ q=n; u="g"; } }
+  // « filet de poivrons 500 g » -> 3 poivrons : on compte ce qui se compte
+  const pc=versPieces(nom, q, u); q=pc.q; u=pc.u;
   const res=ajouteAuxCourses(nom, q, u);
-  const brut=(prod.product_name_fr||prod.product_name||"").trim();
+  const brut=brutNom;
   renderScanListe(res && res.item ? res.item.id : null);
   const mots={coche:"coché dans ta liste", maj:"quantité mise à jour", cumul:"quantité cumulée", nouveau:"ajouté à ta liste"};
   scanDit("« "+cap(nom)+" » "+(mots[res&&res.geste]||"ajouté")+(q!=null?" · "+fmtNum(roundNice(q))+(u?" "+u:""):"")+" · scanne le suivant");
@@ -7199,14 +7402,26 @@ function renderScanListe(idFlash){
     (pris?'<button class="sp-stock" id="scanStock">🧊 Ranger '+(pris>1?("les "+pris+" produits"):"le produit")+' dans le frigo</button>':'');
 }
 
-function panneauScanManuel(code){
+function panneauScanManuel(code, propose){
   const panel=document.getElementById("scanPanel");
-  const note='<div class="scan-note">'+(code?"Code "+esc(code)+" non reconnu.":"Scan indisponible.")+
-             ' Tu peux saisir l\'article toi-même dans l\'onglet Courses.</div>'+
-             '<button class="scan-manuel" id="scanQuit">Retour à ma liste</button>';
-  panel.innerHTML=note+panel.innerHTML;
+  const sais = propose ? cap(pantryName(propose)) : "";
+  panel.innerHTML =
+    '<div class="scan-manu">'+
+      '<div class="scan-note">'+(code?"Code <b>"+esc(code)+"</b> absent du catalogue.":"Produit non identifié.")+
+        " Écris ce que c'est, Yummly te proposera le nom qu'il comprend.</div>"+
+      '<input type="text" id="scanNom" class="scan-in" placeholder="Ex. poivrons, crème, riz..." value="'+esc(sais)+'" autocomplete="off">'+
+      '<div id="scanSugg"></div>'+
+      '<div class="scan-mrow">'+
+        '<input type="number" id="scanQ" class="scan-in qt" placeholder="Qté" min="0" step="any" inputmode="decimal">'+
+        unitSelect("", 'id="scanU" class="fiunit"')+
+        '<button class="scan-ok" id="scanAdd">Ajouter</button>'+
+      '</div>'+
+    '</div>' + panel.innerHTML;
+  const f=document.getElementById("scanNom");
+  if(f) f.addEventListener("input", ()=>{
+    document.getElementById("scanSugg").innerHTML=suggestionsHTML(f.value,"scanNom");
+  });
 }
-
 function fermeScan(){
   if(!scanEtat.ouvert) return;
   scanEtat.ouvert=false;
@@ -7215,6 +7430,7 @@ function fermeScan(){
   scanEtat.lecteur=null;
   if(scanEtat.flux){ scanEtat.flux.getTracks().forEach(t=>t.stop()); scanEtat.flux=null; }
   const v=document.getElementById("scanVideo"); if(v) v.srcObject=null;
+  const bp=document.getElementById("scanPhotoWrap"); if(bp) bp.remove();
   const page=document.getElementById("scanPage");
   page.classList.remove("open"); page.setAttribute("aria-hidden","true");
   document.body.style.overflow="";
@@ -8063,6 +8279,22 @@ document.getElementById("scanPage").addEventListener("click", e=>{
   const t=e.target.closest("[data-scan-toggle]");
   if(t){ const s=state.shopping.find(x=>x.id==t.dataset.scanToggle);
          if(s){ s.checked=!s.checked; saveShopping(); updateBadges(); renderScanListe(); } return; }
+  const sg=e.target.closest("[data-sugg]");
+  if(sg){ const f=document.getElementById("scanNom");
+    if(f){ f.value=sg.dataset.sugg; document.getElementById("scanSugg").innerHTML=""; f.focus(); } return; }
+  if(e.target.closest("#scanAdd")){
+    const f=document.getElementById("scanNom"), q=document.getElementById("scanQ"), u=document.getElementById("scanU");
+    const sep=separeQuantite(f?f.value:"");
+    const nom=sep.n;
+    if(!nom){ scanDit("Écris d'abord un nom de produit.", true); return; }
+    const qv = (q && q.value!=="") ? parseFloat(q.value) : sep.q;
+    const uv = (q && q.value!=="") ? (u?u.value:"") : sep.u;
+    const pc=versPieces(pantryName(nom), qv, uv);
+    const res=ajouteAuxCourses(nom, pc.q, pc.u);
+    renderScanListe(res && res.item ? res.item.id : null);
+    scanDit("« "+cap(pantryName(nom))+" » ajouté · scanne le suivant");
+    return;
+  }
   if(e.target.closest("#scanStock")){
     const pris=state.shopping.filter(s=>s.checked);
     pris.forEach(s=>addToFridge(s.base, s.q, s.u));
@@ -8308,6 +8540,9 @@ scrollEl.addEventListener("input", e=>{
   if(e.target.id==="shopInput") majSuggestions("shopInput","sSugg","shopSaisie");
 });
 scrollEl.addEventListener("click", e=>{
+  // nom de la recette sous une publication du fil : on ouvre la fiche
+  const fr=e.target.closest("[data-feedrec]");
+  if(fr){ const rid=fr.dataset.feedrec; if(rid && findRecipe(rid)) openRecipe(rid); return; }
   const s=e.target.closest("[data-sugg]");
   if(!s) return;
   const zone=s.closest(".sugg"), champ=zone && zone.dataset.suggFor;
@@ -8331,6 +8566,7 @@ scrollEl.addEventListener("click", e=>{
 document.getElementById("nav").addEventListener("click",e=>{
   const b=e.target.closest("button[data-view]");
   if(!b) return;
+  try{
   // la pastille reste au-dessus d'une recette ouverte : on la referme avant de changer d'onglet.
   // Fermeture directe et non via l'historique, dont le retour asynchrone effacerait l'animation de page.
   _returnProfileId=null;   // pas de retour-profil quand on quitte par la nav
@@ -8344,6 +8580,9 @@ document.getElementById("nav").addEventListener("click",e=>{
   if(editorEl.classList.contains("open")) closeEditor();
   if(settingsPageEl && settingsPageEl.classList.contains("open")) closeSettings();
   setView(b.dataset.view);
+  }catch(err){ /* une erreur de rendu ne doit pas laisser l'app inutilisable */
+    try{ state.view=b.dataset.view; render(); }catch(e2){}
+  }
 });
 /* ---------- événements de l'éditeur ---------- */
 edScroll.addEventListener("input", e=>{ const el=e.target.closest("[data-ed]"); if(el) edSet(el); });
@@ -8993,35 +9232,39 @@ async function poseIcones(){
 /* ---------- init ---------- */
 // (re)charge tout l'état depuis la source active (cloud si connecté, sinon local)
 async function hydrate(){
-  const f=await Store.get("gabcook_fridge");
-  const s=await Store.get("gabcook_shopping");
-  state.airfryer = (await Store.get("gabcook_airfryer")) === true;
-  state.micro = (await Store.get("gabcook_micro")) === true;
+  // UNE seule requête pour toutes les clés (14 allers-retours auparavant)
+  const _h=await Store.getMany(["gabcook_fridge","gabcook_shopping","gabcook_airfryer","gabcook_micro",
+    "gabcook_perso","gabcook_profile","gabcook_stats","gabcook_photos","gabcook_favorites",
+    "gabcook_semaine","gabcook_ratings","gabcook_agenda","gabcook_notes","gabcook_planned"]);
+  const f=_h["gabcook_fridge"];
+  const s=_h["gabcook_shopping"];
+  state.airfryer = (_h["gabcook_airfryer"]) === true;
+  state.micro = (_h["gabcook_micro"]) === true;
   if(state.micro) state.airfryer=false;      // sécurité si les deux avaient été enregistrés
-  const p=await Store.get("gabcook_perso");
+  const p=_h["gabcook_perso"];
   state.perso = Array.isArray(p) ? p.map(sanitizeRecipe).filter(Boolean) : [];
-  const pr=await Store.get("gabcook_profile");
+  const pr=_h["gabcook_profile"];
   state.profile = (pr && typeof pr==="object") ? {pseudo:clean(pr.pseudo), avatar:(pr.avatar||""), bio:clean(pr.bio), isPrivate:!!pr.isPrivate, banner:(pr.banner||""), bannerPos:(pr.bannerPos==null?50:pr.bannerPos)} : {pseudo:"",avatar:"",bio:"",isPrivate:false,banner:"",bannerPos:50};
-  const st=await Store.get("gabcook_stats");
+  const st=_h["gabcook_stats"];
   state.stats = (st && typeof st==="object") ? {cooked:+st.cooked||0, byRecipe:(st.byRecipe||{}), firstAt:st.firstAt||null, lastAt:st.lastAt||null} : {cooked:0,byRecipe:{},firstAt:null,lastAt:null};
-  const ph=await Store.get("gabcook_photos");
+  const ph=_h["gabcook_photos"];
   state.recipePhotos = (ph && typeof ph==="object") ? ph : {};
-  const favs=await Store.get("gabcook_favorites");
+  const favs=_h["gabcook_favorites"];
   state.favorites = Array.isArray(favs) ? favs.filter(x=>typeof x==="string") : [];
-  const sem=await Store.get("gabcook_semaine");
+  const sem=_h["gabcook_semaine"];
   if(sem && typeof sem==="object"){
     state.semaine=Object.assign(state.semaine, sem);
     state.semaine.prefs=Object.assign({deteste:[],allerg:[]}, sem.prefs||{});
     state.semaine.plats=Array.isArray(sem.plats)?sem.plats:[];
   }
-  const rts=await Store.get("gabcook_ratings");
+  const rts=_h["gabcook_ratings"];
   state.ratings = (rts && typeof rts==="object" && !Array.isArray(rts)) ? rts : {};
-  const ag=await Store.get("gabcook_agenda");
+  const ag=_h["gabcook_agenda"];
   state.agenda = (ag && typeof ag==="object" && !Array.isArray(ag)) ? ag : {};
   purgeAgenda();
-  const nts=await Store.get("gabcook_notes");
+  const nts=_h["gabcook_notes"];
   state.notes = (nts && typeof nts==="object" && !Array.isArray(nts)) ? nts : {};
-  const plans=await Store.get("gabcook_planned");
+  const plans=_h["gabcook_planned"];
   state.planned = Array.isArray(plans) ? plans.filter(x=>typeof x==="string") : [];
   state.onlyFav=false;
   state.fridge = Array.isArray(f) ? f.map(x => (typeof x==="string") ? {n:x, q:null, u:""} : {n:x.n, q:(x.q===undefined?null:x.q), u:(x.u||"")}) : [];
@@ -9074,6 +9317,12 @@ async function handleAuth(session){
 }
 
 (async function init(){
+  /* On affiche l'interface AVANT d'attendre le réseau : sinon l'application restait
+     muette pendant toute la récupération de session + des données, et un appui sur
+     le menu pendant ce temps semblait la figer. */
+  render(); placeBrand(); positionNav(false);
+  poseTampon();                       // sans cette entrée, le 1er retour quitterait l'app
+  document.body.classList.add("chargement");
   if(sb){
     try{
       const {data}=await sb.auth.getSession();
@@ -9083,6 +9332,7 @@ async function handleAuth(session){
     }catch(e){}
   }
   await hydrate();
+  document.body.classList.remove("chargement");
   // session déjà active au chargement : se rendre trouvable + charger les amis
   if(currentUser){
     if(!state.profile.pseudo){ state.profile.pseudo=(currentUser.email||"").split("@")[0]; saveProfile(); }
