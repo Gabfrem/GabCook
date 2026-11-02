@@ -1,6 +1,6 @@
 import { useState } from "preact/hooks";
 import { ALLERGENES, AVERSIONS, CUISINES, EQUIPEMENTS } from "../../core/classify";
-import { missingFor } from "../../core/fridge";
+import { missingImportant } from "../../core/fridge";
 import { agendaCompte, cleJour, JOURS_CT, JOURS_LONG, joursAgenda, MOIS_CT, recettesAgenda, REPAS, slotDe, type Meal } from "../../core/planner";
 import { euros } from "../../core/pricing";
 import { count } from "../../core/text";
@@ -56,12 +56,12 @@ function SlotView({ cle, repas }: { cle: string; repas: Meal }) {
         </div>
       </div>
     );
-  const manque = fridge.value.length ? missingFor(fridge.value, r).length : -1;
+  const manque = fridge.value.length ? missingImportant(fridge.value, r).length : -1;
   return (
     <div class="meal">
       <div class="meal-label">{label}</div>
-      <div class="slot">
-        <button style={{ display: "contents" }} onClick={() => openRecipe(r.id)} aria-label={"Ouvrir " + r.nom}>
+      <div class="slot" role="button" tabIndex={0} aria-label={"Ouvrir " + r.nom} onClick={() => openRecipe(r.id)} onKeyDown={(e) => e.key === "Enter" && openRecipe(r.id)}>
+        <>
           <Cover r={r} />
           <div class="info">
             <h3>{r.nom}</h3>
@@ -70,8 +70,8 @@ function SlotView({ cle, repas }: { cle: string; repas: Meal }) {
             </span>
             {manque === 0 ? <span class="tag ok" style={{ alignSelf: "flex-start" }}>✓ Prêt à cuisiner</span> : manque > 0 ? <span class="tag" style={{ alignSelf: "flex-start" }}>Il manque {manque}</span> : null}
           </div>
-        </button>
-        <div class="tools">
+        </>
+        <div class="tools" onClick={(e) => e.stopPropagation()}>
           <button aria-label="Proposer un autre plat" title="Un autre plat" onClick={() => proposeFor(cle, repas)}>
             🎲
           </button>

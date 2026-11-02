@@ -26,13 +26,16 @@ export const overlays = signal<Overlay[]>([]);
 export const top = () => overlays.value[overlays.value.length - 1] || null;
 
 let ignorePop = 0;
+/** Nombre d'entrées d'historique poussées pour les écrans superposés ouverts. */
+let depth = 0;
 export function openOverlay(o: Overlay) {
   overlays.value = [...overlays.value, o];
   try {
     const url = o.kind === "recipe" && !o.preview ? recipeUrl(o.id, o.portions) : location.pathname;
-    history.pushState({ yummly: overlays.value.length }, "", url);
+    history.pushState({ yummly: depth + 1 }, "", url);
+    depth++;
   } catch {
-    /* ignore */
+    /* historique indisponible : on gère sans */
   }
 }
 /** Remplace l'écran du dessus (sans nouvelle entrée d'historique). */
@@ -42,16 +45,17 @@ export function replaceTop(o: Overlay) {
 }
 export function closeOverlay() {
   if (!overlays.value.length) return;
-  if (history.state && history.state.yummly) {
+  if (depth > 0) {
     history.back(); // le popstate fera la fermeture
     return;
   }
   overlays.value = overlays.value.slice(0, -1);
 }
 export function closeAllOverlays() {
-  const n = overlays.value.length;
-  if (!n) return;
+  const n = depth;
   overlays.value = [];
+  depth = 0;
+  if (!n) return;
   try {
     ignorePop += 1;
     history.go(-n);
@@ -64,6 +68,15 @@ export function setTab(t: Tab) {
   tab.value = t;
   try {
     window.scrollTo({ top: 0 });
+  } catch {
+    /* ignore */
+  }
+}
+/** Le retour a consommé une entrée alors qu'on ne fermait qu'une fenêtre : on la remet. */
+function rePush() {
+  try {
+    if (depth > 0) history.pushState({ yummly: depth }, "", location.pathname + location.search);
+    else pushBuffer();
   } catch {
     /* ignore */
   }
@@ -95,16 +108,18 @@ if (typeof window !== "undefined") {
     }
     if (confirmState.value) {
       confirmState.value = null;
-      pushBuffer();
+      rePush();
       return;
     }
     if (sheet.value) {
       sheet.value = null;
-      pushBuffer();
+      rePush();
       return;
     }
     if (overlays.value.length) {
       overlays.value = overlays.value.slice(0, -1);
+      if (depth > 0) depth--;
+      else pushBuffer(); // l'écran n'avait pas d'entrée : on garde un tampon
       return;
     }
     if (tab.value !== "home") {

@@ -239,7 +239,7 @@ export function CookMode({ o }: { o: Extract<Overlay, { kind: "cook" }> }) {
                 ))}
               </div>
             )}
-            {dur > 0 && <StepTimer id={tid} label={"Étape " + step} seconds={dur} />}
+            {dur > 0 && <StepTimer id={tid} label={r.nom.slice(0, 22) + " · étape " + step} seconds={dur} />}
             {voix && (
               <button class="btn ghost sm mt" onClick={() => speak(text)}>
                 <Icon name="volume" /> Relire l'étape
@@ -262,6 +262,21 @@ export function CookMode({ o }: { o: Extract<Overlay, { kind: "cook" }> }) {
           </button>
         )}
       </div>
+    </div>
+  );
+}
+
+/** Minuteurs encore actifs hors du mode cuisine : visibles partout, arrêtables d'un geste. */
+export function TimerPill() {
+  const list = timers.value;
+  if (!list.length) return null;
+  return (
+    <div class="timerpill" role="status">
+      {list.map((t) => (
+        <button class={"tag " + (t.done ? "danger" : "accent")} onClick={() => dismissTimer(t.id)} aria-label={(t.done ? "Arrêter la sonnerie : " : "Annuler le minuteur : ") + t.label}>
+          ⏱ {t.label} · {t.done ? "terminé !" : fmtClock(left(t))} ✕
+        </button>
+      ))}
     </div>
   );
 }

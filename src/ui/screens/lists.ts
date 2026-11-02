@@ -186,11 +186,15 @@ export function applyFilters(list: Recipe[], f: Filters): Recipe[] {
     return true;
   });
 }
-export type Sort = "pertinence" | "note" | "rapide" | "prix" | "az";
+export type Sort = "pertinence" | "note" | "rapide" | "facile" | "prix" | "az";
 export function sortList(list: Recipe[], s: Sort): Recipe[] {
   const a = list.slice();
   if (s === "note") a.sort((x, y) => scoreNote(y.id) - scoreNote(x.id) || Number(hasPhoto(y)) - Number(hasPhoto(x)));
   else if (s === "rapide") a.sort((x, y) => minutes(x) - minutes(y));
+  else if (s === "facile") {
+    const D: Record<string, number> = { Facile: 0, Moyen: 1, Difficile: 2 };
+    a.sort((x, y) => (D[x.diff] ?? 9) - (D[y.diff] ?? 9) || minutes(x) - minutes(y));
+  }
   else if (s === "prix") a.sort((x, y) => prixRecette(x).parPers - prixRecette(y).parPers);
   else if (s === "az") a.sort((x, y) => x.nom.localeCompare(y.nom, "fr"));
   else

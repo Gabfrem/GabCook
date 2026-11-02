@@ -22,6 +22,7 @@ const SORTS: [Sort, string][] = [
   ["pertinence", "Pertinence"],
   ["note", "Mieux notées"],
   ["rapide", "Plus rapides"],
+  ["facile", "Plus faciles"],
   ["prix", "Moins chères"],
   ["az", "A → Z"]
 ];

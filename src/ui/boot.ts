@@ -3,7 +3,7 @@ import { batch } from "@preact/signals";
 import { decodeRecipe, decodeSync } from "../core/links";
 import type { AirFryerInfo, MicrowaveInfo, Recipe } from "../core/recipe";
 import { initAuth } from "../services/auth";
-import { AF, catalog, catalogReady, findRecipe, localGet, MO, user } from "../state/store";
+import { AF, catalog, catalogReady, findRecipe, localDel, localGet, MO, user } from "../state/store";
 import { openOverlay, openSheet, pushBuffer } from "../state/ui";
 
 async function loadCatalog() {
@@ -38,6 +38,8 @@ function handleIncomingLink(q: URLSearchParams) {
 
 export async function boot() {
   const incoming = new URLSearchParams(location.search);
+  // la v1 gardait en cache des photos Wikimedia hors sujet : on libère la place
+  localDel("gabcook_photocache");
   const pCat = loadCatalog();
   // la session est lue AVANT de nettoyer l'adresse : un retour de connexion Google
   // ou de lien e-mail y porte ses jetons

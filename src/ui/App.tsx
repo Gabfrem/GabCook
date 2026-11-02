@@ -5,7 +5,7 @@ import { fridge, shopping } from "../state/store";
 import { overlays, setTab, tab, TABS, type Overlay, type Tab } from "../state/ui";
 import { ConfirmDialog, Toast } from "./components/common";
 import { Icon } from "./components/Icon";
-import { CookMode } from "./screens/CookMode";
+import { CookMode, TimerPill } from "./screens/CookMode";
 import { Editor } from "./screens/Editor";
 import { Explore } from "./screens/Explore";
 import { FridgeScreen } from "./screens/Fridge";
@@ -121,6 +121,7 @@ export function App() {
           <OverlayView o={o} />
         </div>
       ))}
+      {!(ov.length && ov[ov.length - 1].kind === "cook") && <TimerPill />}
       <Sheets />
       <ConfirmDialog />
       <Toast />
