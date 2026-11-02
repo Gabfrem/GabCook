@@ -980,3 +980,369 @@ etapes:
 6. Ajoutez les deux tiers du maïs et poursuivez 5 min.
 7. Mixez un tiers de la soupe puis reversez-la dedans : elle devient crémeuse sans crème.
 8. Ajoutez le reste du maïs pour le croquant, rectifiez le sel, et servez parsemé des lardons croustillants.
+
+# ---------- Nouveautés v2 ----------
+
+=== Soupe tom yum aux crevettes
+id: tomyum
+emoji: 🍲
+categorie: Entrée
+preparation: 15
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/9c5nlx1763424766.jpg
+nouveau: oui
+ingredients:
+- crevettes : 300 g
+- bouillon de volaille : 1 l
+- citronnelle : 2
+- gingembre : 3 cm
+- champignons : 150 g
+- tomates cerises : 10
+- citrons verts : 2
+- sauce poisson : 3 c. à soupe
+- piment : 2
+- sucre : 1 c. à café
+- coriandre : 1 poignée
+etapes:
+1. Écrasez la citronnelle avec le plat d'un couteau et coupez-la en tronçons. Tranchez le gingembre.
+2. Faites frémir le bouillon avec la citronnelle, le gingembre et les piments 10 min.
+3. Ajoutez les champignons émincés et les tomates coupées en deux, laissez cuire 3 min.
+4. Ajoutez les crevettes décortiquées et faites-les cuire 2 min, jusqu'à ce qu'elles soient roses.
+5. Hors du feu, assaisonnez avec la sauce poisson, le sucre et le jus des citrons verts : la soupe doit être acide, salée et piquante.
+6. Servez parsemé de coriandre.
+
+=== Salade de saumon à l'avocat
+id: saladesaumonavocat
+emoji: 🥑
+categorie: Entrée
+preparation: 15
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/1549542994.jpg
+nouveau: oui
+ingredients:
+- pavés de saumon : 2
+- avocats : 2
+- salade : 1
+- concombre : 0.5
+- citron : 1
+- huile d'olive : 4 c. à soupe
+- moutarde : 1 c. à café
+- graines de sésame : 1 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Faites cuire le saumon 4 min par face dans une poêle huilée, côté peau d'abord. Laissez tiédir et effeuillez-le.
+2. Coupez les avocats et le concombre en dés, arrosez de jus de citron.
+3. Fouettez le reste du jus de citron avec l'huile, la moutarde, sel et poivre.
+4. Disposez la salade dans les assiettes, ajoutez l'avocat, le concombre et le saumon.
+5. Arrosez de vinaigrette et parsemez de sésame grillé.
+
+=== Salade russe (salade Olivier)
+id: saladerusse
+emoji: 🥔
+categorie: Entrée
+preparation: 25
+cuisson: 25
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ebvuir1699013665.jpg
+nouveau: oui
+ingredients:
+- pommes de terre : 500 g
+- carottes : 2
+- petits pois : 150 g
+- œufs : 3
+- cornichons : 6
+- jambon : 150 g
+- mayonnaise : 200 g
+- moutarde : 1 c. à café
+- aneth : 1 poignée
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Faites cuire les pommes de terre et les carottes entières dans l'eau salée 20 à 25 min. Ajoutez les petits pois les 5 dernières minutes.
+2. Faites cuire les œufs 9 min, refroidissez-les et écalez-les.
+3. Coupez les pommes de terre, les carottes, les œufs, les cornichons et le jambon en petits dés réguliers.
+4. Mélangez la mayonnaise avec la moutarde, sel et poivre.
+5. Mélangez délicatement tous les ingrédients avec la sauce et l'aneth ciselé.
+6. Laissez reposer 1 h au frais avant de servir.
+
+=== Bortsch (soupe de betterave)
+id: bortsch
+emoji: 🍲
+categorie: Entrée
+preparation: 20
+cuisson: 40
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/zadvgb1699012544.jpg
+nouveau: oui
+ingredients:
+- betteraves crues : 3
+- chou blanc : 0.25
+- pommes de terre : 2
+- carotte : 1
+- oignon : 1
+- concentré de tomate : 1 c. à soupe
+- bouillon : 1.5 l
+- vinaigre : 1 c. à soupe
+- crème fraîche : 6 c. à soupe
+- aneth : 1 poignée
+- huile : 2 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Épluchez et râpez les betteraves et la carotte, émincez l'oignon et le chou, coupez les pommes de terre en dés.
+2. Faites revenir l'oignon, la carotte et la betterave dans l'huile 8 min.
+3. Ajoutez le concentré de tomate et le vinaigre : il préserve la belle couleur rouge.
+4. Versez le bouillon, ajoutez les pommes de terre et le chou. Salez et laissez cuire 30 min.
+5. Servez avec une cuillère de crème fraîche et de l'aneth ciselé.
+
+=== Velouté brocoli et bleu
+id: veloutebrocoli
+emoji: 🥦
+categorie: Entrée
+preparation: 10
+cuisson: 25
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/tvvxpv1511191952.jpg
+nouveau: oui
+ingredients:
+- brocoli : 1
+- pomme de terre : 1
+- oignon : 1
+- bouillon : 1 l
+- bleu d'Auvergne : 100 g
+- crème liquide : 10 cl
+- beurre : 20 g
+- poivre : 1 pincée
+etapes:
+1. Faites fondre l'oignon émincé dans le beurre 5 min.
+2. Ajoutez le brocoli en fleurettes et la pomme de terre en dés, puis le bouillon.
+3. Laissez cuire 20 min jusqu'à ce que les légumes soient tendres.
+4. Mixez avec la crème et les trois quarts du fromage jusqu'à obtenir un velouté lisse. Poivrez (le fromage sale suffisamment).
+5. Servez avec le reste du bleu émietté sur le dessus.
+
+=== Soupe de pois cassés
+id: soupepoiscasses
+emoji: 🥣
+categorie: Entrée
+preparation: 15
+cuisson: 60
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/xxtsvx1511814083.jpg
+nouveau: oui
+ingredients:
+- pois cassés : 400 g
+- lardons : 150 g
+- oignon : 1
+- carotte : 1
+- poireau : 1
+- bouillon : 1.5 l
+- laurier : 1 feuilles
+- crème fraîche : 4 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Rincez les pois cassés. Faites revenir les lardons dans une cocotte 5 min, puis réservez-en la moitié.
+2. Ajoutez l'oignon, la carotte et le poireau émincés, laissez fondre 5 min.
+3. Ajoutez les pois cassés, le bouillon et le laurier. Laissez mijoter 50 min à couvert, en remuant de temps en temps.
+4. Retirez le laurier et mixez. Allongez avec un peu d'eau si la soupe est trop épaisse.
+5. Servez avec une cuillère de crème et les lardons réservés bien croustillants.
+
+=== Ajo blanco (soupe froide aux amandes)
+id: ajoblanco
+emoji: 🥣
+categorie: Entrée
+preparation: 15
+cuisson: 0
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/5jdtie1763289302.jpg
+nouveau: oui
+ingredients:
+- amandes : 150 g
+- pain : 100 g
+- gousses d'ail : 2
+- huile d'olive : 10 cl
+- vinaigre de xérès : 2 c. à soupe
+- eau : 60 cl
+- raisins : 1 poignée
+- sel : 1 pincée
+etapes:
+1. Faites tremper le pain sans croûte dans un peu d'eau 5 min, puis essorez-le.
+2. Mixez les amandes avec l'ail, le pain et un peu d'eau jusqu'à obtenir une pâte fine.
+3. Ajoutez l'huile d'olive en filet en mixant, puis le vinaigre, le sel et le reste de l'eau glacée.
+4. Passez au tamis pour une texture soyeuse et réservez 2 h au frais.
+5. Servez bien froid avec des grains de raisin coupés en deux et un filet d'huile d'olive.
+
+=== Bisque de crevettes au fenouil
+id: bisquecrevettes
+emoji: 🦐
+categorie: Entrée
+preparation: 20
+cuisson: 35
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/rtwwvv1511799504.jpg
+nouveau: oui
+ingredients:
+- crevettes : 400 g
+- fenouil : 1
+- oignon : 1
+- concentré de tomate : 2 c. à soupe
+- cognac : 3 c. à soupe
+- vin blanc : 10 cl
+- bouillon de poisson : 75 cl
+- crème liquide : 15 cl
+- beurre : 30 g
+- paprika : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Décortiquez les crevettes en gardant les têtes et carapaces. Faites revenir celles-ci dans le beurre 5 min en les écrasant : c'est là qu'est tout le goût.
+2. Ajoutez l'oignon et le fenouil émincés, puis le concentré de tomate, et laissez revenir 5 min.
+3. Versez le cognac, puis le vin blanc, et laissez réduire.
+4. Ajoutez le bouillon et laissez frémir 20 min. Mixez puis filtrez en pressant bien.
+5. Remettez sur le feu avec la crème et le paprika, ajoutez les crevettes coupées en morceaux et laissez cuire 2 min. Salez et servez.
+
+=== Soupe de haricots blancs au romarin
+id: soupeharicotsblancs
+emoji: 🥣
+categorie: Entrée
+preparation: 10
+cuisson: 25
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/p5nzbk1782680889.jpg
+nouveau: oui
+ingredients:
+- haricots blancs : 800 g
+- oignon : 1
+- gousses d'ail : 2
+- carotte : 1
+- romarin : 1 pincée
+- bouillon : 75 cl
+- parmesan : 30 g
+- huile d'olive : 3 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Faites revenir l'oignon, l'ail et la carotte hachés dans l'huile d'olive 6 min.
+2. Ajoutez les haricots égouttés, le romarin et le bouillon. Laissez mijoter 15 min.
+3. Mixez la moitié de la soupe et remélangez avec l'autre moitié : elle devient crémeuse en gardant des morceaux.
+4. Salez, poivrez et servez avec du parmesan râpé et un filet d'huile d'olive.
+
+=== Soupe chinoise à l'œuf
+id: soupeoeufchinoise
+emoji: 🥚
+categorie: Entrée
+preparation: 5
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/1529446137.jpg
+nouveau: oui
+ingredients:
+- bouillon de volaille : 1 l
+- œufs : 3
+- maïzena : 1 c. à soupe
+- sauce soja : 1 c. à soupe
+- gingembre : 2 cm
+- oignons nouveaux : 2
+- huile de sésame : 1 c. à café
+- poivre : 1 pincée
+etapes:
+1. Faites chauffer le bouillon avec le gingembre râpé et la sauce soja.
+2. Délayez la maïzena dans 3 c. à soupe d'eau froide et versez-la dans le bouillon frémissant en remuant : il épaissit légèrement.
+3. Battez les œufs. Tournez la soupe d'un mouvement circulaire et versez les œufs en filet fin : ils forment des rubans.
+4. Coupez le feu, ajoutez l'huile de sésame, le poivre et les oignons nouveaux émincés.
+
+=== Salade vietnamienne au poulet
+id: saladevietnamienne
+emoji: 🥗
+categorie: Entrée
+preparation: 25
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/pk8wtn1763758591.jpg
+nouveau: oui
+ingredients:
+- blancs de poulet : 2
+- chou chinois : 0.5
+- carottes : 2
+- concombre : 0.5
+- menthe : 1 poignée
+- coriandre : 1 poignée
+- cacahuètes : 50 g
+- citrons verts : 2
+- sauce poisson : 3 c. à soupe
+- sucre : 1 c. à soupe
+- piment : 1
+- gousse d'ail : 1
+etapes:
+1. Faites pocher le poulet 12 min dans l'eau frémissante, laissez-le refroidir et effilochez-le.
+2. Émincez très finement le chou, taillez les carottes et le concombre en bâtonnets.
+3. Mélangez le jus des citrons verts, la sauce poisson, le sucre, 3 c. à soupe d'eau, l'ail et le piment hachés.
+4. Mélangez le poulet, les légumes et les herbes avec la sauce.
+5. Parsemez de cacahuètes concassées et servez aussitôt.
+
+=== Salade de patate douce rôtie
+id: saladepatatedouce
+emoji: 🍠
+categorie: Entrée
+preparation: 15
+cuisson: 30
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/z458v91763817681.jpg
+nouveau: oui
+ingredients:
+- patates douces : 2
+- roquette : 100 g
+- feta : 100 g
+- oignon rouge : 0.5
+- graines de courge : 2 c. à soupe
+- huile d'olive : 4 c. à soupe
+- miel : 1 c. à soupe
+- vinaigre balsamique : 1 c. à soupe
+- cumin : 1 c. à café
+- sel : 1 pincée
+etapes:
+1. Préchauffez le four à 200 °C. Coupez les patates douces en cubes, enrobez-les de 2 c. à soupe d'huile, de cumin et de sel.
+2. Faites-les rôtir 25 à 30 min en les retournant à mi-cuisson.
+3. Fouettez le reste d'huile avec le miel et le vinaigre.
+4. Disposez la roquette, les patates douces tièdes, l'oignon émincé et la feta émiettée.
+5. Arrosez de vinaigrette et parsemez de graines de courge grillées.
+
+=== Soupe de pois chiches au chorizo
+id: soupepoischicheschorizo
+emoji: 🌶️
+categorie: Entrée
+preparation: 10
+cuisson: 25
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/kggfo91763288633.jpg
+nouveau: oui
+ingredients:
+- pois chiches : 800 g
+- chorizo : 150 g
+- oignon : 1
+- gousses d'ail : 2
+- tomates concassées : 400 g
+- paprika fumé : 1 c. à café
+- bouillon : 75 cl
+- épinards : 100 g
+- huile d'olive : 1 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Faites revenir le chorizo en rondelles dans l'huile 3 min, jusqu'à ce qu'il rende son huile rouge.
+2. Ajoutez l'oignon et l'ail hachés, puis le paprika, et laissez fondre 5 min.
+3. Ajoutez les tomates, les pois chiches égouttés et le bouillon. Laissez mijoter 15 min.
+4. Ajoutez les épinards en fin de cuisson, ils tombent en 1 min. Salez si besoin et servez avec du pain.

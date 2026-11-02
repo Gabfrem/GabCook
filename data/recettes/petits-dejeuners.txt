@@ -448,3 +448,165 @@ etapes:
 5. Disposez le saumon fumé en le repliant en vagues plutôt qu'à plat : c'est plus agréable en bouche.
 6. Ajoutez les rondelles d'oignon et les câpres.
 7. Terminez par un trait de citron et du poivre, refermez ou servez ouvert.
+
+# ---------- Nouveautés v2 ----------
+
+=== Œufs Bénédicte au saumon
+id: oeufsbenedicte
+emoji: 🍳
+categorie: Petit-déj
+preparation: 15
+cuisson: 15
+portions: 2
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/1550440197.jpg
+nouveau: oui
+ingredients:
+- œufs : 4
+- jaunes d'œufs : 2
+- muffins anglais : 2
+- saumon fumé : 4 tranches
+- beurre : 100 g
+- citron : 0.5
+- vinaigre : 2 c. à soupe
+- ciboulette : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Pour la sauce hollandaise, fouettez les jaunes avec 1 c. à soupe d'eau au bain-marie jusqu'à ce qu'ils épaississent et moussent.
+2. Ajoutez le beurre fondu en filet en fouettant, puis le jus du citron et le sel. Gardez au chaud hors du feu.
+3. Faites frémir de l'eau avec le vinaigre. Créez un tourbillon et cassez-y un œuf : 3 min de cuisson pour un jaune coulant. Recommencez pour chaque œuf.
+4. Toastez les muffins coupés en deux.
+5. Posez une tranche de saumon sur chaque moitié, un œuf poché, et nappez de sauce hollandaise. Parsemez de ciboulette.
+
+=== Petit-déjeuner anglais
+id: englishbreakfast
+emoji: 🍳
+categorie: Petit-déj
+preparation: 10
+cuisson: 20
+portions: 2
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/utxryw1511721587.jpg
+nouveau: oui
+ingredients:
+- œufs : 2
+- saucisses : 4
+- bacon : 4 tranches
+- haricots blancs à la sauce tomate : 400 g
+- champignons : 150 g
+- tomates : 2
+- pain de mie : 2 tranches
+- beurre : 20 g
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Faites dorer les saucisses à la poêle 12 min, en les retournant.
+2. Ajoutez le bacon et faites-le griller 3 min de chaque côté. Gardez au chaud.
+3. Dans la même poêle, faites sauter les champignons et les tomates coupées en deux 5 min.
+4. Faites réchauffer les haricots dans une petite casserole.
+5. Faites cuire les œufs au plat et griller le pain beurré.
+6. Servez tout ensemble sur une grande assiette bien chaude.
+
+=== Pancakes à l'avoine
+id: pancakesavoine
+emoji: 🥞
+categorie: Petit-déj
+preparation: 10
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/c400ok1764439058.jpg
+nouveau: oui
+ingredients:
+- flocons d'avoine : 150 g
+- banane : 1
+- œufs : 2
+- lait : 20 cl
+- levure chimique : 1 c. à café
+- cannelle : 1 pincée
+- huile : 1 c. à soupe
+- sirop d'érable : 4 c. à soupe
+- myrtilles : 100 g
+etapes:
+1. Mixez les flocons d'avoine en farine.
+2. Ajoutez la banane, les œufs, le lait, la levure et la cannelle, et mixez jusqu'à obtenir une pâte épaisse. Laissez reposer 5 min.
+3. Huilez légèrement une poêle chaude et versez de petites louches de pâte.
+4. Retournez quand des bulles apparaissent à la surface, après 2 min environ.
+5. Servez en pile avec les myrtilles et le sirop d'érable.
+
+=== Poffertjes (mini-pancakes hollandais)
+id: poffertjes
+emoji: 🥞
+categorie: Petit-déj
+preparation: 15
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/oaqz9f1766593912.jpg
+nouveau: oui
+ingredients:
+- farine : 200 g
+- lait : 30 cl
+- œuf : 1
+- levure boulangère : 1 sachet
+- sucre : 1 c. à soupe
+- beurre : 40 g
+- sucre glace : 3 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Faites tiédir le lait et mélangez-le avec la levure et le sucre.
+2. Ajoutez la farine, l'œuf et le sel, fouettez jusqu'à obtenir une pâte lisse. Laissez lever 45 min au chaud.
+3. Beurrez une poêle à blinis ou une poêle classique et versez de petites cuillères de pâte.
+4. Retournez-les dès que le dessous est doré, environ 1 min par face.
+5. Servez chaud avec une noisette de beurre et beaucoup de sucre glace.
+
+=== Feuilletés fromage frais et fruits rouges
+id: feuilletesfruits
+emoji: 🫐
+categorie: Petit-déj
+preparation: 15
+cuisson: 18
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/1543774956.jpg
+nouveau: oui
+ingredients:
+- pâte feuilletée : 1
+- fromage frais : 150 g
+- sucre : 2 c. à soupe
+- vanille : 1
+- fruits rouges : 150 g
+- œuf : 1
+- sucre glace : 1 c. à soupe
+etapes:
+1. Préchauffez le four à 200 °C. Découpez la pâte en 6 carrés et posez-les sur une plaque.
+2. Tracez un cadre à 1 cm du bord de chaque carré sans couper jusqu'au fond.
+3. Mélangez le fromage frais avec le sucre et la vanille, et étalez-en au centre de chaque carré.
+4. Ajoutez les fruits rouges, badigeonnez les bords d'œuf battu.
+5. Enfournez 15 à 18 min, jusqu'à ce que les bords soient gonflés et dorés. Saupoudrez de sucre glace.
+
+=== Beignets à la noix de coco (mandazi)
+id: mandazi
+emoji: 🍩
+categorie: Petit-déj
+preparation: 20
+cuisson: 15
+portions: 6
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/thazgm1555350962.jpg
+nouveau: oui
+ingredients:
+- farine : 300 g
+- lait de coco : 15 cl
+- sucre : 60 g
+- œuf : 1
+- levure chimique : 2 c. à café
+- cardamome : 1 c. à café
+- huile de friture : 1 l
+- sel : 1 pincée
+etapes:
+1. Mélangez la farine, le sucre, la levure, la cardamome et le sel.
+2. Ajoutez l'œuf et le lait de coco, pétrissez jusqu'à obtenir une pâte souple. Laissez reposer 20 min.
+3. Étalez la pâte sur 1 cm d'épaisseur et découpez des triangles.
+4. Faites-les frire dans l'huile à 170 °C, 2 à 3 min par face : ils gonflent et dorent.
+5. Égouttez sur du papier absorbant. Délicieux tièdes avec un thé ou un café.

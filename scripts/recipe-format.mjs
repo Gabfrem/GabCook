@@ -20,7 +20,7 @@
  *
  * Une ligne qui commence par # est un commentaire.
  */
-export const UNITES = ["g", "kg", "ml", "cl", "l", "c. à soupe", "c. à café", "pincée", "poignée", "sachet", "pot", "pots"];
+export const UNITES = ["g", "kg", "ml", "cl", "l", "c. à soupe", "c. à café", "pincée", "poignée", "sachet", "pot", "pots", "cm", "tranches", "feuilles"];
 export const CATEGORIES = ["Plat", "Entrée", "Accompagnement", "Dessert", "Apéro", "Petit-déj"];
 export const DIFFICULTES = ["Facile", "Moyen", "Difficile"];
 

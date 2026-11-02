@@ -1,6 +1,6 @@
 /* Sélections de recettes partagées par l'accueil et l'exploration. */
 import { cuisineDe, isVege } from "../../core/classify";
-import { missingFor, missingImportant, recipeUses, urgentItems } from "../../core/fridge";
+import { missingImportant, recipeUses, urgentItems } from "../../core/fridge";
 import { prixRecette } from "../../core/pricing";
 import { airFryerOk, microOk, totalTime, viewOf, type Recipe } from "../../core/recipe";
 import { recommendations } from "../../core/search";
@@ -103,8 +103,8 @@ export const antiGaspi = () => {
   const urgent = urgentItems(fridge.value);
   if (!urgent.length) return [];
   return baseList()
-    .map((r) => ({ r, n: urgent.filter((u) => recipeUses(r, u)).length, m: missingFor(fridge.value, r).length }))
-    .filter((x) => x.n > 0)
+    .map((r) => ({ r, n: urgent.filter((u) => recipeUses(r, u)).length, m: missingImportant(fridge.value, r).length }))
+    .filter((x) => x.n > 0 && x.m <= 2)
     .sort((a, b) => b.n - a.n || a.m - b.m)
     .map((x) => x.r);
 };
@@ -181,7 +181,7 @@ export function applyFilters(list: Recipe[], f: Filters): Recipe[] {
     if (f.mine && !r.perso) return false;
     if (f.saison && !isDeSaison(r)) return false;
     if (f.nouveau && !r.nouveau) return false;
-    if (f.antigaspi && !urgent.some((u) => recipeUses(r, u))) return false;
+    if (f.antigaspi && (!urgent.some((u) => recipeUses(r, u)) || missingImportant(fridge.value, r).length > 2)) return false;
     if (f.planned && !isPlanned(r.id)) return false;
     return true;
   });

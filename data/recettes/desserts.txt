@@ -746,3 +746,662 @@ etapes:
 7. Regardez à travers la porte : la pâte doit gonfler puis se stabiliser. Si le dessus est encore liquide, relancez par tranches de 15 secondes.
 8. Arrêtez dès que le dessus est juste pris. Dix secondes de trop transforment le mug cake en éponge sèche.
 9. Laissez reposer 1 min et mangez directement dans le mug, à la cuillère.
+
+# ---------- Nouveautés v2 ----------
+
+=== Pastéis de nata
+id: pasteisdenata
+emoji: 🥧
+categorie: Dessert
+preparation: 30
+cuisson: 20
+portions: 12
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/vmz7gl1614350221.jpg
+nouveau: oui
+ingredients:
+- pâte feuilletée : 1
+- lait : 25 cl
+- crème liquide : 25 cl
+- jaunes d'œufs : 6
+- sucre : 150 g
+- maïzena : 2 c. à soupe
+- citron : 1
+- bâton de cannelle : 1
+- sucre glace : 1 c. à soupe
+etapes:
+1. Préchauffez le four à 250 °C (le plus chaud possible). Roulez la pâte feuilletée en boudin serré, coupez-la en 12 tranches.
+2. Posez chaque tranche à plat dans un moule à muffins beurré et étalez-la avec le pouce mouillé jusqu'en haut des bords.
+3. Faites chauffer le lait, la crème, le zeste du citron et la cannelle jusqu'à frémissement.
+4. Fouettez les jaunes avec le sucre et la maïzena, versez le lait chaud dessus en fouettant, puis remettez sur feu doux 3 min jusqu'à épaississement. Retirez le zeste et la cannelle.
+5. Remplissez les fonds aux trois quarts et enfournez 15 à 20 min : le dessus doit prendre des taches brunes caramélisées.
+6. Laissez tiédir, saupoudrez de sucre glace et de cannelle. Ils sont meilleurs le jour même.
+
+=== Tarte aux fraises
+id: tartefraises
+emoji: 🍓
+categorie: Dessert
+preparation: 40
+cuisson: 25
+portions: 8
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/9kmyly1784660555.jpg
+nouveau: oui
+ingredients:
+- pâte sablée : 1
+- fraises : 500 g
+- lait : 50 cl
+- jaunes d'œufs : 4
+- sucre : 100 g
+- maïzena : 40 g
+- vanille : 1
+- confiture de fraises : 2 c. à soupe
+etapes:
+1. Préchauffez le four à 180 °C. Foncez un moule avec la pâte, piquez le fond, couvrez de papier cuisson et de légumes secs.
+2. Faites cuire à blanc 15 min, retirez les légumes secs et poursuivez 10 min jusqu'à ce que la pâte soit dorée. Laissez refroidir.
+3. Pour la crème pâtissière, faites chauffer le lait avec la vanille. Fouettez les jaunes, le sucre et la maïzena.
+4. Versez le lait chaud sur les jaunes en fouettant, remettez dans la casserole et faites épaissir 2 min sans cesser de remuer. Filmez au contact et laissez refroidir.
+5. Étalez la crème froide sur le fond de tarte.
+6. Disposez les fraises équeutées et coupées en deux, serrées.
+7. Faites tiédir la confiture avec une cuillère d'eau et nappez-en les fraises au pinceau pour les faire briller. Gardez au frais jusqu'au service.
+
+=== Soufflé au chocolat
+id: souffle-chocolat
+emoji: 🍫
+categorie: Dessert
+preparation: 20
+cuisson: 12
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/twspvx1511784937.jpg
+nouveau: oui
+ingredients:
+- chocolat noir : 120 g
+- œufs : 4
+- sucre : 60 g
+- beurre : 30 g
+- maïzena : 1 c. à soupe
+- lait : 10 cl
+- sucre glace : 1 c. à soupe
+etapes:
+1. Beurrez 4 ramequins en faisant des traits du bas vers le haut, puis sucrez-les : c'est ce qui aide le soufflé à monter droit.
+2. Préchauffez le four à 200 °C. Faites fondre le chocolat avec le lait et la maïzena en remuant jusqu'à obtenir une crème épaisse.
+3. Hors du feu, ajoutez les jaunes d'œufs un par un.
+4. Montez les blancs en neige ferme, en ajoutant le sucre à la fin pour les serrer.
+5. Incorporez un tiers des blancs au chocolat en fouettant, puis le reste délicatement à la spatule, en soulevant la masse.
+6. Remplissez les ramequins à ras, lissez et passez le pouce sur le bord intérieur.
+7. Enfournez 10 à 12 min sans ouvrir la porte. Saupoudrez de sucre glace et servez immédiatement.
+
+=== Carrot cake
+id: carrotcake
+emoji: 🥕
+categorie: Dessert
+preparation: 25
+cuisson: 45
+portions: 10
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/vrspxv1511722107.jpg
+nouveau: oui
+ingredients:
+- carottes : 300 g
+- farine : 250 g
+- sucre roux : 200 g
+- œufs : 3
+- huile : 20 cl
+- noix : 80 g
+- levure chimique : 1 sachet
+- cannelle : 2 c. à café
+- fromage frais : 200 g
+- beurre : 50 g
+- sucre glace : 80 g
+- sel : 1 pincée
+etapes:
+1. Préchauffez le four à 170 °C. Râpez finement les carottes, concassez les noix.
+2. Fouettez les œufs avec le sucre roux, puis ajoutez l'huile.
+3. Ajoutez la farine, la levure, la cannelle et le sel, puis les carottes et les noix.
+4. Versez dans un moule beurré et enfournez 45 min : une lame doit ressortir sèche. Laissez refroidir complètement.
+5. Fouettez le fromage frais avec le beurre mou et le sucre glace jusqu'à obtenir un glaçage lisse.
+6. Étalez le glaçage sur le gâteau froid et décorez de quelques noix.
+
+=== Tarte au citron vert (key lime pie)
+id: keylimepie
+emoji: 🍋
+categorie: Dessert
+preparation: 20
+cuisson: 25
+portions: 8
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/qpqtuu1511386216.jpg
+nouveau: oui
+ingredients:
+- biscuits : 200 g
+- beurre : 90 g
+- lait concentré sucré : 400 g
+- jaunes d'œufs : 4
+- citrons verts : 4
+- crème liquide : 20 cl
+- sucre glace : 2 c. à soupe
+etapes:
+1. Préchauffez le four à 170 °C. Mixez les biscuits et mélangez-les au beurre fondu.
+2. Tassez ce mélange au fond et sur les bords d'un moule, enfournez 10 min.
+3. Fouettez le lait concentré avec les jaunes, puis ajoutez le jus et le zeste des citrons verts : la crème épaissit toute seule.
+4. Versez sur le fond et enfournez 15 min : le centre doit à peine trembler.
+5. Laissez refroidir, puis 3 h au frais.
+6. Fouettez la crème liquide bien froide avec le sucre glace en chantilly et décorez-en la tarte au moment de servir.
+
+=== Eton mess (meringue, fraises, chantilly)
+id: etonmess
+emoji: 🍓
+categorie: Dessert
+preparation: 15
+cuisson: 0
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/uuxwvq1483907861.jpg
+nouveau: oui
+ingredients:
+- fraises : 400 g
+- meringues : 6
+- crème liquide : 30 cl
+- sucre glace : 2 c. à soupe
+- vanille : 1
+etapes:
+1. Coupez les fraises en morceaux. Écrasez-en un quart à la fourchette avec 1 c. à soupe de sucre glace.
+2. Fouettez la crème bien froide avec le reste de sucre glace et la vanille, jusqu'à ce qu'elle soit souple mais tienne.
+3. Concassez grossièrement les meringues.
+4. Mélangez délicatement la crème, les meringues, les fraises en morceaux et le coulis, sans trop travailler : on garde des marbrures.
+5. Servez aussitôt dans des verres, pour que la meringue reste croquante.
+
+=== Churros et chocolat chaud
+id: churros
+emoji: 🍩
+categorie: Dessert
+preparation: 20
+cuisson: 15
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/nxnny61763250596.jpg
+nouveau: oui
+ingredients:
+- farine : 150 g
+- eau : 25 cl
+- beurre : 30 g
+- sucre : 80 g
+- cannelle : 1 c. à café
+- huile de friture : 1 l
+- chocolat noir : 100 g
+- lait : 25 cl
+- sel : 1 pincée
+etapes:
+1. Portez l'eau à ébullition avec le beurre, 1 c. à soupe de sucre et le sel.
+2. Hors du feu, versez la farine d'un coup et mélangez vigoureusement jusqu'à obtenir une pâte lisse qui se détache de la casserole.
+3. Mettez la pâte dans une poche à douille cannelée.
+4. Faites chauffer l'huile à 180 °C. Poussez des bâtonnets de 12 cm dans l'huile en les coupant aux ciseaux, et faites-les frire 3 à 4 min jusqu'à ce qu'ils soient dorés.
+5. Égouttez-les et roulez-les aussitôt dans le reste du sucre mélangé à la cannelle.
+6. Faites fondre le chocolat dans le lait chaud en fouettant et servez avec les churros pour les tremper.
+
+=== Brioches roulées à la cannelle
+id: briochescannelle
+emoji: 🌀
+categorie: Dessert
+preparation: 30
+cuisson: 25
+portions: 9
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/as88dq1762772486.jpg
+nouveau: oui
+ingredients:
+- farine : 450 g
+- lait : 25 cl
+- levure boulangère : 1 sachet
+- sucre : 60 g
+- beurre : 110 g
+- œuf : 1
+- cassonade : 100 g
+- cannelle : 2 c. à soupe
+- sucre glace : 100 g
+- sel : 1 pincée
+etapes:
+1. Faites tiédir le lait, ajoutez la levure et le sucre. Laissez mousser 10 min.
+2. Mélangez avec la farine, l'œuf, 50 g de beurre mou et le sel, et pétrissez 8 min jusqu'à obtenir une pâte souple. Laissez lever 1 h au chaud.
+3. Étalez la pâte en grand rectangle. Badigeonnez-la de 60 g de beurre fondu et parsemez de cassonade mélangée à la cannelle.
+4. Roulez-la sur la longueur et coupez 9 tranches. Disposez-les dans un moule beurré et laissez lever 30 min.
+5. Préchauffez le four à 180 °C et enfournez 22 à 25 min.
+6. Mélangez le sucre glace avec un peu d'eau et nappez les brioches encore tièdes.
+
+=== Tarte Bakewell (amandes et framboise)
+id: bakewell
+emoji: 🥧
+categorie: Dessert
+preparation: 25
+cuisson: 35
+portions: 8
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/wyrqqq1468233628.jpg
+nouveau: oui
+ingredients:
+- pâte sablée : 1
+- confiture de framboises : 4 c. à soupe
+- beurre : 125 g
+- sucre : 125 g
+- poudre d'amandes : 125 g
+- œufs : 2
+- farine : 2 c. à soupe
+- amandes effilées : 30 g
+etapes:
+1. Préchauffez le four à 180 °C. Foncez un moule avec la pâte et étalez la confiture sur le fond.
+2. Fouettez le beurre mou avec le sucre jusqu'à ce qu'il blanchisse.
+3. Ajoutez les œufs un par un, puis la poudre d'amandes et la farine.
+4. Étalez cette crème d'amandes sur la confiture, sans la mélanger.
+5. Parsemez d'amandes effilées et enfournez 35 min, jusqu'à ce que le dessus soit doré et ferme.
+6. Laissez refroidir avant de démouler.
+
+=== Sticky toffee pudding
+id: stickytoffee
+emoji: 🍮
+categorie: Dessert
+preparation: 20
+cuisson: 30
+portions: 6
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/xqqqtu1511637379.jpg
+nouveau: oui
+ingredients:
+- dattes : 200 g
+- eau : 25 cl
+- bicarbonate : 1 c. à café
+- beurre : 135 g
+- sucre roux : 175 g
+- œufs : 2
+- farine : 175 g
+- levure chimique : 1 c. à café
+- crème liquide : 20 cl
+etapes:
+1. Faites bouillir les dattes dénoyautées dans l'eau 5 min, ajoutez le bicarbonate et mixez.
+2. Préchauffez le four à 180 °C. Fouettez 60 g de beurre avec 75 g de sucre, ajoutez les œufs, puis la farine et la levure.
+3. Incorporez la purée de dattes, versez dans un moule beurré et enfournez 25 à 30 min.
+4. Pour la sauce, faites fondre le reste du beurre et du sucre, laissez caraméliser légèrement, puis ajoutez la crème et laissez bouillonner 2 min.
+5. Coupez le gâteau en carrés et servez-le chaud, noyé de sauce caramel.
+
+=== Crème catalane
+id: cremecatalane
+emoji: 🍮
+categorie: Dessert
+preparation: 15
+cuisson: 15
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/x73ll91763247842.jpg
+nouveau: oui
+ingredients:
+- lait : 75 cl
+- jaunes d'œufs : 6
+- sucre : 150 g
+- maïzena : 3 c. à soupe
+- citron : 1
+- bâton de cannelle : 1
+- cassonade : 6 c. à soupe
+etapes:
+1. Faites infuser le lait avec le zeste du citron et la cannelle en le portant à frémissement. Laissez infuser 10 min hors du feu.
+2. Fouettez les jaunes avec le sucre et la maïzena.
+3. Filtrez le lait et versez-le sur les jaunes en fouettant, puis remettez sur feu doux en remuant sans cesse jusqu'à épaississement.
+4. Versez dans des plats individuels et laissez refroidir, puis 2 h au frais.
+5. Au moment de servir, parsemez de cassonade et caramélisez au chalumeau ou sous le gril très chaud, 1 à 2 min.
+
+=== Tatin de poires
+id: tatinpoires
+emoji: 🍐
+categorie: Dessert
+preparation: 20
+cuisson: 35
+portions: 6
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/rxvxrr1511797671.jpg
+nouveau: oui
+ingredients:
+- poires : 6
+- pâte feuilletée : 1
+- sucre : 120 g
+- beurre : 60 g
+- vanille : 1
+etapes:
+1. Préchauffez le four à 190 °C. Épluchez les poires, coupez-les en deux et retirez le cœur.
+2. Dans un moule allant sur le feu, faites fondre le sucre jusqu'à obtenir un caramel blond, ajoutez le beurre et la vanille.
+3. Disposez les demi-poires bien serrées dans le caramel, face bombée en dessous. Laissez cuire 10 min sur feu doux.
+4. Couvrez avec la pâte feuilletée en rentrant les bords à l'intérieur du moule.
+5. Enfournez 25 min, jusqu'à ce que la pâte soit bien dorée.
+6. Laissez reposer 5 min, puis retournez sur un plat d'un geste franc.
+
+=== Pudding au pain et au beurre
+id: puddingpain
+emoji: 🍞
+categorie: Dessert
+preparation: 15
+cuisson: 40
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/xqwwpy1483908697.jpg
+nouveau: oui
+ingredients:
+- pain de mie : 8 tranches
+- beurre : 50 g
+- raisins secs : 50 g
+- lait : 40 cl
+- crème liquide : 10 cl
+- œufs : 3
+- sucre : 80 g
+- cannelle : 1 c. à café
+- vanille : 1
+etapes:
+1. Beurrez les tranches de pain et coupez-les en triangles.
+2. Disposez-les en les chevauchant dans un plat beurré, en parsemant de raisins secs.
+3. Fouettez le lait, la crème, les œufs, le sucre et la vanille. Versez sur le pain et laissez imbiber 20 min.
+4. Préchauffez le four à 170 °C. Saupoudrez de cannelle.
+5. Enfournez 35 à 40 min : le dessus doit être doré et croustillant, l'intérieur moelleux. Servez tiède.
+
+=== Tarte au potiron (pumpkin pie)
+id: pumpkinpie
+emoji: 🎃
+categorie: Dessert
+preparation: 20
+cuisson: 50
+portions: 8
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/usuqtp1511385394.jpg
+nouveau: oui
+ingredients:
+- pâte brisée : 1
+- potiron : 600 g
+- lait concentré sucré : 200 g
+- œufs : 2
+- sucre roux : 50 g
+- cannelle : 2 c. à café
+- gingembre en poudre : 1 c. à café
+- muscade : 1 pincée
+- crème liquide : 20 cl
+etapes:
+1. Faites cuire le potiron en dés à la vapeur 20 min, égouttez-le bien puis réduisez-le en purée lisse.
+2. Préchauffez le four à 200 °C. Foncez un moule avec la pâte.
+3. Mélangez la purée avec le lait concentré, les œufs, le sucre et les épices.
+4. Versez sur la pâte et enfournez 15 min, puis baissez à 170 °C et poursuivez 30 à 35 min : le centre doit être pris.
+5. Laissez refroidir et servez avec la crème fouettée.
+
+=== Mousse à la framboise
+id: mousseframboise
+emoji: 🍓
+categorie: Dessert
+preparation: 25
+cuisson: 0
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/v5jrnn1764362830.jpg
+nouveau: oui
+ingredients:
+- framboises : 400 g
+- sucre : 80 g
+- crème liquide : 30 cl
+- gélatine : 3 feuilles
+- citron : 0.5
+etapes:
+1. Faites ramollir la gélatine 10 min dans l'eau froide.
+2. Mixez les framboises avec le sucre et le jus du citron, puis passez au tamis pour retirer les pépins.
+3. Faites chauffer un quart du coulis, ajoutez-y la gélatine essorée et mélangez, puis versez dans le reste du coulis.
+4. Fouettez la crème bien froide en chantilly souple.
+5. Incorporez-la délicatement au coulis refroidi.
+6. Répartissez dans des verres et laissez prendre 3 h au frais. Décorez de framboises fraîches.
+
+=== Baklava aux noix
+id: baklava
+emoji: 🍯
+categorie: Dessert
+preparation: 40
+cuisson: 40
+portions: 12
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/ytme8t1764111401.jpg
+nouveau: oui
+ingredients:
+- feuilles de brick : 12
+- noix : 150 g
+- pistaches : 100 g
+- beurre : 150 g
+- sucre : 150 g
+- miel : 100 g
+- eau : 15 cl
+- cannelle : 1 c. à café
+- citron : 0.5
+etapes:
+1. Préchauffez le four à 170 °C. Concassez finement les noix et les pistaches, mélangez-les avec la cannelle.
+2. Faites fondre le beurre. Beurrez un plat rectangulaire.
+3. Superposez 6 feuilles en beurrant chacune au pinceau, recoupées à la taille du plat.
+4. Étalez les fruits secs, puis recouvrez de 6 autres feuilles beurrées.
+5. Découpez en losanges avant la cuisson, puis enfournez 35 à 40 min jusqu'à ce que ce soit bien doré.
+6. Faites bouillir l'eau, le sucre, le miel et le jus du citron 5 min. Versez ce sirop sur le baklava chaud et laissez imbiber plusieurs heures.
+
+=== Brigadeiros (truffes brésiliennes)
+id: brigadeiros
+emoji: 🍫
+categorie: Dessert
+preparation: 20
+cuisson: 15
+portions: 20
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/dg7tad1782588053.jpg
+nouveau: oui
+ingredients:
+- lait concentré sucré : 400 g
+- cacao : 2 c. à soupe
+- beurre : 20 g
+- vermicelles en chocolat : 80 g
+etapes:
+1. Dans une casserole, mélangez le lait concentré, le cacao et le beurre.
+2. Faites cuire à feu doux en remuant sans arrêt 10 à 15 min, jusqu'à ce que la pâte se détache du fond de la casserole.
+3. Versez dans une assiette beurrée et laissez refroidir complètement.
+4. Avec les mains beurrées, formez des petites boules.
+5. Roulez-les dans les vermicelles et disposez-les dans des caissettes en papier.
+
+=== Mousse au fruit de la passion
+id: moussepassion
+emoji: 🥭
+categorie: Dessert
+preparation: 20
+cuisson: 0
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/gkcdpl1764441325.jpg
+nouveau: oui
+ingredients:
+- fruits de la passion : 8
+- lait concentré sucré : 200 g
+- crème liquide : 20 cl
+- gélatine : 2 feuilles
+etapes:
+1. Coupez les fruits de la passion et récupérez la pulpe. Passez-en les trois quarts au tamis pour obtenir le jus.
+2. Faites ramollir la gélatine dans l'eau froide, puis dissolvez-la dans 2 c. à soupe de jus chaud.
+3. Mélangez le reste du jus avec le lait concentré et la gélatine.
+4. Fouettez la crème en chantilly et incorporez-la délicatement.
+5. Répartissez dans des verres et laissez prendre 3 h au frais. Ajoutez la pulpe restante avec ses graines sur le dessus.
+
+=== Gâteau aux pommes moelleux
+id: gateaupommes
+emoji: 🍎
+categorie: Dessert
+preparation: 20
+cuisson: 40
+portions: 8
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/c0gmo31766594751.jpg
+nouveau: oui
+ingredients:
+- pommes : 4
+- farine : 150 g
+- sucre : 120 g
+- œufs : 3
+- beurre : 100 g
+- lait : 5 cl
+- levure chimique : 1 sachet
+- cannelle : 1 c. à café
+- sel : 1 pincée
+etapes:
+1. Préchauffez le four à 180 °C. Épluchez les pommes et coupez-les en lamelles.
+2. Fouettez les œufs et le sucre jusqu'à ce que le mélange mousse.
+3. Ajoutez le beurre fondu, le lait, puis la farine, la levure, le sel et la cannelle.
+4. Incorporez les trois quarts des pommes, versez dans un moule beurré et disposez le reste des lamelles sur le dessus.
+5. Enfournez 40 min : une lame doit ressortir sèche. Servez tiède.
+
+=== Gâteau à l'orange
+id: gateauorange
+emoji: 🍊
+categorie: Dessert
+preparation: 20
+cuisson: 40
+portions: 8
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/y4jpgq1560459207.jpg
+nouveau: oui
+ingredients:
+- oranges : 2
+- farine : 200 g
+- sucre : 150 g
+- œufs : 3
+- huile : 10 cl
+- yaourt nature : 125 g
+- levure chimique : 1 sachet
+- sucre glace : 60 g
+etapes:
+1. Préchauffez le four à 180 °C. Râpez le zeste des oranges et pressez-les.
+2. Fouettez les œufs et le sucre, ajoutez le yaourt, l'huile, le zeste et 10 cl de jus.
+3. Ajoutez la farine et la levure, mélangez juste ce qu'il faut.
+4. Versez dans un moule beurré et enfournez 35 à 40 min.
+5. Mélangez le sucre glace avec le reste du jus et versez ce sirop sur le gâteau encore chaud pour qu'il l'absorbe.
+
+=== Cookies au beurre de cacahuète
+id: cookiescacahuete
+emoji: 🥜
+categorie: Dessert
+preparation: 15
+cuisson: 12
+portions: 16
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/1544384070.jpg
+nouveau: oui
+ingredients:
+- beurre de cacahuète : 200 g
+- beurre : 60 g
+- sucre roux : 120 g
+- œuf : 1
+- farine : 150 g
+- bicarbonate : 0.5 c. à café
+- sel : 1 pincée
+etapes:
+1. Préchauffez le four à 180 °C. Fouettez le beurre de cacahuète, le beurre mou et le sucre.
+2. Ajoutez l'œuf, puis la farine, le bicarbonate et le sel.
+3. Formez des boules de la taille d'une noix et posez-les espacées sur une plaque.
+4. Aplatissez-les avec le dos d'une fourchette en faisant un quadrillage.
+5. Enfournez 10 à 12 min : ils doivent rester tendres au centre, ils durcissent en refroidissant.
+
+=== Lamingtons (carrés coco-chocolat)
+id: lamingtons
+emoji: 🥥
+categorie: Dessert
+preparation: 30
+cuisson: 25
+portions: 16
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/j2n7vg1761848636.jpg
+nouveau: oui
+ingredients:
+- farine : 200 g
+- sucre : 150 g
+- œufs : 3
+- beurre : 100 g
+- lait : 10 cl
+- levure chimique : 1 sachet
+- cacao : 4 c. à soupe
+- sucre glace : 250 g
+- noix de coco râpée : 150 g
+etapes:
+1. Préchauffez le four à 180 °C. Fouettez le beurre mou et le sucre, ajoutez les œufs, le lait, puis la farine et la levure.
+2. Versez dans un moule carré et enfournez 25 min. Laissez refroidir puis coupez en 16 carrés.
+3. Mélangez le sucre glace, le cacao et 10 cl d'eau chaude pour obtenir un glaçage fluide.
+4. Trempez chaque carré dans le glaçage, laissez égoutter, puis roulez-le dans la noix de coco.
+5. Laissez prendre 1 h sur une grille.
+
+=== Cheesecake au yaourt et au miel
+id: cheesecakemiel
+emoji: 🍯
+categorie: Dessert
+preparation: 20
+cuisson: 45
+portions: 8
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/y2irzl1585563479.jpg
+nouveau: oui
+ingredients:
+- biscuits : 200 g
+- beurre : 80 g
+- fromage frais : 400 g
+- yaourt grec : 250 g
+- miel : 100 g
+- œufs : 3
+- maïzena : 2 c. à soupe
+- citron : 1
+etapes:
+1. Préchauffez le four à 160 °C. Mixez les biscuits avec le beurre fondu et tassez-les au fond d'un moule à charnière.
+2. Fouettez le fromage frais, le yaourt, le miel, le zeste du citron et la maïzena.
+3. Ajoutez les œufs un par un, sans trop fouetter pour ne pas incorporer d'air.
+4. Versez sur le fond et enfournez 45 min : les bords sont pris, le centre tremble encore.
+5. Laissez refroidir dans le four entrouvert, puis une nuit au frais. Arrosez d'un filet de miel avant de servir.
+
+=== Cornes de gazelle
+id: cornesgazelle
+emoji: 🌙
+categorie: Dessert
+preparation: 45
+cuisson: 15
+portions: 20
+difficulte: Difficile
+photo: https://www.themealdb.com/images/media/meals/0h1b7m1764120235.jpg
+nouveau: oui
+ingredients:
+- poudre d'amandes : 250 g
+- sucre glace : 120 g
+- eau de fleur d'oranger : 3 c. à soupe
+- beurre : 70 g
+- farine : 250 g
+- œuf : 1
+- cannelle : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Mélangez la poudre d'amandes, le sucre glace, la cannelle, 20 g de beurre fondu et 2 c. à soupe de fleur d'oranger : vous obtenez une pâte d'amande. Formez de petits boudins effilés.
+2. Mélangez la farine, le reste du beurre fondu, l'œuf, le sel et la fleur d'oranger restante, ajoutez un peu d'eau pour obtenir une pâte souple. Laissez reposer 20 min.
+3. Préchauffez le four à 180 °C. Étalez la pâte très finement et découpez des rectangles.
+4. Posez un boudin d'amande sur chaque rectangle, refermez la pâte et soudez-la, puis courbez en croissant.
+5. Piquez-les de quelques trous et enfournez 12 à 15 min : elles doivent rester pâles.
+
+=== Tarte aux noix de pécan et chocolat
+id: tartepecan
+emoji: 🥧
+categorie: Dessert
+preparation: 20
+cuisson: 40
+portions: 8
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/rqvwxt1511384809.jpg
+nouveau: oui
+ingredients:
+- pâte brisée : 1
+- noix de pécan : 200 g
+- pépites de chocolat : 80 g
+- œufs : 3
+- sucre roux : 120 g
+- sirop d'érable : 15 cl
+- beurre : 50 g
+- vanille : 1
+- sel : 1 pincée
+etapes:
+1. Préchauffez le four à 180 °C. Foncez un moule avec la pâte.
+2. Répartissez les pépites de chocolat et la moitié des noix de pécan concassées sur le fond.
+3. Fouettez les œufs, le sucre, le sirop d'érable, le beurre fondu, la vanille et le sel.
+4. Versez sur la garniture et disposez les noix entières sur le dessus.
+5. Enfournez 35 à 40 min : la garniture doit être prise. Laissez refroidir avant de couper.

@@ -1018,3 +1018,156 @@ etapes:
 6. Ajoutez l'ail, le piment et le cumin, remuez 1 min hors du feu vif : l'ail ne doit surtout pas brûler.
 7. Ajoutez la coriandre et le jus de citron, mélangez.
 8. Servez immédiatement, très chaud et bien relevé.
+
+# ---------- Nouveautés v2 ----------
+
+=== Gratin de fenouil
+id: gratinfenouil
+emoji: 🧀
+categorie: Accompagnement
+preparation: 15
+cuisson: 40
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ytttsv1511798734.jpg
+nouveau: oui
+ingredients:
+- fenouils : 3
+- crème liquide : 25 cl
+- lait : 10 cl
+- gruyère râpé : 80 g
+- gousse d'ail : 1
+- muscade : 1 pincée
+- beurre : 10 g
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Préchauffez le four à 180 °C. Coupez les fenouils en fines lamelles.
+2. Faites-les blanchir 5 min dans l'eau bouillante salée, égouttez-les bien.
+3. Frottez un plat avec l'ail et beurrez-le. Disposez le fenouil.
+4. Mélangez la crème, le lait, la muscade, sel et poivre, et versez sur le fenouil.
+5. Parsemez de gruyère et enfournez 35 min, jusqu'à ce que le dessus soit bien gratiné.
+
+=== Salade de pommes de terre à la moutarde
+id: saladepdt
+emoji: 🥔
+categorie: Accompagnement
+preparation: 15
+cuisson: 20
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/5q88l31784664151.jpg
+nouveau: oui
+ingredients:
+- pommes de terre : 800 g
+- échalote : 1
+- cornichons : 5
+- ciboulette : 1 poignée
+- moutarde à l'ancienne : 1 c. à soupe
+- vinaigre : 2 c. à soupe
+- huile : 5 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Faites cuire les pommes de terre avec leur peau dans l'eau salée 20 min.
+2. Fouettez la moutarde, le vinaigre, l'huile, le sel et le poivre.
+3. Épluchez les pommes de terre encore chaudes et coupez-les en rondelles.
+4. Arrosez-les aussitôt de vinaigrette : chaudes, elles l'absorbent bien mieux.
+5. Ajoutez l'échalote hachée, les cornichons en rondelles et la ciboulette. Servez tiède ou froid.
+
+=== Salade de concombre au sésame
+id: concombresesame
+emoji: 🥒
+categorie: Accompagnement
+preparation: 10
+cuisson: 0
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/93iok31766436070.jpg
+nouveau: oui
+ingredients:
+- concombres : 2
+- vinaigre de riz : 2 c. à soupe
+- sauce soja : 1 c. à soupe
+- huile de sésame : 1 c. à soupe
+- sucre : 1 c. à café
+- gousse d'ail : 1
+- graines de sésame : 1 c. à soupe
+- piment : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Écrasez légèrement les concombres avec le plat d'un couteau, puis coupez-les en morceaux irréguliers.
+2. Salez-les et laissez-les dégorger 10 min, puis égouttez.
+3. Mélangez le vinaigre, la sauce soja, l'huile de sésame, le sucre, l'ail râpé et le piment.
+4. Versez sur le concombre et parsemez de graines de sésame grillées. Servez bien frais.
+
+=== Yorkshire puddings
+id: yorkshirepuddings
+emoji: 🧁
+categorie: Accompagnement
+preparation: 10
+cuisson: 25
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/x5qz5k1761595900.jpg
+nouveau: oui
+ingredients:
+- farine : 140 g
+- œufs : 4
+- lait : 20 cl
+- huile : 6 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Fouettez la farine, les œufs, le lait et le sel jusqu'à obtenir une pâte lisse. Laissez reposer 30 min.
+2. Préchauffez le four à 230 °C. Versez 1 c. à soupe d'huile dans chaque alvéole d'un moule à muffins et chauffez-le 10 min au four.
+3. Versez rapidement la pâte dans l'huile fumante, jusqu'à mi-hauteur.
+4. Enfournez 20 à 25 min sans ouvrir la porte : ils gonflent et deviennent dorés et creux. Servez avec un rôti et sa sauce.
+
+=== Riz aux haricots rouges et à la coco
+id: rizharicotscoco
+emoji: 🍚
+categorie: Accompagnement
+preparation: 10
+cuisson: 25
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/pkyvrn1764878267.jpg
+nouveau: oui
+ingredients:
+- riz : 250 g
+- haricots rouges : 400 g
+- lait de coco : 20 cl
+- oignons nouveaux : 2
+- gousse d'ail : 1
+- thym : 1 pincée
+- piment : 1
+- eau : 30 cl
+- sel : 1 pincée
+etapes:
+1. Rincez le riz jusqu'à ce que l'eau soit claire.
+2. Dans une casserole, portez à ébullition le lait de coco, l'eau, l'ail écrasé, le thym, les oignons nouveaux et le piment entier.
+3. Ajoutez le riz, les haricots égouttés et le sel.
+4. Couvrez et laissez cuire 18 min à feu très doux, puis 5 min hors du feu sans soulever le couvercle.
+5. Retirez le piment et égrainez à la fourchette.
+
+=== Galettes de pain à la poêle
+id: galettespain
+emoji: 🫓
+categorie: Accompagnement
+preparation: 15
+cuisson: 10
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/8825lo1763815264.jpg
+nouveau: oui
+ingredients:
+- farine : 250 g
+- yaourt nature : 150 g
+- levure chimique : 1 c. à café
+- huile d'olive : 2 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Mélangez la farine, la levure et le sel, ajoutez le yaourt et l'huile, et pétrissez 2 min jusqu'à obtenir une boule souple.
+2. Divisez en 6 et étalez chaque morceau en galette fine.
+3. Faites cuire dans une poêle bien chaude sans matière grasse, 1 à 2 min par face, jusqu'à ce qu'elles gonflent et se tachent de brun.
+4. Gardez-les dans un torchon pour qu'elles restent souples. Parfait avec un curry ou des grillades.

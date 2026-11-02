@@ -319,6 +319,10 @@ p {
   .overlay .ov-inner {
     max-width: 920px;
   }
+  /* sur ordinateur, la barre latérale reste visible à côté des écrans superposés */
+  .overlay {
+    left: 252px;
+  }
 }
 
 /* en-têtes d'écran */
@@ -972,6 +976,11 @@ p {
 .hero .cover {
   position: absolute;
   inset: 0;
+}
+.hero .illu .plate,
+.rhero .illu .plate {
+  width: auto;
+  height: 64%;
 }
 .hero::after {
   content: "";

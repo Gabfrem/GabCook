@@ -136,6 +136,18 @@ const R: Rule[] = [
   [/glace|sorbet|surgele/, "🍦", "surgeles", null],
   [/vin|biere|cidre|cognac|rhum|porto|calvados|alcool/, "🍷", "boissons", null],
   [/jus|soda|limonade|eau gazeuse/, "🧃", "boissons", null],
+  [/pousses de soja|germes de soja/, "🌱", "fruits-legumes", 4],
+  [/feuilles de brick|brick/, "🫓", "cremerie", 30],
+  [/feuilles de vigne/, "🍃", "epicerie-salee", null],
+  [/paneer/, "🧀", "cremerie", 14],
+  [/tahini|sriracha|sauce chili( douce)?/, "🫙", "epicerie-salee", null],
+  [/garam massala|anis etoile|anis/, "🧂", "epicerie-salee", null],
+  [/pruneaux|dattes|abricots secs|figues seches/, "🌰", "epicerie-sucree", null],
+  [/meringues?/, "🍥", "epicerie-sucree", null],
+  [/fruits de la passion|grenades?/, "🥭", "fruits-legumes", 7],
+  [/granola|muesli|cereales/, "🥣", "epicerie-sucree", null],
+  [/muffins? anglais|pains? a burger|bagels?/, "🍔", "boulangerie", 5],
+  [/lard/, "🥓", "boucherie", 10],
   [/eau/, "💧", "boissons", null],
   [/cafe|the/, "☕", "boissons", null]
 ];
@@ -154,12 +166,19 @@ export function productInfo(name: string): ProductInfo {
   const hit = _memo.get(k);
   if (hit) return hit;
   let info = DEFAUT;
-  for (const [re, emoji, aisle, shelf] of R) {
-    // mots entiers, comme pour les prix : « bœuf » ne doit pas tomber dans « œuf »
-    const reBord = new RegExp("(^|\\s)(?:" + re.source + ")(?=$|\\s)");
-    if (reBord.test(k)) {
-      info = { emoji, aisle, shelf };
-      break;
+  // mots entiers, comme pour les prix : « bœuf » ne doit pas tomber dans « œuf » ;
+  // puis au singulier (« tagliatelles », « avocats »)
+  const sg = k
+    .split(" ")
+    .map((w) => (w.length > 3 ? w.replace(/[sx]$/, "") : w))
+    .join(" ");
+  outer: for (const cand of [k, sg]) {
+    for (const [re, emoji, aisle, shelf] of R) {
+      const reBord = new RegExp("(^|\\s)(?:" + re.source + ")(?=$|\\s)");
+      if (reBord.test(cand)) {
+        info = { emoji, aisle, shelf };
+        break outer;
+      }
     }
   }
   _memo.set(k, info);

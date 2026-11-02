@@ -644,3 +644,155 @@ etapes:
 6. Passez chaque galette dans la farine, puis dans l'œuf battu.
 7. Faites frire dans l'huile chaude 3 min par face jusqu'à ce qu'elles soient bien dorées.
 8. Égouttez sur du papier absorbant, salez et servez chaud avec de la harissa ou dans un sandwich.
+
+# ---------- Nouveautés v2 ----------
+
+=== Croquetas au jambon
+id: croquetas
+emoji: 🥖
+categorie: Apéro
+preparation: 30
+cuisson: 15
+portions: 6
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/6dpa7m1763331105.jpg
+nouveau: oui
+ingredients:
+- jambon serrano : 120 g
+- beurre : 60 g
+- farine : 70 g
+- lait : 50 cl
+- œufs : 2
+- chapelure : 100 g
+- muscade : 1 pincée
+- huile de friture : 1 l
+- sel : 1 pincée
+etapes:
+1. Faites fondre le beurre, ajoutez la farine et mélangez 2 min sans colorer.
+2. Versez le lait petit à petit en fouettant, jusqu'à obtenir une béchamel très épaisse. Ajoutez le jambon haché finement et la muscade.
+3. Étalez dans un plat, filmez au contact et laissez refroidir au moins 3 h au frais : la pâte doit être ferme.
+4. Formez de petits cylindres avec les mains légèrement farinées.
+5. Passez-les dans les œufs battus puis dans la chapelure.
+6. Faites-les frire 2 à 3 min dans l'huile à 180 °C, jusqu'à ce qu'ils soient dorés. Servez chaud.
+
+=== Calamars frits à l'andalouse
+id: calamarsfrits
+emoji: 🦑
+categorie: Apéro
+preparation: 15
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/yhi46r1763330279.jpg
+nouveau: oui
+ingredients:
+- calamars : 500 g
+- farine : 100 g
+- semoule fine : 50 g
+- paprika : 1 c. à café
+- huile de friture : 1 l
+- citron : 1
+- mayonnaise : 4 c. à soupe
+- gousse d'ail : 1
+- sel : 1 pincée
+etapes:
+1. Coupez les calamars en anneaux et séchez-les très soigneusement.
+2. Mélangez la farine, la semoule, le paprika et le sel.
+3. Roulez les anneaux dans ce mélange et secouez-les pour retirer l'excédent.
+4. Faites-les frire par petites quantités dans l'huile à 180 °C, 1 à 2 min seulement : trop cuits, ils deviennent caoutchouteux.
+5. Servez avec des quartiers de citron et la mayonnaise mélangée à l'ail râpé.
+
+=== Pão de queijo (boules au fromage)
+id: paodequeijo
+emoji: 🧀
+categorie: Apéro
+preparation: 15
+cuisson: 25
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/sl7cr91782588539.jpg
+nouveau: oui
+ingredients:
+- fécule de tapioca : 250 g
+- lait : 12 cl
+- huile : 6 cl
+- œufs : 2
+- parmesan : 100 g
+- sel : 1 pincée
+etapes:
+1. Portez à ébullition le lait, l'huile et le sel.
+2. Versez sur la fécule et mélangez : la pâte est collante et grumeleuse, c'est normal.
+3. Quand elle a tiédi, ajoutez les œufs un par un, puis le parmesan râpé, et pétrissez jusqu'à obtenir une pâte lisse.
+4. Préchauffez le four à 190 °C. Formez des boules avec les mains huilées et posez-les sur une plaque.
+5. Enfournez 20 à 25 min : elles gonflent et dorent. Mangez-les tièdes, croustillantes dehors et filantes dedans.
+
+=== Galettes de poulet thaï, sauce chili
+id: galettespoulethai
+emoji: 🍤
+categorie: Apéro
+preparation: 15
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/6s3i3p1763488540.jpg
+nouveau: oui
+ingredients:
+- poulet haché : 400 g
+- pâte de curry rouge : 1 c. à soupe
+- haricots verts : 50 g
+- citron vert : 1
+- coriandre : 1 poignée
+- sauce poisson : 1 c. à soupe
+- œuf : 1
+- huile : 3 c. à soupe
+- sauce chili douce : 6 c. à soupe
+etapes:
+1. Mélangez le poulet avec la pâte de curry, l'œuf, la sauce poisson, le zeste du citron vert et la coriandre ciselée.
+2. Ajoutez les haricots verts coupés en très fines rondelles.
+3. Formez de petites galettes avec les mains mouillées.
+4. Faites-les dorer dans l'huile 3 à 4 min par face.
+5. Servez avec la sauce chili et des quartiers de citron vert.
+
+=== Pimientos de Padrón
+id: padron
+emoji: 🫑
+categorie: Apéro
+preparation: 5
+cuisson: 8
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/0ljvc51763248075.jpg
+nouveau: oui
+ingredients:
+- petits piments verts : 300 g
+- huile d'olive : 3 c. à soupe
+- fleur de sel : 1 pincée
+etapes:
+1. Lavez et séchez soigneusement les piments.
+2. Faites chauffer l'huile d'olive dans une grande poêle à feu vif.
+3. Ajoutez les piments et faites-les sauter 5 à 8 min, jusqu'à ce que la peau cloque et noircisse par endroits.
+4. Égouttez-les sur du papier absorbant et parsemez généreusement de fleur de sel. Certains piquent, d'autres non : c'est tout le jeu.
+
+=== Pan con tomate au jambon serrano
+id: pancontomate
+emoji: 🍅
+categorie: Apéro
+preparation: 10
+cuisson: 5
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/hsp1fo1763327867.jpg
+nouveau: oui
+ingredients:
+- pain de campagne : 8 tranches
+- tomates : 3
+- gousse d'ail : 1
+- jambon serrano : 8 tranches
+- huile d'olive : 4 c. à soupe
+- fleur de sel : 1 pincée
+etapes:
+1. Faites griller les tranches de pain.
+2. Frottez-les avec la gousse d'ail coupée en deux.
+3. Coupez les tomates en deux et frottez-les sur le pain, ou râpez-les et étalez la pulpe.
+4. Arrosez d'huile d'olive, parsemez de fleur de sel.
+5. Déposez une tranche de jambon sur chaque tartine et servez aussitôt.

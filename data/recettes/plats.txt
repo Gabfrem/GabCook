@@ -7284,3 +7284,1840 @@ etapes:
 6. Remuez vivement 3 min, ajoutez les petits pois.
 7. Versez la sauce soja sur les bords du wok, remettez l'omelette et les oignons émincés.
 8. Finissez par l'huile de sésame hors du feu et servez immédiatement.
+
+# ---------- Nouveautés v2 ----------
+
+=== Coq au vin
+id: coqauvin
+emoji: 🍷
+categorie: Plat
+preparation: 25
+cuisson: 110
+portions: 6
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/qstyvs1505931190.jpg
+nouveau: oui
+ingredients:
+- cuisses de poulet : 6
+- vin rouge : 75 cl
+- lardons : 200 g
+- champignons de Paris : 250 g
+- petits oignons : 12
+- carottes : 2
+- gousses d'ail : 3
+- farine : 2 c. à soupe
+- beurre : 30 g
+- bouquet garni : 1
+- huile : 2 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. La veille si possible (sinon au moins 2 h avant), mettez les morceaux de poulet dans un saladier avec le vin, les carottes coupées en rondelles, l'ail écrasé et le bouquet garni. Couvrez et laissez mariner au frais.
+2. Égouttez le poulet en gardant la marinade et séchez les morceaux avec du papier absorbant : une viande humide ne dore pas.
+3. Dans une cocotte, faites dorer les lardons sans matière grasse 5 min, puis retirez-les.
+4. Ajoutez l'huile et faites dorer les morceaux de poulet sur toutes les faces, en deux fois si besoin, environ 8 min. Salez, poivrez.
+5. Saupoudrez de farine, mélangez 1 min, puis versez la marinade avec ses légumes. Remettez les lardons, portez à frémissement.
+6. Couvrez et laissez mijoter à feu doux 1 h 30, en remuant de temps en temps.
+7. Pendant ce temps, faites revenir les petits oignons et les champignons dans le beurre 10 min, jusqu'à ce qu'ils soient dorés.
+8. Ajoutez-les dans la cocotte 15 min avant la fin. Retirez le bouquet garni et servez avec des pommes de terre vapeur ou des pâtes fraîches.
+
+=== Bouillabaisse express, rouille maison
+id: bouillabaisse
+emoji: 🐟
+categorie: Plat
+preparation: 25
+cuisson: 35
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/vptqpw1511798500.jpg
+nouveau: oui
+ingredients:
+- filets de poisson blanc : 800 g
+- crevettes : 200 g
+- oignon : 1
+- fenouil : 1
+- tomates : 3
+- gousses d'ail : 4
+- concentré de tomate : 1 c. à soupe
+- safran : 1 pincée
+- vin blanc : 15 cl
+- eau : 1 l
+- huile d'olive : 4 c. à soupe
+- mayonnaise : 4 c. à soupe
+- paprika : 1 c. à café
+- pain : 8 tranches
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Émincez l'oignon et le fenouil, coupez les tomates en dés et hachez 2 gousses d'ail.
+2. Dans une grande casserole, faites revenir l'oignon et le fenouil dans 3 c. à soupe d'huile d'olive 5 min à feu moyen.
+3. Ajoutez l'ail haché, les tomates et le concentré, puis le safran. Mélangez 2 min.
+4. Versez le vin blanc et l'eau, salez, poivrez et laissez frémir 15 min.
+5. Coupez le poisson en gros morceaux. Plongez-les dans le bouillon frémissant avec les crevettes et laissez cuire 6 à 8 min sans faire bouillir : le poisson doit rester entier.
+6. Pour la rouille, mélangez la mayonnaise avec 2 gousses d'ail râpées et le paprika.
+7. Faites griller les tranches de pain, frottez-les d'huile d'olive.
+8. Servez le bouillon et le poisson bien chauds, avec les croûtons tartinés de rouille.
+
+=== Cassoulet
+id: cassoulet
+emoji: 🫘
+categorie: Plat
+preparation: 30
+cuisson: 150
+portions: 6
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/wxuvuv1511299147.jpg
+nouveau: oui
+ingredients:
+- haricots blancs secs : 500 g
+- saucisses de Toulouse : 6
+- cuisses de canard confites : 3
+- poitrine fumée : 200 g
+- oignon : 1
+- carotte : 1
+- gousses d'ail : 4
+- tomates concassées : 400 g
+- bouquet garni : 1
+- chapelure : 4 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. La veille, faites tremper les haricots dans un grand volume d'eau froide.
+2. Égouttez-les, mettez-les dans une grande casserole d'eau froide avec l'oignon, la carotte et le bouquet garni. Portez à ébullition et laissez cuire 1 h à petits frémissements, sans saler (le sel durcit les haricots).
+3. Pendant ce temps, faites dorer la poitrine coupée en morceaux, puis les saucisses, dans une poêle. Réchauffez les cuisses de canard dans leur graisse.
+4. Égouttez les haricots en gardant 50 cl de bouillon. Mélangez-les avec les tomates, l'ail haché, sel et poivre.
+5. Préchauffez le four à 160 °C.
+6. Dans un grand plat en terre, alternez couches de haricots et de viandes, en terminant par des haricots. Mouillez avec le bouillon réservé jusqu'à hauteur.
+7. Saupoudrez de chapelure et enfournez 1 h 30. Quand une croûte se forme, enfoncez-la délicatement avec une cuillère et arrosez d'un peu de bouillon : on la casse ainsi deux ou trois fois.
+8. Servez bien chaud, directement dans le plat.
+
+=== Bœuf en croûte (façon Wellington)
+id: boeufwellington
+emoji: 🥩
+categorie: Plat
+preparation: 40
+cuisson: 45
+portions: 6
+difficulte: Difficile
+photo: https://www.themealdb.com/images/media/meals/vvpprx1487325699.jpg
+nouveau: oui
+ingredients:
+- filet de bœuf : 1 kg
+- pâte feuilletée : 2
+- champignons de Paris : 500 g
+- échalotes : 2
+- jambon cru : 6 tranches
+- moutarde : 2 c. à soupe
+- jaune d'œuf : 1
+- beurre : 20 g
+- huile : 1 c. à soupe
+- thym : 1 pincée
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Salez et poivrez le filet. Saisissez-le de tous côtés dans l'huile très chaude, 1 min par face, pour le colorer sans le cuire. Laissez refroidir puis badigeonnez-le de moutarde.
+2. Mixez finement les champignons et les échalotes. Faites-les cuire dans le beurre avec le thym jusqu'à évaporation complète de l'eau (10 à 15 min) : c'est la duxelles. Laissez refroidir.
+3. Sur un film alimentaire, étalez les tranches de jambon en les chevauchant, puis la duxelles par-dessus.
+4. Posez le filet au bord et roulez le tout bien serré à l'aide du film. Fermez les extrémités et placez 20 min au frais.
+5. Préchauffez le four à 200 °C. Étalez la pâte feuilletée, retirez le film et posez le rouleau de viande au centre.
+6. Enveloppez la viande dans la pâte, soudez les bords avec un peu d'eau, retournez pour que la soudure soit dessous. Décorez avec la seconde pâte si vous voulez.
+7. Badigeonnez de jaune d'œuf battu et enfournez 35 à 40 min pour une viande rosée, jusqu'à ce que la pâte soit bien dorée.
+8. Laissez reposer 10 min avant de trancher avec un couteau à pain, sinon le jus s'échappe.
+
+=== Tajine d'agneau aux abricots
+id: tajineagneau
+emoji: 🍑
+categorie: Plat
+preparation: 20
+cuisson: 105
+portions: 6
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/yuwtuu1511295751.jpg
+nouveau: oui
+ingredients:
+- épaule d'agneau : 1.2 kg
+- oignons : 2
+- abricots secs : 150 g
+- amandes : 50 g
+- gousses d'ail : 2
+- gingembre : 1 c. à café
+- cannelle : 1 c. à café
+- cumin : 1 c. à café
+- ras el hanout : 1 c. à soupe
+- miel : 2 c. à soupe
+- huile d'olive : 3 c. à soupe
+- coriandre : 1 poignée
+- eau : 50 cl
+- sel : 1 pincée
+etapes:
+1. Coupez l'agneau en gros cubes. Émincez les oignons et hachez l'ail.
+2. Dans une cocotte ou un tajine, faites dorer la viande dans l'huile d'olive sur toutes les faces, en plusieurs fois.
+3. Ajoutez les oignons et l'ail, puis toutes les épices. Mélangez 2 min pour les torréfier.
+4. Versez l'eau, salez, couvrez et laissez mijoter 1 h à feu doux.
+5. Ajoutez les abricots secs et le miel, et poursuivez la cuisson 30 min à couvert : la viande doit se défaire à la fourchette.
+6. Faites griller les amandes à sec dans une poêle 3 min.
+7. Parsemez le tajine d'amandes et de coriandre ciselée. Servez avec de la semoule.
+
+=== Agneau rogan josh
+id: roganjosh
+emoji: 🍛
+categorie: Plat
+preparation: 20
+cuisson: 90
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/vvstvq1487342592.jpg
+nouveau: oui
+ingredients:
+- épaule d'agneau : 800 g
+- oignons : 2
+- gousses d'ail : 3
+- gingembre : 3 cm
+- yaourt nature : 150 g
+- tomates concassées : 400 g
+- garam masala : 2 c. à café
+- paprika : 2 c. à café
+- cumin : 1 c. à café
+- curcuma : 1 c. à café
+- piment : 1 pincée
+- huile : 3 c. à soupe
+- coriandre : 1 poignée
+- sel : 1 pincée
+etapes:
+1. Coupez l'agneau en cubes, mélangez-le avec le yaourt et la moitié des épices. Laissez mariner 30 min (ou toute une nuit au frais).
+2. Émincez les oignons, râpez l'ail et le gingembre.
+3. Dans une cocotte, faites dorer les oignons dans l'huile 10 min à feu moyen, jusqu'à ce qu'ils soient bien bruns : c'est la base du goût.
+4. Ajoutez l'ail, le gingembre et le reste des épices, mélangez 1 min.
+5. Ajoutez la viande avec sa marinade et faites-la revenir 5 min.
+6. Versez les tomates, salez, couvrez et laissez mijoter 1 h 15 à feu doux, en remuant de temps en temps. Ajoutez un peu d'eau si la sauce attache.
+7. Parsemez de coriandre et servez avec du riz basmati ou des naans.
+
+=== Crevettes saganaki à la feta
+id: crevettessaganaki
+emoji: 🦐
+categorie: Plat
+preparation: 15
+cuisson: 20
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/wuvryu1468232995.jpg
+nouveau: oui
+ingredients:
+- crevettes : 500 g
+- tomates concassées : 400 g
+- feta : 150 g
+- oignon : 1
+- gousses d'ail : 2
+- vin blanc : 10 cl
+- origan : 1 c. à café
+- huile d'olive : 3 c. à soupe
+- persil : 1 poignée
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Décortiquez les crevettes en gardant la queue si vous voulez. Émincez l'oignon, hachez l'ail.
+2. Dans une poêle allant au four, faites revenir l'oignon dans l'huile d'olive 5 min.
+3. Ajoutez l'ail, puis le vin blanc, et laissez réduire 2 min.
+4. Versez les tomates et l'origan, salez peu (la feta est salée), poivrez et laissez mijoter 10 min.
+5. Préchauffez le four à 200 °C. Ajoutez les crevettes dans la sauce et émiettez la feta par-dessus.
+6. Enfournez 8 à 10 min, jusqu'à ce que les crevettes soient roses et la feta légèrement dorée.
+7. Parsemez de persil et servez avec du pain grillé pour saucer.
+
+=== Risotto au saumon et aux crevettes
+id: risottosaumon
+emoji: 🍚
+categorie: Plat
+preparation: 15
+cuisson: 30
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/xxrxux1503070723.jpg
+nouveau: oui
+ingredients:
+- riz arborio : 300 g
+- pavés de saumon : 2
+- crevettes : 200 g
+- échalotes : 2
+- vin blanc : 10 cl
+- bouillon : 1 l
+- parmesan : 40 g
+- beurre : 30 g
+- citron : 1
+- aneth : 1 poignée
+- huile d'olive : 2 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Gardez le bouillon chaud dans une casserole à feu doux. Coupez le saumon en cubes, décortiquez les crevettes.
+2. Faites revenir les échalotes hachées dans l'huile d'olive 3 min, sans coloration.
+3. Ajoutez le riz et remuez 2 min jusqu'à ce que les grains deviennent nacrés.
+4. Versez le vin blanc et laissez-le s'évaporer en remuant.
+5. Ajoutez le bouillon louche par louche, en attendant qu'il soit absorbé avant la suivante, et en remuant souvent. Comptez 18 min.
+6. 4 min avant la fin, ajoutez le saumon et les crevettes : ils cuisent doucement dans le riz.
+7. Hors du feu, incorporez le beurre, le parmesan, le zeste du citron et l'aneth ciselé. Couvrez 2 min avant de servir.
+
+=== Kedgeree (riz au haddock et aux œufs)
+id: kedgeree
+emoji: 🍳
+categorie: Plat
+preparation: 15
+cuisson: 25
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/utxqpt1511639216.jpg
+nouveau: oui
+ingredients:
+- haddock : 400 g
+- riz basmati : 250 g
+- œufs : 4
+- oignon : 1
+- curry : 2 c. à café
+- lait : 50 cl
+- beurre : 30 g
+- persil : 1 poignée
+- citron : 1
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Faites pocher le haddock dans le lait frémissant 8 min. Égouttez-le et effeuillez-le en retirant la peau.
+2. Faites cuire le riz à l'eau 10 min, égouttez.
+3. Faites cuire les œufs 8 min dans l'eau bouillante, passez-les sous l'eau froide, écalez-les et coupez-les en quartiers.
+4. Dans une grande poêle, faites fondre l'oignon émincé dans le beurre 5 min, ajoutez le curry et mélangez 1 min.
+5. Ajoutez le riz et le poisson, mélangez délicatement pour bien enrober de beurre parfumé. Poivrez, goûtez avant de saler (le haddock est salé).
+6. Servez avec les œufs, le persil ciselé et des quartiers de citron.
+
+=== Tacos de poisson cajun
+id: tacospoisson
+emoji: 🌮
+categorie: Plat
+preparation: 20
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/uvuyxu1503067369.jpg
+nouveau: oui
+ingredients:
+- filets de cabillaud : 500 g
+- tortillas : 8
+- chou rouge : 0.25
+- avocat : 1
+- citron vert : 2
+- crème fraîche : 4 c. à soupe
+- paprika : 2 c. à café
+- cumin : 1 c. à café
+- ail en poudre : 1 c. à café
+- piment : 1 pincée
+- huile : 2 c. à soupe
+- coriandre : 1 poignée
+- sel : 1 pincée
+etapes:
+1. Mélangez le paprika, le cumin, l'ail en poudre, le piment et le sel. Frottez-en les filets de poisson.
+2. Émincez très finement le chou, arrosez-le du jus d'un citron vert et salez : il s'attendrit en quelques minutes.
+3. Mélangez la crème fraîche avec un trait de jus de citron vert.
+4. Faites cuire le poisson dans l'huile chaude 3 min par face, puis effeuillez-le en gros morceaux.
+5. Réchauffez les tortillas 20 secondes de chaque côté dans une poêle sèche.
+6. Garnissez chaque tortilla de chou, de poisson, de tranches d'avocat, d'une cuillère de crème et de coriandre. Servez avec des quartiers de citron vert.
+
+=== Tonkatsu (porc pané à la japonaise)
+id: tonkatsu
+emoji: 🐷
+categorie: Plat
+preparation: 15
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/lwsnkl1604181187.jpg
+nouveau: oui
+ingredients:
+- côtes de porc désossées : 4
+- farine : 50 g
+- œufs : 2
+- chapelure panko : 100 g
+- chou blanc : 0.25
+- ketchup : 3 c. à soupe
+- sauce worcestershire : 2 c. à soupe
+- sauce soja : 1 c. à soupe
+- huile : 20 cl
+- riz : 300 g
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Faites cuire le riz. Émincez le chou en fins filaments et gardez-le au frais : il doit être croquant.
+2. Entaillez le gras des côtes en plusieurs endroits pour qu'elles ne se recroquevillent pas. Aplatissez-les légèrement, salez et poivrez.
+3. Passez chaque côte dans la farine, puis dans les œufs battus, puis dans la chapelure en pressant bien.
+4. Faites chauffer l'huile sur 1 cm dans une grande poêle et faites frire les côtes 3 à 4 min par face, jusqu'à ce qu'elles soient bien dorées.
+5. Égouttez-les sur du papier absorbant et laissez reposer 2 min avant de les couper en lamelles.
+6. Mélangez ketchup, sauce worcestershire et sauce soja pour obtenir la sauce tonkatsu. Servez avec le riz et le chou.
+
+=== Poulet à l'orange façon chinoise
+id: pouletorange
+emoji: 🍊
+categorie: Plat
+preparation: 15
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/s73ytv1765567838.jpg
+nouveau: oui
+ingredients:
+- blancs de poulet : 600 g
+- oranges : 2
+- maïzena : 4 c. à soupe
+- sauce soja : 3 c. à soupe
+- miel : 2 c. à soupe
+- vinaigre de riz : 1 c. à soupe
+- gingembre : 2 cm
+- gousses d'ail : 2
+- huile : 4 c. à soupe
+- oignons nouveaux : 2
+- graines de sésame : 1 c. à soupe
+- riz : 300 g
+etapes:
+1. Faites cuire le riz. Coupez le poulet en dés et enrobez-le de 3 c. à soupe de maïzena.
+2. Pressez les oranges et râpez le zeste de l'une d'elles. Mélangez le jus, le zeste, la sauce soja, le miel, le vinaigre, l'ail et le gingembre râpés et le reste de maïzena.
+3. Faites dorer le poulet dans l'huile bien chaude 6 à 7 min, en deux fois pour qu'il reste croustillant.
+4. Retirez l'excédent d'huile, versez la sauce dans la poêle et laissez épaissir 1 à 2 min en remuant.
+5. Remettez le poulet et enrobez-le bien de sauce brillante.
+6. Parsemez d'oignons nouveaux émincés et de sésame, servez avec le riz.
+
+=== Poulet jerk, riz aux haricots rouges
+id: pouletjerk
+emoji: 🌶️
+categorie: Plat
+preparation: 20
+cuisson: 45
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/tytyxu1515363282.jpg
+nouveau: oui
+ingredients:
+- cuisses de poulet : 8
+- oignons nouveaux : 4
+- piment : 1
+- gousses d'ail : 3
+- gingembre : 3 cm
+- citron vert : 2
+- sauce soja : 3 c. à soupe
+- sucre roux : 1 c. à soupe
+- thym : 1 c. à café
+- cannelle : 0.5 c. à café
+- muscade : 1 pincée
+- huile : 3 c. à soupe
+- riz : 300 g
+- haricots rouges : 400 g
+- lait de coco : 20 cl
+etapes:
+1. Mixez les oignons nouveaux, le piment épépiné, l'ail, le gingembre, le jus des citrons verts, la sauce soja, le sucre, le thym, les épices et l'huile : c'est la marinade jerk.
+2. Entaillez les cuisses, enrobez-les de marinade et laissez reposer au moins 1 h au frais.
+3. Préchauffez le four à 200 °C. Disposez les cuisses sur une plaque et enfournez 40 à 45 min, en les retournant à mi-cuisson.
+4. Pendant ce temps, rincez le riz. Mettez-le dans une casserole avec le lait de coco, 40 cl d'eau, une pincée de sel et les haricots rouges égouttés.
+5. Portez à ébullition, couvrez et laissez cuire 15 min à feu très doux, puis 5 min hors du feu sans soulever le couvercle.
+6. Servez le poulet bien laqué avec le riz et un quartier de citron vert.
+
+=== Poulet piri-piri et salade de chou
+id: pouletpiripiri
+emoji: 🔥
+categorie: Plat
+preparation: 20
+cuisson: 40
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/hglsbl1614346998.jpg
+nouveau: oui
+ingredients:
+- cuisses de poulet : 4
+- piment : 2
+- gousses d'ail : 3
+- citron : 1
+- paprika : 2 c. à café
+- origan : 1 c. à café
+- vinaigre : 1 c. à soupe
+- huile d'olive : 4 c. à soupe
+- chou blanc : 0.25
+- carottes : 2
+- mayonnaise : 3 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Mixez les piments, l'ail, le jus du citron, le paprika, l'origan, le vinaigre, l'huile et le sel.
+2. Entaillez le poulet et enrobez-le de cette sauce. Laissez mariner 30 min au moins.
+3. Préchauffez le four à 200 °C et faites rôtir le poulet 35 à 40 min, en l'arrosant de sa marinade à mi-cuisson.
+4. Pendant ce temps, râpez le chou et les carottes, mélangez-les avec la mayonnaise et un peu de sel.
+5. Servez le poulet bien grillé avec la salade de chou bien fraîche et des frites ou du riz.
+
+=== Poulet sauté au basilic thaï (pad kra pao)
+id: padkrapao
+emoji: 🌿
+categorie: Plat
+preparation: 10
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/el64dy1763483009.jpg
+nouveau: oui
+ingredients:
+- blancs de poulet : 500 g
+- gousses d'ail : 4
+- piment : 2
+- haricots verts : 150 g
+- sauce soja : 2 c. à soupe
+- sauce huître : 2 c. à soupe
+- sucre : 1 c. à café
+- basilic : 1 poignée
+- huile : 2 c. à soupe
+- œufs : 4
+- riz : 300 g
+etapes:
+1. Faites cuire le riz. Hachez le poulet au couteau (ou coupez-le en tout petits dés). Pilez l'ail et le piment.
+2. Coupez les haricots verts en tronçons de 2 cm.
+3. Dans un wok très chaud, faites sauter l'ail et le piment dans l'huile 30 secondes.
+4. Ajoutez le poulet et faites-le sauter 4 min à feu vif, puis les haricots 2 min.
+5. Ajoutez les sauces et le sucre, mélangez 1 min, puis hors du feu les feuilles de basilic.
+6. Faites frire les œufs à part pour que les bords soient croustillants. Servez le poulet sur le riz, un œuf par-dessus.
+
+=== Phở au bœuf
+id: phoboeuf
+emoji: 🍜
+categorie: Plat
+preparation: 25
+cuisson: 60
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/pbzcrx1763765096.jpg
+nouveau: oui
+ingredients:
+- bouillon de bœuf : 2 l
+- rumsteck : 300 g
+- nouilles de riz : 300 g
+- oignon : 1
+- gingembre : 5 cm
+- anis étoilé : 3
+- bâton de cannelle : 1
+- sauce poisson : 3 c. à soupe
+- sucre : 1 c. à café
+- pousses de soja : 150 g
+- citron vert : 2
+- coriandre : 1 poignée
+- basilic : 1 poignée
+- piment : 1
+etapes:
+1. Coupez l'oignon et le gingembre en deux et faites-les noircir à sec dans une poêle 5 min : c'est ce qui donne au bouillon sa profondeur.
+2. Mettez-les dans le bouillon avec l'anis étoilé et la cannelle. Laissez frémir 45 min, puis filtrez. Assaisonnez avec la sauce poisson et le sucre.
+3. Placez le bœuf 20 min au congélateur pour le trancher très finement plus facilement.
+4. Faites tremper ou cuire les nouilles selon le paquet, égouttez-les et répartissez-les dans de grands bols.
+5. Disposez les tranches de bœuf crues sur les nouilles et versez le bouillon bouillant par-dessus : il cuit la viande en quelques secondes.
+6. Servez avec les pousses de soja, les herbes, le piment émincé et les quartiers de citron vert, que chacun ajoute à son goût.
+
+=== Bœuf rendang
+id: boeufrendang
+emoji: 🥥
+categorie: Plat
+preparation: 20
+cuisson: 150
+portions: 6
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/bc8v651619789840.jpg
+nouveau: oui
+ingredients:
+- bœuf à braiser : 1 kg
+- lait de coco : 40 cl
+- échalotes : 6
+- gousses d'ail : 4
+- gingembre : 4 cm
+- citronnelle : 2
+- piment : 3
+- curcuma : 1 c. à café
+- coriandre en poudre : 2 c. à café
+- sucre roux : 1 c. à soupe
+- noix de coco râpée : 4 c. à soupe
+- huile : 3 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Mixez les échalotes, l'ail, le gingembre, le piment et le cœur tendre de la citronnelle en pâte fine.
+2. Coupez le bœuf en gros cubes.
+3. Dans une cocotte, faites revenir la pâte dans l'huile 5 min en remuant, jusqu'à ce qu'elle soit parfumée.
+4. Ajoutez la viande, le curcuma et la coriandre, mélangez 3 min, puis versez le lait de coco. Ajoutez le sucre et le sel.
+5. Laissez mijoter à découvert 2 h à feu doux, en remuant de temps en temps : la sauce réduit jusqu'à enrober la viande.
+6. Faites dorer la noix de coco râpée à sec dans une poêle et ajoutez-la en fin de cuisson. Servez avec du riz blanc.
+
+=== Empanadas au bœuf
+id: empanadasboeuf
+emoji: 🥟
+categorie: Plat
+preparation: 40
+cuisson: 25
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/dxpc7j1764370714.jpg
+nouveau: oui
+ingredients:
+- pâte brisée : 2
+- bœuf haché : 400 g
+- oignon : 1
+- poivron rouge : 1
+- olives : 10
+- œufs : 2
+- paprika : 2 c. à café
+- cumin : 1 c. à café
+- huile : 2 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Faites cuire un œuf 9 min dans l'eau bouillante, refroidissez-le et hachez-le.
+2. Faites revenir l'oignon et le poivron en petits dés dans l'huile 8 min.
+3. Ajoutez la viande, les épices, sel et poivre, et faites cuire 8 min en émiettant. Hors du feu, ajoutez les olives coupées et l'œuf haché. Laissez refroidir.
+4. Préchauffez le four à 200 °C. Découpez des disques de 12 cm dans la pâte.
+5. Déposez une cuillère de farce sur chaque disque, repliez en chausson et soudez les bords en les pinçant ou à la fourchette.
+6. Badigeonnez d'œuf battu et enfournez 20 à 25 min, jusqu'à ce qu'elles soient bien dorées.
+
+=== Lahmacun (pizza turque à la viande)
+id: lahmacun
+emoji: 🫓
+categorie: Plat
+preparation: 30
+cuisson: 15
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/tqd3ac1763786065.jpg
+nouveau: oui
+ingredients:
+- pâte à pizza : 2
+- bœuf haché : 300 g
+- oignon : 1
+- poivron rouge : 1
+- tomates : 2
+- concentré de tomate : 1 c. à soupe
+- gousses d'ail : 2
+- paprika : 1 c. à café
+- cumin : 1 c. à café
+- persil : 1 poignée
+- citron : 1
+- salade : 1
+- sel : 1 pincée
+etapes:
+1. Mixez grossièrement l'oignon, le poivron, les tomates épépinées, l'ail et la moitié du persil.
+2. Mélangez ce hachis avec la viande crue, le concentré de tomate, les épices et le sel : la garniture doit être fine et étalable.
+3. Préchauffez le four à 250 °C avec la plaque à l'intérieur.
+4. Divisez la pâte en 4 et étalez chaque morceau très finement en ovale.
+5. Étalez une fine couche de garniture jusqu'aux bords.
+6. Faites cuire 8 à 10 min sur la plaque brûlante : les bords doivent être croustillants et la viande cuite.
+7. Servez avec du persil, de la salade et un filet de citron, puis roulez-les pour les manger.
+
+=== Tourte poulet, jambon et poireaux
+id: tourtepoulet
+emoji: 🥧
+categorie: Plat
+preparation: 25
+cuisson: 40
+portions: 6
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/xrrtss1511555269.jpg
+nouveau: oui
+ingredients:
+- pâte brisée : 1
+- pâte feuilletée : 1
+- blancs de poulet : 500 g
+- jambon : 150 g
+- poireaux : 2
+- beurre : 30 g
+- farine : 2 c. à soupe
+- lait : 30 cl
+- crème fraîche : 10 cl
+- moutarde : 1 c. à café
+- œuf : 1
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Émincez les poireaux et faites-les fondre dans le beurre 10 min à couvert.
+2. Ajoutez le poulet en dés et faites-le revenir 5 min.
+3. Saupoudrez de farine, mélangez, puis versez le lait petit à petit en remuant jusqu'à obtenir une sauce épaisse. Ajoutez la crème, la moutarde et le jambon en dés. Salez, poivrez, laissez tiédir.
+4. Préchauffez le four à 190 °C. Foncez un moule avec la pâte brisée et versez la garniture.
+5. Couvrez de pâte feuilletée, soudez les bords et faites une petite cheminée au centre pour laisser s'échapper la vapeur.
+6. Badigeonnez d'œuf battu et enfournez 35 à 40 min, jusqu'à ce que le dessus soit bien doré.
+
+=== Tourte au bœuf et à la moutarde
+id: tourteboeuf
+emoji: 🥧
+categorie: Plat
+preparation: 25
+cuisson: 150
+portions: 6
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg
+nouveau: oui
+ingredients:
+- bœuf à braiser : 800 g
+- pâte feuilletée : 1
+- oignons : 2
+- carottes : 2
+- champignons : 200 g
+- moutarde à l'ancienne : 2 c. à soupe
+- farine : 2 c. à soupe
+- bouillon : 50 cl
+- thym : 1 pincée
+- huile : 2 c. à soupe
+- œuf : 1
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Coupez la viande en cubes, enrobez-les de farine. Faites-les dorer dans l'huile en plusieurs fois.
+2. Ajoutez les oignons émincés, les carottes en rondelles et les champignons, faites revenir 5 min.
+3. Versez le bouillon, ajoutez le thym et la moutarde, salez, poivrez. Couvrez et laissez mijoter 1 h 45 : la viande doit être fondante et la sauce nappante.
+4. Versez dans un plat à tourte et laissez tiédir.
+5. Préchauffez le four à 200 °C. Couvrez de pâte feuilletée, pincez les bords et percez une cheminée.
+6. Badigeonnez d'œuf battu et enfournez 25 à 30 min, jusqu'à ce que la pâte soit gonflée et dorée.
+
+=== Ragoût d'agneau aux pommes de terre (hotpot)
+id: hotpotagneau
+emoji: 🥔
+categorie: Plat
+preparation: 25
+cuisson: 120
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/uttrxw1511637813.jpg
+nouveau: oui
+ingredients:
+- épaule d'agneau : 1 kg
+- pommes de terre : 1 kg
+- oignons : 3
+- carottes : 2
+- bouillon : 50 cl
+- sauce worcestershire : 1 c. à soupe
+- thym : 1 pincée
+- laurier : 2 feuilles
+- beurre : 30 g
+- huile : 2 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Préchauffez le four à 160 °C. Coupez l'agneau en morceaux et faites-les dorer dans l'huile.
+2. Ajoutez les oignons émincés et les carottes en rondelles, faites revenir 5 min.
+3. Versez le bouillon et la sauce worcestershire, ajoutez thym et laurier, salez, poivrez, puis transvasez dans un plat allant au four.
+4. Épluchez les pommes de terre et coupez-les en rondelles fines. Disposez-les en écailles sur toute la surface.
+5. Parsemez de noisettes de beurre, couvrez de papier aluminium et enfournez 1 h 30.
+6. Retirez l'aluminium, montez le four à 200 °C et poursuivez 20 à 30 min pour dorer les pommes de terre.
+
+=== Ragoût irlandais
+id: irishstew
+emoji: 🍲
+categorie: Plat
+preparation: 20
+cuisson: 120
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/sxxpst1468569714.jpg
+nouveau: oui
+ingredients:
+- collier d'agneau : 1 kg
+- pommes de terre : 800 g
+- carottes : 3
+- oignons : 2
+- poireau : 1
+- bouillon : 1 l
+- thym : 1 pincée
+- persil : 1 poignée
+- huile : 2 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Coupez la viande en morceaux, salez et poivrez. Faites-la dorer dans l'huile dans une cocotte.
+2. Ajoutez les oignons et le poireau émincés, laissez fondre 5 min.
+3. Versez le bouillon, ajoutez le thym, couvrez et laissez mijoter 1 h.
+4. Ajoutez les carottes en tronçons et les pommes de terre en gros morceaux.
+5. Poursuivez 45 min à couvert : une partie des pommes de terre se défait et épaissit le bouillon.
+6. Parsemez de persil haché et servez bien chaud dans des assiettes creuses.
+
+=== Saucisses en pâte à Yorkshire (toad in the hole)
+id: toadhole
+emoji: 🌭
+categorie: Plat
+preparation: 15
+cuisson: 35
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ytuvwr1503070420.jpg
+nouveau: oui
+ingredients:
+- saucisses : 8
+- farine : 140 g
+- œufs : 3
+- lait : 20 cl
+- huile : 3 c. à soupe
+- moutarde : 1 c. à café
+- oignons : 2
+- bouillon : 30 cl
+- sel : 1 pincée
+etapes:
+1. Fouettez la farine, les œufs, le lait, la moutarde et le sel jusqu'à obtenir une pâte lisse. Laissez reposer 30 min.
+2. Préchauffez le four à 220 °C. Mettez l'huile et les saucisses dans un plat à gratin et enfournez 10 min.
+3. Sortez le plat : l'huile doit être fumante. Versez la pâte d'un coup autour des saucisses.
+4. Enfournez 25 min sans ouvrir la porte : la pâte gonfle et dore.
+5. Pendant ce temps, faites fondre les oignons émincés 15 min dans une poêle, ajoutez le bouillon et laissez réduire en sauce.
+6. Servez aussitôt avec la sauce aux oignons.
+
+=== Stamppot (purée de chou kale et saucisse)
+id: stamppot
+emoji: 🥬
+categorie: Plat
+preparation: 15
+cuisson: 30
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/hyarod1565090529.jpg
+nouveau: oui
+ingredients:
+- pommes de terre : 1 kg
+- chou kale : 300 g
+- saucisses fumées : 4
+- lait : 15 cl
+- beurre : 40 g
+- moutarde : 1 c. à soupe
+- muscade : 1 pincée
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Épluchez les pommes de terre, coupez-les en morceaux et faites-les cuire 15 min dans l'eau salée.
+2. Ajoutez le chou kale émincé dans la casserole et poursuivez la cuisson 8 min.
+3. Pendant ce temps, faites réchauffer les saucisses dans l'eau frémissante 10 min.
+4. Égouttez les pommes de terre et le chou. Écrasez-les grossièrement avec le beurre et le lait chaud.
+5. Assaisonnez de muscade, sel et poivre.
+6. Servez la purée avec les saucisses tranchées et la moutarde.
+
+=== Matar paneer (petits pois et fromage indien)
+id: matarpaneer
+emoji: 🧀
+categorie: Plat
+preparation: 15
+cuisson: 25
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/xxpqsy1511452222.jpg
+nouveau: oui
+ingredients:
+- paneer : 250 g
+- petits pois : 300 g
+- oignon : 1
+- tomates concassées : 400 g
+- gousses d'ail : 2
+- gingembre : 2 cm
+- garam masala : 2 c. à café
+- curcuma : 1 c. à café
+- cumin : 1 c. à café
+- crème fraîche : 5 cl
+- huile : 3 c. à soupe
+- coriandre : 1 poignée
+- sel : 1 pincée
+etapes:
+1. Coupez le paneer en cubes et faites-les dorer dans 1 c. à soupe d'huile. Réservez.
+2. Faites revenir l'oignon haché dans le reste d'huile 8 min, jusqu'à ce qu'il soit doré.
+3. Ajoutez l'ail et le gingembre râpés, puis les épices. Mélangez 1 min.
+4. Versez les tomates, salez et laissez mijoter 10 min.
+5. Ajoutez les petits pois et le paneer, poursuivez 5 min.
+6. Hors du feu, incorporez la crème et la coriandre. Servez avec du riz ou des naans.
+
+=== Koshari égyptien
+id: koshari
+emoji: 🍚
+categorie: Plat
+preparation: 20
+cuisson: 40
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/4er7mj1598733193.jpg
+nouveau: oui
+ingredients:
+- lentilles vertes : 150 g
+- riz : 150 g
+- petites pâtes : 150 g
+- pois chiches : 250 g
+- oignons : 3
+- tomates concassées : 400 g
+- gousses d'ail : 3
+- cumin : 2 c. à café
+- vinaigre : 2 c. à soupe
+- piment : 1 pincée
+- huile : 6 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Émincez finement les oignons et faites-les frire dans 5 c. à soupe d'huile 15 min, jusqu'à ce qu'ils soient bruns et croustillants. Égouttez-les et gardez l'huile.
+2. Faites cuire les lentilles 20 min dans l'eau, égouttez.
+3. Faites cuire le riz dans 1 c. à soupe d'huile des oignons puis 2 fois son volume d'eau, 12 min. Faites cuire les pâtes à part.
+4. Pour la sauce, faites revenir l'ail dans un peu d'huile, ajoutez les tomates, le cumin, le piment et le vinaigre. Laissez mijoter 15 min.
+5. Mélangez riz, lentilles et pâtes. Servez dans des bols, nappez de sauce tomate, ajoutez les pois chiches réchauffés et beaucoup d'oignons frits.
+
+=== Foul medames (fèves à l'égyptienne)
+id: foulmedames
+emoji: 🫘
+categorie: Plat
+preparation: 10
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/lvn2d51598732465.jpg
+nouveau: oui
+ingredients:
+- fèves cuites : 800 g
+- gousses d'ail : 2
+- citron : 1
+- cumin : 1 c. à café
+- tomates : 2
+- huile d'olive : 4 c. à soupe
+- persil : 1 poignée
+- œufs : 4
+- pain pita : 4
+- sel : 1 pincée
+etapes:
+1. Faites cuire les œufs 8 min, refroidissez-les et écalez-les.
+2. Faites chauffer les fèves avec un peu de leur jus dans une casserole 10 min.
+3. Écrasez-les grossièrement à la fourchette avec l'ail râpé, le cumin, le jus du citron, 3 c. à soupe d'huile et le sel.
+4. Versez dans des assiettes creuses, ajoutez les tomates en dés, le persil, un filet d'huile d'olive et les œufs en quartiers.
+5. Servez avec du pain pita chaud.
+
+=== Chili de lentilles à la courge
+id: chililentilles
+emoji: 🎃
+categorie: Plat
+preparation: 15
+cuisson: 40
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/uwxqwy1483389553.jpg
+nouveau: oui
+ingredients:
+- lentilles vertes : 200 g
+- courge butternut : 500 g
+- oignon : 1
+- poivron rouge : 1
+- haricots rouges : 400 g
+- tomates concassées : 400 g
+- gousses d'ail : 2
+- paprika fumé : 2 c. à café
+- cumin : 2 c. à café
+- piment : 1 pincée
+- huile d'olive : 2 c. à soupe
+- bouillon : 50 cl
+- sel : 1 pincée
+etapes:
+1. Épluchez la courge et coupez-la en dés. Émincez l'oignon et le poivron.
+2. Faites revenir l'oignon, le poivron et l'ail dans l'huile 5 min.
+3. Ajoutez les épices et mélangez 1 min.
+4. Ajoutez la courge, les lentilles rincées, les tomates et le bouillon. Salez.
+5. Laissez mijoter 30 min à couvert, jusqu'à ce que les lentilles soient tendres.
+6. Ajoutez les haricots rouges égouttés et réchauffez 5 min. Servez avec du riz, de la crème fraîche ou des tortillas.
+
+=== Lentilles au tahini et oignons croustillants
+id: lentillestahini
+emoji: 🥣
+categorie: Plat
+preparation: 10
+cuisson: 30
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/vpxyqt1511464175.jpg
+nouveau: oui
+ingredients:
+- lentilles vertes : 250 g
+- tahini : 3 c. à soupe
+- citron : 1
+- gousses d'ail : 2
+- oignons : 2
+- cumin : 1 c. à café
+- huile d'olive : 4 c. à soupe
+- épinards : 150 g
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Faites cuire les lentilles 25 min dans l'eau frémissante, égouttez-les en gardant un peu d'eau de cuisson.
+2. Émincez les oignons et faites-les dorer dans l'huile d'olive 15 min jusqu'à ce qu'ils soient croustillants.
+3. Mélangez le tahini, le jus du citron, l'ail râpé et 4 c. à soupe d'eau de cuisson : la sauce doit être crémeuse.
+4. Mélangez les lentilles chaudes avec les épinards (ils tombent à la chaleur), le cumin et la sauce. Salez et poivrez.
+5. Servez parsemé d'oignons croustillants.
+
+=== Œufs brouillés à la tomate (façon chinoise)
+id: oeufstomatechinois
+emoji: 🍅
+categorie: Plat
+preparation: 10
+cuisson: 10
+portions: 2
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/rwvw8q1765660071.jpg
+nouveau: oui
+ingredients:
+- œufs : 4
+- tomates : 3
+- oignons nouveaux : 2
+- sucre : 1 c. à café
+- sauce soja : 1 c. à soupe
+- ketchup : 1 c. à soupe
+- huile : 2 c. à soupe
+- riz : 150 g
+- sel : 1 pincée
+etapes:
+1. Faites cuire le riz. Coupez les tomates en quartiers et émincez les oignons nouveaux.
+2. Battez les œufs avec une pincée de sel. Faites-les prendre dans une poêle chaude avec 1 c. à soupe d'huile, en grosses plaques baveuses. Réservez.
+3. Dans la même poêle, faites sauter les tomates dans le reste d'huile 3 min, jusqu'à ce qu'elles rendent leur jus.
+4. Ajoutez le sucre, la sauce soja et le ketchup.
+5. Remettez les œufs, mélangez délicatement 1 min et parsemez d'oignons nouveaux. Servez sur le riz.
+
+=== Aubergines sautées façon Sichuan
+id: auberginessichuan
+emoji: 🍆
+categorie: Plat
+preparation: 15
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/1oz4nb1765687990.jpg
+nouveau: oui
+ingredients:
+- aubergines : 3
+- gousses d'ail : 3
+- gingembre : 2 cm
+- sauce soja : 3 c. à soupe
+- vinaigre de riz : 1 c. à soupe
+- sucre : 1 c. à soupe
+- maïzena : 1 c. à café
+- piment : 1
+- huile : 5 c. à soupe
+- oignons nouveaux : 2
+- riz : 300 g
+etapes:
+1. Faites cuire le riz. Coupez les aubergines en bâtonnets.
+2. Mélangez la sauce soja, le vinaigre, le sucre, la maïzena et 5 c. à soupe d'eau.
+3. Faites dorer les aubergines dans l'huile très chaude 8 min, en remuant, jusqu'à ce qu'elles soient fondantes.
+4. Ajoutez l'ail, le gingembre et le piment hachés, faites sauter 1 min.
+5. Versez la sauce et laissez épaissir 1 min en enrobant bien les aubergines.
+6. Parsemez d'oignons nouveaux et servez avec le riz.
+
+=== Curry de haricots rouges
+id: curryharicots
+emoji: 🫘
+categorie: Plat
+preparation: 10
+cuisson: 25
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/sywrsu1511463066.jpg
+nouveau: oui
+ingredients:
+- haricots rouges : 800 g
+- oignon : 1
+- tomates concassées : 400 g
+- gousses d'ail : 2
+- gingembre : 2 cm
+- garam masala : 2 c. à café
+- cumin : 1 c. à café
+- curcuma : 1 c. à café
+- lait de coco : 20 cl
+- huile : 2 c. à soupe
+- coriandre : 1 poignée
+- riz : 300 g
+- sel : 1 pincée
+etapes:
+1. Faites cuire le riz. Hachez l'oignon, l'ail et le gingembre.
+2. Faites revenir l'oignon dans l'huile 6 min, ajoutez l'ail, le gingembre et les épices, mélangez 1 min.
+3. Ajoutez les tomates et laissez mijoter 8 min.
+4. Ajoutez les haricots égouttés et le lait de coco, salez et laissez mijoter 10 min.
+5. Écrasez une partie des haricots avec le dos d'une cuillère pour épaissir la sauce. Parsemez de coriandre et servez avec le riz.
+
+=== Omelette chinoise aux crevettes (egg foo young)
+id: eggfooyoung
+emoji: 🥚
+categorie: Plat
+preparation: 15
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/47y6ii1765658818.jpg
+nouveau: oui
+ingredients:
+- œufs : 6
+- crevettes : 200 g
+- pousses de soja : 150 g
+- oignons nouveaux : 3
+- champignons : 100 g
+- sauce soja : 3 c. à soupe
+- sauce huître : 1 c. à soupe
+- maïzena : 1 c. à café
+- bouillon : 15 cl
+- huile : 3 c. à soupe
+- riz : 300 g
+etapes:
+1. Faites cuire le riz. Coupez les crevettes en morceaux, émincez les champignons et les oignons nouveaux.
+2. Battez les œufs avec 1 c. à soupe de sauce soja, ajoutez les crevettes, les pousses de soja, les champignons et les oignons.
+3. Dans une poêle huilée bien chaude, versez une louche de préparation et faites cuire 2 min par face. Recommencez pour faire 4 omelettes.
+4. Pour la sauce, mélangez le bouillon, le reste de sauce soja, la sauce huître et la maïzena. Faites épaissir 1 min dans une casserole.
+5. Servez les omelettes nappées de sauce, avec le riz.
+
+=== Nouilles sautées au bœuf (lo mein)
+id: lomein
+emoji: 🍜
+categorie: Plat
+preparation: 15
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/1529444830.jpg
+nouveau: oui
+ingredients:
+- nouilles : 300 g
+- rumsteck : 300 g
+- poivron : 1
+- carottes : 2
+- chou chinois : 0.5
+- oignons nouveaux : 3
+- gousses d'ail : 2
+- sauce soja : 4 c. à soupe
+- sauce huître : 2 c. à soupe
+- huile de sésame : 1 c. à soupe
+- huile : 2 c. à soupe
+- sucre : 1 c. à café
+etapes:
+1. Faites cuire les nouilles selon le paquet, rincez-les à l'eau froide et égouttez-les.
+2. Émincez finement le bœuf, le poivron, les carottes et le chou.
+3. Mélangez la sauce soja, la sauce huître, le sucre et l'huile de sésame.
+4. Dans un wok très chaud, faites saisir le bœuf dans l'huile 2 min, retirez-le.
+5. Faites sauter les légumes et l'ail 3 min : ils doivent rester croquants.
+6. Ajoutez les nouilles, le bœuf et la sauce, mélangez 2 min à feu vif. Parsemez d'oignons nouveaux.
+
+=== Nouilles sautées épicées au basilic (pad kee mao)
+id: padkeemao
+emoji: 🌶️
+categorie: Plat
+preparation: 15
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/2wx8cm1763373419.jpg
+nouveau: oui
+ingredients:
+- nouilles de riz larges : 300 g
+- blancs de poulet : 400 g
+- poivron : 1
+- tomates cerises : 10
+- gousses d'ail : 4
+- piment : 2
+- sauce soja : 3 c. à soupe
+- sauce huître : 2 c. à soupe
+- sauce poisson : 1 c. à soupe
+- sucre : 1 c. à café
+- basilic : 1 poignée
+- huile : 3 c. à soupe
+etapes:
+1. Faites tremper ou cuire les nouilles selon le paquet, égouttez-les.
+2. Émincez le poulet et le poivron, coupez les tomates en deux. Pilez l'ail et les piments.
+3. Mélangez les sauces et le sucre.
+4. Dans un wok très chaud, faites sauter l'ail et le piment dans l'huile 30 secondes, puis le poulet 4 min.
+5. Ajoutez le poivron et les tomates, faites sauter 2 min.
+6. Ajoutez les nouilles et la sauce, mélangez à feu vif 2 min. Hors du feu, ajoutez beaucoup de basilic.
+
+=== Salade grecque au poulet et quinoa
+id: saladequinoapoulet
+emoji: 🥗
+categorie: Plat
+preparation: 20
+cuisson: 20
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/k29viq1585565980.jpg
+nouveau: oui
+ingredients:
+- quinoa : 200 g
+- blancs de poulet : 2
+- concombre : 1
+- tomates cerises : 250 g
+- feta : 150 g
+- olives noires : 80 g
+- oignon rouge : 0.5
+- citron : 1
+- origan : 1 c. à café
+- huile d'olive : 5 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Rincez le quinoa et faites-le cuire 12 min dans deux fois son volume d'eau salée. Laissez refroidir.
+2. Assaisonnez le poulet d'origan, de sel et de poivre. Faites-le cuire 6 min par face dans 1 c. à soupe d'huile, puis tranchez-le.
+3. Coupez le concombre en dés, les tomates en deux et l'oignon en fines lamelles.
+4. Fouettez le jus du citron avec le reste d'huile, du sel et du poivre.
+5. Mélangez le quinoa, les légumes, les olives et la vinaigrette. Ajoutez le poulet et la feta émiettée.
+
+=== Fideuà aux fruits de mer
+id: fideua
+emoji: 🦑
+categorie: Plat
+preparation: 20
+cuisson: 25
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/wqqvyq1511179730.jpg
+nouveau: oui
+ingredients:
+- vermicelles : 350 g
+- crevettes : 300 g
+- calamars : 300 g
+- moules : 500 g
+- tomates concassées : 200 g
+- gousses d'ail : 3
+- paprika : 1 c. à café
+- safran : 1 pincée
+- bouillon de poisson : 80 cl
+- huile d'olive : 4 c. à soupe
+- citron : 1
+- mayonnaise : 4 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Faites dorer les vermicelles à sec dans une grande poêle ou un plat à paella 4 min, en remuant : ils prennent une couleur noisette. Réservez.
+2. Faites revenir les calamars en anneaux et les crevettes dans l'huile d'olive 3 min. Réservez les crevettes.
+3. Ajoutez l'ail haché, les tomates, le paprika et le safran, laissez réduire 5 min.
+4. Ajoutez les vermicelles et le bouillon chaud. Laissez cuire 8 min sans remuer.
+5. Enfoncez les moules et les crevettes et poursuivez 5 min, jusqu'à ce que les moules s'ouvrent et que le liquide soit absorbé.
+6. Servez avec des quartiers de citron et de la mayonnaise à l'ail.
+
+# ---------- Nouveautés v2 ----------
+
+=== Sardines grillées à la portugaise
+id: sardinesgrillees
+emoji: 🐟
+categorie: Plat
+preparation: 15
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/lpd4wy1614347943.jpg
+nouveau: oui
+ingredients:
+- sardines fraîches : 12
+- citron : 1
+- gousses d'ail : 2
+- persil : 1 poignée
+- huile d'olive : 4 c. à soupe
+- pommes de terre : 600 g
+- poivron rouge : 1
+- gros sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Faites cuire les pommes de terre dans l'eau salée 20 min.
+2. Videz les sardines (ou demandez-le au poissonnier), rincez-les et séchez-les bien. Frottez-les de gros sel.
+3. Faites griller le poivron entier sous le gril du four jusqu'à ce que la peau noircisse, puis pelez-le et coupez-le en lanières.
+4. Faites griller les sardines 3 à 4 min par face au barbecue, à la plancha ou dans une poêle en fonte très chaude.
+5. Mélangez l'huile d'olive, l'ail haché, le persil et le jus du citron.
+6. Servez les sardines avec les pommes de terre écrasées, le poivron, et arrosez de sauce.
+
+=== Bar poêlé au gingembre et à la ciboule
+id: bargingembre
+emoji: 🐟
+categorie: Plat
+preparation: 10
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/tqd7s21763780609.jpg
+nouveau: oui
+ingredients:
+- filets de bar : 4
+- gingembre : 4 cm
+- oignons nouveaux : 4
+- piment : 1
+- sauce soja : 3 c. à soupe
+- huile : 4 c. à soupe
+- riz : 300 g
+- sel : 1 pincée
+etapes:
+1. Faites cuire le riz. Taillez le gingembre en fins bâtonnets, émincez les oignons nouveaux et le piment.
+2. Salez les filets et faites-les cuire côté peau dans 1 c. à soupe d'huile chaude 4 min, jusqu'à ce que la peau soit croustillante. Retournez 1 min.
+3. Disposez le poisson sur les assiettes, arrosez de sauce soja.
+4. Dans la poêle, faites chauffer le reste d'huile jusqu'à ce qu'elle fume, ajoutez le gingembre, le piment et les oignons nouveaux 30 secondes : ils grésillent.
+5. Versez aussitôt sur le poisson et servez avec le riz.
+
+=== Truite au caramel vietnamienne
+id: truitecaramel
+emoji: 🐟
+categorie: Plat
+preparation: 10
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/p02vq41763754350.jpg
+nouveau: oui
+ingredients:
+- filets de truite : 4
+- sucre : 4 c. à soupe
+- sauce poisson : 3 c. à soupe
+- échalotes : 2
+- gousses d'ail : 2
+- piment : 1
+- poivre : 1 c. à café
+- oignons nouveaux : 2
+- riz : 300 g
+etapes:
+1. Faites cuire le riz. Émincez les échalotes et l'ail.
+2. Faites fondre le sucre dans une poêle avec 1 c. à soupe d'eau jusqu'à obtenir un caramel ambré.
+3. Retirez du feu, ajoutez la sauce poisson et 10 cl d'eau (attention aux projections), puis l'ail, les échalotes et le piment.
+4. Laissez bouillonner 2 min, puis déposez les filets de truite.
+5. Faites cuire 6 à 8 min à feu doux en arrosant de sauce : le poisson se laque.
+6. Poivrez généreusement, parsemez d'oignons nouveaux et servez avec le riz.
+
+=== Moqueca de crevettes au lait de coco
+id: moqueca
+emoji: 🥥
+categorie: Plat
+preparation: 20
+cuisson: 20
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/e2kcut1782591669.jpg
+nouveau: oui
+ingredients:
+- crevettes : 500 g
+- lait de coco : 40 cl
+- poivrons : 2
+- oignon : 1
+- tomates : 3
+- gousses d'ail : 2
+- citron vert : 2
+- paprika : 1 c. à café
+- piment : 1
+- coriandre : 1 poignée
+- huile d'olive : 2 c. à soupe
+- riz : 300 g
+- sel : 1 pincée
+etapes:
+1. Faites mariner les crevettes décortiquées avec le jus d'un citron vert, l'ail râpé et le sel 15 min.
+2. Faites cuire le riz. Coupez l'oignon, les poivrons et les tomates en fines rondelles.
+3. Dans une cocotte, faites revenir l'oignon et les poivrons dans l'huile 5 min.
+4. Ajoutez les tomates, le paprika et le piment, puis le lait de coco. Laissez mijoter 10 min.
+5. Ajoutez les crevettes et faites cuire 3 min. Arrosez du jus du second citron vert, parsemez de coriandre et servez avec le riz.
+
+=== Ragoût de poisson à la portugaise
+id: caldeirada
+emoji: 🍲
+categorie: Plat
+preparation: 20
+cuisson: 30
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/do7zps1614349775.jpg
+nouveau: oui
+ingredients:
+- poisson blanc : 600 g
+- pommes de terre : 500 g
+- oignons : 2
+- poivron : 1
+- tomates concassées : 400 g
+- gousses d'ail : 3
+- vin blanc : 15 cl
+- laurier : 2 feuilles
+- paprika : 1 c. à café
+- huile d'olive : 4 c. à soupe
+- persil : 1 poignée
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Coupez les pommes de terre en rondelles épaisses, les oignons et le poivron en lamelles.
+2. Dans une cocotte, faites revenir les oignons, le poivron et l'ail dans l'huile d'olive 5 min.
+3. Ajoutez les pommes de terre, les tomates, le vin, le laurier et le paprika. Salez, poivrez, couvrez à hauteur d'eau.
+4. Laissez cuire 15 min.
+5. Déposez le poisson en gros morceaux sur les légumes, couvrez et laissez cuire 8 min sans remuer.
+6. Parsemez de persil et servez dans des assiettes creuses.
+
+=== Crevettes sauce romesco
+id: crevettesromesco
+emoji: 🦐
+categorie: Plat
+preparation: 20
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/u03xhi1763308917.jpg
+nouveau: oui
+ingredients:
+- crevettes : 600 g
+- poivrons rouges grillés : 2
+- amandes : 50 g
+- gousses d'ail : 2
+- tomates : 2
+- paprika fumé : 1 c. à café
+- vinaigre de xérès : 1 c. à soupe
+- huile d'olive : 6 c. à soupe
+- pain : 1 tranches
+- citron : 1
+- sel : 1 pincée
+etapes:
+1. Faites griller les amandes et la tranche de pain dans un peu d'huile d'olive.
+2. Mixez les poivrons, les tomates épépinées, l'ail, les amandes, le pain, le paprika, le vinaigre et 4 c. à soupe d'huile : c'est la romesco. Salez.
+3. Faites sauter les crevettes dans le reste d'huile très chaude 2 à 3 min.
+4. Servez les crevettes avec la sauce romesco, des quartiers de citron et du pain grillé.
+
+=== Crevettes sautées aux légumes croquants
+id: crevettessautees
+emoji: 🦐
+categorie: Plat
+preparation: 15
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/96lt871763480970.jpg
+nouveau: oui
+ingredients:
+- crevettes : 400 g
+- brocoli : 1
+- poivron : 1
+- carotte : 1
+- pois gourmands : 100 g
+- gousses d'ail : 2
+- gingembre : 2 cm
+- sauce soja : 3 c. à soupe
+- sauce huître : 1 c. à soupe
+- maïzena : 1 c. à café
+- huile : 2 c. à soupe
+- riz : 300 g
+etapes:
+1. Faites cuire le riz. Coupez le brocoli en petites fleurettes, le poivron et la carotte en lamelles.
+2. Mélangez la sauce soja, la sauce huître, la maïzena et 5 c. à soupe d'eau.
+3. Dans un wok très chaud, faites sauter l'ail et le gingembre dans l'huile 30 secondes.
+4. Ajoutez les légumes et faites-les sauter 4 min : ils doivent rester croquants.
+5. Ajoutez les crevettes 2 min, puis la sauce, et mélangez jusqu'à ce qu'elle nappe. Servez sur le riz.
+
+=== Poulet au safran, raisins et pignons
+id: pouletsafran
+emoji: 🍗
+categorie: Plat
+preparation: 15
+cuisson: 40
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/4mhr3u1763481087.jpg
+nouveau: oui
+ingredients:
+- cuisses de poulet : 4
+- oignon : 1
+- safran : 1 pincée
+- raisins secs : 50 g
+- pignons : 40 g
+- bouillon : 30 cl
+- cannelle : 0.5 c. à café
+- huile d'olive : 2 c. à soupe
+- persil : 1 poignée
+- semoule : 250 g
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Faites infuser le safran dans le bouillon chaud.
+2. Faites dorer les cuisses de poulet dans l'huile, côté peau d'abord, 8 min. Réservez.
+3. Faites revenir l'oignon émincé 5 min, ajoutez la cannelle.
+4. Remettez le poulet, versez le bouillon safrané et ajoutez les raisins. Couvrez et laissez mijoter 30 min.
+5. Faites griller les pignons à sec. Préparez la semoule.
+6. Servez le poulet et sa sauce sur la semoule, parsemé de pignons et de persil.
+
+=== Gratin de pommes de terre au poulet
+id: gratinpdtpoulet
+emoji: 🧀
+categorie: Plat
+preparation: 20
+cuisson: 50
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/qwrtut1468418027.jpg
+nouveau: oui
+ingredients:
+- pommes de terre : 1 kg
+- blancs de poulet : 2
+- crème fraîche : 25 cl
+- lait : 20 cl
+- gruyère râpé : 100 g
+- gousse d'ail : 1
+- muscade : 1 pincée
+- beurre : 10 g
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Préchauffez le four à 180 °C. Épluchez les pommes de terre et coupez-les en fines rondelles.
+2. Coupez le poulet en petits morceaux, salez et poivrez.
+3. Frottez un plat avec l'ail et beurrez-le.
+4. Alternez couches de pommes de terre et de poulet.
+5. Mélangez la crème, le lait, la muscade, sel et poivre, versez sur le gratin.
+6. Parsemez de gruyère et enfournez 50 min : la lame d'un couteau doit traverser les pommes de terre sans résistance.
+
+=== Parmentier de poulet
+id: parmentierpoulet
+emoji: 🥔
+categorie: Plat
+preparation: 25
+cuisson: 30
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/uwvxpv1511557015.jpg
+nouveau: oui
+ingredients:
+- blancs de poulet : 600 g
+- pommes de terre : 1 kg
+- oignon : 1
+- champignons : 200 g
+- crème fraîche : 15 cl
+- lait : 15 cl
+- beurre : 50 g
+- gruyère râpé : 80 g
+- thym : 1 pincée
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Faites cuire les pommes de terre épluchées 20 min dans l'eau salée. Écrasez-les avec 40 g de beurre et le lait chaud.
+2. Pendant ce temps, faites revenir l'oignon et les champignons émincés dans le reste du beurre 8 min.
+3. Ajoutez le poulet coupé en petits dés et le thym, faites cuire 6 min. Ajoutez la crème, salez et poivrez.
+4. Préchauffez le four à 200 °C. Étalez le poulet dans un plat, recouvrez de purée.
+5. Parsemez de gruyère et enfournez 20 min, jusqu'à ce que le dessus soit doré.
+
+=== Poulet collant miel et soja
+id: pouletcollant
+emoji: 🍯
+categorie: Plat
+preparation: 10
+cuisson: 35
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/cj56fs1762340001.jpg
+nouveau: oui
+ingredients:
+- hauts de cuisses de poulet : 8
+- miel : 4 c. à soupe
+- sauce soja : 4 c. à soupe
+- gousses d'ail : 3
+- gingembre : 2 cm
+- vinaigre de riz : 1 c. à soupe
+- graines de sésame : 1 c. à soupe
+- oignons nouveaux : 2
+- riz : 300 g
+etapes:
+1. Préchauffez le four à 200 °C. Mélangez le miel, la sauce soja, l'ail et le gingembre râpés et le vinaigre.
+2. Enrobez le poulet de la moitié de la sauce et disposez-le dans un plat.
+3. Enfournez 25 min.
+4. Arrosez avec le reste de sauce et poursuivez 10 min, jusqu'à ce que le poulet soit brillant et collant.
+5. Parsemez de sésame et d'oignons nouveaux, servez avec le riz.
+
+=== Feuilles de chou farcies
+id: chouxfarcis
+emoji: 🥬
+categorie: Plat
+preparation: 35
+cuisson: 60
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/q8sp3j1593349686.jpg
+nouveau: oui
+ingredients:
+- chou vert : 1
+- chair à saucisse : 400 g
+- riz : 80 g
+- oignon : 1
+- œuf : 1
+- tomates concassées : 400 g
+- bouillon : 25 cl
+- thym : 1 pincée
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Détachez 12 belles feuilles de chou et faites-les blanchir 4 min dans l'eau bouillante salée. Égouttez et retirez la grosse côte.
+2. Faites cuire le riz 10 min, égouttez-le.
+3. Mélangez la chair à saucisse, le riz, l'oignon haché, l'œuf, le thym, sel et poivre.
+4. Déposez une boule de farce sur chaque feuille, rabattez les côtés et roulez bien serré.
+5. Préchauffez le four à 180 °C. Disposez les rouleaux dans un plat, couvrez des tomates mélangées au bouillon.
+6. Couvrez d'aluminium et enfournez 1 h. Servez avec de la crème fraîche si vous voulez.
+
+=== Pierogi aux pommes de terre et fromage
+id: pierogi
+emoji: 🥟
+categorie: Plat
+preparation: 45
+cuisson: 15
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/45xxr21593348847.jpg
+nouveau: oui
+ingredients:
+- farine : 300 g
+- œuf : 1
+- eau : 12 cl
+- pommes de terre : 400 g
+- fromage blanc : 150 g
+- oignons : 2
+- beurre : 50 g
+- crème fraîche : 4 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Mélangez la farine, l'œuf, l'eau tiède et le sel, pétrissez jusqu'à obtenir une pâte lisse. Laissez reposer 30 min sous un torchon.
+2. Faites cuire les pommes de terre, écrasez-les avec le fromage blanc. Ajoutez la moitié des oignons émincés et dorés au beurre. Salez, poivrez.
+3. Étalez la pâte finement et découpez des disques de 8 cm.
+4. Garnissez-les d'une cuillère de farce, repliez en demi-lune et soudez bien les bords.
+5. Plongez-les dans l'eau bouillante salée : ils sont cuits 2 min après être remontés à la surface.
+6. Faites-les dorer dans le reste du beurre avec le reste des oignons. Servez avec la crème fraîche.
+
+=== Pâtes au ragù de canard
+id: ragucanard
+emoji: 🦆
+categorie: Plat
+preparation: 20
+cuisson: 120
+portions: 6
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/qvrwpt1511181864.jpg
+nouveau: oui
+ingredients:
+- cuisses de canard : 3
+- pâtes : 500 g
+- oignon : 1
+- carotte : 1
+- céleri : 1
+- gousses d'ail : 2
+- tomates concassées : 400 g
+- vin rouge : 20 cl
+- romarin : 1 pincée
+- parmesan : 50 g
+- huile d'olive : 2 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Faites dorer les cuisses de canard côté peau dans une cocotte 10 min, sans matière grasse. Retirez-les et videz l'excès de graisse.
+2. Faites revenir l'oignon, la carotte, le céleri et l'ail hachés dans l'huile 8 min.
+3. Versez le vin et laissez réduire de moitié, puis ajoutez les tomates et le romarin.
+4. Remettez les cuisses, couvrez et laissez mijoter 1 h 30 : la viande doit se détacher toute seule.
+5. Retirez la peau et les os, effilochez la viande et remettez-la dans la sauce.
+6. Faites cuire les pâtes, mélangez-les au ragù et servez avec du parmesan.
+
+=== Bánh mì végétarien
+id: banhmivege
+emoji: 🥖
+categorie: Plat
+preparation: 25
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/sonirb1763782831.jpg
+nouveau: oui
+ingredients:
+- baguettes : 2
+- tofu ferme : 400 g
+- carottes : 2
+- radis : 6
+- concombre : 0.5
+- vinaigre de riz : 5 c. à soupe
+- sucre : 2 c. à soupe
+- sauce soja : 3 c. à soupe
+- mayonnaise : 4 c. à soupe
+- sriracha : 1 c. à soupe
+- coriandre : 1 poignée
+- huile : 2 c. à soupe
+etapes:
+1. Taillez les carottes et les radis en fins bâtonnets. Faites-les mariner 20 min dans le vinaigre mélangé au sucre et à une pincée de sel.
+2. Coupez le tofu en tranches, faites-les dorer dans l'huile 4 min par face, puis arrosez de sauce soja.
+3. Mélangez la mayonnaise et la sriracha.
+4. Coupez les baguettes en deux et ouvrez-les, réchauffez-les 3 min au four.
+5. Tartinez de mayonnaise épicée, garnissez de tofu, de pickles égouttés, de concombre en lamelles et de coriandre.
+
+=== Sandwich cubain
+id: sandwichcubain
+emoji: 🥪
+categorie: Plat
+preparation: 10
+cuisson: 10
+portions: 2
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/djdg8l1784578885.jpg
+nouveau: oui
+ingredients:
+- pain ciabatta : 2
+- rôti de porc cuit : 150 g
+- jambon : 4 tranches
+- emmental : 4 tranches
+- cornichons : 4
+- moutarde : 2 c. à soupe
+- beurre : 20 g
+etapes:
+1. Ouvrez les pains et tartinez l'intérieur de moutarde.
+2. Garnissez de jambon, de porc en tranches fines, de cornichons en lamelles et de fromage.
+3. Beurrez l'extérieur des pains.
+4. Faites-les dorer dans une poêle à feu moyen 3 à 4 min par face en les écrasant avec une casserole lourde : le fromage doit fondre.
+5. Coupez en deux en biais et servez chaud.
+
+=== Pita falafels, sauce tahini
+id: pitafalafels
+emoji: 🧆
+categorie: Plat
+preparation: 20
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ae6clc1760524712.jpg
+nouveau: oui
+ingredients:
+- pois chiches : 400 g
+- oignon : 0.5
+- gousses d'ail : 2
+- persil : 1 poignée
+- cumin : 2 c. à café
+- farine : 2 c. à soupe
+- pains pita : 4
+- tomates : 2
+- concombre : 0.5
+- tahini : 3 c. à soupe
+- citron : 1
+- huile : 10 cl
+- sel : 1 pincée
+etapes:
+1. Mixez grossièrement les pois chiches bien égouttés avec l'oignon, l'ail, le persil, le cumin, la farine et le sel.
+2. Formez des boulettes légèrement aplaties.
+3. Faites-les dorer dans l'huile 3 min par face.
+4. Mélangez le tahini avec le jus du citron et 3 c. à soupe d'eau jusqu'à obtenir une sauce crémeuse.
+5. Réchauffez les pitas, garnissez-les de falafels, de tomates et de concombre en dés, et nappez de sauce.
+
+=== Paella végétarienne
+id: paellavege
+emoji: 🥘
+categorie: Plat
+preparation: 20
+cuisson: 35
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/1520081754.jpg
+nouveau: oui
+ingredients:
+- riz rond : 300 g
+- aubergine : 1
+- fenouil : 1
+- poivron rouge : 1
+- haricots verts : 150 g
+- tomates : 2
+- gousses d'ail : 3
+- safran : 1 pincée
+- paprika fumé : 1 c. à café
+- bouillon de légumes : 1 l
+- huile d'olive : 5 c. à soupe
+- citron : 1
+- sel : 1 pincée
+etapes:
+1. Coupez l'aubergine, le fenouil et le poivron en morceaux, les haricots en tronçons.
+2. Dans une grande poêle, faites dorer l'aubergine et le fenouil dans l'huile 8 min, ajoutez le poivron et les haricots.
+3. Ajoutez l'ail haché et les tomates râpées, laissez réduire 5 min. Ajoutez le paprika et le safran.
+4. Versez le riz, mélangez 1 min, puis le bouillon chaud. Salez.
+5. Laissez cuire 18 min sans remuer, jusqu'à ce que le riz ait absorbé le bouillon et accroche légèrement au fond.
+6. Couvrez d'un torchon 5 min hors du feu, servez avec des quartiers de citron.
+
+=== Pilaf d'agneau à la turque
+id: pilafagneau
+emoji: 🍚
+categorie: Plat
+preparation: 15
+cuisson: 45
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/cr2kyr1763793839.jpg
+nouveau: oui
+ingredients:
+- épaule d'agneau : 500 g
+- riz : 300 g
+- oignon : 1
+- tomates : 2
+- pois chiches : 250 g
+- bouillon : 60 cl
+- cumin : 1 c. à café
+- cannelle : 0.5 c. à café
+- beurre : 30 g
+- menthe : 1 poignée
+- yaourt nature : 150 g
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Coupez l'agneau en petits cubes et faites-les dorer dans le beurre.
+2. Ajoutez l'oignon émincé, les épices et les tomates en dés, laissez revenir 5 min.
+3. Versez 20 cl de bouillon, couvrez et laissez mijoter 20 min.
+4. Ajoutez le riz rincé, les pois chiches et le reste du bouillon. Salez, poivrez.
+5. Couvrez et laissez cuire 15 min à feu doux, puis 10 min hors du feu.
+6. Servez avec le yaourt et la menthe ciselée.
+
+=== Burgers d'agneau au tzatziki
+id: burgersagneau
+emoji: 🍔
+categorie: Plat
+preparation: 20
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/k420tj1585565244.jpg
+nouveau: oui
+ingredients:
+- agneau haché : 500 g
+- pains à burger : 4
+- gousses d'ail : 2
+- cumin : 1 c. à café
+- menthe : 1 poignée
+- yaourt grec : 200 g
+- concombre : 0.5
+- tomate : 1
+- oignon rouge : 0.5
+- salade : 4 feuilles
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Pour le tzatziki, râpez le concombre, pressez-le pour retirer l'eau, et mélangez-le au yaourt avec 1 gousse d'ail râpée et la moitié de la menthe.
+2. Mélangez l'agneau avec l'autre gousse d'ail, le cumin, le reste de menthe hachée, sel et poivre. Formez 4 steaks.
+3. Faites-les cuire 4 min par face dans une poêle chaude.
+4. Toastez les pains.
+5. Garnissez de salade, de steak, de tomate, d'oignon et d'une bonne cuillère de tzatziki.
+
+=== Omelette pommes de terre, chorizo et fromage
+id: omelettechorizo
+emoji: 🍳
+categorie: Plat
+preparation: 10
+cuisson: 20
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/0y6uvc1763258983.jpg
+nouveau: oui
+ingredients:
+- œufs : 8
+- pommes de terre : 400 g
+- chorizo : 100 g
+- oignon : 1
+- gruyère râpé : 60 g
+- huile d'olive : 3 c. à soupe
+- persil : 1 poignée
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Coupez les pommes de terre en petits dés et faites-les dorer dans l'huile 12 min avec l'oignon émincé.
+2. Ajoutez le chorizo en dés et faites revenir 2 min.
+3. Battez les œufs avec le fromage, le persil, sel et poivre.
+4. Versez sur les pommes de terre, baissez le feu et laissez prendre 6 à 8 min à couvert.
+5. Faites glisser l'omelette sur une assiette, retournez-la dans la poêle 2 min pour dorer l'autre face. Servez chaud ou tiède.
+
+=== Curry de poulet aux noix de cajou
+id: currycajou
+emoji: 🍛
+categorie: Plat
+preparation: 15
+cuisson: 30
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/yxsurp1511304301.jpg
+nouveau: oui
+ingredients:
+- blancs de poulet : 600 g
+- noix de cajou : 80 g
+- oignon : 1
+- gousses d'ail : 2
+- gingembre : 2 cm
+- pâte de curry : 2 c. à soupe
+- lait de coco : 40 cl
+- tomates concassées : 200 g
+- huile : 2 c. à soupe
+- coriandre : 1 poignée
+- riz : 300 g
+- sel : 1 pincée
+etapes:
+1. Faites cuire le riz. Faites griller les noix de cajou à sec 3 min, réservez-en une poignée et mixez le reste en poudre.
+2. Faites revenir l'oignon haché dans l'huile 6 min, ajoutez l'ail, le gingembre et la pâte de curry.
+3. Ajoutez le poulet en morceaux et faites-le revenir 5 min.
+4. Versez le lait de coco, les tomates et la poudre de cajou : elle épaissit la sauce. Laissez mijoter 15 min.
+5. Salez, parsemez de noix de cajou entières et de coriandre. Servez avec le riz.
