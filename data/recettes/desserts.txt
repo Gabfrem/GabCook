@@ -1,0 +1,748 @@
+# Recettes « Dessert » — une recette par bloc « === Nom ». Voir scripts/recipe-format.mjs pour le format.
+
+=== Crêpes
+id: crepes
+emoji: 🥞
+categorie: Dessert
+preparation: 10
+cuisson: 20
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/58bkyo1593350017.jpg
+ingredients:
+- farine : 250 g
+- œufs : 4
+- lait : 50 cl
+- beurre : 50 g
+- sucre : 2 c. à soupe
+- sel : 1 pincée
+- huile : 1 c. à soupe
+etapes:
+1. Versez la farine dans un grand saladier avec le sucre et le sel. Faites un puits (un creux) au centre.
+2. Cassez les œufs dans le puits. Commencez à mélanger au fouet en incorporant peu à peu la farine des bords.
+3. Ajoutez le lait petit à petit en fouettant, pour éviter les grumeaux. La pâte doit être bien lisse et fluide.
+4. Faites fondre le beurre et incorporez-le à la pâte.
+5. Si possible, laissez reposer la pâte 30 min : les crêpes seront plus souples.
+6. Faites chauffer une poêle à feu moyen-vif et huilez-la légèrement avec un papier absorbant.
+7. Versez une petite louche de pâte et tournez la poêle pour l'étaler finement.
+8. Laissez cuire environ 1 min : quand les bords se décollent et que le dessous est doré, retournez la crêpe.
+9. Faites cuire l'autre face 30 secondes, puis réservez. Répétez avec le reste de pâte.
+10. Garnissez selon l'envie : sucre, confiture, pâte à tartiner, citron...
+
+=== Mousse au chocolat
+id: mousse
+emoji: 🍫
+categorie: Dessert
+preparation: 20
+cuisson: 0
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/uttuxy1511382180.jpg
+ingredients:
+- chocolat noir : 200 g
+- œufs : 6
+- sucre : 30 g
+- sel : 1 pincée
+etapes:
+1. Cassez le chocolat en morceaux dans un bol. Faites-le fondre au bain-marie (bol posé sur une casserole d'eau frémissante) ou au micro-ondes par tranches de 30 secondes en remuant.
+2. Laissez tiédir le chocolat fondu quelques minutes.
+3. Séparez les blancs des jaunes d'œufs : cassez chaque œuf et faites passer le jaune d'une coquille à l'autre en laissant couler le blanc dans un bol.
+4. Incorporez les jaunes un à un au chocolat tiédi, en mélangeant bien.
+5. Ajoutez une pincée de sel aux blancs, puis montez-les en neige ferme au batteur (ils doivent former des pics).
+6. Ajoutez le sucre et fouettez encore 30 secondes pour les serrer.
+7. Incorporez d'abord un tiers des blancs au chocolat pour l'assouplir, en mélangeant normalement.
+8. Ajoutez le reste des blancs et mélangez très délicatement, de bas en haut, pour garder l'air : c'est ce qui rend la mousse aérienne.
+9. Répartissez dans des verrines.
+10. Réservez au frais au moins 3h avant de déguster.
+
+=== Tarte aux pommes
+id: tartepommes
+emoji: 🥧
+categorie: Dessert
+preparation: 25
+cuisson: 35
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/wxywrq1468235067.jpg
+ingredients:
+- pâte brisée : 1
+- pommes : 5
+- sucre : 50 g
+- beurre : 30 g
+- confiture d'abricot : 2 c. à soupe
+- cannelle : 1 pincée
+etapes:
+1. Préchauffez le four à 180°C (th. 6). Déroulez la pâte dans un moule avec son papier et piquez le fond à la fourchette.
+2. Épluchez les pommes, coupez-les en quatre, retirez le cœur et les pépins.
+3. Coupez chaque quartier en fines lamelles.
+4. Disposez les lamelles en rosace sur la pâte, en les faisant se chevaucher légèrement.
+5. Saupoudrez de sucre et d'un peu de cannelle.
+6. Répartissez des petits morceaux de beurre sur les pommes.
+7. Enfournez 35 min : les pommes doivent être tendres et légèrement dorées sur les bords.
+8. Faites tiédir la confiture d'abricot (au micro-ondes ou dans une casserole) et badigeonnez-en la tarte au pinceau pour la faire briller.
+9. Laissez tiédir avant de servir.
+
+=== Tiramisu
+id: tiramisu
+emoji: ☕
+categorie: Dessert
+preparation: 25
+cuisson: 0
+portions: 6
+difficulte: Moyen
+ingredients:
+- mascarpone : 250 g
+- œufs : 3
+- sucre : 80 g
+- biscuits à la cuillère : 24
+- café fort : 25 cl
+- cacao : 2 c. à soupe
+etapes:
+1. Préparez un café bien fort (25 cl) et laissez-le refroidir dans une assiette creuse.
+2. Séparez les blancs des jaunes d'œufs.
+3. Fouettez les jaunes avec le sucre jusqu'à ce que le mélange blanchisse et double de volume.
+4. Ajoutez le mascarpone et fouettez doucement jusqu'à obtenir une crème lisse.
+5. Montez les blancs en neige ferme dans un autre bol.
+6. Incorporez les blancs délicatement à la crème au mascarpone, de bas en haut, pour garder l'air.
+7. Trempez rapidement chaque biscuit dans le café (1 seconde de chaque côté, sinon il se gorge trop) et tapissez le fond d'un plat.
+8. Étalez la moitié de la crème par-dessus.
+9. Refaites une couche de biscuits imbibés, puis le reste de crème. Lissez le dessus.
+10. Couvrez et réservez au frais au moins 4h, idéalement une nuit.
+11. Juste avant de servir, saupoudrez de cacao à travers une petite passoire.
+
+=== Cookies aux pépites de chocolat
+id: cookies
+emoji: 🍪
+categorie: Dessert
+preparation: 15
+cuisson: 12
+portions: 20
+difficulte: Facile
+ingredients:
+- farine : 250 g
+- beurre : 125 g
+- sucre roux : 100 g
+- œuf : 1
+- pépites de chocolat : 200 g
+- levure chimique : 1 c. à café
+- sel : 1 pincée
+etapes:
+1. Préchauffez le four à 180°C (th. 6). Sortez le beurre à l'avance pour qu'il soit bien mou.
+2. Dans un saladier, travaillez le beurre mou avec le sucre roux à la cuillère jusqu'à obtenir une crème.
+3. Ajoutez l'œuf et mélangez.
+4. Ajoutez la farine, la levure et le sel. Mélangez juste assez pour former une pâte (ne travaillez pas trop).
+5. Incorporez les pépites de chocolat.
+6. Formez des boules de la taille d'une grosse noix avec les mains.
+7. Déposez-les sur une plaque avec du papier cuisson, bien espacées (elles s'étalent en cuisant).
+8. Aplatissez-les légèrement.
+9. Enfournez 10 à 12 min : les cookies doivent être dorés sur les bords mais encore mous au centre (ils durcissent en refroidissant).
+10. Laissez-les refroidir 5 min sur la plaque avant de les décoller.
+
+=== Fondant au chocolat
+id: fondant
+emoji: 🍫
+categorie: Dessert
+preparation: 15
+cuisson: 12
+portions: 6
+difficulte: Facile
+ingredients:
+- chocolat noir : 200 g
+- beurre : 150 g
+- œufs : 4
+- sucre : 120 g
+- farine : 60 g
+etapes:
+1. Préchauffez le four à 200°C (th. 6-7). Beurrez et farinez des ramequins.
+2. Cassez le chocolat en morceaux et coupez le beurre en dés. Faites-les fondre ensemble au bain-marie ou au micro-ondes, en remuant.
+3. Dans un saladier, fouettez les œufs avec le sucre jusqu'à ce que le mélange mousse.
+4. Incorporez le chocolat fondu tiédi.
+5. Ajoutez la farine et mélangez juste assez pour l'incorporer.
+6. Répartissez la pâte dans les ramequins.
+7. Enfournez 10 à 11 min seulement : c'est le secret. Le tour doit être pris mais le centre encore tremblotant (c'est ce qui fait le cœur coulant).
+8. Laissez reposer 1 min, démoulez délicatement sur une assiette et servez aussitôt, encore chaud.
+
+=== Brownie
+id: brownie
+emoji: 🍫
+categorie: Dessert
+preparation: 15
+cuisson: 25
+portions: 8
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/yypvst1511386427.jpg
+ingredients:
+- chocolat noir : 200 g
+- beurre : 120 g
+- sucre : 150 g
+- œufs : 3
+- farine : 80 g
+- noix : 100 g
+etapes:
+1. Préchauffez le four à 180°C (th. 6). Tapissez un moule carré de papier cuisson.
+2. Faites fondre le chocolat en morceaux avec le beurre au bain-marie ou au micro-ondes, en remuant.
+3. Dans un saladier, fouettez les œufs avec le sucre.
+4. Incorporez le chocolat fondu.
+5. Ajoutez la farine et mélangez juste assez.
+6. Ajoutez les noix concassées.
+7. Versez dans le moule et lissez.
+8. Enfournez 20 à 25 min : le brownie doit rester moelleux au centre (la lame d'un couteau ressort légèrement humide, c'est normal, il ne faut pas trop cuire).
+9. Laissez complètement refroidir avant de couper en carrés.
+
+=== Gâteau au yaourt
+id: gateauyaourt
+emoji: 🍰
+categorie: Dessert
+preparation: 10
+cuisson: 30
+portions: 8
+difficulte: Facile
+ingredients:
+- yaourt nature : 1
+- farine : 3 pots
+- sucre : 2 pots
+- huile : 0.5 pot
+- œufs : 3
+- levure chimique : 1 sachet
+- vanille : 1 c. à café
+etapes:
+1. Préchauffez le four à 180°C (th. 6). Beurrez un moule à manqué.
+2. Utilisez le pot de yaourt vide comme mesure. Versez le yaourt dans un saladier.
+3. Ajoutez 2 pots de sucre et mélangez.
+4. Ajoutez les œufs un à un.
+5. Ajoutez 3 pots de farine et le sachet de levure, puis mélangez.
+6. Ajoutez un demi-pot d'huile et mélangez jusqu'à obtenir une pâte lisse.
+7. Versez dans le moule.
+8. Enfournez 30 min. Vérifiez la cuisson avec un couteau : la lame doit ressortir sèche.
+9. Laissez tiédir avant de démouler.
+
+=== Crème brûlée
+id: cremebrulee
+emoji: 🍮
+categorie: Dessert
+preparation: 15
+cuisson: 50
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/uryqru1511798039.jpg
+ingredients:
+- crème liquide : 50 cl
+- jaunes d'œufs : 5
+- sucre : 80 g
+- gousse de vanille : 1
+- cassonade : 4 c. à soupe
+etapes:
+1. Préchauffez le four à 100°C (th. 3-4). Fendez la gousse de vanille en deux et grattez les graines.
+2. Faites chauffer la crème avec la vanille (graines et gousse) jusqu'aux premiers frémissements, puis coupez le feu et laissez infuser 10 min.
+3. Dans un saladier, fouettez les jaunes d'œufs avec le sucre jusqu'à ce que le mélange blanchisse légèrement.
+4. Retirez la gousse, puis versez la crème chaude sur les jaunes en fouettant doucement (ne fouettez pas trop, pour éviter les bulles).
+5. Répartissez la crème dans des ramequins plats.
+6. Enfournez 45 min à 1h : la crème doit être prise mais encore légèrement tremblotante au centre.
+7. Laissez refroidir, puis réservez au frais au moins 3h.
+8. Juste avant de servir, saupoudrez de sucre roux et caramélisez au chalumeau (ou sous le grill très chaud) jusqu'à obtenir une croûte dorée et croustillante.
+
+=== Crème caramel
+id: cremecaramel
+emoji: 🍮
+categorie: Dessert
+preparation: 15
+cuisson: 40
+portions: 6
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/0s80wo1764374393.jpg
+ingredients:
+- lait : 50 cl
+- œufs : 4
+- sucre : 100 g
+- vanille : 1 c. à café
+- sucre pour le caramel : 80 g
+etapes:
+1. Préchauffez le four à 160°C (th. 5-6).
+2. Préparez le caramel : dans une casserole, faites chauffer une partie du sucre avec un peu d'eau, sans remuer, jusqu'à obtenir un caramel ambré.
+3. Versez-le aussitôt au fond des ramequins et inclinez-les pour bien répartir (attention, c'est brûlant).
+4. Faites chauffer le lait jusqu'aux premiers frémissements.
+5. Dans un saladier, fouettez les œufs avec le reste du sucre et la vanille.
+6. Versez le lait chaud sur les œufs en fouettant doucement.
+7. Répartissez ce mélange dans les ramequins, sur le caramel.
+8. Placez les ramequins dans un plat, versez de l'eau chaude à mi-hauteur (bain-marie : cela cuit la crème en douceur) et enfournez 40 min.
+9. La crème doit être prise. Laissez refroidir, puis réservez au frais 3h.
+10. Pour démouler, passez une lame autour et retournez sur une assiette : le caramel nappe la crème.
+
+=== Riz au lait
+id: rizaulait
+emoji: 🍚
+categorie: Dessert
+preparation: 5
+cuisson: 35
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/jp09191782856005.jpg
+ingredients:
+- riz rond : 150 g
+- lait : 1 l
+- sucre : 100 g
+- gousse de vanille : 1
+- sel : 1 pincée
+etapes:
+1. Rincez rapidement le riz rond à l'eau froide.
+2. Versez le lait dans une casserole avec le sucre et la vanille. Portez à frémissement.
+3. Ajoutez le riz.
+4. Baissez le feu au minimum et laissez cuire 30 à 35 min en remuant souvent, pour éviter que ça attache au fond.
+5. Le riz au lait est prêt quand le riz est tendre et le mélange crémeux (il épaissira encore en refroidissant).
+6. Versez dans des ramequins.
+7. Dégustez tiède ou froid.
+
+=== Panna cotta
+id: pannacotta
+emoji: 🍮
+categorie: Dessert
+preparation: 10
+cuisson: 5
+portions: 4
+difficulte: Facile
+ingredients:
+- crème liquide : 50 cl
+- sucre : 60 g
+- feuilles de gélatine : 3
+- gousse de vanille : 1
+- coulis de fruits rouges : 4 c. à soupe
+etapes:
+1. Faites tremper les feuilles de gélatine dans un bol d'eau froide 5 min, pour les ramollir.
+2. Versez la crème et le lait dans une casserole avec le sucre et la vanille.
+3. Faites chauffer jusqu'aux premiers frémissements (sans faire bouillir), puis coupez le feu.
+4. Essorez la gélatine entre vos mains et ajoutez-la dans la crème chaude. Mélangez jusqu'à ce qu'elle soit complètement dissoute.
+5. Versez dans des verrines ou des ramequins.
+6. Laissez tiédir, puis réservez au frais au moins 4h : la pannacotta doit être prise mais encore tremblotante.
+7. Servez avec un coulis de fruits rouges.
+
+=== Clafoutis aux cerises
+id: clafoutis
+emoji: 🍒
+categorie: Dessert
+preparation: 15
+cuisson: 35
+portions: 6
+difficulte: Facile
+ingredients:
+- cerises : 500 g
+- farine : 100 g
+- sucre : 100 g
+- œufs : 3
+- lait : 30 cl
+- beurre : 20 g
+- vanille : 1 c. à café
+etapes:
+1. Préchauffez le four à 180°C (th. 6). Beurrez un plat.
+2. Lavez les cerises (traditionnellement on garde les noyaux, mais dénoyautez-les pour plus de confort).
+3. Répartissez les cerises dans le plat.
+4. Dans un saladier, battez les œufs avec le sucre.
+5. Ajoutez la farine et mélangez.
+6. Versez le lait petit à petit en fouettant, jusqu'à obtenir une pâte lisse et fluide (comme une pâte à crêpes).
+7. Versez la pâte sur les cerises.
+8. Enfournez 35 min : le clafoutis doit être doré et pris au centre.
+9. Saupoudrez de sucre et servez tiède.
+
+=== Tarte au citron meringuée
+id: citronmeringuee
+emoji: 🍋
+categorie: Dessert
+preparation: 30
+cuisson: 30
+portions: 8
+difficulte: Difficile
+ingredients:
+- pâte sablée : 1
+- citrons : 4
+- œufs : 4
+- sucre : 150 g
+- beurre : 80 g
+- maïzena : 2 c. à soupe
+- sucre glace : 80 g
+etapes:
+1. Préchauffez le four à 180°C. Étalez la pâte dans un moule, piquez le fond et faites-la cuire à blanc 15 min (posez du papier cuisson et des poids type haricots secs pour qu'elle ne gonfle pas).
+2. Préparez la crème au citron : pressez les citrons. Dans une casserole, mélangez le jus, le sucre, les œufs et la maïzena.
+3. Faites chauffer à feu doux en fouettant sans arrêt, jusqu'à ce que la crème épaississe.
+4. Hors du feu, incorporez le beurre. Versez la crème sur le fond de tarte cuit et lissez.
+5. Préparez la meringue : montez les blancs en neige, puis ajoutez le sucre en continuant de fouetter jusqu'à obtenir une meringue lisse et brillante qui forme des pics.
+6. Répartissez la meringue sur la crème au citron, en formant des pics avec le dos d'une cuillère.
+7. Faites dorer au four quelques minutes (ou au chalumeau), en surveillant : la meringue doit juste colorer.
+8. Laissez refroidir avant de servir.
+
+=== Tarte Tatin
+id: tatin
+emoji: 🍎
+categorie: Dessert
+preparation: 25
+cuisson: 40
+portions: 6
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/ryspuw1511786688.jpg
+ingredients:
+- pâte brisée : 1
+- pommes : 6
+- sucre : 120 g
+- beurre : 60 g
+- cannelle : 1 pincée
+etapes:
+1. Préchauffez le four à 190°C (th. 6-7). Épluchez les pommes, coupez-les en quartiers et retirez le cœur.
+2. Préparez le caramel : dans un moule qui va au four (ou une poêle à manche métallique), faites fondre le beurre avec le sucre jusqu'à obtenir un caramel doré.
+3. Disposez les quartiers de pommes serrés dans le caramel, face bombée vers le bas.
+4. Laissez cuire 10 min sur feu moyen pour que les pommes s'imprègnent de caramel.
+5. Recouvrez les pommes avec la pâte, en rentrant les bords à l'intérieur du moule (comme pour border un lit).
+6. Enfournez 25 min : la pâte doit être dorée.
+7. Laissez tiédir 5 min seulement (pas plus, sinon le caramel colle).
+8. Posez une grande assiette sur le moule et retournez d'un coup (attention au caramel chaud). Les pommes caramélisées se retrouvent sur le dessus.
+
+=== Cheesecake
+id: cheesecake
+emoji: 🍰
+categorie: Dessert
+preparation: 20
+cuisson: 45
+portions: 8
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/swttys1511385853.jpg
+ingredients:
+- spéculoos : 200 g
+- beurre fondu : 80 g
+- fromage frais : 600 g
+- sucre : 120 g
+- œufs : 3
+- crème : 10 cl
+- vanille : 1 c. à café
+etapes:
+1. Émiettez les biscuits (dans un sac, écrasés au rouleau). Mélangez-les avec le beurre fondu.
+2. Tassez ce mélange au fond d'un moule (idéalement à charnière) avec le dos d'une cuillère. Réservez au frais.
+3. Préchauffez le four à 160°C (th. 5-6).
+4. Dans un saladier, fouettez le fromage frais avec le sucre jusqu'à ce que ce soit lisse.
+5. Ajoutez les œufs un à un, puis la crème et la vanille. Mélangez sans trop incorporer d'air.
+6. Versez sur le fond de biscuits.
+7. Enfournez 45 min : les bords doivent être pris mais le centre encore légèrement tremblotant (il se raffermit en refroidissant).
+8. Laissez refroidir dans le four éteint, porte entrouverte (cela évite qu'il craque).
+9. Réservez au frais au moins 4h, idéalement une nuit, avant de démouler.
+
+=== Madeleines
+id: madeleines
+emoji: 🍰
+categorie: Dessert
+preparation: 15
+cuisson: 12
+portions: 20
+difficulte: Facile
+ingredients:
+- farine : 200 g
+- œufs : 3
+- sucre : 130 g
+- beurre fondu : 120 g
+- levure chimique : 1 sachet
+- citron : 1
+- miel : 1 c. à soupe
+etapes:
+1. Faites fondre le beurre et laissez-le tiédir. Beurrez et farinez les moules à madeleines.
+2. Dans un saladier, fouettez les œufs avec le sucre jusqu'à ce que le mélange blanchisse.
+3. Ajoutez la farine et la levure, puis mélangez.
+4. Incorporez le beurre fondu tiède et le zeste de citron.
+5. Réservez la pâte au frais 30 min si possible (le choc de température aide à former la bosse).
+6. Préchauffez le four à 220°C (th. 7-8).
+7. Remplissez les moules aux trois quarts.
+8. Enfournez 4 min à 220°C, puis baissez à 200°C et poursuivez 4 à 5 min : la bosse se forme et les bords dorent.
+9. Démoulez tièdes.
+
+=== Cake marbré
+id: cakemarbre
+emoji: 🍫
+categorie: Dessert
+preparation: 20
+cuisson: 45
+portions: 8
+difficulte: Facile
+ingredients:
+- farine : 200 g
+- sucre : 150 g
+- beurre : 120 g
+- œufs : 3
+- lait : 10 cl
+- cacao : 2 c. à soupe
+- levure chimique : 1 sachet
+- vanille : 1 c. à café
+etapes:
+1. Préchauffez le four à 180°C (th. 6). Beurrez et farinez un moule à cake.
+2. Dans un saladier, fouettez le beurre mou avec le sucre jusqu'à obtenir une crème.
+3. Ajoutez les œufs un à un.
+4. Ajoutez la farine et la levure, puis mélangez jusqu'à obtenir une pâte lisse.
+5. Séparez la pâte en deux bols. Dans l'un, ajoutez le cacao (avec un peu de lait si besoin pour garder la même texture).
+6. Versez les deux pâtes en alternance dans le moule (une louche de nature, une de chocolat, etc.).
+7. Passez la lame d'un couteau en zigzag dans la pâte pour créer le marbrage.
+8. Enfournez 45 min. Vérifiez la cuisson avec un couteau : il doit ressortir sec.
+9. Laissez tiédir avant de démouler.
+
+=== Compote de pommes
+id: compote
+emoji: 🍎
+categorie: Dessert
+preparation: 10
+cuisson: 20
+portions: 4
+difficulte: Facile
+ingredients:
+- pommes : 6
+- sucre : 2 c. à soupe
+- citron : 1
+- cannelle : 1 pincée
+- eau : 5 c. à soupe
+etapes:
+1. Épluchez les pommes, coupez-les en quatre, retirez le cœur et les pépins, puis coupez-les en morceaux.
+2. Mettez les morceaux dans une casserole avec un fond d'eau (pour ne pas que ça attache).
+3. Ajoutez le sucre et une pincée de cannelle.
+4. Couvrez et laissez cuire 20 min à feu doux, en remuant de temps en temps.
+5. Les pommes sont prêtes quand elles s'écrasent facilement.
+6. Écrasez à la fourchette pour une compote avec des morceaux, ou mixez pour une texture lisse.
+7. Dégustez tiède ou froide.
+
+=== Salade de fruits
+id: saladefruits
+emoji: 🍓
+categorie: Dessert
+preparation: 20
+cuisson: 0
+portions: 4
+difficulte: Facile
+ingredients:
+- pomme : 1
+- banane : 1
+- oranges : 2
+- kiwis : 2
+- fraises : 200 g
+- raisin : 100 g
+- citron : 1
+- sucre : 1 c. à soupe
+- menthe : 1 pincée
+etapes:
+1. Lavez tous les fruits.
+2. Épluchez ceux qui le nécessitent (kiwi, banane, orange).
+3. Coupez tous les fruits en morceaux de taille régulière.
+4. Mettez-les dans un grand saladier.
+5. Pressez un citron et arrosez-en les fruits (cela évite qu'ils noircissent, notamment la banane et la pomme).
+6. Ajoutez un peu de sucre ou de miel si les fruits sont peu sucrés.
+7. Mélangez délicatement et réservez au frais au moins 1h avant de servir.
+
+=== Quatre-quarts
+id: quatrequarts
+emoji: 🍰
+categorie: Dessert
+preparation: 15
+cuisson: 45
+portions: 8
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/urtqut1511723591.jpg
+ingredients:
+- œufs : 3
+- farine : 180 g
+- sucre : 180 g
+- beurre : 180 g
+- levure chimique : 1 sachet
+- vanille : 1 c. à café
+etapes:
+1. Préchauffez le four à 180°C (th. 6). Beurrez et farinez un moule à cake.
+2. Pesez les œufs : leur poids détermine celui des autres ingrédients (même poids de beurre, de sucre et de farine, d'où le nom).
+3. Faites fondre le beurre et laissez-le tiédir.
+4. Dans un saladier, fouettez les œufs avec le sucre jusqu'à ce que le mélange blanchisse et double de volume.
+5. Ajoutez le beurre fondu tiède.
+6. Ajoutez la farine et la levure, et mélangez délicatement.
+7. Versez dans le moule.
+8. Enfournez 40 min. Vérifiez avec un couteau : la lame doit ressortir sèche.
+9. Laissez tiédir avant de démouler.
+
+=== Crumble aux pommes
+id: crumble
+emoji: 🍎
+categorie: Dessert
+preparation: 20
+cuisson: 35
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg
+ingredients:
+- pommes : 6
+- farine : 150 g
+- beurre : 100 g
+- sucre roux : 100 g
+- poudre d'amandes : 50 g
+- cannelle : 1 c. à café
+etapes:
+1. Préchauffez le four à 180°C (th. 6). Sortez le beurre 10 min avant : il doit être mou mais pas fondu.
+2. Épluchez les pommes, retirez le cœur et coupez-les en cubes de 2 cm.
+3. Répartissez-les dans un plat à gratin et saupoudrez de cannelle.
+4. Dans un saladier, mélangez la farine, la poudre d'amandes et le sucre roux.
+5. Ajoutez le beurre en morceaux et travaillez du bout des doigts, sans insister.
+6. Arrêtez dès que le mélange forme des grumeaux irréguliers, de la taille de petits pois. Une pâte lisse donnerait une croûte compacte au lieu d'un crumble sableux.
+7. Répartissez cette pâte sur les pommes, sans tasser.
+8. Enfournez 35 min : le dessus doit être bien doré et les pommes bouillonner sur les bords.
+9. Laissez tiédir 10 min avant de servir : brûlant, le crumble est trop mou.
+10. Servez tiède, avec une boule de glace vanille ou de la crème fraîche.
+
+=== Far breton
+id: farbreton
+emoji: 🍮
+categorie: Dessert
+preparation: 15
+cuisson: 45
+portions: 6
+difficulte: Facile
+ingredients:
+- farine : 150 g
+- sucre : 150 g
+- œufs : 4
+- lait : 75 cl
+- pruneaux : 200 g
+- beurre : 30 g
+- vanille : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Préchauffez le four à 180°C (th. 6). Beurrez généreusement un plat à bords hauts.
+2. Si les pruneaux sont secs, faites-les tremper 15 min dans de l'eau tiède ou du thé, puis égouttez-les.
+3. Dans un saladier, mélangez la farine, le sucre et le sel.
+4. Cassez les œufs au centre et fouettez en partant du milieu, en incorporant la farine petit à petit : c'est ainsi qu'on évite les grumeaux.
+5. Versez le lait progressivement, toujours en fouettant, jusqu'à obtenir une pâte bien lisse et fluide.
+6. Ajoutez la vanille.
+7. Répartissez les pruneaux au fond du plat et versez la pâte par-dessus.
+8. Enfournez 45 min : le far doit être pris, gonflé et bien doré, presque brun par endroits.
+9. Il retombe en refroidissant, c'est normal.
+10. Laissez refroidir complètement et servez tiède ou froid, directement dans le plat.
+
+=== Sablés au beurre
+id: sables
+emoji: 🍪
+categorie: Dessert
+preparation: 20
+cuisson: 12
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/qidask1779650423.jpg
+ingredients:
+- farine : 250 g
+- beurre : 125 g
+- sucre : 100 g
+- œuf : 1
+- vanille : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Sortez le beurre à l'avance pour qu'il soit bien mou.
+2. Dans un saladier, travaillez le beurre mou avec le sucre jusqu'à obtenir une crème claire.
+3. Ajoutez l'œuf et la vanille, puis mélangez.
+4. Ajoutez la farine et le sel, et mélangez juste jusqu'à ce que la pâte se rassemble. Trop travaillée, elle donnerait des sablés durs.
+5. Formez une boule, aplatissez-la, filmez-la et laissez-la reposer 1h au frais. Cette étape est indispensable, sinon la pâte colle et les sablés s'étalent.
+6. Préchauffez le four à 180°C (th. 6).
+7. Étalez la pâte sur 5 mm d'épaisseur entre deux feuilles de papier cuisson.
+8. Découpez des formes à l'emporte-pièce et posez-les sur une plaque avec du papier cuisson.
+9. Enfournez 12 min : les sablés doivent être juste dorés sur les bords et encore pâles au centre.
+10. Laissez-les refroidir sur la plaque 5 min avant de les décoller, ils sont très fragiles à la sortie.
+
+=== Financiers
+id: financiers
+emoji: 🥮
+categorie: Dessert
+preparation: 15
+cuisson: 15
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/e756bf1761848342.jpg
+ingredients:
+- poudre d'amandes : 100 g
+- sucre glace : 100 g
+- farine : 50 g
+- blancs d'œufs : 4
+- beurre : 100 g
+etapes:
+1. Préchauffez le four à 200°C (th. 6-7) et beurrez des moules à financiers ou des moules en silicone.
+2. Préparez le beurre noisette : faites fondre le beurre dans une petite casserole à feu moyen.
+3. Laissez-le cuire jusqu'à ce qu'il mousse, puis que des points bruns se forment au fond et qu'une odeur de noisette monte. Retirez immédiatement du feu.
+4. Laissez-le tiédir, c'est lui qui donne tout le goût du financier.
+5. Dans un saladier, mélangez la poudre d'amandes, le sucre glace et la farine.
+6. Ajoutez les blancs d'œufs non battus et mélangez au fouet jusqu'à obtenir une pâte lisse.
+7. Versez le beurre noisette tiède en filet, en mélangeant.
+8. Remplissez les moules aux trois quarts.
+9. Enfournez 15 min : les financiers doivent être dorés sur les bords et souples au centre.
+10. Démoulez tièdes et laissez refroidir sur une grille.
+
+=== Gâteau au chocolat
+id: gateauchocolat
+emoji: 🍫
+categorie: Dessert
+preparation: 20
+cuisson: 25
+portions: 8
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/tqtywx1468317395.jpg
+ingredients:
+- chocolat noir : 200 g
+- beurre : 150 g
+- sucre : 150 g
+- œufs : 4
+- farine : 60 g
+- sel : 1 pincée
+etapes:
+1. Préchauffez le four à 180°C (th. 6). Beurrez et farinez un moule à manqué de 22 cm.
+2. Cassez le chocolat en morceaux et coupez le beurre en dés.
+3. Faites-les fondre ensemble au bain-marie ou au micro-ondes par tranches de 30 secondes, en mélangeant à chaque fois.
+4. Mélangez jusqu'à obtenir une préparation lisse et brillante, puis laissez tiédir 5 min.
+5. Dans un saladier, fouettez les œufs avec le sucre jusqu'à ce que le mélange blanchisse légèrement.
+6. Versez le chocolat fondu tiède sur les œufs en mélangeant. Trop chaud, il cuirait les œufs.
+7. Ajoutez la farine et le sel, et mélangez juste ce qu'il faut pour qu'il n'y ait plus de traces de farine.
+8. Versez dans le moule.
+9. Enfournez 25 min : le tour doit être pris et le centre encore légèrement tremblotant. C'est ce qui garde le gâteau fondant.
+10. Laissez refroidir complètement avant de démouler, il se raffermit en refroidissant.
+
+=== Îles flottantes
+id: ilesflottantes
+emoji: 🍥
+categorie: Dessert
+preparation: 25
+cuisson: 20
+portions: 4
+difficulte: Moyen
+ingredients:
+- œufs : 6
+- lait : 1 l
+- sucre : 150 g
+- gousse de vanille : 1
+- sucre pour le caramel : 100 g
+etapes:
+1. Séparez les blancs des jaunes. Réservez les jaunes pour la crème.
+2. Fendez la gousse de vanille, grattez les graines et mettez tout dans une grande casserole avec le lait. Chauffez sans faire bouillir.
+3. Montez les blancs en neige bien ferme avec une pincée de sel, puis ajoutez 50 g de sucre en continuant de fouetter : ils deviennent brillants et tiennent au fouet.
+4. Prélevez de grosses cuillerées de blancs et posez-les délicatement dans le lait frémissant, sans qu'elles se touchent.
+5. Pochez-les 1 min de chaque côté en les retournant à l'écumoire. Elles gonflent puis se raffermissent.
+6. Égouttez-les sur un torchon propre et réservez-les au frais.
+7. Préparez la crème anglaise : fouettez les jaunes avec 100 g de sucre jusqu'à ce que le mélange blanchisse.
+8. Versez le lait chaud dessus en fouettant, puis remettez le tout dans la casserole à feu doux.
+9. Remuez sans arrêt à la cuillère en bois jusqu'à ce que la crème nappe la cuillère : un trait tracé au doigt doit rester net. Ne laissez jamais bouillir, la crème tournerait.
+10. Faites un caramel avec le sucre restant et un filet d'eau, puis versez la crème froide dans des coupes, posez les blancs dessus et nappez de caramel.
+
+=== Mug cake au chocolat
+id: mugcake
+emoji: 🍫
+categorie: Dessert
+preparation: 5
+cuisson: 2
+portions: 1
+difficulte: Facile
+ingredients:
+- farine : 4 c. à soupe
+- sucre : 3 c. à soupe
+- cacao : 2 c. à soupe
+- lait : 3 c. à soupe
+- huile : 2 c. à soupe
+- œuf : 1
+- levure chimique : 1 pincée
+- chocolat noir : 20 g
+etapes:
+1. Prenez un grand mug, au moins deux fois plus haut que la pâte : elle va gonfler énormément avant de retomber.
+2. Versez-y la farine, le sucre, le cacao et la levure. Mélangez à la fourchette pour casser les grumeaux de cacao.
+3. Ajoutez l'œuf, le lait et l'huile.
+4. Mélangez énergiquement dans le mug jusqu'à obtenir une pâte lisse, en raclant bien les angles du fond où la farine se cache.
+5. Enfoncez les carrés de chocolat au centre, sans les recouvrir : ils formeront le cœur coulant.
+6. Faites cuire 1 min 40 à pleine puissance, sans couvrir.
+7. Regardez à travers la porte : la pâte doit gonfler puis se stabiliser. Si le dessus est encore liquide, relancez par tranches de 15 secondes.
+8. Arrêtez dès que le dessus est juste pris. Dix secondes de trop transforment le mug cake en éponge sèche.
+9. Laissez reposer 1 min et mangez directement dans le mug, à la cuillère.

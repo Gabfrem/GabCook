@@ -1,0 +1,1020 @@
+# Recettes « Accompagnement » — une recette par bloc « === Nom ». Voir scripts/recipe-format.mjs pour le format.
+
+=== Frites maison
+id: frites
+emoji: 🍟
+categorie: Accompagnement
+preparation: 15
+cuisson: 20
+portions: 4
+difficulte: Facile
+ingredients:
+- pommes de terre : 1 kg
+- huile de friture : 1 l
+- sel : 1 pincée
+etapes:
+1. Choisissez des pommes de terre à chair farineuse, type bintje, et épluchez-les.
+2. Coupez-les en bâtonnets réguliers d'environ 1 cm de côté : des frites de même taille cuisent en même temps.
+3. Rincez-les à l'eau froide pour retirer l'amidon, puis séchez-les très soigneusement dans un torchon. L'eau qui reste fait éclabousser l'huile.
+4. Faites chauffer l'huile de friture à 150°C.
+5. Plongez les frites par petites quantités et faites-les cuire 6 à 8 min : elles doivent être tendres mais encore pâles. C'est la précuisson.
+6. Égouttez-les sur du papier absorbant et laissez-les refroidir au moins 10 min.
+7. Remontez l'huile à 180°C.
+8. Replongez les frites 2 à 3 min, jusqu'à ce qu'elles soient dorées et croustillantes.
+9. Égouttez-les à nouveau.
+10. Salez aussitôt, mélangez et servez immédiatement : les frites n'attendent pas.
+
+=== Rösti de pommes de terre
+id: rosti
+emoji: 🥔
+categorie: Accompagnement
+preparation: 15
+cuisson: 20
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/0umm891763364625.jpg
+ingredients:
+- pommes de terre : 800 g
+- oignon : 1
+- beurre : 40 g
+- huile : 2 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Épluchez les pommes de terre et râpez-les avec une râpe à gros trous.
+2. Mettez-les dans un torchon propre et pressez fort au-dessus de l'évier : il faut chasser un maximum d'eau, c'est ce qui rend le rösti croustillant.
+3. Épluchez et râpez l'oignon, puis mélangez-le aux pommes de terre. Salez et poivrez.
+4. Faites chauffer l'huile et la moitié du beurre dans une poêle antiadhésive à feu moyen.
+5. Versez la préparation et étalez-la en galette régulière, en tassant bien avec une spatule.
+6. Laissez cuire 10 min sans y toucher : une croûte dorée doit se former dessous.
+7. Faites glisser le rösti sur une assiette, posez la poêle à l'envers dessus et retournez l'ensemble d'un coup.
+8. Ajoutez le reste de beurre dans la poêle et remettez le rösti à cuire 8 à 10 min de l'autre côté.
+9. Vérifiez la cuisson en piquant le centre : les pommes de terre doivent être tendres.
+10. Faites glisser sur un plat et servez coupé en parts.
+
+=== Purée maison
+id: puree
+emoji: 🥔
+categorie: Accompagnement
+preparation: 10
+cuisson: 25
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/o7p9581608589317.jpg
+ingredients:
+- pommes de terre : 1 kg
+- lait : 20 cl
+- beurre : 60 g
+- muscade : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Épluchez les pommes de terre et coupez-les en morceaux de taille égale.
+2. Mettez-les dans une casserole, couvrez d'eau froide et salez.
+3. Portez à ébullition et laissez cuire 20 à 25 min : un couteau doit s'enfoncer sans résistance.
+4. Égouttez-les et laissez-les s'évaporer 1 min dans la casserole chaude, hors du feu : une pomme de terre sèche donne une purée plus onctueuse.
+5. Écrasez-les au presse-purée ou à la fourchette. N'utilisez jamais de mixeur, la purée deviendrait élastique.
+6. Faites tiédir le lait dans une petite casserole. Un lait froid rendrait la purée collante.
+7. Ajoutez le beurre coupé en morceaux et mélangez jusqu'à ce qu'il soit fondu.
+8. Versez le lait chaud petit à petit en mélangeant, jusqu'à la texture qui vous plaît.
+9. Ajoutez la muscade, goûtez et rectifiez le sel.
+10. Servez bien chaud.
+
+=== Légumes rôtis au four
+id: legumesrotis
+emoji: 🥕
+categorie: Accompagnement
+preparation: 15
+cuisson: 35
+portions: 4
+difficulte: Facile
+ingredients:
+- courgettes : 2
+- poivron rouge : 1
+- carottes : 2
+- oignon rouge : 1
+- aubergine : 1
+- huile d'olive : 4 c. à soupe
+- gousses d'ail : 3
+- herbes de Provence : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Préchauffez le four à 200°C (th. 6-7).
+2. Lavez tous les légumes. Épluchez les carottes et l'oignon.
+3. Coupez-les en morceaux d'environ 3 cm, tous de taille comparable pour qu'ils cuisent ensemble.
+4. Épluchez les gousses d'ail et laissez-les entières, en chemise : elles parfument sans brûler.
+5. Mettez tout dans un grand saladier, versez l'huile d'olive, salez, poivrez et parsemez d'herbes.
+6. Mélangez avec les mains jusqu'à ce que chaque morceau brille.
+7. Étalez les légumes sur une plaque, en une seule couche. Entassés, ils cuiraient à la vapeur au lieu de rôtir.
+8. Enfournez 20 min.
+9. Remuez avec une spatule et poursuivez 15 min : les bords doivent être caramélisés.
+10. Goûtez, rectifiez le sel et servez chaud ou tiède.
+
+=== Poêlée de champignons à l'ail
+id: poeleechampignons
+emoji: 🍄
+categorie: Accompagnement
+preparation: 10
+cuisson: 15
+portions: 4
+difficulte: Facile
+ingredients:
+- champignons de Paris : 500 g
+- gousses d'ail : 3
+- bouquet de persil : 1
+- beurre : 30 g
+- huile d'olive : 1 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Nettoyez les champignons avec un papier humide plutôt qu'à l'eau, qu'ils boivent comme une éponge.
+2. Coupez le bout terreux du pied, puis émincez-les en lamelles épaisses.
+3. Épluchez et hachez finement l'ail. Lavez et ciselez le persil.
+4. Faites chauffer l'huile dans une grande poêle à feu vif. La poêle doit être bien chaude et pas trop chargée.
+5. Ajoutez les champignons sans les remuer pendant 2 min : ils doivent saisir avant de rendre leur eau.
+6. Remuez et laissez cuire 5 min : ils vont rendre beaucoup d'eau.
+7. Poursuivez jusqu'à ce que toute l'eau se soit évaporée et que les champignons commencent à dorer.
+8. Baissez le feu, ajoutez le beurre et l'ail haché, et faites revenir 2 min sans laisser l'ail brunir.
+9. Salez et poivrez seulement maintenant : saler plus tôt ferait sortir l'eau tout de suite.
+10. Parsemez de persil et servez aussitôt.
+
+=== Légumes vapeur au micro-ondes
+id: legumesvapeur
+emoji: 🥦
+categorie: Accompagnement
+preparation: 10
+cuisson: 8
+portions: 4
+difficulte: Facile
+ingredients:
+- brocoli : 300 g
+- carottes : 2
+- haricots verts : 200 g
+- eau : 3 c. à soupe
+- beurre : 20 g
+- sel : 1 pincée
+etapes:
+1. Lavez les légumes. Détaillez le brocoli en petits bouquets, épluchez les carottes et coupez-les en rondelles fines, équeutez les haricots.
+2. Coupez tout à une taille comparable : au micro-ondes plus qu'ailleurs, un gros morceau reste cru pendant que le petit se défait.
+3. Mettez les carottes dans un plat avec les 3 c. à soupe d'eau : ce sont les plus longues à cuire.
+4. Couvrez d'un couvercle ou d'une assiette et lancez 3 min à pleine puissance.
+5. Ajoutez les haricots, couvrez à nouveau et poursuivez 3 min.
+6. Ajoutez le brocoli, qui ne demande que 2 min, et relancez.
+7. Vérifiez la cuisson à la pointe du couteau : les légumes doivent être tendres mais encore fermes.
+8. Égouttez le reste d'eau, ajoutez le beurre et le sel, et mélangez pour enrober.
+9. Servez aussitôt : gardés au chaud, ils continuent de cuire et se ramollissent.
+
+=== Riz au micro-ondes
+id: rizmicro
+emoji: 🍚
+categorie: Accompagnement
+preparation: 3
+cuisson: 15
+portions: 4
+difficulte: Facile
+ingredients:
+- riz : 250 g
+- eau : 50 cl
+- sel : 1 pincée
+etapes:
+1. Rincez le riz à l'eau froide jusqu'à ce que l'eau ressorte claire : c'est l'amidon de surface qui fait déborder.
+2. Versez-le dans un grand plat qui va au micro-ondes, avec l'eau et le sel. Le plat doit être au moins trois fois plus haut que le liquide.
+3. Ne couvrez pas pour l'instant.
+4. Lancez 5 min à pleine puissance, le temps que l'eau arrive à ébullition.
+5. Couvrez alors d'un couvercle ou d'une assiette, baissez à puissance moyenne et poursuivez 10 min.
+6. Ne remuez jamais pendant la cuisson : le riz deviendrait collant.
+7. Sortez le plat, gardez-le couvert et laissez reposer 5 min hors du micro-ondes. C'est pendant ce repos que les derniers grains finissent d'absorber l'eau.
+8. Égrainez à la fourchette et servez.
+
+=== Riz blanc parfait
+id: rizblanc
+emoji: 🍚
+categorie: Accompagnement
+preparation: 2
+cuisson: 12
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/kw92t41604181871.jpg
+ingredients:
+- riz : 250 g
+- sel : 1 pincée
+- beurre : 1 c. à soupe
+etapes:
+1. Rincez le riz sous l'eau froide jusqu'à ce que l'eau devienne claire : cela retire l'amidon en surface et évite qu'il colle.
+2. Versez le riz dans une casserole avec 1,5 fois son volume d'eau et une pincée de sel.
+3. Portez à ébullition à feu vif sans couvrir.
+4. Dès que ça bout, baissez au minimum, couvrez et laissez cuire 11 min sans jamais soulever le couvercle.
+5. Coupez le feu et laissez reposer 5 min à couvert : le riz finit de gonfler dans sa vapeur.
+6. Ajoutez une noix de beurre, aérez à la fourchette et servez.
+
+=== Riz basmati parfumé
+id: rizbasmati
+emoji: 🍚
+categorie: Accompagnement
+preparation: 5
+cuisson: 12
+portions: 4
+difficulte: Facile
+ingredients:
+- riz basmati : 250 g
+- oignon : 1
+- huile : 1 c. à soupe
+- cumin : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Rincez le riz jusqu'à ce que l'eau soit claire, puis laissez-le égoutter.
+2. Émincez l'oignon finement. Faites-le revenir dans l'huile 4 min à feu moyen jusqu'à ce qu'il soit doré.
+3. Ajoutez le cumin et mélangez 30 secondes pour libérer son parfum.
+4. Versez le riz et remuez 1 min pour l'enrober.
+5. Ajoutez 1,5 fois son volume d'eau et le sel, portez à ébullition.
+6. Couvrez, baissez au minimum et laissez cuire 11 min. Coupez le feu, laissez reposer 5 min à couvert, aérez à la fourchette et servez.
+
+=== Pommes de terre sautées
+id: pdtsautees
+emoji: 🥔
+categorie: Accompagnement
+preparation: 10
+cuisson: 25
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/1550441882.jpg
+ingredients:
+- pommes de terre : 800 g
+- huile : 3 c. à soupe
+- gousses d'ail : 2
+- persil : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Épluchez les pommes de terre et coupez-les en dés d'environ 2 cm.
+2. Faites chauffer l'huile dans une grande poêle à feu moyen-vif.
+3. Versez les pommes de terre en une seule couche. Laissez-les colorer 5 min sans y toucher avant de remuer.
+4. Continuez la cuisson 20 min en remuant régulièrement : elles doivent être dorées dehors et fondantes dedans.
+5. 5 min avant la fin, ajoutez l'ail écrasé pour qu'il parfume sans brûler.
+6. Salez, poivrez, parsemez de persil et servez aussitôt.
+
+=== Pommes de terre grenailles rôties
+id: grenailles
+emoji: 🥔
+categorie: Accompagnement
+preparation: 5
+cuisson: 35
+portions: 4
+difficulte: Facile
+ingredients:
+- pommes de terre grenailles : 800 g
+- huile d'olive : 3 c. à soupe
+- gousses d'ail : 3
+- thym : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Préchauffez le four à 200°C (th. 6-7). Lavez les grenailles et coupez-les en deux (inutile de les éplucher).
+2. Mettez-les dans un plat avec l'huile, les gousses d'ail en chemise, le thym, du sel et du poivre.
+3. Mélangez bien pour les enrober, puis étalez-les face coupée contre le plat.
+4. Enfournez 35 min. À mi-cuisson, remuez pour qu'elles dorent de partout.
+5. Elles sont prêtes quand elles sont bien dorées et qu'un couteau s'enfonce sans résistance.
+
+=== Potatoes au four épicées
+id: wedges
+emoji: 🥔
+categorie: Accompagnement
+preparation: 10
+cuisson: 35
+portions: 4
+difficulte: Facile
+ingredients:
+- pommes de terre : 800 g
+- huile d'olive : 3 c. à soupe
+- paprika : 1 c. à café
+- ail en poudre : 1 c. à café
+- herbes de Provence : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Préchauffez le four à 200°C (th. 6-7). Lavez les pommes de terre sans les éplucher et coupez-les en quartiers.
+2. Dans un saladier, mélangez l'huile, le paprika, l'ail en poudre, les herbes, du sel et du poivre.
+3. Ajoutez les quartiers et mélangez à la main pour bien les enrober.
+4. Étalez-les sur une plaque de cuisson en une seule couche, peau contre la plaque.
+5. Enfournez 35 min en les retournant à mi-cuisson : elles doivent être dorées et croustillantes.
+
+=== Écrasé de pommes de terre à l'huile d'olive
+id: ecrase
+emoji: 🥔
+categorie: Accompagnement
+preparation: 10
+cuisson: 20
+portions: 4
+difficulte: Facile
+ingredients:
+- pommes de terre : 800 g
+- huile d'olive : 4 c. à soupe
+- gousses d'ail : 2
+- persil : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Épluchez les pommes de terre et coupez-les en gros morceaux.
+2. Faites-les cuire 20 min dans une casserole d'eau bouillante salée : un couteau doit s'enfoncer facilement.
+3. Égouttez-les, remettez-les dans la casserole chaude pour évaporer l'humidité 1 min.
+4. Écrasez grossièrement à la fourchette avec l'huile d'olive et l'ail écrasé : on garde des morceaux, ce n'est pas une purée lisse.
+5. Salez, poivrez, parsemez de persil et servez chaud.
+
+=== Frites au four croustillantes
+id: friteaufour
+emoji: 🍟
+categorie: Accompagnement
+preparation: 10
+cuisson: 35
+portions: 4
+difficulte: Facile
+ingredients:
+- pommes de terre : 800 g
+- huile : 3 c. à soupe
+- paprika : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Préchauffez le four à 220°C (th. 7-8). Épluchez les pommes de terre et taillez-les en bâtonnets réguliers.
+2. Rincez-les à l'eau froide puis séchez-les bien dans un torchon : sèches, elles deviennent croustillantes.
+3. Mettez-les dans un saladier avec l'huile, le paprika et du sel, mélangez pour les enrober.
+4. Étalez-les sur une plaque en une seule couche, sans qu'elles se touchent.
+5. Enfournez 35 min en les retournant à mi-cuisson, jusqu'à ce qu'elles soient dorées et croustillantes.
+
+=== Purée de patate douce
+id: pureepatatedouce
+emoji: 🍠
+categorie: Accompagnement
+preparation: 10
+cuisson: 20
+portions: 4
+difficulte: Facile
+ingredients:
+- patates douces : 800 g
+- beurre : 20 g
+- lait : 10 cl
+- muscade : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Épluchez les patates douces et coupez-les en morceaux.
+2. Faites-les cuire 18 min à l'eau bouillante salée : elles doivent être très tendres.
+3. Égouttez-les et écrasez-les au presse-purée ou à la fourchette.
+4. Ajoutez le beurre et le lait tiède petit à petit jusqu'à la texture voulue.
+5. Assaisonnez de sel, poivre et muscade, mélangez et servez.
+
+=== Haricots verts sautés à l'ail
+id: haricotsverts
+emoji: 🫛
+categorie: Accompagnement
+preparation: 5
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/i0610h1765659464.jpg
+ingredients:
+- haricots verts : 600 g
+- gousses d'ail : 2
+- beurre : 20 g
+- huile d'olive : 1 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Équeutez les haricots verts. Faites-les cuire 8 min à l'eau bouillante salée : ils doivent rester légèrement croquants.
+2. Égouttez-les et plongez-les 30 secondes dans l'eau froide pour garder leur couleur verte.
+3. Faites chauffer le beurre et l'huile dans une poêle à feu moyen.
+4. Ajoutez l'ail haché, laissez blondir 30 secondes.
+5. Ajoutez les haricots, faites-les sauter 4 min pour les enrober et les réchauffer. Salez, poivrez et servez.
+
+=== Carottes glacées
+id: carottesglacees
+emoji: 🥕
+categorie: Accompagnement
+preparation: 10
+cuisson: 25
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/o2cd4r1764113576.jpg
+ingredients:
+- carottes : 600 g
+- beurre : 20 g
+- sucre : 1 c. à soupe
+- persil : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Épluchez les carottes et coupez-les en rondelles épaisses ou en bâtonnets.
+2. Mettez-les dans une casserole avec le beurre, le sucre, une pincée de sel et de l'eau à hauteur.
+3. Portez à ébullition, puis baissez le feu et laissez cuire à découvert 20 min.
+4. Laissez l'eau s'évaporer presque entièrement : à la fin, les carottes sont tendres et enrobées d'un sirop brillant.
+5. Remuez pour bien les glacer, parsemez de persil et servez.
+
+=== Courgettes sautées à l'ail
+id: courgettespoelees
+emoji: 🥒
+categorie: Accompagnement
+preparation: 5
+cuisson: 12
+portions: 4
+difficulte: Facile
+ingredients:
+- courgettes : 600 g
+- gousses d'ail : 2
+- huile d'olive : 2 c. à soupe
+- herbes de Provence : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Lavez les courgettes et coupez-les en rondelles ou en dés (inutile de les éplucher).
+2. Faites chauffer l'huile dans une grande poêle à feu vif.
+3. Ajoutez les courgettes et faites-les sauter 8 min sans trop remuer, pour qu'elles colorent au lieu de rendre de l'eau.
+4. Ajoutez l'ail haché et les herbes, poursuivez 2 min.
+5. Salez, poivrez et servez : elles doivent être dorées et fondantes.
+
+=== Épinards à la crème
+id: epinardscreme
+emoji: 🥬
+categorie: Accompagnement
+preparation: 5
+cuisson: 12
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/lyr07q1782505714.jpg
+ingredients:
+- épinards : 600 g
+- crème fraîche : 15 cl
+- gousse d'ail : 1
+- beurre : 15 g
+- muscade : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Lavez les épinards. Faites fondre le beurre dans une grande poêle à feu moyen.
+2. Ajoutez l'ail haché, laissez blondir 30 secondes.
+3. Ajoutez les épinards par poignées : ils réduisent beaucoup, laissez-les tomber avant d'en remettre.
+4. Quand ils sont tombés et que l'eau s'est évaporée, versez la crème.
+5. Assaisonnez de sel, poivre et muscade, laissez épaissir 3 min et servez.
+
+=== Brocolis sautés à l'ail
+id: brocolisautes
+emoji: 🥦
+categorie: Accompagnement
+preparation: 5
+cuisson: 15
+portions: 4
+difficulte: Facile
+ingredients:
+- brocoli : 600 g
+- gousses d'ail : 2
+- huile d'olive : 2 c. à soupe
+- sauce soja : 1 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Détaillez le brocoli en petits bouquets. Faites-les cuire 5 min à l'eau bouillante salée : ils doivent rester croquants.
+2. Égouttez-les. Faites chauffer l'huile dans une poêle à feu vif.
+3. Ajoutez l'ail haché, laissez blondir 30 secondes.
+4. Ajoutez les bouquets et faites-les sauter 4 min pour les colorer.
+5. Versez la sauce soja, mélangez 1 min et servez.
+
+=== Chou-fleur rôti au four
+id: choufleurroti
+emoji: 🥦
+categorie: Accompagnement
+preparation: 10
+cuisson: 30
+portions: 4
+difficulte: Facile
+ingredients:
+- chou-fleur : 1
+- huile d'olive : 3 c. à soupe
+- cumin : 1 c. à café
+- paprika : 1 c. à café
+- sel : 1 pincée
+etapes:
+1. Préchauffez le four à 200°C (th. 6-7). Détaillez le chou-fleur en petits bouquets.
+2. Dans un saladier, mélangez l'huile, le cumin, le paprika, du sel et du poivre.
+3. Ajoutez les bouquets et enrobez-les bien à la main.
+4. Étalez-les sur une plaque sans les entasser.
+5. Enfournez 30 min en remuant à mi-cuisson : le chou-fleur doit être doré et légèrement croustillant sur les bords.
+
+=== Poêlée de légumes
+id: poeleelegumes
+emoji: 🥕
+categorie: Accompagnement
+preparation: 15
+cuisson: 20
+portions: 4
+difficulte: Facile
+ingredients:
+- courgette : 1
+- poivron rouge : 1
+- carottes : 2
+- oignon : 1
+- huile d'olive : 2 c. à soupe
+- herbes de Provence : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Lavez et coupez tous les légumes en dés réguliers d'environ 1,5 cm.
+2. Faites chauffer l'huile dans une grande poêle à feu moyen-vif.
+3. Commencez par les carottes et l'oignon, qui cuisent plus lentement : 6 min.
+4. Ajoutez le poivron, poursuivez 4 min.
+5. Ajoutez la courgette et les herbes, faites sauter encore 8 min.
+6. Salez, poivrez : les légumes doivent être tendres et colorés. Servez.
+
+=== Lentilles mijotées
+id: lentillesmijotees
+emoji: 🫘
+categorie: Accompagnement
+preparation: 10
+cuisson: 30
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/vwwspt1487394060.jpg
+ingredients:
+- lentilles vertes : 250 g
+- oignon : 1
+- carotte : 1
+- feuille de laurier : 1
+- huile d'olive : 1 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Rincez les lentilles (pas besoin de les tremper). Épluchez et coupez l'oignon et la carotte en petits dés.
+2. Faites revenir l'oignon et la carotte dans l'huile 4 min à feu moyen.
+3. Ajoutez les lentilles, le laurier et 3 fois leur volume d'eau (sans sel pour l'instant, il durcit la peau).
+4. Portez à ébullition, puis baissez et laissez mijoter 25 min à couvert.
+5. Salez en fin de cuisson, quand les lentilles sont tendres. Retirez le laurier et servez.
+
+=== Semoule aux herbes
+id: semoule
+emoji: 🌾
+categorie: Accompagnement
+preparation: 5
+cuisson: 5
+portions: 4
+difficulte: Facile
+ingredients:
+- semoule : 250 g
+- eau : 25 cl
+- huile d'olive : 2 c. à soupe
+- persil : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Versez la semoule dans un saladier avec l'huile, du sel et le persil, mélangez.
+2. Faites bouillir l'eau, puis versez-la sur la semoule (même volume que la semoule environ).
+3. Couvrez immédiatement et laissez gonfler 5 min sans y toucher.
+4. Égrenez à la fourchette pour aérer les grains.
+5. Rectifiez le sel et servez tiède ou chaud.
+
+=== Boulgour aux petits légumes
+id: boulgour
+emoji: 🌾
+categorie: Accompagnement
+preparation: 10
+cuisson: 15
+portions: 4
+difficulte: Facile
+ingredients:
+- boulgour : 250 g
+- oignon : 1
+- courgette : 1
+- tomate : 1
+- huile d'olive : 2 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Émincez l'oignon, coupez la courgette et la tomate en petits dés.
+2. Faites revenir l'oignon dans l'huile 3 min, ajoutez la courgette, poursuivez 4 min.
+3. Ajoutez la tomate et le boulgour, mélangez 1 min.
+4. Versez 1,5 fois le volume du boulgour en eau, salez et portez à ébullition.
+5. Couvrez, baissez le feu et laissez absorber 12 min. Aérez à la fourchette et servez.
+
+=== Quinoa aux légumes
+id: quinoa
+emoji: 🥗
+categorie: Accompagnement
+preparation: 10
+cuisson: 15
+portions: 4
+difficulte: Facile
+ingredients:
+- quinoa : 250 g
+- poivron : 1
+- oignon : 1
+- huile d'olive : 2 c. à soupe
+- cumin : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Rincez le quinoa sous l'eau froide pour retirer son amertume.
+2. Faites revenir l'oignon et le poivron coupés en dés dans l'huile 5 min.
+3. Ajoutez le quinoa et le cumin, mélangez 1 min.
+4. Versez 2 fois son volume d'eau, salez et portez à ébullition.
+5. Couvrez, baissez le feu et laissez cuire 13 min : les grains sont prêts quand le germe blanc se détache. Aérez et servez.
+
+=== Polenta crémeuse au parmesan
+id: polenta
+emoji: 🌽
+categorie: Accompagnement
+preparation: 2
+cuisson: 10
+portions: 4
+difficulte: Facile
+ingredients:
+- polenta : 200 g
+- lait : 80 cl
+- parmesan : 60 g
+- beurre : 20 g
+- sel : 1 pincée
+etapes:
+1. Portez le lait à frémissement dans une casserole avec une pincée de sel.
+2. Versez la polenta en pluie tout en fouettant sans arrêt pour éviter les grumeaux.
+3. Baissez le feu et remuez 5 à 8 min avec une cuillère en bois : la polenta épaissit et se décolle des parois.
+4. Hors du feu, ajoutez le beurre et le parmesan râpé, mélangez jusqu'à obtenir une texture crémeuse.
+5. Servez aussitôt, avant qu'elle ne fige.
+
+=== Pâtes au beurre et parmesan
+id: patesbeurre
+emoji: 🍝
+categorie: Accompagnement
+preparation: 2
+cuisson: 10
+portions: 4
+difficulte: Facile
+ingredients:
+- pâtes : 400 g
+- beurre : 40 g
+- parmesan : 60 g
+- poivre : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Faites cuire les pâtes dans une grande casserole d'eau bouillante bien salée, le temps indiqué sur le paquet.
+2. Avant d'égoutter, gardez un petit bol d'eau de cuisson.
+3. Égouttez et remettez les pâtes dans la casserole chaude, hors du feu.
+4. Ajoutez le beurre en morceaux et le parmesan râpé, mélangez.
+5. Détendez avec un peu d'eau de cuisson pour rendre l'ensemble crémeux. Poivrez généreusement et servez.
+
+=== Salade verte vinaigrette
+id: saladeverte
+emoji: 🥗
+categorie: Accompagnement
+preparation: 10
+cuisson: 0
+portions: 4
+difficulte: Facile
+ingredients:
+- salade verte : 1
+- moutarde : 1 c. à soupe
+- vinaigre : 1 c. à soupe
+- huile d'olive : 3 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Lavez et essorez soigneusement la salade : une salade humide ne retient pas la vinaigrette.
+2. Dans le fond du saladier, mélangez la moutarde, le vinaigre, du sel et du poivre.
+3. Ajoutez l'huile en filet tout en fouettant : la vinaigrette doit émulsionner et devenir onctueuse.
+4. Posez la salade par-dessus sans mélanger.
+5. Mélangez au dernier moment, juste avant de servir, pour que la salade reste croquante.
+
+=== Tomates à la provençale
+id: tomatesprovencales
+emoji: 🍅
+categorie: Accompagnement
+preparation: 10
+cuisson: 30
+portions: 4
+difficulte: Facile
+ingredients:
+- tomates : 4
+- gousses d'ail : 2
+- chapelure : 3 c. à soupe
+- huile d'olive : 2 c. à soupe
+- persil : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Préchauffez le four à 180°C (th. 6). Coupez les tomates en deux et posez-les face coupée vers le haut dans un plat.
+2. Salez, poivrez et arrosez d'un filet d'huile.
+3. Mélangez la chapelure, l'ail haché et le persil.
+4. Répartissez ce mélange sur les tomates, arrosez encore d'un peu d'huile.
+5. Enfournez 30 min : les tomates doivent être fondantes et la chapelure dorée.
+
+=== Poêlée de pommes de terre aux lardons
+id: pdtlardons
+emoji: 🥔
+categorie: Accompagnement
+preparation: 10
+cuisson: 25
+portions: 4
+difficulte: Facile
+ingredients:
+- pommes de terre : 800 g
+- lardons : 150 g
+- oignon : 1
+- huile : 2 c. à soupe
+- persil : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Épluchez les pommes de terre et coupez-les en dés. Émincez l'oignon.
+2. Faites chauffer l'huile dans une grande poêle et faites sauter les pommes de terre 15 min à feu moyen, en remuant.
+3. Ajoutez les lardons et l'oignon, poursuivez 8 min : les lardons dorent et parfument les pommes de terre.
+4. Salez peu (les lardons sont salés), poivrez.
+5. Parsemez de persil et servez bien doré.
+
+=== Gratin de patate douce
+id: gratinpatatedouce
+emoji: 🍠
+categorie: Accompagnement
+preparation: 15
+cuisson: 45
+portions: 4
+difficulte: Facile
+ingredients:
+- patates douces : 800 g
+- crème fraîche : 25 cl
+- gousse d'ail : 1
+- gruyère râpé : 80 g
+- muscade : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Préchauffez le four à 180°C (th. 6). Épluchez les patates douces et coupez-les en fines rondelles.
+2. Frottez un plat avec la gousse d'ail coupée en deux.
+3. Disposez les rondelles en couches dans le plat, en salant et poivrant légèrement entre chaque.
+4. Versez la crème mélangée à la muscade, puis parsemez de gruyère.
+5. Enfournez 45 min : le gratin est prêt quand il est doré et qu'un couteau traverse sans résistance.
+
+=== Purée de carottes
+id: pureecarottes
+emoji: 🥕
+categorie: Accompagnement
+preparation: 10
+cuisson: 20
+portions: 4
+difficulte: Facile
+ingredients:
+- carottes : 600 g
+- pommes de terre : 2
+- beurre : 20 g
+- lait : 10 cl
+- sel : 1 pincée
+etapes:
+1. Épluchez les carottes et les pommes de terre (elles donnent du liant), coupez-les en morceaux.
+2. Faites-les cuire 20 min à l'eau bouillante salée : elles doivent être bien tendres.
+3. Égouttez et écrasez au presse-purée.
+4. Ajoutez le beurre et le lait tiède jusqu'à obtenir une purée souple.
+5. Salez, poivrez et servez.
+
+=== Pain à l'ail
+id: painail
+emoji: 🥖
+categorie: Accompagnement
+preparation: 10
+cuisson: 12
+portions: 4
+difficulte: Facile
+ingredients:
+- baguette : 1
+- beurre : 60 g
+- gousses d'ail : 3
+- persil : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Préchauffez le four à 200°C (th. 6-7). Sortez le beurre à l'avance pour qu'il soit mou.
+2. Mélangez le beurre mou avec l'ail écrasé, le persil et une pincée de sel.
+3. Fendez la baguette en deux dans la longueur (ou tranchez-la en biais sans détacher les tranches).
+4. Tartinez généreusement de beurre à l'ail.
+5. Enfournez 10 à 12 min : le pain doit être doré et croustillant. Servez chaud.
+
+=== Butternut rôtie au miel
+id: courgebutternut
+emoji: 🎃
+categorie: Accompagnement
+preparation: 15
+cuisson: 35
+portions: 4
+difficulte: Facile
+ingredients:
+- courge butternut : 1
+- huile d'olive : 2 c. à soupe
+- miel : 1 c. à soupe
+- thym : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Préchauffez le four à 200°C (th. 6-7). Épluchez la butternut, retirez les graines et coupez-la en cubes.
+2. Dans un plat, mélangez les cubes avec l'huile, le miel, le thym, du sel et du poivre.
+3. Étalez-les en une seule couche.
+4. Enfournez 35 min en remuant à mi-cuisson.
+5. La courge est prête quand elle est fondante et caramélisée sur les bords.
+
+=== Petits pois aux lardons
+id: petitspoislardons
+emoji: 🫛
+categorie: Accompagnement
+preparation: 5
+cuisson: 20
+portions: 4
+difficulte: Facile
+ingredients:
+- petits pois : 600 g
+- lardons : 150 g
+- oignon : 1
+- beurre : 15 g
+- sel : 1 pincée
+etapes:
+1. Émincez l'oignon. Faites-le fondre avec le beurre dans une casserole 4 min.
+2. Ajoutez les lardons et faites-les dorer 4 min.
+3. Ajoutez les petits pois et un petit verre d'eau.
+4. Couvrez et laissez mijoter 12 min à feu doux.
+5. Salez peu, poivrez, et laissez l'eau réduire avant de servir.
+
+=== Riz sauté à l'ail et à l'œuf
+id: rizsauteail
+emoji: 🍚
+categorie: Accompagnement
+preparation: 5
+cuisson: 10
+portions: 4
+difficulte: Facile
+ingredients:
+- riz : 250 g
+- œufs : 2
+- gousses d'ail : 3
+- huile : 2 c. à soupe
+- sauce soja : 2 c. à soupe
+- ciboulette : 1 pincée
+etapes:
+1. Faites cuire le riz à l'avance et laissez-le refroidir : un riz froid saute bien mieux qu'un riz chaud qui colle.
+2. Battez les œufs. Faites-les cuire en omelette dans un peu d'huile, puis découpez-les en lamelles et réservez.
+3. Faites chauffer le reste d'huile à feu vif, ajoutez l'ail haché 30 secondes.
+4. Versez le riz froid et faites-le sauter 4 min en l'écrasant pour détacher les grains.
+5. Ajoutez les œufs, la sauce soja et la ciboulette, mélangez 1 min et servez.
+
+=== Maïs grillé à la mexicaine (elote)
+id: elote
+emoji: 🌽
+categorie: Accompagnement
+preparation: 10
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/k1if4d1782589892.jpg
+ingredients:
+- épis de maïs : 4
+- mayonnaise : 4 c. à soupe
+- parmesan : 60 g
+- paprika : 1 c. à café
+- citron vert : 1
+- piment : 1 pincée
+- coriandre : 1 pincée
+etapes:
+1. Faites cuire les épis de maïs 10 min à l'eau bouillante, puis égouttez-les.
+2. Faites-les griller 5 min dans une poêle bien chaude ou au four en position gril, en les tournant : ils doivent se colorer par endroits.
+3. Badigeonnez chaque épi de mayonnaise sur toute sa surface.
+4. Roulez-les dans le parmesan finement râpé.
+5. Saupoudrez de paprika et d'un peu de piment.
+6. Arrosez de jus de citron vert, parsemez de coriandre et servez tiède.
+
+=== Riz à la mexicaine
+id: rizmexicain
+emoji: 🍚
+categorie: Accompagnement
+preparation: 10
+cuisson: 25
+portions: 4
+difficulte: Facile
+ingredients:
+- riz : 250 g
+- tomates concassées : 400 g
+- oignon : 1
+- gousses d'ail : 2
+- petits pois : 100 g
+- cumin : 1 c. à café
+- bouillon de volaille : 50 cl
+- huile : 3 c. à soupe
+etapes:
+1. Rincez le riz jusqu'à ce que l'eau soit claire, puis égouttez-le bien.
+2. Faites-le revenir dans l'huile 3 min à feu moyen en remuant : les grains deviennent nacrés.
+3. Ajoutez l'oignon émincé et l'ail haché, poursuivez 3 min.
+4. Ajoutez le cumin et les tomates concassées, mélangez 2 min.
+5. Versez le bouillon chaud, salez, portez à ébullition.
+6. Couvrez, baissez le feu et laissez cuire 15 min sans remuer.
+7. Ajoutez les petits pois, coupez le feu et laissez reposer 5 min à couvert. Aérez à la fourchette et servez.
+
+=== Cornbread (pain de maïs)
+id: cornbread
+emoji: 🍞
+categorie: Accompagnement
+preparation: 10
+cuisson: 25
+portions: 8
+difficulte: Facile
+ingredients:
+- polenta : 200 g
+- farine : 150 g
+- œufs : 2
+- lait : 30 cl
+- beurre : 80 g
+- sucre : 2 c. à soupe
+- levure chimique : 1
+- sel : 1 pincée
+etapes:
+1. Préchauffez le four à 200°C et beurrez un moule (idéalement une poêle en fonte).
+2. Mélangez la polenta, la farine, le sucre, la levure et le sel dans un saladier.
+3. Dans un autre bol, battez les œufs avec le lait et le beurre fondu tiède.
+4. Versez le liquide sur les poudres et mélangez juste ce qu'il faut : une pâte un peu grumeleuse donne un pain plus moelleux qu'une pâte trop travaillée.
+5. Versez dans le moule et lissez à peine.
+6. Enfournez 25 min : le dessus doit être doré et un couteau planté au centre doit ressortir sec.
+7. Laissez tiédir 10 min et servez en parts, avec du beurre — parfait avec un chili.
+
+=== Frijoles refritos
+id: frijoles
+emoji: 🫘
+categorie: Accompagnement
+preparation: 10
+cuisson: 20
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/81ahfr1784394567.jpg
+ingredients:
+- haricots rouges : 500 g
+- oignon : 1
+- gousses d'ail : 2
+- cumin : 1 c. à café
+- huile : 3 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Égouttez les haricots en gardant leur jus de conservation.
+2. Faites revenir l'oignon haché dans l'huile jusqu'à ce qu'il soit bien fondant, environ 8 min.
+3. Ajoutez l'ail écrasé et le cumin, remuez 1 min.
+4. Versez les haricots et deux louches de leur jus.
+5. Écrasez-les grossièrement à la fourchette ou au presse-purée directement dans la poêle.
+6. Laissez cuire 8 min en remuant : la purée doit épaissir et se décoller des bords.
+7. Salez, ajoutez un filet d'huile et servez en accompagnement de tout plat mexicain.
+
+=== Caponata sicilienne
+id: caponata
+emoji: 🍆
+categorie: Accompagnement
+preparation: 25
+cuisson: 35
+portions: 6
+difficulte: Facile
+ingredients:
+- aubergines : 800 g
+- branches de céleri : 2
+- oignon : 1
+- tomates concassées : 400 g
+- olives : 100 g
+- câpres : 3 c. à soupe
+- vinaigre : 4 c. à soupe
+- sucre : 2 c. à soupe
+- huile d'olive : 8 c. à soupe
+- basilic : 1 pincée
+etapes:
+1. Coupez les aubergines en cubes de 2 cm, salez-les et laissez dégorger 30 min dans une passoire.
+2. Séchez-les bien puis faites-les frire par petites quantités dans l'huile chaude jusqu'à ce qu'elles soient dorées. Réservez.
+3. Faites revenir le céleri en dés 5 min, puis l'oignon 5 min de plus.
+4. Ajoutez les tomates, les olives et les câpres, laissez mijoter 10 min.
+5. Dans un coin de la poêle, faites fondre le sucre dans le vinaigre puis mélangez : cet aigre-doux est la signature de la caponata.
+6. Remettez les aubergines et laissez compoter 10 min à feu doux, sans trop remuer.
+7. Rectifiez l'équilibre sucre/vinaigre à votre goût.
+8. Laissez refroidir et servez à température ambiante, avec du basilic. Encore meilleure le lendemain.
+
+=== Pisto manchego
+id: pistomanchego
+emoji: 🫑
+categorie: Accompagnement
+preparation: 20
+cuisson: 40
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/0nswfe1763279040.jpg
+ingredients:
+- courgettes : 2
+- poivrons : 2
+- oignons : 2
+- tomates : 600 g
+- gousses d'ail : 3
+- huile d'olive : 6 c. à soupe
+- œufs : 4
+- sel : 1 pincée
+etapes:
+1. Coupez tous les légumes en dés d'environ 1,5 cm.
+2. Faites revenir les oignons 10 min à feu doux dans l'huile.
+3. Ajoutez les poivrons et poursuivez 10 min : ils doivent devenir fondants.
+4. Ajoutez les courgettes et l'ail, 8 min de plus.
+5. Incorporez les tomates pelées et concassées, salez et laissez réduire 15 min à découvert.
+6. Le pisto est prêt quand il n'y a plus d'eau au fond et que l'huile réapparaît en surface.
+7. Creusez des puits et cassez-y les œufs, couvrez 4 min pour les pocher.
+8. Servez directement dans la poêle avec du bon pain.
+
+=== Batata harra (pommes de terre épicées)
+id: batataharra
+emoji: 🥔
+categorie: Accompagnement
+preparation: 15
+cuisson: 30
+portions: 4
+difficulte: Facile
+ingredients:
+- pommes de terre : 800 g
+- gousses d'ail : 5
+- poivron : 1
+- piment : 1 c. à café
+- coriandre : 1 pincée
+- citron : 1
+- huile d'olive : 6 c. à soupe
+- cumin : 1 c. à café
+etapes:
+1. Coupez les pommes de terre en cubes de 2 cm et séchez-les soigneusement.
+2. Faites-les frire à la poêle dans l'huile chaude, 20 min à feu moyen, en les retournant peu : elles doivent former une croûte dorée.
+3. Vous pouvez aussi les enfourner 30 min à 210°C avec l'huile.
+4. Écrasez l'ail avec du sel jusqu'à obtenir une pâte, hachez la coriandre finement.
+5. Quand les pommes de terre sont dorées, ajoutez le poivron en dés et faites revenir 5 min.
+6. Ajoutez l'ail, le piment et le cumin, remuez 1 min hors du feu vif : l'ail ne doit surtout pas brûler.
+7. Ajoutez la coriandre et le jus de citron, mélangez.
+8. Servez immédiatement, très chaud et bien relevé.
