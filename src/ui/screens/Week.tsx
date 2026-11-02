@@ -125,12 +125,14 @@ export function Week() {
           );
         })}
       </div>
-      <h2 class="mt" style={{ fontSize: 21 }}>
-        {titreJour(jours[iSel], iSel)}
-      </h2>
-      {REPAS.map((rp) => (
-        <SlotView cle={sel} repas={rp} key={sel + rp} />
-      ))}
+      <div class="day-panel" key={sel}>
+        <h2 class="mt" style={{ fontSize: 21 }}>
+          {titreJour(jours[iSel], iSel)}
+        </h2>
+        {REPAS.map((rp) => (
+          <SlotView cle={sel} repas={rp} key={sel + rp} />
+        ))}
+      </div>
       <div class="stack mt-l">
         {n > 0 ? (
           <>
@@ -161,11 +163,49 @@ export function Week() {
 /* ---------- assistant ---------- */
 const STEPS = ["Ton matériel", "Tes goûts", "Une envie ?", "Combien de repas ?", "Ton budget"];
 export function WeekWizard() {
-  const [step, setStep] = useState(() => {
+  const [step, setStepRaw] = useState(() => {
     // 1re fois : le matériel le plus courant est pré-coché
     if (!semaine.value.equip) semaine.value = { ...semaine.value, equip: ["four", "plaques", "micro"] };
     return 0;
   });
+  const [back, setBack] = useState(false);
+  const [gen, setGen] = useState<string | null>(null);
+  const setStep = (n: number) => {
+    setBack(n < step);
+    setStepRaw(n);
+  };
+  const lancer = () => {
+    // petite mise en scène pendant que la semaine se compose
+    const msgs = ["Je regarde ton matériel…", "J'écarte ce que tu n'aimes pas…", "Je varie les plats…", "Je vérifie le budget…"];
+    let k = 0;
+    setGen(msgs[0]);
+    const iv = setInterval(() => {
+      k++;
+      if (k < msgs.length) setGen(msgs[k]);
+    }, 380);
+    setTimeout(() => {
+      clearInterval(iv);
+      generateWeek();
+      closeOverlay();
+    }, 1500);
+  };
+  if (gen)
+    return (
+      <div class="overlay" role="dialog" aria-label="Composition de la semaine">
+        <div class="ov-inner">
+          <div class="wk-load" role="status">
+            <span class="wk-pan">🍳</span>
+            <h2>Je compose ta semaine…</h2>
+            <p>{gen}</p>
+            <div class="wk-dots">
+              <i />
+              <i />
+              <i />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   const s = semaine.value;
   const set = (p: Partial<Semaine>) => (semaine.value = { ...semaine.value, ...p });
   const toggle = (list: string[], id: string) => (list.includes(id) ? list.filter((x) => x !== id) : [...list, id]);
@@ -183,6 +223,7 @@ export function WeekWizard() {
         <div class="cook-prog" style={{ margin: "0 0 18px" }}>
           <i style={{ width: ((step + 1) / STEPS.length) * 100 + "%" }} />
         </div>
+        <div class={"wk-step" + (back ? " back" : "")} key={step}>
         <p class="small muted">
           Étape {step + 1} sur {STEPS.length}
         </p>
@@ -296,6 +337,7 @@ export function WeekWizard() {
             <p class="hint">Glisse tout à gauche pour ne pas fixer de budget.</p>
           </>
         )}
+        </div>
         <p class={"small mt-l " + (nbPossibles < 30 ? "" : "muted")} style={nbPossibles < 30 ? { color: "var(--warn)", fontWeight: 650 } : {}}>
           {nbPossibles} plat{nbPossibles > 1 ? "s" : ""} correspondent à tes réglages{nbPossibles < 30 ? " — c'est peu : coche plus de matériel ou retire une contrainte." : "."}
         </p>
@@ -307,10 +349,7 @@ export function WeekWizard() {
             <button
               class="btn primary lg grow"
               disabled={!nbPossibles}
-              onClick={() => {
-                generateWeek();
-                closeOverlay();
-              }}
+              onClick={lancer}
             >
               <Icon name="sparkles" /> Générer
             </button>

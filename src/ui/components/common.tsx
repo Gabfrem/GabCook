@@ -9,6 +9,7 @@ import { COMMON } from "../../core/tables";
 import { globalRating, isFav, isPlanned, toggleFav } from "../../state/actions";
 import { AF, allRecipes, cookMode, fridge, MO } from "../../state/store";
 import { askConfirm, confirmState, hideToast, openOverlay, toastState } from "../../state/ui";
+import { useExit } from "../motion";
 import { Cover } from "./Cover";
 import { Icon } from "./Icon";
 
@@ -31,14 +32,18 @@ export function Stars({ id, compact }: { id: string; compact?: boolean }) {
 
 export function FavButton({ id, class: cls = "iconbtn glass fav" }: { id: string; class?: string }) {
   const on = isFav(id);
+  const [pop, setPop] = useState(false);
   return (
     <button
-      class={cls + (on ? " on" : "")}
+      class={cls + (on ? " on" : "") + (pop ? " pop" : "")}
       aria-label={on ? "Retirer des favoris" : "Ajouter aux favoris"}
       aria-pressed={on}
       onClick={(e) => {
         e.stopPropagation();
-        toggleFav(id);
+        if (toggleFav(id)) {
+          setPop(true);
+          setTimeout(() => setPop(false), 450);
+        }
       }}
     >
       <Icon name="heart" fill={on} />
@@ -155,6 +160,8 @@ export function Avatar({ avatar, name, size = "" }: { avatar?: string; name?: st
 
 /* ---------- feuille modale ---------- */
 export function Sheet({ onClose, children, labelledBy }: { onClose: () => void; children: ComponentChildren; labelledBy?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useExit(ref, "sheet-leave", 260);
   useEffect(() => {
     const k = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     addEventListener("keydown", k);
@@ -165,7 +172,7 @@ export function Sheet({ onClose, children, labelledBy }: { onClose: () => void; 
     };
   }, []);
   return (
-    <div class="backdrop" onClick={(e) => e.target === e.currentTarget && onClose()}>
+    <div class="backdrop" ref={ref} onClick={(e) => e.target === e.currentTarget && onClose()}>
       <div class="sheet" role="dialog" aria-modal="true" aria-labelledby={labelledBy}>
         {children}
       </div>
@@ -176,8 +183,13 @@ export function Sheet({ onClose, children, labelledBy }: { onClose: () => void; 
 export function Toast() {
   const t = toastState.value;
   if (!t) return null;
+  return <ToastView key={t.id} t={t} />;
+}
+function ToastView({ t }: { t: NonNullable<typeof toastState.value> }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useExit(ref, "toast-leave", 240);
   return (
-    <div class="toast" role="status" aria-live="polite" key={t.id}>
+    <div class="toast" role="status" aria-live="polite" ref={ref}>
       <span>{t.msg}</span>
       {t.action && (
         <button

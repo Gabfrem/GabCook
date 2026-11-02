@@ -37,7 +37,7 @@ function Hero() {
   const h = new Date().getHours();
   const moment = h < 11 ? "Pour ce midi" : h < 15 ? "Pour ce midi" : "Pour ce soir";
   return (
-    <div class="hero" role="button" tabIndex={0} onClick={() => openRecipe(r.id)}>
+    <div class="hero" key={r.id} role="button" tabIndex={0} onClick={() => openRecipe(r.id)}>
       <Cover r={r} small={false} />
       <div class="content">
         <span class="kicker">{ready ? "✓ " + moment + " · prêt avec ton frigo" : missing > 0 ? moment + " · il te manque " + missing : moment + " · idée du jour"}</span>
