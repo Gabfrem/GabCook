@@ -1,0 +1,1348 @@
+# Recettes « Entrée » — une recette par bloc « === Nom ». Voir scripts/recipe-format.mjs pour le format.
+
+=== Soupe à l'oignon
+id: soupeoignon
+emoji: 🧅
+categorie: Entrée
+preparation: 15
+cuisson: 40
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/xvrrux1511783685.jpg
+ingredients:
+- oignons : 6
+- bouillon de bœuf : 1 l
+- beurre : 40 g
+- farine : 1 c. à soupe
+- gruyère râpé : 100 g
+- tranches de pain : 4
+- vin blanc : 10 cl
+etapes:
+1. Épluchez les oignons et émincez-les en fines lamelles (c'est l'étape la plus longue mais la plus importante).
+2. Faites fondre le beurre dans une grande casserole à feu moyen-doux.
+3. Ajoutez les oignons et laissez-les cuire doucement 20 min en remuant souvent. Ils doivent devenir dorés et fondants (caramélisés), sans brûler. Baissez le feu si besoin.
+4. Saupoudrez de farine et mélangez 1 min.
+5. Versez le vin blanc et grattez le fond de la casserole pour décoller les sucs.
+6. Ajoutez le bouillon, salez et poivrez. Laissez mijoter 20 min à feu doux.
+7. Préchauffez le grill du four. Répartissez la soupe dans des bols qui vont au four.
+8. Posez une tranche de pain sur chaque bol et couvrez généreusement de gruyère râpé.
+9. Passez sous le grill quelques minutes, jusqu'à ce que le fromage soit fondu et doré.
+10. Servez très chaud (attention, les bols sont brûlants).
+
+=== Salade César
+id: cesar
+emoji: 🥗
+categorie: Entrée
+preparation: 20
+cuisson: 10
+portions: 2
+difficulte: Facile
+ingredients:
+- cœur de laitue romaine : 1
+- blancs de poulet : 2
+- parmesan : 50 g
+- tranches de pain : 2
+- mayonnaise : 2 c. à soupe
+- gousse d'ail : 1
+- moutarde : 1 c. à café
+- huile d'olive : 2 c. à soupe
+etapes:
+1. Faites chauffer un filet d'huile dans une poêle à feu moyen. Salez et poivrez les blancs de poulet, puis faites-les cuire 5-6 min de chaque côté jusqu'à ce qu'ils soient dorés et cuits à cœur. Réservez.
+2. Préparez les croûtons : coupez le pain en dés. Faites-les dorer à la poêle dans un peu d'huile avec l'ail écrasé, en remuant, jusqu'à ce qu'ils soient croustillants.
+3. Préparez la sauce : dans un bol, mélangez la mayonnaise, la moutarde, un peu de parmesan râpé et un filet d'huile d'olive. Poivrez.
+4. Lavez la laitue romaine, essorez-la et coupez-la en morceaux.
+5. Coupez le poulet en lanières.
+6. Dans un grand saladier, mélangez la laitue avec la sauce.
+7. Ajoutez le poulet et les croûtons.
+8. Parsemez de copeaux de parmesan (faits avec un économe) et servez aussitôt.
+
+=== Salade niçoise
+id: nicoise
+emoji: 🥗
+categorie: Entrée
+preparation: 20
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/yypwwq1511304979.jpg
+ingredients:
+- thon : 200 g
+- œufs : 4
+- tomates : 4
+- poivron vert : 1
+- haricots verts : 200 g
+- olives noires : 100 g
+- oignon rouge : 1
+- huile d'olive : 4 c. à soupe
+- vinaigre : 1 c. à soupe
+etapes:
+1. Faites cuire les œufs durs : plongez-les dans l'eau bouillante 10 min, puis rafraîchissez-les sous l'eau froide.
+2. Faites cuire les haricots verts 8 min à l'eau bouillante salée : ils doivent rester un peu croquants. Égouttez et passez-les sous l'eau froide.
+3. Lavez les tomates et coupez-les en quartiers. Lavez le poivron, retirez les graines et émincez-le. Épluchez et émincez l'oignon rouge.
+4. Écalez les œufs et coupez-les en quartiers.
+5. Égouttez le thon.
+6. Préparez la vinaigrette : dans un bol, mélangez l'huile d'olive, le vinaigre, du sel et du poivre.
+7. Disposez joliment tous les ingrédients dans un grand plat : légumes, haricots, œufs, thon émietté et olives.
+8. Arrosez de vinaigrette juste avant de servir (sinon la salade rend de l'eau).
+
+=== Soupe de légumes
+id: soupelegumes
+emoji: 🥕
+categorie: Entrée
+preparation: 15
+cuisson: 30
+portions: 4
+difficulte: Facile
+ingredients:
+- pommes de terre : 2
+- carottes : 3
+- poireau : 1
+- courgette : 1
+- oignon : 1
+- bouillon : 1 l
+- crème : 5 cl
+- sel : 1 pincée
+etapes:
+1. Épluchez tous les légumes : pommes de terre, carottes, poireau, oignon.
+2. Coupez-les en morceaux (plus ils sont petits, plus ça cuit vite).
+3. Faites chauffer un peu d'huile dans une grande casserole. Faites revenir l'oignon et le poireau 3 min.
+4. Ajoutez le reste des légumes et couvrez d'eau (jusqu'à 2 cm au-dessus).
+5. Salez, portez à ébullition, puis baissez le feu et laissez cuire 25 min à couvert. Les légumes doivent être bien tendres.
+6. Mixez la soupe au mixeur plongeant jusqu'à obtenir une texture lisse.
+7. Ajoutez un peu d'eau si elle est trop épaisse. Goûtez et rectifiez le sel.
+8. Poivrez et servez chaud, éventuellement avec un filet de crème.
+
+=== Velouté de potiron
+id: veloutepotiron
+emoji: 🎃
+categorie: Entrée
+preparation: 15
+cuisson: 25
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/1brbso1763585098.jpg
+ingredients:
+- potiron : 800 g
+- pomme de terre : 1
+- oignon : 1
+- bouillon : 70 cl
+- crème fraîche : 10 cl
+- muscade : 1 pincée
+- beurre : 20 g
+etapes:
+1. Épluchez le potiron, retirez les graines et coupez la chair en cubes.
+2. Épluchez et émincez l'oignon. Épluchez et coupez la pomme de terre en morceaux (elle rend le velouté onctueux).
+3. Faites chauffer un peu d'huile dans une casserole. Faites revenir l'oignon 3 min.
+4. Ajoutez le potiron et la pomme de terre.
+5. Couvrez d'eau ou de bouillon à hauteur. Salez.
+6. Portez à ébullition, puis laissez cuire 25 min à feu moyen : les morceaux doivent être fondants.
+7. Mixez finement, puis ajoutez la crème et une pincée de muscade.
+8. Réchauffez doucement, poivrez et servez.
+
+=== Taboulé
+id: taboule
+emoji: 🥗
+categorie: Entrée
+preparation: 20
+cuisson: 0
+portions: 4
+difficulte: Facile
+ingredients:
+- semoule : 250 g
+- tomates : 3
+- concombre : 1
+- oignon : 1
+- bouquet de menthe : 1
+- bouquet de persil : 1
+- citrons : 2
+- huile d'olive : 4 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Versez la semoule dans un saladier. Ajoutez un filet d'huile d'olive et mélangez (cela évite qu'elle colle).
+2. Versez de l'eau chaude à hauteur, couvrez et laissez gonfler 10 min.
+3. Égrainez la semoule à la fourchette.
+4. Lavez et coupez les tomates en petits dés (retirez les pépins) et le concombre en dés.
+5. Épluchez et émincez finement l'oignon. Lavez et ciselez la menthe et le persil.
+6. Ajoutez tous les légumes et les herbes à la semoule.
+7. Pressez les citrons et arrosez-en le taboulé, avec un filet d'huile d'olive. Salez et poivrez.
+8. Mélangez et réservez au frais au moins 1h avant de servir (le taboulé est meilleur bien froid).
+
+=== Salade grecque
+id: saladegrecque
+emoji: 🥗
+categorie: Entrée
+preparation: 15
+cuisson: 0
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/bqx8mc1782684286.jpg
+ingredients:
+- tomates : 4
+- concombre : 1
+- feta : 200 g
+- oignon rouge : 1
+- olives noires : 100 g
+- origan : 1 pincée
+- huile d'olive : 4 c. à soupe
+- poivre : 1 pincée
+etapes:
+1. Lavez les tomates et coupez-les en quartiers. Lavez le concombre et coupez-le en demi-rondelles épaisses.
+2. Lavez le poivron, retirez les graines et coupez-le en lanières. Épluchez et émincez finement l'oignon rouge.
+3. Mettez tous les légumes dans un saladier.
+4. Ajoutez les olives et la feta coupée en cubes.
+5. Préparez la vinaigrette : mélangez l'huile d'olive, un peu de vinaigre, de l'origan, du sel et du poivre.
+6. Arrosez la salade de vinaigrette.
+7. Mélangez délicatement pour ne pas écraser la feta et servez.
+
+=== Salade de pâtes
+id: saladepates
+emoji: 🍝
+categorie: Entrée
+preparation: 15
+cuisson: 12
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/wvqpwt1468339226.jpg
+ingredients:
+- pâtes : 300 g
+- tomates cerises : 200 g
+- mozzarella : 150 g
+- poivron : 1
+- olives : 80 g
+- basilic : 1 poignée
+- huile d'olive : 4 c. à soupe
+- vinaigre balsamique : 1 c. à soupe
+etapes:
+1. Faites cuire les pâtes dans l'eau bouillante salée, puis égouttez-les et passez-les sous l'eau froide pour les refroidir (elles ne colleront pas).
+2. Lavez et coupez les tomates cerises en deux et le concombre en dés.
+3. Coupez la mozzarella (ou la feta) en cubes.
+4. Mettez les pâtes refroidies, les légumes, la mozzarella et les olives dans un grand saladier.
+5. Préparez la vinaigrette : mélangez l'huile d'olive, le vinaigre, du sel et du poivre.
+6. Ajoutez le basilic ciselé.
+7. Versez la vinaigrette, mélangez et réservez au frais jusqu'au service.
+
+=== Gaspacho
+id: gaspacho
+emoji: 🍅
+categorie: Entrée
+preparation: 15
+cuisson: 0
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/h5qmn31763304965.jpg
+ingredients:
+- tomates mûres : 800 g
+- concombre : 1
+- poivron rouge : 1
+- oignon : 0.5
+- gousse d'ail : 1
+- huile d'olive : 4 c. à soupe
+- vinaigre : 1 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Lavez les tomates et coupez-les en morceaux. Épluchez le concombre et coupez-le en morceaux. Lavez le poivron, retirez les graines et coupez-le.
+2. Épluchez l'ail.
+3. Mettez tous les légumes dans un mixeur ou un blender avec l'ail.
+4. Ajoutez l'huile d'olive, un peu de vinaigre et du sel.
+5. Mixez longuement jusqu'à obtenir une texture bien lisse.
+6. Si c'est trop épais, ajoutez un peu d'eau froide et mixez à nouveau.
+7. Goûtez et rectifiez le sel et le vinaigre.
+8. Réservez au frais au moins 2h : le gaspacho se sert très froid, éventuellement avec des petits dés de légumes.
+
+=== Coleslaw
+id: coleslaw
+emoji: 🥬
+categorie: Entrée
+preparation: 15
+cuisson: 0
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/e2g2r21764367568.jpg
+ingredients:
+- chou blanc : 0.5
+- carottes : 2
+- mayonnaise : 3 c. à soupe
+- yaourt nature : 2 c. à soupe
+- moutarde : 1 c. à café
+- citron : 1
+- sel : 1 pincée
+etapes:
+1. Émincez le chou blanc le plus finement possible (au couteau ou à la mandoline).
+2. Épluchez les carottes et râpez-les.
+3. Épluchez et émincez très finement l'oignon.
+4. Mettez le chou, les carottes et l'oignon dans un grand saladier.
+5. Préparez la sauce : mélangez la mayonnaise, un peu de vinaigre, une pointe de moutarde, du sel et du poivre.
+6. Versez la sauce sur les légumes et mélangez bien.
+7. Réservez au frais au moins 1h avant de servir : le chou s'attendrit et les saveurs se mélangent.
+
+=== Velouté de tomate
+id: veloutetomate
+emoji: 🍅
+categorie: Entrée
+preparation: 10
+cuisson: 25
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/stpuws1511191310.jpg
+ingredients:
+- tomates : 800 g
+- oignon : 1
+- gousses d'ail : 2
+- bouillon : 40 cl
+- crème fraîche : 10 cl
+- basilic : 1 poignée
+- huile d'olive : 2 c. à soupe
+- sucre : 1 pincée
+etapes:
+1. Épluchez et émincez l'oignon et l'ail.
+2. Faites chauffer un peu d'huile d'olive dans une casserole. Faites revenir l'oignon et l'ail 4 min.
+3. Ajoutez le concentré de tomate et mélangez 1 min.
+4. Versez les tomates concassées et un peu d'eau ou de bouillon. Salez et ajoutez une pincée de sucre (cela adoucit l'acidité de la tomate).
+5. Laissez mijoter 20 min à feu doux.
+6. Mixez finement.
+7. Ajoutez la crème, réchauffez doucement, poivrez.
+8. Parsemez de basilic et servez chaud.
+
+=== Salade de chèvre chaud
+id: chevrechaud
+emoji: 🧀
+categorie: Entrée
+preparation: 15
+cuisson: 8
+portions: 4
+difficulte: Facile
+ingredients:
+- crottins de chèvre : 2
+- tranches de pain : 8
+- salade : 1
+- miel : 2 c. à soupe
+- huile d'olive : 3 c. à soupe
+- vinaigre balsamique : 1 c. à soupe
+- cerneaux de noix : 50 g
+- sel : 1 pincée
+etapes:
+1. Préchauffez le gril du four.
+2. Lavez et essorez la salade, puis répartissez-la dans 4 assiettes.
+3. Préparez la vinaigrette : mélangez l'huile d'olive, le vinaigre balsamique, du sel et du poivre.
+4. Coupez chaque crottin de chèvre en deux dans l'épaisseur, pour obtenir 4 demi-crottins.
+5. Posez les tranches de pain sur une plaque et déposez un demi-crottin sur 4 d'entre elles.
+6. Arrosez chaque fromage d'un filet de miel.
+7. Passez sous le gril 5 à 6 min : le fromage doit gonfler légèrement et se colorer sur le dessus, sans couler.
+8. Concassez grossièrement les noix.
+9. Disposez les toasts chauds sur la salade, parsemez de noix et arrosez de vinaigrette.
+10. Servez immédiatement, tant que le fromage est fondant.
+
+=== Velouté de champignons
+id: veloutechampignons
+emoji: 🍄
+categorie: Entrée
+preparation: 15
+cuisson: 25
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/0r7y5n1782681336.jpg
+ingredients:
+- champignons de Paris : 500 g
+- oignon : 1
+- pomme de terre : 1
+- bouillon de volaille : 75 cl
+- crème fraîche : 10 cl
+- beurre : 20 g
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Nettoyez les champignons avec un papier humide et émincez-les. Gardez 4 belles lamelles de côté pour la décoration.
+2. Épluchez et émincez l'oignon. Épluchez la pomme de terre et coupez-la en dés.
+3. Faites fondre le beurre dans une casserole à feu moyen et faites revenir l'oignon 4 min.
+4. Ajoutez les champignons et laissez-les cuire 8 min : ils rendent leur eau, puis commencent à dorer.
+5. Ajoutez la pomme de terre en dés. C'est elle qui donnera au velouté sa texture, sans farine.
+6. Versez le bouillon, salez légèrement et portez à frémissement.
+7. Laissez mijoter 15 min, jusqu'à ce que la pomme de terre s'écrase facilement.
+8. Mixez très finement au mixeur plongeant.
+9. Ajoutez la crème, mélangez et réchauffez sans faire bouillir. Goûtez et rectifiez le sel.
+10. Servez avec les lamelles de champignon cru et un tour de moulin à poivre.
+
+=== Œufs mimosa
+id: oeufsmimosa
+emoji: 🥚
+categorie: Entrée
+preparation: 20
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/vayi021784668764.jpg
+ingredients:
+- œufs : 6
+- mayonnaise : 4 c. à soupe
+- moutarde : 1 c. à café
+- bouquet de ciboulette : 1
+- paprika : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Posez les œufs dans une casserole, couvrez d'eau froide et portez à ébullition.
+2. Dès l'ébullition, comptez 9 min : c'est le temps pour un jaune bien ferme, sans cerne vert.
+3. Égouttez-les et plongez-les aussitôt dans un saladier d'eau très froide. Ce choc facilite énormément l'écalage.
+4. Écalez les œufs sous un filet d'eau, puis coupez-les en deux dans la longueur.
+5. Retirez délicatement les jaunes et mettez-les dans un bol.
+6. Écrasez-les à la fourchette, puis prélevez l'équivalent d'un jaune que vous réservez à part pour la finition.
+7. Mélangez le reste des jaunes avec la mayonnaise et la moutarde. Salez et poivrez : vous obtenez une crème lisse.
+8. Remplissez les demi-blancs de cette crème, à la cuillère ou à la poche à douille.
+9. Écrasez le jaune réservé entre vos doigts au-dessus des œufs : c'est ce qui donne l'effet mimosa.
+10. Parsemez de ciboulette ciselée et d'une pointe de paprika, et servez frais.
+
+=== Carottes râpées
+id: carottesrapees
+emoji: 🥕
+categorie: Entrée
+preparation: 15
+cuisson: 0
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/dbazbg1763779999.jpg
+ingredients:
+- carottes : 6
+- citron : 1
+- huile d'olive : 3 c. à soupe
+- moutarde : 1 c. à café
+- miel : 1 c. à café
+- bouquet de persil : 1
+- sel : 1 pincée
+etapes:
+1. Épluchez les carottes et coupez leurs deux extrémités.
+2. Râpez-les avec une râpe à gros trous : râpées trop fin, elles rendent leur eau et deviennent molles.
+3. Pressez le citron.
+4. Dans un bol, mélangez la moutarde, le miel, le jus de citron et une pincée de sel.
+5. Versez l'huile d'olive en filet tout en fouettant : la vinaigrette épaissit et devient lisse.
+6. Lavez et ciselez finement le persil.
+7. Versez la vinaigrette sur les carottes et mélangez soigneusement, à la main de préférence.
+8. Ajoutez le persil et mélangez à nouveau.
+9. Goûtez et rectifiez : un peu plus de citron si c'est plat, un peu de miel si c'est trop acide.
+10. Réservez au frais 20 min avant de servir, le temps que les carottes s'imprègnent.
+
+=== Salade de lentilles
+id: saladelentilles
+emoji: 🥗
+categorie: Entrée
+preparation: 15
+cuisson: 25
+portions: 4
+difficulte: Facile
+ingredients:
+- lentilles vertes : 250 g
+- oignon rouge : 1
+- carottes : 2
+- échalote : 1
+- huile d'olive : 3 c. à soupe
+- vinaigre : 1 c. à soupe
+- moutarde : 1 c. à café
+- bouquet de persil : 1
+- feuille de laurier : 1
+- sel : 1 pincée
+etapes:
+1. Rincez les lentilles à l'eau froide. Inutile de les faire tremper.
+2. Mettez-les dans une casserole avec 3 fois leur volume d'eau froide, une carotte entière épluchée et le laurier.
+3. Portez à frémissement et laissez cuire 20 à 25 min. Ne salez qu'en fin de cuisson : le sel ajouté trop tôt durcit la peau des lentilles.
+4. Goûtez : elles doivent être tendres mais entières, pas en purée.
+5. Égouttez-les et retirez le laurier et la carotte de cuisson.
+6. Pendant ce temps, épluchez et ciselez finement l'échalote et l'oignon rouge. Épluchez la seconde carotte et coupez-la en tout petits dés.
+7. Préparez la vinaigrette : mélangez la moutarde, le vinaigre et le sel, puis versez l'huile en filet en fouettant.
+8. Versez la vinaigrette sur les lentilles encore tièdes : c'est tiède qu'elles absorbent le mieux l'assaisonnement.
+9. Ajoutez l'échalote, l'oignon rouge et les dés de carotte crue, puis mélangez.
+10. Parsemez de persil ciselé et servez tiède ou froid.
+
+=== Velouté de butternut
+id: veloutebutternut
+emoji: 🎃
+categorie: Entrée
+preparation: 15
+cuisson: 25
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/jcr46d1614763831.jpg
+ingredients:
+- courge butternut : 1
+- oignon : 1
+- pomme de terre : 1
+- crème fraîche : 10 cl
+- huile d'olive : 2 c. à soupe
+- muscade : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Épluchez la butternut, la pomme de terre et l'oignon, coupez-les en morceaux.
+2. Faites revenir l'oignon dans l'huile 4 min.
+3. Ajoutez la courge et la pomme de terre, couvrez d'eau, salez.
+4. Laissez cuire 20 min : les légumes doivent être tendres.
+5. Mixez finement, ajoutez la crème et la muscade.
+6. Rectifiez l'assaisonnement, détendez avec un peu d'eau si besoin et servez chaud.
+
+=== Soupe poireaux pommes de terre
+id: soupepoireauxpdt
+emoji: 🥣
+categorie: Entrée
+preparation: 15
+cuisson: 30
+portions: 4
+difficulte: Facile
+ingredients:
+- poireaux : 3
+- pommes de terre : 3
+- oignon : 1
+- beurre : 20 g
+- crème fraîche : 10 cl
+- sel : 1 pincée
+etapes:
+1. Lavez et émincez les poireaux. Épluchez et coupez les pommes de terre et l'oignon.
+2. Faites fondre les poireaux et l'oignon dans le beurre 8 min à feu doux.
+3. Ajoutez les pommes de terre, couvrez d'eau, salez et laissez cuire 20 min.
+4. Mixez finement.
+5. Ajoutez la crème, rectifiez l'assaisonnement et servez chaud.
+
+=== Salade composée complète
+id: saladecomposee
+emoji: 🥗
+categorie: Entrée
+preparation: 15
+cuisson: 10
+portions: 4
+difficulte: Facile
+ingredients:
+- salade verte : 1
+- œufs : 3
+- dés de jambon : 200 g
+- gruyère : 100 g
+- tomates : 2
+- huile d'olive : 3 c. à soupe
+- vinaigre : 1 c. à soupe
+- moutarde : 1 c. à soupe
+etapes:
+1. Faites cuire les œufs 9 min à l'eau bouillante pour les avoir durs, puis passez-les sous l'eau froide et écalez-les.
+2. Lavez la salade, coupez les tomates en quartiers, le gruyère en dés et les œufs en quartiers.
+3. Préparez la vinaigrette en mélangeant moutarde, vinaigre, sel, poivre puis l'huile.
+4. Disposez la salade dans un grand saladier.
+5. Répartissez le jambon, le gruyère, les tomates et les œufs par-dessus.
+6. Arrosez de vinaigrette au moment de servir.
+
+=== Soupe de tortilla
+id: sopatortilla
+emoji: 🥣
+categorie: Entrée
+preparation: 15
+cuisson: 25
+portions: 4
+difficulte: Facile
+ingredients:
+- tortillas : 4
+- tomates concassées : 400 g
+- oignon : 1
+- gousses d'ail : 2
+- bouillon de volaille : 1 l
+- avocat : 1
+- cumin : 1 c. à café
+- huile : 4 c. à soupe
+etapes:
+1. Coupez les tortillas en fines lanières. Faites-en dorer la moitié dans l'huile chaude jusqu'à ce qu'elles croustillent, puis réservez sur du papier absorbant.
+2. Émincez l'oignon et hachez l'ail.
+3. Faites revenir l'oignon dans un peu d'huile 5 min, ajoutez l'ail et le cumin 1 min.
+4. Versez les tomates et laissez réduire 5 min.
+5. Ajoutez le bouillon et le reste des lanières de tortilla (elles vont fondre et épaissir la soupe).
+6. Laissez mijoter 15 min, puis mixez si vous préférez une texture lisse.
+7. Servez avec les lanières croustillantes et des lamelles d'avocat par-dessus.
+
+=== Soupe thaï au lait de coco
+id: tomkha
+emoji: 🥣
+categorie: Entrée
+preparation: 15
+cuisson: 20
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ol2xxt1763582263.jpg
+ingredients:
+- lait de coco : 40 cl
+- bouillon de volaille : 60 cl
+- blanc de poulet : 300 g
+- champignons de Paris : 200 g
+- morceau de gingembre : 1
+- citrons verts : 2
+- sauce soja : 2 c. à soupe
+- coriandre : 1 pincée
+etapes:
+1. Coupez le poulet en fines lanières et émincez les champignons.
+2. Portez le bouillon à frémissement avec le gingembre en fines rondelles. Laissez infuser 5 min.
+3. Versez le lait de coco et remettez à frémir sans faire bouillir vivement.
+4. Ajoutez le poulet et laissez pocher 8 min.
+5. Ajoutez les champignons et poursuivez 4 min.
+6. Assaisonnez avec la sauce soja et le jus des citrons verts, hors du feu (la chaleur vive ferait tourner la saveur).
+7. Parsemez de coriandre et servez bien chaud.
+
+=== Salade caprese
+id: caprese
+emoji: 🍅
+categorie: Entrée
+preparation: 10
+cuisson: 0
+portions: 4
+difficulte: Facile
+ingredients:
+- tomates : 4
+- boules de mozzarella : 2
+- basilic : 1 pincée
+- huile d'olive : 4 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Choisissez des tomates bien mûres et sortez la mozzarella du frigo 15 min avant : le froid masque les saveurs.
+2. Coupez les tomates et la mozzarella en tranches d'égale épaisseur (environ 1 cm).
+3. Disposez-les en alternance sur un grand plat, en les faisant se chevaucher légèrement.
+4. Glissez des feuilles de basilic entre les tranches.
+5. Salez, poivrez et arrosez généreusement d'huile d'olive juste avant de servir.
+6. Servez à température ambiante, avec du pain pour saucer.
+
+=== Panzanella (salade toscane au pain)
+id: panzanella
+emoji: 🥗
+categorie: Entrée
+preparation: 20
+cuisson: 0
+portions: 4
+difficulte: Facile
+ingredients:
+- pain : 300 g
+- tomates : 5
+- concombre : 1
+- oignon rouge : 1
+- huile d'olive : 5 c. à soupe
+- vinaigre : 2 c. à soupe
+- basilic : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Coupez le pain rassis en gros cubes. S'il est trop sec, humectez-le rapidement puis pressez-le.
+2. Coupez les tomates en quartiers et salez-les dans un saladier : elles vont rendre un jus précieux.
+3. Émincez finement l'oignon rouge et coupez le concombre en demi-rondelles.
+4. Ajoutez le pain aux tomates et mélangez : il doit s'imprégner du jus.
+5. Ajoutez le concombre, l'oignon, le vinaigre et l'huile d'olive.
+6. Laissez reposer 20 min à température ambiante pour que les saveurs se lient.
+7. Parsemez de basilic, rectifiez le sel et servez.
+
+=== Harira (soupe marocaine)
+id: harira
+emoji: 🥣
+categorie: Entrée
+preparation: 20
+cuisson: 60
+portions: 6
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/x2fw9e1560460636.jpg
+ingredients:
+- agneau : 300 g
+- pois chiches : 200 g
+- lentilles : 100 g
+- tomates concassées : 400 g
+- oignons : 2
+- farine : 2 c. à soupe
+- gingembre : 1 c. à café
+- coriandre : 1 pincée
+etapes:
+1. Coupez la viande en petits dés. Faites-la dorer 6 min dans une grande casserole avec un filet d'huile.
+2. Ajoutez les oignons émincés et le gingembre, poursuivez 5 min.
+3. Versez les tomates concassées, salez, poivrez et laissez mijoter 10 min.
+4. Ajoutez les lentilles, les pois chiches égouttés et 1,5 litre d'eau. Portez à frémissement.
+5. Laissez mijoter 40 min à couvert : la viande doit être tendre et les légumineuses fondantes.
+6. Délayez la farine dans un bol d'eau froide jusqu'à obtenir un liquide sans grumeaux.
+7. Versez-le en filet dans la soupe en remuant : elle épaissit et devient veloutée en 5 min.
+8. Parsemez de coriandre et servez très chaud, avec des dattes.
+
+=== Fattoush (salade libanaise)
+id: fattoush
+emoji: 🥗
+categorie: Entrée
+preparation: 20
+cuisson: 8
+portions: 4
+difficulte: Facile
+ingredients:
+- pains pita : 2
+- tomates : 3
+- concombre : 1
+- salade verte : 1
+- oignon rouge : 1
+- citron : 1
+- huile d'olive : 5 c. à soupe
+- menthe : 1 pincée
+etapes:
+1. Préchauffez le four à 200°C. Coupez les pains pita en morceaux, arrosez-les d'un peu d'huile et enfournez 8 min : ils doivent être bien croustillants.
+2. Coupez les tomates et le concombre en dés, émincez l'oignon rouge et la salade.
+3. Préparez la vinaigrette : jus de citron, huile d'olive, sel, poivre, en fouettant.
+4. Mélangez les légumes dans un grand saladier avec la menthe ciselée.
+5. Versez la vinaigrette et mélangez.
+6. Ajoutez les morceaux de pain grillé au tout dernier moment pour qu'ils restent croquants.
+7. Servez immédiatement.
+
+=== Chaudrée de poisson
+id: clamchowder
+emoji: 🥣
+categorie: Entrée
+preparation: 20
+cuisson: 30
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/rvtvuw1511190488.jpg
+ingredients:
+- filets de cabillaud : 400 g
+- pommes de terre : 4
+- lardons : 150 g
+- oignon : 1
+- lait : 50 cl
+- crème fraîche : 20 cl
+- farine : 2 c. à soupe
+- thym : 1 pincée
+etapes:
+1. Coupez les pommes de terre en cubes de 2 cm et le poisson en gros morceaux.
+2. Faites dorer les lardons 5 min dans une cocotte, ajoutez l'oignon émincé et poursuivez 4 min.
+3. Saupoudrez de farine et mélangez 1 min pour qu'elle absorbe la graisse.
+4. Versez le lait petit à petit en remuant, puis ajoutez les pommes de terre et le thym.
+5. Laissez mijoter 18 min à feu doux, jusqu'à ce que les pommes de terre soient tendres.
+6. Ajoutez les morceaux de poisson et laissez pocher 5 min seulement : ils doivent rester en gros flocons.
+7. Incorporez la crème hors du feu, rectifiez le sel et poivrez généreusement.
+8. Servez bien chaud avec des crackers ou du pain.
+
+=== Ceviche de cabillaud
+id: ceviche
+emoji: 🐟
+categorie: Entrée
+preparation: 20
+cuisson: 0
+portions: 4
+difficulte: Facile
+ingredients:
+- cabillaud : 500 g
+- citrons verts : 6
+- oignon rouge : 1
+- coriandre : 1 pincée
+- piment : 1
+- huile d'olive : 2 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Prenez un poisson très frais : il ne subira aucune cuisson thermique.
+2. Retirez la peau et les arêtes, puis taillez le cabillaud en cubes réguliers de 1,5 cm.
+3. Pressez les citrons verts et versez le jus sur le poisson : il doit être totalement immergé.
+4. Salez et laissez mariner 15 min au frais. La chair passe du translucide à l'opaque : c'est la cuisson par l'acidité.
+5. Émincez l'oignon rouge très finement et rincez-le à l'eau froide pour adoucir son piquant.
+6. Égouttez le poisson en gardant deux cuillères de jus, mélangez avec l'oignon, le piment sans graines et la coriandre ciselée.
+7. Arrosez d'huile d'olive et servez immédiatement, bien frais.
+
+=== Aguachile de crevettes
+id: aguachile
+emoji: 🦐
+categorie: Entrée
+preparation: 20
+cuisson: 0
+portions: 4
+difficulte: Facile
+ingredients:
+- crevettes : 400 g
+- citrons verts : 6
+- concombre : 1
+- oignon rouge : 1
+- piment : 1
+- coriandre : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Décortiquez les crevettes et ouvrez-les en deux dans la longueur.
+2. Mixez le jus des citrons verts avec le piment épépiné, un tiers du concombre et la coriandre : vous obtenez une eau verte piquante.
+3. Salez cette marinade et goûtez : elle doit être franchement acide.
+4. Disposez les crevettes à plat dans un plat creux et versez l'aguachile dessus.
+5. Laissez 10 min au frais, pas plus : au-delà la chair devient caoutchouteuse.
+6. Taillez le reste du concombre en fines lamelles et l'oignon en pétales.
+7. Répartissez-les sur les crevettes juste avant de servir, très frais.
+
+=== Rouleaux de printemps aux crevettes
+id: rouleauxprintemps
+emoji: 🥢
+categorie: Entrée
+preparation: 35
+cuisson: 5
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/9r2xrg1763771238.jpg
+ingredients:
+- galettes de riz : 12
+- crevettes : 250 g
+- vermicelles de riz : 100 g
+- laitue : 1
+- carotte : 1
+- menthe : 1 pincée
+- coriandre : 1 pincée
+- sauce soja : 4 c. à soupe
+- beurre de cacahuète : 2 c. à soupe
+etapes:
+1. Faites tremper les vermicelles 5 min dans l'eau bouillante, égouttez et rincez à l'eau froide.
+2. Coupez les crevettes en deux dans la longueur, taillez la carotte en fins bâtonnets.
+3. Remplissez une assiette creuse d'eau tiède et trempez-y une galette 5 secondes seulement : elle finira de ramollir en se garnissant.
+4. Posez-la à plat, alignez les demi-crevettes côté chair vers le bas dans le tiers supérieur : elles apparaîtront à travers la galette.
+5. Ajoutez la salade, les vermicelles, la carotte et les herbes au centre, sans trop charger.
+6. Rabattez le bas sur la garniture, serrez, repliez les côtés puis roulez jusqu'au bout.
+7. Posez les rouleaux sans qu'ils se touchent, sinon ils collent entre eux.
+8. Mélangez la sauce soja avec le beurre de cacahuète et deux cuillères d'eau chaude pour la sauce.
+
+=== Vitello tonnato
+id: vitellotonnato
+emoji: 🥩
+categorie: Entrée
+preparation: 25
+cuisson: 45
+portions: 6
+difficulte: Moyen
+ingredients:
+- rôti de veau : 800 g
+- thon : 200 g
+- mayonnaise : 4 c. à soupe
+- filets d'anchois : 6
+- câpres : 2 c. à soupe
+- citron : 1
+- carotte : 1
+- oignon : 1
+- vin blanc : 20 cl
+etapes:
+1. Faites pocher le rôti 45 min dans un bouillon d'eau, vin blanc, carotte et oignon, à tout petits frémissements.
+2. Laissez-le refroidir complètement dans son bouillon : c'est ce qui le garde moelleux.
+3. Mixez le thon égoutté avec la mayonnaise, les anchois, la moitié des câpres et le jus de citron.
+4. Détendez la sauce avec deux cuillères de bouillon de cuisson filtré, jusqu'à une texture de crème épaisse.
+5. Tranchez la viande froide le plus finement possible, idéalement à la trancheuse ou avec un couteau bien aiguisé.
+6. Disposez les tranches à plat sur un grand plat, sans les superposer.
+7. Nappez de sauce en couche régulière, parsemez du reste de câpres.
+8. Laissez 2h au frais avant de servir : la viande s'imprègne de la sauce.
+
+=== Tortellini in brodo
+id: tortellinibrodo
+emoji: 🥣
+categorie: Entrée
+preparation: 10
+cuisson: 25
+portions: 4
+difficulte: Facile
+ingredients:
+- tortellini : 400 g
+- bouillon de volaille : 1.5 l
+- carotte : 1
+- oignon : 1
+- branche de céleri : 1
+- parmesan : 50 g
+- persil : 1 pincée
+etapes:
+1. Portez le bouillon à frémissement avec la carotte, l'oignon et le céleri entiers.
+2. Laissez infuser 20 min à découvert pour qu'il se concentre, puis retirez les légumes.
+3. Goûtez et rectifiez le sel : ici tout repose sur la qualité du bouillon, il doit être franchement savoureux.
+4. Plongez les tortellini directement dans le bouillon frémissant, jamais dans une eau à part.
+5. Faites-les cuire le temps indiqué sur le paquet, généralement 3 à 4 min.
+6. Ne laissez pas bouillir fort : les pâtes s'ouvriraient et perdraient leur farce.
+7. Servez aussitôt en assiette creuse, avec le bouillon, du parmesan râpé et un peu de persil.
+
+=== Gazpacho andalou
+id: gazpacho
+emoji: 🍅
+categorie: Entrée
+preparation: 20
+cuisson: 0
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/h5qmn31763304965.jpg
+ingredients:
+- tomates : 1 kg
+- concombre : 1
+- poivron : 1
+- gousses d'ail : 2
+- pain : 100 g
+- huile d'olive : 8 c. à soupe
+- vinaigre : 3 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Prenez des tomates très mûres : c'est la seule condition qui compte vraiment.
+2. Faites tremper le pain rassis dans un peu d'eau 10 min, puis pressez-le.
+3. Coupez grossièrement tomates, concombre pelé et poivron épépiné.
+4. Mixez le tout avec l'ail, le pain, le vinaigre et le sel, très longuement.
+5. Ajoutez l'huile en filet pendant que le mixeur tourne : le gazpacho s'émulsionne et prend une couleur orangée crémeuse.
+6. Passez au chinois en pressant bien si vous le voulez parfaitement lisse.
+7. Rectifiez sel et vinaigre : il doit être franc, presque trop assaisonné à température ambiante.
+8. Placez au moins 3h au frais. Servez très froid avec des dés de concombre et un filet d'huile.
+
+=== Salade horiatiki (grecque)
+id: horiatiki
+emoji: 🥗
+categorie: Entrée
+preparation: 15
+cuisson: 0
+portions: 4
+difficulte: Facile
+ingredients:
+- tomates : 600 g
+- concombre : 1
+- poivron : 1
+- oignon rouge : 1
+- feta : 200 g
+- olives : 100 g
+- huile d'olive : 5 c. à soupe
+- origan : 1 c. à café
+etapes:
+1. La vraie horiatiki ne contient pas de salade verte : uniquement des légumes en gros morceaux.
+2. Coupez les tomates en quartiers épais et salez-les tout de suite dans le saladier.
+3. Ajoutez le concombre en demi-lunes de 1 cm, le poivron en anneaux et l'oignon en fines rondelles.
+4. Ajoutez les olives et mélangez délicatement.
+5. Posez la feta en un seul bloc entier au-dessus, sans l'émietter : c'est la présentation traditionnelle.
+6. Saupoudrez l'origan sur la feta.
+7. Arrosez généreusement d'huile d'olive et servez sans attendre, avec du pain pour le jus.
+
+=== Chorba frik
+id: chorbafrik
+emoji: 🍲
+categorie: Entrée
+preparation: 20
+cuisson: 50
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/p9tebp1764118792.jpg
+ingredients:
+- agneau : 400 g
+- blé concassé : 150 g
+- tomates concassées : 400 g
+- oignon : 1
+- courgettes : 2
+- carottes : 2
+- pois chiches : 200 g
+- cannelle : 1 c. à café
+- coriandre : 1 pincée
+- concentré de tomate : 2 c. à soupe
+etapes:
+1. Coupez l'agneau en petits dés de 1,5 cm.
+2. Faites-le revenir avec l'oignon haché dans un peu d'huile jusqu'à ce qu'il colore.
+3. Ajoutez le concentré de tomate et la cannelle, remuez 1 min.
+4. Versez les tomates et 1,5 l d'eau, salez et laissez mijoter 25 min.
+5. Ajoutez les carottes et courgettes en petits dés, ainsi que les pois chiches.
+6. Versez le blé concassé en pluie en remuant pour éviter les paquets.
+7. Laissez cuire 20 min à petit feu en remuant de temps en temps : la soupe épaissit doucement.
+8. Ajoutez beaucoup de coriandre fraîche hors du feu et servez avec un trait de citron.
+
+=== Salade Cobb
+id: cobbsalade
+emoji: 🥗
+categorie: Entrée
+preparation: 20
+cuisson: 15
+portions: 4
+difficulte: Facile
+ingredients:
+- blancs de poulet : 2
+- tranches de lard : 6
+- œufs : 4
+- avocat : 1
+- tomates cerises : 200 g
+- laitue : 1
+- roquefort : 100 g
+- huile d'olive : 4 c. à soupe
+- vinaigre : 2 c. à soupe
+- moutarde : 1 c. à café
+etapes:
+1. Faites cuire les œufs 9 min, refroidissez-les à l'eau glacée puis écalez-les.
+2. Faites griller le lard à sec jusqu'à ce qu'il soit cassant, égouttez et brisez-le en éclats.
+3. Poêlez les blancs de poulet 6 min par face, laissez reposer 5 min puis coupez-les en dés.
+4. Émincez la laitue finement et étalez-la sur un grand plat rectangulaire.
+5. Disposez tous les ingrédients en bandes parallèles bien nettes : poulet, lard, œufs en quartiers, avocat, tomates, roquefort émietté.
+6. C'est cette présentation en rangées qui définit la Cobb : ne mélangez pas.
+7. Fouettez l'huile, le vinaigre et la moutarde avec sel et poivre.
+8. Présentez la vinaigrette à part et laissez chacun mélanger sa portion.
+
+=== Chaudrée de maïs
+id: chowdermais
+emoji: 🌽
+categorie: Entrée
+preparation: 15
+cuisson: 30
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/yf5eyw1783804464.jpg
+ingredients:
+- maïs : 600 g
+- pommes de terre : 400 g
+- tranches de lard : 4
+- oignon : 1
+- branches de céleri : 2
+- lait : 50 cl
+- bouillon de volaille : 30 cl
+- beurre : 30 g
+- farine : 2 c. à soupe
+- thym : 1 pincée
+etapes:
+1. Faites rendre le lard coupé en lardons dans une casserole jusqu'à ce qu'il croustille. Retirez-le et gardez la graisse.
+2. Faites fondre le beurre dedans, ajoutez l'oignon et le céleri en petits dés, 8 min.
+3. Saupoudrez de farine et remuez 2 min pour cuire le goût de cru.
+4. Versez le bouillon petit à petit en fouettant, puis le lait.
+5. Ajoutez les pommes de terre en cubes de 1,5 cm et le thym, laissez cuire 15 min.
+6. Ajoutez les deux tiers du maïs et poursuivez 5 min.
+7. Mixez un tiers de la soupe puis reversez-la dedans : elle devient crémeuse sans crème.
+8. Ajoutez le reste du maïs pour le croquant, rectifiez le sel, et servez parsemé des lardons croustillants.
+
+# ---------- Nouveautés v2 ----------
+
+=== Soupe tom yum aux crevettes
+id: tomyum
+emoji: 🍲
+categorie: Entrée
+preparation: 15
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/9c5nlx1763424766.jpg
+nouveau: oui
+ingredients:
+- crevettes : 300 g
+- bouillon de volaille : 1 l
+- citronnelle : 2
+- gingembre : 3 cm
+- champignons : 150 g
+- tomates cerises : 10
+- citrons verts : 2
+- sauce poisson : 3 c. à soupe
+- piment : 2
+- sucre : 1 c. à café
+- coriandre : 1 poignée
+etapes:
+1. Écrasez la citronnelle avec le plat d'un couteau et coupez-la en tronçons. Tranchez le gingembre.
+2. Faites frémir le bouillon avec la citronnelle, le gingembre et les piments 10 min.
+3. Ajoutez les champignons émincés et les tomates coupées en deux, laissez cuire 3 min.
+4. Ajoutez les crevettes décortiquées et faites-les cuire 2 min, jusqu'à ce qu'elles soient roses.
+5. Hors du feu, assaisonnez avec la sauce poisson, le sucre et le jus des citrons verts : la soupe doit être acide, salée et piquante.
+6. Servez parsemé de coriandre.
+
+=== Salade de saumon à l'avocat
+id: saladesaumonavocat
+emoji: 🥑
+categorie: Entrée
+preparation: 15
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/1549542994.jpg
+nouveau: oui
+ingredients:
+- pavés de saumon : 2
+- avocats : 2
+- salade : 1
+- concombre : 0.5
+- citron : 1
+- huile d'olive : 4 c. à soupe
+- moutarde : 1 c. à café
+- graines de sésame : 1 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Faites cuire le saumon 4 min par face dans une poêle huilée, côté peau d'abord. Laissez tiédir et effeuillez-le.
+2. Coupez les avocats et le concombre en dés, arrosez de jus de citron.
+3. Fouettez le reste du jus de citron avec l'huile, la moutarde, sel et poivre.
+4. Disposez la salade dans les assiettes, ajoutez l'avocat, le concombre et le saumon.
+5. Arrosez de vinaigrette et parsemez de sésame grillé.
+
+=== Salade russe (salade Olivier)
+id: saladerusse
+emoji: 🥔
+categorie: Entrée
+preparation: 25
+cuisson: 25
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ebvuir1699013665.jpg
+nouveau: oui
+ingredients:
+- pommes de terre : 500 g
+- carottes : 2
+- petits pois : 150 g
+- œufs : 3
+- cornichons : 6
+- jambon : 150 g
+- mayonnaise : 200 g
+- moutarde : 1 c. à café
+- aneth : 1 poignée
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Faites cuire les pommes de terre et les carottes entières dans l'eau salée 20 à 25 min. Ajoutez les petits pois les 5 dernières minutes.
+2. Faites cuire les œufs 9 min, refroidissez-les et écalez-les.
+3. Coupez les pommes de terre, les carottes, les œufs, les cornichons et le jambon en petits dés réguliers.
+4. Mélangez la mayonnaise avec la moutarde, sel et poivre.
+5. Mélangez délicatement tous les ingrédients avec la sauce et l'aneth ciselé.
+6. Laissez reposer 1 h au frais avant de servir.
+
+=== Bortsch (soupe de betterave)
+id: bortsch
+emoji: 🍲
+categorie: Entrée
+preparation: 20
+cuisson: 40
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/zadvgb1699012544.jpg
+nouveau: oui
+ingredients:
+- betteraves crues : 3
+- chou blanc : 0.25
+- pommes de terre : 2
+- carotte : 1
+- oignon : 1
+- concentré de tomate : 1 c. à soupe
+- bouillon : 1.5 l
+- vinaigre : 1 c. à soupe
+- crème fraîche : 6 c. à soupe
+- aneth : 1 poignée
+- huile : 2 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Épluchez et râpez les betteraves et la carotte, émincez l'oignon et le chou, coupez les pommes de terre en dés.
+2. Faites revenir l'oignon, la carotte et la betterave dans l'huile 8 min.
+3. Ajoutez le concentré de tomate et le vinaigre : il préserve la belle couleur rouge.
+4. Versez le bouillon, ajoutez les pommes de terre et le chou. Salez et laissez cuire 30 min.
+5. Servez avec une cuillère de crème fraîche et de l'aneth ciselé.
+
+=== Velouté brocoli et bleu
+id: veloutebrocoli
+emoji: 🥦
+categorie: Entrée
+preparation: 10
+cuisson: 25
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/tvvxpv1511191952.jpg
+nouveau: oui
+ingredients:
+- brocoli : 1
+- pomme de terre : 1
+- oignon : 1
+- bouillon : 1 l
+- bleu d'Auvergne : 100 g
+- crème liquide : 10 cl
+- beurre : 20 g
+- poivre : 1 pincée
+etapes:
+1. Faites fondre l'oignon émincé dans le beurre 5 min.
+2. Ajoutez le brocoli en fleurettes et la pomme de terre en dés, puis le bouillon.
+3. Laissez cuire 20 min jusqu'à ce que les légumes soient tendres.
+4. Mixez avec la crème et les trois quarts du fromage jusqu'à obtenir un velouté lisse. Poivrez (le fromage sale suffisamment).
+5. Servez avec le reste du bleu émietté sur le dessus.
+
+=== Soupe de pois cassés
+id: soupepoiscasses
+emoji: 🥣
+categorie: Entrée
+preparation: 15
+cuisson: 60
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/xxtsvx1511814083.jpg
+nouveau: oui
+ingredients:
+- pois cassés : 400 g
+- lardons : 150 g
+- oignon : 1
+- carotte : 1
+- poireau : 1
+- bouillon : 1.5 l
+- laurier : 1 feuilles
+- crème fraîche : 4 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Rincez les pois cassés. Faites revenir les lardons dans une cocotte 5 min, puis réservez-en la moitié.
+2. Ajoutez l'oignon, la carotte et le poireau émincés, laissez fondre 5 min.
+3. Ajoutez les pois cassés, le bouillon et le laurier. Laissez mijoter 50 min à couvert, en remuant de temps en temps.
+4. Retirez le laurier et mixez. Allongez avec un peu d'eau si la soupe est trop épaisse.
+5. Servez avec une cuillère de crème et les lardons réservés bien croustillants.
+
+=== Ajo blanco (soupe froide aux amandes)
+id: ajoblanco
+emoji: 🥣
+categorie: Entrée
+preparation: 15
+cuisson: 0
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/5jdtie1763289302.jpg
+nouveau: oui
+ingredients:
+- amandes : 150 g
+- pain : 100 g
+- gousses d'ail : 2
+- huile d'olive : 10 cl
+- vinaigre de xérès : 2 c. à soupe
+- eau : 60 cl
+- raisins : 1 poignée
+- sel : 1 pincée
+etapes:
+1. Faites tremper le pain sans croûte dans un peu d'eau 5 min, puis essorez-le.
+2. Mixez les amandes avec l'ail, le pain et un peu d'eau jusqu'à obtenir une pâte fine.
+3. Ajoutez l'huile d'olive en filet en mixant, puis le vinaigre, le sel et le reste de l'eau glacée.
+4. Passez au tamis pour une texture soyeuse et réservez 2 h au frais.
+5. Servez bien froid avec des grains de raisin coupés en deux et un filet d'huile d'olive.
+
+=== Bisque de crevettes au fenouil
+id: bisquecrevettes
+emoji: 🦐
+categorie: Entrée
+preparation: 20
+cuisson: 35
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/rtwwvv1511799504.jpg
+nouveau: oui
+ingredients:
+- crevettes : 400 g
+- fenouil : 1
+- oignon : 1
+- concentré de tomate : 2 c. à soupe
+- cognac : 3 c. à soupe
+- vin blanc : 10 cl
+- bouillon de poisson : 75 cl
+- crème liquide : 15 cl
+- beurre : 30 g
+- paprika : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Décortiquez les crevettes en gardant les têtes et carapaces. Faites revenir celles-ci dans le beurre 5 min en les écrasant : c'est là qu'est tout le goût.
+2. Ajoutez l'oignon et le fenouil émincés, puis le concentré de tomate, et laissez revenir 5 min.
+3. Versez le cognac, puis le vin blanc, et laissez réduire.
+4. Ajoutez le bouillon et laissez frémir 20 min. Mixez puis filtrez en pressant bien.
+5. Remettez sur le feu avec la crème et le paprika, ajoutez les crevettes coupées en morceaux et laissez cuire 2 min. Salez et servez.
+
+=== Soupe de haricots blancs au romarin
+id: soupeharicotsblancs
+emoji: 🥣
+categorie: Entrée
+preparation: 10
+cuisson: 25
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/p5nzbk1782680889.jpg
+nouveau: oui
+ingredients:
+- haricots blancs : 800 g
+- oignon : 1
+- gousses d'ail : 2
+- carotte : 1
+- romarin : 1 pincée
+- bouillon : 75 cl
+- parmesan : 30 g
+- huile d'olive : 3 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Faites revenir l'oignon, l'ail et la carotte hachés dans l'huile d'olive 6 min.
+2. Ajoutez les haricots égouttés, le romarin et le bouillon. Laissez mijoter 15 min.
+3. Mixez la moitié de la soupe et remélangez avec l'autre moitié : elle devient crémeuse en gardant des morceaux.
+4. Salez, poivrez et servez avec du parmesan râpé et un filet d'huile d'olive.
+
+=== Soupe chinoise à l'œuf
+id: soupeoeufchinoise
+emoji: 🥚
+categorie: Entrée
+preparation: 5
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/1529446137.jpg
+nouveau: oui
+ingredients:
+- bouillon de volaille : 1 l
+- œufs : 3
+- maïzena : 1 c. à soupe
+- sauce soja : 1 c. à soupe
+- gingembre : 2 cm
+- oignons nouveaux : 2
+- huile de sésame : 1 c. à café
+- poivre : 1 pincée
+etapes:
+1. Faites chauffer le bouillon avec le gingembre râpé et la sauce soja.
+2. Délayez la maïzena dans 3 c. à soupe d'eau froide et versez-la dans le bouillon frémissant en remuant : il épaissit légèrement.
+3. Battez les œufs. Tournez la soupe d'un mouvement circulaire et versez les œufs en filet fin : ils forment des rubans.
+4. Coupez le feu, ajoutez l'huile de sésame, le poivre et les oignons nouveaux émincés.
+
+=== Salade vietnamienne au poulet
+id: saladevietnamienne
+emoji: 🥗
+categorie: Entrée
+preparation: 25
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/pk8wtn1763758591.jpg
+nouveau: oui
+ingredients:
+- blancs de poulet : 2
+- chou chinois : 0.5
+- carottes : 2
+- concombre : 0.5
+- menthe : 1 poignée
+- coriandre : 1 poignée
+- cacahuètes : 50 g
+- citrons verts : 2
+- sauce poisson : 3 c. à soupe
+- sucre : 1 c. à soupe
+- piment : 1
+- gousse d'ail : 1
+etapes:
+1. Faites pocher le poulet 12 min dans l'eau frémissante, laissez-le refroidir et effilochez-le.
+2. Émincez très finement le chou, taillez les carottes et le concombre en bâtonnets.
+3. Mélangez le jus des citrons verts, la sauce poisson, le sucre, 3 c. à soupe d'eau, l'ail et le piment hachés.
+4. Mélangez le poulet, les légumes et les herbes avec la sauce.
+5. Parsemez de cacahuètes concassées et servez aussitôt.
+
+=== Salade de patate douce rôtie
+id: saladepatatedouce
+emoji: 🍠
+categorie: Entrée
+preparation: 15
+cuisson: 30
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/z458v91763817681.jpg
+nouveau: oui
+ingredients:
+- patates douces : 2
+- roquette : 100 g
+- feta : 100 g
+- oignon rouge : 0.5
+- graines de courge : 2 c. à soupe
+- huile d'olive : 4 c. à soupe
+- miel : 1 c. à soupe
+- vinaigre balsamique : 1 c. à soupe
+- cumin : 1 c. à café
+- sel : 1 pincée
+etapes:
+1. Préchauffez le four à 200 °C. Coupez les patates douces en cubes, enrobez-les de 2 c. à soupe d'huile, de cumin et de sel.
+2. Faites-les rôtir 25 à 30 min en les retournant à mi-cuisson.
+3. Fouettez le reste d'huile avec le miel et le vinaigre.
+4. Disposez la roquette, les patates douces tièdes, l'oignon émincé et la feta émiettée.
+5. Arrosez de vinaigrette et parsemez de graines de courge grillées.
+
+=== Soupe de pois chiches au chorizo
+id: soupepoischicheschorizo
+emoji: 🌶️
+categorie: Entrée
+preparation: 10
+cuisson: 25
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/kggfo91763288633.jpg
+nouveau: oui
+ingredients:
+- pois chiches : 800 g
+- chorizo : 150 g
+- oignon : 1
+- gousses d'ail : 2
+- tomates concassées : 400 g
+- paprika fumé : 1 c. à café
+- bouillon : 75 cl
+- épinards : 100 g
+- huile d'olive : 1 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Faites revenir le chorizo en rondelles dans l'huile 3 min, jusqu'à ce qu'il rende son huile rouge.
+2. Ajoutez l'oignon et l'ail hachés, puis le paprika, et laissez fondre 5 min.
+3. Ajoutez les tomates, les pois chiches égouttés et le bouillon. Laissez mijoter 15 min.
+4. Ajoutez les épinards en fin de cuisson, ils tombent en 1 min. Salez si besoin et servez avec du pain.

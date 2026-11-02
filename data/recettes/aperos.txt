@@ -1,0 +1,798 @@
+# Recettes « Apéro » — une recette par bloc « === Nom ». Voir scripts/recipe-format.mjs pour le format.
+
+=== Guacamole
+id: guacamole
+emoji: 🥑
+categorie: Apéro
+preparation: 10
+cuisson: 0
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/jyvy8u1783800448.jpg
+ingredients:
+- avocats mûrs : 3
+- citron vert : 1
+- tomate : 1
+- petit oignon : 1
+- gousse d'ail : 1
+- coriandre : 1 pincée
+- sel : 1 pincée
+- piment : 1 pincée
+etapes:
+1. Choisissez des avocats bien mûrs (ils cèdent légèrement sous le doigt). Coupez-les en deux, retirez le noyau et récupérez la chair à la cuillère dans un bol.
+2. Pressez le citron vert et versez le jus sur les avocats (cela évite qu'ils noircissent).
+3. Écrasez la chair à la fourchette, plus ou moins finement selon la texture voulue.
+4. Coupez la tomate en petits dés (retirez les pépins). Épluchez et hachez très finement l'oignon et l'ail.
+5. Ajoutez la tomate, l'oignon et l'ail au guacamole.
+6. Ciselez la coriandre et incorporez-la avec le sel et une pincée de piment.
+7. Mélangez et goûtez : ajustez le sel et le citron.
+8. Servez frais, avec des chips de maïs pour tremper.
+
+=== Houmous
+id: houmous
+emoji: 🧆
+categorie: Apéro
+preparation: 10
+cuisson: 0
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/gpon5u1763801180.jpg
+ingredients:
+- pois chiches : 400 g
+- tahini : 2 c. à soupe
+- citron : 1
+- gousses d'ail : 2
+- huile d'olive : 4 c. à soupe
+- cumin : 1 c. à café
+- paprika : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Égouttez et rincez les pois chiches sous l'eau froide.
+2. Pressez le citron. Épluchez l'ail.
+3. Mettez les pois chiches dans un mixeur avec le tahini, le jus de citron et l'ail.
+4. Mixez quelques secondes.
+5. Ajoutez l'huile d'olive et le cumin, puis mixez à nouveau jusqu'à obtenir une texture lisse.
+6. Si c'est trop épais, ajoutez 1 à 2 cuillères d'eau froide et mixez encore : le houmous devient crémeux.
+7. Salez et goûtez : rectifiez le citron ou le sel selon votre goût.
+8. Versez dans un bol, faites un puits avec le dos d'une cuillère, arrosez d'un filet d'huile et saupoudrez de paprika.
+
+=== Tzatziki
+id: tzatziki
+emoji: 🥒
+categorie: Apéro
+preparation: 15
+cuisson: 0
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/16zbeu1763789342.jpg
+ingredients:
+- yaourts grecs : 2
+- concombre : 1
+- gousses d'ail : 2
+- menthe : 1 c. à soupe
+- huile d'olive : 2 c. à soupe
+- citron : 1
+- sel : 1 pincée
+etapes:
+1. Lavez le concombre et râpez-le (avec ou sans la peau, au choix).
+2. Mettez le concombre râpé dans une passoire, salez légèrement et laissez dégorger 15 min : il rend son eau, c'est essentiel pour un tzatziki qui ne soit pas liquide.
+3. Pressez le concombre entre vos mains pour extraire le maximum d'eau.
+4. Épluchez et écrasez l'ail. Ciselez la menthe (ou l'aneth).
+5. Dans un bol, mélangez le yaourt grec, le concombre pressé, l'ail et la menthe.
+6. Ajoutez un filet d'huile d'olive et un peu de jus de citron. Salez et poivrez.
+7. Mélangez et réservez au frais au moins 30 min avant de servir avec du pain pita.
+
+=== Tapenade
+id: tapenade
+emoji: 🫒
+categorie: Apéro
+preparation: 10
+cuisson: 0
+portions: 4
+difficulte: Facile
+ingredients:
+- olives noires : 200 g
+- câpres : 2 c. à soupe
+- filets d'anchois : 3
+- gousse d'ail : 1
+- huile d'olive : 4 c. à soupe
+- citron : 1
+etapes:
+1. Dénoyautez les olives noires si elles ont encore leur noyau.
+2. Égouttez les câpres. Épluchez l'ail.
+3. Mettez les olives, les câpres, l'ail et les filets d'anchois dans un mixeur.
+4. Ajoutez l'huile d'olive.
+5. Mixez par à-coups jusqu'à obtenir une pâte (lisse ou avec des morceaux, selon votre goût).
+6. Poivrez (inutile de saler, les olives et les anchois le sont déjà).
+7. Servez sur des toasts grillés.
+
+=== Caviar d'aubergine
+id: caviaraubergine
+emoji: 🍆
+categorie: Apéro
+preparation: 10
+cuisson: 40
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/8c8m4q1763791156.jpg
+ingredients:
+- aubergines : 2
+- gousses d'ail : 2
+- huile d'olive : 4 c. à soupe
+- citron : 1
+- cumin : 1 c. à café
+- persil : 2 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Préchauffez le four à 200°C (th. 6-7).
+2. Lavez les aubergines et piquez-les avec une fourchette (cela évite qu'elles éclatent).
+3. Posez-les sur une plaque et enfournez 40 min : elles doivent être bien tendres et fripées.
+4. Laissez-les tiédir, puis coupez-les en deux et récupérez la chair à la cuillère.
+5. Épluchez et écrasez l'ail. Pressez le citron.
+6. Mettez la chair d'aubergine, l'ail, le jus de citron et l'huile d'olive dans un bol.
+7. Écrasez à la fourchette (ou mixez) jusqu'à obtenir une purée grossière.
+8. Salez, poivrez et parsemez de persil. Servez avec du pain.
+
+=== Bruschetta
+id: bruschetta
+emoji: 🍅
+categorie: Apéro
+preparation: 15
+cuisson: 5
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/lz9rw91779733434.jpg
+ingredients:
+- tranches de pain de campagne : 8
+- tomates : 4
+- gousses d'ail : 2
+- basilic : 1 poignée
+- huile d'olive : 4 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Lavez les tomates et coupez-les en petits dés (retirez les pépins pour éviter le jus).
+2. Épluchez et hachez très finement l'ail. Lavez et ciselez le basilic.
+3. Dans un bol, mélangez les tomates, l'ail, le basilic, un filet d'huile d'olive, du sel et du poivre. Laissez reposer 10 min.
+4. Coupez le pain en tranches et faites-les griller (au four, au grille-pain ou à la poêle).
+5. Frottez chaque tranche chaude avec une gousse d'ail coupée (facultatif, mais parfumé).
+6. Répartissez la préparation aux tomates sur les toasts.
+7. Arrosez d'un filet d'huile d'olive et servez aussitôt (sinon le pain ramollit).
+
+=== Nachos gratinés
+id: nachos
+emoji: 🧀
+categorie: Apéro
+preparation: 10
+cuisson: 10
+portions: 4
+difficulte: Facile
+ingredients:
+- chips de maïs : 200 g
+- cheddar râpé : 150 g
+- tomate : 1
+- oignon rouge : 0.5
+- jalapeños : 2 c. à soupe
+- crème fraîche : 4 c. à soupe
+- coriandre : 1 pincée
+etapes:
+1. Préchauffez le four à 200°C (th. 6-7).
+2. Étalez les chips de maïs dans un plat allant au four, en une couche pas trop épaisse.
+3. Parsemez généreusement de cheddar râpé.
+4. Répartissez les tranches de jalapeños par-dessus.
+5. Enfournez 8 min, jusqu'à ce que le fromage soit fondu et bouillonnant.
+6. Pendant ce temps, préparez une guacamole ou une salsa rapide (tomates en dés, oignon, citron).
+7. Sortez les nachos et servez aussitôt, avec la guacamole et de la crème pour tremper.
+
+=== Ailes de poulet croustillantes
+id: wings
+emoji: 🍗
+categorie: Apéro
+preparation: 15
+cuisson: 38
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/4hzyvq1763792564.jpg
+ingredients:
+- ailes de poulet : 1 kg
+- huile : 2 c. à soupe
+- paprika : 1 c. à soupe
+- ail en poudre : 1 c. à café
+- miel : 1 c. à soupe
+- sauce soja : 2 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Préchauffez le four à 200°C (th. 6-7).
+2. Séchez soigneusement les ailes avec du papier absorbant. C'est l'humidité de surface qui empêche la peau de croustiller.
+3. Dans un saladier, mélangez les ailes avec l'huile, le paprika, l'ail en poudre, du sel et du poivre. Massez-les pour bien les enrober.
+4. Disposez-les sur une plaque avec du papier cuisson, en une seule couche et bien espacées.
+5. Enfournez 20 min.
+6. Retournez les ailes et poursuivez 15 min : la peau doit être dorée et croustillante.
+7. Pendant ce temps, mélangez le miel et la sauce soja dans un bol.
+8. Sortez la plaque, badigeonnez les ailes de ce mélange et remettez 3 min pour les laquer.
+9. Vérifiez la cuisson : la chair doit se détacher facilement de l'os.
+10. Servez très chaud, avec une sauce au yaourt à côté.
+
+=== Chips de légumes
+id: chipslegumes
+emoji: 🥔
+categorie: Apéro
+preparation: 15
+cuisson: 25
+portions: 4
+difficulte: Facile
+ingredients:
+- betteraves : 2
+- carottes : 2
+- patate douce : 1
+- huile d'olive : 3 c. à soupe
+- paprika : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Préchauffez le four à 160°C (th. 5-6). Une température douce est indispensable : plus chaud, les chips brûlent avant de sécher.
+2. Épluchez tous les légumes.
+3. Taillez-les en rondelles très fines, idéalement à la mandoline. Plus c'est fin, plus c'est croustillant.
+4. Étalez les rondelles sur du papier absorbant et épongez-les bien.
+5. Mettez-les dans un saladier, versez l'huile d'olive, le sel et le paprika, puis mélangez à la main.
+6. Disposez-les sur une plaque avec du papier cuisson, en une seule couche sans qu'elles se chevauchent.
+7. Enfournez 15 min.
+8. Retournez les rondelles une à une et poursuivez 10 min, en surveillant : les bords se recroquevillent et brunissent vite.
+9. Sortez au fur et à mesure les chips déjà dorées, toutes ne cuisent pas à la même vitesse.
+10. Laissez-les refroidir complètement sur une grille : c'est en refroidissant qu'elles deviennent croustillantes.
+
+=== Gougères au fromage
+id: gougeres
+emoji: 🧀
+categorie: Apéro
+preparation: 20
+cuisson: 25
+portions: 6
+difficulte: Moyen
+ingredients:
+- eau : 25 cl
+- beurre : 100 g
+- farine : 150 g
+- œufs : 4
+- gruyère râpé : 120 g
+- muscade : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Préchauffez le four à 180°C (th. 6) et tapissez une plaque de papier cuisson.
+2. Dans une casserole, portez à ébullition l'eau, le beurre coupé en morceaux et le sel.
+3. Hors du feu, versez la farine d'un seul coup et mélangez énergiquement à la cuillère en bois.
+4. Remettez sur feu doux et remuez 2 min : la pâte se détache des parois et forme une boule. C'est ce qui la dessèche et la fait gonfler ensuite.
+5. Débarrassez la pâte dans un saladier et laissez tiédir 5 min. Trop chaude, elle cuirait les œufs.
+6. Incorporez les œufs un par un, en mélangeant bien après chaque ajout. La pâte doit devenir lisse et former un ruban qui retombe lentement.
+7. Ajoutez les trois quarts du gruyère et la muscade, puis mélangez.
+8. Déposez des petits tas de pâte de la taille d'une noix sur la plaque, bien espacés.
+9. Parsemez du reste de gruyère et enfournez 25 min sans jamais ouvrir la porte : un courant d'air les ferait retomber.
+10. Les gougères doivent être bien dorées et légères. Servez tièdes.
+
+=== Cake salé olives et lardons
+id: cakesale
+emoji: 🫒
+categorie: Apéro
+preparation: 15
+cuisson: 45
+portions: 6
+difficulte: Facile
+ingredients:
+- farine : 200 g
+- levure chimique : 1 sachet
+- œufs : 3
+- huile : 10 cl
+- lait : 12 cl
+- lardons : 200 g
+- olives vertes : 100 g
+- gruyère râpé : 100 g
+- poivre : 1 pincée
+etapes:
+1. Préchauffez le four à 180°C (th. 6). Beurrez un moule à cake ou tapissez-le de papier cuisson.
+2. Faites revenir les lardons 5 min à la poêle, sans matière grasse, puis égouttez-les sur du papier absorbant.
+3. Égouttez les olives et coupez-les en deux.
+4. Dans un saladier, battez les œufs. Ajoutez l'huile et le lait, et fouettez.
+5. Ajoutez la farine et la levure, puis mélangez juste assez pour obtenir une pâte homogène. Ne travaillez pas trop, le cake deviendrait élastique.
+6. Incorporez les lardons, les olives et le gruyère à la spatule.
+7. Poivrez généreusement et ne salez pas : lardons, olives et fromage apportent déjà tout le sel.
+8. Versez la pâte dans le moule et lissez le dessus.
+9. Enfournez 45 min. Vérifiez avec la lame d'un couteau plantée au centre : elle doit ressortir sèche.
+10. Laissez tiédir 10 min, démoulez et servez coupé en tranches ou en cubes.
+
+=== Samoussas au bœuf
+id: samoussas
+emoji: 🥟
+categorie: Apéro
+preparation: 30
+cuisson: 15
+portions: 4
+difficulte: Moyen
+ingredients:
+- feuilles de brick : 12
+- bœuf haché : 400 g
+- oignon : 1
+- gousses d'ail : 2
+- curry : 1 c. à café
+- cumin : 1 c. à café
+- bouquet de coriandre : 1
+- huile de friture : 50 cl
+etapes:
+1. Épluchez et hachez finement l'oignon et l'ail.
+2. Faites-les revenir 4 min dans une poêle avec un filet d'huile.
+3. Ajoutez le bœuf haché, écrasez-le à la cuillère et faites-le dorer 6 min.
+4. Ajoutez le curry et le cumin, salez, et mélangez 1 min.
+5. Laissez refroidir complètement la farce. Chaude, elle percerait les feuilles de brick.
+6. Ajoutez la coriandre ciselée à la farce froide.
+7. Coupez chaque feuille de brick en deux et repliez la partie arrondie pour obtenir une bande droite.
+8. Posez une cuillère de farce en haut de la bande, puis repliez en triangle successivement, d'un bord à l'autre, jusqu'au bout. Collez le dernier rabat avec un peu d'eau.
+9. Faites chauffer l'huile de friture à 170°C et plongez les samoussas par petites quantités, 2 à 3 min, jusqu'à ce qu'ils soient dorés.
+10. Égouttez-les sur du papier absorbant et servez chaud.
+
+=== Pop-corn maison
+id: popcorn
+emoji: 🍿
+categorie: Apéro
+preparation: 2
+cuisson: 3
+portions: 4
+difficulte: Facile
+ingredients:
+- maïs à pop-corn : 80 g
+- huile : 1 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Mettez les grains de maïs dans un grand saladier qui va au micro-ondes, avec l'huile et le sel.
+2. Mélangez pour que chaque grain soit enrobé d'un film d'huile.
+3. Couvrez d'une grande assiette posée à l'envers : elle laisse échapper la vapeur tout en retenant les grains qui sautent.
+4. Lancez 2 min à pleine puissance.
+5. Écoutez plutôt que de regarder l'horloge : les grains éclatent d'abord vite, puis de plus en plus lentement.
+6. Arrêtez dès qu'il s'écoule 2 secondes entre deux éclatements. Un grain brûlé parfume tout le saladier et rien ne rattrape ce goût.
+7. Sortez le saladier avec un torchon, il est brûlant, et retirez l'assiette en dirigeant la vapeur loin de votre visage.
+8. Jetez les grains non éclatés au fond, salez et servez aussitôt.
+
+=== Arancini (boulettes de risotto)
+id: arancini
+emoji: 🧆
+categorie: Apéro
+preparation: 30
+cuisson: 20
+portions: 6
+difficulte: Moyen
+ingredients:
+- riz arborio : 300 g
+- bouillon de volaille : 80 cl
+- parmesan : 100 g
+- mozzarella : 150 g
+- œufs : 2
+- chapelure : 150 g
+- oignon : 1
+- huile : 6 c. à soupe
+etapes:
+1. Préparez un risotto : faites revenir l'oignon émincé, ajoutez le riz, puis le bouillon chaud louche par louche en remuant, 18 min.
+2. Hors du feu, incorporez le parmesan. Étalez le risotto sur une plaque et laissez refroidir complètement (idéalement 1 h au frais).
+3. Coupez la mozzarella en petits cubes.
+4. Prenez une grosse cuillère de risotto froid dans la main humide, placez un cube de mozzarella au centre et refermez en boule bien serrée.
+5. Passez chaque boule dans l'œuf battu puis dans la chapelure.
+6. Faites-les dorer dans l'huile chaude 4 min en les tournant, jusqu'à ce qu'elles soient uniformément croustillantes.
+7. Égouttez sur du papier absorbant et servez chaud : le cœur doit être coulant.
+
+=== Patatas bravas
+id: patatasbravas
+emoji: 🥔
+categorie: Apéro
+preparation: 15
+cuisson: 35
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/bvg8sn1763298713.jpg
+ingredients:
+- pommes de terre : 800 g
+- tomates concassées : 400 g
+- oignon : 1
+- gousses d'ail : 3
+- paprika : 1 c. à café
+- piment : 1 pincée
+- vinaigre : 1 c. à soupe
+- huile d'olive : 6 c. à soupe
+etapes:
+1. Préchauffez le four à 210°C. Coupez les pommes de terre en cubes de 3 cm sans les éplucher.
+2. Enrobez-les d'huile et de sel, étalez-les sur une plaque sans les entasser.
+3. Enfournez 35 min en les retournant à mi-cuisson : elles doivent être croustillantes dehors, fondantes dedans.
+4. Pendant ce temps, faites revenir l'oignon et l'ail hachés dans un peu d'huile 5 min.
+5. Ajoutez le paprika et le piment hors du feu (ils brûlent vite), mélangez, puis versez les tomates et le vinaigre.
+6. Laissez mijoter 12 min et mixez pour obtenir une sauce lisse et bien rouge.
+7. Nappez les pommes de terre chaudes de sauce et servez aussitôt, à l'apéritif ou en accompagnement.
+
+=== Feuilles de vigne farcies
+id: dolmas
+emoji: 🍃
+categorie: Apéro
+preparation: 40
+cuisson: 45
+portions: 6
+difficulte: Difficile
+photo: https://www.themealdb.com/images/media/meals/oga0ax1780089591.jpg
+ingredients:
+- feuilles de vigne : 30
+- riz : 200 g
+- oignons : 2
+- citrons : 2
+- huile d'olive : 8 c. à soupe
+- menthe : 1 pincée
+- aneth : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Rincez les feuilles de vigne et faites-les blanchir 2 min à l'eau bouillante pour les assouplir. Égouttez.
+2. Émincez très finement les oignons et faites-les fondre 8 min dans la moitié de l'huile.
+3. Ajoutez le riz cru, les herbes, le jus d'un citron, du sel et du poivre. Mélangez 2 min hors du feu.
+4. Posez une feuille nervure vers le haut, déposez une petite cuillère de farce près de la base.
+5. Repliez la base, puis les côtés, et roulez fermement mais sans serrer : le riz va gonfler.
+6. Tapissez le fond d'une casserole de quelques feuilles, rangez les rouleaux serrés les uns contre les autres.
+7. Arrosez du reste d'huile et du jus du second citron, ajoutez de l'eau à hauteur et posez une assiette dessus pour les maintenir.
+8. Laissez cuire 45 min à feu doux. Servez tiède ou froid.
+
+=== Zaalouk (caviar d'aubergine marocain)
+id: zaalouk
+emoji: 🍆
+categorie: Apéro
+preparation: 15
+cuisson: 30
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/urtpqw1487341253.jpg
+ingredients:
+- aubergines : 2
+- tomates : 4
+- gousses d'ail : 4
+- huile d'olive : 5 c. à soupe
+- cumin : 1 c. à café
+- paprika : 1 c. à café
+- citron : 1
+- coriandre : 1 pincée
+etapes:
+1. Épluchez partiellement les aubergines (une bande sur deux) et coupez-les en cubes.
+2. Faites-les cuire 15 min à la vapeur ou à l'eau bouillante salée jusqu'à ce qu'elles soient très tendres.
+3. Pendant ce temps, faites revenir l'ail haché dans l'huile 1 min, ajoutez les tomates pelées et concassées.
+4. Laissez réduire 10 min à feu moyen.
+5. Ajoutez les aubergines égouttées et écrasez le tout à la fourchette : on cherche une texture rustique, pas une purée lisse.
+6. Ajoutez le cumin et le paprika, salez, et laissez compoter 10 min en remuant : le mélange doit devenir dense et brillant.
+7. Hors du feu, ajoutez le jus de citron et la coriandre.
+8. Servez tiède ou froid avec du pain.
+
+=== Moutabal (purée d'aubergine au sésame)
+id: moutabal
+emoji: 🍆
+categorie: Apéro
+preparation: 15
+cuisson: 40
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/dlmh401760524897.jpg
+ingredients:
+- aubergines : 3
+- sésame : 3 c. à soupe
+- citron : 1
+- gousses d'ail : 3
+- yaourt nature : 1
+- huile d'olive : 4 c. à soupe
+- cumin : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Préchauffez le four à 220°C. Piquez les aubergines à la fourchette et enfournez-les entières 40 min : la peau doit noircir et la chair s'affaisser.
+2. Laissez tiédir, fendez-les et récupérez la chair à la cuillère. Laissez-la égoutter 10 min dans une passoire.
+3. Écrasez la chair à la fourchette avec l'ail écrasé.
+4. Ajoutez le sésame moulu (ou de la purée de sésame), le jus de citron et le yaourt.
+5. Assaisonnez de cumin, de sel, et mélangez jusqu'à obtenir une purée onctueuse.
+6. Étalez dans un plat creux en dessinant un sillon à la cuillère.
+7. Arrosez généreusement d'huile d'olive et servez avec du pain pita.
+
+=== Ailes de poulet sauce buffalo
+id: buffalowings
+emoji: 🍗
+categorie: Apéro
+preparation: 15
+cuisson: 40
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/feh9k21784665694.jpg
+ingredients:
+- ailes de poulet : 1 kg
+- beurre : 60 g
+- concentré de tomate : 4 c. à soupe
+- vinaigre : 2 c. à soupe
+- paprika : 1 c. à café
+- piment : 1 pincée
+- maïzena : 2 c. à soupe
+- huile : 2 c. à soupe
+etapes:
+1. Préchauffez le four à 210°C. Séchez soigneusement les ailes avec du papier absorbant.
+2. Mélangez-les avec la maïzena, l'huile et du sel : la maïzena est le secret d'une peau vraiment croustillante au four.
+3. Étalez-les sur une grille posée sur une plaque, sans qu'elles se touchent.
+4. Enfournez 40 min en les retournant à mi-cuisson.
+5. Pendant ce temps, faites fondre le beurre avec le concentré de tomate, le vinaigre, le paprika et le piment. Fouettez pour lier.
+6. Versez les ailes chaudes dans un saladier, ajoutez la sauce et remuez pour les enrober.
+7. Servez immédiatement avec une sauce au yaourt pour tempérer.
+
+=== Salsa verde maison
+id: salsaverde
+emoji: 🥣
+categorie: Apéro
+preparation: 15
+cuisson: 10
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/81j8iu1782590903.jpg
+ingredients:
+- tomates vertes : 6
+- oignon : 1
+- gousses d'ail : 2
+- piment : 1
+- coriandre : 1 pincée
+- citron vert : 1
+- sel : 1 pincée
+etapes:
+1. À défaut de tomates vertes mexicaines, prenez des tomates fermes peu mûres : le résultat sera plus doux mais très bon.
+2. Faites griller les tomates, l'oignon coupé en deux, l'ail en chemise et le piment dans une poêle sèche à feu vif.
+3. Retournez-les régulièrement pendant 10 min : la peau doit noircir par endroits, c'est ce qui donne le goût fumé.
+4. Pelez l'ail et retirez la queue du piment.
+5. Mixez le tout grossièrement avec la coriandre : la salsa doit rester un peu texturée, pas lisse.
+6. Salez et ajoutez le jus du citron vert.
+7. Laissez refroidir avant de servir : les saveurs se posent en 30 min au frais.
+
+=== Focaccia au romarin
+id: focaccia
+emoji: 🍞
+categorie: Apéro
+preparation: 20
+cuisson: 25
+portions: 8
+difficulte: Facile
+ingredients:
+- farine : 500 g
+- eau : 35 cl
+- levure boulangère : 1
+- huile d'olive : 10 c. à soupe
+- sel : 2 c. à café
+- romarin : 2 c. à soupe
+- sucre : 1 c. à café
+etapes:
+1. Délayez la levure et le sucre dans l'eau tiède, laissez mousser 10 min.
+2. Mélangez avec la farine, le sel et 4 cuillères d'huile : la pâte doit être très collante, c'est normal et nécessaire.
+3. Ne la pétrissez pas, rabattez-la simplement sur elle-même 4 fois dans le saladier.
+4. Couvrez et laissez lever 2h à température ambiante : elle doit doubler et se remplir de bulles.
+5. Huilez généreusement une plaque et versez la pâte dessus, étalez-la du bout des doigts sans la dégazer.
+6. Laissez lever 30 min de plus, puis enfoncez vos doigts profondément partout pour créer les fameux cratères.
+7. Arrosez du reste d'huile, parsemez de romarin et de gros sel.
+8. Enfournez 25 min à 220°C : le dessous doit être doré et croustillant, la mie alvéolée.
+
+=== Crostini aux champignons
+id: crostinichampignons
+emoji: 🍄
+categorie: Apéro
+preparation: 15
+cuisson: 15
+portions: 6
+difficulte: Facile
+ingredients:
+- baguette : 1
+- champignons : 400 g
+- gousses d'ail : 3
+- crème fraîche : 10 cl
+- huile d'olive : 4 c. à soupe
+- persil : 1 pincée
+- parmesan : 50 g
+etapes:
+1. Coupez la baguette en tranches de 1,5 cm en biais.
+2. Badigeonnez-les d'huile et faites-les griller 8 min à 200°C jusqu'à ce qu'elles soient dorées et sèches.
+3. Frottez chaque tranche encore chaude avec une gousse d'ail crue.
+4. Nettoyez les champignons sans les laver et hachez-les grossièrement au couteau.
+5. Faites-les sauter à feu vif dans l'huile : ne les salez qu'à la fin, sinon ils rendent leur eau et bouillent.
+6. Quand ils sont bien dorés, ajoutez l'ail restant haché puis la crème, laissez réduire 2 min.
+7. Salez, poivrez et ajoutez le persil.
+8. Garnissez les toasts au dernier moment, parsemez de parmesan et servez tiède.
+
+=== Tiropita (feuilleté à la feta)
+id: tiropita
+emoji: 🥧
+categorie: Apéro
+preparation: 25
+cuisson: 35
+portions: 6
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/oal8x31764119345.jpg
+ingredients:
+- feuilles de brick : 8
+- feta : 400 g
+- ricotta : 100 g
+- œufs : 3
+- beurre : 100 g
+- aneth : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Préchauffez le four à 180°C et faites fondre le beurre.
+2. Écrasez la feta à la fourchette et mélangez-la avec la ricotta, les œufs battus, l'aneth et beaucoup de poivre. Ne salez pas : la feta suffit.
+3. Beurrez un moule, puis posez 4 feuilles en les badigeonnant de beurre fondu une par une.
+4. Laissez-les déborder généreusement du moule.
+5. Versez la garniture et étalez-la uniformément.
+6. Recouvrez des 4 feuilles restantes, toujours beurrées, puis rabattez les bords qui dépassent vers l'intérieur.
+7. Prédécoupez les parts avec un couteau bien aiguisé avant cuisson : après, la pâte s'effriterait.
+8. Enfournez 35 min jusqu'à ce que le dessus soit doré et croustillant. Laissez tiédir 10 min avant de servir.
+
+=== Maakouda (galettes de pomme de terre)
+id: maakouda
+emoji: 🥔
+categorie: Apéro
+preparation: 25
+cuisson: 20
+portions: 4
+difficulte: Facile
+photo: https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Maakouda.jpg/960px-Maakouda.jpg
+ingredients:
+- pommes de terre : 800 g
+- œufs : 3
+- gousses d'ail : 3
+- persil : 1 pincée
+- cumin : 1 c. à café
+- paprika : 1 c. à café
+- farine : 4 c. à soupe
+- huile : 30 cl
+etapes:
+1. Faites cuire les pommes de terre entières avec la peau 25 min à l'eau salée : elles absorbent moins d'eau qu'épluchées.
+2. Pelez-les encore chaudes et écrasez-les en purée sèche.
+3. Ajoutez l'ail écrasé, le persil, le cumin, le paprika, du sel et un œuf. Mélangez bien.
+4. Formez des galettes de 7 cm de diamètre et 1,5 cm d'épaisseur.
+5. Battez les deux œufs restants dans une assiette, mettez la farine dans une autre.
+6. Passez chaque galette dans la farine, puis dans l'œuf battu.
+7. Faites frire dans l'huile chaude 3 min par face jusqu'à ce qu'elles soient bien dorées.
+8. Égouttez sur du papier absorbant, salez et servez chaud avec de la harissa ou dans un sandwich.
+
+# ---------- Nouveautés v2 ----------
+
+=== Croquetas au jambon
+id: croquetas
+emoji: 🥖
+categorie: Apéro
+preparation: 30
+cuisson: 15
+portions: 6
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/6dpa7m1763331105.jpg
+nouveau: oui
+ingredients:
+- jambon serrano : 120 g
+- beurre : 60 g
+- farine : 70 g
+- lait : 50 cl
+- œufs : 2
+- chapelure : 100 g
+- muscade : 1 pincée
+- huile de friture : 1 l
+- sel : 1 pincée
+etapes:
+1. Faites fondre le beurre, ajoutez la farine et mélangez 2 min sans colorer.
+2. Versez le lait petit à petit en fouettant, jusqu'à obtenir une béchamel très épaisse. Ajoutez le jambon haché finement et la muscade.
+3. Étalez dans un plat, filmez au contact et laissez refroidir au moins 3 h au frais : la pâte doit être ferme.
+4. Formez de petits cylindres avec les mains légèrement farinées.
+5. Passez-les dans les œufs battus puis dans la chapelure.
+6. Faites-les frire 2 à 3 min dans l'huile à 180 °C, jusqu'à ce qu'ils soient dorés. Servez chaud.
+
+=== Calamars frits à l'andalouse
+id: calamarsfrits
+emoji: 🦑
+categorie: Apéro
+preparation: 15
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/yhi46r1763330279.jpg
+nouveau: oui
+ingredients:
+- calamars : 500 g
+- farine : 100 g
+- semoule fine : 50 g
+- paprika : 1 c. à café
+- huile de friture : 1 l
+- citron : 1
+- mayonnaise : 4 c. à soupe
+- gousse d'ail : 1
+- sel : 1 pincée
+etapes:
+1. Coupez les calamars en anneaux et séchez-les très soigneusement.
+2. Mélangez la farine, la semoule, le paprika et le sel.
+3. Roulez les anneaux dans ce mélange et secouez-les pour retirer l'excédent.
+4. Faites-les frire par petites quantités dans l'huile à 180 °C, 1 à 2 min seulement : trop cuits, ils deviennent caoutchouteux.
+5. Servez avec des quartiers de citron et la mayonnaise mélangée à l'ail râpé.
+
+=== Pão de queijo (boules au fromage)
+id: paodequeijo
+emoji: 🧀
+categorie: Apéro
+preparation: 15
+cuisson: 25
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/sl7cr91782588539.jpg
+nouveau: oui
+ingredients:
+- fécule de tapioca : 250 g
+- lait : 12 cl
+- huile : 6 cl
+- œufs : 2
+- parmesan : 100 g
+- sel : 1 pincée
+etapes:
+1. Portez à ébullition le lait, l'huile et le sel.
+2. Versez sur la fécule et mélangez : la pâte est collante et grumeleuse, c'est normal.
+3. Quand elle a tiédi, ajoutez les œufs un par un, puis le parmesan râpé, et pétrissez jusqu'à obtenir une pâte lisse.
+4. Préchauffez le four à 190 °C. Formez des boules avec les mains huilées et posez-les sur une plaque.
+5. Enfournez 20 à 25 min : elles gonflent et dorent. Mangez-les tièdes, croustillantes dehors et filantes dedans.
+
+=== Galettes de poulet thaï, sauce chili
+id: galettespoulethai
+emoji: 🍤
+categorie: Apéro
+preparation: 15
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/6s3i3p1763488540.jpg
+nouveau: oui
+ingredients:
+- poulet haché : 400 g
+- pâte de curry rouge : 1 c. à soupe
+- haricots verts : 50 g
+- citron vert : 1
+- coriandre : 1 poignée
+- sauce poisson : 1 c. à soupe
+- œuf : 1
+- huile : 3 c. à soupe
+- sauce chili douce : 6 c. à soupe
+etapes:
+1. Mélangez le poulet avec la pâte de curry, l'œuf, la sauce poisson, le zeste du citron vert et la coriandre ciselée.
+2. Ajoutez les haricots verts coupés en très fines rondelles.
+3. Formez de petites galettes avec les mains mouillées.
+4. Faites-les dorer dans l'huile 3 à 4 min par face.
+5. Servez avec la sauce chili et des quartiers de citron vert.
+
+=== Pimientos de Padrón
+id: padron
+emoji: 🫑
+categorie: Apéro
+preparation: 5
+cuisson: 8
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/0ljvc51763248075.jpg
+nouveau: oui
+ingredients:
+- petits piments verts : 300 g
+- huile d'olive : 3 c. à soupe
+- fleur de sel : 1 pincée
+etapes:
+1. Lavez et séchez soigneusement les piments.
+2. Faites chauffer l'huile d'olive dans une grande poêle à feu vif.
+3. Ajoutez les piments et faites-les sauter 5 à 8 min, jusqu'à ce que la peau cloque et noircisse par endroits.
+4. Égouttez-les sur du papier absorbant et parsemez généreusement de fleur de sel. Certains piquent, d'autres non : c'est tout le jeu.
+
+=== Pan con tomate au jambon serrano
+id: pancontomate
+emoji: 🍅
+categorie: Apéro
+preparation: 10
+cuisson: 5
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/hsp1fo1763327867.jpg
+nouveau: oui
+ingredients:
+- pain de campagne : 8 tranches
+- tomates : 3
+- gousse d'ail : 1
+- jambon serrano : 8 tranches
+- huile d'olive : 4 c. à soupe
+- fleur de sel : 1 pincée
+etapes:
+1. Faites griller les tranches de pain.
+2. Frottez-les avec la gousse d'ail coupée en deux.
+3. Coupez les tomates en deux et frottez-les sur le pain, ou râpez-les et étalez la pulpe.
+4. Arrosez d'huile d'olive, parsemez de fleur de sel.
+5. Déposez une tranche de jambon sur chaque tartine et servez aussitôt.

@@ -1,0 +1,6 @@
+node_modules/
+dist/
+# catalogue compilé depuis data/ (npm run data)
+src/data/
+*.log
+.DS_Store

@@ -1,0 +1,612 @@
+# Recettes « Petit-déj » — une recette par bloc « === Nom ». Voir scripts/recipe-format.mjs pour le format.
+
+=== Pancakes
+id: pancakes
+emoji: 🥞
+categorie: Petit-déj
+preparation: 10
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/rwuyqx1511383174.jpg
+ingredients:
+- farine : 200 g
+- œufs : 2
+- lait : 25 cl
+- levure chimique : 1 sachet
+- sucre : 2 c. à soupe
+- beurre : 30 g
+- sel : 1 pincée
+etapes:
+1. Dans un saladier, mélangez la farine, le sucre, la levure et le sel.
+2. Dans un autre bol, battez les œufs avec le lait.
+3. Versez le mélange liquide sur les ingrédients secs et fouettez juste assez pour obtenir une pâte lisse (ne mélangez pas trop, quelques petits grumeaux sont acceptables).
+4. Faites fondre le beurre et incorporez-le à la pâte. Laissez reposer 10 min si vous avez le temps.
+5. Faites chauffer une poêle antiadhésive à feu moyen, sans matière grasse ou à peine.
+6. Versez une petite louche de pâte pour former un disque épais.
+7. Attendez que des bulles apparaissent à la surface et que les bords soient pris (2 min environ).
+8. Retournez le pancake et faites cuire l'autre face 1 min.
+9. Réservez au chaud et répétez avec le reste de pâte.
+10. Servez tièdes, empilés, avec du sirop d'érable ou du miel.
+
+=== Banana bread
+id: bananabread
+emoji: 🍌
+categorie: Petit-déj
+preparation: 15
+cuisson: 50
+portions: 8
+difficulte: Facile
+ingredients:
+- bananes mûres : 3
+- farine : 200 g
+- sucre : 100 g
+- beurre : 80 g
+- œufs : 2
+- levure chimique : 1 sachet
+- cannelle : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Préchauffez le four à 170°C (th. 5-6). Beurrez un moule à cake ou tapissez-le de papier cuisson.
+2. Épluchez les bananes et écrasez-les à la fourchette jusqu'à obtenir une purée (des bananes bien mûres, presque noires, sont idéales).
+3. Faites fondre le beurre. Dans un saladier, mélangez-le avec le sucre.
+4. Ajoutez les œufs un à un en mélangeant.
+5. Incorporez la purée de bananes.
+6. Ajoutez la farine, la levure, la cannelle et le sel. Mélangez juste assez pour obtenir une pâte homogène.
+7. Versez la pâte dans le moule et lissez le dessus.
+8. Enfournez 50 min. Vérifiez la cuisson en plantant la lame d'un couteau au centre : elle doit ressortir sèche.
+9. Laissez tiédir 10 min, puis démoulez et laissez refroidir sur une grille.
+
+=== Œufs brouillés
+id: oeufsbrouilles
+emoji: 🍳
+categorie: Petit-déj
+preparation: 5
+cuisson: 5
+portions: 2
+difficulte: Facile
+ingredients:
+- œufs : 5
+- beurre : 20 g
+- crème fraîche : 2 c. à soupe
+- ciboulette : 1 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Cassez les œufs dans un bol. Salez, poivrez et battez-les à la fourchette.
+2. Faites fondre le beurre dans une poêle antiadhésive à feu doux (le feu doux est la clé d'œufs crémeux).
+3. Versez les œufs.
+4. Attendez quelques secondes, puis remuez doucement avec une spatule en ramenant les bords vers le centre.
+5. Continuez à remuer sans arrêt : les œufs prennent petit à petit en formant de petits amas crémeux.
+6. Coupez le feu quand ils sont encore un peu baveux (ils finissent de cuire avec la chaleur).
+7. Ajoutez la ciboulette ciselée et servez aussitôt sur du pain grillé.
+
+=== Pain perdu
+id: painperdu
+emoji: 🍞
+categorie: Petit-déj
+preparation: 10
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/927vvp1779732018.jpg
+ingredients:
+- tranches de pain rassis : 8
+- œufs : 3
+- lait : 40 cl
+- sucre : 60 g
+- beurre : 30 g
+- vanille : 1 c. à café
+- cannelle : 1 pincée
+etapes:
+1. Cassez les œufs dans un plat creux. Ajoutez le lait, le sucre et une pincée de cannelle, puis battez le tout.
+2. Trempez chaque tranche de pain (du pain un peu rassis est idéal) dans le mélange, 30 secondes de chaque côté, pour qu'elle s'imbibe bien sans se déliter.
+3. Faites fondre le beurre dans une poêle à feu moyen.
+4. Déposez les tranches et faites-les dorer 2 à 3 min de chaque côté, jusqu'à ce qu'elles soient bien dorées.
+5. Saupoudrez d'un peu de sucre.
+6. Servez tiède, nature ou avec du sirop d'érable, de la confiture ou des fruits.
+
+=== Gaufres
+id: gaufres
+emoji: 🧇
+categorie: Petit-déj
+preparation: 15
+cuisson: 15
+portions: 6
+difficulte: Facile
+ingredients:
+- farine : 250 g
+- œufs : 3
+- lait : 40 cl
+- beurre fondu : 100 g
+- sucre : 50 g
+- levure chimique : 1 sachet
+- vanille : 1 c. à café
+- sel : 1 pincée
+etapes:
+1. Dans un saladier, mélangez la farine, le sucre, la levure et le sel.
+2. Séparez les blancs des jaunes d'œufs.
+3. Ajoutez les jaunes et le lait aux ingrédients secs, et fouettez jusqu'à obtenir une pâte lisse.
+4. Faites fondre le beurre et incorporez-le à la pâte.
+5. Montez les blancs en neige ferme et incorporez-les délicatement (c'est ce qui rend les gaufres légères).
+6. Faites chauffer le gaufrier et huilez-le légèrement si besoin.
+7. Versez une louche de pâte, refermez et laissez cuire 3 à 4 min, jusqu'à ce que la gaufre soit dorée.
+8. Servez tiède avec du sucre glace, du chocolat ou de la chantilly.
+
+=== Muffins aux myrtilles
+id: muffinsmyrtilles
+emoji: 🫐
+categorie: Petit-déj
+preparation: 15
+cuisson: 25
+portions: 12
+difficulte: Facile
+ingredients:
+- farine : 250 g
+- myrtilles : 150 g
+- sucre : 120 g
+- œufs : 2
+- lait : 15 cl
+- beurre fondu : 80 g
+- levure chimique : 1 sachet
+- sel : 1 pincée
+etapes:
+1. Préchauffez le four à 180°C (th. 6). Disposez des caissettes en papier dans un moule à muffins.
+2. Dans un saladier, mélangez la farine, le sucre, la levure et le sel.
+3. Dans un autre bol, battez les œufs avec le lait et le beurre fondu.
+4. Versez le mélange liquide sur les ingrédients secs et mélangez juste ce qu'il faut (une pâte trop travaillée donne des muffins durs ; quelques grumeaux sont normaux).
+5. Incorporez délicatement les myrtilles (roulez-les dans un peu de farine pour qu'elles ne tombent pas au fond).
+6. Répartissez la pâte dans les caissettes, aux trois quarts.
+7. Enfournez 20 à 25 min. Vérifiez avec la pointe d'un couteau : elle doit ressortir sèche.
+8. Laissez tiédir avant de déguster.
+
+=== Granola maison
+id: granola
+emoji: 🥣
+categorie: Petit-déj
+preparation: 10
+cuisson: 30
+portions: 8
+difficulte: Facile
+ingredients:
+- flocons d'avoine : 300 g
+- amandes : 100 g
+- miel : 60 g
+- huile : 50 g
+- graines de courge : 50 g
+- raisins secs : 100 g
+- cannelle : 1 c. à café
+etapes:
+1. Préchauffez le four à 150°C (th. 5). Une chaleur douce est essentielle : plus chaud, le miel brûle avant que les flocons sèchent.
+2. Concassez grossièrement les amandes.
+3. Dans un grand saladier, mélangez les flocons d'avoine, les amandes, les graines de courge et la cannelle.
+4. Faites tiédir le miel avec l'huile dans une petite casserole, juste pour qu'ils se mélangent facilement.
+5. Versez ce mélange sur les flocons et remuez longuement : chaque flocon doit être enrobé.
+6. Étalez le tout sur une plaque avec du papier cuisson, en couche régulière.
+7. Enfournez 15 min.
+8. Remuez, tassez légèrement avec le dos d'une cuillère si vous aimez les gros morceaux, puis poursuivez 15 min.
+9. Sortez la plaque quand le granola est doré. Il paraît encore mou : c'est normal, il durcit en refroidissant.
+10. Laissez refroidir complètement, ajoutez les raisins secs et conservez dans un bocal hermétique.
+
+=== Porridge aux flocons d'avoine
+id: porridge
+emoji: 🥣
+categorie: Petit-déj
+preparation: 5
+cuisson: 10
+portions: 2
+difficulte: Facile
+ingredients:
+- flocons d'avoine : 100 g
+- lait : 40 cl
+- miel : 2 c. à soupe
+- banane : 1
+- amandes : 30 g
+- cannelle : 1 pincée
+etapes:
+1. Versez les flocons d'avoine et le lait dans une casserole, avec une pincée de sel.
+2. Portez à petit frémissement à feu moyen, sans couvrir.
+3. Baissez le feu et laissez cuire 6 à 8 min en remuant régulièrement. C'est le fait de remuer qui rend le porridge crémeux.
+4. Ajoutez un peu de lait si le mélange épaissit trop vite : il doit rester coulant, il se resserre encore hors du feu.
+5. Goûtez : les flocons doivent être tendres et fondus, sans grain dur.
+6. Coupez le feu et ajoutez la cannelle et 1 c. à soupe de miel.
+7. Coupez la banane en rondelles et concassez les amandes.
+8. Répartissez le porridge dans deux bols.
+9. Disposez la banane et les amandes par-dessus.
+10. Arrosez du reste de miel et servez aussitôt.
+
+=== Avocado toast à l'œuf
+id: avocadotoast
+emoji: 🥑
+categorie: Petit-déj
+preparation: 10
+cuisson: 5
+portions: 2
+difficulte: Facile
+ingredients:
+- tranches de pain de campagne : 2
+- avocat : 1
+- œufs : 2
+- citron : 1
+- huile d'olive : 1 c. à soupe
+- piment : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Faites griller les tranches de pain jusqu'à ce qu'elles soient bien dorées et croustillantes.
+2. Coupez l'avocat en deux, retirez le noyau et prélevez la chair à la cuillère.
+3. Écrasez-la grossièrement à la fourchette avec le jus d'un demi-citron, du sel et du poivre. Gardez des morceaux, c'est meilleur qu'une purée lisse.
+4. Portez une petite casserole d'eau à frémissement et ajoutez 1 c. à soupe de vinaigre si vous en avez.
+5. Cassez chaque œuf dans un ramequin, puis faites-le glisser doucement dans l'eau frémissante, jamais bouillante.
+6. Pochez 3 min : le blanc doit envelopper le jaune, qui reste coulant.
+7. Récupérez les œufs à l'écumoire et posez-les sur du papier absorbant.
+8. Tartinez généreusement l'avocat écrasé sur les toasts.
+9. Posez un œuf poché sur chaque toast.
+10. Arrosez d'un filet d'huile d'olive, salez, parsemez de piment et servez aussitôt.
+
+=== Smoothie bowl aux fruits rouges
+id: smoothiebowl
+emoji: 🍓
+categorie: Petit-déj
+preparation: 10
+cuisson: 0
+portions: 2
+difficulte: Facile
+ingredients:
+- bananes : 2
+- fruits rouges surgelés : 250 g
+- lait : 15 cl
+- yaourt nature : 2 c. à soupe
+- granola : 2 c. à soupe
+- graines de chia : 1 c. à soupe
+- miel : 1 c. à soupe
+etapes:
+1. Coupez une banane et demie en rondelles et gardez le reste pour la décoration.
+2. Mettez les fruits rouges surgelés, les rondelles de banane et le yaourt dans un blender.
+3. Ajoutez seulement la moitié du lait : le secret d'un smoothie bowl, c'est une texture épaisse à la cuillère, pas une boisson.
+4. Mixez par à-coups en raclant les parois. Ajoutez le lait restant petit à petit, uniquement si le blender peine.
+5. Arrêtez dès que le mélange est lisse et se tient : il doit former un pic sur la spatule.
+6. Goûtez et ajoutez le miel si les fruits sont acides.
+7. Répartissez dans deux bols et lissez la surface.
+8. Disposez le reste de banane en rondelles sur le dessus.
+9. Parsemez de granola et de graines de chia.
+10. Servez immédiatement, avant que la préparation ne fonde.
+
+=== Œuf poché au micro-ondes
+id: oeufpoche
+emoji: 🥚
+categorie: Petit-déj
+preparation: 2
+cuisson: 1
+portions: 1
+difficulte: Facile
+ingredients:
+- œuf : 1
+- eau : 15 cl
+- vinaigre : 1 c. à café
+- sel : 1 pincée
+etapes:
+1. Versez l'eau dans un bol ou un mug, ajoutez le vinaigre et une pincée de sel.
+2. Cassez l'œuf délicatement dedans : il doit être entièrement recouvert d'eau, sinon le blanc sèche et durcit.
+3. Percez le jaune d'un coup de pointe de couteau. C'est indispensable : la membrane emprisonne la vapeur et le jaune explose sans cette entaille.
+4. Couvrez d'une petite assiette.
+5. Faites cuire 50 secondes à puissance moyenne.
+6. Vérifiez : le blanc doit être opaque et le jaune encore coulant. Relancez par tranches de 10 secondes si besoin.
+7. Récupérez l'œuf à l'écumoire et posez-le sur du papier absorbant.
+8. Servez sur du pain, une salade ou un bol de riz.
+
+=== Chocolat chaud
+id: chocolatchaud
+emoji: ☕
+categorie: Petit-déj
+preparation: 3
+cuisson: 3
+portions: 2
+difficulte: Facile
+ingredients:
+- lait : 40 cl
+- chocolat noir : 60 g
+- sucre : 1 c. à soupe
+- cannelle : 1 pincée
+etapes:
+1. Hachez le chocolat au couteau : en petits morceaux, il fond sans grumeaux.
+2. Versez le lait dans un grand pichet ou deux grands mugs, sans dépasser la moitié de leur hauteur. Le lait monte d'un coup et déborde.
+3. Chauffez 1 min 30 à pleine puissance.
+4. Ajoutez le chocolat haché et le sucre, puis mélangez 30 secondes au fouet : la chaleur du lait suffit à faire fondre l'essentiel.
+5. Remettez 30 secondes si des morceaux résistent, puis fouettez à nouveau.
+6. Fouettez énergiquement une dernière fois pour faire mousser.
+7. Ajoutez la cannelle et servez très chaud.
+
+=== Huevos rancheros
+id: huevosrancheros
+emoji: 🍳
+categorie: Petit-déj
+preparation: 10
+cuisson: 20
+portions: 2
+difficulte: Facile
+ingredients:
+- œufs : 4
+- tortillas : 4
+- tomates concassées : 400 g
+- oignon : 1
+- poivron : 1
+- gousses d'ail : 2
+- piment : 1 pincée
+- huile : 3 c. à soupe
+etapes:
+1. Émincez l'oignon et le poivron, hachez l'ail.
+2. Faites revenir l'oignon et le poivron dans l'huile 6 min à feu moyen.
+3. Ajoutez l'ail et le piment, mélangez 1 min.
+4. Versez les tomates concassées, salez et laissez mijoter 8 min : la sauce doit épaissir.
+5. Réchauffez les tortillas dans une poêle sèche, 30 secondes par face.
+6. Faites cuire les œufs au plat : le blanc pris, le jaune coulant.
+7. Posez les tortillas dans les assiettes, nappez de sauce et déposez les œufs dessus. Servez immédiatement.
+
+=== Pancakes américains moelleux
+id: pancakesamericains
+emoji: 🥞
+categorie: Petit-déj
+preparation: 10
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/sywswr1511383814.jpg
+ingredients:
+- farine : 250 g
+- œufs : 2
+- lait : 30 cl
+- sucre : 3 c. à soupe
+- levure chimique : 1
+- beurre : 40 g
+- sel : 1 pincée
+- sirop d'érable : 4 c. à soupe
+etapes:
+1. Mélangez la farine, le sucre, la levure et le sel dans un saladier.
+2. Dans un autre récipient, battez les œufs avec le lait et le beurre fondu.
+3. Versez le liquide sur les poudres et mélangez brièvement : quelques grumeaux sont normaux et même souhaitables.
+4. Laissez reposer la pâte 10 min : elle épaissit et les pancakes gonflent mieux.
+5. Faites chauffer une poêle à feu moyen, légèrement beurrée.
+6. Versez une petite louche de pâte. Quand des bulles apparaissent à la surface et éclatent (environ 2 min), retournez.
+7. Poursuivez 1 min de l'autre côté et réservez au chaud sous un torchon.
+8. Servez en pile, arrosés de sirop d'érable.
+
+=== Msemen (crêpes feuilletées)
+id: msemen
+emoji: 🫓
+categorie: Petit-déj
+preparation: 30
+cuisson: 20
+portions: 6
+difficulte: Moyen
+ingredients:
+- farine : 400 g
+- semoule de blé : 100 g
+- eau : 25 cl
+- sel : 1 c. à café
+- sucre : 1 c. à café
+- beurre : 80 g
+- huile : 6 c. à soupe
+- miel : 4 c. à soupe
+etapes:
+1. Mélangez farine, semoule, sel et sucre, puis ajoutez l'eau tiède progressivement.
+2. Pétrissez 10 min : la pâte doit devenir très souple et élastique, presque molle.
+3. Divisez en 8 boules, huilez-les et laissez reposer 20 min sous un film.
+4. Faites fondre le beurre et mélangez-le avec l'huile.
+5. Sur un plan de travail bien huilé, étalez une boule à la main jusqu'à ce qu'elle soit translucide, très fine.
+6. Badigeonnez de beurre-huile, saupoudrez d'un peu de semoule, puis repliez les côtés vers le centre pour former une bande, puis la bande en carré.
+7. Laissez reposer 10 min puis réétalez doucement chaque carré à 15 cm.
+8. Faites cuire dans une poêle sèche chaude 2 min par face en appuyant : les couches se séparent et gonflent. Servez avec du miel.
+
+=== Manakich za'atar
+id: manakich
+emoji: 🫓
+categorie: Petit-déj
+preparation: 25
+cuisson: 12
+portions: 6
+difficulte: Facile
+ingredients:
+- farine : 500 g
+- eau : 30 cl
+- levure boulangère : 1
+- huile d'olive : 4 c. à soupe
+- sel : 1 c. à café
+- sucre : 1 c. à café
+- thym : 6 c. à soupe
+- graines de sésame : 2 c. à soupe
+etapes:
+1. Délayez la levure et le sucre dans l'eau tiède, attendez 10 min qu'elle mousse.
+2. Pétrissez avec la farine, le sel et une cuillère d'huile pendant 8 min.
+3. Couvrez et laissez lever 1h30 : la pâte doit doubler.
+4. Préparez le za'atar en mélangeant le thym, le sésame grillé, une pincée de sel et le reste d'huile jusqu'à une pâte coulante.
+5. Préchauffez le four au maximum avec une plaque à l'intérieur.
+6. Divisez la pâte en 6 et étalez chaque boule en disque de 18 cm, assez fin.
+7. Étalez le mélange za'atar dessus en laissant 1 cm de bord, et enfoncez le bout des doigts pour marquer la surface.
+8. Enfournez sur la plaque brûlante 8 à 10 min : les bords gonflent et dorent. Se mange chaud, plié en deux.
+
+=== Bagel au saumon fumé
+id: bagelsaumon
+emoji: 🥯
+categorie: Petit-déj
+preparation: 10
+cuisson: 0
+portions: 2
+difficulte: Facile
+ingredients:
+- bagels : 2
+- saumon fumé : 120 g
+- fromage frais : 100 g
+- oignon rouge : 1
+- câpres : 2 c. à soupe
+- aneth : 1 pincée
+- citron : 1
+- poivre : 1 pincée
+etapes:
+1. Coupez les bagels en deux et faites-les toaster jusqu'à ce que la surface soit dorée.
+2. Mélangez le fromage frais avec l'aneth ciselée, un peu de zeste de citron et du poivre.
+3. Tartinez généreusement les deux moitiés : la couche doit être épaisse.
+4. Émincez l'oignon rouge en rondelles très fines et rincez-les à l'eau froide pour les adoucir.
+5. Disposez le saumon fumé en le repliant en vagues plutôt qu'à plat : c'est plus agréable en bouche.
+6. Ajoutez les rondelles d'oignon et les câpres.
+7. Terminez par un trait de citron et du poivre, refermez ou servez ouvert.
+
+# ---------- Nouveautés v2 ----------
+
+=== Œufs Bénédicte au saumon
+id: oeufsbenedicte
+emoji: 🍳
+categorie: Petit-déj
+preparation: 15
+cuisson: 15
+portions: 2
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/1550440197.jpg
+nouveau: oui
+ingredients:
+- œufs : 4
+- jaunes d'œufs : 2
+- muffins anglais : 2
+- saumon fumé : 4 tranches
+- beurre : 100 g
+- citron : 0.5
+- vinaigre : 2 c. à soupe
+- ciboulette : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Pour la sauce hollandaise, fouettez les jaunes avec 1 c. à soupe d'eau au bain-marie jusqu'à ce qu'ils épaississent et moussent.
+2. Ajoutez le beurre fondu en filet en fouettant, puis le jus du citron et le sel. Gardez au chaud hors du feu.
+3. Faites frémir de l'eau avec le vinaigre. Créez un tourbillon et cassez-y un œuf : 3 min de cuisson pour un jaune coulant. Recommencez pour chaque œuf.
+4. Toastez les muffins coupés en deux.
+5. Posez une tranche de saumon sur chaque moitié, un œuf poché, et nappez de sauce hollandaise. Parsemez de ciboulette.
+
+=== Petit-déjeuner anglais
+id: englishbreakfast
+emoji: 🍳
+categorie: Petit-déj
+preparation: 10
+cuisson: 20
+portions: 2
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/utxryw1511721587.jpg
+nouveau: oui
+ingredients:
+- œufs : 2
+- saucisses : 4
+- bacon : 4 tranches
+- haricots blancs à la sauce tomate : 400 g
+- champignons : 150 g
+- tomates : 2
+- pain de mie : 2 tranches
+- beurre : 20 g
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Faites dorer les saucisses à la poêle 12 min, en les retournant.
+2. Ajoutez le bacon et faites-le griller 3 min de chaque côté. Gardez au chaud.
+3. Dans la même poêle, faites sauter les champignons et les tomates coupées en deux 5 min.
+4. Faites réchauffer les haricots dans une petite casserole.
+5. Faites cuire les œufs au plat et griller le pain beurré.
+6. Servez tout ensemble sur une grande assiette bien chaude.
+
+=== Pancakes à l'avoine
+id: pancakesavoine
+emoji: 🥞
+categorie: Petit-déj
+preparation: 10
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/c400ok1764439058.jpg
+nouveau: oui
+ingredients:
+- flocons d'avoine : 150 g
+- banane : 1
+- œufs : 2
+- lait : 20 cl
+- levure chimique : 1 c. à café
+- cannelle : 1 pincée
+- huile : 1 c. à soupe
+- sirop d'érable : 4 c. à soupe
+- myrtilles : 100 g
+etapes:
+1. Mixez les flocons d'avoine en farine.
+2. Ajoutez la banane, les œufs, le lait, la levure et la cannelle, et mixez jusqu'à obtenir une pâte épaisse. Laissez reposer 5 min.
+3. Huilez légèrement une poêle chaude et versez de petites louches de pâte.
+4. Retournez quand des bulles apparaissent à la surface, après 2 min environ.
+5. Servez en pile avec les myrtilles et le sirop d'érable.
+
+=== Poffertjes (mini-pancakes hollandais)
+id: poffertjes
+emoji: 🥞
+categorie: Petit-déj
+preparation: 15
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/oaqz9f1766593912.jpg
+nouveau: oui
+ingredients:
+- farine : 200 g
+- lait : 30 cl
+- œuf : 1
+- levure boulangère : 1 sachet
+- sucre : 1 c. à soupe
+- beurre : 40 g
+- sucre glace : 3 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Faites tiédir le lait et mélangez-le avec la levure et le sucre.
+2. Ajoutez la farine, l'œuf et le sel, fouettez jusqu'à obtenir une pâte lisse. Laissez lever 45 min au chaud.
+3. Beurrez une poêle à blinis ou une poêle classique et versez de petites cuillères de pâte.
+4. Retournez-les dès que le dessous est doré, environ 1 min par face.
+5. Servez chaud avec une noisette de beurre et beaucoup de sucre glace.
+
+=== Feuilletés fromage frais et fruits rouges
+id: feuilletesfruits
+emoji: 🫐
+categorie: Petit-déj
+preparation: 15
+cuisson: 18
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/1543774956.jpg
+nouveau: oui
+ingredients:
+- pâte feuilletée : 1
+- fromage frais : 150 g
+- sucre : 2 c. à soupe
+- vanille : 1
+- fruits rouges : 150 g
+- œuf : 1
+- sucre glace : 1 c. à soupe
+etapes:
+1. Préchauffez le four à 200 °C. Découpez la pâte en 6 carrés et posez-les sur une plaque.
+2. Tracez un cadre à 1 cm du bord de chaque carré sans couper jusqu'au fond.
+3. Mélangez le fromage frais avec le sucre et la vanille, et étalez-en au centre de chaque carré.
+4. Ajoutez les fruits rouges, badigeonnez les bords d'œuf battu.
+5. Enfournez 15 à 18 min, jusqu'à ce que les bords soient gonflés et dorés. Saupoudrez de sucre glace.
+
+=== Beignets à la noix de coco (mandazi)
+id: mandazi
+emoji: 🍩
+categorie: Petit-déj
+preparation: 20
+cuisson: 15
+portions: 6
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/thazgm1555350962.jpg
+nouveau: oui
+ingredients:
+- farine : 300 g
+- lait de coco : 15 cl
+- sucre : 60 g
+- œuf : 1
+- levure chimique : 2 c. à café
+- cardamome : 1 c. à café
+- huile de friture : 1 l
+- sel : 1 pincée
+etapes:
+1. Mélangez la farine, le sucre, la levure, la cardamome et le sel.
+2. Ajoutez l'œuf et le lait de coco, pétrissez jusqu'à obtenir une pâte souple. Laissez reposer 20 min.
+3. Étalez la pâte sur 1 cm d'épaisseur et découpez des triangles.
+4. Faites-les frire dans l'huile à 170 °C, 2 à 3 min par face : ils gonflent et dorent.
+5. Égouttez sur du papier absorbant. Délicieux tièdes avec un thé ou un café.
