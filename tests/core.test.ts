@@ -4,7 +4,7 @@ import { cuisineDe, familleRepas, isVege, respectsDiet } from "../src/core/class
 import { fmtClock, parseDuration, stepIngredients } from "../src/core/cooking";
 import { addDays, addToFridge, debitFridge, freshness, ingStatus, missingFor, type FridgeItem } from "../src/core/fridge";
 import { canonIngredient, pantryName, sameProduct, separeQuantite } from "../src/core/ingredients";
-import { extractRecipeJsonLd, parseIngredientLine, recipeFromJsonLd } from "../src/core/jsonld";
+import { extractRecipeJsonLd, isoMinutes, parseIngredientLine, parseYield, recipeFromJsonLd } from "../src/core/jsonld";
 import { decodeRecipe, decodeSync, encodeRecipe, encodeSync, parseIncomingLink } from "../src/core/links";
 import { codeBarreValide, quantiteOFF, versPieces } from "../src/core/off";
 import { agendaCompte, cleJour, joursAgenda, poseRestes, poseSlot, purgeAgenda, Tirage, tirageMultiple, type Agenda } from "../src/core/planner";
@@ -204,6 +204,31 @@ describe("import web", () => {
     expect(parseIngredientLine("½ citron")).toEqual({ q: 0.5, u: "", n: "citron" });
     expect(parseIngredientLine("1,5 l de lait")).toEqual({ q: 1.5, u: "l", n: "lait" });
     expect(parseIngredientLine("sel, poivre")).toEqual({ q: null, u: "", n: "sel, poivre" });
+  });
+  it("comprend les écritures de Marmiton, Ricardo, 750g…", () => {
+    expect(parseIngredientLine("3 c. à soupe de sucre")).toEqual({ q: 3, u: "c. à soupe", n: "sucre" });
+    expect(parseIngredientLine("1/2 c. à thé de sel")).toEqual({ q: 0.5, u: "c. à café", n: "sel" });
+    expect(parseIngredientLine("2 c.à.s d'huile")).toEqual({ q: 2, u: "c. à soupe", n: "huile" });
+    expect(parseIngredientLine("1 c.c de coriandre en grain")).toEqual({ q: 1, u: "c. à café", n: "coriandre en grain" });
+    expect(parseIngredientLine("250 ml (1 tasse) de farine tout usage")).toEqual({ q: 250, u: "ml", n: "farine tout usage" });
+    expect(parseIngredientLine("1 1/2 tasse de lait")).toEqual({ q: 375, u: "ml", n: "lait" });
+    expect(parseIngredientLine("1 boîte de 400 g de pois chiches")).toEqual({ q: 400, u: "g", n: "pois chiches" });
+    expect(parseIngredientLine("2 à 3 gousses d'ail, hachées")).toEqual({ q: 2, u: "", n: "gousses d'ail" });
+    expect(parseIngredientLine("1 oignon rouge, émincé finement")).toEqual({ q: 1, u: "", n: "oignon rouge" });
+    expect(parseIngredientLine("100g de beurre mou, coupé en dés")).toEqual({ q: 100, u: "g", n: "beurre mou" });
+    expect(parseIngredientLine("20 cl de crème liquide, à température ambiante")).toEqual({ q: 20, u: "cl", n: "crème liquide" });
+    expect(parseIngredientLine("1 l d'eau")).toEqual({ q: 1, u: "l", n: "eau" });
+    expect(parseIngredientLine("2 cups flour")).toEqual({ q: 500, u: "ml", n: "flour" });
+  });
+  it("lit les durées et les portions sous toutes leurs formes", () => {
+    expect(isoMinutes("PT1H30M")).toBe(90);
+    expect(isoMinutes("P0DT0H20M")).toBe(20);
+    expect(isoMinutes("PT45M")).toBe(45);
+    expect(isoMinutes("P20M")).toBe(20);
+    expect(isoMinutes("")).toBe(0);
+    expect(parseYield("Pour 6 personnes")).toBe(6);
+    expect(parseYield(["4", "4 personnes"])).toBe(4);
+    expect(parseYield("beaucoup")).toBe(4);
   });
   it("trouve la recette JSON-LD d'une page", () => {
     const html = `<html><head><script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage"},{"@type":"Recipe","name":"Quiche","recipeYield":"6 personnes","prepTime":"PT15M","cookTime":"PT35M","recipeIngredient":["3 œufs","20 cl de crème"],"recipeInstructions":[{"@type":"HowToStep","text":"Battre."},{"@type":"HowToStep","text":"Cuire."}],"image":["https://x/y.jpg"]}]}</script></head></html>`;
