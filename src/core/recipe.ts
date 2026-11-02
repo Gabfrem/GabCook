@@ -25,6 +25,8 @@ export interface Recipe {
   photo?: string;
   /** crédit de la photo, affiché discrètement */
   photoCredit?: string;
+  /** la photo montre un plat ressemblant (pas exactement celui-ci) */
+  photoProche?: boolean;
   /** recette personnelle (créée, importée ou reçue) */
   perso?: boolean;
   /** pseudo de l'auteur si la recette vient d'un autre profil */
@@ -35,7 +37,7 @@ export interface Recipe {
   srcUrl?: string;
   /** aperçu d'une recette d'un autre profil, pas encore ajoutée */
   _preview?: boolean;
-  /** recette ajoutée au catalogue en v2 */
+  /** recette ajoutée récemment au catalogue (étagère « Nouveautés ») */
   nouveau?: boolean;
 }
 

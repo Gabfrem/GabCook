@@ -8,6 +8,8 @@ preparation: 15
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/j223gc1784579841.jpg
+photo_proche: oui
 ingredients:
 - pommes de terre : 1 kg
 - huile de friture : 1 l
@@ -87,6 +89,8 @@ preparation: 15
 cuisson: 35
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ktsws11761998344.jpg
+photo_proche: oui
 ingredients:
 - courgettes : 2
 - poivron rouge : 1
@@ -117,6 +121,8 @@ preparation: 10
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ssyqwr1511451678.jpg
+photo_proche: oui
 ingredients:
 - champignons de Paris : 500 g
 - gousses d'ail : 3
@@ -145,6 +151,8 @@ preparation: 10
 cuisson: 8
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/paejva1765321314.jpg
+photo_proche: oui
 ingredients:
 - brocoli : 300 g
 - carottes : 2
@@ -171,6 +179,8 @@ preparation: 3
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/kw92t41604181871.jpg
+photo_proche: oui
 ingredients:
 - riz : 250 g
 - eau : 50 cl
@@ -214,6 +224,8 @@ preparation: 5
 cuisson: 12
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/xw1ruy1763786501.jpg
+photo_proche: oui
 ingredients:
 - riz basmati : 250 g
 - oignon : 1
@@ -259,6 +271,8 @@ preparation: 5
 cuisson: 35
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/3m8yae1763257951.jpg
+photo_proche: oui
 ingredients:
 - pommes de terre grenailles : 800 g
 - huile d'olive : 3 c. à soupe
@@ -280,6 +294,8 @@ preparation: 10
 cuisson: 35
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/bvg8sn1763298713.jpg
+photo_proche: oui
 ingredients:
 - pommes de terre : 800 g
 - huile d'olive : 3 c. à soupe
@@ -302,6 +318,8 @@ preparation: 10
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/pa03n41777540582.jpg
+photo_proche: oui
 ingredients:
 - pommes de terre : 800 g
 - huile d'olive : 4 c. à soupe
@@ -323,6 +341,8 @@ preparation: 10
 cuisson: 35
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/j223gc1784579841.jpg
+photo_proche: oui
 ingredients:
 - pommes de terre : 800 g
 - huile : 3 c. à soupe
@@ -343,6 +363,8 @@ preparation: 10
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/o7p9581608589317.jpg
+photo_proche: oui
 ingredients:
 - patates douces : 800 g
 - beurre : 20 g
@@ -408,6 +430,8 @@ preparation: 5
 cuisson: 12
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/60o82j1762341177.jpg
+photo_proche: oui
 ingredients:
 - courgettes : 600 g
 - gousses d'ail : 2
@@ -452,6 +476,8 @@ preparation: 5
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/i0610h1765659464.jpg
+photo_proche: oui
 ingredients:
 - brocoli : 600 g
 - gousses d'ail : 2
@@ -473,6 +499,8 @@ preparation: 10
 cuisson: 30
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/xnv4wf1763756529.jpg
+photo_proche: oui
 ingredients:
 - chou-fleur : 1
 - huile d'olive : 3 c. à soupe
@@ -494,6 +522,8 @@ preparation: 15
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/0nswfe1763279040.jpg
+photo_proche: oui
 ingredients:
 - courgette : 1
 - poivron rouge : 1
@@ -541,6 +571,8 @@ preparation: 5
 cuisson: 5
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/qxytrx1511304021.jpg
+photo_proche: oui
 ingredients:
 - semoule : 250 g
 - eau : 25 cl
@@ -562,6 +594,8 @@ preparation: 10
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/kos9av1699014767.jpg
+photo_proche: oui
 ingredients:
 - boulgour : 250 g
 - oignon : 1
@@ -584,6 +618,8 @@ preparation: 10
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/k29viq1585565980.jpg
+photo_proche: oui
 ingredients:
 - quinoa : 250 g
 - poivron : 1
@@ -606,6 +642,8 @@ preparation: 2
 cuisson: 10
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/bfok4w1780242078.jpg
+photo_proche: oui
 ingredients:
 - polenta : 200 g
 - lait : 80 cl
@@ -627,6 +665,8 @@ preparation: 2
 cuisson: 10
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/0jv5gx1661040802.jpg
+photo_proche: oui
 ingredients:
 - pâtes : 400 g
 - beurre : 40 g
@@ -648,6 +688,8 @@ preparation: 10
 cuisson: 0
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/6awyvm1782685205.jpg
+photo_proche: oui
 ingredients:
 - salade verte : 1
 - moutarde : 1 c. à soupe
@@ -669,6 +711,8 @@ preparation: 10
 cuisson: 30
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/u55lbp1585564013.jpg
+photo_proche: oui
 ingredients:
 - tomates : 4
 - gousses d'ail : 2
@@ -691,6 +735,8 @@ preparation: 10
 cuisson: 25
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/khpso71779732715.jpg
+photo_proche: oui
 ingredients:
 - pommes de terre : 800 g
 - lardons : 150 g
@@ -713,6 +759,8 @@ preparation: 15
 cuisson: 45
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/qywups1511796761.jpg
+photo_proche: oui
 ingredients:
 - patates douces : 800 g
 - crème fraîche : 25 cl
@@ -735,6 +783,8 @@ preparation: 10
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/jcr46d1614763831.jpg
+photo_proche: oui
 ingredients:
 - carottes : 600 g
 - pommes de terre : 2
@@ -756,6 +806,8 @@ preparation: 10
 cuisson: 12
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/sr7chd1780264758.jpg
+photo_proche: oui
 ingredients:
 - baguette : 1
 - beurre : 60 g
@@ -777,6 +829,8 @@ preparation: 15
 cuisson: 35
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/z458v91763817681.jpg
+photo_proche: oui
 ingredients:
 - courge butternut : 1
 - huile d'olive : 2 c. à soupe
@@ -798,6 +852,8 @@ preparation: 5
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/xxpqsy1511452222.jpg
+photo_proche: oui
 ingredients:
 - petits pois : 600 g
 - lardons : 150 g
@@ -819,6 +875,8 @@ preparation: 5
 cuisson: 10
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/wuyd2h1765655837.jpg
+photo_proche: oui
 ingredients:
 - riz : 250 g
 - œufs : 2
@@ -866,6 +924,8 @@ preparation: 10
 cuisson: 25
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/j8c1d51782772399.jpg
+photo_proche: oui
 ingredients:
 - riz : 250 g
 - tomates concassées : 400 g
@@ -892,6 +952,8 @@ preparation: 10
 cuisson: 25
 portions: 8
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ymk7gt1783803106.jpg
+photo_proche: oui
 ingredients:
 - polenta : 200 g
 - farine : 150 g
@@ -943,6 +1005,8 @@ preparation: 25
 cuisson: 35
 portions: 6
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/yoj48r1763817100.jpg
+photo_proche: oui
 ingredients:
 - aubergines : 800 g
 - branches de céleri : 2
@@ -1000,6 +1064,8 @@ preparation: 15
 cuisson: 30
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/urtwux1486983078.jpg
+photo_proche: oui
 ingredients:
 - pommes de terre : 800 g
 - gousses d'ail : 5
@@ -1030,7 +1096,6 @@ cuisson: 40
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/ytttsv1511798734.jpg
-nouveau: oui
 ingredients:
 - fenouils : 3
 - crème liquide : 25 cl
@@ -1057,7 +1122,6 @@ cuisson: 20
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/5q88l31784664151.jpg
-nouveau: oui
 ingredients:
 - pommes de terre : 800 g
 - échalote : 1
@@ -1084,7 +1148,6 @@ cuisson: 0
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/93iok31766436070.jpg
-nouveau: oui
 ingredients:
 - concombres : 2
 - vinaigre de riz : 2 c. à soupe
@@ -1110,7 +1173,6 @@ cuisson: 25
 portions: 6
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/x5qz5k1761595900.jpg
-nouveau: oui
 ingredients:
 - farine : 140 g
 - œufs : 4
@@ -1132,7 +1194,6 @@ cuisson: 25
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/pkyvrn1764878267.jpg
-nouveau: oui
 ingredients:
 - riz : 250 g
 - haricots rouges : 400 g
@@ -1159,7 +1220,6 @@ cuisson: 10
 portions: 6
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/8825lo1763815264.jpg
-nouveau: oui
 ingredients:
 - farine : 250 g
 - yaourt nature : 150 g
@@ -1171,3 +1231,228 @@ etapes:
 2. Divisez en 6 et étalez chaque morceau en galette fine.
 3. Faites cuire dans une poêle bien chaude sans matière grasse, 1 à 2 min par face, jusqu'à ce qu'elles gonflent et se tachent de brun.
 4. Gardez-les dans un torchon pour qu'elles restent souples. Parfait avec un curry ou des grillades.
+
+# ---------- Nouveautés (novembre 2026) ----------
+
+=== Chou chinois sauté aux crevettes
+id: chouchinoiscrevettes
+emoji: 🥬
+categorie: Accompagnement
+preparation: 10
+cuisson: 8
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/9nh4dl1766435484.jpg
+nouveau: oui
+ingredients:
+- chou chinois : 1
+- crevettes séchées : 20 g
+- oignons nouveaux : 2
+- gingembre : 2 cm
+- sauce soja : 1 c. à soupe
+- maïzena : 1 c. à café
+- huile : 2 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Faites tremper les crevettes séchées 10 min dans 10 cl d'eau bouillante. Gardez l'eau.
+2. Coupez le chou en larges lanières, en séparant les côtes blanches des feuilles.
+3. Faites chauffer l'huile dans un wok, faites sauter le gingembre et les oignons nouveaux hachés 30 secondes, puis les crevettes égouttées.
+4. Ajoutez les côtes du chou et faites sauter 3 min, puis les feuilles 1 min.
+5. Mélangez l'eau de trempage, la sauce soja et la maïzena, versez dans le wok et laissez épaissir 1 min. Poivrez et servez.
+
+=== Courge rôtie au yaourt à l'afghane (kadu borani)
+id: kaduborani
+emoji: 🎃
+categorie: Accompagnement
+preparation: 15
+cuisson: 40
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/walmi81779552709.jpg
+nouveau: oui
+ingredients:
+- butternut : 1
+- oignon : 1
+- piment vert : 1
+- curcuma : 1 c. à café
+- sucre : 2 c. à soupe
+- huile : 3 c. à soupe
+- yaourt nature : 250 g
+- gousse d'ail : 1
+- menthe séchée : 1 c. à café
+- sel : 1 pincée
+etapes:
+1. Épluchez la courge et coupez-la en gros morceaux.
+2. Faites revenir l'oignon émincé dans l'huile 5 min, ajoutez le curcuma et le piment.
+3. Ajoutez la courge, le sucre, une pincée de sel et 15 cl d'eau. Couvrez et laissez cuire 25 à 30 min à feu doux, jusqu'à ce qu'elle soit fondante et légèrement caramélisée.
+4. Mélangez le yaourt avec l'ail râpé et une pincée de sel.
+5. Étalez le yaourt dans un plat, déposez la courge par-dessus et parsemez de menthe. Servez avec du pain.
+
+=== Haricots verts à l'huile d'olive et à l'ail (fasoliyyeh)
+id: fasoliyyeh
+emoji: 🫛
+categorie: Accompagnement
+preparation: 10
+cuisson: 30
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/21yc5s1760524759.jpg
+nouveau: oui
+ingredients:
+- haricots verts : 600 g
+- gousses d'ail : 6
+- huile d'olive : 6 c. à soupe
+- coriandre : 1 poignée
+- sel : 1 pincée
+etapes:
+1. Équeutez les haricots et coupez-les en deux.
+2. Faites chauffer l'huile dans une sauteuse, ajoutez les haricots et une pincée de sel. Couvrez et laissez cuire 25 min à feu doux, en remuant de temps en temps : ils doivent devenir fondants.
+3. Hachez l'ail et la coriandre ensemble.
+4. Ajoutez-les aux haricots et poursuivez 3 min à découvert.
+5. Servez chaud ou à température ambiante, avec du pain pita.
+
+=== Oignons rouges marinés
+id: oignonsmarines
+emoji: 🧅
+categorie: Accompagnement
+preparation: 10
+cuisson: 5
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ppodrp1762325183.jpg
+nouveau: oui
+ingredients:
+- oignons rouges : 3
+- vinaigre de cidre : 20 cl
+- eau : 10 cl
+- sucre : 2 c. à soupe
+- sel : 1 c. à café
+- poivre en grains : 1 c. à café
+- feuilles de laurier : 2
+etapes:
+1. Coupez les oignons en fines rondelles et tassez-les dans un bocal propre.
+2. Portez à ébullition le vinaigre, l'eau, le sucre, le sel, le poivre et le laurier.
+3. Versez le liquide bouillant sur les oignons, ils doivent être couverts.
+4. Laissez refroidir, fermez et placez au réfrigérateur. Ils sont prêts en 1 h et se gardent 2 semaines : parfaits dans les tacos, burgers et salades.
+
+=== Arepas vénézuéliennes
+id: arepas
+emoji: 🫓
+categorie: Accompagnement
+preparation: 10
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/3hcy191764376285.jpg
+nouveau: oui
+ingredients:
+- farine de maïs précuite : 300 g
+- eau tiède : 40 cl
+- huile : 1 c. à soupe
+- sel : 1 c. à café
+etapes:
+1. Mélangez l'eau tiède et le sel, puis versez la farine petit à petit en mélangeant à la main.
+2. Pétrissez 2 min : la pâte doit être souple et ne pas se fendiller. Laissez reposer 5 min.
+3. Formez 8 boules et aplatissez-les en galettes de 1,5 cm d'épaisseur, en lissant les bords avec les doigts mouillés.
+4. Faites-les cuire 6 à 7 min de chaque côté dans une poêle légèrement huilée, à feu moyen : elles doivent sonner creux quand on tapote dessus.
+5. Ouvrez-les en deux et garnissez-les à votre goût : fromage, avocat, haricots, poulet, jambon…
+
+=== Épis de maïs au beurre coco, citron vert et piment
+id: maiscoco
+emoji: 🌽
+categorie: Accompagnement
+preparation: 10
+cuisson: 20
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/brhaoj1780086661.jpg
+nouveau: oui
+ingredients:
+- épis de maïs : 4
+- lait de coco : 20 cl
+- beurre mou : 60 g
+- noix de coco râpée : 2 c. à soupe
+- citron vert : 1
+- piment vert : 1
+- échalote : 1
+- coriandre : 1 poignée
+- sel : 1 pincée
+etapes:
+1. Faites cuire les épis 10 min dans une grande casserole d'eau mélangée au lait de coco.
+2. Mélangez le beurre mou avec la noix de coco grillée à sec, le zeste du citron vert, le piment et l'échalote hachés, la coriandre et une pincée de sel.
+3. Égouttez les épis et faites-les griller 5 min sur une poêle-gril ou au barbecue.
+4. Badigeonnez-les généreusement de beurre coco et servez avec des quartiers de citron vert.
+
+=== Pain soda au yaourt (sans levure)
+id: painsoda
+emoji: 🍞
+categorie: Accompagnement
+preparation: 10
+cuisson: 35
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/9aia021779646058.jpg
+nouveau: oui
+ingredients:
+- farine : 400 g
+- yaourt à la grecque : 300 g
+- levure chimique : 1 sachet
+- huile d'olive : 2 c. à soupe
+- sel : 1 c. à café
+etapes:
+1. Préchauffez le four à 200 °C.
+2. Mélangez la farine, la levure et le sel. Ajoutez le yaourt et l'huile, et mélangez à la main juste ce qu'il faut pour former une boule (ne pétrissez pas trop).
+3. Formez un pain rond, posez-le sur une plaque farinée et faites une croix profonde sur le dessus avec un couteau.
+4. Enfournez 30 à 35 min : le pain doit sonner creux quand on tape dessous.
+5. Laissez tiédir sur une grille. Il se mange le jour même, avec du beurre ou de la soupe.
+
+=== Petits pains au beurre
+id: petitspains
+emoji: 🥯
+categorie: Accompagnement
+preparation: 25
+cuisson: 20
+portions: 8
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/l6hj9a1784668199.jpg
+nouveau: oui
+ingredients:
+- farine : 500 g
+- lait : 25 cl
+- sucre : 40 g
+- levure boulangère : 1 sachet
+- beurre : 80 g
+- œuf : 1
+- sel : 1 c. à café
+etapes:
+1. Faites tiédir le lait. Mélangez la farine, la levure, le sucre et le sel.
+2. Ajoutez le lait et l'œuf, pétrissez 5 min, puis ajoutez 60 g de beurre mou et pétrissez encore 5 min jusqu'à ce que la pâte soit lisse.
+3. Laissez lever 1 h au chaud.
+4. Divisez la pâte en 16 boules et serrez-les côte à côte dans un moule beurré. Laissez gonfler 45 min.
+5. Préchauffez le four à 180 °C et faites cuire 18 à 20 min.
+6. Badigeonnez du reste de beurre fondu à la sortie du four : ils deviennent brillants et moelleux.
+
+=== Pains plats moelleux à la poêle
+id: painsplats
+emoji: 🫓
+categorie: Accompagnement
+preparation: 15
+cuisson: 15
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/i8l2fu1763742525.jpg
+nouveau: oui
+ingredients:
+- farine : 400 g
+- levure chimique : 2 c. à café
+- sucre : 1 c. à café
+- huile : 3 c. à soupe
+- eau tiède : 22 cl
+- sel : 1 c. à café
+etapes:
+1. Mélangez la farine, la levure, le sucre et le sel. Ajoutez l'huile et l'eau, pétrissez 3 min.
+2. Laissez reposer 15 min sous un torchon.
+3. Divisez en 6 boules et étalez-les très finement au rouleau.
+4. Faites cuire chaque galette 1 min de chaque côté dans une poêle bien chaude sans matière grasse : elle gonfle par endroits.
+5. Empilez-les dans un torchon au fur et à mesure pour qu'elles restent souples. Parfaites pour les shawarmas et wraps.

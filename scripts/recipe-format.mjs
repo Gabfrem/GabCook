@@ -9,6 +9,7 @@
  *   portions: 4
  *   difficulte: Facile
  *   photo: https://…            (facultatif)
+ *   photo_proche: oui            (facultatif : la photo montre un plat ressemblant, pas celui-ci)
  *   nouveau: oui                 (facultatif : met la recette en avant dans « Nouveautés »)
  *   ingredients:
  *   - spaghetti : 400 g
@@ -37,6 +38,7 @@ export function serialize(r) {
   L.push("portions: " + r.portions);
   L.push("difficulte: " + r.diff);
   if (r.photo) L.push("photo: " + r.photo);
+  if (r.photo && r.photoProche) L.push("photo_proche: oui");
   if (r.nouveau) L.push("nouveau: oui");
   L.push("ingredients:");
   for (const i of r.ing) {
@@ -115,6 +117,7 @@ export function parse(text, fichier = "?") {
       case "portions": cur.portions = parseInt(val, 10) || 4; break;
       case "difficulte": cur.diff = val; break;
       case "photo": cur.photo = val; break;
+      case "photo_proche": cur.photoProche = /^(oui|1|true)$/i.test(val); break;
       case "nouveau": cur.nouveau = /^(oui|1|true)$/i.test(val); break;
       default: throw new Error(where + " : champ inconnu « " + cle + " »");
     }

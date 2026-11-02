@@ -90,6 +90,8 @@ preparation: 10
 cuisson: 0
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/pb6mj11763788331.jpg
+photo_proche: oui
 ingredients:
 - olives noires : 200 g
 - câpres : 2 c. à soupe
@@ -166,6 +168,8 @@ preparation: 10
 cuisson: 10
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/hkz4k71782590338.jpg
+photo_proche: oui
 ingredients:
 - chips de maïs : 200 g
 - cheddar râpé : 150 g
@@ -221,6 +225,8 @@ preparation: 15
 cuisson: 25
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/j223gc1784579841.jpg
+photo_proche: oui
 ingredients:
 - betteraves : 2
 - carottes : 2
@@ -248,6 +254,8 @@ preparation: 20
 cuisson: 25
 portions: 6
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/sl7cr91782588539.jpg
+photo_proche: oui
 ingredients:
 - eau : 25 cl
 - beurre : 100 g
@@ -276,6 +284,8 @@ preparation: 15
 cuisson: 45
 portions: 6
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/urtqut1511723591.jpg
+photo_proche: oui
 ingredients:
 - farine : 200 g
 - levure chimique : 1 sachet
@@ -306,6 +316,8 @@ preparation: 30
 cuisson: 15
 portions: 4
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/1c5oso1614347493.jpg
+photo_proche: oui
 ingredients:
 - feuilles de brick : 12
 - bœuf haché : 400 g
@@ -335,6 +347,8 @@ preparation: 2
 cuisson: 3
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/vgsipt1779917593.jpg
+photo_proche: oui
 ingredients:
 - maïs à pop-corn : 80 g
 - huile : 1 c. à soupe
@@ -357,6 +371,8 @@ preparation: 30
 cuisson: 20
 portions: 6
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/lhqev81565090111.jpg
+photo_proche: oui
 ingredients:
 - riz arborio : 300 g
 - bouillon de volaille : 80 cl
@@ -546,6 +562,8 @@ preparation: 20
 cuisson: 25
 portions: 8
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/5u37fy1764116774.jpg
+photo_proche: oui
 ingredients:
 - farine : 500 g
 - eau : 35 cl
@@ -572,6 +590,8 @@ preparation: 15
 cuisson: 15
 portions: 6
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/8a8fu01762772651.jpg
+photo_proche: oui
 ingredients:
 - baguette : 1
 - champignons : 400 g
@@ -656,7 +676,6 @@ cuisson: 15
 portions: 6
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/6dpa7m1763331105.jpg
-nouveau: oui
 ingredients:
 - jambon serrano : 120 g
 - beurre : 60 g
@@ -684,7 +703,6 @@ cuisson: 10
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/yhi46r1763330279.jpg
-nouveau: oui
 ingredients:
 - calamars : 500 g
 - farine : 100 g
@@ -711,7 +729,6 @@ cuisson: 25
 portions: 6
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/sl7cr91782588539.jpg
-nouveau: oui
 ingredients:
 - fécule de tapioca : 250 g
 - lait : 12 cl
@@ -735,7 +752,6 @@ cuisson: 10
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/6s3i3p1763488540.jpg
-nouveau: oui
 ingredients:
 - poulet haché : 400 g
 - pâte de curry rouge : 1 c. à soupe
@@ -762,7 +778,6 @@ cuisson: 8
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/0ljvc51763248075.jpg
-nouveau: oui
 ingredients:
 - petits piments verts : 300 g
 - huile d'olive : 3 c. à soupe
@@ -782,7 +797,6 @@ cuisson: 5
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/hsp1fo1763327867.jpg
-nouveau: oui
 ingredients:
 - pain de campagne : 8 tranches
 - tomates : 3
@@ -796,3 +810,439 @@ etapes:
 3. Coupez les tomates en deux et frottez-les sur le pain, ou râpez-les et étalez la pulpe.
 4. Arrosez d'huile d'olive, parsemez de fleur de sel.
 5. Déposez une tranche de jambon sur chaque tartine et servez aussitôt.
+
+# ---------- Nouveautés (novembre 2026) ----------
+
+=== Chaussons jamaïcains au bœuf
+id: pattiesjamaicains
+emoji: 🥟
+categorie: Apéro
+preparation: 40
+cuisson: 30
+portions: 6
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/wsqqsw1515364068.jpg
+nouveau: oui
+ingredients:
+- farine : 400 g
+- beurre : 200 g
+- curry : 2 c. à café
+- bœuf haché : 400 g
+- oignons : 2
+- poivron rouge : 1
+- gousses d'ail : 2
+- ketchup : 2 c. à soupe
+- piment de la Jamaïque : 1 c. à café
+- thym : 1 pincée
+- chapelure : 3 c. à soupe
+- œuf : 1
+- huile : 1 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Pâte : mélangez la farine, 1 c. à café de curry et 1 pincée de sel. Ajoutez le beurre froid en dés et sablez du bout des doigts. Ajoutez 12 cl d'eau froide, formez une boule et réservez 30 min au frais.
+2. Farce : faites revenir les oignons, le poivron et l'ail hachés dans l'huile 5 min. Ajoutez le bœuf et faites-le cuire 8 min en l'émiettant.
+3. Ajoutez le reste de curry, le piment de la Jamaïque, le thym, le ketchup, 10 cl d'eau, du sel et du poivre. Laissez réduire 10 min, puis ajoutez la chapelure. Laissez refroidir.
+4. Préchauffez le four à 200 °C. Étalez la pâte et découpez 12 disques de 12 cm de diamètre.
+5. Déposez une cuillerée de farce sur chaque disque, repliez en demi-lune et soudez les bords en appuyant avec une fourchette.
+6. Badigeonnez d'œuf battu et enfournez 25 min, jusqu'à ce qu'ils soient dorés.
+
+=== Mini-tourtes au bœuf pimenté
+id: minitourtes
+emoji: 🥧
+categorie: Apéro
+preparation: 30
+cuisson: 45
+portions: 6
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/6sarfo1762340107.jpg
+nouveau: oui
+ingredients:
+- pâte brisée : 2
+- bœuf haché : 400 g
+- oignon : 1
+- haricots rouges : 250 g
+- concentré de tomate : 2 c. à soupe
+- bouillon de bœuf : 20 cl
+- piment en poudre : 1 c. à café
+- cumin : 1 c. à café
+- cannelle : 1 pincée
+- pommes de terre : 400 g
+- crème fraîche : 4 c. à soupe
+- ciboulette : 1 pincée
+- huile : 1 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Faites revenir l'oignon haché dans l'huile 3 min, ajoutez le piment, le cumin et la cannelle, puis le bœuf. Laissez dorer 6 min.
+2. Ajoutez le concentré de tomate, le bouillon et les haricots égouttés. Laissez mijoter 15 min jusqu'à ce que ce soit bien épais.
+3. Faites cuire les pommes de terre épluchées à l'eau salée 20 min, puis écrasez-les en purée.
+4. Préchauffez le four à 200 °C. Découpez 12 disques de pâte et garnissez-en les alvéoles d'un moule à muffins.
+5. Remplissez de chili, recouvrez d'une cuillerée de purée et enfournez 20 min.
+6. Servez tiède avec une cuillerée de crème fraîche et de la ciboulette ciselée.
+
+=== Raviolis en feuille de riz
+id: raviolisriz
+emoji: 🥟
+categorie: Apéro
+preparation: 35
+cuisson: 15
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/sfahy01763752319.jpg
+nouveau: oui
+ingredients:
+- porc haché : 300 g
+- chou blanc : 0.25
+- carotte : 1
+- champignons shiitake : 100 g
+- gingembre : 2 cm
+- gousses d'ail : 2
+- oignons nouveaux : 3
+- sauce soja : 4 c. à soupe
+- huile de sésame : 1 c. à soupe
+- galettes de riz : 16
+- vinaigre de riz : 2 c. à soupe
+- graines de sésame : 1 c. à soupe
+- huile : 3 c. à soupe
+etapes:
+1. Émincez très finement le chou, râpez la carotte, hachez les champignons, le gingembre, l'ail et 2 oignons nouveaux.
+2. Mélangez-les avec le porc, 2 c. à soupe de sauce soja et l'huile de sésame.
+3. Trempez une galette de riz 5 secondes dans de l'eau tiède, posez-la sur un torchon humide. Déposez une cuillerée de farce au centre et repliez en petit carré bien fermé.
+4. Faites chauffer l'huile dans une poêle antiadhésive et faites dorer les raviolis 4 min de chaque côté à feu moyen : ils deviennent croustillants et la farce cuit.
+5. Sauce : mélangez le reste de sauce soja, le vinaigre de riz, le sésame et le dernier oignon nouveau émincé.
+6. Servez les raviolis bien chauds avec la sauce.
+
+=== Pâté de foies de volaille
+id: patefoies
+emoji: 🍞
+categorie: Apéro
+preparation: 15
+cuisson: 15
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/hob03q1780264260.jpg
+nouveau: oui
+ingredients:
+- foies de volaille : 400 g
+- lait : 20 cl
+- lardons : 100 g
+- oignon : 1
+- gousses d'ail : 2
+- beurre : 100 g
+- cognac : 3 c. à soupe
+- moutarde : 1 c. à café
+- thym : 1 pincée
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Nettoyez les foies (retirez les petits filaments) et faites-les tremper 30 min dans le lait : ils seront plus doux. Égouttez.
+2. Faites revenir les lardons, l'oignon et l'ail hachés dans 20 g de beurre, 5 min.
+3. Ajoutez les foies et le thym, faites-les dorer 3 à 4 min : ils doivent rester rosés au centre.
+4. Versez le cognac et laissez réduire 1 min.
+5. Mixez le tout avec le reste du beurre mou, la moutarde, du sel et du poivre, jusqu'à obtenir une crème lisse.
+6. Versez dans des petits pots et laissez prendre au moins 3 h au réfrigérateur. Servez sur du pain grillé.
+
+=== Croquettes de poisson à la portugaise (fofos)
+id: fofos
+emoji: 🐟
+categorie: Apéro
+preparation: 30
+cuisson: 25
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/a15wsa1614349126.jpg
+nouveau: oui
+ingredients:
+- filets de haddock : 400 g
+- pommes de terre : 400 g
+- piment vert : 1
+- coriandre : 1 poignée
+- graines de cumin : 1 c. à café
+- gousses d'ail : 2
+- gingembre : 2 cm
+- œufs : 2
+- farine : 50 g
+- chapelure : 100 g
+- huile de friture : 1 l
+- poivre : 1 pincée
+etapes:
+1. Faites cuire les pommes de terre épluchées 20 min à l'eau et écrasez-les.
+2. Pochez le poisson 8 min dans de l'eau frémissante, égouttez-le et émiettez-le en retirant les arêtes.
+3. Mélangez le poisson, la purée, le piment, la coriandre, l'ail et le gingembre hachés, le cumin et du poivre.
+4. Formez des petits boudins de la taille d'un doigt épais.
+5. Passez-les dans la farine, puis dans les œufs battus et enfin dans la chapelure.
+6. Faites-les frire 3 à 4 min dans l'huile à 170 °C, jusqu'à ce qu'ils soient dorés. Égouttez et servez chaud avec du citron.
+
+=== Crevettes pimentées à la jamaïcaine
+id: crevettespimentees
+emoji: 🌶️
+categorie: Apéro
+preparation: 10
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/bx07m71764792853.jpg
+nouveau: oui
+ingredients:
+- crevettes entières crues : 600 g
+- piment : 1
+- gousses d'ail : 3
+- oignon : 1
+- vinaigre blanc : 2 c. à soupe
+- piment de la Jamaïque : 1 c. à café
+- paprika : 2 c. à café
+- thym : 1 pincée
+- huile : 2 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Mélangez les crevettes (avec leur carapace) avec le paprika, le piment de la Jamaïque et le sel.
+2. Faites revenir l'oignon émincé, l'ail et le piment hachés dans l'huile 2 min.
+3. Ajoutez les crevettes et le thym, faites-les sauter 3 min à feu vif.
+4. Versez le vinaigre et 5 cl d'eau, couvrez et laissez cuire 3 min.
+5. Servez chaud ou froid, à décortiquer avec les doigts.
+
+=== Calamars sel et poivre
+id: calamarsselpoivre
+emoji: 🦑
+categorie: Apéro
+preparation: 15
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/cp74zo1762341241.jpg
+nouveau: oui
+ingredients:
+- calamars : 500 g
+- maïzena : 4 c. à soupe
+- cinq-épices : 1 c. à café
+- poivre : 1 c. à café
+- sel : 1 c. à café
+- huile de friture : 1 l
+- huile de sésame : 1 c. à café
+- coriandre : 1 poignée
+- sauce chili douce : 4 c. à soupe
+etapes:
+1. Coupez les calamars en anneaux ou en lanières et séchez-les bien dans un torchon.
+2. Mélangez la maïzena, le cinq-épices, le poivre et le sel.
+3. Faites chauffer l'huile à 180 °C.
+4. Roulez les calamars dans le mélange épicé, secouez l'excédent et faites-les frire 1 à 2 min par petites quantités : ils doivent juste dorer (trop cuits, ils deviennent caoutchouteux).
+5. Égouttez sur du papier absorbant, arrosez de quelques gouttes d'huile de sésame et parsemez de coriandre.
+6. Servez aussitôt avec la sauce chili douce.
+
+=== Papas rellenas (pommes de terre farcies frites)
+id: papasrellenas
+emoji: 🥔
+categorie: Apéro
+preparation: 40
+cuisson: 40
+portions: 6
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/zdyurx1783801146.jpg
+nouveau: oui
+ingredients:
+- pommes de terre : 1 kg
+- bœuf haché : 300 g
+- oignon : 1
+- tomate : 1
+- oignons nouveaux : 2
+- gousse d'ail : 1
+- cumin : 1 c. à café
+- curcuma : 1 c. à café
+- œufs : 2
+- farine : 100 g
+- lait : 5 cl
+- huile de friture : 1 l
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Faites cuire les pommes de terre épluchées 20 min à l'eau salée, puis écrasez-les en purée lisse. Salez et laissez refroidir.
+2. Farce : faites revenir l'oignon, les oignons nouveaux et l'ail hachés 4 min, ajoutez la tomate en dés, le cumin, le curcuma, puis le bœuf. Laissez cuire 10 min en émiettant. Laissez refroidir.
+3. Prenez une boule de purée de la taille d'une mandarine, creusez-la, garnissez de farce et refermez en boule bien lisse.
+4. Préparez une pâte à beignet avec les œufs, la farine, le lait et une pincée de curcuma et de sel.
+5. Trempez chaque boule dans la pâte et faites-la frire 3 à 4 min dans l'huile à 180 °C, jusqu'à ce qu'elle soit bien dorée.
+6. Égouttez sur du papier absorbant et servez avec une sauce piquante.
+
+=== Aubergines croustillantes au sésame
+id: aubergineschips
+emoji: 🍆
+categorie: Apéro
+preparation: 15
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/c7lzrl1683208757.jpg
+nouveau: oui
+ingredients:
+- aubergines : 2
+- œufs : 2
+- chapelure : 100 g
+- graines de sésame : 3 c. à soupe
+- huile : 10 cl
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Coupez les aubergines en rondelles de 1 cm, salez-les et laissez-les dégorger 15 min. Épongez-les.
+2. Battez les œufs avec du poivre. Mélangez la chapelure et le sésame.
+3. Passez chaque rondelle dans l'œuf puis dans la chapelure au sésame.
+4. Faites-les dorer 2 à 3 min de chaque côté dans l'huile chaude.
+5. Égouttez sur du papier absorbant et servez avec une sauce yaourt ou une sauce chili douce.
+
+=== Blinis maison
+id: blinis
+emoji: 🥞
+categorie: Apéro
+preparation: 15
+cuisson: 20
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/0206h11699013358.jpg
+nouveau: oui
+ingredients:
+- farine de sarrasin : 100 g
+- farine : 100 g
+- levure boulangère : 1 sachet
+- lait : 25 cl
+- œufs : 2
+- beurre : 30 g
+- sel : 1 pincée
+- crème fraîche : 15 cl
+- saumon fumé : 200 g
+- aneth : 1 pincée
+etapes:
+1. Faites tiédir le lait et le beurre. Mélangez les farines, la levure et le sel.
+2. Ajoutez les jaunes d'œufs et le lait tiède, fouettez jusqu'à ce que la pâte soit lisse. Laissez lever 1 h au chaud.
+3. Montez les blancs en neige et incorporez-les délicatement à la pâte.
+4. Faites cuire des petites cuillerées de pâte dans une poêle beurrée, 1 min de chaque côté, jusqu'à ce que des bulles apparaissent puis que le dessous soit doré.
+5. Servez tiède avec la crème fraîche, le saumon fumé et l'aneth.
+
+=== Bolani (galettes farcies aux pommes de terre)
+id: bolani
+emoji: 🫓
+categorie: Apéro
+preparation: 40
+cuisson: 30
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/de0sns1779555283.jpg
+nouveau: oui
+ingredients:
+- farine : 300 g
+- eau : 18 cl
+- pommes de terre : 500 g
+- oignons nouveaux : 4
+- coriandre : 1 poignée
+- piment : 1
+- huile : 5 c. à soupe
+- yaourt nature : 150 g
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Pâte : mélangez la farine, l'eau, 1 c. à soupe d'huile et une pincée de sel. Pétrissez 5 min et laissez reposer 30 min.
+2. Faites cuire les pommes de terre épluchées 20 min à l'eau salée et écrasez-les. Ajoutez les oignons nouveaux, la coriandre et le piment hachés, du sel et du poivre.
+3. Divisez la pâte en 6 boules et étalez-les très finement en disques.
+4. Étalez de la farce sur une moitié de chaque disque, repliez et soudez les bords en appuyant.
+5. Faites cuire les bolani 3 min de chaque côté dans une grande poêle avec un peu d'huile, jusqu'à ce qu'ils soient dorés et croustillants.
+6. Coupez-les en parts et servez avec le yaourt.
+
+=== Brie en brioche au jambon cru
+id: briebrioche
+emoji: 🧀
+categorie: Apéro
+preparation: 30
+cuisson: 35
+portions: 8
+difficulte: Difficile
+photo: https://www.themealdb.com/images/media/meals/qqpwsy1511796276.jpg
+nouveau: oui
+ingredients:
+- farine : 300 g
+- sucre : 20 g
+- levure boulangère : 1 sachet
+- lait : 8 cl
+- œufs : 3
+- beurre mou : 100 g
+- brie : 1
+- tranches de jambon cru : 8
+- sel : 1 pincée
+etapes:
+1. Pâte à brioche : mélangez la farine, le sucre, la levure et le sel. Ajoutez le lait tiède et 2 œufs, pétrissez 5 min. Incorporez le beurre mou petit à petit et pétrissez encore 5 min, jusqu'à ce que la pâte soit élastique. Laissez lever 1 h 30.
+2. Enveloppez le brie dans les tranches de jambon cru.
+3. Dégazez la pâte et étalez-la en un grand disque. Posez le brie au centre et remontez la pâte tout autour en la plissant.
+4. Retournez le tout sur une plaque recouverte de papier cuisson, et laissez gonfler 30 min.
+5. Préchauffez le four à 180 °C. Badigeonnez du dernier œuf battu et enfournez 30 à 35 min.
+6. Laissez tiédir 10 min, puis coupez en parts : le brie coule à cœur.
+
+=== Bâtonnets au fromage
+id: batonnetsfromage
+emoji: 🧀
+categorie: Apéro
+preparation: 30
+cuisson: 15
+portions: 6
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/7i6csk1780094394.jpg
+nouveau: oui
+ingredients:
+- farine : 300 g
+- lait : 15 cl
+- beurre : 50 g
+- œuf : 1
+- mozzarella : 250 g
+- sucre : 1 c. à café
+- levure boulangère : 1 sachet
+- huile de friture : 1 l
+- sel : 1 pincée
+etapes:
+1. Mélangez la farine, la levure, le sucre et le sel. Ajoutez le lait tiède, l'œuf et le beurre fondu. Pétrissez 5 min et laissez lever 1 h.
+2. Coupez la mozzarella (de préférence pour pizza, plus ferme) en bâtonnets.
+3. Étalez la pâte finement et découpez des bandes de 5 cm de large.
+4. Enroulez chaque bâtonnet de fromage dans une bande de pâte en soudant bien les extrémités pour que le fromage ne s'échappe pas.
+5. Faites-les frire 2 à 3 min dans l'huile à 170 °C, jusqu'à ce qu'ils soient dorés. Égouttez et servez chaud avec de la sauce tomate.
+
+=== Buñuelos (beignets au fromage)
+id: bunuelos
+emoji: 🧀
+categorie: Apéro
+preparation: 15
+cuisson: 15
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/bza0g51782856541.jpg
+nouveau: oui
+ingredients:
+- feta : 200 g
+- maïzena : 80 g
+- œuf : 1
+- sucre : 1 c. à soupe
+- levure chimique : 1 c. à café
+- lait : 3 c. à soupe
+- huile de friture : 1 l
+etapes:
+1. Émiettez très finement la feta (ou écrasez-la à la fourchette).
+2. Mélangez-la avec la maïzena, le sucre et la levure, puis ajoutez l'œuf et le lait. Pétrissez jusqu'à obtenir une pâte lisse qui ne colle pas.
+3. Formez des boules de la taille d'une noix.
+4. Faites chauffer l'huile à 160 °C (pas plus, sinon elles éclatent) et faites-les frire 6 à 8 min : elles gonflent et se retournent d'elles-mêmes en dorant.
+5. Égouttez sur du papier absorbant et servez tiède.
+
+=== Socca (galette de pois chiches)
+id: socca
+emoji: 🫓
+categorie: Apéro
+preparation: 5
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/849jd81763075251.jpg
+nouveau: oui
+ingredients:
+- farine de pois chiches : 200 g
+- eau : 40 cl
+- huile d'olive : 5 c. à soupe
+- sel : 1 c. à café
+- poivre : 1 pincée
+etapes:
+1. Fouettez la farine de pois chiches avec l'eau, 2 c. à soupe d'huile et le sel jusqu'à ce qu'il n'y ait plus de grumeaux. Laissez reposer 1 h si possible.
+2. Préchauffez le four à 250 °C (position gril) avec une grande plaque à pâtisserie à l'intérieur.
+3. Sortez la plaque brûlante, huilez-la avec le reste d'huile et versez la pâte en couche très fine.
+4. Enfournez 10 à 12 min, jusqu'à ce que la socca soit dorée et légèrement brûlée par endroits.
+5. Coupez-la en morceaux, poivrez généreusement et dégustez brûlant, avec les doigts.

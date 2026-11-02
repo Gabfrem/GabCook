@@ -227,7 +227,7 @@ export function RecipeDetail({ o }: { o: Extract<Overlay, { kind: "recipe" }> })
               <Icon name="printer" />
             </button>
           </div>
-          {r.photo && /themealdb/.test(r.photo) && <span class="credit">Photo : TheMealDB</span>}
+          {r.photo && /themealdb/.test(r.photo) && <span class="credit">{r.photoProche ? "Photo indicative · TheMealDB" : "Photo : TheMealDB"}</span>}
         </div>
         <div class="rsheet">
           <div class="rkicker">

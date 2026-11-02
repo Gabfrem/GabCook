@@ -37,6 +37,8 @@ preparation: 15
 cuisson: 50
 portions: 8
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/uwq8001777540502.jpg
+photo_proche: oui
 ingredients:
 - bananes mûres : 3
 - farine : 200 g
@@ -65,6 +67,8 @@ preparation: 5
 cuisson: 5
 portions: 2
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/hqaejl1695738653.jpg
+photo_proche: oui
 ingredients:
 - œufs : 5
 - beurre : 20 g
@@ -113,6 +117,8 @@ preparation: 15
 cuisson: 15
 portions: 6
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/h7zrys1779736460.jpg
+photo_proche: oui
 ingredients:
 - farine : 250 g
 - œufs : 3
@@ -140,6 +146,8 @@ preparation: 15
 cuisson: 25
 portions: 12
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/x7cbsp1779811798.jpg
+photo_proche: oui
 ingredients:
 - farine : 250 g
 - myrtilles : 150 g
@@ -167,6 +175,8 @@ preparation: 10
 cuisson: 30
 portions: 8
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/vvusxs1483907034.jpg
+photo_proche: oui
 ingredients:
 - flocons d'avoine : 300 g
 - amandes : 100 g
@@ -195,6 +205,8 @@ preparation: 5
 cuisson: 10
 portions: 2
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/sng9bm1765320170.jpg
+photo_proche: oui
 ingredients:
 - flocons d'avoine : 100 g
 - lait : 40 cl
@@ -222,6 +234,8 @@ preparation: 10
 cuisson: 5
 portions: 2
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/flrajf1762341295.jpg
+photo_proche: oui
 ingredients:
 - tranches de pain de campagne : 2
 - avocat : 1
@@ -250,6 +264,8 @@ preparation: 10
 cuisson: 0
 portions: 2
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/v5jrnn1764362830.jpg
+photo_proche: oui
 ingredients:
 - bananes : 2
 - fruits rouges surgelés : 250 g
@@ -278,6 +294,8 @@ preparation: 2
 cuisson: 1
 portions: 1
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/1550440197.jpg
+photo_proche: oui
 ingredients:
 - œuf : 1
 - eau : 15 cl
@@ -301,6 +319,8 @@ preparation: 3
 cuisson: 3
 portions: 2
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/xrysxr1483568462.jpg
+photo_proche: oui
 ingredients:
 - lait : 40 cl
 - chocolat noir : 60 g
@@ -323,6 +343,8 @@ preparation: 10
 cuisson: 20
 portions: 2
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/g373701551450225.jpg
+photo_proche: oui
 ingredients:
 - œufs : 4
 - tortillas : 4
@@ -377,6 +399,8 @@ preparation: 30
 cuisson: 20
 portions: 6
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/i5o2b61763739053.jpg
+photo_proche: oui
 ingredients:
 - farine : 400 g
 - semoule de blé : 100 g
@@ -404,6 +428,8 @@ preparation: 25
 cuisson: 12
 portions: 6
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/9f4z6v1598734293.jpg
+photo_proche: oui
 ingredients:
 - farine : 500 g
 - eau : 30 cl
@@ -431,6 +457,8 @@ preparation: 10
 cuisson: 0
 portions: 2
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/1550440197.jpg
+photo_proche: oui
 ingredients:
 - bagels : 2
 - saumon fumé : 120 g
@@ -460,7 +488,6 @@ cuisson: 15
 portions: 2
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/1550440197.jpg
-nouveau: oui
 ingredients:
 - œufs : 4
 - jaunes d'œufs : 2
@@ -487,7 +514,6 @@ cuisson: 20
 portions: 2
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/utxryw1511721587.jpg
-nouveau: oui
 ingredients:
 - œufs : 2
 - saucisses : 4
@@ -516,7 +542,6 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/c400ok1764439058.jpg
-nouveau: oui
 ingredients:
 - flocons d'avoine : 150 g
 - banane : 1
@@ -543,7 +568,6 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/oaqz9f1766593912.jpg
-nouveau: oui
 ingredients:
 - farine : 200 g
 - lait : 30 cl
@@ -569,7 +593,6 @@ cuisson: 18
 portions: 6
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/1543774956.jpg
-nouveau: oui
 ingredients:
 - pâte feuilletée : 1
 - fromage frais : 150 g
@@ -594,7 +617,6 @@ cuisson: 15
 portions: 6
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/thazgm1555350962.jpg
-nouveau: oui
 ingredients:
 - farine : 300 g
 - lait de coco : 15 cl
@@ -610,3 +632,150 @@ etapes:
 3. Étalez la pâte sur 1 cm d'épaisseur et découpez des triangles.
 4. Faites-les frire dans l'huile à 170 °C, 2 à 3 min par face : ils gonflent et dorent.
 5. Égouttez sur du papier absorbant. Délicieux tièdes avec un thé ou un café.
+
+# ---------- Nouveautés (novembre 2026) ----------
+
+=== Boxty (galettes irlandaises de pomme de terre) au bacon
+id: boxty
+emoji: 🥔
+categorie: Petit-déj
+preparation: 20
+cuisson: 20
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/naqyel1608588563.jpg
+nouveau: oui
+ingredients:
+- pommes de terre : 500 g
+- farine : 150 g
+- lait : 20 cl
+- bicarbonate : 1 c. à café
+- oignons nouveaux : 2
+- œufs : 4
+- tranches de bacon : 8
+- tomates cerises : 200 g
+- beurre : 30 g
+- huile : 2 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Faites cuire la moitié des pommes de terre 20 min à l'eau et écrasez-les. Râpez finement l'autre moitié crue et pressez-la dans un torchon pour retirer l'eau.
+2. Mélangez la purée, les pommes de terre râpées, la farine, le bicarbonate, le lait, les oignons nouveaux émincés et le sel : vous obtenez une pâte épaisse.
+3. Faites cuire des louches de pâte 4 min de chaque côté dans une poêle beurrée, à feu moyen : les galettes doivent être dorées et croustillantes.
+4. Dans une autre poêle, faites griller le bacon et les tomates cerises coupées en deux.
+5. Faites cuire les œufs au plat dans l'huile.
+6. Servez les boxty avec le bacon, les tomates et un œuf au plat.
+
+=== Shakshuka à la feta et aux épinards
+id: shakshukafeta
+emoji: 🍳
+categorie: Petit-déj
+preparation: 10
+cuisson: 25
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/wpkfin1763597958.jpg
+nouveau: oui
+ingredients:
+- œufs : 6
+- tomates concassées : 800 g
+- poivron rouge : 1
+- échalotes : 2
+- branche de céleri : 1
+- gousses d'ail : 2
+- pousses d'épinards : 100 g
+- feta : 150 g
+- cumin : 1 c. à café
+- huile d'olive : 3 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Faites revenir les échalotes, le céleri et le poivron émincés 6 min dans l'huile, dans une grande poêle.
+2. Ajoutez l'ail haché et le cumin, puis les tomates. Salez, poivrez et laissez mijoter 10 min.
+3. Ajoutez les épinards et laissez-les fondre 1 min.
+4. Creusez 6 petits puits dans la sauce et cassez un œuf dans chacun.
+5. Couvrez et laissez cuire 6 à 8 min à feu doux : les blancs doivent être pris, les jaunes encore coulants.
+6. Émiettez la feta par-dessus et servez directement dans la poêle avec du pain.
+
+=== Brioche tressée (challah)
+id: challah
+emoji: 🍞
+categorie: Petit-déj
+preparation: 30
+cuisson: 30
+portions: 8
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/fm01ky1764366365.jpg
+nouveau: oui
+ingredients:
+- farine : 500 g
+- sucre : 50 g
+- levure boulangère : 1 sachet
+- eau tiède : 20 cl
+- œufs : 3
+- huile : 6 c. à soupe
+- graines de pavot : 1 c. à soupe
+- sel : 1 c. à café
+etapes:
+1. Mélangez la farine, le sucre, la levure et le sel. Ajoutez l'eau tiède, 2 œufs et l'huile.
+2. Pétrissez 10 min, jusqu'à ce que la pâte soit lisse et souple. Laissez lever 1 h 30 sous un torchon : elle doit doubler de volume.
+3. Divisez la pâte en 3 et roulez chaque morceau en un long boudin de 40 cm.
+4. Tressez les 3 boudins en serrant bien, et rentrez les extrémités dessous.
+5. Posez la tresse sur une plaque, laissez gonfler 45 min. Préchauffez le four à 180 °C.
+6. Badigeonnez du dernier œuf battu, parsemez de pavot et enfournez 25 à 30 min, jusqu'à ce qu'elle soit bien dorée.
+
+=== Chelsea buns (brioches roulées aux raisins)
+id: chelseabuns
+emoji: 🥐
+categorie: Petit-déj
+preparation: 30
+cuisson: 25
+portions: 9
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/vqpwrv1511723001.jpg
+nouveau: oui
+ingredients:
+- farine : 500 g
+- levure boulangère : 1 sachet
+- lait : 30 cl
+- beurre : 100 g
+- œuf : 1
+- sucre roux : 80 g
+- cannelle : 2 c. à café
+- raisins secs : 150 g
+- sucre : 3 c. à soupe
+- sel : 1 c. à café
+etapes:
+1. Mélangez la farine, la levure et le sel. Ajoutez le lait tiède, 40 g de beurre fondu et l'œuf. Pétrissez 8 min et laissez lever 1 h.
+2. Étalez la pâte en un rectangle de 40 x 30 cm. Badigeonnez-la de 40 g de beurre fondu et parsemez de sucre roux, de cannelle et de raisins.
+3. Roulez-la en partant du grand côté et coupez 9 tranches.
+4. Serrez-les dans un moule carré beurré, laissez gonfler 30 min. Préchauffez le four à 190 °C.
+5. Enfournez 20 à 25 min.
+6. Faites chauffer le sucre avec 2 c. à soupe de lait et le reste de beurre, et badigeonnez les brioches à la sortie du four.
+
+=== Ensaïmadas (brioches majorquines)
+id: ensaimadas
+emoji: 🥐
+categorie: Petit-déj
+preparation: 40
+cuisson: 15
+portions: 8
+difficulte: Difficile
+photo: https://www.themealdb.com/images/media/meals/1ugsho1763248007.jpg
+nouveau: oui
+ingredients:
+- farine : 500 g
+- levure boulangère : 1 sachet
+- sucre : 100 g
+- œufs : 2
+- eau tiède : 20 cl
+- huile : 2 c. à soupe
+- beurre mou : 120 g
+- sucre glace : 50 g
+- sel : 1 pincée
+etapes:
+1. Mélangez la farine, la levure, le sucre et le sel. Ajoutez les œufs, l'eau tiède et l'huile, pétrissez 10 min. Laissez reposer 30 min.
+2. Divisez la pâte en 8 boules. Étalez chacune très finement en un long rectangle, presque transparent.
+3. Tartinez-les de beurre mou (traditionnellement du saindoux).
+4. Roulez chaque rectangle en un long boudin, puis enroulez-le en escargot lâche, en laissant de l'espace pour qu'il gonfle.
+5. Posez-les sur une plaque et laissez gonfler 3 h (ou une nuit) au chaud : elles doivent tripler.
+6. Faites cuire 12 à 15 min à 180 °C, et saupoudrez de sucre glace une fois refroidies.

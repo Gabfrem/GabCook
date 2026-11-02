@@ -1,16 +1,19 @@
 import { useMemo, useState } from "preact/hooks";
 import { daysUntil, urgentItems } from "../../core/fridge";
 import { libelleJour, joursAgenda, prochainRepas, cleJour } from "../../core/planner";
-import { CATEGORIES, type Recipe } from "../../core/recipe";
+import { CUISINES } from "../../core/classify";
+import { CATEGORIES, totalTime, type Recipe } from "../../core/recipe";
 import { nomMois } from "../../core/seasons";
 import { cap, count } from "../../core/text";
+import { communityRecipes } from "../../services/social";
 import { displayName } from "../../state/actions";
-import { agenda, allRecipes, catalogReady, fridge, profile, shopping, user, cookMode } from "../../state/store";
+import { agenda, allRecipes, catalogReady, fridge, perso, profile, shopping, user, cookMode } from "../../state/store";
 import { openOverlay, openSheet, setTab } from "../../state/ui";
 import { Cover } from "../components/Cover";
 import { Avatar, FavButton, Section, Shelf, Stars, openRecipe } from "../components/common";
 import { Icon } from "../components/Icon";
 import { antiGaspi, baseList, cookable, favList, fresh, minutes, plannedList, quick, recommended, seasonal, tonightIdeas } from "./lists";
+import { openPreview } from "./RecipeDetail";
 
 const CAT_LABEL: Record<string, string> = {
   Plat: "Plats",
@@ -37,7 +40,7 @@ function Hero() {
   const h = new Date().getHours();
   const moment = h < 11 ? "Pour ce midi" : h < 15 ? "Pour ce midi" : "Pour ce soir";
   return (
-    <div class="hero" role="button" tabIndex={0} onClick={() => openRecipe(r.id)}>
+    <div class="hero" key={r.id} role="button" tabIndex={0} onClick={() => openRecipe(r.id)}>
       <Cover r={r} small={false} />
       <div class="content">
         <span class="kicker">{ready ? "✓ " + moment + " · prêt avec ton frigo" : missing > 0 ? moment + " · il te manque " + missing : moment + " · idée du jour"}</span>
@@ -145,6 +148,41 @@ function AntiGaspi() {
   );
 }
 
+/** Une recette créée par un autre membre : s'ouvre en aperçu, ou dans « Mes recettes » si on l'a déjà ajoutée. */
+function CommunityCard({ r }: { r: Recipe }) {
+  const deja = perso.value.some((x) => x.id === r.id);
+  const ouvrir = () => (deja ? openRecipe(r.id) : openPreview(r));
+  return (
+    <div class="rcard" role="button" tabIndex={0} onClick={ouvrir} onKeyDown={(e) => e.key === "Enter" && ouvrir()}>
+      <Cover r={r}>
+        <div class="badges">{deja && <span class="tag ok">✓ Ajoutée</span>}</div>
+      </Cover>
+      <div class="body">
+        <h3>{r.nom}</h3>
+        <div class="meta">
+          <Icon name="clock" />
+          {totalTime(r)} min · {r.diff}
+        </div>
+        {r.credit && <div class="meta">👤 {r.credit}</div>}
+      </div>
+    </div>
+  );
+}
+
+function CommunityShelf() {
+  const list = communityRecipes.value;
+  if (!list.length) return null;
+  return (
+    <Section title="🧑‍🍳 Recettes de la communauté">
+      <div class="shelf">
+        {list.slice(0, 20).map((r) => (
+          <CommunityCard r={r} key={r.id} />
+        ))}
+      </div>
+    </Section>
+  );
+}
+
 export function Home() {
   const ready = catalogReady.value;
   const p = profile.value;
@@ -222,6 +260,7 @@ export function Home() {
               <Shelf list={nouveautes} />
             </Section>
           )}
+          <CommunityShelf />
           {favs.length > 0 && (
             <Section title="❤️ Tes favoris" link="Tout voir" onLink={() => openOverlay({ kind: "explore", preset: "favorites" })}>
               <Shelf list={favs.slice(0, 12)} />
@@ -229,17 +268,9 @@ export function Home() {
           )}
           <Section title="Cuisines du monde">
             <div class="chips">
-              {[
-                ["fr", "🇫🇷 Française"],
-                ["ital", "🇮🇹 Italienne"],
-                ["asie", "🥢 Asiatique"],
-                ["mex", "🌮 Mexicaine"],
-                ["med", "🫒 Méditerranéenne"],
-                ["orient", "🍢 Orientale"],
-                ["us", "🍔 Américaine"]
-              ].map(([id, l]) => (
-                <button class="chip" onClick={() => openOverlay({ kind: "explore", cuisine: id })}>
-                  {l}
+              {[...CUISINES.filter((c) => c.id === "fr"), ...CUISINES.filter((c) => c.id !== "fr")].map((c) => (
+                <button class="chip" onClick={() => openOverlay({ kind: "explore", cuisine: c.id })}>
+                  {c.emoji} {c.nom}
                 </button>
               ))}
             </div>

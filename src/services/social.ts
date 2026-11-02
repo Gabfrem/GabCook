@@ -2,6 +2,7 @@
    Tout passe par les tables profiles / friendships / posts / reactions / comments,
    dont les règles RLS garantissent qu'on ne voit et ne modifie que ce qui nous concerne. */
 import { batch, signal } from "@preact/signals";
+import { sanitizeRecipe, type Recipe } from "../core/recipe";
 import { displayName } from "../state/actions";
 import { cloudActif, communityPhotos, profile, recipePhotos, user } from "../state/store";
 import { sb } from "./supabase";
@@ -65,6 +66,7 @@ export function resetSocial() {
     socialLoaded.value = false;
     feed.value = [];
     feedState.value = "idle";
+    communityRecipes.value = [];
   });
 }
 
@@ -343,6 +345,43 @@ export async function loadProfileData(id: string): Promise<ProfileData | null> {
 export async function loadProfilesByIds(ids: string[]): Promise<PublicProfile[]> {
   const m = await profilesOf(ids);
   return ids.map((id) => m[id] || anon(id));
+}
+
+/* ---------- recettes de la communauté ----------
+   Les recettes créées par les membres (table publique recipes) viennent enrichir le
+   choix de tout le monde. On ne montre que celles des profils publics, et celles des
+   amis pour les profils privés. Elles s'ouvrent en aperçu : un geste les ajoute à
+   « Mes recettes ». */
+export const communityRecipes = signal<Recipe[]>([]);
+export async function loadCommunityRecipes() {
+  if (!cloudActif() || !sb) return;
+  try {
+    const me = user.value && user.value.id;
+    const { data } = await sb.from("recipes").select("id,author,author_name,data,updated_at").order("updated_at", { ascending: false }).limit(150);
+    const rows = ((data as any[]) || []).filter((row) => row && row.author !== me);
+    if (!rows.length) {
+      communityRecipes.value = [];
+      return;
+    }
+    const ids = [...new Set(rows.map((row) => row.author as string))];
+    const { data: profs } = await sb.from("profiles").select("id,pseudo,is_private").in("id", ids);
+    const parId = new Map(((profs as any[]) || []).map((p) => [p.id as string, p]));
+    const out: Recipe[] = [];
+    const vus = new Set<string>();
+    for (const row of rows) {
+      const p = parId.get(row.author);
+      if (!p || (p.is_private && relationWith(row.author) !== "friend")) continue;
+      const r = sanitizeRecipe({ ...(row.data || {}), id: row.id, credit: p.pseudo || row.author_name || "" });
+      // même nom chez le même auteur : on garde la version la plus récente
+      const cle = row.author + "|" + (r ? r.nom.toLowerCase() : "");
+      if (!r || vus.has(cle)) continue;
+      vus.add(cle);
+      out.push({ ...r, perso: false, _preview: true });
+    }
+    communityRecipes.value = out;
+  } catch {
+    /* ignore : l'étagère reste simplement cachée */
+  }
 }
 
 /* ---------- photos de la communauté ----------

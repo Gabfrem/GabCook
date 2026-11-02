@@ -1,6 +1,6 @@
 # Yummly — cuisine avec ce que tu as
 
-Application web (installable sur téléphone) : plus de 500 recettes avec photos, le frigo,
+Application web (installable sur téléphone) : plus de 700 recettes avec photos, le frigo,
 la liste de courses, le planning de la semaine, le mode cuisine pas à pas et un réseau
 social pour partager ses plats. En ligne sur **https://yummly.fr**.
 
@@ -34,11 +34,33 @@ etapes:
 - `difficulte` : Facile, Moyen ou Difficile.
 - Quantités : `nom : 400 g`, `nom : 2` (pièces), ou rien (`- sel`). Unités : g, kg, ml, cl,
   l, c. à soupe, c. à café, pincée, poignée, sachet, pot, cm, tranches, feuilles.
-- `photo` (facultatif) : l'adresse d'une vraie photo **de ce plat**. Sans photo, l'appli
-  dessine une illustration à partir des ingrédients — jamais la photo d'un autre plat.
-- `nouveau: oui` (facultatif) : la recette apparaît dans « Nouveautés ».
+- `photo` (facultatif) : l'adresse d'une photo du plat. Sans photo, l'appli dessine une
+  illustration à partir des ingrédients.
+- `photo_proche: oui` (facultatif) : la photo montre un plat qui ressemble, pas exactement
+  celui-ci ; la fiche affiche alors « Photo indicative ». À retirer quand on trouve la
+  vraie photo.
+- `nouveau: oui` (facultatif) : la recette apparaît dans « Nouveautés » (à retirer de la
+  vague précédente quand on en ajoute une nouvelle).
 - Une durée écrite dans une étape (« laissez mijoter 20 min ») devient un minuteur dans le
   mode cuisine.
+
+L'origine du plat (filtre « Cuisine » et planning) est devinée à partir du nom et des
+ingrédients ; pour la fixer, ajoutez l'identifiant dans `CUISINE_FORCE` ou `ORIGINES`
+(`src/core/tables.ts`).
+
+### Avoir beaucoup plus de recettes
+
+1. **Le catalogue** : chaque bloc ajouté dans `data/recettes/*.txt` devient une recette
+   pour tout le monde au prochain déploiement. Les photos viennent de TheMealDB (licence
+   CC BY-SA) ; l'adresse se trouve sur la fiche du plat sur themealdb.com.
+2. **L'import par lien** : dans l'appli, « Importer depuis un lien » lit les recettes de
+   Marmiton, 750g, CuisineAZ, Journal des Femmes, Ricardo, BBC Good Food… (tout site qui
+   publie le format schema.org/Recipe). La page est lue par la fonction serveur Supabase
+   `importer-recette` (`supabase/functions/importer-recette`), avec des relais publics en
+   secours.
+3. **La communauté** : les recettes créées par les membres connectés apparaissent dans
+   « Recettes de la communauté » sur l'accueil (profils publics, et amis pour les profils
+   privés) ; un geste les ajoute à « Mes recettes ».
 
 Les versions **air fryer** et **micro-ondes** d'une recette sont dans `data/airfryer.json`
 et `data/microondes.json` (étapes réécrites, repérées par leur numéro à partir de 0).
@@ -78,6 +100,12 @@ Les tables sociales (`profiles`, `friendships`, `posts`, `reactions`, `comments`
 Un push sur `main` lance `.github/workflows/deploy.yml` : vérification du catalogue,
 tests, construction, puis publication sur GitHub Pages (domaine `yummly.fr`, fichier
 `public/CNAME`).
+
+La fonction serveur d'import se déploie à part :
+
+```bash
+supabase functions deploy importer-recette
+```
 
 ## Crédits
 
