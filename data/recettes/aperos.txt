@@ -90,6 +90,7 @@ preparation: 10
 cuisson: 0
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/pb6mj11763788331.jpg
 ingredients:
 - olives noires : 200 g
 - câpres : 2 c. à soupe
@@ -166,6 +167,7 @@ preparation: 10
 cuisson: 10
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/hkz4k71782590338.jpg
 ingredients:
 - chips de maïs : 200 g
 - cheddar râpé : 150 g
@@ -221,6 +223,7 @@ preparation: 15
 cuisson: 25
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/j223gc1784579841.jpg
 ingredients:
 - betteraves : 2
 - carottes : 2
@@ -248,6 +251,7 @@ preparation: 20
 cuisson: 25
 portions: 6
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/sl7cr91782588539.jpg
 ingredients:
 - eau : 25 cl
 - beurre : 100 g
@@ -276,6 +280,7 @@ preparation: 15
 cuisson: 45
 portions: 6
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/urtqut1511723591.jpg
 ingredients:
 - farine : 200 g
 - levure chimique : 1 sachet
@@ -306,6 +311,7 @@ preparation: 30
 cuisson: 15
 portions: 4
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/1c5oso1614347493.jpg
 ingredients:
 - feuilles de brick : 12
 - bœuf haché : 400 g
@@ -335,6 +341,7 @@ preparation: 2
 cuisson: 3
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/vgsipt1779917593.jpg
 ingredients:
 - maïs à pop-corn : 80 g
 - huile : 1 c. à soupe
@@ -357,6 +364,7 @@ preparation: 30
 cuisson: 20
 portions: 6
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/lhqev81565090111.jpg
 ingredients:
 - riz arborio : 300 g
 - bouillon de volaille : 80 cl
@@ -546,6 +554,7 @@ preparation: 20
 cuisson: 25
 portions: 8
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/5u37fy1764116774.jpg
 ingredients:
 - farine : 500 g
 - eau : 35 cl
@@ -572,6 +581,7 @@ preparation: 15
 cuisson: 15
 portions: 6
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/8a8fu01762772651.jpg
 ingredients:
 - baguette : 1
 - champignons : 400 g

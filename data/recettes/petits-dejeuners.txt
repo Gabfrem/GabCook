@@ -37,6 +37,7 @@ preparation: 15
 cuisson: 50
 portions: 8
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/uwq8001777540502.jpg
 ingredients:
 - bananes mûres : 3
 - farine : 200 g
@@ -65,6 +66,7 @@ preparation: 5
 cuisson: 5
 portions: 2
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/hqaejl1695738653.jpg
 ingredients:
 - œufs : 5
 - beurre : 20 g
@@ -113,6 +115,7 @@ preparation: 15
 cuisson: 15
 portions: 6
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/h7zrys1779736460.jpg
 ingredients:
 - farine : 250 g
 - œufs : 3
@@ -140,6 +143,7 @@ preparation: 15
 cuisson: 25
 portions: 12
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/x7cbsp1779811798.jpg
 ingredients:
 - farine : 250 g
 - myrtilles : 150 g
@@ -167,6 +171,7 @@ preparation: 10
 cuisson: 30
 portions: 8
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/vvusxs1483907034.jpg
 ingredients:
 - flocons d'avoine : 300 g
 - amandes : 100 g
@@ -195,6 +200,7 @@ preparation: 5
 cuisson: 10
 portions: 2
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/sng9bm1765320170.jpg
 ingredients:
 - flocons d'avoine : 100 g
 - lait : 40 cl
@@ -222,6 +228,7 @@ preparation: 10
 cuisson: 5
 portions: 2
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/flrajf1762341295.jpg
 ingredients:
 - tranches de pain de campagne : 2
 - avocat : 1
@@ -250,6 +257,7 @@ preparation: 10
 cuisson: 0
 portions: 2
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/v5jrnn1764362830.jpg
 ingredients:
 - bananes : 2
 - fruits rouges surgelés : 250 g
@@ -278,6 +286,7 @@ preparation: 2
 cuisson: 1
 portions: 1
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/1550440197.jpg
 ingredients:
 - œuf : 1
 - eau : 15 cl
@@ -301,6 +310,7 @@ preparation: 3
 cuisson: 3
 portions: 2
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/xrysxr1483568462.jpg
 ingredients:
 - lait : 40 cl
 - chocolat noir : 60 g
@@ -323,6 +333,7 @@ preparation: 10
 cuisson: 20
 portions: 2
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/g373701551450225.jpg
 ingredients:
 - œufs : 4
 - tortillas : 4
@@ -377,6 +388,7 @@ preparation: 30
 cuisson: 20
 portions: 6
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/i5o2b61763739053.jpg
 ingredients:
 - farine : 400 g
 - semoule de blé : 100 g
@@ -404,6 +416,7 @@ preparation: 25
 cuisson: 12
 portions: 6
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/9f4z6v1598734293.jpg
 ingredients:
 - farine : 500 g
 - eau : 30 cl
@@ -431,6 +444,7 @@ preparation: 10
 cuisson: 0
 portions: 2
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/1550440197.jpg
 ingredients:
 - bagels : 2
 - saumon fumé : 120 g

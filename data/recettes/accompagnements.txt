@@ -8,6 +8,7 @@ preparation: 15
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/j223gc1784579841.jpg
 ingredients:
 - pommes de terre : 1 kg
 - huile de friture : 1 l
@@ -87,6 +88,7 @@ preparation: 15
 cuisson: 35
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ktsws11761998344.jpg
 ingredients:
 - courgettes : 2
 - poivron rouge : 1
@@ -117,6 +119,7 @@ preparation: 10
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ssyqwr1511451678.jpg
 ingredients:
 - champignons de Paris : 500 g
 - gousses d'ail : 3
@@ -145,6 +148,7 @@ preparation: 10
 cuisson: 8
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/paejva1765321314.jpg
 ingredients:
 - brocoli : 300 g
 - carottes : 2
@@ -171,6 +175,7 @@ preparation: 3
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/kw92t41604181871.jpg
 ingredients:
 - riz : 250 g
 - eau : 50 cl
@@ -214,6 +219,7 @@ preparation: 5
 cuisson: 12
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/xw1ruy1763786501.jpg
 ingredients:
 - riz basmati : 250 g
 - oignon : 1
@@ -259,6 +265,7 @@ preparation: 5
 cuisson: 35
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/3m8yae1763257951.jpg
 ingredients:
 - pommes de terre grenailles : 800 g
 - huile d'olive : 3 c. à soupe
@@ -280,6 +287,7 @@ preparation: 10
 cuisson: 35
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/bvg8sn1763298713.jpg
 ingredients:
 - pommes de terre : 800 g
 - huile d'olive : 3 c. à soupe
@@ -302,6 +310,7 @@ preparation: 10
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/pa03n41777540582.jpg
 ingredients:
 - pommes de terre : 800 g
 - huile d'olive : 4 c. à soupe
@@ -323,6 +332,7 @@ preparation: 10
 cuisson: 35
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/j223gc1784579841.jpg
 ingredients:
 - pommes de terre : 800 g
 - huile : 3 c. à soupe
@@ -343,6 +353,7 @@ preparation: 10
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/o7p9581608589317.jpg
 ingredients:
 - patates douces : 800 g
 - beurre : 20 g
@@ -408,6 +419,7 @@ preparation: 5
 cuisson: 12
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/60o82j1762341177.jpg
 ingredients:
 - courgettes : 600 g
 - gousses d'ail : 2
@@ -452,6 +464,7 @@ preparation: 5
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/i0610h1765659464.jpg
 ingredients:
 - brocoli : 600 g
 - gousses d'ail : 2
@@ -473,6 +486,7 @@ preparation: 10
 cuisson: 30
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/xnv4wf1763756529.jpg
 ingredients:
 - chou-fleur : 1
 - huile d'olive : 3 c. à soupe
@@ -494,6 +508,7 @@ preparation: 15
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/0nswfe1763279040.jpg
 ingredients:
 - courgette : 1
 - poivron rouge : 1
@@ -541,6 +556,7 @@ preparation: 5
 cuisson: 5
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/qxytrx1511304021.jpg
 ingredients:
 - semoule : 250 g
 - eau : 25 cl
@@ -562,6 +578,7 @@ preparation: 10
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/kos9av1699014767.jpg
 ingredients:
 - boulgour : 250 g
 - oignon : 1
@@ -584,6 +601,7 @@ preparation: 10
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/k29viq1585565980.jpg
 ingredients:
 - quinoa : 250 g
 - poivron : 1
@@ -606,6 +624,7 @@ preparation: 2
 cuisson: 10
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/bfok4w1780242078.jpg
 ingredients:
 - polenta : 200 g
 - lait : 80 cl
@@ -627,6 +646,7 @@ preparation: 2
 cuisson: 10
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/0jv5gx1661040802.jpg
 ingredients:
 - pâtes : 400 g
 - beurre : 40 g
@@ -648,6 +668,7 @@ preparation: 10
 cuisson: 0
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/6awyvm1782685205.jpg
 ingredients:
 - salade verte : 1
 - moutarde : 1 c. à soupe
@@ -669,6 +690,7 @@ preparation: 10
 cuisson: 30
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/u55lbp1585564013.jpg
 ingredients:
 - tomates : 4
 - gousses d'ail : 2
@@ -691,6 +713,7 @@ preparation: 10
 cuisson: 25
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/khpso71779732715.jpg
 ingredients:
 - pommes de terre : 800 g
 - lardons : 150 g
@@ -713,6 +736,7 @@ preparation: 15
 cuisson: 45
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/qywups1511796761.jpg
 ingredients:
 - patates douces : 800 g
 - crème fraîche : 25 cl
@@ -735,6 +759,7 @@ preparation: 10
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/jcr46d1614763831.jpg
 ingredients:
 - carottes : 600 g
 - pommes de terre : 2
@@ -756,6 +781,7 @@ preparation: 10
 cuisson: 12
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/sr7chd1780264758.jpg
 ingredients:
 - baguette : 1
 - beurre : 60 g
@@ -777,6 +803,7 @@ preparation: 15
 cuisson: 35
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/z458v91763817681.jpg
 ingredients:
 - courge butternut : 1
 - huile d'olive : 2 c. à soupe
@@ -798,6 +825,7 @@ preparation: 5
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/xxpqsy1511452222.jpg
 ingredients:
 - petits pois : 600 g
 - lardons : 150 g
@@ -819,6 +847,7 @@ preparation: 5
 cuisson: 10
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/wuyd2h1765655837.jpg
 ingredients:
 - riz : 250 g
 - œufs : 2
@@ -866,6 +895,7 @@ preparation: 10
 cuisson: 25
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/j8c1d51782772399.jpg
 ingredients:
 - riz : 250 g
 - tomates concassées : 400 g
@@ -892,6 +922,7 @@ preparation: 10
 cuisson: 25
 portions: 8
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ymk7gt1783803106.jpg
 ingredients:
 - polenta : 200 g
 - farine : 150 g
@@ -943,6 +974,7 @@ preparation: 25
 cuisson: 35
 portions: 6
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/yoj48r1763817100.jpg
 ingredients:
 - aubergines : 800 g
 - branches de céleri : 2
@@ -1000,6 +1032,7 @@ preparation: 15
 cuisson: 30
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/urtwux1486983078.jpg
 ingredients:
 - pommes de terre : 800 g
 - gousses d'ail : 5

@@ -70,6 +70,7 @@ preparation: 15
 cuisson: 35
 portions: 6
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/wssvvs1511785879.jpg
 ingredients:
 - pâte brisée : 1
 - lardons : 200 g
@@ -193,6 +194,7 @@ preparation: 10
 cuisson: 12
 portions: 2
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/djdg8l1784578885.jpg
 ingredients:
 - tranches de pain de mie : 4
 - tranches de jambon : 2
@@ -314,6 +316,7 @@ preparation: 10
 cuisson: 30
 portions: 4
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/xxrxux1503070723.jpg
 ingredients:
 - riz arborio : 300 g
 - champignons de Paris : 300 g
@@ -398,6 +401,7 @@ preparation: 15
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/minfsc1763766806.jpg
 ingredients:
 - brocoli : 1
 - carottes : 2
@@ -427,6 +431,7 @@ preparation: 15
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ypxvwv1505333929.jpg
 ingredients:
 - bœuf haché : 500 g
 - tortillas : 8
@@ -486,6 +491,7 @@ preparation: 20
 cuisson: 90
 portions: 4
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/nmxec11782498644.jpg
 ingredients:
 - épaule de veau : 800 g
 - carottes : 3
@@ -641,6 +647,7 @@ preparation: 20
 cuisson: 30
 portions: 4
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/9ya6o71780262651.jpg
 ingredients:
 - blancs de poulet : 600 g
 - yaourts nature : 2
@@ -672,6 +679,7 @@ preparation: 15
 cuisson: 75
 portions: 6
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/w36ets1764362474.jpg
 ingredients:
 - rôti de porc : 1 kg
 - pommes de terre : 800 g
@@ -730,6 +738,7 @@ preparation: 20
 cuisson: 30
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/8rfd4q1764112993.jpg
 ingredients:
 - bœuf haché : 500 g
 - chapelure : 50 g
@@ -759,6 +768,7 @@ preparation: 20
 cuisson: 12
 portions: 2
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/lmwaf61783805434.jpg
 ingredients:
 - escalopes de poulet : 2
 - tranches de jambon : 2
@@ -815,6 +825,7 @@ preparation: 15
 cuisson: 25
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/4htbtm1783803558.jpg
 ingredients:
 - blancs de poulet : 4
 - champignons de Paris : 250 g
@@ -954,6 +965,7 @@ preparation: 20
 cuisson: 35
 portions: 4
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/v1n3cj1783805938.jpg
 ingredients:
 - pommes de terre : 1 kg
 - reblochon : 1
@@ -982,6 +994,7 @@ preparation: 20
 cuisson: 40
 portions: 4
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/sypxpx1515365095.jpg
 ingredients:
 - cuisses de poulet : 4
 - oignons : 4
@@ -1012,6 +1025,7 @@ preparation: 10
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/1548772327.jpg
 ingredients:
 - pavés de saumon : 4
 - crème fraîche : 20 cl
@@ -1064,6 +1078,7 @@ preparation: 10
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/4yjart1763248459.jpg
 ingredients:
 - dos de cabillaud : 4
 - tomates cerises : 200 g
@@ -1089,6 +1104,7 @@ preparation: 10
 cuisson: 10
 portions: 2
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/4o4wh11761848573.jpg
 ingredients:
 - filets de poisson blanc : 2
 - farine : 3 c. à soupe
@@ -1113,6 +1129,7 @@ preparation: 15
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/92wbmf1763252334.jpg
 ingredients:
 - moules : 2 kg
 - échalotes : 3
@@ -1199,6 +1216,7 @@ preparation: 10
 cuisson: 20
 portions: 2
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/yx8j1i1763484612.jpg
 ingredients:
 - pavés de saumon : 2
 - courgette : 1
@@ -1253,6 +1271,7 @@ preparation: 20
 cuisson: 20
 portions: 4
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/9q1ci41779735714.jpg
 ingredients:
 - filets de cabillaud : 4
 - farine : 200 g
@@ -1279,6 +1298,7 @@ preparation: 10
 cuisson: 12
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/wxswxy1511452625.jpg
 ingredients:
 - pâtes : 400 g
 - bouquet de basilic : 1
@@ -1304,6 +1324,7 @@ preparation: 10
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/uquqtu1511178042.jpg
 ingredients:
 - pâtes : 400 g
 - saumon fumé : 150 g
@@ -1383,6 +1404,7 @@ preparation: 5
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/0jv5gx1661040802.jpg
 ingredients:
 - gnocchis : 500 g
 - crème fraîche : 20 cl
@@ -1408,6 +1430,7 @@ preparation: 15
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/wuyd2h1765655837.jpg
 ingredients:
 - riz : 300 g
 - œufs : 3
@@ -1433,6 +1456,7 @@ preparation: 5
 cuisson: 12
 portions: 2
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/usywpp1511189717.jpg
 ingredients:
 - spaghetti : 200 g
 - gousses d'ail : 3
@@ -1457,6 +1481,7 @@ preparation: 10
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg
 ingredients:
 - pâtes : 400 g
 - tomates cerises : 300 g
@@ -1571,6 +1596,7 @@ preparation: 15
 cuisson: 25
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/vptwyt1511450962.jpg
 ingredients:
 - pommes de terre : 3
 - carottes : 2
@@ -1601,6 +1627,7 @@ preparation: 15
 cuisson: 35
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ytttsv1511798734.jpg
 ingredients:
 - courgettes : 4
 - crème fraîche : 20 cl
@@ -1628,6 +1655,7 @@ preparation: 15
 cuisson: 30
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/qwrtut1468418027.jpg
 ingredients:
 - chou-fleur : 1
 - lait : 50 cl
@@ -1738,6 +1766,7 @@ preparation: 25
 cuisson: 35
 portions: 4
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/ctg8jd1585563097.jpg
 ingredients:
 - aubergines : 3
 - tomates concassées : 800 g
@@ -1766,6 +1795,7 @@ preparation: 10
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/xvnx8j1763287209.jpg
 ingredients:
 - pois chiches : 400 g
 - tomates concassées : 400 g
@@ -1795,6 +1825,7 @@ preparation: 20
 cuisson: 20
 portions: 2
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/zry07j1763779321.jpg
 ingredients:
 - quinoa : 150 g
 - pois chiches : 200 g
@@ -1824,6 +1855,7 @@ preparation: 15
 cuisson: 40
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/wspuvp1511303478.jpg
 ingredients:
 - endives : 8
 - tranches de jambon : 8
@@ -1982,6 +2014,7 @@ preparation: 20
 cuisson: 12
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/nz0lg71784671684.jpg
 ingredients:
 - blancs de poulet : 600 g
 - farine : 100 g
@@ -2011,6 +2044,7 @@ preparation: 15
 cuisson: 12
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/tvtxpq1511464705.jpg
 ingredients:
 - tortillas : 8
 - blancs de poulet : 300 g
@@ -2040,6 +2074,7 @@ preparation: 10
 cuisson: 12
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/sxwquu1511793428.jpg
 ingredients:
 - œufs : 4
 - crème fraîche : 20 cl
@@ -2136,6 +2171,7 @@ preparation: 20
 cuisson: 50
 portions: 6
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/x0lk931587671540.jpg
 ingredients:
 - pâte à pizza : 1
 - oignons : 1 kg
@@ -2165,6 +2201,7 @@ preparation: 15
 cuisson: 35
 portions: 6
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/wurrux1468416624.jpg
 ingredients:
 - pâte brisée : 1
 - tomates : 6
@@ -2192,6 +2229,7 @@ preparation: 15
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/eqnf3p1779649407.jpg
 ingredients:
 - farine de sarrasin : 250 g
 - eau : 50 cl
@@ -2248,6 +2286,7 @@ preparation: 5
 cuisson: 3
 portions: 1
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/yvpuuy1511797244.jpg
 ingredients:
 - œufs : 3
 - lait : 2 c. à soupe
@@ -2297,6 +2336,7 @@ preparation: 5
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/vvtvtr1511180578.jpg
 ingredients:
 - pâtes : 400 g
 - boîtes de thon : 2
@@ -2346,6 +2386,7 @@ preparation: 10
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/uquqtu1511178042.jpg
 ingredients:
 - tagliatelles : 400 g
 - champignons de Paris : 400 g
@@ -2395,6 +2436,7 @@ preparation: 10
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/syqypv1486981727.jpg
 ingredients:
 - pâtes : 400 g
 - blanc de poulet : 400 g
@@ -2494,6 +2536,7 @@ preparation: 15
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/hblwvg1763478203.jpg
 ingredients:
 - riz : 250 g
 - œufs : 2
@@ -2544,6 +2587,7 @@ preparation: 15
 cuisson: 35
 portions: 4
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/fk80jp1763280767.jpg
 ingredients:
 - riz : 300 g
 - tomates concassées : 400 g
@@ -2569,6 +2613,7 @@ preparation: 10
 cuisson: 25
 portions: 4
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/xxrxux1503070723.jpg
 ingredients:
 - riz arborio : 300 g
 - tomates concassées : 400 g
@@ -2742,6 +2787,7 @@ preparation: 10
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/uuns781783804024.jpg
 ingredients:
 - blanc de poulet : 600 g
 - citrons : 2
@@ -2791,6 +2837,7 @@ preparation: 15
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/vwrpps1503068729.jpg
 ingredients:
 - escalopes de poulet : 4
 - œufs : 2
@@ -2814,6 +2861,7 @@ preparation: 10
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/4htbtm1783803558.jpg
 ingredients:
 - escalopes de dinde : 600 g
 - champignons de Paris : 250 g
@@ -2988,6 +3036,7 @@ preparation: 15
 cuisson: 35
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/wympxc1779734808.jpg
 ingredients:
 - sauté de porc : 700 g
 - carottes : 2
@@ -3038,6 +3087,7 @@ preparation: 10
 cuisson: 25
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/st1ifa1583267248.jpg
 ingredients:
 - saucisses : 8
 - pommes de terre : 800 g
@@ -3060,6 +3110,7 @@ preparation: 15
 cuisson: 75
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/t1hg8s1780087329.jpg
 ingredients:
 - travers de porc : 1.2 kg
 - miel : 3 c. à soupe
@@ -3083,6 +3134,7 @@ preparation: 10
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/4yjart1763248459.jpg
 ingredients:
 - dos de cabillaud : 4
 - crème fraîche : 20 cl
@@ -3106,6 +3158,7 @@ preparation: 5
 cuisson: 12
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/xxyupu1468262513.jpg
 ingredients:
 - pavés de saumon : 4
 - citron : 1
@@ -3129,6 +3182,7 @@ preparation: 15
 cuisson: 12
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/9q1ci41779735714.jpg
 ingredients:
 - filets de colin : 4
 - œufs : 2
@@ -3153,6 +3207,7 @@ preparation: 20
 cuisson: 12
 portions: 2
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/1549542994.jpg
 ingredients:
 - riz : 150 g
 - saumon frais : 200 g
@@ -3229,6 +3284,7 @@ preparation: 10
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/yqwtvu1487426027.jpg
 ingredients:
 - pois chiches : 800 g
 - tomates concassées : 400 g
@@ -3253,6 +3309,7 @@ preparation: 15
 cuisson: 25
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/qwtrtp1511799242.jpg
 ingredients:
 - œufs : 8
 - courgette : 1
@@ -3327,6 +3384,7 @@ preparation: 5
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg
 ingredients:
 - gnocchis : 800 g
 - tomates concassées : 400 g
@@ -3377,6 +3435,7 @@ preparation: 10
 cuisson: 25
 portions: 2
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/sqrtwu1511721265.jpg
 ingredients:
 - œufs : 4
 - pommes de terre : 500 g
@@ -3400,6 +3459,7 @@ preparation: 15
 cuisson: 40
 portions: 6
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/wssvvs1511785879.jpg
 ingredients:
 - pâte brisée : 1
 - courgette : 1
@@ -3425,6 +3485,7 @@ preparation: 20
 cuisson: 20
 portions: 4
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/u5e9qq1763795441.jpg
 ingredients:
 - lentilles corail : 250 g
 - oignon : 1
@@ -3474,6 +3535,7 @@ preparation: 20
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/swo87v1763595282.jpg
 ingredients:
 - bœuf haché : 400 g
 - haricots rouges : 400 g
@@ -3499,6 +3561,7 @@ preparation: 20
 cuisson: 10
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/jyylmo1763790808.jpg
 ingredients:
 - blanc de poulet : 400 g
 - tortillas : 4
@@ -3574,6 +3637,7 @@ preparation: 15
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/lx1kkj1593349302.jpg
 ingredients:
 - nouilles chinoises : 200 g
 - blanc de poulet : 300 g
@@ -3625,6 +3689,7 @@ preparation: 15
 cuisson: 30
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/kpiu4t1782242131.jpg
 ingredients:
 - pâtes : 400 g
 - jambon : 200 g
@@ -3727,6 +3792,7 @@ preparation: 10
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/qtqvys1468573168.jpg
 ingredients:
 - pâtes : 400 g
 - lardons : 200 g
@@ -3753,6 +3819,7 @@ preparation: 5
 cuisson: 12
 portions: 4
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/0jv5gx1661040802.jpg
 ingredients:
 - spaghetti : 400 g
 - parmesan : 150 g
@@ -3776,6 +3843,7 @@ preparation: 10
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/wspuvp1511303478.jpg
 ingredients:
 - pâtes : 400 g
 - épinards : 400 g
@@ -3802,6 +3870,7 @@ preparation: 5
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/uquqtu1511178042.jpg
 ingredients:
 - pâtes : 400 g
 - gruyère râpé : 80 g
@@ -3828,6 +3897,7 @@ preparation: 10
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/vpcqn01763335688.jpg
 ingredients:
 - pâtes : 400 g
 - tomates concassées : 400 g
@@ -3854,6 +3924,7 @@ preparation: 15
 cuisson: 25
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/wxswxy1511452625.jpg
 ingredients:
 - pâtes : 400 g
 - aubergines : 2
@@ -3935,6 +4006,7 @@ preparation: 15
 cuisson: 30
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/kpiu4t1782242131.jpg
 ingredients:
 - macaronis : 400 g
 - lait : 50 cl
@@ -3961,6 +4033,7 @@ preparation: 10
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/syqypv1486981727.jpg
 ingredients:
 - pâtes : 400 g
 - blanc de poulet : 400 g
@@ -3986,6 +4059,7 @@ preparation: 5
 cuisson: 12
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/uquqtu1511178042.jpg
 ingredients:
 - tortellinis : 500 g
 - crème fraîche : 20 cl
@@ -4039,6 +4113,7 @@ preparation: 15
 cuisson: 30
 portions: 4
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/xxrxux1503070723.jpg
 ingredients:
 - riz arborio : 300 g
 - potiron : 500 g
@@ -4066,6 +4141,7 @@ preparation: 15
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/wuyd2h1765655837.jpg
 ingredients:
 - riz : 250 g
 - blanc de poulet : 300 g
@@ -4093,6 +4169,7 @@ preparation: 15
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/zg2b9l1760524940.jpg
 ingredients:
 - riz : 250 g
 - bœuf à griller : 400 g
@@ -4119,6 +4196,7 @@ preparation: 10
 cuisson: 15
 portions: 2
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/d8f6qx1604182128.jpg
 ingredients:
 - riz : 150 g
 - blanc de poulet : 300 g
@@ -4200,6 +4278,7 @@ preparation: 15
 cuisson: 30
 portions: 4
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/wyxwsp1486979827.jpg
 ingredients:
 - blanc de poulet : 600 g
 - tomates concassées : 400 g
@@ -4227,6 +4306,7 @@ preparation: 20
 cuisson: 30
 portions: 4
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/wf49qs1763075222.jpg
 ingredients:
 - escalopes de poulet : 4
 - œufs : 2
@@ -4253,6 +4333,7 @@ preparation: 15
 cuisson: 40
 portions: 4
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/li30ck1763281992.jpg
 ingredients:
 - cuisses de poulet : 4
 - champignons de Paris : 250 g
@@ -4280,6 +4361,7 @@ preparation: 15
 cuisson: 40
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/nmxec11782498644.jpg
 ingredients:
 - blanc de poulet : 600 g
 - carottes : 3
@@ -4413,6 +4495,7 @@ preparation: 15
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/m0p0j81765568742.jpg
 ingredients:
 - blanc de poulet : 600 g
 - brocoli : 1
@@ -4492,6 +4575,7 @@ preparation: 15
 cuisson: 45
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/d8bfyg1764117503.jpg
 ingredients:
 - cuisses de poulet : 4
 - citron : 1
@@ -4569,6 +4653,7 @@ preparation: 10
 cuisson: 15
 portions: 2
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/vussxq1511882648.jpg
 ingredients:
 - onglets de bœuf : 2
 - échalotes : 4
@@ -4592,6 +4677,7 @@ preparation: 20
 cuisson: 150
 portions: 6
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/vtqxtu1511784197.jpg
 ingredients:
 - bœuf à braiser : 1 kg
 - oignons : 3
@@ -4618,6 +4704,7 @@ preparation: 25
 cuisson: 180
 portions: 6
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/8b2msz1763074897.jpg
 ingredients:
 - bœuf à braiser : 1.2 kg
 - vin rouge : 75 cl
@@ -4672,6 +4759,7 @@ preparation: 15
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/vvn5f71764360273.jpg
 ingredients:
 - bœuf haché : 500 g
 - oignon : 1
@@ -4725,6 +4813,7 @@ preparation: 15
 cuisson: 40
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/vxuyrx1511302687.jpg
 ingredients:
 - saucisses : 8
 - tomates concassées : 400 g
@@ -4751,6 +4840,7 @@ preparation: 10
 cuisson: 30
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/7vpsfp1608588991.jpg
 ingredients:
 - filet mignon de porc : 1
 - champignons de Paris : 250 g
@@ -4776,6 +4866,7 @@ preparation: 15
 cuisson: 75
 portions: 6
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/w36ets1764362474.jpg
 ingredients:
 - rôti de porc : 1 kg
 - pommes de terre : 800 g
@@ -4878,6 +4969,7 @@ preparation: 20
 cuisson: 20
 portions: 4
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/ysxwuq1487323065.jpg
 ingredients:
 - filets de cabillaud : 600 g
 - pommes de terre : 600 g
@@ -4902,6 +4994,7 @@ preparation: 5
 cuisson: 15
 portions: 2
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/p02vq41763754350.jpg
 ingredients:
 - truites : 2
 - amandes effilées : 50 g
@@ -4927,6 +5020,7 @@ preparation: 10
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/1548772327.jpg
 ingredients:
 - pavés de saumon : 4
 - chapelure : 60 g
@@ -4977,6 +5071,7 @@ preparation: 15
 cuisson: 30
 portions: 6
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/2dsltq1560461468.jpg
 ingredients:
 - pâte brisée : 1
 - boîtes de thon : 2
@@ -5001,6 +5096,7 @@ preparation: 15
 cuisson: 20
 portions: 4
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/spswqs1511558697.jpg
 ingredients:
 - fruits de mer : 500 g
 - lait : 40 cl
@@ -5025,6 +5121,7 @@ preparation: 15
 cuisson: 30
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/wruvqv1511880994.jpg
 ingredients:
 - steaks de thon : 4
 - poivrons : 2
@@ -5049,6 +5146,7 @@ preparation: 20
 cuisson: 50
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/wrpwuu1511786491.jpg
 ingredients:
 - courgettes : 2
 - tomates : 3
@@ -5075,6 +5173,7 @@ preparation: 20
 cuisson: 40
 portions: 4
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/ampz9v1763787134.jpg
 ingredients:
 - aubergines : 2
 - bœuf haché : 300 g
@@ -5152,6 +5251,7 @@ preparation: 20
 cuisson: 40
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/u55lbp1585564013.jpg
 ingredients:
 - courgettes : 4
 - bœuf haché : 400 g
@@ -5177,6 +5277,7 @@ preparation: 20
 cuisson: 40
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/p5m3w21779644533.jpg
 ingredients:
 - courgettes : 2
 - brocoli : 1
@@ -5202,6 +5303,7 @@ preparation: 15
 cuisson: 25
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/sywrsu1511463066.jpg
 ingredients:
 - patates douces : 2
 - pois chiches : 400 g
@@ -5228,6 +5330,7 @@ preparation: 20
 cuisson: 15
 portions: 4
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/qwicc91764368097.jpg
 ingredients:
 - carottes : 3
 - courgettes : 2
@@ -5254,6 +5357,7 @@ preparation: 15
 cuisson: 35
 portions: 6
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ae4rwb1779645576.jpg
 ingredients:
 - pâte brisée : 1
 - courgettes : 2
@@ -5357,6 +5461,7 @@ preparation: 20
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/04axct1763793018.jpg
 ingredients:
 - blanc de poulet : 600 g
 - yaourt nature : 1
@@ -5409,6 +5514,7 @@ preparation: 15
 cuisson: 45
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/yxsurp1511304301.jpg
 ingredients:
 - blanc de poulet : 600 g
 - pâte d'arachide : 3 c. à soupe
@@ -5435,6 +5541,7 @@ preparation: 15
 cuisson: 40
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/uuqvwu1504629254.jpg
 ingredients:
 - bœuf haché : 500 g
 - haricots rouges : 400 g
@@ -5460,6 +5567,7 @@ preparation: 15
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ikizdm1763760862.jpg
 ingredients:
 - nouilles chinoises : 250 g
 - blanc de poulet : 300 g
@@ -5485,6 +5593,7 @@ preparation: 20
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/kcv6hj1598733479.jpg
 ingredients:
 - filet de porc : 600 g
 - yaourt nature : 1
@@ -5536,6 +5645,7 @@ preparation: 15
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/qtuwxu1468233098.jpg
 ingredients:
 - tortillas : 8
 - tomates concassées : 400 g
@@ -5562,6 +5672,7 @@ preparation: 20
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ypxvwv1505333929.jpg
 ingredients:
 - tortillas : 8
 - blanc de poulet : 500 g
@@ -5588,6 +5699,7 @@ preparation: 15
 cuisson: 120
 portions: 6
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/atd5sh1583188467.jpg
 ingredients:
 - échine de porc : 1.2 kg
 - oranges : 2
@@ -5615,6 +5727,7 @@ preparation: 10
 cuisson: 12
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/9tllzd1782853513.jpg
 ingredients:
 - tortillas : 8
 - haricots rouges : 400 g
@@ -5640,6 +5753,7 @@ preparation: 25
 cuisson: 20
 portions: 4
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/z0ageb1583189517.jpg
 ingredients:
 - riz : 300 g
 - bœuf à griller : 400 g
@@ -5749,6 +5863,7 @@ preparation: 15
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/568t931763584227.jpg
 ingredients:
 - nouilles chinoises : 400 g
 - chair à saucisse : 300 g
@@ -5775,6 +5890,7 @@ preparation: 20
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/prjve31763486864.jpg
 ingredients:
 - cuisses de poulet : 700 g
 - sauce soja : 6 c. à soupe
@@ -5801,6 +5917,7 @@ preparation: 20
 cuisson: 20
 portions: 4
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/feh9k21784665694.jpg
 ingredients:
 - ailes de poulet : 800 g
 - maïzena : 80 g
@@ -5881,6 +5998,7 @@ preparation: 15
 cuisson: 12
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/vussxq1511882648.jpg
 ingredients:
 - escalopes de veau : 8
 - tranches de jambon : 8
@@ -5935,6 +6053,7 @@ preparation: 15
 cuisson: 35
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/xrrwpx1487347049.jpg
 ingredients:
 - pâtes : 200 g
 - haricots blancs : 800 g
@@ -5986,6 +6105,7 @@ preparation: 20
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/q99te31763075494.jpg
 ingredients:
 - pâtes à pizza : 2
 - jambon : 200 g
@@ -6011,6 +6131,7 @@ preparation: 10
 cuisson: 25
 portions: 4
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/xxrxux1503070723.jpg
 ingredients:
 - riz arborio : 320 g
 - bouillon de volaille : 1 l
@@ -6065,6 +6186,7 @@ preparation: 20
 cuisson: 60
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/wrpwuu1511786491.jpg
 ingredients:
 - pommes de terre : 3
 - courgettes : 2
@@ -6092,6 +6214,7 @@ preparation: 20
 cuisson: 30
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/2wt8721763334199.jpg
 ingredients:
 - bœuf haché : 500 g
 - œuf : 1
@@ -6119,6 +6242,7 @@ preparation: 30
 cuisson: 45
 portions: 6
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/08ez421782683409.jpg
 ingredients:
 - macaronis : 400 g
 - bœuf haché : 600 g
@@ -6146,6 +6270,7 @@ preparation: 20
 cuisson: 35
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/8rfd4q1764112993.jpg
 ingredients:
 - bœuf haché : 500 g
 - tomates concassées : 400 g
@@ -6173,6 +6298,7 @@ preparation: 10
 cuisson: 35
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/b79r6f1585566277.jpg
 ingredients:
 - haricots blancs : 800 g
 - tomates concassées : 400 g
@@ -6200,6 +6326,7 @@ preparation: 20
 cuisson: 180
 portions: 6
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/atd5sh1583188467.jpg
 ingredients:
 - échine de porc : 1.5 kg
 - concentré de tomate : 4 c. à soupe
@@ -6227,6 +6354,7 @@ preparation: 20
 cuisson: 40
 portions: 6
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/fk80jp1763280767.jpg
 ingredients:
 - riz : 300 g
 - blanc de poulet : 400 g
@@ -6281,6 +6409,7 @@ preparation: 15
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/j80gmw1764372176.jpg
 ingredients:
 - bœuf à griller : 600 g
 - oignons : 2
@@ -6307,6 +6436,7 @@ preparation: 25
 cuisson: 90
 portions: 6
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/8859m71764377470.jpg
 ingredients:
 - échine de porc : 800 g
 - maïs : 400 g
@@ -6336,6 +6466,7 @@ preparation: 25
 cuisson: 45
 portions: 4
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/4o13oe1784396585.jpg
 ingredients:
 - cuisses de poulet : 4
 - oignons : 2
@@ -6365,6 +6496,7 @@ preparation: 40
 cuisson: 60
 portions: 6
 difficulte: Difficile
+photo: https://www.themealdb.com/images/media/meals/47abic1782854326.jpg
 ingredients:
 - semoule de maïs : 400 g
 - beurre : 150 g
@@ -6392,6 +6524,7 @@ preparation: 20
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ypxvwv1505333929.jpg
 ingredients:
 - tortillas : 8
 - blanc de poulet : 400 g
@@ -6418,6 +6551,7 @@ preparation: 25
 cuisson: 150
 portions: 6
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/mq27gf1764436795.jpg
 ingredients:
 - paleron de bœuf : 1 kg
 - tomates concassées : 400 g
@@ -6447,6 +6581,7 @@ preparation: 20
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/grhn401765687086.jpg
 ingredients:
 - tortillas : 8
 - pommes de terre : 600 g
@@ -6503,6 +6638,7 @@ preparation: 20
 cuisson: 20
 portions: 2
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/xrv78g1782769859.jpg
 ingredients:
 - farine : 150 g
 - œufs : 2
@@ -6531,6 +6667,7 @@ preparation: 20
 cuisson: 10
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/kyuxew1763479470.jpg
 ingredients:
 - bavette de bœuf : 600 g
 - poire : 1
@@ -6559,6 +6696,7 @@ preparation: 10
 cuisson: 15
 portions: 2
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/xquakq1619787532.jpg
 ingredients:
 - gâteaux de riz : 400 g
 - concentré de tomate : 3 c. à soupe
@@ -6645,6 +6783,7 @@ preparation: 20
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/f3cxnc1765656994.jpg
 ingredients:
 - vermicelles de riz : 250 g
 - blanc de poulet : 200 g
@@ -6788,6 +6927,7 @@ preparation: 10
 cuisson: 12
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ewcikl1614348364.jpg
 ingredients:
 - escalopes de veau : 8
 - citrons : 2
@@ -6844,6 +6984,7 @@ preparation: 10
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/qtqvys1468573168.jpg
 ingredients:
 - pâtes : 400 g
 - brocoli : 600 g
@@ -6870,6 +7011,7 @@ preparation: 20
 cuisson: 10
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/54xzk31760524666.jpg
 ingredients:
 - farine : 400 g
 - eau : 20 cl
@@ -6897,6 +7039,7 @@ preparation: 10
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/wvqpwt1468339226.jpg
 ingredients:
 - pâtes : 400 g
 - boules de mozzarella : 2
@@ -6923,6 +7066,7 @@ preparation: 25
 cuisson: 40
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/72fgzj1764109947.jpg
 ingredients:
 - viande hachée : 600 g
 - œuf : 1
@@ -6952,6 +7096,7 @@ preparation: 25
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/vc08jn1628769553.jpg
 ingredients:
 - viande hachée : 600 g
 - oignon : 1
@@ -7037,6 +7182,7 @@ preparation: 15
 cuisson: 45
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/4er7mj1598733193.jpg
 ingredients:
 - lentilles : 250 g
 - riz : 200 g
@@ -7064,6 +7210,7 @@ preparation: 35
 cuisson: 45
 portions: 6
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/h031jy1782853081.jpg
 ingredients:
 - boulgour : 300 g
 - viande hachée : 600 g
@@ -7091,6 +7238,7 @@ preparation: 20
 cuisson: 60
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/d8bfyg1764117503.jpg
 ingredients:
 - cuisses de poulet : 4
 - oignons : 2
@@ -7120,6 +7268,7 @@ preparation: 25
 cuisson: 70
 portions: 6
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/sl6vqv1763335988.jpg
 ingredients:
 - cuisses de poulet : 600 g
 - saucisse fumée : 250 g
@@ -7150,6 +7299,7 @@ preparation: 20
 cuisson: 60
 portions: 6
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/o2wb6p1581005243.jpg
 ingredients:
 - viande hachée : 800 g
 - oignon : 1
@@ -7236,6 +7386,7 @@ preparation: 20
 cuisson: 180
 portions: 4
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/t1hg8s1780087329.jpg
 ingredients:
 - travers de porc : 1.5 kg
 - paprika : 3 c. à soupe

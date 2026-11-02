@@ -90,6 +90,7 @@ preparation: 25
 cuisson: 0
 portions: 6
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/6aj3wy1784661564.jpg
 ingredients:
 - mascarpone : 250 g
 - œufs : 3
@@ -118,6 +119,7 @@ preparation: 15
 cuisson: 12
 portions: 20
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/1544384070.jpg
 ingredients:
 - farine : 250 g
 - beurre : 125 g
@@ -146,6 +148,7 @@ preparation: 15
 cuisson: 12
 portions: 6
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/xrysxr1483568462.jpg
 ingredients:
 - chocolat noir : 200 g
 - beurre : 150 g
@@ -197,6 +200,7 @@ preparation: 10
 cuisson: 30
 portions: 8
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/tzt3it1764363293.jpg
 ingredients:
 - yaourt nature : 1
 - farine : 3 pots
@@ -300,6 +304,7 @@ preparation: 10
 cuisson: 5
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/gp1sj51783799928.jpg
 ingredients:
 - crème liquide : 50 cl
 - sucre : 60 g
@@ -323,6 +328,7 @@ preparation: 15
 cuisson: 35
 portions: 6
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ssxvup1511387476.jpg
 ingredients:
 - cerises : 500 g
 - farine : 100 g
@@ -350,6 +356,7 @@ preparation: 30
 cuisson: 30
 portions: 8
 difficulte: Difficile
+photo: https://www.themealdb.com/images/media/meals/qpqtuu1511386216.jpg
 ingredients:
 - pâte sablée : 1
 - citrons : 4
@@ -429,6 +436,7 @@ preparation: 15
 cuisson: 12
 portions: 20
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/e756bf1761848342.jpg
 ingredients:
 - farine : 200 g
 - œufs : 3
@@ -456,6 +464,7 @@ preparation: 20
 cuisson: 45
 portions: 8
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/urtqut1511723591.jpg
 ingredients:
 - farine : 200 g
 - sucre : 150 g
@@ -484,6 +493,7 @@ preparation: 10
 cuisson: 20
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ug6bwk1779556566.jpg
 ingredients:
 - pommes : 6
 - sucre : 2 c. à soupe
@@ -507,6 +517,7 @@ preparation: 20
 cuisson: 0
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/oe8rg51699014028.jpg
 ingredients:
 - pomme : 1
 - banane : 1
@@ -589,6 +600,7 @@ preparation: 15
 cuisson: 45
 portions: 6
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/fnh40v1782853788.jpg
 ingredients:
 - farine : 150 g
 - sucre : 150 g
@@ -701,6 +713,7 @@ preparation: 25
 cuisson: 20
 portions: 4
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/rpvptu1511641092.jpg
 ingredients:
 - œufs : 6
 - lait : 1 l
@@ -727,6 +740,7 @@ preparation: 5
 cuisson: 2
 portions: 1
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/tqtywx1468317395.jpg
 ingredients:
 - farine : 4 c. à soupe
 - sucre : 3 c. à soupe

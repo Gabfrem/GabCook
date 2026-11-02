@@ -37,6 +37,7 @@ preparation: 20
 cuisson: 10
 portions: 2
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/t5rgav1784659936.jpg
 ingredients:
 - cœur de laitue romaine : 1
 - blancs de poulet : 2
@@ -93,6 +94,7 @@ preparation: 15
 cuisson: 30
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/60oc3k1699009846.jpg
 ingredients:
 - pommes de terre : 2
 - carottes : 3
@@ -147,6 +149,7 @@ preparation: 20
 cuisson: 0
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/02s6gc1763799560.jpg
 ingredients:
 - semoule : 250 g
 - tomates : 3
@@ -311,6 +314,7 @@ preparation: 15
 cuisson: 8
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/iydbwy1763816111.jpg
 ingredients:
 - crottins de chèvre : 2
 - tranches de pain : 8
@@ -427,6 +431,7 @@ preparation: 15
 cuisson: 25
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ysqrus1487425681.jpg
 ingredients:
 - lentilles vertes : 250 g
 - oignon rouge : 1
@@ -483,6 +488,7 @@ preparation: 15
 cuisson: 30
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/yf5eyw1783804464.jpg
 ingredients:
 - poireaux : 3
 - pommes de terre : 3
@@ -505,6 +511,7 @@ preparation: 15
 cuisson: 10
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/yypwwq1511304979.jpg
 ingredients:
 - salade verte : 1
 - œufs : 3
@@ -530,6 +537,7 @@ preparation: 15
 cuisson: 25
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/x0mreq1784577446.jpg
 ingredients:
 - tortillas : 4
 - tomates concassées : 400 g
@@ -583,6 +591,7 @@ preparation: 10
 cuisson: 0
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/7whfgi1782678933.jpg
 ingredients:
 - tomates : 4
 - boules de mozzarella : 2
@@ -606,6 +615,7 @@ preparation: 20
 cuisson: 0
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/6cskio1763338156.jpg
 ingredients:
 - pain : 300 g
 - tomates : 5
@@ -660,6 +670,7 @@ preparation: 20
 cuisson: 8
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/fqpqml1764359125.jpg
 ingredients:
 - pains pita : 2
 - tomates : 3
@@ -714,6 +725,7 @@ preparation: 20
 cuisson: 0
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ukeksq1784395551.jpg
 ingredients:
 - cabillaud : 500 g
 - citrons verts : 6
@@ -739,6 +751,7 @@ preparation: 20
 cuisson: 0
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/4xcfai1763765676.jpg
 ingredients:
 - crevettes : 400 g
 - citrons verts : 6
@@ -793,6 +806,7 @@ preparation: 25
 cuisson: 45
 portions: 6
 difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/svf3d01780298321.jpg
 ingredients:
 - rôti de veau : 800 g
 - thon : 200 g
@@ -821,6 +835,7 @@ preparation: 10
 cuisson: 25
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/qserum1780156275.jpg
 ingredients:
 - tortellini : 400 g
 - bouillon de volaille : 1.5 l
@@ -874,6 +889,7 @@ preparation: 15
 cuisson: 0
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/bqx8mc1782684286.jpg
 ingredients:
 - tomates : 600 g
 - concombre : 1
@@ -930,6 +946,7 @@ preparation: 20
 cuisson: 15
 portions: 4
 difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/v8eaed1763257313.jpg
 ingredients:
 - blancs de poulet : 2
 - tranches de lard : 6
