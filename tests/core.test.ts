@@ -286,3 +286,17 @@ describe("modes de cuisson", () => {
     expect(viewOf(r, "normal", {}, {}).etapes).toEqual(["a", "b", "c"]);
   });
 });
+
+describe("sécurité", () => {
+  it("refuse les liens javascript: dans une recette reçue", () => {
+    const r = sanitizeRecipe({ nom: "x", ing: [{ q: 1, u: "", n: "a" }], etapes: ["b"], srcUrl: "javascript:alert(1)", photo: "javascript:alert(2)" })!;
+    expect(r.srcUrl).toBe("");
+    expect(r.photo).toBe("");
+    expect(sanitizeRecipe({ nom: "x", ing: [{ q: 1, u: "", n: "a" }], etapes: ["b"], srcUrl: "https://www.marmiton.org/r" })!.srcUrl).toBe("https://www.marmiton.org/r");
+  });
+  it("retire les chevrons des textes saisis", () => {
+    const r = sanitizeRecipe({ nom: "<img src=x onerror=alert(1)>Soupe", ing: [{ q: 1, u: "", n: "<b>sel</b>" }], etapes: ["<script>"] })!;
+    expect(r.nom).not.toMatch(/[<>]/);
+    expect(r.ing[0].n).not.toMatch(/[<>]/);
+  });
+});

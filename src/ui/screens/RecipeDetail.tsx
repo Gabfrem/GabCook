@@ -31,6 +31,14 @@ import { confirmDelete, FavButton, Stepper, viewFor } from "../components/common
 import { Icon } from "../components/Icon";
 import { ingKey } from "../../core/ingredients";
 
+const hostOf = (u: string) => {
+  try {
+    return new URL(u).hostname.replace(/^www\./, "");
+  } catch {
+    return "le web";
+  }
+};
+
 function RatingInput({ id }: { id: string }) {
   const mine = myRating(id);
   const g = globalRating(id);
@@ -232,7 +240,7 @@ export function RecipeDetail({ o }: { o: Extract<Overlay, { kind: "recipe" }> })
             <p class="small muted mt-s">
               Importée depuis{" "}
               <a href={r.srcUrl} target="_blank" rel="noopener noreferrer">
-                {new URL(r.srcUrl).hostname.replace(/^www\./, "")}
+                {hostOf(r.srcUrl)}
               </a>
             </p>
           )}

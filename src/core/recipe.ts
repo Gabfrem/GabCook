@@ -78,7 +78,8 @@ export function sanitizeRecipe(x: unknown): Recipe | null {
     perso: true,
     credit: clean(o.credit) || "",
     src: clean(o.src) || "",
-    srcUrl: typeof o.srcUrl === "string" ? o.srcUrl : ""
+    // seules les adresses web sont gardées : jamais de « javascript: » dans un lien
+    srcUrl: typeof o.srcUrl === "string" && /^https?:\/\/[^\s"'<>]+$/i.test(o.srcUrl) ? o.srcUrl : ""
   };
 }
 
