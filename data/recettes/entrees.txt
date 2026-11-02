@@ -38,6 +38,7 @@ cuisson: 10
 portions: 2
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/t5rgav1784659936.jpg
+photo_proche: oui
 ingredients:
 - cœur de laitue romaine : 1
 - blancs de poulet : 2
@@ -95,6 +96,7 @@ cuisson: 30
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/60oc3k1699009846.jpg
+photo_proche: oui
 ingredients:
 - pommes de terre : 2
 - carottes : 3
@@ -150,6 +152,7 @@ cuisson: 0
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/02s6gc1763799560.jpg
+photo_proche: oui
 ingredients:
 - semoule : 250 g
 - tomates : 3
@@ -315,6 +318,7 @@ cuisson: 8
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/iydbwy1763816111.jpg
+photo_proche: oui
 ingredients:
 - crottins de chèvre : 2
 - tranches de pain : 8
@@ -432,6 +436,7 @@ cuisson: 25
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/ysqrus1487425681.jpg
+photo_proche: oui
 ingredients:
 - lentilles vertes : 250 g
 - oignon rouge : 1
@@ -489,6 +494,7 @@ cuisson: 30
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/yf5eyw1783804464.jpg
+photo_proche: oui
 ingredients:
 - poireaux : 3
 - pommes de terre : 3
@@ -512,6 +518,7 @@ cuisson: 10
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/yypwwq1511304979.jpg
+photo_proche: oui
 ingredients:
 - salade verte : 1
 - œufs : 3
@@ -538,6 +545,7 @@ cuisson: 25
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/x0mreq1784577446.jpg
+photo_proche: oui
 ingredients:
 - tortillas : 4
 - tomates concassées : 400 g
@@ -592,6 +600,7 @@ cuisson: 0
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/7whfgi1782678933.jpg
+photo_proche: oui
 ingredients:
 - tomates : 4
 - boules de mozzarella : 2
@@ -616,6 +625,7 @@ cuisson: 0
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/6cskio1763338156.jpg
+photo_proche: oui
 ingredients:
 - pain : 300 g
 - tomates : 5
@@ -671,6 +681,7 @@ cuisson: 8
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/fqpqml1764359125.jpg
+photo_proche: oui
 ingredients:
 - pains pita : 2
 - tomates : 3
@@ -726,6 +737,7 @@ cuisson: 0
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/ukeksq1784395551.jpg
+photo_proche: oui
 ingredients:
 - cabillaud : 500 g
 - citrons verts : 6
@@ -752,6 +764,7 @@ cuisson: 0
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/4xcfai1763765676.jpg
+photo_proche: oui
 ingredients:
 - crevettes : 400 g
 - citrons verts : 6
@@ -807,6 +820,7 @@ cuisson: 45
 portions: 6
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/svf3d01780298321.jpg
+photo_proche: oui
 ingredients:
 - rôti de veau : 800 g
 - thon : 200 g
@@ -836,6 +850,7 @@ cuisson: 25
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/qserum1780156275.jpg
+photo_proche: oui
 ingredients:
 - tortellini : 400 g
 - bouillon de volaille : 1.5 l
@@ -890,6 +905,7 @@ cuisson: 0
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/bqx8mc1782684286.jpg
+photo_proche: oui
 ingredients:
 - tomates : 600 g
 - concombre : 1
@@ -947,6 +963,7 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/v8eaed1763257313.jpg
+photo_proche: oui
 ingredients:
 - blancs de poulet : 2
 - tranches de lard : 6
@@ -1009,7 +1026,6 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/9c5nlx1763424766.jpg
-nouveau: oui
 ingredients:
 - crevettes : 300 g
 - bouillon de volaille : 1 l
@@ -1039,7 +1055,6 @@ cuisson: 10
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/1549542994.jpg
-nouveau: oui
 ingredients:
 - pavés de saumon : 2
 - avocats : 2
@@ -1067,7 +1082,6 @@ cuisson: 25
 portions: 6
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/ebvuir1699013665.jpg
-nouveau: oui
 ingredients:
 - pommes de terre : 500 g
 - carottes : 2
@@ -1097,7 +1111,6 @@ cuisson: 40
 portions: 6
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/zadvgb1699012544.jpg
-nouveau: oui
 ingredients:
 - betteraves crues : 3
 - chou blanc : 0.25
@@ -1127,7 +1140,6 @@ cuisson: 25
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/tvvxpv1511191952.jpg
-nouveau: oui
 ingredients:
 - brocoli : 1
 - pomme de terre : 1
@@ -1153,7 +1165,6 @@ cuisson: 60
 portions: 6
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/xxtsvx1511814083.jpg
-nouveau: oui
 ingredients:
 - pois cassés : 400 g
 - lardons : 150 g
@@ -1181,7 +1192,6 @@ cuisson: 0
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/5jdtie1763289302.jpg
-nouveau: oui
 ingredients:
 - amandes : 150 g
 - pain : 100 g
@@ -1207,7 +1217,6 @@ cuisson: 35
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/rtwwvv1511799504.jpg
-nouveau: oui
 ingredients:
 - crevettes : 400 g
 - fenouil : 1
@@ -1236,7 +1245,6 @@ cuisson: 25
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/p5nzbk1782680889.jpg
-nouveau: oui
 ingredients:
 - haricots blancs : 800 g
 - oignon : 1
@@ -1263,7 +1271,6 @@ cuisson: 10
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/1529446137.jpg
-nouveau: oui
 ingredients:
 - bouillon de volaille : 1 l
 - œufs : 3
@@ -1288,7 +1295,6 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/pk8wtn1763758591.jpg
-nouveau: oui
 ingredients:
 - blancs de poulet : 2
 - chou chinois : 0.5
@@ -1318,7 +1324,6 @@ cuisson: 30
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/z458v91763817681.jpg
-nouveau: oui
 ingredients:
 - patates douces : 2
 - roquette : 100 g
@@ -1346,7 +1351,6 @@ cuisson: 25
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/kggfo91763288633.jpg
-nouveau: oui
 ingredients:
 - pois chiches : 800 g
 - chorizo : 150 g
@@ -1363,3 +1367,344 @@ etapes:
 2. Ajoutez l'oignon et l'ail hachés, puis le paprika, et laissez fondre 5 min.
 3. Ajoutez les tomates, les pois chiches égouttés et le bouillon. Laissez mijoter 15 min.
 4. Ajoutez les épinards en fin de cuisson, ils tombent en 1 min. Salez si besoin et servez avec du pain.
+
+# ---------- Nouveautés (novembre 2026) ----------
+
+=== Soupe aigre-piquante chinoise
+id: soupeaigrepiquante
+emoji: 🍲
+categorie: Entrée
+preparation: 20
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/1529445893.jpg
+nouveau: oui
+ingredients:
+- filet de porc : 150 g
+- champignons shiitake : 100 g
+- champignons noirs séchés : 10 g
+- tofu ferme : 150 g
+- bouillon de volaille : 1 l
+- sauce soja : 3 c. à soupe
+- vinaigre de riz : 4 c. à soupe
+- sauce piquante : 1 c. à café
+- sucre : 1 c. à café
+- maïzena : 2 c. à soupe
+- œuf : 1
+- huile de sésame : 1 c. à café
+- oignons nouveaux : 2
+- poivre : 1 pincée
+etapes:
+1. Faites tremper les champignons noirs 15 min dans de l'eau chaude, puis émincez-les. Émincez les shiitakés, coupez le porc en fines lanières et le tofu en bâtonnets.
+2. Portez le bouillon à frémissement, ajoutez le porc et les champignons et laissez cuire 5 min.
+3. Ajoutez le tofu, la sauce soja, le vinaigre, la sauce piquante, le sucre et beaucoup de poivre.
+4. Délayez la maïzena dans 4 c. à soupe d'eau froide, versez dans la soupe en remuant : elle épaissit en 1 min.
+5. Battez l'œuf et versez-le en filet dans la soupe frémissante, en remuant doucement : il forme des rubans.
+6. Ajoutez l'huile de sésame et les oignons nouveaux émincés. Goûtez : la soupe doit être à la fois acide et piquante.
+
+=== Oukha (soupe de poisson russe)
+id: oukha
+emoji: 🍲
+categorie: Entrée
+preparation: 15
+cuisson: 30
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/7n8su21699013057.jpg
+nouveau: oui
+ingredients:
+- dos de cabillaud : 300 g
+- pavé de saumon : 1
+- pommes de terre : 3
+- carottes : 2
+- oignon : 1
+- fumet de poisson : 1 l
+- eau : 50 cl
+- feuille de laurier : 1
+- aneth : 1 poignée
+- huile d'olive : 1 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Faites revenir l'oignon émincé et les carottes en rondelles 4 min dans l'huile.
+2. Versez le fumet et l'eau, ajoutez le laurier et portez à ébullition.
+3. Ajoutez les pommes de terre en cubes et laissez cuire 15 min.
+4. Coupez le poisson en gros morceaux, plongez-les dans le bouillon et laissez pocher 5 min à feu doux.
+5. Salez, poivrez et ajoutez beaucoup d'aneth ciselé. Servez avec du pain de seigle.
+
+=== Harengs marinés à l'huile
+id: harengs
+emoji: 🐟
+categorie: Entrée
+preparation: 15
+cuisson: 0
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/7ttta31593350374.jpg
+nouveau: oui
+ingredients:
+- filets de harengs marinés : 8
+- oignons : 2
+- huile : 20 cl
+- feuilles de laurier : 2
+- poivre en grains : 1 c. à café
+- baies de piment de la Jamaïque : 4
+- pommes de terre : 600 g
+etapes:
+1. Égouttez les harengs et coupez-les en morceaux de 3 cm.
+2. Coupez les oignons en fines rondelles.
+3. Dans un bocal, alternez des couches de harengs et d'oignons, en ajoutant le laurier, le poivre et le piment de la Jamaïque.
+4. Couvrez d'huile et laissez mariner au moins 24 h au réfrigérateur.
+5. Servez avec des pommes de terre tièdes cuites à l'eau et du pain de seigle.
+
+=== Salade de calamars, pois chiches et chorizo
+id: saladecalamars
+emoji: 🦑
+categorie: Entrée
+preparation: 15
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/wsu0rc1761848482.jpg
+nouveau: oui
+ingredients:
+- calamars : 400 g
+- pois chiches : 400 g
+- chorizo : 100 g
+- poivron rouge : 1
+- piment : 1
+- gousse d'ail : 1
+- persil : 1 poignée
+- citron : 1
+- huile d'olive : 4 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Faites griller le poivron entier sous le gril du four 15 min en le retournant, laissez-le refroidir dans un sac puis pelez-le et coupez-le en lanières (ou utilisez des poivrons grillés en bocal).
+2. Coupez les calamars en anneaux. Faites dorer le chorizo en dés 3 min dans 1 c. à soupe d'huile.
+3. Ajoutez les calamars, l'ail et le piment hachés, faites sauter 2 min à feu vif.
+4. Mélangez avec les pois chiches égouttés, le poivron, le persil haché, le jus du citron et le reste d'huile.
+5. Salez et servez tiède.
+
+=== Salade de poivrons grillés à l'algérienne (flafla)
+id: flafla
+emoji: 🫑
+categorie: Entrée
+preparation: 15
+cuisson: 25
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/tbj1bs1764118062.jpg
+nouveau: oui
+ingredients:
+- poivrons verts : 3
+- poivron rouge : 1
+- tomates : 3
+- oignon rouge : 1
+- gousses d'ail : 2
+- huile d'olive : 4 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Faites griller les poivrons et les tomates entiers sous le gril du four (ou sur la flamme du gaz) 20 à 25 min, en les retournant, jusqu'à ce que la peau noircisse.
+2. Enfermez-les 10 min dans un saladier couvert : la peau se détachera facilement.
+3. Pelez les poivrons et les tomates, retirez les graines et coupez-les en lanières.
+4. Ajoutez l'oignon rouge émincé finement, l'ail haché, l'huile, du sel et du poivre.
+5. Mélangez et laissez reposer 30 min. Servez à température ambiante avec du pain.
+
+=== Tartines d'aubergine grillée au houmous
+id: tartinesaubergine
+emoji: 🍆
+categorie: Entrée
+preparation: 15
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/zub3s91764110535.jpg
+nouveau: oui
+ingredients:
+- aubergines : 2
+- tranches de pain de campagne : 4
+- houmous : 200 g
+- tomates cerises : 200 g
+- noix : 40 g
+- persil : 1 poignée
+- citron : 1
+- huile d'olive : 4 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Coupez les aubergines en tranches de 1 cm dans la longueur. Badigeonnez-les d'huile et salez-les.
+2. Faites-les griller 4 min de chaque côté dans une poêle-gril bien chaude, jusqu'à ce qu'elles soient tendres et marquées.
+3. Faites griller les tranches de pain.
+4. Tartinez le pain de houmous, posez les aubergines par-dessus.
+5. Ajoutez les tomates cerises coupées en deux, les noix concassées et le persil.
+6. Arrosez d'un filet d'huile et de jus de citron. Servez aussitôt.
+
+=== Poivrons farcis à la feta
+id: poivronsfeta
+emoji: 🫑
+categorie: Entrée
+preparation: 15
+cuisson: 20
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/w0rsga1782683912.jpg
+nouveau: oui
+ingredients:
+- poivrons rouges : 4
+- feta : 200 g
+- fromage frais : 200 g
+- ciboulette : 1 c. à soupe
+- persil : 1 c. à soupe
+- citron : 1
+- huile d'olive : 2 c. à soupe
+- poivre : 1 pincée
+etapes:
+1. Préchauffez le four à 200 °C.
+2. Coupez les poivrons en deux dans la longueur et retirez les graines. Huilez-les et faites-les rôtir 10 min.
+3. Écrasez la feta à la fourchette avec le fromage frais, les herbes ciselées, le zeste et 1 c. à soupe de jus de citron. Poivrez.
+4. Garnissez les demi-poivrons de ce mélange.
+5. Enfournez 10 min, puis passez 2 min sous le gril pour dorer le dessus. Servez chaud ou tiède.
+
+=== Salade de concombre et fenouil à l'aneth
+id: saladeconcombrefenouil
+emoji: 🥒
+categorie: Entrée
+preparation: 15
+cuisson: 0
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ei21r61764365935.jpg
+nouveau: oui
+ingredients:
+- concombre : 1
+- fenouil : 1
+- crème fraîche : 4 c. à soupe
+- citron : 1
+- vinaigre de vin blanc : 1 c. à soupe
+- sucre : 1 c. à café
+- aneth : 1 poignée
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Coupez le concombre et le fenouil en tranches très fines (à la mandoline si vous en avez une).
+2. Salez-les légèrement et laissez dégorger 10 min, puis épongez-les.
+3. Mélangez la crème, le jus du citron, le vinaigre, le sucre et l'aneth ciselé.
+4. Versez sur les légumes, poivrez et mélangez. Servez bien frais.
+
+=== Tofu soyeux sauce soja-sésame
+id: tofusoyeux
+emoji: 🍮
+categorie: Entrée
+preparation: 5
+cuisson: 0
+portions: 2
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/j9nray1765657692.jpg
+nouveau: oui
+ingredients:
+- tofu soyeux : 400 g
+- sauce soja : 2 c. à soupe
+- tahini : 1 c. à soupe
+- huile de sésame : 1 c. à café
+- vinaigre de riz : 1 c. à café
+- oignons nouveaux : 2
+- graines de sésame : 1 c. à café
+etapes:
+1. Égouttez délicatement le tofu et posez-le entier dans une assiette creuse.
+2. Mélangez la sauce soja, le tahini, l'huile de sésame et le vinaigre de riz.
+3. Versez la sauce sur le tofu.
+4. Parsemez d'oignons nouveaux émincés et de graines de sésame grillées. Servez frais, à la cuillère.
+
+=== Rouleaux de riz au poulet et crudités
+id: rouleauxpoulet
+emoji: 🥬
+categorie: Entrée
+preparation: 30
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/f698g91763768731.jpg
+nouveau: oui
+ingredients:
+- galettes de riz : 12
+- vermicelles de riz : 80 g
+- blanc de poulet : 250 g
+- carottes : 2
+- concombre : 1
+- poivron rouge : 1
+- laitue : 1
+- coriandre : 1 poignée
+- menthe : 1 poignée
+- sauce poisson : 3 c. à soupe
+- vinaigre de riz : 2 c. à soupe
+- citron vert : 1
+- sucre : 1 c. à soupe
+- piment : 1
+etapes:
+1. Pochez le poulet 12 min dans de l'eau frémissante, laissez-le refroidir et effilochez-le.
+2. Faites tremper les vermicelles selon le paquet, rincez-les et égouttez-les.
+3. Coupez les carottes, le concombre et le poivron en fins bâtonnets.
+4. Sauce : mélangez la sauce poisson, le vinaigre, le jus du citron vert, le sucre, le piment haché et 4 c. à soupe d'eau.
+5. Trempez une galette de riz 5 secondes dans de l'eau tiède, posez-la sur un torchon humide. Garnissez de salade, vermicelles, crudités, poulet et herbes, puis roulez bien serré en rabattant les côtés.
+6. Servez avec la sauce.
+
+=== Çorba (soupe turque aux lentilles)
+id: corba
+emoji: 🍲
+categorie: Entrée
+preparation: 10
+cuisson: 30
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/58oia61564916529.jpg
+nouveau: oui
+ingredients:
+- lentilles corail : 200 g
+- oignon : 1
+- carotte : 1
+- concentré de tomate : 1 c. à soupe
+- cumin : 1 c. à café
+- paprika : 1 c. à café
+- menthe séchée : 1 c. à café
+- piment : 1 pincée
+- bouillon de légumes : 1.2 l
+- beurre : 20 g
+- citron : 1
+- sel : 1 pincée
+etapes:
+1. Faites fondre l'oignon émincé et la carotte râpée dans le beurre 5 min.
+2. Ajoutez le concentré de tomate, le cumin et le paprika, mélangez 1 min.
+3. Ajoutez les lentilles rincées et le bouillon. Laissez cuire 25 min, jusqu'à ce que les lentilles se défassent.
+4. Mixez finement et salez.
+5. Servez avec un filet de beurre fondu parfumé à la menthe et au piment, et un quartier de citron.
+
+=== Soupe aux champignons et au sarrasin
+id: soupechampignonssarrasin
+emoji: 🍄
+categorie: Entrée
+preparation: 15
+cuisson: 30
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/1ngcbf1628770793.jpg
+nouveau: oui
+ingredients:
+- champignons de Paris : 400 g
+- sarrasin : 80 g
+- oignon : 1
+- gousses d'ail : 2
+- feuille de laurier : 1
+- cube de bouillon de légumes : 1
+- crème fraîche : 4 c. à soupe
+- vinaigre de vin blanc : 1 c. à café
+- persil : 1 poignée
+- huile : 2 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Faites revenir l'oignon émincé dans l'huile 4 min, ajoutez les champignons en lamelles et l'ail, laissez dorer 8 min.
+2. Ajoutez le sarrasin rincé, le laurier, le cube émietté et 1,2 l d'eau.
+3. Laissez cuire 20 min à petits frémissements, jusqu'à ce que le sarrasin soit tendre.
+4. Ajoutez le vinaigre, salez et poivrez.
+5. Servez avec une cuillerée de crème fraîche et du persil haché.

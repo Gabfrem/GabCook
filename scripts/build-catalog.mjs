@@ -38,10 +38,12 @@ fs.mkdirSync(path.join(root, "src/data"), { recursive: true });
 const out = recettes.map((r) => {
   const o = { id: r.id, nom: r.nom, emoji: r.emoji, cat: r.cat, prep: r.prep, cuisson: r.cuisson, portions: r.portions, diff: r.diff, ing: r.ing.map((i) => ({ q: i.q, u: i.u, n: i.n })), etapes: r.etapes };
   if (r.photo) o.photo = r.photo;
+  if (r.photo && r.photoProche) o.photoProche = true;
   if (r.nouveau) o.nouveau = true;
   return o;
 });
 fs.writeFileSync(path.join(root, "src/data/catalog.json"), JSON.stringify(out));
 for (const f of ["airfryer.json", "microondes.json"]) fs.copyFileSync(path.join(root, "data", f), path.join(root, "src/data", f));
 const avecPhoto = out.filter((r) => r.photo).length;
-console.log(`✓ ${out.length} recettes (${avecPhoto} avec photo) → src/data/catalog.json`);
+const proches = out.filter((r) => r.photoProche).length;
+console.log(`✓ ${out.length} recettes (${avecPhoto} avec photo, dont ${proches} d'un plat ressemblant) → src/data/catalog.json`);

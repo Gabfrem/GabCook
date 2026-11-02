@@ -71,6 +71,7 @@ cuisson: 35
 portions: 6
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/wssvvs1511785879.jpg
+photo_proche: oui
 ingredients:
 - pâte brisée : 1
 - lardons : 200 g
@@ -195,6 +196,7 @@ cuisson: 12
 portions: 2
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/djdg8l1784578885.jpg
+photo_proche: oui
 ingredients:
 - tranches de pain de mie : 4
 - tranches de jambon : 2
@@ -317,6 +319,7 @@ cuisson: 30
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/xxrxux1503070723.jpg
+photo_proche: oui
 ingredients:
 - riz arborio : 300 g
 - champignons de Paris : 300 g
@@ -402,6 +405,7 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/minfsc1763766806.jpg
+photo_proche: oui
 ingredients:
 - brocoli : 1
 - carottes : 2
@@ -432,6 +436,7 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/ypxvwv1505333929.jpg
+photo_proche: oui
 ingredients:
 - bœuf haché : 500 g
 - tortillas : 8
@@ -492,6 +497,7 @@ cuisson: 90
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/nmxec11782498644.jpg
+photo_proche: oui
 ingredients:
 - épaule de veau : 800 g
 - carottes : 3
@@ -648,6 +654,7 @@ cuisson: 30
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/9ya6o71780262651.jpg
+photo_proche: oui
 ingredients:
 - blancs de poulet : 600 g
 - yaourts nature : 2
@@ -680,6 +687,7 @@ cuisson: 75
 portions: 6
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/w36ets1764362474.jpg
+photo_proche: oui
 ingredients:
 - rôti de porc : 1 kg
 - pommes de terre : 800 g
@@ -739,6 +747,7 @@ cuisson: 30
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/8rfd4q1764112993.jpg
+photo_proche: oui
 ingredients:
 - bœuf haché : 500 g
 - chapelure : 50 g
@@ -769,6 +778,7 @@ cuisson: 12
 portions: 2
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/lmwaf61783805434.jpg
+photo_proche: oui
 ingredients:
 - escalopes de poulet : 2
 - tranches de jambon : 2
@@ -826,6 +836,7 @@ cuisson: 25
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/4htbtm1783803558.jpg
+photo_proche: oui
 ingredients:
 - blancs de poulet : 4
 - champignons de Paris : 250 g
@@ -966,6 +977,7 @@ cuisson: 35
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/v1n3cj1783805938.jpg
+photo_proche: oui
 ingredients:
 - pommes de terre : 1 kg
 - reblochon : 1
@@ -995,6 +1007,7 @@ cuisson: 40
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/sypxpx1515365095.jpg
+photo_proche: oui
 ingredients:
 - cuisses de poulet : 4
 - oignons : 4
@@ -1026,6 +1039,7 @@ cuisson: 20
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/1548772327.jpg
+photo_proche: oui
 ingredients:
 - pavés de saumon : 4
 - crème fraîche : 20 cl
@@ -1079,6 +1093,7 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/4yjart1763248459.jpg
+photo_proche: oui
 ingredients:
 - dos de cabillaud : 4
 - tomates cerises : 200 g
@@ -1105,6 +1120,7 @@ cuisson: 10
 portions: 2
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/4o4wh11761848573.jpg
+photo_proche: oui
 ingredients:
 - filets de poisson blanc : 2
 - farine : 3 c. à soupe
@@ -1130,6 +1146,7 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/92wbmf1763252334.jpg
+photo_proche: oui
 ingredients:
 - moules : 2 kg
 - échalotes : 3
@@ -1217,6 +1234,7 @@ cuisson: 20
 portions: 2
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/yx8j1i1763484612.jpg
+photo_proche: oui
 ingredients:
 - pavés de saumon : 2
 - courgette : 1
@@ -1272,6 +1290,7 @@ cuisson: 20
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/9q1ci41779735714.jpg
+photo_proche: oui
 ingredients:
 - filets de cabillaud : 4
 - farine : 200 g
@@ -1299,6 +1318,7 @@ cuisson: 12
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/wxswxy1511452625.jpg
+photo_proche: oui
 ingredients:
 - pâtes : 400 g
 - bouquet de basilic : 1
@@ -1325,6 +1345,7 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/uquqtu1511178042.jpg
+photo_proche: oui
 ingredients:
 - pâtes : 400 g
 - saumon fumé : 150 g
@@ -1405,6 +1426,7 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/0jv5gx1661040802.jpg
+photo_proche: oui
 ingredients:
 - gnocchis : 500 g
 - crème fraîche : 20 cl
@@ -1431,6 +1453,7 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/wuyd2h1765655837.jpg
+photo_proche: oui
 ingredients:
 - riz : 300 g
 - œufs : 3
@@ -1457,6 +1480,7 @@ cuisson: 12
 portions: 2
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/usywpp1511189717.jpg
+photo_proche: oui
 ingredients:
 - spaghetti : 200 g
 - gousses d'ail : 3
@@ -1482,6 +1506,7 @@ cuisson: 20
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg
+photo_proche: oui
 ingredients:
 - pâtes : 400 g
 - tomates cerises : 300 g
@@ -1597,6 +1622,7 @@ cuisson: 25
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/vptwyt1511450962.jpg
+photo_proche: oui
 ingredients:
 - pommes de terre : 3
 - carottes : 2
@@ -1628,6 +1654,7 @@ cuisson: 35
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/ytttsv1511798734.jpg
+photo_proche: oui
 ingredients:
 - courgettes : 4
 - crème fraîche : 20 cl
@@ -1656,6 +1683,7 @@ cuisson: 30
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/qwrtut1468418027.jpg
+photo_proche: oui
 ingredients:
 - chou-fleur : 1
 - lait : 50 cl
@@ -1767,6 +1795,7 @@ cuisson: 35
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/ctg8jd1585563097.jpg
+photo_proche: oui
 ingredients:
 - aubergines : 3
 - tomates concassées : 800 g
@@ -1796,6 +1825,7 @@ cuisson: 20
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/xvnx8j1763287209.jpg
+photo_proche: oui
 ingredients:
 - pois chiches : 400 g
 - tomates concassées : 400 g
@@ -1826,6 +1856,7 @@ cuisson: 20
 portions: 2
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/zry07j1763779321.jpg
+photo_proche: oui
 ingredients:
 - quinoa : 150 g
 - pois chiches : 200 g
@@ -1856,6 +1887,7 @@ cuisson: 40
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/wspuvp1511303478.jpg
+photo_proche: oui
 ingredients:
 - endives : 8
 - tranches de jambon : 8
@@ -2015,6 +2047,7 @@ cuisson: 12
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/nz0lg71784671684.jpg
+photo_proche: oui
 ingredients:
 - blancs de poulet : 600 g
 - farine : 100 g
@@ -2045,6 +2078,7 @@ cuisson: 12
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/tvtxpq1511464705.jpg
+photo_proche: oui
 ingredients:
 - tortillas : 8
 - blancs de poulet : 300 g
@@ -2075,6 +2109,7 @@ cuisson: 12
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/sxwquu1511793428.jpg
+photo_proche: oui
 ingredients:
 - œufs : 4
 - crème fraîche : 20 cl
@@ -2172,6 +2207,7 @@ cuisson: 50
 portions: 6
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/x0lk931587671540.jpg
+photo_proche: oui
 ingredients:
 - pâte à pizza : 1
 - oignons : 1 kg
@@ -2202,6 +2238,7 @@ cuisson: 35
 portions: 6
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/wurrux1468416624.jpg
+photo_proche: oui
 ingredients:
 - pâte brisée : 1
 - tomates : 6
@@ -2230,6 +2267,7 @@ cuisson: 20
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/eqnf3p1779649407.jpg
+photo_proche: oui
 ingredients:
 - farine de sarrasin : 250 g
 - eau : 50 cl
@@ -2287,6 +2325,7 @@ cuisson: 3
 portions: 1
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/yvpuuy1511797244.jpg
+photo_proche: oui
 ingredients:
 - œufs : 3
 - lait : 2 c. à soupe
@@ -2337,6 +2376,7 @@ cuisson: 20
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/vvtvtr1511180578.jpg
+photo_proche: oui
 ingredients:
 - pâtes : 400 g
 - boîtes de thon : 2
@@ -2387,6 +2427,7 @@ cuisson: 20
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/uquqtu1511178042.jpg
+photo_proche: oui
 ingredients:
 - tagliatelles : 400 g
 - champignons de Paris : 400 g
@@ -2437,6 +2478,7 @@ cuisson: 20
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/syqypv1486981727.jpg
+photo_proche: oui
 ingredients:
 - pâtes : 400 g
 - blanc de poulet : 400 g
@@ -2537,6 +2579,7 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/hblwvg1763478203.jpg
+photo_proche: oui
 ingredients:
 - riz : 250 g
 - œufs : 2
@@ -2588,6 +2631,7 @@ cuisson: 35
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/fk80jp1763280767.jpg
+photo_proche: oui
 ingredients:
 - riz : 300 g
 - tomates concassées : 400 g
@@ -2614,6 +2658,7 @@ cuisson: 25
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/xxrxux1503070723.jpg
+photo_proche: oui
 ingredients:
 - riz arborio : 300 g
 - tomates concassées : 400 g
@@ -2788,6 +2833,7 @@ cuisson: 20
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/uuns781783804024.jpg
+photo_proche: oui
 ingredients:
 - blanc de poulet : 600 g
 - citrons : 2
@@ -2838,6 +2884,7 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/vwrpps1503068729.jpg
+photo_proche: oui
 ingredients:
 - escalopes de poulet : 4
 - œufs : 2
@@ -2862,6 +2909,7 @@ cuisson: 20
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/4htbtm1783803558.jpg
+photo_proche: oui
 ingredients:
 - escalopes de dinde : 600 g
 - champignons de Paris : 250 g
@@ -3037,6 +3085,7 @@ cuisson: 35
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/wympxc1779734808.jpg
+photo_proche: oui
 ingredients:
 - sauté de porc : 700 g
 - carottes : 2
@@ -3088,6 +3137,7 @@ cuisson: 25
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/st1ifa1583267248.jpg
+photo_proche: oui
 ingredients:
 - saucisses : 8
 - pommes de terre : 800 g
@@ -3111,6 +3161,7 @@ cuisson: 75
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/t1hg8s1780087329.jpg
+photo_proche: oui
 ingredients:
 - travers de porc : 1.2 kg
 - miel : 3 c. à soupe
@@ -3135,6 +3186,7 @@ cuisson: 20
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/4yjart1763248459.jpg
+photo_proche: oui
 ingredients:
 - dos de cabillaud : 4
 - crème fraîche : 20 cl
@@ -3159,6 +3211,7 @@ cuisson: 12
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/xxyupu1468262513.jpg
+photo_proche: oui
 ingredients:
 - pavés de saumon : 4
 - citron : 1
@@ -3183,6 +3236,7 @@ cuisson: 12
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/9q1ci41779735714.jpg
+photo_proche: oui
 ingredients:
 - filets de colin : 4
 - œufs : 2
@@ -3208,6 +3262,7 @@ cuisson: 12
 portions: 2
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/1549542994.jpg
+photo_proche: oui
 ingredients:
 - riz : 150 g
 - saumon frais : 200 g
@@ -3285,6 +3340,7 @@ cuisson: 20
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/yqwtvu1487426027.jpg
+photo_proche: oui
 ingredients:
 - pois chiches : 800 g
 - tomates concassées : 400 g
@@ -3310,6 +3366,7 @@ cuisson: 25
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/qwtrtp1511799242.jpg
+photo_proche: oui
 ingredients:
 - œufs : 8
 - courgette : 1
@@ -3385,6 +3442,7 @@ cuisson: 20
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg
+photo_proche: oui
 ingredients:
 - gnocchis : 800 g
 - tomates concassées : 400 g
@@ -3436,6 +3494,7 @@ cuisson: 25
 portions: 2
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/sqrtwu1511721265.jpg
+photo_proche: oui
 ingredients:
 - œufs : 4
 - pommes de terre : 500 g
@@ -3460,6 +3519,7 @@ cuisson: 40
 portions: 6
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/wssvvs1511785879.jpg
+photo_proche: oui
 ingredients:
 - pâte brisée : 1
 - courgette : 1
@@ -3486,6 +3546,7 @@ cuisson: 20
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/u5e9qq1763795441.jpg
+photo_proche: oui
 ingredients:
 - lentilles corail : 250 g
 - oignon : 1
@@ -3536,6 +3597,7 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/swo87v1763595282.jpg
+photo_proche: oui
 ingredients:
 - bœuf haché : 400 g
 - haricots rouges : 400 g
@@ -3562,6 +3624,7 @@ cuisson: 10
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/jyylmo1763790808.jpg
+photo_proche: oui
 ingredients:
 - blanc de poulet : 400 g
 - tortillas : 4
@@ -3638,6 +3701,7 @@ cuisson: 20
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/lx1kkj1593349302.jpg
+photo_proche: oui
 ingredients:
 - nouilles chinoises : 200 g
 - blanc de poulet : 300 g
@@ -3690,6 +3754,7 @@ cuisson: 30
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/kpiu4t1782242131.jpg
+photo_proche: oui
 ingredients:
 - pâtes : 400 g
 - jambon : 200 g
@@ -3793,6 +3858,7 @@ cuisson: 20
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/qtqvys1468573168.jpg
+photo_proche: oui
 ingredients:
 - pâtes : 400 g
 - lardons : 200 g
@@ -3820,6 +3886,7 @@ cuisson: 12
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/0jv5gx1661040802.jpg
+photo_proche: oui
 ingredients:
 - spaghetti : 400 g
 - parmesan : 150 g
@@ -3844,6 +3911,7 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/wspuvp1511303478.jpg
+photo_proche: oui
 ingredients:
 - pâtes : 400 g
 - épinards : 400 g
@@ -3871,6 +3939,7 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/uquqtu1511178042.jpg
+photo_proche: oui
 ingredients:
 - pâtes : 400 g
 - gruyère râpé : 80 g
@@ -3898,6 +3967,7 @@ cuisson: 20
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/vpcqn01763335688.jpg
+photo_proche: oui
 ingredients:
 - pâtes : 400 g
 - tomates concassées : 400 g
@@ -3925,6 +3995,7 @@ cuisson: 25
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/wxswxy1511452625.jpg
+photo_proche: oui
 ingredients:
 - pâtes : 400 g
 - aubergines : 2
@@ -4007,6 +4078,7 @@ cuisson: 30
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/kpiu4t1782242131.jpg
+photo_proche: oui
 ingredients:
 - macaronis : 400 g
 - lait : 50 cl
@@ -4034,6 +4106,7 @@ cuisson: 20
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/syqypv1486981727.jpg
+photo_proche: oui
 ingredients:
 - pâtes : 400 g
 - blanc de poulet : 400 g
@@ -4060,6 +4133,7 @@ cuisson: 12
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/uquqtu1511178042.jpg
+photo_proche: oui
 ingredients:
 - tortellinis : 500 g
 - crème fraîche : 20 cl
@@ -4114,6 +4188,7 @@ cuisson: 30
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/xxrxux1503070723.jpg
+photo_proche: oui
 ingredients:
 - riz arborio : 300 g
 - potiron : 500 g
@@ -4142,6 +4217,7 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/wuyd2h1765655837.jpg
+photo_proche: oui
 ingredients:
 - riz : 250 g
 - blanc de poulet : 300 g
@@ -4170,6 +4246,7 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/zg2b9l1760524940.jpg
+photo_proche: oui
 ingredients:
 - riz : 250 g
 - bœuf à griller : 400 g
@@ -4197,6 +4274,7 @@ cuisson: 15
 portions: 2
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/d8f6qx1604182128.jpg
+photo_proche: oui
 ingredients:
 - riz : 150 g
 - blanc de poulet : 300 g
@@ -4279,6 +4357,7 @@ cuisson: 30
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/wyxwsp1486979827.jpg
+photo_proche: oui
 ingredients:
 - blanc de poulet : 600 g
 - tomates concassées : 400 g
@@ -4307,6 +4386,7 @@ cuisson: 30
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/wf49qs1763075222.jpg
+photo_proche: oui
 ingredients:
 - escalopes de poulet : 4
 - œufs : 2
@@ -4334,6 +4414,7 @@ cuisson: 40
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/li30ck1763281992.jpg
+photo_proche: oui
 ingredients:
 - cuisses de poulet : 4
 - champignons de Paris : 250 g
@@ -4362,6 +4443,7 @@ cuisson: 40
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/nmxec11782498644.jpg
+photo_proche: oui
 ingredients:
 - blanc de poulet : 600 g
 - carottes : 3
@@ -4496,6 +4578,7 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/m0p0j81765568742.jpg
+photo_proche: oui
 ingredients:
 - blanc de poulet : 600 g
 - brocoli : 1
@@ -4576,6 +4659,7 @@ cuisson: 45
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/d8bfyg1764117503.jpg
+photo_proche: oui
 ingredients:
 - cuisses de poulet : 4
 - citron : 1
@@ -4654,6 +4738,7 @@ cuisson: 15
 portions: 2
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/vussxq1511882648.jpg
+photo_proche: oui
 ingredients:
 - onglets de bœuf : 2
 - échalotes : 4
@@ -4678,6 +4763,7 @@ cuisson: 150
 portions: 6
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/vtqxtu1511784197.jpg
+photo_proche: oui
 ingredients:
 - bœuf à braiser : 1 kg
 - oignons : 3
@@ -4705,6 +4791,7 @@ cuisson: 180
 portions: 6
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/8b2msz1763074897.jpg
+photo_proche: oui
 ingredients:
 - bœuf à braiser : 1.2 kg
 - vin rouge : 75 cl
@@ -4760,6 +4847,7 @@ cuisson: 20
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/vvn5f71764360273.jpg
+photo_proche: oui
 ingredients:
 - bœuf haché : 500 g
 - oignon : 1
@@ -4814,6 +4902,7 @@ cuisson: 40
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/vxuyrx1511302687.jpg
+photo_proche: oui
 ingredients:
 - saucisses : 8
 - tomates concassées : 400 g
@@ -4841,6 +4930,7 @@ cuisson: 30
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/7vpsfp1608588991.jpg
+photo_proche: oui
 ingredients:
 - filet mignon de porc : 1
 - champignons de Paris : 250 g
@@ -4867,6 +4957,7 @@ cuisson: 75
 portions: 6
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/w36ets1764362474.jpg
+photo_proche: oui
 ingredients:
 - rôti de porc : 1 kg
 - pommes de terre : 800 g
@@ -4970,6 +5061,7 @@ cuisson: 20
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/ysxwuq1487323065.jpg
+photo_proche: oui
 ingredients:
 - filets de cabillaud : 600 g
 - pommes de terre : 600 g
@@ -4995,6 +5087,7 @@ cuisson: 15
 portions: 2
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/p02vq41763754350.jpg
+photo_proche: oui
 ingredients:
 - truites : 2
 - amandes effilées : 50 g
@@ -5021,6 +5114,7 @@ cuisson: 20
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/1548772327.jpg
+photo_proche: oui
 ingredients:
 - pavés de saumon : 4
 - chapelure : 60 g
@@ -5072,6 +5166,7 @@ cuisson: 30
 portions: 6
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/2dsltq1560461468.jpg
+photo_proche: oui
 ingredients:
 - pâte brisée : 1
 - boîtes de thon : 2
@@ -5097,6 +5192,7 @@ cuisson: 20
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/spswqs1511558697.jpg
+photo_proche: oui
 ingredients:
 - fruits de mer : 500 g
 - lait : 40 cl
@@ -5122,6 +5218,7 @@ cuisson: 30
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/wruvqv1511880994.jpg
+photo_proche: oui
 ingredients:
 - steaks de thon : 4
 - poivrons : 2
@@ -5147,6 +5244,7 @@ cuisson: 50
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/wrpwuu1511786491.jpg
+photo_proche: oui
 ingredients:
 - courgettes : 2
 - tomates : 3
@@ -5174,6 +5272,7 @@ cuisson: 40
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/ampz9v1763787134.jpg
+photo_proche: oui
 ingredients:
 - aubergines : 2
 - bœuf haché : 300 g
@@ -5252,6 +5351,7 @@ cuisson: 40
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/u55lbp1585564013.jpg
+photo_proche: oui
 ingredients:
 - courgettes : 4
 - bœuf haché : 400 g
@@ -5278,6 +5378,7 @@ cuisson: 40
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/p5m3w21779644533.jpg
+photo_proche: oui
 ingredients:
 - courgettes : 2
 - brocoli : 1
@@ -5304,6 +5405,7 @@ cuisson: 25
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/sywrsu1511463066.jpg
+photo_proche: oui
 ingredients:
 - patates douces : 2
 - pois chiches : 400 g
@@ -5331,6 +5433,7 @@ cuisson: 15
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/qwicc91764368097.jpg
+photo_proche: oui
 ingredients:
 - carottes : 3
 - courgettes : 2
@@ -5358,6 +5461,7 @@ cuisson: 35
 portions: 6
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/ae4rwb1779645576.jpg
+photo_proche: oui
 ingredients:
 - pâte brisée : 1
 - courgettes : 2
@@ -5462,6 +5566,7 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/04axct1763793018.jpg
+photo_proche: oui
 ingredients:
 - blanc de poulet : 600 g
 - yaourt nature : 1
@@ -5515,6 +5620,7 @@ cuisson: 45
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/yxsurp1511304301.jpg
+photo_proche: oui
 ingredients:
 - blanc de poulet : 600 g
 - pâte d'arachide : 3 c. à soupe
@@ -5542,6 +5648,7 @@ cuisson: 40
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/uuqvwu1504629254.jpg
+photo_proche: oui
 ingredients:
 - bœuf haché : 500 g
 - haricots rouges : 400 g
@@ -5568,6 +5675,7 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/ikizdm1763760862.jpg
+photo_proche: oui
 ingredients:
 - nouilles chinoises : 250 g
 - blanc de poulet : 300 g
@@ -5594,6 +5702,7 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/kcv6hj1598733479.jpg
+photo_proche: oui
 ingredients:
 - filet de porc : 600 g
 - yaourt nature : 1
@@ -5646,6 +5755,7 @@ cuisson: 20
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/qtuwxu1468233098.jpg
+photo_proche: oui
 ingredients:
 - tortillas : 8
 - tomates concassées : 400 g
@@ -5673,6 +5783,7 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/ypxvwv1505333929.jpg
+photo_proche: oui
 ingredients:
 - tortillas : 8
 - blanc de poulet : 500 g
@@ -5700,6 +5811,7 @@ cuisson: 120
 portions: 6
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/atd5sh1583188467.jpg
+photo_proche: oui
 ingredients:
 - échine de porc : 1.2 kg
 - oranges : 2
@@ -5728,6 +5840,7 @@ cuisson: 12
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/9tllzd1782853513.jpg
+photo_proche: oui
 ingredients:
 - tortillas : 8
 - haricots rouges : 400 g
@@ -5754,6 +5867,7 @@ cuisson: 20
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/z0ageb1583189517.jpg
+photo_proche: oui
 ingredients:
 - riz : 300 g
 - bœuf à griller : 400 g
@@ -5864,6 +5978,7 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/568t931763584227.jpg
+photo_proche: oui
 ingredients:
 - nouilles chinoises : 400 g
 - chair à saucisse : 300 g
@@ -5891,6 +6006,7 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/prjve31763486864.jpg
+photo_proche: oui
 ingredients:
 - cuisses de poulet : 700 g
 - sauce soja : 6 c. à soupe
@@ -5918,6 +6034,7 @@ cuisson: 20
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/feh9k21784665694.jpg
+photo_proche: oui
 ingredients:
 - ailes de poulet : 800 g
 - maïzena : 80 g
@@ -5999,6 +6116,7 @@ cuisson: 12
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/vussxq1511882648.jpg
+photo_proche: oui
 ingredients:
 - escalopes de veau : 8
 - tranches de jambon : 8
@@ -6054,6 +6172,7 @@ cuisson: 35
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/xrrwpx1487347049.jpg
+photo_proche: oui
 ingredients:
 - pâtes : 200 g
 - haricots blancs : 800 g
@@ -6106,6 +6225,7 @@ cuisson: 20
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/q99te31763075494.jpg
+photo_proche: oui
 ingredients:
 - pâtes à pizza : 2
 - jambon : 200 g
@@ -6132,6 +6252,7 @@ cuisson: 25
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/xxrxux1503070723.jpg
+photo_proche: oui
 ingredients:
 - riz arborio : 320 g
 - bouillon de volaille : 1 l
@@ -6187,6 +6308,7 @@ cuisson: 60
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/wrpwuu1511786491.jpg
+photo_proche: oui
 ingredients:
 - pommes de terre : 3
 - courgettes : 2
@@ -6215,6 +6337,7 @@ cuisson: 30
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/2wt8721763334199.jpg
+photo_proche: oui
 ingredients:
 - bœuf haché : 500 g
 - œuf : 1
@@ -6243,6 +6366,7 @@ cuisson: 45
 portions: 6
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/08ez421782683409.jpg
+photo_proche: oui
 ingredients:
 - macaronis : 400 g
 - bœuf haché : 600 g
@@ -6271,6 +6395,7 @@ cuisson: 35
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/8rfd4q1764112993.jpg
+photo_proche: oui
 ingredients:
 - bœuf haché : 500 g
 - tomates concassées : 400 g
@@ -6299,6 +6424,7 @@ cuisson: 35
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/b79r6f1585566277.jpg
+photo_proche: oui
 ingredients:
 - haricots blancs : 800 g
 - tomates concassées : 400 g
@@ -6327,6 +6453,7 @@ cuisson: 180
 portions: 6
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/atd5sh1583188467.jpg
+photo_proche: oui
 ingredients:
 - échine de porc : 1.5 kg
 - concentré de tomate : 4 c. à soupe
@@ -6355,6 +6482,7 @@ cuisson: 40
 portions: 6
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/fk80jp1763280767.jpg
+photo_proche: oui
 ingredients:
 - riz : 300 g
 - blanc de poulet : 400 g
@@ -6410,6 +6538,7 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/j80gmw1764372176.jpg
+photo_proche: oui
 ingredients:
 - bœuf à griller : 600 g
 - oignons : 2
@@ -6437,6 +6566,7 @@ cuisson: 90
 portions: 6
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/8859m71764377470.jpg
+photo_proche: oui
 ingredients:
 - échine de porc : 800 g
 - maïs : 400 g
@@ -6467,6 +6597,7 @@ cuisson: 45
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/4o13oe1784396585.jpg
+photo_proche: oui
 ingredients:
 - cuisses de poulet : 4
 - oignons : 2
@@ -6497,6 +6628,7 @@ cuisson: 60
 portions: 6
 difficulte: Difficile
 photo: https://www.themealdb.com/images/media/meals/47abic1782854326.jpg
+photo_proche: oui
 ingredients:
 - semoule de maïs : 400 g
 - beurre : 150 g
@@ -6525,6 +6657,7 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/ypxvwv1505333929.jpg
+photo_proche: oui
 ingredients:
 - tortillas : 8
 - blanc de poulet : 400 g
@@ -6552,6 +6685,7 @@ cuisson: 150
 portions: 6
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/mq27gf1764436795.jpg
+photo_proche: oui
 ingredients:
 - paleron de bœuf : 1 kg
 - tomates concassées : 400 g
@@ -6582,6 +6716,7 @@ cuisson: 20
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/grhn401765687086.jpg
+photo_proche: oui
 ingredients:
 - tortillas : 8
 - pommes de terre : 600 g
@@ -6639,6 +6774,7 @@ cuisson: 20
 portions: 2
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/xrv78g1782769859.jpg
+photo_proche: oui
 ingredients:
 - farine : 150 g
 - œufs : 2
@@ -6668,6 +6804,7 @@ cuisson: 10
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/kyuxew1763479470.jpg
+photo_proche: oui
 ingredients:
 - bavette de bœuf : 600 g
 - poire : 1
@@ -6697,6 +6834,7 @@ cuisson: 15
 portions: 2
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/xquakq1619787532.jpg
+photo_proche: oui
 ingredients:
 - gâteaux de riz : 400 g
 - concentré de tomate : 3 c. à soupe
@@ -6784,6 +6922,7 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/f3cxnc1765656994.jpg
+photo_proche: oui
 ingredients:
 - vermicelles de riz : 250 g
 - blanc de poulet : 200 g
@@ -6928,6 +7067,7 @@ cuisson: 12
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/ewcikl1614348364.jpg
+photo_proche: oui
 ingredients:
 - escalopes de veau : 8
 - citrons : 2
@@ -6985,6 +7125,7 @@ cuisson: 20
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/qtqvys1468573168.jpg
+photo_proche: oui
 ingredients:
 - pâtes : 400 g
 - brocoli : 600 g
@@ -7012,6 +7153,7 @@ cuisson: 10
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/54xzk31760524666.jpg
+photo_proche: oui
 ingredients:
 - farine : 400 g
 - eau : 20 cl
@@ -7040,6 +7182,7 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/wvqpwt1468339226.jpg
+photo_proche: oui
 ingredients:
 - pâtes : 400 g
 - boules de mozzarella : 2
@@ -7067,6 +7210,7 @@ cuisson: 40
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/72fgzj1764109947.jpg
+photo_proche: oui
 ingredients:
 - viande hachée : 600 g
 - œuf : 1
@@ -7097,6 +7241,7 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/vc08jn1628769553.jpg
+photo_proche: oui
 ingredients:
 - viande hachée : 600 g
 - oignon : 1
@@ -7183,6 +7328,7 @@ cuisson: 45
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/4er7mj1598733193.jpg
+photo_proche: oui
 ingredients:
 - lentilles : 250 g
 - riz : 200 g
@@ -7211,6 +7357,7 @@ cuisson: 45
 portions: 6
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/h031jy1782853081.jpg
+photo_proche: oui
 ingredients:
 - boulgour : 300 g
 - viande hachée : 600 g
@@ -7239,6 +7386,7 @@ cuisson: 60
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/d8bfyg1764117503.jpg
+photo_proche: oui
 ingredients:
 - cuisses de poulet : 4
 - oignons : 2
@@ -7269,6 +7417,7 @@ cuisson: 70
 portions: 6
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/sl6vqv1763335988.jpg
+photo_proche: oui
 ingredients:
 - cuisses de poulet : 600 g
 - saucisse fumée : 250 g
@@ -7300,6 +7449,7 @@ cuisson: 60
 portions: 6
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/o2wb6p1581005243.jpg
+photo_proche: oui
 ingredients:
 - viande hachée : 800 g
 - oignon : 1
@@ -7387,6 +7537,7 @@ cuisson: 180
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/t1hg8s1780087329.jpg
+photo_proche: oui
 ingredients:
 - travers de porc : 1.5 kg
 - paprika : 3 c. à soupe
@@ -7447,7 +7598,6 @@ cuisson: 110
 portions: 6
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/qstyvs1505931190.jpg
-nouveau: oui
 ingredients:
 - cuisses de poulet : 6
 - vin rouge : 75 cl
@@ -7481,7 +7631,6 @@ cuisson: 35
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/vptqpw1511798500.jpg
-nouveau: oui
 ingredients:
 - filets de poisson blanc : 800 g
 - crevettes : 200 g
@@ -7518,7 +7667,6 @@ cuisson: 150
 portions: 6
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/wxuvuv1511299147.jpg
-nouveau: oui
 ingredients:
 - haricots blancs secs : 500 g
 - saucisses de Toulouse : 6
@@ -7551,7 +7699,6 @@ cuisson: 45
 portions: 6
 difficulte: Difficile
 photo: https://www.themealdb.com/images/media/meals/vvpprx1487325699.jpg
-nouveau: oui
 ingredients:
 - filet de bœuf : 1 kg
 - pâte feuilletée : 2
@@ -7584,7 +7731,6 @@ cuisson: 105
 portions: 6
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/yuwtuu1511295751.jpg
-nouveau: oui
 ingredients:
 - épaule d'agneau : 1.2 kg
 - oignons : 2
@@ -7618,7 +7764,6 @@ cuisson: 90
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/vvstvq1487342592.jpg
-nouveau: oui
 ingredients:
 - épaule d'agneau : 800 g
 - oignons : 2
@@ -7652,7 +7797,6 @@ cuisson: 20
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/wuvryu1468232995.jpg
-nouveau: oui
 ingredients:
 - crevettes : 500 g
 - tomates concassées : 400 g
@@ -7683,7 +7827,6 @@ cuisson: 30
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/xxrxux1503070723.jpg
-nouveau: oui
 ingredients:
 - riz arborio : 300 g
 - pavés de saumon : 2
@@ -7716,7 +7859,6 @@ cuisson: 25
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/utxqpt1511639216.jpg
-nouveau: oui
 ingredients:
 - haddock : 400 g
 - riz basmati : 250 g
@@ -7746,7 +7888,6 @@ cuisson: 10
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/uvuyxu1503067369.jpg
-nouveau: oui
 ingredients:
 - filets de cabillaud : 500 g
 - tortillas : 8
@@ -7778,7 +7919,6 @@ cuisson: 10
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/lwsnkl1604181187.jpg
-nouveau: oui
 ingredients:
 - côtes de porc désossées : 4
 - farine : 50 g
@@ -7809,7 +7949,6 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/s73ytv1765567838.jpg
-nouveau: oui
 ingredients:
 - blancs de poulet : 600 g
 - oranges : 2
@@ -7840,7 +7979,6 @@ cuisson: 45
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/tytyxu1515363282.jpg
-nouveau: oui
 ingredients:
 - cuisses de poulet : 8
 - oignons nouveaux : 4
@@ -7874,7 +8012,6 @@ cuisson: 40
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/hglsbl1614346998.jpg
-nouveau: oui
 ingredients:
 - cuisses de poulet : 4
 - piment : 2
@@ -7904,7 +8041,6 @@ cuisson: 10
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/el64dy1763483009.jpg
-nouveau: oui
 ingredients:
 - blancs de poulet : 500 g
 - gousses d'ail : 4
@@ -7934,7 +8070,6 @@ cuisson: 60
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/pbzcrx1763765096.jpg
-nouveau: oui
 ingredients:
 - bouillon de bœuf : 2 l
 - rumsteck : 300 g
@@ -7967,7 +8102,6 @@ cuisson: 150
 portions: 6
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/bc8v651619789840.jpg
-nouveau: oui
 ingredients:
 - bœuf à braiser : 1 kg
 - lait de coco : 40 cl
@@ -7999,7 +8133,6 @@ cuisson: 25
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/dxpc7j1764370714.jpg
-nouveau: oui
 ingredients:
 - pâte brisée : 2
 - bœuf haché : 400 g
@@ -8029,7 +8162,6 @@ cuisson: 15
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/tqd3ac1763786065.jpg
-nouveau: oui
 ingredients:
 - pâte à pizza : 2
 - bœuf haché : 300 g
@@ -8062,7 +8194,6 @@ cuisson: 40
 portions: 6
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/xrrtss1511555269.jpg
-nouveau: oui
 ingredients:
 - pâte brisée : 1
 - pâte feuilletée : 1
@@ -8094,7 +8225,6 @@ cuisson: 150
 portions: 6
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg
-nouveau: oui
 ingredients:
 - bœuf à braiser : 800 g
 - pâte feuilletée : 1
@@ -8126,7 +8256,6 @@ cuisson: 120
 portions: 6
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/uttrxw1511637813.jpg
-nouveau: oui
 ingredients:
 - épaule d'agneau : 1 kg
 - pommes de terre : 1 kg
@@ -8157,7 +8286,6 @@ cuisson: 120
 portions: 6
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/sxxpst1468569714.jpg
-nouveau: oui
 ingredients:
 - collier d'agneau : 1 kg
 - pommes de terre : 800 g
@@ -8187,7 +8315,6 @@ cuisson: 35
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/ytuvwr1503070420.jpg
-nouveau: oui
 ingredients:
 - saucisses : 8
 - farine : 140 g
@@ -8215,7 +8342,6 @@ cuisson: 30
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/hyarod1565090529.jpg
-nouveau: oui
 ingredients:
 - pommes de terre : 1 kg
 - chou kale : 300 g
@@ -8243,7 +8369,6 @@ cuisson: 25
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/xxpqsy1511452222.jpg
-nouveau: oui
 ingredients:
 - paneer : 250 g
 - petits pois : 300 g
@@ -8275,7 +8400,6 @@ cuisson: 40
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/4er7mj1598733193.jpg
-nouveau: oui
 ingredients:
 - lentilles vertes : 150 g
 - riz : 150 g
@@ -8305,7 +8429,6 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/lvn2d51598732465.jpg
-nouveau: oui
 ingredients:
 - fèves cuites : 800 g
 - gousses d'ail : 2
@@ -8333,7 +8456,6 @@ cuisson: 40
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/uwxqwy1483389553.jpg
-nouveau: oui
 ingredients:
 - lentilles vertes : 200 g
 - courge butternut : 500 g
@@ -8365,7 +8487,6 @@ cuisson: 30
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/vpxyqt1511464175.jpg
-nouveau: oui
 ingredients:
 - lentilles vertes : 250 g
 - tahini : 3 c. à soupe
@@ -8393,7 +8514,6 @@ cuisson: 10
 portions: 2
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/rwvw8q1765660071.jpg
-nouveau: oui
 ingredients:
 - œufs : 4
 - tomates : 3
@@ -8420,7 +8540,6 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/1oz4nb1765687990.jpg
-nouveau: oui
 ingredients:
 - aubergines : 3
 - gousses d'ail : 3
@@ -8450,7 +8569,6 @@ cuisson: 25
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/sywrsu1511463066.jpg
-nouveau: oui
 ingredients:
 - haricots rouges : 800 g
 - oignon : 1
@@ -8481,7 +8599,6 @@ cuisson: 10
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/47y6ii1765658818.jpg
-nouveau: oui
 ingredients:
 - œufs : 6
 - crevettes : 200 g
@@ -8510,7 +8627,6 @@ cuisson: 10
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/1529444830.jpg
-nouveau: oui
 ingredients:
 - nouilles : 300 g
 - rumsteck : 300 g
@@ -8541,7 +8657,6 @@ cuisson: 10
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/2wx8cm1763373419.jpg
-nouveau: oui
 ingredients:
 - nouilles de riz larges : 300 g
 - blancs de poulet : 400 g
@@ -8572,7 +8687,6 @@ cuisson: 20
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/k29viq1585565980.jpg
-nouveau: oui
 ingredients:
 - quinoa : 200 g
 - blancs de poulet : 2
@@ -8602,7 +8716,6 @@ cuisson: 25
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/wqqvyq1511179730.jpg
-nouveau: oui
 ingredients:
 - vermicelles : 350 g
 - crevettes : 300 g
@@ -8636,7 +8749,6 @@ cuisson: 10
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/lpd4wy1614347943.jpg
-nouveau: oui
 ingredients:
 - sardines fraîches : 12
 - citron : 1
@@ -8664,7 +8776,6 @@ cuisson: 10
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/tqd7s21763780609.jpg
-nouveau: oui
 ingredients:
 - filets de bar : 4
 - gingembre : 4 cm
@@ -8690,7 +8801,6 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/p02vq41763754350.jpg
-nouveau: oui
 ingredients:
 - filets de truite : 4
 - sucre : 4 c. à soupe
@@ -8718,7 +8828,6 @@ cuisson: 20
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/e2kcut1782591669.jpg
-nouveau: oui
 ingredients:
 - crevettes : 500 g
 - lait de coco : 40 cl
@@ -8749,7 +8858,6 @@ cuisson: 30
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/do7zps1614349775.jpg
-nouveau: oui
 ingredients:
 - poisson blanc : 600 g
 - pommes de terre : 500 g
@@ -8781,7 +8889,6 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/u03xhi1763308917.jpg
-nouveau: oui
 ingredients:
 - crevettes : 600 g
 - poivrons rouges grillés : 2
@@ -8809,7 +8916,6 @@ cuisson: 10
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/96lt871763480970.jpg
-nouveau: oui
 ingredients:
 - crevettes : 400 g
 - brocoli : 1
@@ -8839,7 +8945,6 @@ cuisson: 40
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/4mhr3u1763481087.jpg
-nouveau: oui
 ingredients:
 - cuisses de poulet : 4
 - oignon : 1
@@ -8870,7 +8975,6 @@ cuisson: 50
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/qwrtut1468418027.jpg
-nouveau: oui
 ingredients:
 - pommes de terre : 1 kg
 - blancs de poulet : 2
@@ -8899,7 +9003,6 @@ cuisson: 30
 portions: 6
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/uwvxpv1511557015.jpg
-nouveau: oui
 ingredients:
 - blancs de poulet : 600 g
 - pommes de terre : 1 kg
@@ -8928,7 +9031,6 @@ cuisson: 35
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/cj56fs1762340001.jpg
-nouveau: oui
 ingredients:
 - hauts de cuisses de poulet : 8
 - miel : 4 c. à soupe
@@ -8955,7 +9057,6 @@ cuisson: 60
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/q8sp3j1593349686.jpg
-nouveau: oui
 ingredients:
 - chou vert : 1
 - chair à saucisse : 400 g
@@ -8984,7 +9085,6 @@ cuisson: 15
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/45xxr21593348847.jpg
-nouveau: oui
 ingredients:
 - farine : 300 g
 - œuf : 1
@@ -9013,7 +9113,6 @@ cuisson: 120
 portions: 6
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/qvrwpt1511181864.jpg
-nouveau: oui
 ingredients:
 - cuisses de canard : 3
 - pâtes : 500 g
@@ -9045,7 +9144,6 @@ cuisson: 10
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/sonirb1763782831.jpg
-nouveau: oui
 ingredients:
 - baguettes : 2
 - tofu ferme : 400 g
@@ -9075,7 +9173,6 @@ cuisson: 10
 portions: 2
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/djdg8l1784578885.jpg
-nouveau: oui
 ingredients:
 - pain ciabatta : 2
 - rôti de porc cuit : 150 g
@@ -9100,7 +9197,6 @@ cuisson: 15
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/ae6clc1760524712.jpg
-nouveau: oui
 ingredients:
 - pois chiches : 400 g
 - oignon : 0.5
@@ -9131,7 +9227,6 @@ cuisson: 35
 portions: 4
 difficulte: Moyen
 photo: https://www.themealdb.com/images/media/meals/1520081754.jpg
-nouveau: oui
 ingredients:
 - riz rond : 300 g
 - aubergine : 1
@@ -9163,7 +9258,6 @@ cuisson: 45
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/cr2kyr1763793839.jpg
-nouveau: oui
 ingredients:
 - épaule d'agneau : 500 g
 - riz : 300 g
@@ -9195,7 +9289,6 @@ cuisson: 10
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/k420tj1585565244.jpg
-nouveau: oui
 ingredients:
 - agneau haché : 500 g
 - pains à burger : 4
@@ -9225,7 +9318,6 @@ cuisson: 20
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/0y6uvc1763258983.jpg
-nouveau: oui
 ingredients:
 - œufs : 8
 - pommes de terre : 400 g
@@ -9252,7 +9344,6 @@ cuisson: 30
 portions: 4
 difficulte: Facile
 photo: https://www.themealdb.com/images/media/meals/yxsurp1511304301.jpg
-nouveau: oui
 ingredients:
 - blancs de poulet : 600 g
 - noix de cajou : 80 g
@@ -9272,3 +9363,2500 @@ etapes:
 3. Ajoutez le poulet en morceaux et faites-le revenir 5 min.
 4. Versez le lait de coco, les tomates et la poudre de cajou : elle épaissit la sauce. Laissez mijoter 15 min.
 5. Salez, parsemez de noix de cajou entières et de coriandre. Servez avec le riz.
+
+# ---------- Nouveautés (novembre 2026) ----------
+
+=== Arepas pabellón (bœuf effiloché, haricots noirs, banane)
+id: arepapabellon
+emoji: 🫓
+categorie: Plat
+preparation: 30
+cuisson: 90
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/13fg4j1764441982.jpg
+nouveau: oui
+ingredients:
+- bavette de bœuf : 600 g
+- farine de maïs précuite : 300 g
+- haricots noirs : 400 g
+- bananes plantain : 2
+- mozzarella : 150 g
+- tomates : 2
+- oignon : 1
+- poivron rouge : 1
+- gousses d'ail : 2
+- cumin : 1 c. à café
+- huile : 3 c. à soupe
+- eau : 40 cl
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Mettez la bavette dans une casserole, couvrez d'eau salée et laissez frémir 1 h 15 à couvert, jusqu'à ce qu'elle s'effiloche facilement à la fourchette.
+2. Égouttez la viande (gardez un bol de bouillon) et effilochez-la avec deux fourchettes.
+3. Émincez l'oignon, le poivron et l'ail. Faites-les revenir 5 min dans 1 c. à soupe d'huile, ajoutez une tomate coupée en dés, le cumin, la viande et un peu de bouillon. Laissez mijoter 10 min.
+4. Pour les arepas : mélangez la farine de maïs, 1 pincée de sel et l'eau tiède. Pétrissez 2 min : la pâte doit être souple et ne pas coller.
+5. Formez 8 boules, aplatissez-les en galettes de 1,5 cm d'épaisseur et faites-les cuire 6 à 7 min de chaque côté dans une poêle légèrement huilée, à feu moyen.
+6. Pendant ce temps, faites chauffer les haricots noirs égouttés avec un peu de sel. Coupez les bananes plantain en biais et faites-les dorer 3 min de chaque côté dans l'huile restante.
+7. Ouvrez les arepas en deux comme un pain pita. Garnissez de bœuf effiloché, de haricots, de banane dorée, de mozzarella et de dés de tomate. Servez chaud.
+
+=== Asado argentin, sauce chimichurri
+id: asado
+emoji: 🥩
+categorie: Plat
+preparation: 20
+cuisson: 30
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/kgfh3q1763075438.jpg
+nouveau: oui
+ingredients:
+- côtes de bœuf : 1 kg
+- saucisses chorizo : 4
+- boudin noir : 2
+- persil : 1 poignée
+- gousses d'ail : 3
+- origan : 1 c. à café
+- piment : 1 pincée
+- vinaigre de vin rouge : 3 c. à soupe
+- huile d'olive : 8 c. à soupe
+- gros sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Sortez la viande du réfrigérateur 30 min avant la cuisson pour qu'elle soit à température ambiante.
+2. Préparez le chimichurri : hachez finement le persil et l'ail, mélangez-les avec l'origan, le piment, le vinaigre, l'huile d'olive, du sel et du poivre. Laissez reposer pendant la cuisson.
+3. Allumez le barbecue (ou chauffez une poêle-gril à feu vif). Attendez d'avoir de belles braises, sans flammes.
+4. Salez la viande au gros sel. Faites griller les chorizos et le boudin 10 à 12 min en les retournant souvent : ils se servent en entrée.
+5. Faites cuire la viande 6 à 8 min de chaque côté selon l'épaisseur et la cuisson souhaitée, en ne la retournant qu'une fois.
+6. Laissez reposer la viande 5 min sous une feuille d'aluminium, puis tranchez-la.
+7. Servez la viande et les saucisses avec le chimichurri et une salade verte.
+
+=== Ragoût de bœuf et ses boulettes moelleuses
+id: ragoutboulettes
+emoji: 🍲
+categorie: Plat
+preparation: 30
+cuisson: 150
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/uyqrrv1511553350.jpg
+nouveau: oui
+ingredients:
+- bœuf à braiser : 1 kg
+- oignons : 2
+- carottes : 3
+- poireau : 1
+- branches de céleri : 2
+- gousses d'ail : 2
+- vin rouge : 25 cl
+- bouillon de bœuf : 50 cl
+- farine : 250 g
+- beurre : 100 g
+- levure chimique : 1 c. à café
+- huile : 2 c. à soupe
+- thym : 1 pincée
+- feuilles de laurier : 2
+- persil : 1 poignée
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Coupez le bœuf en gros cubes et roulez-les dans 2 c. à soupe de farine salée et poivrée.
+2. Faites-les dorer en plusieurs fois dans une cocotte avec l'huile et 20 g de beurre, à feu vif. Réservez.
+3. Dans la même cocotte, faites revenir 5 min les oignons émincés, l'ail, les carottes, le poireau et le céleri coupés en morceaux.
+4. Remettez la viande, versez le vin rouge et grattez le fond pour décoller les sucs. Ajoutez le bouillon, le thym et le laurier.
+5. Couvrez et laissez mijoter 2 h à feu doux (ou au four à 160 °C), jusqu'à ce que la viande soit fondante.
+6. Préparez les boulettes : mélangez le reste de farine, la levure, 1 pincée de sel et le persil haché. Ajoutez le reste du beurre froid en petits dés et frottez du bout des doigts pour obtenir un sable, puis ajoutez 10 cl d'eau froide pour former une pâte souple.
+7. Formez 12 boulettes, posez-les sur le ragoût, couvrez et laissez cuire encore 20 min : elles gonflent et deviennent moelleuses. Servez bien chaud.
+
+=== Ragoût de bœuf au potiron
+id: ragoutboeufpotiron
+emoji: 🎃
+categorie: Plat
+preparation: 25
+cuisson: 120
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/k07k271782502861.jpg
+nouveau: oui
+ingredients:
+- bœuf à braiser : 800 g
+- potiron : 600 g
+- pommes de terre : 500 g
+- carottes : 3
+- oignon : 1
+- gousses d'ail : 2
+- bouillon de bœuf : 75 cl
+- farine : 2 c. à soupe
+- beurre : 30 g
+- sauce worcestershire : 1 c. à soupe
+- thym : 1 pincée
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Coupez le bœuf en cubes, salez, poivrez et roulez-les dans la farine.
+2. Faites fondre le beurre dans une cocotte et faites dorer la viande sur toutes les faces, en plusieurs fois. Réservez.
+3. Faites revenir l'oignon émincé et l'ail 3 min, puis remettez la viande.
+4. Versez le bouillon et la sauce worcestershire, ajoutez le thym. Couvrez et laissez mijoter 1 h à feu doux.
+5. Pendant ce temps, épluchez le potiron, les pommes de terre et les carottes, et coupez-les en gros morceaux.
+6. Ajoutez les légumes dans la cocotte et poursuivez la cuisson 45 min : le potiron fond en partie et épaissit la sauce.
+7. Goûtez, rectifiez l'assaisonnement et servez bien chaud.
+
+=== Boulets à la liégeoise
+id: bouletsliegeois
+emoji: 🧆
+categorie: Plat
+preparation: 25
+cuisson: 45
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/gjjlzc1782496055.jpg
+nouveau: oui
+ingredients:
+- bœuf haché : 400 g
+- chair à saucisse : 400 g
+- oignons : 3
+- œuf : 1
+- chapelure : 60 g
+- moutarde : 2 c. à soupe
+- sirop de Liège : 3 c. à soupe
+- cassonade : 1 c. à soupe
+- vinaigre : 2 c. à soupe
+- bière brune : 25 cl
+- bouillon de bœuf : 25 cl
+- beurre : 30 g
+- feuille de laurier : 1
+- persil : 1 pincée
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Hachez finement 1 oignon. Mélangez-le avec les deux viandes, l'œuf, la chapelure, 1 c. à soupe de moutarde, le persil, du sel et du poivre.
+2. Formez 8 grosses boulettes avec les mains mouillées.
+3. Faites-les dorer 8 min dans une cocotte avec le beurre, en les retournant délicatement. Réservez.
+4. Émincez les 2 autres oignons et faites-les fondre 10 min dans la cocotte, jusqu'à ce qu'ils soient bien dorés.
+5. Ajoutez la cassonade, le vinaigre, le sirop de Liège et le reste de moutarde. Mélangez, puis versez la bière et le bouillon. Ajoutez le laurier.
+6. Remettez les boulets, couvrez et laissez mijoter 30 min à feu doux en les retournant à mi-cuisson. La sauce doit devenir sirupeuse.
+7. Servez avec des frites maison et une compote, comme à Liège.
+
+=== Bigos (choucroute polonaise mijotée)
+id: bigos
+emoji: 🥬
+categorie: Plat
+preparation: 25
+cuisson: 120
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/fl4brj1764361323.jpg
+nouveau: oui
+ingredients:
+- choucroute crue : 800 g
+- chou blanc : 1
+- bœuf à braiser : 400 g
+- saucisses fumées : 4
+- lardons : 150 g
+- champignons de Paris : 250 g
+- oignons : 2
+- pruneaux : 8
+- concentré de tomate : 2 c. à soupe
+- vin rouge : 20 cl
+- bouillon de bœuf : 50 cl
+- baies de genièvre : 6
+- feuilles de laurier : 2
+- huile : 2 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Rincez la choucroute à l'eau froide et pressez-la. Émincez finement le chou blanc.
+2. Dans une grande cocotte, faites dorer les lardons et le bœuf coupé en cubes dans l'huile, 8 min. Ajoutez les oignons émincés et les champignons coupés en lamelles, laissez cuire 5 min.
+3. Ajoutez la choucroute, le chou émincé, le concentré de tomate, le genièvre et le laurier. Mélangez bien.
+4. Versez le vin et le bouillon, couvrez et laissez mijoter 1 h 30 à feu doux en remuant de temps en temps.
+5. Ajoutez les saucisses coupées en rondelles et les pruneaux, et poursuivez 30 min à découvert.
+6. Goûtez et ajustez le sel et le poivre. Le bigos est encore meilleur réchauffé le lendemain.
+
+=== Bistek (bœuf au citron et aux oignons)
+id: bistek
+emoji: 🥩
+categorie: Plat
+preparation: 15
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/4pqimk1683207418.jpg
+nouveau: oui
+ingredients:
+- rumsteck : 600 g
+- sauce soja : 6 c. à soupe
+- citrons : 2
+- gousses d'ail : 3
+- oignons : 2
+- huile : 3 c. à soupe
+- eau : 10 cl
+- poivre : 1 pincée
+- riz : 300 g
+etapes:
+1. Coupez la viande en tranches fines. Mélangez-la avec la sauce soja, le jus des citrons, l'ail haché et du poivre. Laissez mariner au moins 30 min.
+2. Faites cuire le riz.
+3. Coupez les oignons en rondelles. Faites-les dorer 3 min dans une poêle avec 1 c. à soupe d'huile : ils doivent rester un peu croquants. Réservez.
+4. Égouttez la viande (gardez la marinade). Faites-la saisir 1 min de chaque côté dans le reste d'huile, à feu vif, en plusieurs fois.
+5. Versez la marinade et l'eau dans la poêle, laissez frémir 3 min, puis remettez la viande et les oignons.
+6. Servez aussitôt sur le riz, bien arrosé de sauce.
+
+=== Feijoada (haricots noirs et viandes)
+id: feijoada
+emoji: 🫘
+categorie: Plat
+preparation: 25
+cuisson: 150
+portions: 6
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/xrxz7h1782592711.jpg
+nouveau: oui
+ingredients:
+- haricots noirs secs : 500 g
+- travers de porc : 500 g
+- épaule de porc : 400 g
+- chorizo : 200 g
+- lardons : 150 g
+- oignons : 2
+- gousses d'ail : 4
+- feuilles de laurier : 2
+- piment : 1 pincée
+- huile : 2 c. à soupe
+- oranges : 2
+- riz : 400 g
+- sel : 1 pincée
+etapes:
+1. La veille, faites tremper les haricots noirs dans un grand volume d'eau froide.
+2. Égouttez-les, mettez-les dans une grande cocotte, couvrez de 2 l d'eau, ajoutez le laurier et faites cuire 1 h à petits frémissements.
+3. Pendant ce temps, coupez l'épaule en cubes et les travers en morceaux. Faites-les dorer avec les lardons dans l'huile, dans une poêle.
+4. Faites revenir les oignons émincés et l'ail haché 5 min, ajoutez le piment.
+5. Ajoutez toutes les viandes, les oignons et le chorizo en rondelles aux haricots. Laissez mijoter encore 1 h 30 à couvert, jusqu'à ce que les haricots soient fondants et la sauce épaisse. Salez en fin de cuisson.
+6. Écrasez une louche de haricots contre la paroi pour épaissir la sauce.
+7. Servez avec du riz blanc et des quartiers d'orange, comme au Brésil.
+
+=== Chou sauté au bœuf haché
+id: chouboeuf
+emoji: 🥬
+categorie: Plat
+preparation: 15
+cuisson: 30
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/brmxra1782681940.jpg
+nouveau: oui
+ingredients:
+- bœuf haché : 500 g
+- chou blanc : 1
+- oignon : 1
+- carottes : 2
+- poivron rouge : 1
+- gousses d'ail : 2
+- concentré de tomate : 2 c. à soupe
+- paprika fumé : 1 c. à café
+- cumin : 1 c. à café
+- vinaigre de cidre : 2 c. à soupe
+- eau : 15 cl
+- huile d'olive : 2 c. à soupe
+- persil : 1 pincée
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Émincez l'oignon, râpez les carottes, coupez le poivron en dés et le chou en fines lanières.
+2. Faites chauffer l'huile dans une grande sauteuse et faites dorer le bœuf haché 5 min en l'émiettant.
+3. Ajoutez l'oignon, les carottes, le poivron et l'ail haché. Laissez cuire 5 min.
+4. Ajoutez le concentré de tomate, le paprika et le cumin, mélangez 1 min.
+5. Ajoutez le chou, l'eau et le vinaigre. Salez, poivrez, couvrez et laissez cuire 15 à 20 min en remuant de temps en temps, jusqu'à ce que le chou soit tendre.
+6. Parsemez de persil et servez tel quel ou avec du pain.
+
+=== Chivito (sandwich uruguayen au steak)
+id: chivito
+emoji: 🥪
+categorie: Plat
+preparation: 15
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/n7qnkb1630444129.jpg
+nouveau: oui
+ingredients:
+- steaks fins : 4
+- pains à burger : 4
+- tranches de jambon : 4
+- tranches de lard : 8
+- mozzarella : 150 g
+- œufs : 4
+- tomates : 2
+- salade verte : 1
+- oignon : 1
+- mayonnaise : 4 c. à soupe
+- huile : 2 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Lavez la salade, coupez les tomates en rondelles et l'oignon en fines rondelles.
+2. Faites griller les tranches de lard dans une poêle, réservez. Faites cuire les œufs au plat dans la même poêle.
+3. Salez et poivrez les steaks et saisissez-les 1 min de chaque côté à feu vif dans l'huile.
+4. Posez sur chaque steak une tranche de jambon et de la mozzarella, couvrez la poêle 1 min pour faire fondre le fromage.
+5. Toastez les pains et tartinez-les de mayonnaise.
+6. Montez les sandwichs : salade, tomate, oignon, steak au jambon et fromage, lard et œuf au plat. Servez avec des frites.
+
+=== Tourtière québécoise
+id: tourtiere
+emoji: 🥧
+categorie: Plat
+preparation: 30
+cuisson: 75
+portions: 6
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/0sd7ac1764787957.jpg
+nouveau: oui
+ingredients:
+- pâte brisée : 2
+- bœuf haché : 400 g
+- porc haché : 400 g
+- pomme de terre : 1
+- oignon : 1
+- gousses d'ail : 2
+- bouillon de bœuf : 20 cl
+- clou de girofle moulu : 1 pincée
+- muscade : 1 pincée
+- cannelle : 1 pincée
+- sarriette : 1 c. à café
+- œuf : 1
+- huile : 1 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Épluchez la pomme de terre et faites-la cuire 15 min à l'eau, puis écrasez-la.
+2. Faites revenir l'oignon et l'ail hachés dans l'huile 3 min. Ajoutez les viandes et faites-les cuire 8 min en les émiettant.
+3. Ajoutez les épices, la sarriette, le bouillon, du sel et du poivre. Laissez mijoter 20 min à découvert, jusqu'à ce que le liquide soit presque évaporé.
+4. Incorporez la purée : elle lie la farce. Laissez refroidir.
+5. Préchauffez le four à 200 °C. Foncez un moule avec une pâte, versez la farce et couvrez avec la seconde pâte. Soudez les bords en les pinçant et faites une petite cheminée au centre.
+6. Badigeonnez d'œuf battu et enfournez 35 à 40 min, jusqu'à ce que la pâte soit bien dorée.
+7. Laissez reposer 10 min avant de couper. Servez avec du ketchup aux fruits ou une salade.
+
+=== Ragoût de haricots au chorizo
+id: haricotschorizo
+emoji: 🫘
+categorie: Plat
+preparation: 15
+cuisson: 30
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/tnwy8m1628770384.jpg
+nouveau: oui
+ingredients:
+- haricots blancs : 800 g
+- chorizo : 200 g
+- tomates : 3
+- échalotes : 3
+- gousses d'ail : 2
+- huile d'olive : 2 c. à soupe
+- persil : 1 poignée
+- eau : 20 cl
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Égouttez et rincez les haricots blancs en conserve.
+2. Émincez les échalotes et l'ail, coupez le chorizo en rondelles et les tomates en dés.
+3. Faites revenir le chorizo 3 min dans l'huile : il colore l'huile en rouge. Ajoutez les échalotes et l'ail, laissez fondre 3 min.
+4. Ajoutez les tomates et laissez compoter 5 min.
+5. Ajoutez les haricots et l'eau, salez légèrement, poivrez et laissez mijoter 15 min à feu doux.
+6. Parsemez de persil haché et servez avec du pain de campagne.
+
+=== Fatteh (pain croustillant, riz, yaourt et bœuf)
+id: fatteh
+emoji: 🍛
+categorie: Plat
+preparation: 25
+cuisson: 60
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/rlwcc51598734603.jpg
+nouveau: oui
+ingredients:
+- bœuf à braiser : 600 g
+- riz : 250 g
+- pains pita : 3
+- tomates concassées : 400 g
+- gousses d'ail : 4
+- oignon : 1
+- concentré de tomate : 1 c. à soupe
+- vinaigre : 2 c. à soupe
+- cumin : 1 c. à café
+- beurre : 40 g
+- huile d'olive : 2 c. à soupe
+- cube de bouillon : 1
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Coupez le bœuf en cubes, mettez-le dans une casserole avec l'oignon coupé en quatre, le cube de bouillon et 1 l d'eau. Laissez mijoter 50 min. Gardez le bouillon.
+2. Faites cuire le riz dans 50 cl de ce bouillon, avec la moitié du beurre.
+3. Préchauffez le four à 200 °C. Coupez les pitas en carrés, arrosez-les d'huile et faites-les dorer 8 min au four.
+4. Sauce : faites revenir 2 gousses d'ail hachées dans le reste de beurre, ajoutez le vinaigre, les tomates, le concentré et le cumin. Laissez réduire 10 min et salez.
+5. Faites dorer la viande égouttée 3 min à la poêle avec les 2 autres gousses d'ail.
+6. Montez le plat : pain croustillant au fond, arrosé d'une louche de bouillon, puis le riz, la sauce tomate et la viande. Servez aussitôt.
+
+=== Curry de bœuf kényan
+id: currykenyan
+emoji: 🍛
+categorie: Plat
+preparation: 20
+cuisson: 75
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/lqampv1762325397.jpg
+nouveau: oui
+ingredients:
+- bœuf à braiser : 700 g
+- oignons rouges : 2
+- tomates : 3
+- gousses d'ail : 3
+- gingembre : 1 c. à café
+- curry : 2 c. à soupe
+- paprika : 1 c. à café
+- concentré de tomate : 2 c. à soupe
+- piment : 1
+- huile : 3 c. à soupe
+- coriandre : 1 poignée
+- riz : 300 g
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Coupez le bœuf en cubes. Mettez-le dans une casserole avec 50 cl d'eau, l'ail écrasé, le gingembre et une pincée de sel. Laissez frémir 45 min à couvert.
+2. Pendant ce temps, émincez les oignons et coupez les tomates en dés.
+3. Dans une cocotte, faites dorer les oignons 6 min dans l'huile. Ajoutez le curry, le paprika et le piment émincé, mélangez 1 min.
+4. Ajoutez les tomates et le concentré, laissez compoter 5 min.
+5. Ajoutez la viande avec son bouillon et laissez mijoter 25 min à découvert, jusqu'à ce que la sauce épaississe.
+6. Faites cuire le riz. Parsemez le curry de coriandre et servez avec le riz (ou des chapatis).
+
+=== Bœuf mijoté à la citronnelle et nouilles de riz
+id: boeufcitronnelle
+emoji: 🍜
+categorie: Plat
+preparation: 25
+cuisson: 120
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/ntafxw1763586291.jpg
+nouveau: oui
+ingredients:
+- bœuf à braiser : 800 g
+- tiges de citronnelle : 3
+- gingembre : 4 cm
+- gousses d'ail : 4
+- piment : 1
+- sauce soja : 4 c. à soupe
+- cinq-épices : 1 c. à café
+- sucre roux : 2 c. à soupe
+- bouillon de bœuf : 1 l
+- nouilles de riz : 300 g
+- citrons verts : 2
+- coriandre : 1 poignée
+- huile : 2 c. à soupe
+etapes:
+1. Mixez la citronnelle (partie tendre), le gingembre, l'ail, le piment et les tiges de coriandre avec l'huile pour obtenir une pâte.
+2. Coupez le bœuf en gros cubes et faites-le dorer dans une cocotte, en plusieurs fois. Réservez.
+3. Faites revenir la pâte aromatique 2 min dans la cocotte, sans la laisser brûler.
+4. Remettez la viande, ajoutez la sauce soja, le cinq-épices et le sucre. Mélangez, puis versez le bouillon.
+5. Couvrez et laissez mijoter 1 h 45 à feu doux, jusqu'à ce que la viande soit très tendre.
+6. Faites tremper ou cuire les nouilles de riz selon le paquet. Répartissez-les dans des bols, versez le bœuf et son bouillon.
+7. Servez avec des feuilles de coriandre et des quartiers de citron vert.
+
+=== Pâté chinois (hachis québécois au maïs)
+id: patechinois
+emoji: 🥘
+categorie: Plat
+preparation: 20
+cuisson: 45
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/yyrrxr1511816289.jpg
+nouveau: oui
+ingredients:
+- bœuf haché : 500 g
+- pommes de terre : 1 kg
+- maïs en crème : 400 g
+- maïs : 150 g
+- oignon : 1
+- beurre : 50 g
+- lait : 15 cl
+- paprika : 1 c. à café
+- persil : 1 pincée
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Faites cuire les pommes de terre épluchées 20 min à l'eau salée. Écrasez-les avec le beurre et le lait chaud pour obtenir une purée.
+2. Préchauffez le four à 190 °C.
+3. Faites dorer l'oignon haché et le bœuf 8 min dans une poêle. Salez et poivrez.
+4. Étalez la viande au fond d'un plat à gratin. Recouvrez du maïs en crème mélangé au maïs en grains.
+5. Terminez par la purée, lissez à la fourchette et saupoudrez de paprika.
+6. Enfournez 25 min, jusqu'à ce que le dessus soit doré. Parsemez de persil et servez.
+
+=== Picadillo de haricots verts au bœuf
+id: picadillo
+emoji: 🫛
+categorie: Plat
+preparation: 15
+cuisson: 25
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/2ncui81784396094.jpg
+nouveau: oui
+ingredients:
+- haricots verts : 500 g
+- bavette de bœuf : 400 g
+- oignon : 1
+- poivron rouge : 1
+- gousses d'ail : 2
+- thym : 1 pincée
+- huile : 2 c. à soupe
+- eau : 10 cl
+- riz : 300 g
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Équeutez les haricots verts et coupez-les en petits tronçons de 1 cm.
+2. Coupez la viande en tout petits dés (ou hachez-la grossièrement au couteau).
+3. Faites revenir l'oignon, le poivron et l'ail hachés dans l'huile 5 min.
+4. Ajoutez la viande et faites-la dorer 5 min. Salez, poivrez, ajoutez le thym.
+5. Ajoutez les haricots et l'eau, couvrez et laissez cuire 12 à 15 min : les haricots doivent rester un peu croquants.
+6. Servez avec du riz blanc ou dans des tortillas chaudes.
+
+=== Ropa vieja (bœuf effiloché à la cubaine)
+id: ropavieja
+emoji: 🍛
+categorie: Plat
+preparation: 25
+cuisson: 150
+portions: 6
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/thvft91784576451.jpg
+nouveau: oui
+ingredients:
+- bavette de bœuf : 1 kg
+- poivron rouge : 1
+- poivron jaune : 1
+- oignon : 1
+- gousses d'ail : 4
+- tomates concassées : 400 g
+- concentré de tomate : 2 c. à soupe
+- vin blanc : 15 cl
+- paprika fumé : 2 c. à café
+- cumin : 1 c. à café
+- origan : 1 c. à café
+- olives farcies : 100 g
+- feuilles de laurier : 2
+- huile : 3 c. à soupe
+- riz : 400 g
+- haricots noirs : 400 g
+- coriandre : 1 poignée
+- sel : 1 pincée
+etapes:
+1. Salez la viande et faites-la dorer de chaque côté dans une cocotte avec l'huile. Réservez.
+2. Faites revenir les poivrons et l'oignon émincés 6 min, ajoutez l'ail haché, le paprika, le cumin, l'origan et le concentré de tomate. Mélangez 1 min.
+3. Versez le vin blanc, grattez le fond, puis ajoutez les tomates, le laurier et 30 cl d'eau.
+4. Remettez la viande, couvrez et laissez mijoter 2 h à feu doux, jusqu'à ce qu'elle se défasse toute seule.
+5. Sortez la viande, effilochez-la avec deux fourchettes et remettez-la dans la sauce avec les olives. Laissez réduire 10 min à découvert.
+6. Servez avec du riz blanc, des haricots noirs réchauffés et de la coriandre.
+
+=== Roti john (sandwich omelette au bœuf)
+id: rotijohn
+emoji: 🥖
+categorie: Plat
+preparation: 15
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/hx335q1619789561.jpg
+nouveau: oui
+ingredients:
+- baguettes : 2
+- bœuf haché : 300 g
+- œufs : 6
+- oignon : 1
+- piment : 1
+- mayonnaise : 4 c. à soupe
+- sauce chili : 4 c. à soupe
+- salade verte : 1
+- huile : 2 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Faites revenir l'oignon et le piment hachés 2 min dans 1 c. à soupe d'huile, ajoutez le bœuf et faites-le cuire 5 min en l'émiettant. Laissez tiédir.
+2. Battez les œufs avec la viande, du sel et du poivre.
+3. Coupez les baguettes en deux dans la longueur, puis chaque moitié en deux tronçons.
+4. Faites chauffer un peu d'huile dans une grande poêle, versez une louche du mélange œufs-viande et posez aussitôt un morceau de pain dessus, côté mie vers le bas.
+5. Laissez cuire 2 à 3 min à feu moyen : l'omelette prend et colle au pain. Retournez 1 min pour toaster la croûte.
+6. Garnissez de salade, de mayonnaise et de sauce chili, refermez et servez.
+
+=== Salade vietnamienne de nouilles au bœuf
+id: saladenouillesboeuf
+emoji: 🥗
+categorie: Plat
+preparation: 25
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/st9shl1763755808.jpg
+nouveau: oui
+ingredients:
+- rumsteck : 500 g
+- nouilles de riz : 250 g
+- carottes : 2
+- chou chinois : 0.5
+- oignons nouveaux : 3
+- coriandre : 1 poignée
+- piment : 1
+- citrons verts : 2
+- sauce poisson : 3 c. à soupe
+- vinaigre de riz : 2 c. à soupe
+- sucre roux : 1 c. à soupe
+- gousse d'ail : 1
+- huile : 1 c. à soupe
+etapes:
+1. Sauce : mélangez le jus des citrons verts, la sauce poisson, le vinaigre de riz, le sucre, l'ail râpé et la moitié du piment haché.
+2. Faites cuire les nouilles selon le paquet, rincez-les à l'eau froide et égouttez-les bien.
+3. Râpez les carottes, émincez finement le chou et les oignons nouveaux.
+4. Huilez la viande et saisissez-la 2 à 3 min de chaque côté dans une poêle bien chaude. Laissez reposer 5 min, puis coupez-la en fines tranches.
+5. Mélangez les nouilles, les légumes et la moitié de la sauce.
+6. Répartissez dans des assiettes, ajoutez la viande, arrosez du reste de sauce et parsemez de coriandre et de piment.
+
+=== Arroz al horno (riz au four, boudin et pois chiches)
+id: arrozhorno
+emoji: 🥘
+categorie: Plat
+preparation: 20
+cuisson: 50
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/qt4i0n1763256454.jpg
+nouveau: oui
+ingredients:
+- riz rond : 300 g
+- poitrine de porc : 300 g
+- boudin noir : 2
+- pois chiches : 250 g
+- pommes de terre : 2
+- tomates : 2
+- tête d'ail : 1
+- paprika fumé : 1 c. à café
+- safran : 1 pincée
+- bouillon de volaille : 75 cl
+- huile d'olive : 4 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Préchauffez le four à 220 °C. Faites chauffer le bouillon avec le safran.
+2. Dans un plat allant sur le feu et au four (ou une poêle), faites dorer dans l'huile les tranches de pommes de terre 5 min, puis la poitrine coupée en morceaux et le boudin en tronçons. Réservez le boudin.
+3. Ajoutez la tête d'ail entière (coupée en deux horizontalement) et une tomate en dés. Laissez cuire 3 min.
+4. Ajoutez le riz et le paprika, mélangez 1 min pour bien enrober les grains, puis les pois chiches égouttés.
+5. Versez le bouillon chaud, salez et répartissez le boudin et la seconde tomate en rondelles sur le dessus.
+6. Enfournez 20 à 25 min sans remuer, jusqu'à ce que le riz ait absorbé tout le bouillon. Laissez reposer 5 min avant de servir.
+
+=== Brioches vapeur au porc laqué (bao)
+id: baoporc
+emoji: 🥟
+categorie: Plat
+preparation: 45
+cuisson: 30
+portions: 4
+difficulte: Difficile
+photo: https://www.themealdb.com/images/media/meals/tzsy461763769901.jpg
+nouveau: oui
+ingredients:
+- farine : 400 g
+- levure boulangère : 1 sachet
+- sucre : 30 g
+- lait : 20 cl
+- huile : 3 c. à soupe
+- filet de porc : 400 g
+- sauce soja : 3 c. à soupe
+- miel : 2 c. à soupe
+- concentré de tomate : 1 c. à soupe
+- gingembre : 3 cm
+- gousses d'ail : 2
+- oignons nouveaux : 2
+etapes:
+1. Pâte : mélangez la farine, la levure et le sucre. Ajoutez le lait tiède et 2 c. à soupe d'huile, pétrissez 8 min jusqu'à ce qu'elle soit lisse. Laissez lever 1 h au chaud.
+2. Garniture : coupez le porc en petits dés. Mélangez la sauce soja, le miel, le concentré de tomate, le gingembre et l'ail râpés.
+3. Faites dorer le porc 5 min dans le reste d'huile à feu vif, ajoutez la sauce et laissez caraméliser 5 min. Ajoutez les oignons nouveaux émincés et laissez refroidir.
+4. Divisez la pâte en 12 boules. Aplatissez chacune en disque, déposez une cuillerée de porc au centre et refermez en pinçant le dessus.
+5. Posez chaque brioche sur un petit carré de papier cuisson et laissez gonfler 20 min.
+6. Faites cuire 12 à 15 min à la vapeur (cuit-vapeur ou panier au-dessus d'une casserole d'eau frémissante), sans soulever le couvercle. Servez chaud.
+
+=== Stoemp aux saucisses
+id: stoemp
+emoji: 🌭
+categorie: Plat
+preparation: 20
+cuisson: 35
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/byolko1782500400.jpg
+nouveau: oui
+ingredients:
+- pommes de terre : 1 kg
+- chou vert : 0.5
+- saucisses : 4
+- oignon : 1
+- gousse d'ail : 1
+- beurre : 60 g
+- lait : 15 cl
+- bière blonde : 10 cl
+- muscade : 1 pincée
+- persil : 1 pincée
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Épluchez les pommes de terre, coupez-les en morceaux et faites-les cuire 10 min à l'eau salée.
+2. Ajoutez le chou émincé et poursuivez la cuisson 12 min, jusqu'à ce que tout soit tendre. Égouttez.
+3. Pendant ce temps, faites dorer les saucisses 15 min dans une poêle avec 10 g de beurre. Déglacez avec la bière en fin de cuisson et laissez réduire.
+4. Faites fondre l'oignon émincé et l'ail dans 20 g de beurre, 5 min.
+5. Écrasez les pommes de terre et le chou avec le reste du beurre, le lait chaud et l'oignon. Assaisonnez de sel, poivre et muscade : le stoemp reste un peu rustique.
+6. Servez avec les saucisses et leur jus, parsemé de persil.
+
+=== Halušky (gnocchis slovaques au fromage et lardons)
+id: halusky
+emoji: 🥔
+categorie: Plat
+preparation: 25
+cuisson: 15
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/g33c901763365484.jpg
+nouveau: oui
+ingredients:
+- pommes de terre : 600 g
+- farine : 250 g
+- œuf : 1
+- brousse : 250 g
+- lardons : 200 g
+- ciboulette : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Épluchez et râpez finement les pommes de terre crues. Mélangez-les avec la farine, l'œuf et 1 c. à café de sel : la pâte doit être collante mais épaisse.
+2. Portez une grande casserole d'eau salée à ébullition.
+3. Faites tomber la pâte dans l'eau par petits morceaux, à l'aide d'une cuillère ou en la pressant à travers une passoire à gros trous.
+4. Quand les halušky remontent à la surface (2 à 3 min), sortez-les à l'écumoire.
+5. Faites dorer les lardons à la poêle sans matière grasse.
+6. Mélangez les halušky chauds avec la brousse (elle remplace le bryndza, fromage de brebis slovaque), ajoutez les lardons et leur gras, parsemez de ciboulette et servez aussitôt.
+
+=== Choripán (sandwich chorizo-chimichurri)
+id: choripan
+emoji: 🌭
+categorie: Plat
+preparation: 15
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/5i25sg1763075353.jpg
+nouveau: oui
+ingredients:
+- saucisses chorizo : 4
+- baguette : 1
+- persil : 1 poignée
+- gousses d'ail : 2
+- origan : 1 c. à café
+- piment : 1 pincée
+- vinaigre de vin rouge : 2 c. à soupe
+- huile d'olive : 6 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Chimichurri : hachez finement le persil et l'ail, ajoutez l'origan, le piment, le vinaigre, l'huile et le sel. Mélangez et laissez reposer 15 min.
+2. Faites griller les saucisses 12 à 15 min au barbecue ou à la poêle-gril, en les retournant souvent.
+3. Fendez-les en deux dans la longueur (en papillon) et faites griller la face coupée 1 min.
+4. Coupez la baguette en 4 tronçons, ouvrez-les et faites-les toaster.
+5. Glissez les saucisses dans le pain et nappez généreusement de chimichurri. Servez aussitôt.
+
+=== Côtes de porc sauce créole
+id: cotesporccreole
+emoji: 🍖
+categorie: Plat
+preparation: 15
+cuisson: 25
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/087fu71783802698.jpg
+nouveau: oui
+ingredients:
+- côtes de porc : 4
+- tomates : 3
+- oignons : 2
+- gousses d'ail : 3
+- moutarde : 1 c. à soupe
+- cumin : 1 c. à café
+- coriandre : 1 poignée
+- huile : 3 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Écrasez l'ail et mélangez-le avec la moutarde, le cumin, 1 c. à soupe d'huile, du sel et du poivre. Badigeonnez les côtes de ce mélange.
+2. Faites dorer les côtes 4 min de chaque côté dans une grande poêle avec 1 c. à soupe d'huile. Réservez.
+3. Dans la même poêle, faites fondre les oignons émincés 5 min avec le reste d'huile.
+4. Ajoutez les tomates coupées en dés et laissez compoter 5 min.
+5. Remettez les côtes dans la sauce, couvrez et laissez mijoter 10 min.
+6. Parsemez de coriandre et servez avec du riz blanc.
+
+=== Hochepot flamand
+id: hochepot
+emoji: 🍲
+categorie: Plat
+preparation: 25
+cuisson: 50
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/2lywl71782496853.jpg
+nouveau: oui
+ingredients:
+- pommes de terre : 800 g
+- carottes : 4
+- navets : 2
+- poireau : 1
+- saucisses : 4
+- oignon : 1
+- gousse d'ail : 1
+- bouillon de volaille : 1 l
+- moutarde : 1 c. à soupe
+- beurre : 30 g
+- thym : 1 pincée
+- feuille de laurier : 1
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Épluchez les légumes. Coupez les pommes de terre, les carottes et les navets en gros morceaux, le poireau en tronçons.
+2. Faites dorer les saucisses 5 min dans une cocotte avec le beurre. Réservez.
+3. Faites revenir l'oignon émincé et l'ail 3 min.
+4. Ajoutez tous les légumes, le thym, le laurier et le bouillon. Portez à ébullition.
+5. Remettez les saucisses, couvrez et laissez mijoter 40 min à feu doux.
+6. Sortez les saucisses, ajoutez la moutarde et écrasez grossièrement une partie des légumes pour épaissir. Servez avec les saucisses.
+
+=== Colcannon au jambon
+id: colcannon
+emoji: 🥔
+categorie: Plat
+preparation: 20
+cuisson: 30
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/n41ny81608588066.jpg
+nouveau: oui
+ingredients:
+- pommes de terre : 1 kg
+- chou vert : 0.5
+- jambon : 300 g
+- oignons nouveaux : 4
+- crème liquide : 15 cl
+- beurre : 60 g
+- moutarde : 1 c. à soupe
+- œufs : 4
+- gousse d'ail : 1
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Faites cuire les pommes de terre épluchées 20 min à l'eau salée.
+2. Pendant ce temps, faites fondre le chou émincé 8 min dans 30 g de beurre avec l'ail, en remuant.
+3. Faites chauffer la crème avec les oignons nouveaux émincés, sans faire bouillir.
+4. Écrasez les pommes de terre avec le reste du beurre et la crème. Ajoutez le chou, la moutarde et le jambon coupé en morceaux. Salez et poivrez.
+5. Faites pocher ou cuire les œufs au plat.
+6. Servez le colcannon bien chaud, surmonté d'un œuf.
+
+=== Goulash de porc à la choucroute
+id: goulashchoucroute
+emoji: 🍲
+categorie: Plat
+preparation: 20
+cuisson: 100
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/cyuhwp1764362103.jpg
+nouveau: oui
+ingredients:
+- épaule de porc : 800 g
+- choucroute crue : 500 g
+- oignons : 2
+- gousses d'ail : 2
+- paprika : 2 c. à soupe
+- cumin : 1 c. à café
+- farine : 1 c. à soupe
+- bouillon de bœuf : 50 cl
+- crème fraîche : 15 cl
+- feuilles de laurier : 2
+- huile : 2 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Coupez l'épaule en cubes. Faites-les dorer dans une cocotte avec l'huile, en plusieurs fois. Réservez.
+2. Faites fondre les oignons émincés 8 min dans la cocotte, ajoutez l'ail, le cumin, le paprika et la farine, mélangez 1 min.
+3. Remettez la viande, versez le bouillon, ajoutez le laurier, couvrez et laissez mijoter 45 min.
+4. Rincez la choucroute et pressez-la. Ajoutez-la dans la cocotte et poursuivez la cuisson 45 min.
+5. Hors du feu, incorporez la crème fraîche. Salez si besoin et servez avec des pommes de terre vapeur.
+
+=== Chou rouge braisé aux pommes et saucisses fumées
+id: chourougesaucisses
+emoji: 🥬
+categorie: Plat
+preparation: 15
+cuisson: 50
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/s1jxzl1764369317.jpg
+nouveau: oui
+ingredients:
+- chou rouge : 1
+- pommes : 2
+- oignons rouges : 2
+- saucisses fumées : 4
+- vinaigre de vin rouge : 4 c. à soupe
+- sucre roux : 2 c. à soupe
+- romarin : 1 pincée
+- piment : 1 pincée
+- beurre : 20 g
+- huile d'olive : 2 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Émincez finement le chou rouge et les oignons. Épluchez les pommes et coupez-les en dés.
+2. Faites fondre le beurre avec l'huile dans une cocotte et faites revenir les oignons 5 min.
+3. Ajoutez le chou, les pommes, le vinaigre, le sucre, le romarin et le piment. Salez, poivrez et mélangez.
+4. Couvrez et laissez braiser 40 min à feu doux, en remuant de temps en temps : le chou devient fondant et brillant.
+5. Coupez les saucisses en tronçons, ajoutez-les pour les 10 dernières minutes de cuisson.
+6. Servez avec des pommes de terre vapeur ou du pain de seigle.
+
+=== Salade vietnamienne au porc
+id: saladeporcviet
+emoji: 🥗
+categorie: Plat
+preparation: 25
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/g7jomp1763763994.jpg
+nouveau: oui
+ingredients:
+- filet mignon de porc : 500 g
+- chou blanc : 0.25
+- concombre : 1
+- branche de céleri : 1
+- oignons nouveaux : 2
+- tige de citronnelle : 1
+- citrons verts : 2
+- sauce poisson : 3 c. à soupe
+- sauce soja : 1 c. à soupe
+- sucre : 2 c. à soupe
+- piment : 1
+- huile de sésame : 1 c. à soupe
+- huile : 1 c. à soupe
+- coriandre : 1 poignée
+- menthe : 1 poignée
+etapes:
+1. Sauce : mélangez le jus des citrons verts, la sauce poisson, la sauce soja, le sucre, l'huile de sésame et la moitié du piment émincé.
+2. Faites dorer le filet mignon 12 à 15 min dans une poêle huilée en le retournant régulièrement. Arrosez-le de 2 c. à soupe de sauce et laissez reposer.
+3. Émincez très finement le chou, le céleri, les oignons nouveaux et la citronnelle. Coupez le concombre en bâtonnets.
+4. Mélangez les légumes avec les herbes et le reste de sauce.
+5. Coupez le porc en tranches fines, posez-les sur la salade et parsemez du reste de piment.
+
+=== Zapiekanka (baguette gratinée aux champignons)
+id: zapiekanka
+emoji: 🥖
+categorie: Plat
+preparation: 15
+cuisson: 20
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/72lmpt1764122511.jpg
+nouveau: oui
+ingredients:
+- baguettes : 2
+- champignons de Paris : 400 g
+- oignon : 1
+- gousse d'ail : 1
+- jambon : 150 g
+- emmental râpé : 200 g
+- beurre : 30 g
+- ketchup : 4 c. à soupe
+- ciboulette : 1 pincée
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Préchauffez le four à 220 °C.
+2. Faites revenir l'oignon haché et les champignons émincés dans le beurre 10 min, jusqu'à ce que leur eau soit évaporée. Ajoutez l'ail, salez et poivrez.
+3. Coupez les baguettes en deux dans la longueur, puis en deux tronçons.
+4. Garnissez chaque morceau de champignons, de jambon coupé en lanières et de fromage râpé.
+5. Enfournez 8 à 10 min, jusqu'à ce que le fromage soit fondu et doré.
+6. Servez avec un trait de ketchup et de la ciboulette, comme dans les rues de Cracovie.
+
+=== Poulet grillé sauce coco épicée (ayam percik)
+id: ayampercik
+emoji: 🍗
+categorie: Plat
+preparation: 20
+cuisson: 40
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/020z181619788503.jpg
+nouveau: oui
+ingredients:
+- cuisses de poulet : 4
+- lait de coco : 40 cl
+- échalotes : 4
+- gingembre : 3 cm
+- gousses d'ail : 3
+- curcuma : 1 c. à café
+- cumin : 1 c. à café
+- coriandre en poudre : 1 c. à café
+- piment de Cayenne : 1 pincée
+- pâte de tamarin : 1 c. à soupe
+- sucre roux : 1 c. à soupe
+- sel : 1 pincée
+- riz : 300 g
+etapes:
+1. Mixez les échalotes, le gingembre et l'ail. Mettez cette pâte dans une casserole avec les épices, le lait de coco, le tamarin, le sucre et une pincée de sel.
+2. Laissez mijoter 15 min en remuant : la sauce doit épaissir.
+3. Entaillez les cuisses de poulet et enrobez-les avec la moitié de la sauce. Laissez mariner 30 min (ou toute une nuit).
+4. Préchauffez le four à 200 °C (ou le barbecue). Faites cuire le poulet 35 à 40 min en le badigeonnant de sauce toutes les 10 min.
+5. Passez 3 min sous le gril pour bien caraméliser.
+6. Servez avec du riz blanc et le reste de sauce réchauffée.
+
+=== Burger de poulet croustillant
+id: burgerpoulet
+emoji: 🍔
+categorie: Plat
+preparation: 25
+cuisson: 15
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/sbx7n71587673021.jpg
+nouveau: oui
+ingredients:
+- blancs de poulet : 2
+- jus de cornichons : 10 cl
+- œuf : 1
+- lait : 10 cl
+- farine : 150 g
+- sucre glace : 1 c. à soupe
+- paprika : 1 c. à café
+- ail en poudre : 1 c. à café
+- piment de Cayenne : 1 pincée
+- pains à burger : 4
+- cornichons : 8
+- huile de friture : 1 l
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Coupez chaque blanc en deux dans l'épaisseur. Faites-les mariner 30 min dans le jus de cornichons : la viande reste tendre.
+2. Battez l'œuf avec le lait. Dans une autre assiette, mélangez la farine, le sucre glace, le paprika, l'ail, le piment, du sel et du poivre.
+3. Égouttez le poulet, passez-le dans l'œuf puis dans la farine, en appuyant bien.
+4. Faites chauffer l'huile à 170 °C et faites frire les morceaux 5 à 6 min, jusqu'à ce qu'ils soient dorés et cuits à cœur. Égouttez sur du papier absorbant.
+5. Toastez les pains beurrés.
+6. Garnissez chaque pain de poulet croustillant et de cornichons en rondelles. Servez aussitôt.
+
+=== Mac and cheese au poulet fajita
+id: macpoulet
+emoji: 🧀
+categorie: Plat
+preparation: 15
+cuisson: 25
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/qrqywr1503066605.jpg
+nouveau: oui
+ingredients:
+- macaronis : 350 g
+- blancs de poulet : 2
+- poivron rouge : 1
+- oignon : 1
+- gousses d'ail : 2
+- bouillon de volaille : 50 cl
+- crème liquide : 25 cl
+- cheddar râpé : 200 g
+- épices fajita : 2 c. à soupe
+- huile d'olive : 2 c. à soupe
+- persil : 1 pincée
+- sel : 1 pincée
+etapes:
+1. Coupez le poulet en lanières et enrobez-les de la moitié des épices.
+2. Faites-les dorer 6 min dans une grande sauteuse avec l'huile. Réservez.
+3. Faites revenir l'oignon et le poivron émincés 5 min, ajoutez l'ail et le reste des épices.
+4. Versez le bouillon et la crème, portez à ébullition et ajoutez les macaronis crus. Laissez cuire 10 à 12 min en remuant souvent, jusqu'à ce qu'ils soient tendres et que la sauce ait épaissi.
+5. Hors du feu, ajoutez le cheddar et mélangez jusqu'à ce qu'il soit fondu. Remettez le poulet.
+6. Parsemez de persil et servez aussitôt.
+
+=== Kabsa au poulet
+id: kabsa
+emoji: 🍗
+categorie: Plat
+preparation: 20
+cuisson: 60
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/utqnjv1763598650.jpg
+nouveau: oui
+ingredients:
+- cuisses de poulet : 4
+- riz basmati : 350 g
+- oignon : 1
+- carottes : 2
+- poivron rouge : 1
+- poivron vert : 1
+- champignons de Paris : 150 g
+- maïs : 150 g
+- raisins secs : 50 g
+- tomates concassées : 200 g
+- curcuma : 1 c. à café
+- cannelle : 1 c. à café
+- cumin : 1 c. à café
+- cardamome : 4
+- huile : 3 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Frottez le poulet avec la moitié des épices, du sel et du poivre.
+2. Faites-le dorer dans une grande cocotte avec l'huile, 8 min. Ajoutez l'oignon émincé et laissez fondre 3 min.
+3. Ajoutez les tomates, le reste des épices et 70 cl d'eau. Couvrez et laissez cuire 25 min.
+4. Rincez le riz jusqu'à ce que l'eau soit claire. Sortez le poulet et faites-le dorer 10 min au four à 220 °C.
+5. Ajoutez dans la cocotte le riz, les carottes râpées, les poivrons en dés, les champignons, le maïs et les raisins. Couvrez et laissez cuire 18 min à feu doux.
+6. Laissez reposer 5 min, égrenez le riz et servez avec le poulet doré par-dessus.
+
+=== Hotpot poulet-champignons
+id: hotpotpoulet
+emoji: 🥘
+categorie: Plat
+preparation: 20
+cuisson: 50
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/uuuspp1511297945.jpg
+nouveau: oui
+ingredients:
+- blancs de poulet : 500 g
+- champignons de Paris : 300 g
+- oignon : 1
+- maïs : 150 g
+- pommes de terre : 700 g
+- beurre : 60 g
+- farine : 3 c. à soupe
+- lait : 30 cl
+- cube de bouillon : 1
+- moutarde : 1 c. à café
+- muscade : 1 pincée
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Préchauffez le four à 200 °C. Faites cuire les pommes de terre épluchées 10 min à l'eau salée (elles doivent rester fermes) et coupez-les en rondelles.
+2. Faites fondre 40 g de beurre et faites revenir l'oignon émincé et les champignons 6 min.
+3. Ajoutez la farine, mélangez 1 min, puis versez le lait et 20 cl d'eau avec le cube de bouillon émietté, en remuant jusqu'à épaississement.
+4. Ajoutez le poulet coupé en dés, le maïs, la moutarde, la muscade, du sel et du poivre. Laissez cuire 5 min.
+5. Versez dans un plat, recouvrez de rondelles de pommes de terre qui se chevauchent et badigeonnez-les du reste de beurre fondu.
+6. Enfournez 30 min, jusqu'à ce que les pommes de terre soient dorées et croustillantes.
+
+=== Poulet rôti sauce crémeuse aux noix
+id: pouletnoix
+emoji: 🍗
+categorie: Plat
+preparation: 15
+cuisson: 40
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ro8mzj1763800655.jpg
+nouveau: oui
+ingredients:
+- cuisses de poulet : 4
+- cumin : 1 c. à café
+- paprika : 1 c. à café
+- huile d'olive : 3 c. à soupe
+- noix : 100 g
+- oignon : 1
+- gousses d'ail : 2
+- bouillon de volaille : 20 cl
+- crème liquide : 15 cl
+- citron : 1
+- pains pita : 4
+- coriandre : 1 poignée
+- sel : 1 pincée
+etapes:
+1. Préchauffez le four à 200 °C. Frottez le poulet avec le cumin, le paprika, 2 c. à soupe d'huile et du sel.
+2. Enfournez 35 à 40 min, jusqu'à ce que la peau soit dorée et croustillante.
+3. Pendant ce temps, faites griller les noix 3 min à sec dans une poêle, puis réservez-en une poignée.
+4. Faites revenir l'oignon et l'ail hachés dans le reste d'huile 5 min. Ajoutez les noix et le bouillon, laissez cuire 5 min.
+5. Mixez avec la crème et le jus de citron : la sauce doit être onctueuse. Salez.
+6. Servez le poulet sur la sauce aux noix avec des pitas chaudes, les noix réservées concassées et de la coriandre.
+
+=== Haricots au poulet et au chorizo
+id: haricotspoulet
+emoji: 🫘
+categorie: Plat
+preparation: 15
+cuisson: 40
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/bpkxtw1763332446.jpg
+nouveau: oui
+ingredients:
+- cuisses de poulet : 4
+- haricots blancs : 500 g
+- chorizo : 150 g
+- pommes de terre grenailles : 400 g
+- oignon : 1
+- paprika fumé : 2 c. à café
+- thym : 1 pincée
+- feuilles de laurier : 2
+- bouillon de volaille : 40 cl
+- pousses d'épinards : 100 g
+- persil : 1 pincée
+- huile d'olive : 1 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Faites dorer les cuisses de poulet, peau en dessous, 8 min dans une cocotte avec l'huile. Retournez-les 2 min et réservez.
+2. Faites revenir le chorizo en rondelles et l'oignon émincé 5 min dans la graisse du poulet.
+3. Ajoutez le paprika, le thym, le laurier, les grenailles coupées en deux et le bouillon.
+4. Remettez le poulet, peau vers le haut, couvrez et laissez mijoter 20 min.
+5. Ajoutez les haricots égouttés et laissez cuire 10 min à découvert.
+6. Ajoutez les épinards juste avant de servir : ils fondent en 1 min. Parsemez de persil.
+
+=== Empanada gallega au poulet
+id: empanadagallega
+emoji: 🥧
+categorie: Plat
+preparation: 30
+cuisson: 40
+portions: 6
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/8ovxf41763253962.jpg
+nouveau: oui
+ingredients:
+- pâte brisée : 2
+- blancs de poulet : 400 g
+- pommes de terre : 2
+- oignons : 2
+- gousses d'ail : 2
+- tomates concassées : 400 g
+- poivrons grillés : 150 g
+- olives vertes : 80 g
+- paprika : 1 c. à café
+- huile d'olive : 3 c. à soupe
+- œuf : 1
+- sel : 1 pincée
+etapes:
+1. Faites cuire les pommes de terre en dés 10 min à l'eau salée. Égouttez.
+2. Faites fondre les oignons émincés et l'ail dans l'huile 8 min. Ajoutez le poulet coupé en petits dés et le paprika, laissez dorer 5 min.
+3. Ajoutez les tomates et laissez réduire 10 min : la farce doit être épaisse. Incorporez les pommes de terre, les poivrons en lanières et les olives. Salez et laissez refroidir.
+4. Préchauffez le four à 190 °C. Étalez une pâte dans un moule, garnissez de farce et couvrez de la seconde pâte. Soudez les bords.
+5. Percez un petit trou au centre, badigeonnez d'œuf battu et enfournez 35 à 40 min.
+6. Servez chaud ou froid, en parts, avec une salade.
+
+=== Poulet à l'espagnole au paprika et citron
+id: pouletespagnole
+emoji: 🍗
+categorie: Plat
+preparation: 10
+cuisson: 45
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/pqulvm1763282839.jpg
+nouveau: oui
+ingredients:
+- cuisses de poulet : 6
+- oignons : 2
+- paprika fumé : 2 c. à café
+- citron : 1
+- bouillon de volaille : 25 cl
+- huile d'olive : 2 c. à soupe
+- persil : 1 poignée
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Préchauffez le four à 200 °C.
+2. Frottez les cuisses avec le paprika, l'huile, du sel et du poivre.
+3. Coupez les oignons en quartiers et le citron en rondelles, étalez-les dans un plat.
+4. Posez le poulet par-dessus, peau vers le haut, et versez le bouillon au fond du plat.
+5. Enfournez 45 min, jusqu'à ce que la peau soit croustillante et le jus réduit.
+6. Parsemez de persil haché et servez avec du pain pour saucer, ou du riz.
+
+=== Pilons de poulet à la thaïe, sauce chili-orange
+id: pilonsthai
+emoji: 🍗
+categorie: Plat
+preparation: 10
+cuisson: 40
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ittake1763586925.jpg
+nouveau: oui
+ingredients:
+- pilons de poulet : 8
+- sauce chili douce : 6 c. à soupe
+- oranges : 2
+- gousses d'ail : 2
+- pâte de curry rouge : 1 c. à soupe
+- riz : 300 g
+etapes:
+1. Préchauffez le four à 200 °C.
+2. Mélangez le zeste d'une orange, le jus des deux oranges, la sauce chili, l'ail râpé et la pâte de curry.
+3. Entaillez les pilons et enrobez-les de cette sauce dans un plat. Laissez mariner 15 min si vous avez le temps.
+4. Enfournez 40 min en les retournant et en les arrosant de sauce à mi-cuisson : ils deviennent brillants et caramélisés.
+5. Pendant ce temps, faites cuire le riz.
+6. Servez les pilons sur le riz, arrosés du jus de cuisson.
+
+=== Soupe thaïe verte au poulet
+id: soupeverte
+emoji: 🍜
+categorie: Plat
+preparation: 15
+cuisson: 25
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/7kb44y1763589084.jpg
+nouveau: oui
+ingredients:
+- cuisses de poulet désossées : 500 g
+- pâte de curry vert : 2 c. à soupe
+- lait de coco : 40 cl
+- bouillon de volaille : 60 cl
+- oignon : 1
+- gousses d'ail : 2
+- haricots verts : 150 g
+- pousses de bambou : 150 g
+- sauce poisson : 2 c. à soupe
+- citron vert : 1
+- oignons nouveaux : 2
+- basilic thaï : 1 poignée
+- huile : 1 c. à soupe
+etapes:
+1. Faites revenir l'oignon émincé et l'ail dans l'huile 3 min, ajoutez la pâte de curry et mélangez 1 min.
+2. Ajoutez le poulet coupé en morceaux et faites-le dorer 3 min.
+3. Versez le lait de coco et le bouillon, portez à frémissement et laissez cuire 10 min.
+4. Ajoutez les haricots verts coupés en tronçons et les pousses de bambou égouttées, laissez cuire 5 min.
+5. Assaisonnez avec la sauce poisson et le jus du citron vert.
+6. Servez dans des bols avec les oignons nouveaux émincés et le basilic.
+
+=== Poulet au lait de coco à la vénézuélienne
+id: pouletcocovenez
+emoji: 🥥
+categorie: Plat
+preparation: 15
+cuisson: 35
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/z2sw3o1764378271.jpg
+nouveau: oui
+ingredients:
+- blancs de poulet : 600 g
+- lait de coco : 40 cl
+- oignon : 1
+- tomates : 2
+- gousses d'ail : 3
+- gingembre : 2 cm
+- curcuma : 1 c. à café
+- cumin : 1 c. à café
+- sucre : 1 c. à café
+- feuilles de laurier : 2
+- huile d'olive : 2 c. à soupe
+- riz : 300 g
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Coupez le poulet en morceaux et assaisonnez-le avec le cumin, le curcuma, du sel et du poivre.
+2. Faites-le dorer 5 min dans l'huile, puis réservez.
+3. Faites revenir l'oignon émincé, l'ail et le gingembre râpés 4 min. Ajoutez les tomates en dés et le sucre, laissez compoter 5 min.
+4. Versez le lait de coco, ajoutez le laurier et le poulet. Laissez mijoter 20 min à feu doux.
+5. Faites cuire le riz pendant ce temps.
+6. Servez le poulet et sa sauce dorée avec le riz.
+
+=== Côtelettes d'agneau piment-gingembre
+id: cotelettesagneau
+emoji: 🍖
+categorie: Plat
+preparation: 10
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/8xuvhj1763794991.jpg
+nouveau: oui
+ingredients:
+- côtelettes d'agneau : 12
+- gousses d'ail : 3
+- gingembre : 3 cm
+- citron : 1
+- piment en poudre : 1 c. à café
+- cumin : 1 c. à café
+- huile d'olive : 3 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Râpez l'ail et le gingembre. Mélangez-les avec le jus du citron, le piment, le cumin et l'huile.
+2. Enrobez les côtelettes de cette marinade et laissez reposer 30 min (ou toute une nuit au frais).
+3. Faites chauffer une poêle-gril ou le barbecue jusqu'à ce qu'il soit très chaud.
+4. Salez les côtelettes et faites-les griller 2 à 3 min de chaque côté pour une viande rosée.
+5. Laissez reposer 3 min et servez avec une salade de tomates ou de la semoule.
+
+=== Fårikål (agneau au chou à la norvégienne)
+id: farikal
+emoji: 🥬
+categorie: Plat
+preparation: 15
+cuisson: 150
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ttfxxn1762773067.jpg
+nouveau: oui
+ingredients:
+- épaule d'agneau : 1.2 kg
+- chou blanc : 1
+- poivre en grains : 2 c. à soupe
+- farine : 2 c. à soupe
+- eau : 50 cl
+- sel : 1 pincée
+- pommes de terre : 800 g
+etapes:
+1. Coupez l'agneau en morceaux (avec l'os, c'est meilleur) et le chou en grosses tranches.
+2. Dans une grande cocotte, alternez des couches de viande et de chou, en saupoudrant chaque couche de sel, de poivre en grains et d'un peu de farine.
+3. Versez l'eau, portez à ébullition, puis couvrez.
+4. Laissez mijoter 2 h 30 à feu très doux, sans remuer, jusqu'à ce que la viande se détache de l'os.
+5. Faites cuire les pommes de terre à l'eau ou à la vapeur.
+6. Servez l'agneau et le chou avec leur bouillon et les pommes de terre.
+
+=== Kapsalon (frites, viande kebab et fromage gratiné)
+id: kapsalon
+emoji: 🍟
+categorie: Plat
+preparation: 20
+cuisson: 25
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/sxysrt1468240488.jpg
+nouveau: oui
+ingredients:
+- frites surgelées : 800 g
+- émincé de kebab : 500 g
+- gouda râpé : 200 g
+- salade verte : 1
+- tomates : 2
+- concombre : 1
+- sauce blanche : 8 c. à soupe
+- sauce piquante : 2 c. à soupe
+- huile : 1 c. à soupe
+etapes:
+1. Faites cuire les frites au four selon le paquet.
+2. Faites dorer l'émincé de kebab 5 min dans une poêle avec l'huile.
+3. Répartissez les frites dans un plat (ou des barquettes allant au four), couvrez de viande et de gouda râpé.
+4. Passez 5 min sous le gril du four, jusqu'à ce que le fromage soit fondu et doré.
+5. Recouvrez de salade émincée, de tomates et de concombre en dés.
+6. Nappez de sauce blanche et de sauce piquante, et servez aussitôt.
+
+=== Tourte à l'agneau et aux pommes de terre
+id: tourteagneau
+emoji: 🥧
+categorie: Plat
+preparation: 30
+cuisson: 120
+portions: 6
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/sxrpws1511555907.jpg
+nouveau: oui
+ingredients:
+- épaule d'agneau désossée : 800 g
+- pommes de terre : 500 g
+- carottes : 2
+- oignon : 1
+- farine : 2 c. à soupe
+- bouillon de légumes : 50 cl
+- pâte brisée : 2
+- œuf : 1
+- huile : 2 c. à soupe
+- thym : 1 pincée
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Coupez l'agneau en petits cubes et roulez-les dans la farine salée et poivrée.
+2. Faites-les dorer dans une cocotte avec l'huile, ajoutez l'oignon émincé et les carottes en rondelles, puis le bouillon et le thym.
+3. Couvrez et laissez mijoter 1 h. Ajoutez les pommes de terre en dés et poursuivez 20 min à découvert. Laissez refroidir.
+4. Préchauffez le four à 200 °C. Foncez un moule avec une pâte, versez la garniture et couvrez de la seconde pâte. Soudez les bords.
+5. Faites une petite cheminée au centre, badigeonnez d'œuf battu et enfournez 35 min.
+6. Laissez reposer 10 min avant de servir.
+
+=== Gigot d'agneau à l'arménienne
+id: gigotarmenien
+emoji: 🍖
+categorie: Plat
+preparation: 20
+cuisson: 90
+portions: 6
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/vy6k391780090969.jpg
+nouveau: oui
+ingredients:
+- gigot d'agneau : 2 kg
+- gousses d'ail : 8
+- persil : 1 poignée
+- menthe : 1 poignée
+- oignons : 2
+- vinaigre balsamique : 3 c. à soupe
+- huile d'olive : 4 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Hachez finement 4 gousses d'ail, le persil et la menthe. Mélangez-les avec le vinaigre, l'huile, du sel et du poivre.
+2. Faites des entailles dans le gigot et glissez-y les 4 autres gousses d'ail coupées en deux. Badigeonnez la viande de marinade et laissez reposer 1 h (ou une nuit au frais).
+3. Préchauffez le four à 200 °C. Posez le gigot sur les oignons coupés en quartiers dans un plat.
+4. Enfournez 1 h 15 à 1 h 30 (comptez 40 min par kilo pour une viande rosée), en arrosant toutes les 20 min avec le jus.
+5. Laissez reposer 15 min sous une feuille d'aluminium avant de découper.
+6. Servez avec les oignons fondants et le jus de cuisson.
+
+=== Gratin de poireaux, riz et agneau
+id: presh
+emoji: 🥘
+categorie: Plat
+preparation: 20
+cuisson: 50
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/sjfgbc1779647169.jpg
+nouveau: oui
+ingredients:
+- poireaux : 4
+- agneau haché : 300 g
+- riz : 200 g
+- oignon : 1
+- bouillon de légumes : 60 cl
+- huile d'olive : 4 c. à soupe
+- paprika : 1 c. à café
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Préchauffez le four à 190 °C. Coupez les poireaux en rondelles et lavez-les soigneusement.
+2. Faites revenir l'oignon haché dans l'huile 3 min, ajoutez l'agneau et faites-le dorer 5 min.
+3. Ajoutez les poireaux et laissez-les fondre 10 min en remuant.
+4. Ajoutez le riz cru et le paprika, salez, poivrez et mélangez.
+5. Versez le tout dans un plat à gratin, mouillez avec le bouillon chaud.
+6. Enfournez 30 à 35 min, jusqu'à ce que le riz ait absorbé le bouillon et que le dessus soit doré.
+
+=== Épaule d'agneau confite, cannelle, fenouil et citron
+id: epauleagneaucannelle
+emoji: 🍖
+categorie: Plat
+preparation: 15
+cuisson: 240
+portions: 6
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/gr4lo51763791826.jpg
+nouveau: oui
+ingredients:
+- épaule d'agneau : 1.8 kg
+- citrons : 2
+- miel : 2 c. à soupe
+- cannelle : 2 c. à café
+- graines de fenouil : 2 c. à café
+- cumin : 1 c. à café
+- gousses d'ail : 6
+- huile d'olive : 4 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Écrasez les graines de fenouil au mortier (ou au rouleau). Mélangez-les avec la cannelle, le cumin, le miel, le zeste et le jus d'un citron, l'huile et du sel.
+2. Entaillez l'épaule et frottez-la avec ce mélange.
+3. Préchauffez le four à 160 °C. Posez la viande dans un plat avec les gousses d'ail en chemise et le second citron coupé en quartiers. Ajoutez 20 cl d'eau.
+4. Couvrez de papier aluminium et enfournez 3 h 30, en arrosant de temps en temps.
+5. Retirez l'aluminium, montez le four à 200 °C et faites dorer 30 min.
+6. La viande se détache à la cuillère : servez-la avec le jus, de la semoule ou des pommes de terre.
+
+=== Tavë kosi (agneau au four, sauce yaourt)
+id: tavekosi
+emoji: 🥘
+categorie: Plat
+preparation: 20
+cuisson: 75
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/a1mi7t1779643816.jpg
+nouveau: oui
+ingredients:
+- épaule d'agneau désossée : 700 g
+- riz : 80 g
+- beurre : 70 g
+- farine : 40 g
+- yaourt à la grecque : 500 g
+- œufs : 3
+- gousses d'ail : 2
+- origan : 1 c. à café
+- huile d'olive : 1 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Préchauffez le four à 200 °C. Coupez l'agneau en morceaux, salez, poivrez, ajoutez l'ail, l'origan, l'huile et 20 g de beurre.
+2. Faites-le rôtir 30 min dans un plat, en le retournant à mi-cuisson.
+3. Ajoutez le riz et 25 cl d'eau bouillante dans le plat, remettez 15 min au four.
+4. Pendant ce temps, faites fondre le reste du beurre, ajoutez la farine et mélangez 1 min. Laissez tiédir.
+5. Battez le yaourt avec les œufs, ajoutez le roux et une pincée de sel : vous obtenez une crème épaisse.
+6. Versez-la sur la viande et enfournez 30 min à 180 °C, jusqu'à ce que le dessus soit gonflé et doré.
+
+=== Souris d'agneau à la vietnamienne et patates douces
+id: sourisagneauviet
+emoji: 🍖
+categorie: Plat
+preparation: 25
+cuisson: 180
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/7xte3u1763757761.jpg
+nouveau: oui
+ingredients:
+- souris d'agneau : 4
+- patates douces : 3
+- oignon : 1
+- gingembre : 4 cm
+- gousses d'ail : 4
+- piment : 2
+- tige de citronnelle : 1
+- anis étoilé : 2
+- sucre roux : 3 c. à soupe
+- concentré de tomate : 2 c. à soupe
+- sauce poisson : 3 c. à soupe
+- bouillon de volaille : 75 cl
+- citron vert : 1
+- menthe : 1 poignée
+- basilic : 1 poignée
+- huile : 2 c. à soupe
+etapes:
+1. Faites dorer les souris d'agneau sur toutes les faces dans une cocotte avec l'huile. Réservez.
+2. Faites revenir l'oignon émincé, le gingembre, l'ail, les piments et la citronnelle hachés 4 min.
+3. Ajoutez le sucre et laissez caraméliser 1 min, puis l'anis, le concentré de tomate, la sauce poisson et le bouillon.
+4. Remettez la viande, couvrez et laissez mijoter 2 h à feu doux (ou au four à 160 °C).
+5. Ajoutez les patates douces épluchées et coupées en gros cubes, et poursuivez 40 min.
+6. Ajoutez le jus du citron vert et servez avec la menthe et le basilic.
+
+=== Curry d'agneau à la jamaïcaine
+id: curryagneaujamaique
+emoji: 🍛
+categorie: Plat
+preparation: 20
+cuisson: 120
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/uc9qp11764796575.jpg
+nouveau: oui
+ingredients:
+- épaule d'agneau : 1 kg
+- curry : 3 c. à soupe
+- piment de la Jamaïque : 1 c. à café
+- gingembre : 1 c. à café
+- oignon : 1
+- gousses d'ail : 3
+- thym : 1 pincée
+- piment : 1
+- pommes de terre : 2
+- huile : 3 c. à soupe
+- riz : 300 g
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Coupez l'agneau en morceaux. Frottez-les avec 2 c. à soupe de curry, le piment de la Jamaïque, le gingembre, l'ail haché, le thym, du sel et du poivre. Laissez mariner au moins 1 h.
+2. Faites chauffer l'huile dans une cocotte avec le reste du curry 1 min, puis faites dorer la viande sur toutes les faces.
+3. Ajoutez l'oignon émincé et le piment entier (il parfume sans trop piquer s'il n'est pas percé).
+4. Versez 60 cl d'eau, couvrez et laissez mijoter 1 h 30.
+5. Ajoutez les pommes de terre en cubes et poursuivez 30 min : elles épaississent la sauce.
+6. Retirez le piment et servez avec du riz.
+
+=== Riz aux gambas et calamars
+id: rizgambas
+emoji: 🦐
+categorie: Plat
+preparation: 20
+cuisson: 35
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/jc6oub1763196663.jpg
+nouveau: oui
+ingredients:
+- riz rond : 300 g
+- gambas crues : 400 g
+- calamars : 300 g
+- oignon : 1
+- concentré de tomate : 2 c. à soupe
+- vin blanc : 10 cl
+- fumet de poisson : 1 l
+- safran : 1 pincée
+- feuille de laurier : 1
+- huile d'olive : 4 c. à soupe
+- citron : 1
+- sel : 1 pincée
+etapes:
+1. Décortiquez les gambas en gardant la tête et la queue de quelques-unes pour la présentation. Coupez les calamars en anneaux.
+2. Faites chauffer le fumet avec le safran.
+3. Dans une grande poêle, faites dorer les gambas 1 min de chaque côté dans l'huile. Réservez-les.
+4. Faites revenir l'oignon haché et les calamars 5 min, ajoutez le concentré de tomate et le laurier.
+5. Ajoutez le riz, mélangez 1 min, puis versez le vin blanc et laissez évaporer.
+6. Versez le fumet chaud, salez et laissez cuire 18 min sans remuer. Ajoutez les gambas pour les 5 dernières minutes.
+7. Laissez reposer 5 min hors du feu et servez avec des quartiers de citron.
+
+=== Crevettes grillées, sauce crue à la ciboule
+id: crevettesciboule
+emoji: 🦐
+categorie: Plat
+preparation: 15
+cuisson: 6
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/jg4r991779916649.jpg
+nouveau: oui
+ingredients:
+- grosses crevettes crues : 800 g
+- oignons nouveaux : 6
+- gousses d'ail : 3
+- cumin : 1 c. à café
+- vinaigre blanc : 3 c. à soupe
+- huile d'olive : 4 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Sauce crue : hachez très finement les oignons nouveaux (vert compris) et 1 gousse d'ail. Ajoutez le vinaigre, 3 c. à soupe d'eau, 2 c. à soupe d'huile et une pincée de sel.
+2. Mélangez les crevettes avec le reste d'ail écrasé, le cumin, le reste d'huile et du sel.
+3. Faites chauffer une poêle-gril ou le barbecue à feu vif.
+4. Faites griller les crevettes 2 à 3 min de chaque côté, jusqu'à ce qu'elles soient bien roses.
+5. Servez aussitôt, nappées de sauce crue, avec du riz ou du pain.
+
+=== Poisson escovitch (mariné au vinaigre épicé)
+id: escovitch
+emoji: 🐟
+categorie: Plat
+preparation: 25
+cuisson: 20
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/1520084413.jpg
+nouveau: oui
+ingredients:
+- daurades : 4
+- citrons verts : 2
+- oignon : 1
+- carotte : 1
+- poivron rouge : 1
+- poivron jaune : 1
+- piment : 1
+- gousses d'ail : 2
+- vinaigre de cidre : 20 cl
+- sucre : 1 c. à soupe
+- piment de la Jamaïque : 1 c. à café
+- thym : 1 pincée
+- farine : 3 c. à soupe
+- huile : 15 cl
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Frottez les poissons vidés avec le jus des citrons verts, rincez-les et séchez-les. Entaillez-les et salez-les, poivrez-les dedans et dehors.
+2. Coupez l'oignon, la carotte et les poivrons en fines lanières, émincez le piment et l'ail.
+3. Faites chauffer le vinaigre avec le sucre, le piment de la Jamaïque et le thym. Ajoutez les légumes et laissez frémir 3 min : ils doivent rester croquants.
+4. Farinez les poissons et faites-les frire 5 à 6 min de chaque côté dans l'huile chaude, jusqu'à ce qu'ils soient bien dorés.
+5. Disposez les poissons dans un plat et versez les légumes et le vinaigre chauds par-dessus.
+6. Servez tout de suite ou laissez mariner quelques heures : c'est encore meilleur.
+
+=== Soupe de poisson crémeuse à la norvégienne
+id: fiskesuppe
+emoji: 🍲
+categorie: Plat
+preparation: 20
+cuisson: 30
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/raqjbj1762773035.jpg
+nouveau: oui
+ingredients:
+- filets de poisson blanc : 400 g
+- crevettes cuites : 150 g
+- pommes de terre : 2
+- carottes : 2
+- poireau : 1
+- gousse d'ail : 1
+- beurre : 40 g
+- farine : 2 c. à soupe
+- fumet de poisson : 75 cl
+- lait : 30 cl
+- crème fraîche : 15 cl
+- ciboulette : 1 pincée
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Coupez les pommes de terre et les carottes en petits dés, le poireau en rondelles fines.
+2. Faites fondre le beurre et faites revenir le poireau et l'ail 3 min. Ajoutez la farine et mélangez 1 min.
+3. Versez le fumet petit à petit en remuant, puis le lait. Ajoutez les pommes de terre et les carottes.
+4. Laissez cuire 15 min à petits frémissements, jusqu'à ce que les légumes soient tendres.
+5. Ajoutez le poisson en morceaux et laissez pocher 5 min, puis la crème et les crevettes.
+6. Salez, poivrez et parsemez de ciboulette. Servez bien chaud.
+
+=== Crevettes au curry à la jamaïcaine
+id: crevettescurryjamaique
+emoji: 🦐
+categorie: Plat
+preparation: 15
+cuisson: 20
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/n7h5zs1765318909.jpg
+nouveau: oui
+ingredients:
+- grosses crevettes crues : 600 g
+- curry : 2 c. à soupe
+- oignon : 1
+- poivron rouge : 1
+- poivron vert : 1
+- piment : 1
+- gousses d'ail : 2
+- lait de coco : 40 cl
+- ketchup : 1 c. à soupe
+- thym : 1 pincée
+- huile d'olive : 2 c. à soupe
+- riz : 300 g
+- sel : 1 pincée
+etapes:
+1. Mélangez les crevettes décortiquées avec 1 c. à soupe de curry et une pincée de sel.
+2. Faites cuire le riz.
+3. Faites revenir l'oignon et les poivrons émincés 5 min dans l'huile. Ajoutez l'ail, le piment haché et le reste de curry, mélangez 1 min.
+4. Versez le lait de coco, ajoutez le ketchup et le thym, laissez mijoter 8 min.
+5. Ajoutez les crevettes et laissez cuire 3 à 4 min, jusqu'à ce qu'elles soient roses.
+6. Servez avec le riz.
+
+=== Crevettes kung pao
+id: crevetteskungpao
+emoji: 🦐
+categorie: Plat
+preparation: 15
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/1525873040.jpg
+nouveau: oui
+ingredients:
+- crevettes crues décortiquées : 500 g
+- cacahuètes : 60 g
+- châtaignes d'eau : 150 g
+- piment : 2
+- gousses d'ail : 2
+- gingembre : 2 cm
+- sauce soja : 3 c. à soupe
+- concentré de tomate : 1 c. à soupe
+- sucre roux : 1 c. à soupe
+- maïzena : 2 c. à café
+- huile : 2 c. à soupe
+- riz : 300 g
+etapes:
+1. Faites cuire le riz.
+2. Sauce : mélangez la sauce soja, le concentré de tomate, le sucre, la maïzena et 6 c. à soupe d'eau.
+3. Faites chauffer l'huile dans un wok et faites griller les cacahuètes 1 min. Réservez.
+4. Faites sauter l'ail, le gingembre et les piments hachés 30 secondes, ajoutez les crevettes et faites-les sauter 2 min.
+5. Ajoutez les châtaignes d'eau en rondelles et la sauce, laissez épaissir 1 min en remuant.
+6. Ajoutez les cacahuètes et servez aussitôt avec le riz.
+
+=== Salade de nouilles aux crevettes et échalotes croustillantes
+id: saladenouillescrevettes
+emoji: 🥗
+categorie: Plat
+preparation: 25
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/0iryz91763778419.jpg
+nouveau: oui
+ingredients:
+- nouilles de riz : 200 g
+- crevettes cuites : 300 g
+- concombre : 1
+- oignon rouge : 1
+- piment : 1
+- échalotes : 3
+- farine : 1 c. à soupe
+- cacahuètes : 50 g
+- coriandre : 1 poignée
+- menthe : 1 poignée
+- citrons verts : 2
+- sauce poisson : 3 c. à soupe
+- sucre roux : 1 c. à soupe
+- gousse d'ail : 1
+- huile : 10 cl
+etapes:
+1. Sauce : mélangez le jus des citrons verts, la sauce poisson, le sucre et l'ail râpé.
+2. Émincez finement les échalotes, roulez-les dans la farine et faites-les frire 3 min dans l'huile chaude jusqu'à ce qu'elles soient dorées. Égouttez sur du papier absorbant.
+3. Faites cuire les nouilles selon le paquet, rincez-les à l'eau froide.
+4. Coupez le concombre en bâtonnets, l'oignon rouge en fines lamelles et le piment en rondelles.
+5. Mélangez les nouilles, les légumes, les crevettes, les herbes et la sauce.
+6. Parsemez de cacahuètes concassées et d'échalotes croustillantes au moment de servir.
+
+=== Wraps de saumon aux nouilles de riz
+id: wrapssaumon
+emoji: 🌯
+categorie: Plat
+preparation: 20
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/prrirc1763781360.jpg
+nouveau: oui
+ingredients:
+- pavés de saumon : 2
+- nouilles de riz : 100 g
+- petits pois : 150 g
+- oignons nouveaux : 3
+- piment : 1
+- coriandre : 1 poignée
+- citron vert : 1
+- sauce soja : 2 c. à soupe
+- tortillas : 4
+etapes:
+1. Faites cuire le saumon 12 min au four à 200 °C, puis émiettez-le.
+2. Faites cuire les nouilles de riz 3 min avec les petits pois, puis égouttez et rincez à l'eau froide.
+3. Mélangez les nouilles, les petits pois, les oignons nouveaux émincés, le piment, la coriandre, le jus du citron vert et la sauce soja.
+4. Réchauffez les tortillas 20 secondes à la poêle.
+5. Garnissez-les de nouilles et de saumon, roulez-les bien serrées et coupez-les en deux.
+
+=== Riz aux fruits de mer et au chorizo
+id: rizfruitsmer
+emoji: 🥘
+categorie: Plat
+preparation: 10
+cuisson: 30
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/5r5rvx1763287943.jpg
+nouveau: oui
+ingredients:
+- riz : 300 g
+- fruits de mer surgelés : 400 g
+- chorizo : 100 g
+- poireau : 1
+- petits pois : 150 g
+- curcuma : 1 c. à café
+- fumet de poisson : 80 cl
+- huile d'olive : 2 c. à soupe
+- citron : 1
+- sel : 1 pincée
+etapes:
+1. Émincez le poireau et coupez le chorizo en dés.
+2. Faites-les revenir 5 min dans l'huile, dans une grande poêle.
+3. Ajoutez le riz et le curcuma, mélangez 1 min pour bien enrober les grains.
+4. Versez le fumet chaud, salez légèrement et laissez cuire 12 min à couvert.
+5. Ajoutez les fruits de mer (sans les décongeler) et les petits pois, et poursuivez 6 à 8 min, jusqu'à ce que le riz soit tendre.
+6. Servez avec des quartiers de citron.
+
+=== Crevettes sautées aux pois gourmands
+id: crevettespoisgourmands
+emoji: 🦐
+categorie: Plat
+preparation: 15
+cuisson: 8
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/fpl3mv1766433431.jpg
+nouveau: oui
+ingredients:
+- crevettes crues décortiquées : 500 g
+- pois gourmands : 300 g
+- gousses d'ail : 2
+- gingembre : 2 cm
+- maïzena : 2 c. à café
+- sauce soja : 2 c. à soupe
+- bouillon de volaille : 10 cl
+- oignons nouveaux : 2
+- huile de sésame : 1 c. à café
+- huile : 2 c. à soupe
+- riz : 300 g
+- sel : 1 pincée
+etapes:
+1. Faites cuire le riz.
+2. Mélangez les crevettes avec 1 c. à café de maïzena et une pincée de sel.
+3. Mélangez le bouillon, la sauce soja et le reste de maïzena.
+4. Faites chauffer l'huile dans un wok à feu vif, faites sauter les crevettes 1 min 30, puis réservez-les.
+5. Faites sauter l'ail, le gingembre et les pois gourmands 2 min : ils doivent rester croquants.
+6. Remettez les crevettes, versez la sauce et laissez épaissir 1 min. Ajoutez les oignons nouveaux et l'huile de sésame, servez avec le riz.
+
+=== Makis maison au concombre
+id: makis
+emoji: 🍣
+categorie: Plat
+preparation: 40
+cuisson: 15
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/g046bb1663960946.jpg
+nouveau: oui
+ingredients:
+- riz à sushi : 300 g
+- vinaigre de riz : 5 c. à soupe
+- sucre : 2 c. à soupe
+- sel : 1 c. à café
+- feuilles de nori : 6
+- concombre : 1
+- avocat : 1
+- saumon frais : 200 g
+- mayonnaise : 2 c. à soupe
+- sauce soja : 4 c. à soupe
+etapes:
+1. Rincez le riz jusqu'à ce que l'eau soit claire. Faites-le cuire avec 33 cl d'eau 12 min à couvert, puis laissez reposer 10 min hors du feu.
+2. Faites chauffer le vinaigre avec le sucre et le sel jusqu'à dissolution. Versez sur le riz et mélangez délicatement en éventant pour le refroidir.
+3. Coupez le concombre, l'avocat et le saumon (très frais, qualité sushi) en bâtonnets.
+4. Posez une feuille de nori sur une natte en bambou, étalez une fine couche de riz avec les mains mouillées en laissant 2 cm libres en haut.
+5. Disposez une ligne de garniture (et un peu de mayonnaise), puis roulez en serrant bien. Humidifiez le bord libre pour fermer.
+6. Coupez chaque rouleau en 8 avec un couteau mouillé. Servez avec la sauce soja.
+
+=== Soupe de nouilles au curry thaï et crevettes
+id: soupenouillescurry
+emoji: 🍜
+categorie: Plat
+preparation: 10
+cuisson: 15
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/118oj61763423896.jpg
+nouveau: oui
+ingredients:
+- nouilles udon : 400 g
+- crevettes crues décortiquées : 300 g
+- pâte de curry vert : 2 c. à soupe
+- lait de coco : 40 cl
+- bouillon de légumes : 60 cl
+- légumes pour wok : 300 g
+- oignons nouveaux : 2
+- piment : 1
+- coriandre : 1 poignée
+- basilic : 1 poignée
+- huile : 1 c. à soupe
+etapes:
+1. Faites revenir la pâte de curry 1 min dans l'huile, dans une grande casserole.
+2. Ajoutez les légumes et faites-les sauter 2 min.
+3. Versez le lait de coco et le bouillon, portez à frémissement.
+4. Ajoutez les crevettes et les nouilles, laissez cuire 3 à 4 min.
+5. Servez dans des bols avec les oignons nouveaux, le piment émincé, la coriandre et le basilic.
+
+=== Confit de canard, pommes sarladaises
+id: confitcanard
+emoji: 🦆
+categorie: Plat
+preparation: 15
+cuisson: 40
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/wvpvsu1511786158.jpg
+nouveau: oui
+ingredients:
+- cuisses de canard confites : 4
+- pommes de terre : 1 kg
+- gousses d'ail : 3
+- persil : 1 poignée
+- thym : 1 pincée
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Ouvrez la boîte de confit et faites-la tiédir au bain-marie pour récupérer facilement la graisse. Sortez les cuisses.
+2. Épluchez les pommes de terre et coupez-les en rondelles de 3 mm. Rincez-les et séchez-les bien.
+3. Faites chauffer 4 c. à soupe de graisse de canard dans une grande poêle et faites cuire les pommes de terre 25 min à feu moyen, en les retournant souvent, jusqu'à ce qu'elles soient dorées et fondantes.
+4. Pendant ce temps, préchauffez le four à 200 °C et faites dorer les cuisses 20 min, peau vers le haut, sur une plaque : la peau devient croustillante.
+5. Hachez l'ail et le persil. Ajoutez-les aux pommes de terre 2 min avant la fin avec le thym, du sel et du poivre.
+6. Servez les cuisses sur les pommes sarladaises, avec une salade verte.
+
+=== Cuisses de grenouille en persillade
+id: grenouilles
+emoji: 🐸
+categorie: Plat
+preparation: 15
+cuisson: 10
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/qcprt21782497529.jpg
+nouveau: oui
+ingredients:
+- cuisses de grenouille : 800 g
+- lait : 25 cl
+- farine : 60 g
+- beurre : 80 g
+- huile d'olive : 2 c. à soupe
+- gousses d'ail : 4
+- persil : 1 poignée
+- citron : 1
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Faites tremper les cuisses de grenouille 30 min dans le lait (si elles sont surgelées, décongelez-les d'abord au réfrigérateur). Égouttez et séchez-les.
+2. Hachez finement l'ail et le persil.
+3. Salez, poivrez les cuisses et roulez-les dans la farine. Secouez l'excédent.
+4. Faites chauffer l'huile et la moitié du beurre dans une grande poêle, et faites dorer les cuisses 3 à 4 min de chaque côté, en plusieurs fois.
+5. Ajoutez le reste du beurre, l'ail et le persil, faites sauter 1 min sans laisser brûler l'ail.
+6. Servez aussitôt avec des quartiers de citron et du pain pour saucer.
+
+=== Migas (pain poêlé au chorizo)
+id: migas
+emoji: 🍞
+categorie: Plat
+preparation: 15
+cuisson: 20
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/xd9aj21740432378.jpg
+nouveau: oui
+ingredients:
+- pain rassis : 400 g
+- chorizo : 150 g
+- poitrine de porc : 150 g
+- gousses d'ail : 6
+- paprika : 1 c. à café
+- huile d'olive : 6 c. à soupe
+- raisins : 1 poignée
+- œufs : 4
+- sel : 1 pincée
+etapes:
+1. La veille ou 1 h avant, coupez le pain en petits dés, aspergez-le légèrement d'eau salée et couvrez d'un torchon.
+2. Faites dorer les gousses d'ail entières non épluchées dans l'huile, puis le chorizo et la poitrine en dés, 5 min. Réservez la viande.
+3. Ajoutez le pain dans l'huile parfumée et remuez sans arrêt 10 à 15 min à feu moyen, jusqu'à ce qu'il soit doré et croustillant.
+4. Remettez la viande, saupoudrez de paprika et mélangez.
+5. Faites cuire les œufs au plat. Servez les migas avec un œuf et quelques grains de raisin frais, comme en Espagne.
+
+=== Poutine
+id: poutine
+emoji: 🍟
+categorie: Plat
+preparation: 20
+cuisson: 35
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/uuyrrx1487327597.jpg
+nouveau: oui
+ingredients:
+- pommes de terre : 1.2 kg
+- huile de friture : 1.5 l
+- fromage en grains : 300 g
+- beurre : 40 g
+- farine : 3 c. à soupe
+- bouillon de bœuf : 50 cl
+- sauce worcestershire : 1 c. à café
+- ketchup : 1 c. à soupe
+- gousse d'ail : 1
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Coupez les pommes de terre en frites, rincez-les et séchez-les soigneusement.
+2. Sauce : faites fondre le beurre, ajoutez l'ail haché et la farine, mélangez 2 min jusqu'à ce que le mélange soit blond. Versez le bouillon chaud en fouettant, ajoutez la sauce worcestershire et le ketchup. Laissez épaissir 5 min et poivrez.
+3. Faites frire les frites une première fois 6 min à 160 °C. Égouttez.
+4. Montez l'huile à 180 °C et refaites-les frire 2 à 3 min, jusqu'à ce qu'elles soient dorées et croustillantes. Salez.
+5. Répartissez les frites dans les assiettes, parsemez de fromage en grains (ou de cheddar ou de mozzarella coupés en dés).
+6. Nappez de sauce bien chaude : le fromage doit à peine fondre. Servez aussitôt.
+
+=== Bánh mì à la dinde
+id: banhmidinde
+emoji: 🥖
+categorie: Plat
+preparation: 25
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/1wj8w31763781990.jpg
+nouveau: oui
+ingredients:
+- escalopes de dinde : 4
+- baguettes : 2
+- carottes : 2
+- chou rouge : 0.25
+- concombre : 1
+- vinaigre de riz : 6 c. à soupe
+- sucre : 2 c. à soupe
+- pâté de foie : 100 g
+- mayonnaise : 4 c. à soupe
+- sauce soja : 2 c. à soupe
+- gingembre : 1 c. à café
+- piment : 1
+- menthe : 1 poignée
+- huile : 1 c. à soupe
+etapes:
+1. Pickles express : râpez les carottes et émincez le chou rouge. Mélangez avec le vinaigre de riz et le sucre, laissez reposer 20 min.
+2. Faites mariner les escalopes 10 min dans la sauce soja et le gingembre.
+3. Faites-les dorer 3 min de chaque côté dans l'huile, puis coupez-les en lanières.
+4. Coupez les baguettes en deux tronçons et ouvrez-les. Toastez-les 3 min au four.
+5. Tartinez un côté de pâté, l'autre de mayonnaise. Garnissez de dinde, de pickles égouttés, de bâtonnets de concombre, de menthe et de piment émincé.
+
+=== Mantu (raviolis afghans à l'agneau et au yaourt)
+id: mantu
+emoji: 🥟
+categorie: Plat
+preparation: 50
+cuisson: 30
+portions: 4
+difficulte: Difficile
+photo: https://www.themealdb.com/images/media/meals/oemdp11779556068.jpg
+nouveau: oui
+ingredients:
+- farine : 300 g
+- eau : 15 cl
+- agneau haché : 400 g
+- oignons : 2
+- piment vert : 1
+- concentré de tomate : 2 c. à soupe
+- lentilles corail : 50 g
+- yaourt à la grecque : 300 g
+- gousse d'ail : 1
+- menthe séchée : 1 c. à café
+- coriandre : 1 poignée
+- huile : 2 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Pâte : mélangez la farine, l'eau et une pincée de sel, pétrissez 5 min et laissez reposer 30 min sous un bol.
+2. Farce : mélangez l'agneau, 1 oignon haché très fin, le piment, du sel et du poivre.
+3. Sauce : faites revenir le second oignon haché dans l'huile, ajoutez le concentré de tomate, les lentilles et 30 cl d'eau. Laissez cuire 20 min.
+4. Étalez la pâte très finement et découpez des carrés de 8 cm. Déposez une cuillerée de farce, rassemblez les 4 coins au centre et pincez les bords pour fermer.
+5. Faites cuire les mantu 25 min à la vapeur, sur un panier huilé.
+6. Mélangez le yaourt avec l'ail râpé et du sel. Étalez-le dans un plat, posez les mantu, nappez de sauce aux lentilles et parsemez de menthe et de coriandre.
+
+=== Chtitha batata (pommes de terre épicées à l'algérienne)
+id: chtithabatata
+emoji: 🥔
+categorie: Plat
+preparation: 15
+cuisson: 35
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/q8pu1k1764114334.jpg
+nouveau: oui
+ingredients:
+- pommes de terre grenailles : 1 kg
+- gousses d'ail : 4
+- piment : 1
+- cumin : 1 c. à café
+- paprika : 2 c. à café
+- piment de Cayenne : 1 pincée
+- concentré de tomate : 2 c. à soupe
+- huile d'olive : 4 c. à soupe
+- eau : 50 cl
+- persil : 1 poignée
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Pilez l'ail avec le piment, le cumin, le paprika, la Cayenne et une pincée de sel pour obtenir une pâte.
+2. Faites-la revenir 1 min dans l'huile, dans une cocotte, sans la laisser brûler.
+3. Ajoutez le concentré de tomate et mélangez 1 min.
+4. Ajoutez les pommes de terre (coupées en deux si elles sont grosses), mélangez pour bien les enrober, puis versez l'eau.
+5. Couvrez et laissez mijoter 25 à 30 min, jusqu'à ce que les pommes de terre soient tendres et la sauce épaisse.
+6. Parsemez de persil et servez avec du pain.
+
+=== Aubergines adobo au porc haché
+id: auberginesadobo
+emoji: 🍆
+categorie: Plat
+preparation: 15
+cuisson: 25
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/y7h0lq1683208991.jpg
+nouveau: oui
+ingredients:
+- aubergines : 3
+- porc haché : 250 g
+- gousses d'ail : 5
+- vinaigre de riz : 5 c. à soupe
+- sauce soja : 4 c. à soupe
+- sucre : 1 c. à soupe
+- feuilles de laurier : 2
+- huile d'olive : 3 c. à soupe
+- riz : 300 g
+- poivre : 1 pincée
+etapes:
+1. Coupez les aubergines en gros tronçons. Faites-les dorer 8 min dans 2 c. à soupe d'huile. Réservez.
+2. Faites revenir l'ail haché dans le reste d'huile, ajoutez le porc et faites-le dorer 5 min.
+3. Ajoutez le vinaigre, la sauce soja, le sucre, le laurier, du poivre et 10 cl d'eau. Ne remuez pas pendant 2 min pour que le vinaigre perde son piquant.
+4. Remettez les aubergines, couvrez et laissez mijoter 10 min : elles s'imprègnent de sauce.
+5. Servez avec du riz blanc.
+
+=== Gallo pinto (riz aux haricots noirs)
+id: gallopinto
+emoji: 🍚
+categorie: Plat
+preparation: 10
+cuisson: 25
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ytogg31784397116.jpg
+nouveau: oui
+ingredients:
+- riz : 300 g
+- haricots noirs : 400 g
+- oignon : 1
+- poivron rouge : 1
+- gousses d'ail : 2
+- cumin : 1 c. à café
+- sauce worcestershire : 2 c. à soupe
+- coriandre : 1 poignée
+- huile : 2 c. à soupe
+- œufs : 4
+- sel : 1 pincée
+etapes:
+1. Faites cuire le riz et laissez-le refroidir (le gallo pinto est encore meilleur avec du riz de la veille).
+2. Faites revenir l'oignon et le poivron hachés 5 min dans l'huile, ajoutez l'ail et le cumin.
+3. Ajoutez les haricots avec un peu de leur jus et la sauce worcestershire, laissez chauffer 3 min.
+4. Ajoutez le riz et mélangez à feu moyen 5 min, jusqu'à ce que le riz soit bien coloré par les haricots.
+5. Ajoutez la coriandre et servez avec un œuf au plat.
+
+=== Aubergines grillées, pois chiches épicés et sauce aux noix
+id: auberginespoischiches
+emoji: 🍆
+categorie: Plat
+preparation: 20
+cuisson: 30
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ctw3ba1763788978.jpg
+nouveau: oui
+ingredients:
+- aubergines : 2
+- pois chiches : 400 g
+- oignon : 1
+- piment : 1
+- gingembre : 2 cm
+- cumin : 1 c. à café
+- tomates : 2
+- citron : 1
+- yaourt à la grecque : 150 g
+- noix : 50 g
+- gousse d'ail : 1
+- coriandre : 1 poignée
+- huile d'olive : 4 c. à soupe
+- sel : 1 pincée
+etapes:
+1. Coupez les aubergines en tranches épaisses, huilez-les, salez-les et faites-les griller 5 min de chaque côté à la poêle-gril (ou 25 min au four à 220 °C).
+2. Faites revenir l'oignon, le piment et le gingembre hachés dans 2 c. à soupe d'huile 5 min. Ajoutez le cumin et les tomates en dés.
+3. Ajoutez les pois chiches égouttés et laissez mijoter 10 min. Ajoutez le jus d'un demi-citron et salez.
+4. Mixez le yaourt avec les noix, l'ail et une pincée de sel pour obtenir une sauce épaisse.
+5. Disposez les aubergines, couvrez de pois chiches et nappez de sauce aux noix. Parsemez de coriandre.
+
+=== Kafteji (légumes frits tunisiens à l'œuf)
+id: kafteji
+emoji: 🫑
+categorie: Plat
+preparation: 25
+cuisson: 30
+portions: 4
+difficulte: Moyen
+photo: https://www.themealdb.com/images/media/meals/1bsv1q1560459826.jpg
+nouveau: oui
+ingredients:
+- pommes de terre : 3
+- poivrons verts : 3
+- potiron : 300 g
+- oignon : 1
+- œufs : 4
+- ras el hanout : 1 c. à café
+- harissa : 1 c. à café
+- huile de friture : 50 cl
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Coupez les pommes de terre, le potiron et les poivrons en morceaux.
+2. Faites frire séparément les pommes de terre, le potiron, les poivrons et l'oignon émincé dans l'huile chaude, jusqu'à ce qu'ils soient tendres et dorés. Égouttez sur du papier absorbant.
+3. Faites cuire 2 œufs au plat dans un peu d'huile, et battez les 2 autres.
+4. Hachez grossièrement tous les légumes et les œufs au plat au couteau, sur une planche, en les mélangeant.
+5. Faites chauffer le tout dans une poêle avec la harissa, le ras el hanout, du sel et du poivre, ajoutez les œufs battus et remuez 2 min jusqu'à ce qu'ils soient pris.
+6. Servez chaud avec du pain, ou dans un sandwich.
+
+=== Salade liégeoise
+id: saladeliegeoise
+emoji: 🥗
+categorie: Plat
+preparation: 15
+cuisson: 25
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/ji3mho1782499823.jpg
+nouveau: oui
+ingredients:
+- pommes de terre : 800 g
+- haricots verts : 400 g
+- lardons : 200 g
+- œufs : 4
+- oignon : 1
+- vinaigre de vin blanc : 4 c. à soupe
+- moutarde : 1 c. à café
+- huile d'olive : 2 c. à soupe
+- persil : 1 poignée
+- sel : 1 pincée
+- poivre : 1 pincée
+etapes:
+1. Faites cuire les pommes de terre dans leur peau 20 min à l'eau salée. Pelez-les et coupez-les en rondelles.
+2. Faites cuire les haricots verts 8 min à l'eau bouillante salée : ils doivent rester croquants.
+3. Faites cuire les œufs 9 min, écalez-les et coupez-les en quartiers.
+4. Faites dorer les lardons et l'oignon émincé dans l'huile 5 min. Hors du feu, versez le vinaigre (attention aux projections) et ajoutez la moutarde.
+5. Mélangez tout de suite les pommes de terre et les haricots tièdes avec les lardons et leur sauce. Salez peu, poivrez.
+6. Ajoutez les œufs et le persil, et servez tiède.
+
+=== Salade thaïe de vermicelles au bœuf
+id: saladevermicellesthai
+emoji: 🥗
+categorie: Plat
+preparation: 25
+cuisson: 10
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/6g3rso1763486069.jpg
+nouveau: oui
+ingredients:
+- vermicelles de riz : 200 g
+- rumsteck : 300 g
+- porc haché : 150 g
+- pousses de soja : 150 g
+- laitue : 1
+- oignon rouge : 1
+- gingembre : 2 cm
+- piment : 1
+- citrons verts : 2
+- sauce poisson : 3 c. à soupe
+- sucre roux : 1 c. à soupe
+- graines de sésame : 1 c. à soupe
+- huile : 2 c. à soupe
+etapes:
+1. Sauce : mélangez le jus des citrons verts, la sauce poisson, le sucre et la moitié du piment haché.
+2. Faites tremper les vermicelles dans l'eau bouillante selon le paquet, rincez-les et égouttez-les.
+3. Faites sauter le porc haché avec le gingembre râpé 5 min dans 1 c. à soupe d'huile.
+4. Saisissez le rumsteck 2 min de chaque côté dans le reste d'huile, laissez reposer et tranchez-le finement.
+5. Mélangez les vermicelles, les pousses de soja, l'oignon rouge émincé, la laitue ciselée, le porc et la sauce.
+6. Ajoutez le bœuf, le reste de piment et le sésame grillé.
+
+=== Omelette à l'aubergine (tortang talong)
+id: tortangtalong
+emoji: 🍆
+categorie: Plat
+preparation: 10
+cuisson: 25
+portions: 2
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/va668f1683209318.jpg
+nouveau: oui
+ingredients:
+- aubergines longues : 2
+- œufs : 3
+- huile d'olive : 3 c. à soupe
+- sel : 1 pincée
+- poivre : 1 pincée
+- ketchup : 2 c. à soupe
+etapes:
+1. Faites griller les aubergines entières sous le gril du four ou sur la flamme du gaz 15 min, en les retournant, jusqu'à ce que la peau soit noire et la chair très tendre.
+2. Pelez-les en gardant la queue, et aplatissez délicatement la chair à la fourchette en éventail.
+3. Battez les œufs avec du sel et du poivre dans une assiette creuse. Trempez-y les aubergines aplaties.
+4. Faites chauffer l'huile dans une poêle, déposez les aubergines et versez le reste d'œuf par-dessus.
+5. Faites cuire 3 min de chaque côté, jusqu'à ce que l'omelette soit dorée. Servez avec du ketchup et du riz.
+
+=== Mijoté vietnamien de butternut et haricots verts
+id: mijotevietnamien
+emoji: 🎃
+categorie: Plat
+preparation: 15
+cuisson: 30
+portions: 4
+difficulte: Facile
+photo: https://www.themealdb.com/images/media/meals/4uje7l1763762276.jpg
+nouveau: oui
+ingredients:
+- butternut : 1
+- haricots verts : 200 g
+- gingembre : 4 cm
+- gousses d'ail : 2
+- sauce soja : 3 c. à soupe
+- sucre roux : 1 c. à soupe
+- bouillon de légumes : 50 cl
+- oignons nouveaux : 3
+- coriandre : 1 poignée
+- huile : 1 c. à soupe
+- riz jasmin : 300 g
+etapes:
+1. Épluchez la courge et coupez-la en cubes de 3 cm.
+2. Faites revenir le gingembre en bâtonnets et l'ail émincé 1 min dans l'huile, dans une cocotte.
+3. Ajoutez la courge, la sauce soja, le sucre et le bouillon. Couvrez et laissez mijoter 20 min.
+4. Ajoutez les haricots verts coupés en deux et poursuivez 5 min.
+5. Faites cuire le riz jasmin pendant ce temps.
+6. Servez le mijoté sur le riz avec les oignons nouveaux et la coriandre.

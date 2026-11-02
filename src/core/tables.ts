@@ -201,6 +201,10 @@ export const POIDS_PIECE: [RegExp, number][] = [[/gousses? d.ail/,0.005],[/echal
 export const ENSEIGNES: [string, number][] = [["Lidl",0.86],["Aldi",0.87],["E.Leclerc",0.91],["Intermarché",0.96],["Auchan",0.98],["Carrefour",1.00],["Super U",1.03],["Monoprix",1.24]];
 
 export const CUISINES: { id: string; nom: string; emoji: string; re: RegExp }[] = [
+  {id:"latam", nom:"Amérique latine & Caraïbes", emoji:"🌎",
+   re:/arepas?|feijoada|ropa vieja|asado|chimichurri|choripan|picadillo|gallo pinto|chivito|alfajores|quindim|bresilien|cubain|jamaicain|jamaique|venezuel|empanadas|moqueca|brigadeiros?|pao de queijo|jerk|bunuelos/},
+  {id:"nord", nom:"Europe du Nord & de l'Est", emoji:"🌲",
+   re:/polonais|norvegien|russe|bortsch|pierogi|blinis?|harengs?|goulash|bigos|stroganoff|suedois|hollandais|stamppot|poffertjes|kapsalon|halusky|zapiekanka|piernik|paczki|rogaliki|oukha/},
   {id:"ital", nom:"Italienne", emoji:"🇮🇹",
    re:/pizza|pasta|pates|spaghetti|tagliatelle|penne|macaroni|lasagne|cannelloni|tortellini|gnocchi|risotto|carbonara|bolognaise|amatriciana|puttanesca|cacio|norma|parmigiana|tiramisu|panna cotta|bruschetta|minestrone|pesto|mozzarella|focaccia|osso|saltimbocca|caprese|arancini|panzanella|alfredo|calzone|milanaise|fagioli|vitello|scaloppine|ribollita|orecchiette|piadina|crostini|polpette|burrata|brodo/},
   {id:"asie", nom:"Asiatique", emoji:"🥢",
@@ -209,9 +213,9 @@ export const CUISINES: { id: string; nom: string; emoji: string; re: RegExp }[] 
    re:/tacos|burrito|quesadilla|fajitas|enchiladas|chili|guacamole|nachos|tortillas|wrap|chilaquiles|tostada|carnitas|elote|mexicaine|huevos rancheros|sopa|pozole|ceviche|sauce mole|frijoles|aguachile|tamales|birria|flautas|salsa verde|dorados/},
   {id:"med",  nom:"Méditerranéenne", emoji:"🫒",
    re:/grecque|souvlaki|gyros|tzatziki|houmous|falafel|taboule|moussaka|feta|olives|tapenade|ratatouille|tian|shakshuka|paella|tortilla espagnole|gaspacho|caviar d.aubergine|pissaladiere|spanakopita|briam|bravas|albondigas|pastitsio|dolma|feuilles de vigne|gazpacho|horiatiki|keftedes|caponata|portugaise|manchego|gigantes|tiropita/},
-  {id:"orient",nom:"Orientale / Maghreb", emoji:"🍢",
+  {id:"orient",nom:"Orient & Afrique", emoji:"🍢",
    re:/tajine|couscous|kefta|merguez|mafe|yassa|semoule|shawarma|kebab|harissa|boulgour|harira|zaalouk|loubia|fattoush|moutabal|marocaine|libanaise|maakouda|msemen|chorba|batata harra|moujadara|kebbe|manakich/},
-  {id:"us",   nom:"Américaine", emoji:"🍔",
+  {id:"us",   nom:"Américaine & anglaise", emoji:"🍔",
    re:/burger|ribs|travers de porc laques|cheesecake|brownie|pancakes|cookies|mac and cheese|nuggets|muffins|granola|banana bread|smoothie|coleslaw|cesar|fish and chips|pulled pork|jambalaya|sloppy|cornbread|philly|buffalo|chaudree|americain|gumbo|pain de viande|poulet frit|bagel|cobb|bbq/},
   {id:"fr",   nom:"Française", emoji:"🇫🇷", re:/.*/}      // par défaut
 ];
@@ -219,6 +223,18 @@ export const CUISINES: { id: string; nom: string; emoji: string; re: RegExp }[] 
 export const CUISINE_FORCE: Record<string, string> = {pastitsio:"med", harira:"orient", zaalouk:"orient", moutabal:"orient",
   loubia:"orient", tajinekefta:"orient", fattoush:"orient", dolmas:"med", briam:"med",
   spanakopita:"med", clamchowder:"us", jambalaya:"us", cornbread:"us", tajineolives:"orient", ceviche:"mex", satay:"asie", ribsbbq:"us", bacalhau:"med", gigantes:"med", tiropita:"med", friedrice:"asie"};
+
+/* Recettes ajoutées en novembre 2026 : origine fixée à la main (les mots du nom ne suffisent pas). */
+const ORIGINES: Record<string, string> = {
+  latam: "arepapabellon asado feijoada chivito picadillo ropavieja choripan cotesporccreole pouletcocovenez curryagneaujamaique crevettescurryjamaique crevettespimentees escovitch gallopinto arepas alfajores bolocenoura quindim confiturelait cheesecakedulce chaussonschocolat beignetsbanane pattiesjamaicains papasrellenas bunuelos bananesroties maiscoco",
+  nord: "bigos halusky zapiekanka goulashchoucroute chourougesaucisses farikal fiskesuppe oukha harengs piernik paczki rogaliki gateaunoixchocolat blinis saladeconcombrefenouil soupechampignonssarrasin boterkoek appeltaart oliebollen slagroomtaart kapsalon challah",
+  us: "batonnetsfromage ragoutboulettes ragoutboeufpotiron tourtiere patechinois poutine queuescastor poudingchomeur tartesucre buttertarts nanaimo jamjam carresdattes tartemyrtilles colcannon boxty hotpotpoulet tourteagneau minitourtes burgerpoulet macpoulet cheesecakecacahuete cheesecakecaramel rockyroad donuts eccles mincepies rockcakes rolypoly summerpudding chelseabuns barrescroustillantes anzac carreschococo tartefraiserhubarbe painsoda gateauvegan biscuitscannelle",
+  med: "rizgambas arrozhorno haricotspoulet empanadagallega pouletespagnole migas saladecalamars torrijas ensaimadas boucheesfigues crevettesciboule fofos tavekosi presh shakshukafeta poivronsfeta tartinesaubergine haricotschorizo rizfruitsmer",
+  orient: "gigotarmenien epauleagneaucannelle pouletnoix auberginespoischiches cotelettesagneau corba fatteh kabsa kafteji chtithabatata flafla ghribia maamouls knafeh mantu kaduborani bolani fasoliyyeh painsplats gateaudattes currykenyan",
+  asie: "bistek boeufcitronnelle saladenouillesboeuf baoporc saladeporcviet ayampercik pilonsthai soupeverte sourisagneauviet crevetteskungpao saladenouillescrevettes wrapssaumon crevettespoisgourmands makis soupenouillescurry banhmidinde auberginesadobo saladevermicellesthai mijotevietnamien soupeaigrepiquante tofusoyeux chouchinoiscrevettes raviolisriz rouleauxpoulet tortangtalong aubergineschips apambalik rotijohn calamarsselpoivre firni",
+  fr: "confitcanard grenouilles bouletsliegeois stoemp hochepot saladeliegeoise chouboeuf tartelettespommes tarteriz patefoies briebrioche socca petitspains oignonsmarines glacecafe glacerhumraisin gateaupistache"
+};
+for (const [c, ids] of Object.entries(ORIGINES)) for (const id of ids.split(" ")) CUISINE_FORCE[id] = c;
 
 export const NON_VEGE = ["poulet","poulets","volaille","boeuf","porc","veau","agneau","mouton","dinde","canard","lapin","pintade","caille","oie",
 "lardon","lardons","jambon","bacon","saucisse","saucisses","saucisson","merguez","chorizo","andouille","boudin","charcuterie",

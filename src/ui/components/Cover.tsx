@@ -1,5 +1,6 @@
-/* Visuel d'une recette : la vraie photo du plat quand on en a une, sinon une
-   illustration composée à partir de SES ingrédients (jamais la photo d'un autre plat). */
+/* Visuel d'une recette : la photo du plat (ou, à défaut, celle d'un plat qui lui
+   ressemble, signalée « Photo indicative » sur la fiche). Sans photo — recettes
+   perso, imports sans image — une illustration composée à partir de SES ingrédients. */
 import { useEffect, useState } from "preact/hooks";
 import { featuredEmojis } from "../../core/catalog";
 import type { Recipe } from "../../core/recipe";
