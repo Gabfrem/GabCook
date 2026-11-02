@@ -88,10 +88,20 @@ export const quick = (max = 12) =>
     .filter((r) => r.cat === "Plat" && minutes(r) <= 20)
     .sort((a, b) => Number(hasPhoto(b)) - Number(hasPhoto(a)) || minutes(a) - minutes(b))
     .slice(0, max);
-export const fresh = (max = 12) =>
+/** Nouveautés : un mélange qui change chaque jour, en alternant les catégories
+   (sinon l'étagère ne montrerait que les premiers plats du fichier). */
+export const fresh = (max = 12) => {
+  const jour = new Date().toDateString();
+  const parCat = new Map<string, Recipe[]>();
   baseList()
     .filter((r) => r.nouveau)
-    .slice(0, max);
+    .sort((a, b) => hashStr(a.id + jour) - hashStr(b.id + jour))
+    .forEach((r) => parCat.set(r.cat, [...(parCat.get(r.cat) || []), r]));
+  const files = [...parCat.values()];
+  const out: Recipe[] = [];
+  for (let i = 0; out.length < max && files.some((f) => f.length > i); i++) for (const f of files) if (f[i] && out.length < max) out.push(f[i]);
+  return out;
+};
 export const favList = () => favorites.value.map((id) => allRecipes.value.find((r) => r.id === id)).filter((r): r is Recipe => !!r);
 export const plannedList = () => planned.value.map((id) => allRecipes.value.find((r) => r.id === id)).filter((r): r is Recipe => !!r);
 export const topRated = (max = 12) =>

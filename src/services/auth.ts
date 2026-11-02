@@ -24,7 +24,7 @@ import {
   type User
 } from "../state/store";
 import { openSheet, toast } from "../state/ui";
-import { loadCommunityPhotos, loadSocial, pushProfile, resetSocial } from "./social";
+import { loadCommunityPhotos, loadCommunityRecipes, loadSocial, pushProfile, resetSocial } from "./social";
 import { sb } from "./supabase";
 
 let lastUid: string | null = null;
@@ -35,7 +35,8 @@ async function afterLogin() {
   void pushProfile();
   void pushRecipes();
   void loadRatings();
-  void loadSocial();
+  // les recettes des profils privés amis ne sont visibles qu'une fois les amis connus
+  void loadSocial().then(loadCommunityRecipes);
   void loadCommunityPhotos();
 }
 
